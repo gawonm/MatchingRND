@@ -4,6 +4,8 @@ __pycache__/
 *.pyc
 
 # GitHub 파일 한도(100MB)와 clone 용량 때문에 큰 원본은 git에서 제외하고 Drive로 공유한다
-data/raw/데이터 목록/RFP_원문.zip
-data/raw/데이터 목록/나눔기술/2025년_포스코그룹_기술나눔_기술소개자료.pdf
-data/raw/데이터 목록/나눔기술/4._2026년_공공기관_기술나눔_기술소개자료.pdf
+data/raw/4._2026년_공공기관_기술나눔_기술소개자료.pdf
+data/raw/2025년_포스코그룹_기술나눔_기술소개자료.pdf
+# RFP 원문 zip과 압축을 푼 PDF는 올리지 않는다 (공고목록 xlsx만 추적)
+data/raw/rfp/*
+!data/raw/rfp/RFP_공고목록.xlsx
