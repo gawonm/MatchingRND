@@ -1,5 +1,5 @@
 """
-기술나눔 PDF 2종 → data/processed/pdf_documents.jsonl
+기술나눔 PDF 2종 → data/processed/technology/pdf_documents.jsonl
 
 실행:
     .venv\\Scripts\\python.exe -X utf8 -m app.technology_rag.scripts.build_pdf_documents
@@ -19,15 +19,15 @@ import sys
 import time
 from pathlib import Path
 
-from app.technology_rag.paths import PROJECT_ROOT
+from app.technology_rag.paths import PROJECT_ROOT, RAW_DIR, PROCESSED_DIR
 from app.common.schemas import SourceType
 from app.technology_rag.schemas import TechDocument
 from app.technology_rag import constants as C
 from app.technology_rag.parsing.pdf_parser import iter_documents
 
 ROOT = PROJECT_ROOT   # app.technology_rag.paths — TECHRAG_ROOT 로 바꿀 수 있다
-RAW = ROOT / "data" / "raw"
-OUT = ROOT / "data" / "processed" / "pdf_documents.jsonl"
+RAW = RAW_DIR
+OUT = PROCESSED_DIR / "pdf_documents.jsonl"
 
 # 정제 후에도 남아 있으면 안 되는 문자
 FORBIDDEN = {"\x01": "U+0001", "Ÿ": "불릿(Ÿ)", "": "불릿(U+F0D8)"}

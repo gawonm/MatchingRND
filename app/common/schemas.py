@@ -11,7 +11,8 @@
 
 ID 규칙
 -------
-doc_id    : "{source}-{year}-{seq:03d}"      예) "pub-2026-001", "pos-2025-001"
+doc_id    : Technology는 "{source}-{year}-{seq:03d}" (예: "pub-2026-001")
+            NTIS는 "ntis-{project_id}", RFP/법령은 기존 PDF document_id를 유지
 element_id: "te-{sha1(normalized_name)[:10]}"
 (chunk_id 는 모듈 내부 규칙이다 — A: "{doc_id}#{section_key}#{idx}")
 """
@@ -29,7 +30,7 @@ from pydantic import BaseModel, ConfigDict, Field
 # =============================================================================
 
 class SourceType(StrEnum):
-    """문서 출처. doc_id 접두어와 1:1 대응."""
+    """문서 출처. PDF 원본 ID에는 접두어가 없으므로 source 필드로 구분한다."""
 
     PUBLIC_TECH = "pub"      # 2026 공공기관 기술나눔 (298건)
     POSCO_TECH = "pos"       # 2025 포스코그룹 기술나눔 (293건)
@@ -86,6 +87,7 @@ class Evidence(BaseModel):
         default=False,
         description="quote가 원문 문서에 실제 존재함을 기계적으로 확인했는지",
     )
+    extra: dict[str, Any] = Field(default_factory=dict)
 
 
 # =============================================================================
@@ -141,6 +143,7 @@ class RetrievalHit(BaseModel):
     final_rank: int | None = None
 
     retriever: Literal["dense", "bm25", "hybrid", "hybrid_rerank"] = "hybrid_rerank"
+    extra: dict[str, Any] = Field(default_factory=dict)
 
 
 class ExternalTechCandidate(BaseModel):
@@ -164,6 +167,7 @@ class ExternalTechCandidate(BaseModel):
     tech_elements: list[TechElement] = Field(default_factory=list)
     evidences: list[Evidence] = Field(default_factory=list)
     hits: list[RetrievalHit] = Field(default_factory=list)
+    extra: dict[str, Any] = Field(default_factory=dict)
 
 
 class ModuleResult(BaseModel):
@@ -183,3 +187,6 @@ class ModuleResult(BaseModel):
     )
     hits: list[RetrievalHit] = Field(default_factory=list)
     stats: dict[str, Any] = Field(default_factory=dict)
+    extra: dict[str, Any] = Field(
+        default_factory=dict, description="모듈 고유 문맥·진단·원본 결과 (공통 필드 외 정보 보존)"
+    )

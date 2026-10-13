@@ -30,6 +30,7 @@ import pymupdf
 from app.common.schemas import BBox, SourceType, TechTaxonomy
 from app.technology_rag.schemas import PatentInfo, Section, SectionCode, TechDocument, TextBlock
 from app.technology_rag.text import clean_line, is_bullet, is_caption, make_doc_id, parse_date
+from app.technology_rag.paths import PROJECT_ROOT
 from app.technology_rag import constants as C
 
 log = logging.getLogger(__name__)
@@ -488,16 +489,16 @@ def iter_documents(
 
     Args:
         source: PUBLIC_TECH | POSCO_TECH
-        raw_dir: data/raw 디렉터리
+        raw_dir: data/raw/technology 디렉터리
         limit: 앞에서부터 N건만 (테스트/디버깅용)
-        root: pdf_path 의 기준 디렉터리. 기본은 raw_dir 의 두 단계 위(프로젝트 루트).
+        root: pdf_path 의 기준 디렉터리. 기본은 PROJECT_ROOT.
               산출물에 절대경로가 들어가면 다른 PC(팀원)에서 원문을 열 수 없으므로
-              항상 루트 기준 상대경로('data/raw/xxx.pdf')로 저장한다.
+              항상 루트 기준 상대경로('data/raw/technology/xxx.pdf')로 저장한다.
     """
     spec = C.SOURCE_SPECS[source]
     path = Path(raw_dir) / spec["pdf"]
     year = spec["year"]
-    base = Path(root) if root is not None else Path(raw_dir).resolve().parent.parent
+    base = Path(root) if root is not None else PROJECT_ROOT
     rel = path.resolve().relative_to(base.resolve()).as_posix()
 
     doc = pymupdf.open(path)

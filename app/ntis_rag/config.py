@@ -3,16 +3,13 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+from app.common.paths import PROJECT_ROOT, NTIS_DATA_PATH, NTIS_INDEX_DIR, resolve_project_path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = PROJECT_ROOT
 load_dotenv(ROOT / ".env")
 
-DATA_PATH = Path(
-    os.getenv("NTIS_DATA_PATH", ROOT / "data" / "raw" / "ntis_projects_2026_mechanical.xlsx")
-).expanduser().resolve()
-INDEX_DIR = Path(
-    os.getenv("NTIS_INDEX_DIR", ROOT / "data" / "processed" / "ntis_index")
-).expanduser().resolve()
+DATA_PATH = resolve_project_path(os.getenv("NTIS_DATA_PATH", NTIS_DATA_PATH))
+INDEX_DIR = resolve_project_path(os.getenv("NTIS_INDEX_DIR", NTIS_INDEX_DIR))
 MANIFEST_PATH = INDEX_DIR / "manifest.json"
 
 RERANKER_MODEL = os.getenv("NTIS_RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
