@@ -1,168 +1,81 @@
-"""run_ntis_pipeline 결과 → 공용(A 스키마) ModuleResult 변환 (2단계).
-
-노트북 f71b1843, dd5e305b 셀의 함수를 그대로 옮긴 것이다.
-"""
+"""NTIS 결과를 검증된 공통 ModuleResult 또는 JSON 호환 dict로 변환합니다."""
+import hashlib
+import re
 from collections import defaultdict
 
+from app.common.schemas import Evidence, ExternalTechCandidate, ModuleResult, RetrievalHit, TechElement
 
-def adapt_ntis_to_module_result(result):
-    projects = result["related_projects"]
-    canonical_rows = result["canonical_technologies"]
 
-    project_map = {
-        str(p["project_id"]): p
-        for p in projects
-    }
-
-    # 과제별 기술요소 및 Evidence 구성
+def to_module_result(result) -> ModuleResult:
+    query = result["query"]
+    structured = {}
+    if isinstance(query, dict):
+        structured = query.get("structured_query") or {}
+        query = query.get("problem") or query.get("original_query") or query.get("query")
+    if not isinstance(query, str):
+        raise ValueError("원본 자연어 query 필드를 확인해야 합니다.")
+    projects = {str(p["project_id"]): p for p in result["related_projects"]}
     tech_by_project = defaultdict(list)
     all_elements = []
-
-    for row in canonical_rows:
+    for row in result["canonical_technologies"]:
         pid = str(row["project_id"])
-        project = project_map.get(pid)
-        if project is None:
+        if pid not in projects:
             continue
-
         quote = row.get("evidence") or ""
-        source_text = project.get("text") or ""
-
-        evidence = {
-            "doc_id": f"ntis-{pid}",
-            "source": "ntis",
-            "quote": quote,
-            "verified": bool(quote and quote in source_text),
-        }
-
-        element = {
-            "name": row["canonical_name"],
-            "original_name": row["original_element"],
-            "function": None,  # 기존 결과에 별도 기능 설명 없음
-            "doc_id": f"ntis-{pid}",
-            "evidences": [evidence],
-        }
-
+        evidence = Evidence(
+            doc_id=f"ntis-{pid}", source="ntis", quote=quote,
+            verified=bool(quote and quote in (projects[pid].get("text") or "")),
+        )
+        name = row["canonical_name"]
+        normalized = re.sub(r"\s+", "", name).lower()
+        element = TechElement(
+            element_id="te-" + hashlib.sha1(normalized.encode("utf-8")).hexdigest()[:10],
+            name=name, surface_forms=[row["original_element"]], origin="ntis",
+            evidences=[evidence],
+        )
         tech_by_project[pid].append(element)
         all_elements.append(element)
 
-    # 과제별 Candidate
-    candidates = []
-
-    for p in projects:
-        pid = str(p["project_id"])
-
-        candidate = {
-            "doc_id": f"ntis-{pid}",
-            "title": p["project_title"],
-            "provider": p.get("organization"),
-            "relevance_score": p.get("rerank_score"),
-            "tech_elements": tech_by_project[pid],
-            "evidences": [
-                ev
-                for tech in tech_by_project[pid]
-                for ev in tech["evidences"]
-            ],
-            "metadata": {
-                "project_id": pid,
-                "rank": p.get("rank"),
-                "rrf_score": p.get("rrf_score"),
-                "source_ranks": p.get("source_ranks"),
-            },
-        }
-
-        candidates.append(candidate)
-
-    # 공용 출력 초안
-    return {
-        "module": "ntis",
-        "query": result["query"],
-        "query_expansion": [],
-        "candidates": candidates,
-        "tech_elements": all_elements,
-        "hits": [],
-        "stats": {
-            "candidate_count": len(candidates),
-            "technology_element_count": len(all_elements),
-            "verified_evidence_count": sum(
-                ev["verified"]
-                for c in candidates
-                for ev in c["evidences"]
-            ),
+    candidates, hits = [], []
+    for pid, project in projects.items():
+        doc_id = f"ntis-{pid}"
+        ranks = project.get("source_ranks") or {}
+        hit = RetrievalHit(
+            chunk_id=f"{doc_id}#project", doc_id=doc_id, source="ntis",
+            text=project.get("text") or "", dense_rank=ranks.get("dense"),
+            bm25_rank=ranks.get("bm25"), rrf_score=project.get("rrf_score"),
+            rerank_score=project.get("rerank_score"), final_rank=project.get("rank"),
+            retriever="hybrid_rerank" if project.get("rerank_score") is not None else "hybrid",
+            extra={"project_id": pid, "metadata": project.get("metadata", {})},
+        )
+        hits.append(hit)
+        score = project.get("rerank_score")
+        if score is None:
+            score = project.get("rrf_score")
+        candidates.append(ExternalTechCandidate(
+            doc_id=doc_id, title=project.get("project_title") or pid,
+            provider=project.get("organization"), relevance_score=score if score is not None else 0.0,
+            relation_summary="", tech_elements=tech_by_project[pid],
+            evidences=[ev for tech in tech_by_project[pid] for ev in tech.evidences],
+            hits=[hit], extra={"project_id": pid, "metadata": project.get("metadata", {})},
+        ))
+    return ModuleResult(
+        module="ntis", query=structured.get("search_query") or query,
+        candidates=candidates, tech_elements=all_elements, hits=hits,
+        stats={
+            "candidate_count": len(candidates), "technology_element_count": len(all_elements),
+            "verified_evidence_count": sum(ev.verified for c in candidates for ev in c.evidences),
+            "generation_implemented": True, "prior_rd_axes": result.get("prior_rd_axes", []),
         },
-        # NTIS 전용 확장 필드
-        "extensions": {
-            "prior_rd_axes": result["prior_rd_axes"],
-        },
-    }
+        extra=dict(result),
+    )
+
+
+def adapt_ntis_to_module_result(result):
+    """기존 dict 호출부를 유지하되 실제 공통 스키마 검증을 적용합니다."""
+    return to_module_result(result).model_dump(mode="json")
 
 
 def align_ntis_to_a_schema(ntis_result, raw_result):
-    # A의 query는 자연어 문자열
-    query = raw_result["query"]
-    if isinstance(query, dict):
-        query = (
-            query.get("problem")
-            or query.get("original_query")
-            or query.get("query")
-        )
-    if not isinstance(query, str):
-        raise ValueError("원본 자연어 query 필드를 확인해야 합니다.")
-
-    def convert_evidence(ev):
-        return {
-            "doc_id": ev["doc_id"],
-            "source": ev["source"],
-            "section": None,
-            "page": None,
-            "bbox": None,
-            "quote": ev["quote"],
-            "verified": ev["verified"],
-        }
-
-    def convert_element(tech):
-        return {
-            "name": tech["name"],
-            "function": tech.get("function"),
-            "origin": "ntis",
-            "evidences": [
-                convert_evidence(ev)
-                for ev in tech["evidences"]
-            ],
-        }
-
-    candidates = []
-
-    for c in ntis_result["candidates"]:
-        candidates.append({
-            "doc_id": c["doc_id"],
-            "title": c["title"],
-            "provider": c["provider"],
-            "relevance_score": c["relevance_score"],
-            "relation_summary": "",
-            "tech_elements": [
-                convert_element(t)
-                for t in c["tech_elements"]
-            ],
-            "evidences": [
-                convert_evidence(ev)
-                for ev in c["evidences"]
-            ],
-            "hits": [],
-        })
-
-    return {
-        "module": "ntis",
-        "query": query,
-        "query_expansion": [],
-        "candidates": candidates,
-        "tech_elements": [
-            convert_element(t)
-            for t in ntis_result["tech_elements"]
-        ],
-        "hits": [],
-        "stats": {
-            **ntis_result["stats"],
-            "generation_implemented": True,
-            "prior_rd_axes": raw_result["prior_rd_axes"],
-        },
-    }
+    """기존 2단계 변환 호출과 호환되는 진입점. 원본에서 직접 변환합니다."""
+    return adapt_ntis_to_module_result(raw_result)

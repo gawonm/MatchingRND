@@ -62,4 +62,4 @@ index:
   backend: chroma               # 현재 chroma 만 구현 (Supabase 교체 지점: indexing/vector_store.py)
   persist_dir: storage/chroma
   embedding_cache_dir: storage/embeddings
-  processed_dir: data/processed
+  processed_dir: data/processed/technology

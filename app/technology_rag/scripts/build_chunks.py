@@ -1,5 +1,5 @@
 r"""
-tech_documents.jsonl → data/processed/chunks_{strategy}.jsonl  (전략별)
+tech_documents.jsonl → data/processed/technology/chunks_{strategy}.jsonl  (전략별)
 
 실행:
     .venv\Scripts\python.exe -X utf8 -m app.technology_rag.scripts.build_chunks
@@ -11,13 +11,13 @@ from __future__ import annotations
 import argparse
 import sys
 
-from app.technology_rag.paths import PROJECT_ROOT
+from app.technology_rag.paths import PROJECT_ROOT, PROCESSED_DIR
 from app.technology_rag.schemas import TechDocument
 from app.technology_rag.indexing.chunker import available_strategies, get_chunker
 
 ROOT = PROJECT_ROOT   # app.technology_rag.paths — TECHRAG_ROOT 로 바꿀 수 있다
-DOCS = ROOT / "data" / "processed" / "tech_documents.jsonl"
-OUT_DIR = ROOT / "data" / "processed"
+DOCS = PROCESSED_DIR / "tech_documents.jsonl"
+OUT_DIR = PROCESSED_DIR
 
 
 def main() -> int:

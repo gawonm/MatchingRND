@@ -23,14 +23,14 @@ import json
 import sys
 from pathlib import Path
 
-from app.technology_rag.paths import PROJECT_ROOT
+from app.technology_rag.paths import PROJECT_ROOT, PROCESSED_DIR, EVALUATION_DIR
 from app.technology_rag.schemas import SectionCode, TechDocument
 from app.technology_rag.text import compact
 from app.technology_rag.indexing.tokenizer import default_tokenizer
 
 ROOT = PROJECT_ROOT   # app.technology_rag.paths — TECHRAG_ROOT 로 바꿀 수 있다
-EVAL = ROOT / "data" / "evaluation"
-DOCS = ROOT / "data" / "processed" / "tech_documents.jsonl"
+EVAL = EVALUATION_DIR
+DOCS = PROCESSED_DIR / "tech_documents.jsonl"
 
 
 def read_jsonl(p: Path) -> list[dict]:

@@ -1,11 +1,11 @@
 """
-PDF 파싱 결과 + 엑셀 → data/processed/tech_documents.jsonl  (A 단계의 지식베이스 원본)
+PDF 파싱 결과 + 엑셀 → data/processed/technology/tech_documents.jsonl  (A 단계의 지식베이스 원본)
 
 실행:
     .venv\\Scripts\\python.exe -X utf8 -m app.technology_rag.scripts.build_documents            # PDF 캐시 재사용
     .venv\\Scripts\\python.exe -X utf8 -m app.technology_rag.scripts.build_documents --reparse  # PDF부터 다시 (약 2분)
 
-전제: python -m app.technology_rag.scripts.build_pdf_documents 로 data/processed/pdf_documents.jsonl 이 만들어져 있어야 한다.
+전제: python -m app.technology_rag.scripts.build_pdf_documents 로 data/processed/technology/pdf_documents.jsonl 이 만들어져 있어야 한다.
       (--reparse 면 이 스크립트가 직접 PDF를 파싱한다)
 """
 
@@ -16,7 +16,7 @@ import collections
 import sys
 from pathlib import Path
 
-from app.technology_rag.paths import PROJECT_ROOT
+from app.technology_rag.paths import PROJECT_ROOT, RAW_DIR, PROCESSED_DIR
 from app.common.schemas import SourceType
 from app.technology_rag.schemas import TechDocument
 from app.technology_rag import constants as C
@@ -25,9 +25,9 @@ from app.technology_rag.parsing.merger import MergeReport, merge_documents
 from app.technology_rag.parsing.pdf_parser import iter_documents
 
 ROOT = PROJECT_ROOT   # app.technology_rag.paths — TECHRAG_ROOT 로 바꿀 수 있다
-RAW = ROOT / "data" / "raw"
-PDF_CACHE = ROOT / "data" / "processed" / "pdf_documents.jsonl"
-OUT = ROOT / "data" / "processed" / "tech_documents.jsonl"
+RAW = RAW_DIR
+PDF_CACHE = PROCESSED_DIR / "pdf_documents.jsonl"
+OUT = PROCESSED_DIR / "tech_documents.jsonl"
 
 SOURCES = (SourceType.PUBLIC_TECH, SourceType.POSCO_TECH)
 

@@ -5,6 +5,6 @@
 """
 
 from app.technology_rag.config import TechnologyRagConfig, load_config
-from app.technology_rag.retrieval.pipeline import TechnologyRagPipeline
+from app.technology_rag.pipeline import TechnologyRagPipeline
 
 __all__ = ["TechnologyRagPipeline", "TechnologyRagConfig", "load_config"]

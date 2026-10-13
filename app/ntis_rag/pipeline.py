@@ -1,13 +1,13 @@
 from typing import Any, Dict, Optional, Sequence
 
-from .analysis import (
-    aggregate_prior_rd_axes,
-    canonicalize_technologies,
-    extract_all_project_tech,
-    structure_query,
-)
 from .config import ANALYSIS_TOP_N
-from .retrieval import retrieve_ntis
+
+
+def run_ntis_module(problem: str, **options):
+    """팀 통합 진입점. 분석 결과를 공통 ModuleResult로 반환합니다."""
+    from .adapter import to_module_result
+
+    return to_module_result(run_ntis_pipeline(problem, **options))
 
 
 def run_ntis_pipeline(
@@ -16,6 +16,14 @@ def run_ntis_pipeline(
     external_technologies: Optional[Sequence[str]] = None,
     analysis_top_n: int = ANALYSIS_TOP_N,
 ) -> Dict[str, Any]:
+    from .generation.analysis import (
+        aggregate_prior_rd_axes,
+        canonicalize_technologies,
+        extract_all_project_tech,
+        structure_query,
+    )
+    from .retrieval.pipeline import retrieve_ntis
+
     if analysis_top_n < 1:
         raise ValueError("analysis_top_n은 1 이상이어야 합니다.")
 

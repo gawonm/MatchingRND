@@ -6,8 +6,7 @@ Technology RAG(A) 의 경로 해석 — 두 종류를 한 곳에서 계산한다
 2. 프로젝트 **루트** 기준 자원 (data/, storage/, .env): 루트를 아래 우선순위로 찾는다.
        1) 환경변수 `TECHRAG_ROOT`   ← 다른 저장소에 통합할 때 이것만 설정하면 된다
        2) 이 파일에서 위로 올라가며 marker 파일(requirements.txt, pyproject.toml) 탐색
-       3) 현재 작업 디렉터리
-   `parents[N]` 을 세는 방식은 디렉터리 구조가 바뀌면 조용히 깨지므로 쓰지 않는다.
+       3) 이 저장소의 루트 (실행 위치에 영향받지 않음)
 """
 
 from __future__ import annotations
@@ -40,14 +39,15 @@ def find_project_root(start: Path | None = None) -> Path:
     for candidate in (here, *here.parents):
         if any((candidate / m).exists() for m in _MARKERS):
             return candidate
-    return Path.cwd().resolve()
+    return Path(__file__).resolve().parents[2]
 
 
 PROJECT_ROOT = find_project_root()
 
 DATA_DIR = PROJECT_ROOT / "data"
-RAW_DIR = DATA_DIR / "raw"
-PROCESSED_DIR = DATA_DIR / "processed"
+RAW_DIR = DATA_DIR / "raw" / "technology"
+PROCESSED_DIR = DATA_DIR / "processed" / "technology"
+EVALUATION_DIR = DATA_DIR / "evaluation"
 
 
 def resolve(path: str | Path) -> Path:

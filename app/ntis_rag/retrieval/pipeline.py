@@ -11,7 +11,7 @@ from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from sentence_transformers import CrossEncoder
 
-from .config import (
+from ..config import (
     ANALYSIS_TOP_N,
     BM25_K,
     DENSE_K,
