@@ -1,0 +1,65 @@
+# Technology RAG (A 모듈) 설정
+#
+# 코드를 고치지 않고 실험 조건을 바꾸기 위한 파일.
+# 바꾸면 영향 받는 곳을 주석에 적어 두었다.
+#
+#   from app.technology_rag.config import load_config
+#   cfg = load_config()                       # 이 파일
+#   cfg = load_config("app/technology_rag/configs/exp_a.yaml")   # 실험용 사본 (프로젝트 루트 기준)
+
+chunking:
+  strategy: section_group        # doc | section | section_group
+                                 # [선택됨] section_group — 근거를 섹션 묶음 단위로 짚을 수 있고(doc 은 불가),
+                                 #   청크가 임베딩에 적당한 길이(평균 ~470자). 평가셋 v1 이후 재확인 예정
+  include_title_prefix: true     # 청크 앞에 "기술명 (부제)" + "[섹션명]" 을 붙인다
+
+embedding:
+  model: dragonkue/BGE-m3-ko
+  tag: bgem3ko                   # 컬렉션 이름에 들어간다 (모델이 바뀌면 반드시 함께 변경)
+  device: auto                   # auto(GPU 있으면 cuda, 없으면 cpu) | cuda | cpu
+  fp16: true
+  batch_size: 16
+
+tokenizer:                       # BM25 전용 (Kiwi)
+  min_len: 2
+  keep_verbs: true
+  char_bigrams: false            # 3글자 이상 한글 명사의 글자 bigram 추가 (실험 대상)
+  user_dict: user_dict.txt       # 이 폴더(configs/) 기준. 절대경로도 가능
+
+retrieval:
+  fusion: rrf                    # rrf(직접 구현) | ensemble(LangChain EnsembleRetriever) — 결과 동일
+  bm25_top_k: 50
+  dense_top_k: 50
+  rrf_k: 60                      # RRF 상수 c
+  weights: [0.5, 0.5]            # [bm25, dense]
+  aggregate: max                 # 문서 점수 = 그 문서 청크 점수의 max | sum
+  top_docs: 10                   # ModuleResult.candidates 개수
+
+rerank:
+  enabled: true                  # [선택됨] Hybrid(RRF) 위에 리랭커 사용. 지연 0.03초→0.4초, VRAM +1.2GB
+  model: BAAI/bge-reranker-v2-m3
+  device: auto
+  fp16: true
+  pool: 50                       # 융합 상위 N개를 재정렬
+  batch_size: 16
+  max_length: 1024
+  # 1위 점수가 이 값 미만이면 '관련 문서 없음'(근거부족)으로 본다.
+  # null = 사용 안 함. 현재 평가셋에서 답있음 최저 0.0076 vs 답없음 최대 0.0061 로
+  # 간격이 1.26배뿐이라 신뢰할 수 없다. 평가셋 v1 이후 결정할 것.
+  min_score: null
+
+llm:                             # 생성 단계. OPENAI_API_KEY 는 프로젝트 루트 .env (.env.example 참고)
+  provider: openai
+  model: gpt-4o-mini
+  n_docs: 3                      # LLM 에게 문서 '전체'를 줄 기술 수 (검색 상위 N건). 많을수록 비용·노이즈 증가
+  temperature: 0.0
+  seed: 0                        # 재현성(best-effort). null 이면 미지정
+  max_output_tokens: 2000        # 출력 상한 (보통 ~500)
+  price_per_1m_input: 0.15       # USD/1M 토큰 — 비용 추정용. 요금은 바뀔 수 있으니 확인
+  price_per_1m_output: 0.60
+
+index:
+  backend: chroma               # 현재 chroma 만 구현 (Supabase 교체 지점: indexing/vector_store.py)
+  persist_dir: storage/chroma
+  embedding_cache_dir: storage/embeddings
+  processed_dir: data/processed
