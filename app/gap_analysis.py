@@ -6,6 +6,8 @@ RFP 요구기술을 기술요소 축으로 삼아 기업 보유기술, 기술나
 - LLM은 RFP 요구기술 추출과 후보별 충족도(full/partial/none) 판단에만 사용한다.
   라벨은 `decide_label`의 결정론적 규칙으로 정한다.
 - LLM이 제시한 quote는 원문과 대조해 검증된 경우에만 판정에 사용한다.
+- 요구기술과 분야 고유 표현이 하나도 겹치지 않는 매칭(진단·감시 같은 일반 용어만 비슷한 경우)은
+  LLM이 full/partial을 줘도 verified로 보지 않는다. 추가 LLM 호출 없이 코드로 검사한다.
 - NTIS 과제는 참고 근거로만 첨부하고 Gap 판정의 단독 근거로 사용하지 않는다.
 - 검색 결과가 비어 있다는 사실만으로 추가 R&D 필요를 추정하지 않는다.
 
@@ -566,6 +568,24 @@ def _bigrams(texts: Sequence[str]) -> set[str]:
     return grams
 
 
+#: 매칭의 근거가 이 일반 공정 용어뿐이고 분야 고유 표현이 겹치지 않으면, LLM이 full/partial을
+#: 줘도 verified로 보지 않는다. "진단·감시" 같은 말은 거의 모든 설비 기술 설명에 등장해서,
+#: 이 단어만으로 "실시간 진단을 한다"는 요구기술과 전혀 다른 분야의 후보(예: 케이블 요구에
+#: 철도 전기설비 기술)가 매칭되는 문제를 코드로 걸러낸다. 추가 LLM 호출 없이 기존 응답만 검사한다.
+GENERIC_MATCH_WORDS = (
+    "기술", "시스템", "장치", "설비", "플랫폼", "솔루션", "체계", "구조",
+    "진단", "감시", "모니터링", "관리", "평가", "측정", "시험", "검사", "분석",
+    "제어", "운영", "자동", "실시간", "최적화", "통합", "구축", "개발", "확보",
+    "적용", "활용", "구현", "제공", "지원", "성능", "데이터", "설계", "제작",
+)
+_GENERIC_STRIP = re.compile("|".join(re.escape(word) for word in GENERIC_MATCH_WORDS))
+
+
+def _domain_bigrams(texts: Sequence[str | None]) -> set[str]:
+    """일반 공정 용어를 지우고 남는 분야 고유 표현만으로 글자 쌍을 만든다."""
+    return _bigrams([_GENERIC_STRIP.sub("", text) for text in texts if text])
+
+
 def _cosine(a: Sequence[float], b: Sequence[float]) -> float:
     norm = math.sqrt(sum(x * x for x in a)) * math.sqrt(sum(y * y for y in b))
     return sum(x * y for x, y in zip(a, b)) / norm if norm else 0.0
@@ -604,6 +624,9 @@ def _align(requirement: _Requirement, pool: Sequence[_PoolItem], llm: Structured
     if not shortlisted:
         return []
     element = requirement.element
+    # 요구기술 자신의 분야 용어. 일반 공정 용어뿐이면 비어 있어서 아래 겹침 검사를 건너뛴다.
+    domain_terms = _domain_bigrams([element.name, element.function, element.target, *element.synonyms,
+                                    *(ev.quote for ev in element.evidences if ev.verified)])
     answer = llm(_messages(ALIGNMENT_PROMPT, {
         "requirement": {
             "name": element.name, "synonyms": element.synonyms, "function": element.function,
@@ -625,9 +648,14 @@ def _align(requirement: _Requirement, pool: Sequence[_PoolItem], llm: Structured
         seen.add(index)
         item = shortlisted[index]
         evidences = [ev for ev in item.element.evidences if _quote_in(judgement.quote, ev.quote)]
+        verified = bool(evidences)
+        if verified and domain_terms:
+            # 분야 고유 표현이 하나도 겹치지 않으면 "진단·감시" 같은 말만 비슷한 것으로 보고 판정에서 뺀다.
+            verified = bool(domain_terms & _domain_bigrams(
+                [item.element.name, item.element.function, item.element.target, *(ev.quote for ev in evidences)]))
         matches.append(SourceMatch(
             source=item.source, element_name=item.element.name, coverage=judgement.coverage,
-            reason=judgement.reason, verified=bool(evidences), doc_id=item.doc_id, title=item.title,
+            reason=judgement.reason, verified=verified, doc_id=item.doc_id, title=item.title,
             provider=item.provider, transfer_condition=item.transfer_condition, evidences=evidences,
         ))
     return sorted(matches, key=lambda m: (m.coverage != "full", not m.verified))
