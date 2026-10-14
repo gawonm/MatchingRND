@@ -1,13 +1,21 @@
 import json
+import tempfile
+import threading
 import unittest
+from types import SimpleNamespace
 from unittest.mock import Mock
 
-from app.common.schemas import Evidence, ExternalTechCandidate, GapLabel, ModuleResult, TechElement
+from app.common.schemas import (
+    Evidence, ExternalTechCandidate, GapLabel, ModuleResult, RetrievalHit, TechElement,
+)
 from app.gap_analysis import (
-    AlignmentJudgements, CoverageJudgement, GapReport, RequirementExtraction, SourceMatch, decide_label,
-    run_gap_analysis,
+    AlignmentJudgements, CoverageJudgement, GapReport, OpenAIStructuredLLM, RequirementExtraction,
+    SourceMatch, decide_label, run_gap_analysis,
 )
 from app.orchestrator import AnalysisRequest, AnalysisState
+
+
+NL = chr(10)
 
 
 def requirement(name, quote, *, clear=True, synonyms=(), technology=True):
@@ -27,10 +35,11 @@ def tech_element(name, source, doc_id, quote):
                        evidences=[Evidence(doc_id=doc_id, source=source, quote=quote, verified=True)])
 
 
-def make_state(owned, rfp_candidates, *, external=(), external_candidates=(), ntis=()):
+def make_state(owned, rfp_candidates, *, external=(), external_candidates=(), ntis=(), tech_hits=()):
     return AnalysisState(
         request=AnalysisRequest(problem="작업자와 지게차의 충돌을 줄이고 싶다.", owned_technologies=owned),
-        technology=ModuleResult(module="technology", query="q", candidates=list(external_candidates)),
+        technology=ModuleResult(module="technology", query="q", candidates=list(external_candidates),
+                                hits=list(tech_hits)),
         ntis=ModuleResult(module="ntis", query="q"),
         rfp=ModuleResult(module="rfp", query="q", candidates=list(rfp_candidates)),
         external_elements=list(external), ntis_elements=list(ntis),
@@ -234,6 +243,27 @@ class QuoteLocationTests(unittest.TestCase):
         self.assertTrue(evidence.verified)
         self.assertEqual(evidence.quote, "SLAM 기반 위치추정")
 
+    def test_trailing_punctuation_added_by_llm_is_ignored(self):
+        for suffix in (".", " .", "。", ",", "…"):
+            with self.subTest(suffix=suffix):
+                item, evidence = self.run_quote(["SLAM 기반 위치추정 기술 개발"], "SLAM 기반 위치추정 기술 개발" + suffix)
+                self.assertTrue(evidence.verified)
+                self.assertEqual(evidence.quote, "SLAM 기반 위치추정 기술 개발")  # 저장되는 근거는 원문 그대로
+                self.assertEqual(item.label, GapLabel.RND_NEEDED)
+
+    def test_meaningful_closing_bracket_is_not_trimmed(self):
+        item, evidence = self.run_quote(["지속학습 및 자가진화(Self-evolving)"], "자가진화(Self-evolving)")
+        self.assertTrue(evidence.verified)
+        self.assertEqual(evidence.quote, "자가진화(Self-evolving)")
+
+    def test_trailing_punctuation_on_match_quote_is_ignored(self):
+        rfp = rfp_candidate("rfp-1", "과제", ["SLAM 기반 위치추정 기술 개발"])
+        llm = FakeLLM({"과제": [requirement("SLAM", "SLAM 기반 위치추정")]},
+                      {("SLAM", "SLAM 기반 위치추정"): ("full", "SLAM 기반 위치추정.")})
+        item = run_gap_analysis(make_state(["SLAM 기반 위치추정"], [rfp]), llm=llm).items[0]
+        self.assertTrue(item.company[0].verified)
+        self.assertEqual(item.label, GapLabel.OWNED)
+
     def test_changed_wording_is_still_rejected(self):
         item, evidence = self.run_quote(["SLAM 기반 위치추정 기술 개발"], "원문과 다르게 바꿔 쓴 문장")
         self.assertFalse(evidence.verified)
@@ -256,6 +286,224 @@ class NonTechnologyExclusionTests(unittest.TestCase):
         self.assertEqual(report.stats["excluded_requirements"],
                          [{"rfp": "rfp-1", "text": "실증 주관사 합의", "reason": "LLM이 기술 요구가 아니라고 판단"}])
         self.assertEqual(report.summary["추가R&D검토후보"], 1)
+
+
+def tech_candidate(doc_id, title, provider="포스코그룹", condition="통상실시"):
+    return ExternalTechCandidate(doc_id=doc_id, title=title, provider=provider, transfer_condition=condition,
+                                 relevance_score=0.5, relation_summary="")
+
+
+def tech_hit(doc_id, text, rank=1, source="pos"):
+    return RetrievalHit(chunk_id=f"{doc_id}#{rank}", doc_id=doc_id, source=source, text=text, final_rank=rank)
+
+
+class CandidatePoolTests(unittest.TestCase):
+    """기술요소로 추출되지 않은 기술나눔 후보도 검색 본문으로 비교한다."""
+
+    def setUp(self):
+        self.rfp = rfp_candidate("rfp-1", "과제", ["설비 베어링 이상 실시간 감지 기술 개발"])
+        self.hit_text = "베어링 이탈 검출장치 (실시간 이상 진단)\n[기술 개요]\n기울기 센서로 베어링 이탈을 실시간 감지"
+        self.name = "베어링 이탈 검출장치 (실시간 이상 진단)"
+
+    def test_candidate_without_element_is_compared_using_hit_body(self):
+        llm = FakeLLM({"과제": [requirement("베어링 이상 감지", "베어링 이상 실시간 감지")]},
+                      {("베어링 이상 감지", self.name): ("full", "기울기 센서로 베어링 이탈을 실시간 감지")})
+        state = make_state([], [self.rfp], external_candidates=[tech_candidate("pos-1", "베어링 이탈 검출장치")],
+                           tech_hits=[tech_hit("pos-1", self.hit_text)])
+        report = run_gap_analysis(state, llm=llm)
+        item = report.items[0]
+        self.assertEqual(item.label, GapLabel.EXTERNAL)
+        match = item.external[0]
+        self.assertEqual((match.doc_id, match.provider, match.transfer_condition),
+                         ("pos-1", "포스코그룹", "통상실시"))
+        # 기술명 접두어와 섹션 제목 줄은 근거에서 빠진다
+        self.assertEqual(match.evidences[0].quote, "기울기 센서로 베어링 이탈을 실시간 감지")
+        self.assertEqual(match.evidences[0].extra["from"], "retrieval_hit")
+        self.assertEqual(report.stats["pool_size"]["technology"], 1)
+
+    def test_document_already_covered_by_element_is_not_duplicated(self):
+        element = tech_element("베어링 이탈 감지", "pos", "pos-1", "기울기 센서로 베어링 이탈을 실시간 감지")
+        llm = FakeLLM({"과제": [requirement("베어링 이상 감지", "베어링 이상 실시간 감지")]})
+        state = make_state([], [self.rfp], external=[element],
+                           external_candidates=[tech_candidate("pos-1", "베어링 이탈 검출장치")],
+                           tech_hits=[tech_hit("pos-1", self.hit_text)])
+        run_gap_analysis(state, llm=llm)
+        names = [c["name"] for c in llm.alignment_payloads[0]["candidates"]]
+        self.assertEqual(names, ["베어링 이탈 감지"])
+
+    def test_candidate_without_hits_is_skipped(self):
+        llm = FakeLLM({"과제": [requirement("베어링 이상 감지", "베어링 이상 실시간 감지")]})
+        state = make_state([], [self.rfp], external_candidates=[tech_candidate("pos-1", "베어링 이탈 검출장치")])
+        report = run_gap_analysis(state, llm=llm)
+        self.assertEqual(report.stats["pool_size"]["technology"], 0)
+        self.assertTrue(any("기술나눔 후보가 없어" in w for w in report.warnings))
+
+
+MULTI_SECTION_TEXT = NL.join([
+    "난방배관 관리 시스템 (수처리·이상 진단)",
+    "[기술 개요]",
+    "본 기술은 난방배관 회수관에서 수질을 측정하여 배관 이상 유무를 판단함",
+    "약품 소모 속도로 배관 이상을 판단함",
+    "[산업계 문제 해결 포인트]",
+    "배관 이상 발생 시 조기 발견이 어려워 누수가 대형 사고로 이어짐",
+    "[주요 적용 산업 및 활용처]",
+    "지역난방 열병합 아파트 공공건축물",
+    "[시장성 및 사업화 가능성]",
+    "글로벌 지역난방 시장 연평균 6~7% 성장 전망",
+]) + NL
+
+
+def compact(text):
+    """팀원의 최종 답변 검증(app/final_answer.py)과 같은 규칙: 공백을 모두 없앤 뒤 연속 포함 여부 확인."""
+    return "".join(text.split())
+
+
+class HitEvidenceTests(unittest.TestCase):
+    """검색 본문 근거는 원문 청크의 연속된 부분이어야 한다 (최종 답변의 인용 검증과 맞물림)."""
+
+    def test_sections_are_split_and_never_joined_across_titles(self):
+        from app.gap_analysis import _hit_bodies
+        bodies = _hit_bodies(MULTI_SECTION_TEXT)
+        self.assertEqual(len(bodies), 2)  # 적용 산업, 시장성 섹션은 제외
+        self.assertTrue(bodies[0].startswith("본 기술은 난방배관 회수관"))
+        self.assertIn("약품 소모 속도로 배관 이상을 판단함", bodies[0])  # 같은 섹션의 두 줄은 이어 붙임
+        self.assertNotIn("배관 이상 발생 시", bodies[0])
+        self.assertTrue(bodies[1].startswith("배관 이상 발생 시"))
+        for body in bodies:
+            self.assertIn(compact(body), compact(MULTI_SECTION_TEXT))
+
+    def test_pool_evidence_passes_the_final_answer_containment_check(self):
+        from app.gap_analysis import build_pool
+        hit = tech_hit("pub-1", MULTI_SECTION_TEXT, source="pub")
+        state = make_state([], [rfp_candidate("rfp-1", "과제", ["배관 이상 감지 기술 개발"])],
+                           external_candidates=[tech_candidate("pub-1", "난방배관 관리 시스템", "한국지역난방공사")],
+                           tech_hits=[hit])
+        evidences = [ev for item in build_pool(state) for ev in item.element.evidences
+                     if ev.extra.get("from") == "retrieval_hit"]
+        self.assertEqual(len(evidences), 2)
+        for evidence in evidences:
+            self.assertIn(compact(evidence.quote), compact(hit.text))
+
+    def test_market_only_chunk_gives_no_evidence(self):
+        from app.gap_analysis import _hit_bodies
+        text = NL.join(["기술명", "[주요 적용 산업 및 활용처]", "철강 산업", "[시장성 및 사업화 가능성]", "시장 규모 전망"])
+        self.assertEqual(_hit_bodies(text), [])
+
+    def test_long_section_is_truncated_but_stays_contiguous(self):
+        from app.gap_analysis import HIT_QUOTE_CHARS, _hit_bodies
+        line = "배관 누수 신호와 압력강하율을 비교 판단함 " * 40
+        text = NL.join(["기술명", "[기술 개요]", line])
+        (body,) = _hit_bodies(text)
+        self.assertLessEqual(len(body), HIT_QUOTE_CHARS)
+        self.assertIn(compact(body), compact(text))
+
+    def test_evidence_count_per_candidate_is_capped_across_hits(self):
+        from app.gap_analysis import HITS_PER_CANDIDATE, build_pool
+        hits = [tech_hit("pub-1", MULTI_SECTION_TEXT, rank=1, source="pub"),
+                tech_hit("pub-1", MULTI_SECTION_TEXT, rank=2, source="pub")]
+        state = make_state([], [rfp_candidate("rfp-1", "과제", ["배관 이상 감지 기술 개발"])],
+                           external_candidates=[tech_candidate("pub-1", "난방배관 관리 시스템")], tech_hits=hits)
+        (item,) = [i for i in build_pool(state) if i.doc_id == "pub-1"]
+        self.assertEqual(len(item.element.evidences), HITS_PER_CANDIDATE)
+
+
+class RfpSelectionTests(unittest.TestCase):
+    def setUp(self):
+        self.rfps = [rfp_candidate(f"rfp-{i}", f"과제{i}", [f"요구 기술 {i}번 개발"]) for i in (1, 2, 3)]
+        self.llm = FakeLLM({f"과제{i}": [requirement(f"기술{i}", f"요구 기술 {i}번")] for i in (1, 2, 3)})
+
+    def test_only_top_rfps_are_analyzed_by_default(self):
+        report = run_gap_analysis(make_state([], self.rfps), llm=self.llm)
+        self.assertEqual([i.rfp_doc_ids[0] for i in report.items], ["rfp-1", "rfp-2"])
+        self.assertEqual(report.stats["rfps_analyzed"], ["rfp-1", "rfp-2"])
+        self.assertEqual(report.stats["rfps_skipped"], ["rfp-3"])
+
+    def test_none_analyzes_all_rfps(self):
+        report = run_gap_analysis(make_state([], self.rfps), llm=self.llm, max_rfps=None)
+        self.assertEqual(len(report.items), 3)
+        self.assertEqual(report.stats["rfps_skipped"], [])
+
+    def test_invalid_limit_is_rejected(self):
+        with self.assertRaises(ValueError):
+            run_gap_analysis(make_state([], self.rfps), llm=self.llm, max_rfps=0)
+
+
+class NonTechnologyNameRuleTests(unittest.TestCase):
+    def test_rule_excludes_items_the_llm_marked_as_technology(self):
+        rfp = rfp_candidate("rfp-1", "과제", ["시제품 제작 및 SLAM 기반 위치추정 기술 개발"])
+        llm = FakeLLM({"과제": [requirement("시제품 제작 기술", "시제품 제작"),
+                                requirement("SLAM", "SLAM 기반 위치추정")]})
+        report = run_gap_analysis(make_state([], [rfp]), llm=llm)
+        self.assertEqual([i.requirement.name for i in report.items], ["SLAM"])
+        self.assertEqual(report.stats["excluded_requirements"][0]["reason"], "비기술 항목 단어: 시제품")
+
+
+class ParallelAndCacheTests(unittest.TestCase):
+    def test_parallel_run_gives_same_result_in_same_order(self):
+        lines = [f"센서 {i}번 융합 기술 개발" for i in range(8)]
+        rfp = rfp_candidate("rfp-1", "과제", lines)
+        extraction = {"과제": [requirement(f"센서{i}", f"센서 {i}번 융합") for i in range(8)]}
+        coverage = {(f"센서{i}", "센서 융합"): ("partial" if i % 2 else "full", "센서 융합") for i in range(8)}
+        state = make_state(["센서 융합"], [rfp])
+        serial = run_gap_analysis(state, llm=FakeLLM(extraction, coverage), workers=1)
+        parallel = run_gap_analysis(state, llm=FakeLLM(extraction, coverage), workers=4)
+        self.assertEqual(serial.model_dump(exclude={"stats"}), parallel.model_dump(exclude={"stats"}))
+
+    def test_cache_reuses_response_for_same_input(self):
+        calls = []
+        lock = threading.Lock()
+
+        def parse(**kwargs):
+            with lock:
+                calls.append(kwargs["messages"])
+            parsed = kwargs["response_format"](requirements=[])
+            message = SimpleNamespace(refusal=None, parsed=parsed)
+            return SimpleNamespace(usage=SimpleNamespace(prompt_tokens=10, completion_tokens=5),
+                                   choices=[SimpleNamespace(message=message)])
+
+        client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(parse=parse)))
+        with tempfile.TemporaryDirectory() as cache_dir:
+            llm = OpenAIStructuredLLM(client=client, cache_dir=cache_dir)
+            messages = [{"role": "user", "content": "같은 입력"}]
+            first = llm(messages, RequirementExtraction)
+            second = llm(messages, RequirementExtraction)
+            llm([{"role": "user", "content": "다른 입력"}], RequirementExtraction)
+        self.assertEqual(first, second)
+        self.assertEqual(len(calls), 2)                    # 같은 입력은 한 번만 호출
+        self.assertEqual(llm.usage["cache_hits"], 1)
+        self.assertEqual(llm.usage["prompt_tokens"], 20)   # 캐시 응답은 토큰을 쓰지 않는다
+
+
+class OmittedCandidatesTests(unittest.TestCase):
+    """LLM이 관련 없는 후보를 응답에서 생략해도 none으로 처리한다."""
+
+    class OmittingLLM(FakeLLM):
+        def __call__(self, messages, response_model):
+            answer = super().__call__(messages, response_model)
+            if response_model is AlignmentJudgements:
+                answer = AlignmentJudgements(
+                    judgements=[j for j in answer.judgements if j.coverage != "none"])
+            return answer
+
+    def test_omitted_candidates_are_treated_as_no_match(self):
+        rfp = rfp_candidate("rfp-1", "과제", ["SLAM 기반 위치추정 기술 개발"])
+        llm = self.OmittingLLM({"과제": [requirement("SLAM", "SLAM 기반 위치추정")]},
+                               {("SLAM", "SLAM 기반 위치추정"): ("full", "SLAM 기반 위치추정")})
+        state = make_state(["SLAM 기반 위치추정", "용접 로봇 제어"], [rfp])
+        item = run_gap_analysis(state, llm=llm).items[0]
+        self.assertEqual([m.element_name for m in item.company], ["SLAM 기반 위치추정"])
+        self.assertEqual(item.label, GapLabel.OWNED)
+
+    def test_empty_judgement_list_means_no_match(self):
+        rfp = rfp_candidate("rfp-1", "과제", ["SLAM 기반 위치추정 기술 개발"])
+        llm = self.OmittingLLM({"과제": [requirement("SLAM", "SLAM 기반 위치추정")]})
+        item = run_gap_analysis(make_state(["용접 로봇 제어"], [rfp]), llm=llm).items[0]
+        self.assertEqual((item.company, item.label), ([], GapLabel.RND_NEEDED))
+
+    def test_prompt_asks_for_matches_only(self):
+        from app.gap_analysis import ALIGNMENT_PROMPT
+        self.assertIn("빈 목록", ALIGNMENT_PROMPT)
+        self.assertNotIn("모든 후보에 대해", ALIGNMENT_PROMPT)
 
 
 class DecideLabelTests(unittest.TestCase):

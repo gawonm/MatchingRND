@@ -23,15 +23,20 @@ import json
 import math
 import os
 import re
+import threading
 import time
 from collections.abc import Callable, Sequence
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
+from pathlib import Path
 from typing import TYPE_CHECKING, Any, Literal
 
 from pydantic import BaseModel, Field
 
 from app.common.paths import PROJECT_ROOT
-from app.common.schemas import BBox, Evidence, ExternalTechCandidate, GapLabel, SourceType, TechElement
+from app.common.schemas import (
+    BBox, Evidence, ExternalTechCandidate, GapLabel, ModuleResult, SourceType, TechElement,
+)
 
 if TYPE_CHECKING:
     from app.orchestrator import AnalysisState
@@ -43,6 +48,22 @@ Coverage = Literal["full", "partial", "none"]
 StructuredLLM = Callable[[list[dict[str, str]], type[BaseModel]], BaseModel]
 # embed(texts) -> 텍스트별 벡터. 예: lambda texts: embedder.encode(texts)[0]
 EmbedFn = Callable[[Sequence[str]], Sequence[Sequence[float]]]
+
+#: 분석할 RFP 수. RFP 검색 순위 상위만 분석해 질의와 무관한 공고의 요구가 추가R&D로 쌓이는 것을 막는다.
+DEFAULT_MAX_RFPS = 2
+#: 기술나눔 후보 1건당 비교에 쓰는 근거 조각 수(섹션 단위)와 조각 길이 (LLM 입력 토큰 상한)
+HITS_PER_CANDIDATE = 2
+HIT_QUOTE_CHARS = 300
+#: 기술 능력을 판단하는 근거로 쓰지 않는 섹션 제목의 일부 (적용 산업, 시장 전망은 기술 충족 근거가 아님)
+SKIP_SECTION_WORDS = ("적용 산업", "시장성")
+
+#: 기술 요구가 아닌 항목(합의·인증·상용화·산출물 제출·계획서 작성 지침). 해당 단어가 있으면 제외한다.
+NON_TECHNOLOGY = re.compile(
+    "합의|협의|협약|계약|인허가|인증|상용화|사업화|수용성|보험|주관사|확약서|제출|계획서|"
+    "인력양성|사업비|예산|가점|특허|논문"
+)
+#: LLM이 뽑은 요구기술 '이름'에 적용하는 규칙. 이름은 짧아서 '시제품'도 비기술로 본다.
+NON_TECHNOLOGY_NAME = re.compile(NON_TECHNOLOGY.pattern + "|시제품")
 
 
 # =============================================================================
@@ -141,23 +162,38 @@ ALIGNMENT_PROMPT = """당신은 RFP 요구기술 하나를 비교 후보 기술�
 - 먼저 reason에 '요구기술이 구체적으로 요구하는 기능'과 '후보 evidence가 명시적으로 서술한 기능'을 비교해 쓰고, 그 결론에 맞게 coverage를 정하세요.
 - full: 후보 evidence가 요구기술의 핵심 기능을 직접 서술함.
 - partial: 후보 evidence가 요구기술의 구체적인 기능·구성요소 일부를 명시적으로 서술하지만 성능·적용대상·범위가 부족함.
-- none: 그 외 모두. 둘 다 AI·센서·설비 진단처럼 분야나 주제만 비슷한 것은 partial이 아니라 none입니다.
-- reason을 '직접적인 관련성이 부족하다', '명시되어 있지 않다'처럼 쓰게 된다면 coverage는 반드시 none이어야 합니다.
+- 관련 없는 후보(none)는 judgements에 넣지 마세요. 둘 다 AI·센서·설비 진단처럼 분야나 주제만 비슷한 것은 partial이 아니라 관련 없음입니다.
+- reason을 '직접적인 관련성이 부족하다', '명시되어 있지 않다'처럼 쓰게 된다면 그 후보는 judgements에서 빼야 합니다.
 - 판단 근거는 각 후보의 evidence 문장만 사용하세요. 후보 이름이나 추측으로 판단하지 마세요.
-- quote에는 판단의 근거가 된 후보 evidence 문장을 그대로 복사하세요. none이면 빈 문자열로 둡니다.
-- 모든 후보에 대해 candidate_index별로 judgement를 하나씩 반환하세요."""
+- quote에는 판단의 근거가 된 후보 evidence 문장을 그대로 복사하세요.
+- full 또는 partial인 후보만 candidate_index와 함께 반환하세요. 해당하는 후보가 없으면 빈 목록을 반환하세요."""
 
 
 class OpenAIStructuredLLM:
-    """OpenAI Structured Outputs 호출. 클라이언트는 첫 호출 시 생성한다."""
+    """OpenAI Structured Outputs 호출. 클라이언트는 첫 호출 시 생성한다.
+
+    `cache_dir`를 주면 같은 모델·설정·메시지·응답 형식의 결과를 파일로 재사용한다.
+    프롬프트나 입력이 바뀌면 키가 달라져 다시 호출한다. 여러 스레드에서 동시에 호출할 수 있다.
+    """
 
     def __init__(self, model: str = "gpt-4o-mini", *, temperature: float = 0.0,
-                 seed: int | None = 0, client: Any = None):
+                 seed: int | None = 0, client: Any = None, cache_dir: str | Path | None = None):
         self.model = model
         self.temperature = temperature
         self.seed = seed
         self._client = client
-        self.usage = {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0}
+        self.cache_dir = Path(cache_dir) if cache_dir else None
+        self.usage = {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0, "cache_hits": 0}
+        self._lock = threading.Lock()
+
+    def _cache_path(self, messages, response_model) -> Path | None:
+        if self.cache_dir is None:
+            return None
+        payload = json.dumps({
+            "model": self.model, "temperature": self.temperature, "seed": self.seed,
+            "messages": messages, "schema": response_model.model_json_schema(),
+        }, ensure_ascii=False, sort_keys=True)
+        return self.cache_dir / f"{hashlib.sha256(payload.encode('utf-8')).hexdigest()}.json"
 
     def _get_client(self):
         if self._client is None:
@@ -172,23 +208,43 @@ class OpenAIStructuredLLM:
         return self._client
 
     def __call__(self, messages, response_model):
+        cache = self._cache_path(messages, response_model)
+        if cache is not None and cache.exists():
+            with self._lock:
+                self.usage["cache_hits"] += 1
+            return response_model.model_validate_json(cache.read_text(encoding="utf-8"))
+
         kwargs: dict[str, Any] = dict(
             model=self.model, messages=messages, response_format=response_model,
             temperature=self.temperature,
         )
         if self.seed is not None:
             kwargs["seed"] = self.seed
-        completion = self._get_client().chat.completions.parse(**kwargs)
+        with self._lock:  # 클라이언트 생성은 한 번만
+            client = self._get_client()
+        completion = client.chat.completions.parse(**kwargs)
         usage = getattr(completion, "usage", None)
-        self.usage["calls"] += 1
-        self.usage["prompt_tokens"] += getattr(usage, "prompt_tokens", 0) or 0
-        self.usage["completion_tokens"] += getattr(usage, "completion_tokens", 0) or 0
+        with self._lock:
+            self.usage["calls"] += 1
+            self.usage["prompt_tokens"] += getattr(usage, "prompt_tokens", 0) or 0
+            self.usage["completion_tokens"] += getattr(usage, "completion_tokens", 0) or 0
         message = completion.choices[0].message
         if getattr(message, "refusal", None):
             raise RuntimeError(f"모델이 응답을 거부했습니다: {message.refusal}")
         if message.parsed is None:
             raise RuntimeError(f"응답을 {response_model.__name__}로 해석하지 못했습니다.")
+        if cache is not None:
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.write_text(message.parsed.model_dump_json(), encoding="utf-8")
         return message.parsed
+
+
+def _parallel_map(function: Callable, items: Sequence, workers: int) -> list:
+    """순서를 유지하며 병렬 실행한다. workers가 1이면 순차 실행한다."""
+    if workers <= 1 or len(items) <= 1:
+        return [function(item) for item in items]
+    with ThreadPoolExecutor(max_workers=min(workers, len(items))) as pool:
+        return list(pool.map(function, items))
 
 
 # =============================================================================
@@ -203,9 +259,18 @@ def _element_id(name: str) -> str:
     return "te-" + hashlib.sha1(_key(name).encode("utf-8")).hexdigest()[:10]
 
 
+_LEADING_MARKS = re.compile(r"^[\s□■ㅇ◦○▪●•∙·ㆍ\-\*※]+")
+_TRAILING_MARKS = re.compile(r"[\s.,;:·ㆍ…。]+$")
+
+
+def _trim_quote(quote: str) -> str:
+    """LLM이 인용문 앞뒤에 붙이는 글머리 기호·마침표 같은 서식만 걷어낸다 (본문 글자는 건드리지 않는다)."""
+    return _TRAILING_MARKS.sub("", _LEADING_MARKS.sub("", quote))
+
+
 def _quote_in(quote: str, text: str) -> bool:
-    """줄바꿈·공백 차이만 허용하고 원문에 연속으로 존재하는지 확인한다."""
-    quote = _key(quote)
+    """줄바꿈·공백·앞뒤 서식 기호 차이만 허용하고 원문에 연속으로 존재하는지 확인한다."""
+    quote = _key(_trim_quote(quote))
     return bool(quote) and quote in _key(text)
 
 
@@ -279,6 +344,70 @@ def _document_pool(elements: Sequence[TechElement],
     return items
 
 
+def _hit_bodies(text: str) -> list[str]:
+    """검색 청크를 섹션별 본문으로 나눈다.
+
+    첫 줄(기술명)과 '[기술 개요]' 같은 섹션 제목 줄은 버리고, 한 섹션 안의 줄만 이어 붙인다.
+    섹션 제목을 건너뛰어 앞뒤 섹션을 한 문장으로 잇지 않으므로, 각 본문은 원문 청크의
+    연속된 부분이다(공백 차이만 있음). 적용 산업·시장성 섹션은 제외한다.
+    """
+    bodies: list[str] = []
+    title, lines = "", []
+
+    def flush():
+        body = " ".join(lines).strip()
+        if body and not any(word in title for word in SKIP_SECTION_WORDS):
+            bodies.append(body[:HIT_QUOTE_CHARS].strip())
+        lines.clear()
+
+    for raw in text.splitlines()[1:]:
+        line = raw.strip()
+        if line.startswith("[") and line.endswith("]"):
+            flush()
+            title = line
+        elif line:
+            lines.append(line)
+    flush()
+    return bodies
+
+
+def _candidate_pool(module: ModuleResult, covered: set[str]) -> list[_PoolItem]:
+    """기술요소로 추출되지 않은 기술나눔 후보도 검색 본문으로 비교 대상에 넣는다.
+
+    Technology RAG는 상위 일부 문서에서만 기술요소를 뽑으므로, 나머지 후보는 검색 청크 본문
+    (원문 텍스트)을 근거로 쓴다. 이미 기술요소로 들어간 문서(`covered`)는 중복하지 않는다.
+    """
+    hits_by_doc: dict[str, list] = {}
+    for hit in sorted(module.hits, key=lambda h: h.final_rank if h.final_rank is not None else 10**6):
+        hits_by_doc.setdefault(hit.doc_id, []).append(hit)
+    items = []
+    for candidate in module.candidates:
+        if candidate.doc_id in covered:
+            continue
+        hits = hits_by_doc.get(candidate.doc_id, [])
+        if not hits:
+            continue
+        evidences = []
+        for hit in hits:
+            for body in _hit_bodies(hit.text):
+                if len(evidences) < HITS_PER_CANDIDATE:
+                    evidences.append(Evidence(
+                        doc_id=candidate.doc_id, source=hit.source, section=hit.section_key, quote=body,
+                        verified=True, extra={"from": "retrieval_hit", "chunk_id": hit.chunk_id},
+                    ))
+        if not evidences:
+            continue
+        name = hits[0].text.splitlines()[0].strip() or candidate.title  # '기술명 (부제)'
+        items.append(_PoolItem(
+            source=hits[0].source,
+            element=TechElement(element_id=_element_id(name), name=name, surface_forms=[candidate.title],
+                                origin=hits[0].source, evidences=evidences),
+            doc_id=candidate.doc_id, title=candidate.title, provider=candidate.provider,
+            transfer_condition=candidate.transfer_condition,
+        ))
+    return items
+
+
 # =============================================================================
 # ② RFP 요구기술 추출
 # =============================================================================
@@ -292,9 +421,6 @@ def _rfp_sections(candidate: ExternalTechCandidate) -> list[dict[str, Any]]:
                 rows.append({"item": item, "text": text, "kind": fragment.get("source_kind"),
                              "page": fragment.get("page"), "bbox": fragment.get("bbox")})
     return rows
-
-
-_LEADING_MARKS = re.compile(r"^[\s□■ㅇ◦○▪●•·ㆍ\-\*※]+")
 
 
 def _spans_of(quote: str, sections: Sequence[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -323,13 +449,11 @@ def _locate(quote: str, sections: Sequence[dict[str, Any]], doc_id: str) -> Evid
     여러 줄에 걸친 quote는 모든 조각의 위치를 `extra["locations"]`에 남기고,
     단일 page/bbox는 한 줄일 때만(page는 같은 페이지일 때도) 채워 첫 조각으로 오인되지 않게 한다.
     """
-    spans = _spans_of(quote, sections)
-    if not spans:  # 불릿 기호만 다른 경우를 허용한다
-        stripped = _LEADING_MARKS.sub("", quote)
-        if stripped and stripped != quote:
-            spans, quote = _spans_of(stripped, sections), stripped
+    trimmed = _trim_quote(quote)
+    spans = _spans_of(trimmed, sections)
     if not spans:
         return Evidence(doc_id=doc_id, source=SourceType.RFP, quote=quote, verified=False)
+    quote = trimmed
 
     pages = [span.get("page") for span in spans]
     single = len(spans) == 1
@@ -347,13 +471,14 @@ def _locate(quote: str, sections: Sequence[dict[str, Any]], doc_id: str) -> Evid
 
 def extract_requirements(candidates: Sequence[ExternalTechCandidate], llm: StructuredLLM,
                          warnings: list[str], *, max_section_chars: int = 6000,
-                         excluded: list[dict[str, str]] | None = None) -> list[_Requirement]:
+                         excluded: list[dict[str, str]] | None = None,
+                         workers: int = 1) -> list[_Requirement]:
     """RFP 후보별 요구항목 원문에서 기술요소를 추출하고 같은 기술은 하나로 병합한다.
 
-    기술이 아니라고 표시된 항목(합의·인증·상용화 등)은 제외하고 `excluded`에 남긴다.
+    기술이 아니라고 표시됐거나 이름에 비기술 단어(합의·인증·상용화·시제품 등)가 있는 항목은
+    제외하고 `excluded`에 남긴다. LLM 호출은 RFP별로 병렬 실행하고 결과는 RFP 순서대로 병합한다.
     """
-    merged: dict[str, _Requirement] = {}
-    alias: dict[str, str] = {}
+    jobs = []
     for candidate in candidates:
         sections = _rfp_sections(candidate)
         if not sections:
@@ -366,17 +491,28 @@ def extract_requirements(candidates: Sequence[ExternalTechCandidate], llm: Struc
                 break
             used += len(section["text"])
             payload_sections.append({"item": section["item"], "text": section["text"]})
-        answer = llm(_messages(EXTRACTION_PROMPT, {
+        jobs.append((candidate, sections, _messages(EXTRACTION_PROMPT, {
             "rfp_title": candidate.title, "sections": payload_sections,
-        }), RequirementExtraction)
+        })))
+    answers = _parallel_map(lambda job: llm(job[2], RequirementExtraction), jobs, workers)
 
+    def exclude(candidate, name, reason):
+        if excluded is not None:
+            excluded.append({"rfp": candidate.doc_id, "text": name, "reason": reason})
+
+    merged: dict[str, _Requirement] = {}
+    alias: dict[str, str] = {}
+    for (candidate, sections, _), answer in zip(jobs, answers):
         for found in answer.requirements:
             name = found.name.strip()
             if not name:
                 continue
             if not found.is_technology:
-                if excluded is not None:
-                    excluded.append({"rfp": candidate.doc_id, "text": name, "reason": "LLM이 기술 요구가 아니라고 판단"})
+                exclude(candidate, name, "LLM이 기술 요구가 아니라고 판단")
+                continue
+            word = NON_TECHNOLOGY_NAME.search(name)
+            if word:  # LLM이 지시를 따르지 않는 경우를 규칙으로 보완한다
+                exclude(candidate, name, f"비기술 항목 단어: {word.group()}")
                 continue
             evidence = _locate(found.quote, sections, candidate.doc_id)
             if not evidence.verified:
@@ -450,10 +586,13 @@ def _shortlist(requirement: TechElement, pool: Sequence[_PoolItem],
         for item in pool:
             grams = _bigrams(_terms(item.element))
             scores.append(len(query & grams) / len(query | grams) if query | grams else 0.0)
+    def group(item: _PoolItem) -> str:  # 공공·포스코 기술나눔은 한 묶음으로 센다
+        return "technology" if item.source in TECHNOLOGY_SOURCES else item.source.value
+
     selected = []
-    for source in dict.fromkeys(item.source for item in pool):
+    for key in dict.fromkeys(group(item) for item in pool):
         ranked = sorted(
-            (i for i, item in enumerate(pool) if item.source == source), key=lambda i: -scores[i],
+            (i for i, item in enumerate(pool) if group(item) == key), key=lambda i: -scores[i],
         )
         selected.extend(pool[i] for i in ranked[:max_candidates])
     return selected
@@ -540,8 +679,13 @@ def _policy_checks(label: GapLabel, external: Sequence[SourceMatch]) -> list[str
 
 def run_gap_analysis(state: AnalysisState, *, llm: StructuredLLM | None = None,
                      embed: EmbedFn | None = None, max_candidates: int = 8,
-                     max_section_chars: int = 6000) -> GapReport:
-    """AnalysisState를 RFP 요구기술 축으로 정렬해 Gap 판정 결과를 반환한다."""
+                     max_section_chars: int = 6000, max_rfps: int | None = DEFAULT_MAX_RFPS,
+                     workers: int = 4) -> GapReport:
+    """AnalysisState를 RFP 요구기술 축으로 정렬해 Gap 판정 결과를 반환한다.
+
+    max_rfps: RFP 검색 순위 상위 몇 개만 분석할지 (None이면 전부)
+    workers: LLM 동시 호출 수 (1이면 순차)
+    """
     if max_candidates < 1:
         raise ValueError("max_candidates는 1 이상이어야 합니다.")
     if not state.rfp.candidates:
@@ -550,16 +694,29 @@ def run_gap_analysis(state: AnalysisState, *, llm: StructuredLLM | None = None,
     warnings: list[str] = []
     excluded: list[dict[str, str]] = []
     started = time.perf_counter()
+    rfps, skipped = select_rfps(state, max_rfps)
     requirements = extract_requirements(
-        state.rfp.candidates, llm, warnings, max_section_chars=max_section_chars, excluded=excluded,
+        rfps, llm, warnings, max_section_chars=max_section_chars, excluded=excluded, workers=workers,
     )
     report = build_report(
         state, requirements, lambda req, pool: _align(req, pool, llm, embed, max_candidates),
-        warnings, method="llm",
+        warnings, method="llm", workers=workers,
     )
     report.stats = {"seconds": round(time.perf_counter() - started, 2), "model": getattr(llm, "model", None),
-                    **(getattr(llm, "usage", None) or {}), "excluded_requirements": excluded}
+                    **(getattr(llm, "usage", None) or {}), "excluded_requirements": excluded,
+                    "rfps_analyzed": [c.doc_id for c in rfps], "rfps_skipped": skipped,
+                    "pool_size": report.stats.get("pool_size")}
     return report
+
+
+def select_rfps(state: AnalysisState, max_rfps: int | None) -> tuple[list[ExternalTechCandidate], list[str]]:
+    """RFP 검색 순위 상위 max_rfps개만 분석한다. 나머지는 ID만 남긴다 (최종 답변에서 후보로는 보여줄 수 있다)."""
+    if max_rfps is not None and max_rfps < 1:
+        raise ValueError("max_rfps는 1 이상이거나 None이어야 합니다.")
+    candidates = list(state.rfp.candidates)
+    if max_rfps is None:
+        return candidates, []
+    return candidates[:max_rfps], [c.doc_id for c in candidates[max_rfps:]]
 
 
 def empty_report(state: AnalysisState, *, method: str) -> GapReport:
@@ -573,27 +730,37 @@ def empty_report(state: AnalysisState, *, method: str) -> GapReport:
 
 
 def build_pool(state: AnalysisState) -> list[_PoolItem]:
+    """비교 대상: 보유기술 + 기술나눔(기술요소 + 기술요소가 없는 후보의 검색 본문) + NTIS 기술요소."""
+    elements = _document_pool(state.external_elements, state.technology.candidates)
+    covered = {item.doc_id for item in elements}
     return (
         _company_pool(state.request.owned_technologies)
-        + _document_pool(state.external_elements, state.technology.candidates)
+        + elements
+        + _candidate_pool(state.technology, covered)
         + _document_pool(state.ntis_elements, state.ntis.candidates)
     )
 
 
 def build_report(state: AnalysisState, requirements: Sequence[_Requirement],
                  align: Callable[[_Requirement, Sequence[_PoolItem]], list[SourceMatch]],
-                 warnings: list[str], *, method: str) -> GapReport:
-    """요구기술별 매칭 → 라벨 결정 → 리포트 조립. llm·local 모드가 공유해 판정 규칙을 동일하게 유지한다."""
+                 warnings: list[str], *, method: str, workers: int = 1) -> GapReport:
+    """요구기술별 매칭 → 라벨 결정 → 리포트 조립. llm·local 모드가 공유해 판정 규칙을 동일하게 유지한다.
+
+    매칭은 요구기술별로 병렬 실행할 수 있다(workers). 결과 순서는 요구기술 순서를 유지한다.
+    """
     owned = list(state.request.owned_technologies)
     report = GapReport(problem=state.request.problem, method=method,
                        summary={label.value: 0 for label in GapLabel})
     pool = build_pool(state)
-    if not state.external_elements:
-        warnings.append("technology: 검증된 외부기술 요소가 없어 외부기술보완 판정 후보가 없습니다.")
+    external_count = sum(item.source in TECHNOLOGY_SOURCES for item in pool)
+    if not external_count:
+        warnings.append("technology: 비교할 기술나눔 후보가 없어 외부기술보완 판정이 나올 수 없습니다.")
 
-    for requirement in requirements:
-        verified = any(ev.verified for ev in requirement.element.evidences)
-        matches = align(requirement, pool) if verified else []
+    verified_flags = [any(ev.verified for ev in r.element.evidences) for r in requirements]
+    all_matches = _parallel_map(
+        lambda pair: align(pair[0], pool) if pair[1] else [], list(zip(requirements, verified_flags)), workers,
+    )
+    for requirement, verified, matches in zip(requirements, verified_flags, all_matches):
         company = [m for m in matches if m.source == SourceType.COMPANY]
         external = [m for m in matches if m.source in TECHNOLOGY_SOURCES]
         ntis = [m for m in matches if m.source == SourceType.NTIS]
@@ -612,4 +779,9 @@ def build_report(state: AnalysisState, requirements: Sequence[_Requirement],
     matched = {m.element_name for item in report.items for m in item.company if m.verified}
     report.owned_not_required = [name for name in owned if name not in matched]
     report.warnings = warnings
+    report.stats = {"pool_size": {
+        "company": sum(item.source == SourceType.COMPANY for item in pool),
+        "technology": external_count,
+        "ntis": sum(item.source == SourceType.NTIS for item in pool),
+    }}
     return report

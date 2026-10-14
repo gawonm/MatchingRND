@@ -21,8 +21,8 @@ from dataclasses import dataclass
 
 from app.common.schemas import BBox, Evidence, ExternalTechCandidate, SourceType, TechElement
 from app.gap_analysis import (
-    EmbedFn, SourceMatch, _PoolItem, _Requirement, _cosine, _element_id, _key, _rfp_sections,
-    build_report, empty_report,
+    DEFAULT_MAX_RFPS, NON_TECHNOLOGY, EmbedFn, SourceMatch, _PoolItem, _Requirement, _cosine,
+    _element_id, _key, _rfp_sections, build_report, empty_report, select_rfps,
 )
 
 #: 요구기술로 보는 RFP 항목. 성능지표·평가방법·지원조건은 기술이 아니므로 제외한다.
@@ -36,12 +36,7 @@ STOPWORDS = frozenset({
     "방법", "기능", "수행", "제공", "구축", "고도화", "향상", "개선", "연구", "시스템", "개념", "내용",
 })
 
-#: 기술 요구가 아닌 항목(합의·인증·상용화·산출물 제출·계획서 작성 지침). 해당 단어가 있으면 제외한다.
-#: 단어 단위 규칙이라 기술과 섞인 문장도 제외될 수 있다. 제외된 항목은 report.stats에 남는다.
-NON_TECHNOLOGY = re.compile(
-    "합의|협의|협약|계약|인허가|인증|상용화|사업화|수용성|보험|주관사|확약서|제출|계획서|"
-    "인력양성|사업비|예산|가점|특허|논문"
-)
+# 비기술 항목 단어 규칙(NON_TECHNOLOGY)은 LLM 모드와 공유하므로 app.gap_analysis에 둔다.
 #: 줄 첫머리의 글머리·번호. 이 표시가 있는 줄이 새 항목이고, 없는 줄은 앞 항목에 이어지는 줄이다.
 _BULLET_START = re.compile(r"^\s*(?:[□■ㅇ◦○▪●•∙·ㆍ\-\*※]|\d+[.)]\s|[가-하][.)]\s|\([^)]{1,12}\)\s*)")
 #: PDF는 줄 폭 한도 근처에서 줄이 바뀐다. 앞 줄이 이 길이 이상일 때만 다음 줄을 이어 붙인다.
@@ -84,7 +79,7 @@ def _clean(text: str) -> str:
 
 
 # =============================================================================
-# ① 요구기술: RFP 요구항목 줄을 그대로 사용
+# ① 요구기술: RFP 요구항목 줄을 문장으로 합쳐 사용
 # =============================================================================
 
 @dataclass
@@ -287,7 +282,8 @@ def make_local_aligner(requirements: Sequence[_Requirement], embed: EmbedFn | No
 
 def run_gap_analysis_local(state, *, embed: EmbedFn | None = None,
                            tokenizer: Callable[[str], list[str]] | None = None,
-                           thresholds: LocalThresholds | None = None):
+                           thresholds: LocalThresholds | None = None,
+                           max_rfps: int | None = DEFAULT_MAX_RFPS):
     """LLM 없이 점수 기반으로 GapReport를 만든다. 입력·출력·판정 규칙은 LLM 모드와 같다."""
     if not state.rfp.candidates:
         return empty_report(state, method="local")
@@ -300,7 +296,8 @@ def run_gap_analysis_local(state, *, embed: EmbedFn | None = None,
     warnings: list[str] = []
     started = time.perf_counter()
     excluded: list[dict[str, str]] = []
-    requirements = extract_requirements_local(state.rfp.candidates, tokenizer, warnings, excluded)
+    rfps, skipped = select_rfps(state, max_rfps)
+    requirements = extract_requirements_local(rfps, tokenizer, warnings, excluded)
     report = build_report(
         state, requirements, make_local_aligner(requirements, embed, tokenizer, thresholds),
         warnings, method="local",
@@ -309,5 +306,7 @@ def run_gap_analysis_local(state, *, embed: EmbedFn | None = None,
         "seconds": round(time.perf_counter() - started, 2), "calls": 0, "prompt_tokens": 0,
         "completion_tokens": 0, "embedding": embed is not None,
         "thresholds": thresholds.__dict__, "excluded_requirements": excluded,
+        "rfps_analyzed": [c.doc_id for c in rfps], "rfps_skipped": skipped,
+        "pool_size": report.stats.get("pool_size"),
     }
     return report
