@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Sequence
 import numpy as np
 from kiwipiepy import Kiwi
 from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
+from app.common.embedding import require_model, langchain_embeddings
 from sentence_transformers import CrossEncoder
 
 from ..config import (
@@ -30,7 +30,7 @@ manifest = load_manifest()
 CHROMA_DIR = INDEX_DIR / manifest["chroma"]["path"]
 BM25_PATH = INDEX_DIR / manifest["bm25"]["path"]
 COLLECTION_NAME = manifest["chroma"]["collection"]
-EMBEDDING_MODEL = manifest["embedding_model"]
+EMBEDDING_MODEL = require_model(manifest["embedding_model"])
 TOKENIZER_NAME = manifest["bm25"]["tokenizer"]
 
 if not CHROMA_DIR.is_dir():
@@ -40,7 +40,7 @@ if not BM25_PATH.is_file():
 if TOKENIZER_NAME != "kiwi.form.v1":
     raise ValueError(f"지원하지 않는 BM25 tokenizer: {TOKENIZER_NAME}")
 
-embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
+embeddings = langchain_embeddings()
 vectorstore = Chroma(
     collection_name=COLLECTION_NAME,
     persist_directory=str(CHROMA_DIR),

@@ -127,7 +127,7 @@ class OrchestratorTests(unittest.TestCase):
 
     def test_default_pdf_index_is_reused_between_questions(self):
         from app.rfp_rag import pipeline
-        orchestrator = RagOrchestrator(technology_runner=self.technology, ntis_runner=self.ntis)
+        orchestrator = RagOrchestrator(technology_runner=self.technology, ntis_runner=self.ntis, backend='local')
         with patch.object(pipeline, "build_index", return_value={"index": "cached"}) as build, \
              patch.object(pipeline, "search_module_result", return_value=module_result("rfp")) as search:
             orchestrator.run(self.request)

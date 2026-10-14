@@ -140,8 +140,12 @@ def parse_tasks(loaded_docs, pdf_files, data_dir, review_list, document_factory)
         ('지원조건·특이사항', r'^(?:지원조건|특기사항|기타사항|주관기관|주관연구개발기관|기술료|기타|안전관리)'),
         ('기타 원문', r'^(?:추진배경|필요성|기대효과|활용방안|추진체계)'),
     ]
+    blocks_by_source = defaultdict(list)
+    for block in loaded_docs:
+        blocks_by_source[block.metadata['source']].append(block)
     for pdf_path in pdf_files:
-        file_blocks = [d for d in loaded_docs if d.metadata['source'] == _source_key(pdf_path, data_dir)]
+        source_key = _source_key(pdf_path, data_dir)
+        file_blocks = blocks_by_source.get(source_key, [])
         current_task = None
         pending_number = ''
         item = '기타 원문'
@@ -172,7 +176,7 @@ def parse_tasks(loaded_docs, pdf_files, data_dir, review_list, document_factory)
             if label in title_labels and len(cells) > 1:
                 title = re.split('\\(TRL\\s*:', cells[1], flags=re.I)[0].strip()
                 task_id = hashlib.sha256((block.metadata['document_id'] + title + str(len(file_tasks))).encode()).hexdigest()[:24]
-                current_task = {'task_id': task_id, 'title': title, 'task_number': pending_number, 'document_id': block.metadata['document_id'], 'file_hash': block.metadata['file_hash'], 'filename': pdf_path.name, 'source': _source_key(pdf_path, data_dir), 'title_source': {'text': block.page_content, 'metadata': block.metadata}, 'fields': defaultdict(list), 'metrics': []}
+                current_task = {'task_id': task_id, 'title': title, 'task_number': pending_number, 'document_id': block.metadata['document_id'], 'file_hash': block.metadata['file_hash'], 'filename': pdf_path.name, 'source': source_key, 'title_source': {'text': block.page_content, 'metadata': block.metadata}, 'fields': defaultdict(list), 'metrics': []}
                 file_tasks.append(current_task)
                 pending_number = ''
                 item = '기타 원문'

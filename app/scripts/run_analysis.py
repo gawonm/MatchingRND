@@ -8,7 +8,7 @@ from pathlib import Path
 
 from app.common.paths import PROJECT_ROOT, resolve_project_path
 from app.integrated_analysis import run_integrated_analysis
-from app.orchestrator import AnalysisRequest, AnalysisState
+from app.orchestrator import AnalysisRequest, AnalysisState, RagOrchestrator
 from app.query_parser import parse_query
 from app.gap_analysis import OpenAIStructuredLLM
 
@@ -24,6 +24,7 @@ def main(argv=None) -> int:
     parser.add_argument("--owned", action="append", default=[], help="보유기술 (여러 번 지정 가능)")
     parser.add_argument("--policy-question")
     parser.add_argument("--mode", choices=("both", "llm", "local"), default="both")
+    parser.add_argument('--backend', choices=('local','supabase'), default='supabase', help='검색 저장소. Supabase는 사전 적재가 필요합니다.')
     parser.add_argument("--model", default="gpt-4o-mini", help="Gap LLM·답변 생성·의미 검토 모델")
     parser.add_argument("--template-only", action="store_true", help="최종 답변 LLM 호출 없이 표·근거 출력")
     parser.add_argument("--output-dir", help="비어 있는 결과 폴더")
@@ -36,7 +37,7 @@ def main(argv=None) -> int:
     stamp = datetime.now(timezone(timedelta(hours=9))).strftime("%Y%m%d_%H%M%S_%f")
     output = resolve_project_path(args.output_dir) if args.output_dir else PROJECT_ROOT / "outputs" / stamp
     try:
-        options = {}
+        options = {'orchestrator': RagOrchestrator(backend=args.backend)}
         if args.query or args.query_file or not (args.state or args.request or args.problem):
             query = args.query or (resolve_project_path(args.query_file).read_text(encoding="utf-8-sig")
                                   if args.query_file else input("보유기술과 개발하고 싶은 내용을 한 문장으로 입력하세요:\n> "))

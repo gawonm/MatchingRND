@@ -78,7 +78,7 @@ class RerankConfig(BaseModel):
 
 
 class IndexConfig(BaseModel):
-    backend: Literal["chroma"] = "chroma"
+    backend: Literal["chroma", "supabase"] = "chroma"
     persist_dir: str = "storage/chroma"
     embedding_cache_dir: str = "storage/embeddings"
     processed_dir: str = "data/processed/technology"

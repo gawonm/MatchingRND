@@ -135,7 +135,12 @@ class RagOrchestrator:
         policy_data_dir: str | Path = POLICY_RAW_DIR,
         rfp_notice_path: str | Path = RFP_NOTICE_PATH,
         index_dir: str | Path = PROJECT_ROOT / "db",
+        backend: str | None = None,
     ):
+        import os
+        self.backend = backend or os.getenv('RAG_BACKEND', 'local')
+        if self.backend not in {'local', 'supabase'}:
+            raise ValueError('backend는 local 또는 supabase여야 합니다.')
         self.technology_runner = technology_runner or self._technology_answer
         self.ntis_runner = ntis_runner or self._ntis_analysis
         self.rfp_runner = rfp_runner or self._rfp_search
@@ -154,11 +159,18 @@ class RagOrchestrator:
         from app.technology_rag.pipeline import TechnologyRagPipeline
 
         if self._technology_pipeline is None:
-            self._technology_pipeline = TechnologyRagPipeline.from_config(self.technology_config)
+            config = self.technology_config
+            if self.backend == 'supabase':
+                from app.technology_rag.config import load_config, TechnologyRagConfig
+                config = config.model_copy(deep=True) if isinstance(config, TechnologyRagConfig) else load_config(config)
+                config.index.backend = 'supabase'
+            self._technology_pipeline = TechnologyRagPipeline.from_config(config)
         return self._technology_pipeline.answer(query)
 
-    @staticmethod
-    def _ntis_analysis(problem, **options):
+    def _ntis_analysis(self, problem, **options):
+        if self.backend == 'supabase':
+            from app.common.supabase_retrieval import run_ntis_module
+            return run_ntis_module(problem, **options)
         from app.ntis_rag.pipeline import run_ntis_module
 
         return run_ntis_module(problem, **options)
@@ -167,19 +179,27 @@ class RagOrchestrator:
         from app.rfp_rag.pipeline import build_index, search_module_result
 
         if self._rfp_index is None:
-            self._rfp_index = build_index(
-                data_dir=self.rfp_data_dir, output_dir=self.index_dir / "rfp",
-                notice_path=self.rfp_notice_path,
-            )
+            if self.backend == 'supabase':
+                from app.common.supabase_retrieval import load_pdf_index
+                self._rfp_index = load_pdf_index('rfp')
+            else:
+                self._rfp_index = build_index(
+                    data_dir=self.rfp_data_dir, output_dir=self.index_dir / "rfp",
+                    notice_path=self.rfp_notice_path,
+                )
         return search_module_result(self._rfp_index, details)
 
     def _policy_search(self, question):
         from app.policy_rag.pipeline import build_index, search_module_result
 
         if self._policy_index is None:
-            self._policy_index = build_index(
-                data_dir=self.policy_data_dir, output_dir=self.index_dir / "law",
-            )
+            if self.backend == 'supabase':
+                from app.common.supabase_retrieval import load_pdf_index
+                self._policy_index = load_pdf_index('policy')
+            else:
+                self._policy_index = build_index(
+                    data_dir=self.policy_data_dir, output_dir=self.index_dir / "law",
+                )
         return search_module_result(self._policy_index, question)
 
     @staticmethod

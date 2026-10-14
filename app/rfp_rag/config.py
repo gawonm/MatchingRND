@@ -22,7 +22,8 @@ def load_config(data_dir=None, output_dir=None, *, model_name=None):
     if not pdf_files:
         raise ValueError(f'검색할 PDF가 없습니다: {data_dir}')
     (OUTPUT / 'cache').mkdir(parents=True, exist_ok=True)
-    EMBEDDING_MODEL = os.getenv('RFP_EMBEDDING_MODEL', 'BAAI/bge-m3')
+    from app.common.embedding import MODEL, require_model
+    EMBEDDING_MODEL = require_model(model_name or os.getenv('RFP_EMBEDDING_MODEL', MODEL))
     CHUNK_TOKENS = _positive_int(os.getenv('RFP_CHUNK_TOKENS', '1400'), 'RFP_CHUNK_TOKENS')
     OVERLAP_TOKENS = _positive_int(os.getenv('RFP_OVERLAP_TOKENS', '100'), 'RFP_OVERLAP_TOKENS', 0)
     KEYWORD_K = _positive_int(os.getenv('RFP_KEYWORD_CANDIDATES', '30'), 'RFP_KEYWORD_CANDIDATES')

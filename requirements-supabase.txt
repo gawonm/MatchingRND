@@ -1,0 +1,11 @@
+# Install in the same Python environment as the existing RAG dependencies.
+psycopg[binary]>=3.1,<4
+python-dotenv>=1,<2
+sentence-transformers>=3,<6
+langchain-core>=0.3,<2
+langchain-community>=0.3,<1
+langchain-text-splitters>=0.3,<2
+rank-bm25>=0.2.2,<1
+kiwipiepy>=0.20,<1
+pandas>=2,<4
+openpyxl>=3.1,<4

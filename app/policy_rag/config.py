@@ -17,7 +17,8 @@ def load_config(data_dir=None, output_dir=None, *, model_name=None):
         raise ValueError(f'검색할 PDF가 없습니다: {data_dir}')
     (OUTPUT / 'cache').mkdir(parents=True, exist_ok=True)
     root = data_dir
-    MODEL = os.getenv('RFP_EMBEDDING_MODEL', 'BAAI/bge-m3')
+    from app.common.embedding import MODEL as SHARED_MODEL, require_model
+    MODEL = require_model(model_name or os.getenv('LAW_EMBEDDING_MODEL', SHARED_MODEL))
     CHUNK_TOKENS = _positive_int(os.getenv('LAW_CHUNK_TOKENS', '1000'), 'LAW_CHUNK_TOKENS')
     OVERLAP_TOKENS = _positive_int(os.getenv('LAW_OVERLAP_TOKENS', '80'), 'LAW_OVERLAP_TOKENS', 0)
     KEYWORD_K = _positive_int(os.getenv('LAW_KEYWORD_CANDIDATES', '30'), 'LAW_KEYWORD_CANDIDATES')

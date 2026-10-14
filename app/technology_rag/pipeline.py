@@ -92,6 +92,23 @@ class TechnologyRagPipeline:
         """
         cfg = config if isinstance(config, TechnologyRagConfig) else load_config(config)
 
+        from app.common.embedding import require_model
+        require_model(cfg.embedding.model)
+        if cfg.index.backend == 'supabase':
+            from app.common.embedding import get_embedder
+            from app.common.supabase_store import SupabaseRepository
+            from app.technology_rag.indexing.tokenizer import KiwiTokenizer, load_user_dict
+            rows, chunk_rows, payload = SupabaseRepository().snapshot('technology')
+            if payload.get('chunking') != cfg.chunking.model_dump():
+                raise ValueError('기술나눔 청킹 설정이 Supabase와 다릅니다. 동일 설정으로 적재하세요.')
+            from app.technology_rag.schemas import Chunk
+            chunks = [Chunk.model_validate(row['payload']) for row in chunk_rows]
+            documents = {row['document_id']: TechDocument.model_validate(row['payload']) for row in rows}
+            tok = KiwiTokenizer(min_len=cfg.tokenizer.min_len,keep_verbs=cfg.tokenizer.keep_verbs,
+                                char_bigrams=cfg.tokenizer.char_bigrams,user_words=load_user_dict(cfg.user_dict_path))
+            return cls(cfg,chunks,BM25Index(tok).fit(chunks),
+                       build_store('supabase',cfg.chroma_path,cfg.collection_name),get_embedder(),documents)
+
         chunks = load_chunks(cfg.chunks_path)
         if not cfg.bm25_path.exists():
             raise FileNotFoundError(f"{cfg.bm25_path} 가 없습니다. python -m app.technology_rag.scripts.build_index 를 먼저 실행하세요.")

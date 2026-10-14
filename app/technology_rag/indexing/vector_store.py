@@ -114,4 +114,31 @@ class ChromaVectorStore(VectorStore):
 def build_store(backend: str, persist_dir: Path, collection: str, **kwargs: Any) -> VectorStore:
     if backend == "chroma":
         return ChromaVectorStore(persist_dir, collection)
+    if backend == "supabase":
+        return SupabaseVectorStore(collection)
     raise ValueError(f"지원하지 않는 backend: {backend!r}")
+
+
+class SupabaseVectorStore(VectorStore):
+    """Read adapter; complete corpus publication belongs to the ingest command."""
+    def __init__(self, collection):
+        from app.common.supabase_store import SupabaseRepository
+        self.repository = SupabaseRepository()
+        header = self.repository.corpus('technology')
+        if header['payload'].get('collection') != collection:
+            raise ValueError('Supabase 기술나눔 청킹 설정이 다릅니다. 같은 설정으로 다시 적재하세요.')
+
+    def count(self):
+        with self.repository.connection() as conn:
+            return conn.execute("select count(*) from rag.chunks where corpus_id='technology'").fetchone()[0]
+
+    def stored_fingerprint(self):
+        return self.repository.corpus('technology')['fingerprint']
+
+    def rebuild(self, chunks, vectors, fp):
+        raise RuntimeError('Supabase 적재는 python -m app.scripts.supabase_rag ingest --modules technology 를 사용하세요.')
+
+    def query(self, vector, top_k, where=None):
+        from app.common.supabase_retrieval import flat_filter
+        rows = self.repository.search('technology',vector,top_k,flat_filter(where))
+        return [Hit(row['chunk_id'],row['similarity'],rank) for rank,row in enumerate(rows,1)]

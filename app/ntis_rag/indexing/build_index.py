@@ -11,7 +11,7 @@ from pathlib import Path
 from kiwipiepy import Kiwi
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-from langchain_openai import OpenAIEmbeddings
+from app.common.embedding import MODEL, require_model, langchain_embeddings
 from rank_bm25 import BM25Okapi
 
 from ..config import DATA_PATH, INDEX_DIR, MANIFEST_PATH
@@ -21,7 +21,7 @@ CHROMA_DIR = INDEX_DIR / "chroma"
 BM25_PATH = INDEX_DIR / "ntis_bm25.pkl"
 
 COLLECTION_NAME = os.getenv("NTIS_CHROMA_COLLECTION", "ntis_projects")
-EMBEDDING_MODEL = os.getenv("NTIS_EMBEDDING_MODEL", "text-embedding-3-small")
+EMBEDDING_MODEL = require_model(os.getenv("NTIS_EMBEDDING_MODEL", MODEL))
 
 TOKENIZER_NAME = "kiwi.form.v1"
 
@@ -37,8 +37,6 @@ def sha256(path: Path) -> str:
 def main() -> None:
     if not DATA_PATH.is_file():
         raise FileNotFoundError(f"NTIS 원문 파일이 없습니다: {DATA_PATH}")
-    if not os.getenv("OPENAI_API_KEY"):
-        raise EnvironmentError("OPENAI_API_KEY가 필요합니다.")
 
     existing_outputs = [p for p in (CHROMA_DIR, BM25_PATH, MANIFEST_PATH) if p.exists()]
     if existing_outputs:
@@ -58,7 +56,7 @@ def main() -> None:
         raise ValueError("과제번호가 중복되어 Chroma ID로 사용할 수 없습니다.")
 
     # Chroma
-    embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
+    embeddings = langchain_embeddings()
     vectorstore = Chroma.from_documents(
         documents=documents,
         embedding=embeddings,

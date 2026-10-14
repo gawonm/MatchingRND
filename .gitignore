@@ -1,7 +1,12 @@
 .env
 .venv/
+.venv-gpu/
+storage/
+db/rfp/
+db/law/
 __pycache__/
 *.pyc
+outputs/
 
 # <<<<<<< feature/rfp-raw_rag
 # data/raw/
