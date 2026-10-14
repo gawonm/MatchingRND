@@ -1,6 +1,7 @@
 """Compose parsing, chunking, embeddings and reusable search indexes."""
 import hashlib
 import re
+import json
 from ..config import load_config
 from ..parsing.notices import _load_notices
 from ..parsing.pdf_parser import load_documents, parse_tasks
@@ -34,6 +35,13 @@ def build_index(data_dir=None, output_dir=None, *, model_name=None,
     notices, file_notice_ids, matching_issues = _load_notices(data_dir, pdf_files, notice_path)
     loaded_docs, review_list, failed_files = load_documents(data_dir, OUTPUT, pdf_files, Document)
     tasks, review_list, excluded_files = parse_tasks(loaded_docs, pdf_files, data_dir, review_list, Document)
+    from ..review import apply_review
+    tasks, review_outcomes = apply_review(tasks, review_list, data_dir, Document)
+    # Full block accounting belongs in the local audit, not repeated in every search hit.
+    OUTPUT.mkdir(parents=True,exist_ok=True)
+    (OUTPUT/'source_audit.json').write_text(json.dumps([row for row in review_list if row.get('audit')],
+        ensure_ascii=False,indent=2),encoding='utf-8')
+    review_list=[{key:value for key,value in row.items() if key!='blocks'} for row in review_list]
     if not tasks:
         raise ValueError(f'구조가 확인된 RFP 과제가 없습니다. 추출 실패 {len(failed_files)}개, 검토 제외 {len(excluded_files)}개를 확인하세요.')
     embedding = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={'device': 'cpu', 'local_files_only': local_files_only}, encode_kwargs={'normalize_embeddings': True})
@@ -70,4 +78,4 @@ def build_index(data_dir=None, output_dir=None, *, model_name=None,
     bm25 = BM25Retriever.from_documents(docs, preprocess_func=kiwi_tokenize)
     bm25.k = min(KEYWORD_K, len(docs))
     max_query_tokens = embedding._client.max_seq_length
-    return {'docs': docs, 'chunks_by_id': chunks_by_id, 'dataset': dataset, 'tasks': tasks, 'tasks_by_id': {task['task_id']: task for task in tasks}, 'excluded_files': excluded_files, 'matching_issues': matching_issues, 'tokenizer': tokenizer, 'max_query_tokens': max_query_tokens, 'vectorstore': vectorstore, 'dense': dense, 'bm25': bm25, 'kiwi_tokenize': kiwi_tokenize, 'review_list': review_list, 'failed_files': failed_files, 'KEYWORD_K': KEYWORD_K, 'VECTOR_K': VECTOR_K, 'TOP_K': TOP_K, 'RRF_K': RRF_K, 'CONTEXT_TOKENS': CONTEXT_TOKENS}
+    return {'docs': docs, 'chunks_by_id': chunks_by_id, 'dataset': dataset, 'tasks': tasks, 'tasks_by_id': {task['task_id']: task for task in tasks}, 'excluded_files': excluded_files, 'matching_issues': matching_issues, 'tokenizer': tokenizer, 'max_query_tokens': max_query_tokens, 'vectorstore': vectorstore, 'dense': dense, 'bm25': bm25, 'kiwi_tokenize': kiwi_tokenize, 'review_list': review_list, 'review_outcomes': review_outcomes, 'failed_files': failed_files, 'KEYWORD_K': KEYWORD_K, 'VECTOR_K': VECTOR_K, 'TOP_K': TOP_K, 'RRF_K': RRF_K, 'CONTEXT_TOKENS': CONTEXT_TOKENS}

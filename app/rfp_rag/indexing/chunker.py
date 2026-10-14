@@ -8,13 +8,17 @@ def build_chunks(tasks, file_notice_ids, tokenizer, token_limit, OVERLAP_TOKENS,
     chunks_by_id = {}
     for task in tasks:
         prefix = f"과제명: {task['title']}\n과제번호: {task['task_number']}\n"
+        if task.get('parent_title'):
+            prefix+=f"총괄과제: {task['parent_title']}\n"
         atoms = []
         for item, fragments in task['fields'].items():
-            if item == '기타 원문':
-                continue
             for fragment in fragments:
                 if fragment.metadata['kind'] == 'metric_table':
                     headers = fragment.metadata['headers']
+                    if not fragment.metadata['rows']:
+                        # Keep empty-table headers as source context instead of silently dropping them.
+                        atoms.append((item,fragment.page_content,dict(fragment.metadata)))
+                        continue
                     for row_number, row in enumerate(fragment.metadata['rows']):
                         body = ' | '.join(f'{h}: {v}' for h, v in zip(headers, row))
                         metadata = dict(fragment.metadata)
@@ -54,11 +58,14 @@ def build_chunks(tasks, file_notice_ids, tokenizer, token_limit, OVERLAP_TOKENS,
             metadata = {
                 'chunk_id': chunk_id, 'parent_id': task['task_id'], 'task_id': task['task_id'],
                 'document_id': task['document_id'], 'title': task['title'],
+                'task_type':task.get('task_type','standalone'),
+                'parent_task_id':task.get('parent_task_id'), 'parent_title':task.get('parent_title'),
                 'task_number': task['task_number'], 'item': pack['item'],
                 'source': task['source'], 'filename': task['filename'], 'file_hash': task['file_hash'],
                 'pages': pages, 'page_start': min(pages), 'page_end': max(pages),
                 'notice_ids': file_notice_ids[task['source']], 'sources': pack['sources'],
                 'original_text': original_text,
+                **({'review': task['review']} if task.get('review') else {}),
             }
             document = Document(page_content=text, metadata=metadata)
             docs.append(document)

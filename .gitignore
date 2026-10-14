@@ -18,3 +18,9 @@ outputs/
 # data/raw/rfp/*
 # !data/raw/rfp/RFP_공고목록.xlsx
 # >>>>>>> main
+
+# Local RFP sources and generated audit/embedding artifacts
+data/raw/rfp/**/*.pdf
+data/raw/rfp/**/*.PDF
+data/processed/rfp/
+tmp/pdfs/

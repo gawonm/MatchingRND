@@ -72,6 +72,8 @@ def load_pdf_index(module, repository=None):
              'vectorstore':store, 'dense':store.as_retriever({'k':min(payload['VECTOR_K'],len(docs))}),
              'bm25':bm25,'kiwi_tokenize':tokenize}
     if module == 'rfp':
+        # Stored once in PostgreSQL; share the same task objects at runtime.
+        index['dataset'] = {**index.get('dataset', {}), 'tasks':index['tasks']}
         index['tasks_by_id'] = {t['task_id']:t for t in index['tasks']}
     return index
 

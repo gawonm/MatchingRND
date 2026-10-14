@@ -35,6 +35,27 @@ def unpack(value):
     return value
 
 
+def retrieval_metadata(metadata):
+    """Remove extraction-only table copies; preserve query evidence and locations."""
+    result = {k:v for k,v in metadata.items() if k not in {'cells', 'headers', 'rows', 'row_bboxes'}}
+    if 'sources' in result:
+        result['sources'] = [retrieval_metadata(source) for source in result['sources']]
+    return result
+
+
+def retrieval_tasks(tasks):
+    """Indexing used full tables already; runtime only needs text and source coordinates."""
+    result = pack(tasks)
+    for task in result:
+        if 'title_source' in task:
+            source = task['title_source']
+            source['metadata'] = retrieval_metadata(source.get('metadata', {}))
+        for fragments in task.get('fields', {}).values():
+            for fragment in fragments:
+                fragment['metadata'] = retrieval_metadata(fragment['metadata'])
+    return result
+
+
 def document_record(document_id, source, title, text, metadata, **kwargs):
     return dict(document_id=document_id, source=source, title=title, full_text=text,
                 metadata=pack(metadata), **kwargs)
@@ -83,9 +104,12 @@ def pdf_snapshot(module):
                                     ministry=str(row.get('부처') or '') or None)
         loaded, review, failed = load_documents(cfg['data_dir'], cfg['OUTPUT'], cfg['pdf_files'], Document)
         tasks, review, excluded = parse_tasks(loaded, cfg['pdf_files'], cfg['data_dir'], review, Document)
+        from app.rfp_rag.review import apply_review
+        tasks, review_outcomes = apply_review(tasks, review, cfg['data_dir'], Document)
         docs, _ = build_chunks(tasks, links, tokenizer, min(cfg['CHUNK_TOKENS'],embedder.max_seq_length-2), cfg['OVERLAP_TOKENS'], Document)
-        payload = dict(tasks=pack(tasks), notices=notices, dataset=pack({'tasks':tasks, 'notices':notices}),
-                       excluded_files=excluded, matching_issues=issues)
+        packed_tasks = retrieval_tasks(tasks)
+        payload = dict(tasks=packed_tasks, notices=notices, dataset={'notices':notices},
+                       excluded_files=excluded, matching_issues=issues, review_outcomes=review_outcomes)
     else:
         from app.policy_rag.config import load_config
         from app.policy_rag.parsing.pdf_parser import load_documents, parse_articles
@@ -97,7 +121,7 @@ def pdf_snapshot(module):
         payload = dict(articles=pack(articles), excluded_sections=excluded)
     if not docs:
         raise ValueError(f'{module}: 파싱된 청크가 없습니다.')
-    payload.update(review_list=review, failed_files=failed,
+    payload.update(review_list=[{k:v for k,v in row.items() if k != 'blocks'} for row in review], failed_files=failed,
                    **{k:cfg[k] for k in ('KEYWORD_K','VECTOR_K','TOP_K','RRF_K','CONTEXT_TOKENS')})
     grouped = {}
     chunks = []
@@ -105,7 +129,8 @@ def pdf_snapshot(module):
         m = d.metadata
         grouped.setdefault(m['document_id'], []).append(d)
         chunks.append(dict(chunk_id=m['chunk_id'],document_id=m['document_id'],section=m.get('item') or m.get('article_number'),
-                           content=d.page_content,page_start=m['page_start']-1,page_end=m['page_end']-1,metadata=pack(m)))
+                           content=d.page_content,page_start=m['page_start']-1,page_end=m['page_end']-1,
+                           metadata=pack(retrieval_metadata(m) if module == 'rfp' else m)))
     records = []
     for did, group in grouped.items():
         m = group[0].metadata
@@ -113,7 +138,8 @@ def pdf_snapshot(module):
         years = {n['year'] for n in related if n.get('year') is not None}
         institutions = {n['institution'] for n in related if n.get('institution')}
         records.append(document_record(did,module,m.get('filename') or m.get('law_name') or did,
-                        '\n'.join(d.metadata.get('original_text', d.page_content) for d in group),m,
+                        '\n'.join(d.metadata.get('original_text', d.page_content) for d in group),
+                        retrieval_metadata(m) if module == 'rfp' else m,
                         source_path=str(cfg['data_dir']/m['source']),
                         year=next(iter(years)) if len(years)==1 else None,
                         institution=next(iter(institutions)) if len(institutions)==1 else None))

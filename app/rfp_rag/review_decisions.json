@@ -1,0 +1,561 @@
+{
+  "version": 1,
+  "review_date": "2026-10-14",
+  "note": "원문 제목 텍스트 대조 및 지정 페이지 육안 검수. 미검증 병합 성능표와 미확인 과제는 제외.",
+  "files": {
+    "(1-1-2)_RFP(2026-지역AX-2)_(모두의AI-지정공모)_모두의 AI 실현을 위한 멀티모달 시니어 마인드 케어 기술 개발__86d53b38.pdf": {
+      "file_hash": "980622a1ed12c4343e4c3f03289592f83f4be134b146d6ba8151d67654f37225",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "781eee73a3f252b37ddb1a35": "standalone"
+      },
+      "titles": {
+        "781eee73a3f252b37ddb1a35": "(1-1-2) 모두의 AI 실현을 위한 멀티모달 시니어 마인드 케어 기술 개발"
+      }
+    },
+    "(1-1-2)_RFP(2026-지역AX-2)_(모두의AI-지정공모)_모두의 AI 실현을 위한 멀티모달 시니어 마인드 케어 기술 개발__a54b818b.pdf": {
+      "file_hash": "4adc729fd0564b012b4a2a07daa2a783c29eb13c02e73ff0d71ff3e6ded552c7",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "69a38a92000cbc957b9f2568": "standalone"
+      },
+      "titles": {
+        "69a38a92000cbc957b9f2568": "(1-1-2) 모두의 AI 실현을 위한 멀티모달 시니어 마인드 케어 기술 개발"
+      }
+    },
+    "(1-1-3)_RFP(2026-지역AX-3)_(모두의AI-지정공모)_미디어 멀티모달리티 기반 영상 생성 기술개발 및 실증.pdf": {
+      "file_hash": "cd3e1708adcf6191b4653cf93e603ac1986529e3e82a943bbcf347eb407fa599",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "ebe6779f02bb65c34893bdfd": "standalone"
+      },
+      "titles": {
+        "ebe6779f02bb65c34893bdfd": "(1-1-3) 미디어 멀티모달리티 기반 영상 생성 플랫폼 개발 및 실증"
+      }
+    },
+    "(1-2-5)_RFP(2026-지역AX-4)_(도시·생활 혁신 AX-지정공모)_AI 기반 통합 혁신형 조직 운영 플랫폼 기술개발.pdf": {
+      "file_hash": "3976b6b1ee680ab05fb41c1706a81e877aad07bce86dac730847781508bb8914",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "aa3a2e0af34b284ba85c7e9b": "standalone"
+      },
+      "titles": {
+        "aa3a2e0af34b284ba85c7e9b": "(1-2-5) AI 기반 지능형 조직 운영 플랫폼 기술개발"
+      }
+    },
+    "(2-1-1)_RFP(2026-지역AX-6)_(자율주행 모빌리티 AX 혁신-지정공모)_딥러닝 기반 차세대 자율주행 아키텍처 개발__13e2e6b8.pdf": {
+      "file_hash": "a4edd55e77c98d3cff50c65a3ee927dfaf99b481ae2627e14eace51d897dfae9",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "a32ea5fd7170355da2cba88d": "standalone"
+      },
+      "titles": {
+        "a32ea5fd7170355da2cba88d": "(2-1-1)딥러닝 기반 차세대 자율주행 아키텍처 개발"
+      }
+    },
+    "(2-1-1)_RFP(2026-지역AX-6)_(자율주행 모빌리티 AX 혁신-지정공모)_딥러닝 기반 차세대 자율주행 아키텍처 개발__a424cb66.pdf": {
+      "file_hash": "160a4d999d1019a119be91aa2023a0ba77f40f7c51992577c125f9c5e84d2bb0",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "56ca8bb549c1790e73bd9ff7": "standalone"
+      },
+      "titles": {
+        "56ca8bb549c1790e73bd9ff7": "딥러닝 기반 차세대 자율주행 아키텍처 개발"
+      }
+    },
+    "(붙임1) 2026년도 미래유망융합기술파이오니어 과제 제안요구서(RFP).pdf": {
+      "file_hash": "579b081051707cba2e0dfe32310390fd842f1c1f95506fb96cbf7e32e3a35137",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "(함께달리기 2026-08) 차세대 해상풍력 웻타입 케이블용 비가교 소재 전용 고접착·고실링 접속재 및 통합 부품화 기술.pdf": {
+      "file_hash": "e391aa0a730c41df7d4ebbee6d2a0304179f65fbf6d7116d4df980a18a7be483",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "001_(붙임1) 2026년도 양자인적기반조성(리더급연구역량강화(전략기술형))사업 신규과제 RFP(안)_최_18112706257268388.pdf": {
+      "file_hash": "aa81531b6ebe9c3dcd1f3459fdac6235ec4d5af4214b02056e66f88619f50bc5",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "001_[붙임1] 2026년도 제4차 첨단재생의료 임상연구 활성화 지원 사업 신규과제 통합 공고 과제제안요구서(RFP)-(최종_5861295520941422.pdf": {
+      "file_hash": "0301c22556d414d6e6ae5c5b73d59169a5c8555ecc03064b69f8eb5976ccfd90",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외"
+    },
+    "001_별지 1. K55A1 자주포 조종시뮬레이터 과제제안요구서(RFP) (안).PDF": {
+      "file_hash": "9d0ac4597dac9034a50f688a38f8f4e3c86218c4575816f91998d2b5e1f3b66b",
+      "action": "approve",
+      "reason": "PDF 1쪽 왼쪽 과제명 육안 확인; 오른쪽 열의 문장 혼입 제거. 8쪽 행정내용은 미연결 유지",
+      "titles": {
+        "909ae2cdc4e57059fbfaee36": "K55A1 자주포 조종 시뮬레이터 (K55A1 SPH Driver Training Simulator)"
+      }
+    },
+    "001_붙임1. 제안서 공모문 및 제안요청서.PDF": {
+      "file_hash": "171e36e283d653c816c67508fff32388d98f56f26046c4e4f77b1ea46570a4bf",
+      "action": "hold",
+      "reason": "91쪽 서약서의 빈 과제명·과제단계를 과제로 오인. 실제 터보팬 RFP 범위 추가 분리 필요"
+    },
+    "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf": {
+      "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a",
+      "action": "approve",
+      "reason": "25~26쪽 기술 운용개념도의 이미지 텍스트 추가 추출까지 연결 과제 보류; 다른 과제는 성능표 제외 후 유지",
+      "hold_tasks": [
+        "9acd8e943b9d49902c85f397"
+      ]
+    },
+    "002_2. 2026년도 신규지원 대상과제 RFP_수중 통신채널 환경 분석 및 예측 모델 개_1643102592081957.PDF": {
+      "file_hash": "b45464f2bcf31aa71e562d42f126fc8bdbe1dba02ea67dc065eab62a83e50c10",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "002_2. 기획보고서(공개용_22225978445328217.pdf": {
+      "file_hash": "c8bd77e234b652d96d8ef6b628aa3fb0bf2822fc3be120b0767c74292ed98c5f",
+      "action": "approve",
+      "reason": "23~33쪽 선행 과제·기획 문맥 확인; 34쪽부터 명시된 신규 RFP만 유지"
+    },
+    "002_[붙임2]_2026년도_강원특별자치도_과학기술혁신지원사업_신규과제RFP_RFP화상설명회 추가 기재(20260912_4226815824539771.pdf": {
+      "file_hash": "ce21bcc016f5cfa1144908ba9e78489214b539140f6d367a63a168a40eaad68a",
+      "action": "approve",
+      "reason": "과제명 행 원문 대조 후 분류 체크박스의 제목 혼입 제거; 공통 작성 안내·중복 제목 행은 재연결하지 않음",
+      "titles": {
+        "c5755abaa961c72d55dcf0d8": "정밀영양·메디푸드·맞춤형 식품 및 바이오헬스 서비스 기획고도화",
+        "609bbd6e062cbd14712e9398": "정밀영양·메디푸드·맞춤형 식품 및 바이오헬스 서비스 사업화 R&BD",
+        "0099688e4a80b02622881508": "K-뷰티·재생·동물바이오 소재·제품 사업화 기획고도화",
+        "7357af49982ce1f6d7f6501d": "K-뷰티·재생·동물바이오 소재·제품 사업화 R&BD",
+        "859a17e3cd2eb50f0bfda599": "기능성바이오소재 스마트생산·융합진단·공정혁신 사업화 기획고도화",
+        "24491964a5ec72cbd6229228": "기능성바이오소재 스마트생산·융합진단·공정혁신 사업화 R&BD",
+        "a3494a07058f99f2cf452395": "자동화·AI 기반 기업수요 기능성바이오소재 발굴·검증 및 제품화 산·학·연 공동활용\n허브 구축",
+        "457c09d2428da2121bc77ed6": "강원 미래유망 기능성바이오 원천기술 발굴 및 딥테크 기술발굴형 본사업 기획",
+        "e0f8f5433d828721a66ea940": "세라믹재료 딥테크 지역확산형 사업화 기획고도화 (자유공모)",
+        "4072a02a1d84180c64889d08": "PEM(Proton Exchange Membrane) 수전해용 저PGM 촉매-MEA 일체형 제조공정 개발",
+        "104fd7936e502a7c46547afb": "암모니아 분해·수소분리 일체형 세라믹 모듈 개발 및 파일럿 실증",
+        "2bea74ac9b3860b37328209e": "통신·레이더용 고방열·저손실 동시구현 LTCC 패키지 모듈 개발 및 양산검증",
+        "e1b18ae38f2f3c298b740831": "전장·통신용 EMI 흡수·방열 세라믹 복합시트 소재·부품 개발 및 양산검증",
+        "e6facea16383f2c24dc9404f": "정밀 공정용 압전·저항·산화물계 기능성 세라믹 소재·부품 개발 및 양산검증",
+        "5aaf0696b86c2ce45dea449e": "수소 충전·저장·운송·연료전지 시스템용 고내구 세라믹 핵심부품 개발 및 실증",
+        "3e1fb9a1ec282965d6dfecae": "AX 기반 세라믹 공정 분석 및 산·학·연 기술확산 허브 플랫폼 구축 (딥테크 기술발\n굴형 본사업 기획)",
+        "e21eaaefd34c8f79b04de06e": "4대 과기원 협력 강원 중점기술 및 연계산업 수요기반 미래신산업 전문인력양성\n체계 기획",
+        "96cc44faf126183c532f5243": "강원 중점기술 R&D 성과 창출 및 글로벌 사업화 지원을 위한 오픈이노베이션랩\n구축·운영"
+      }
+    },
+    "002_개도국 기후기술실증연구사업 신규과제 RFP_탄자니아 기후적응형 교통_V_20534457204116405.pdf": {
+      "file_hash": "79ae202a2f484141e044f0573f439ffc2d42e5481f4dcff98b5a4a7de6d71fe3",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "002_공고문 (출연(연) 전략연구사업 평가제도·관리체계 수립)_게시.pdf": {
+      "file_hash": "13cfe8fab0f23efc9bb526dcd8ae7dfce3632546ee95f51e94ef06c101126fd9",
+      "action": "approve",
+      "reason": "3~4쪽 정책연구 RFP를 하나의 과제로 연결; 5쪽 수수료·6쪽 이후 신청서 양식 제외",
+      "replacement_tasks": [
+        {
+          "title": "출연(연) 전략연구사업 평가제도·관리체계 수립",
+          "page_start": 3,
+          "page_end": 4,
+          "content_field": "개발내용"
+        }
+      ]
+    },
+    "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf": {
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인"
+    },
+    "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf": {
+      "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798",
+      "action": "approve",
+      "reason": "품목 정의 표를 별도 과제로 오인한 결과 제거; 이후 지원내용을 심장박동기 과제로 재연결",
+      "merge_tasks": {
+        "4e97c9cc08488e11cb85af30": "cd656677f9cf5ab7b61fe700"
+      }
+    },
+    "002_붙임1. 과제제안요구서(RFP)_저장링 입사요동 저감을 위한 비선형 킥커 (Non-Linear Kicker) 시스템 개_1125736196222526.pdf": {
+      "file_hash": "d80e66f63607d0cddb867b33852de0066424e85e222f0870c263a8bea6121b44",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "002_붙임1._2026년_제2차_범부처_첨단_의료기기_연구개발사업_신규지원_대상과제_RFP.pdf": {
+      "file_hash": "b64d0cd76caac64f6745e1e98fd73985c59e3304bd2ccd05aaf67e2fae751f7f",
+      "action": "approve",
+      "reason": "품목 정의 표를 별도 과제로 오인한 결과 제거; 이후 지원내용을 심장박동기 과제로 재연결",
+      "merge_tasks": {
+        "2e1fd0602114ba9d5d3102c6": "36314ae67461462cf3bca79e"
+      }
+    },
+    "002_붙임2-1_RFP1_군용전지 상호운용성 확보를 위한 표준화 연구.pdf": {
+      "file_hash": "b3237b8518614b0119533d249dca7399ce408fc0e7e46af509566fe838f21d38",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "titles": {
+        "91072e7c686156e2d861bbe4": "군용전지 상호운용성 확보를 위한 표준화 연구"
+      }
+    },
+    "002_붙임2. 유무인 지뢰제거 굴착기 과제제안요구서(RFP).PDF": {
+      "file_hash": "4bc420ce95f7ddb27e4e862b160cb03117b38069f132cea07ad4639687ee6d19",
+      "action": "approve",
+      "reason": "PDF 1쪽 왼쪽 과제명 육안 확인; 오른쪽 설명이 섞인 제목 수정",
+      "titles": {
+        "b93692d4baffcc0c2c37114e": "유·무인 지뢰제거 굴착기 연구개발 (R&D Manned/Unmanned Mine Clearance Excavator)"
+      }
+    },
+    "002_재공고문 (출연연 전략연구사업 평가제도·관리체계 수립)_게시.pdf": {
+      "file_hash": "2665f2631c2eb6607bacd55fedf065a9c9bb154a6a840c603a58009242fc16d5",
+      "action": "approve",
+      "reason": "3~4쪽 정책연구 RFP를 하나의 과제로 연결; 5쪽 수수료·6쪽 이후 신청서 양식 제외",
+      "replacement_tasks": [
+        {
+          "title": "출연(연) 전략연구사업 평가제도·관리체계 수립",
+          "page_start": 3,
+          "page_end": 4,
+          "content_field": "개발내용"
+        }
+      ]
+    },
+    "003_2. 기획보고서(공개용_3432814003523921.pdf": {
+      "file_hash": "86d75ddc26f2c5a5203d638a242019b48d211f20a87678751da1e3249aacf9fd",
+      "action": "hold",
+      "reason": "빈 페이지 경고 원문 확인이 끝나지 않아 보류"
+    },
+    "003_2. 연구개발과제기획보고서(태양광 3차 공고_3206536389794941.pdf": {
+      "file_hash": "b8eefc47a16717a24b416f4cc661da4d32dd781ade6d96f3f610447f9649d29a",
+      "action": "approve",
+      "reason": "20쪽은 기획보고서 시험절차 그림·27쪽 목차 확인; 28쪽부터 명시적 RFP 유지"
+    },
+    "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf": {
+      "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "hold_tasks": [
+        "8ece2fceb416df5ec3b875ff",
+        "9663f8dbb57b46b610f1da8d",
+        "b86824bc1aa10c4981ae3f83",
+        "4c0dc9b8c70cb7efbfb70105",
+        "75a8993ac2408bd1c9700364"
+      ]
+    },
+    "003_3. 재공고_과제제안요구서(RFP)_팬데믹 대비 mRNA 백신 개발 지원사업(임상지원 분야) 대상과_18345223361651622.pdf": {
+      "file_hash": "47e570cc1c86a8fb974d9b948aa1bc4ffbfbf47145b2cbbebd50974f29234052",
+      "action": "approve",
+      "reason": "PDF 3~5쪽 임상1상과 6~8쪽 임상2상 RFP를 분리 연결; 누락된 임상1상 복구",
+      "replacement_tasks": [
+        {
+          "title": "코로나19 mRNA 백신 후보물질 임상1상 연구",
+          "task_number": "RFP 1-1",
+          "page_start": 3,
+          "page_end": 5
+        },
+        {
+          "title": "코로나19 mRNA 백신 후보물질 임상2상 연구",
+          "task_number": "RFP 1-2",
+          "page_start": 6,
+          "page_end": 8
+        }
+      ]
+    },
+    "003_[별첨] 2026년도 세부 품목 개요서(통합_17371023330257250.pdf": {
+      "file_hash": "a91400e43a514252a233474312ce95f1388018e19b7970199ba745a44f8e51c1",
+      "action": "hold",
+      "reason": "목록표·2면 배치로 제목과 본문 경계 혼입. 51개 품목 경계 재구성까지 추출된 4개 과제 보류",
+      "hold_tasks": [
+        "bd749c9762b624db9041af12",
+        "8ca147f254c9021bf80b6e93"
+      ]
+    },
+    "003_[붙임2] 2026년도 제3차 첨단재생의료 임상연구 활성화 지원 사업 신규과제 통합 공고 과제제안요구서(RFP_18277272798785328.pdf": {
+      "file_hash": "03b3e499dfc2b35865343565d49946e9653b78f50e3cb8ce942d7df617e83417",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외"
+    },
+    "003_붙임3. 헬기유도등 시스템 과제제안요구서(RFP)(안).pdf": {
+      "file_hash": "c981b416ba4fbaed48ca417c67d72587f7316ddf851d710b2579e7cf32d6e908",
+      "action": "approve",
+      "reason": "PDF 1쪽 왼쪽 과제명 육안 확인; 오른쪽 HRB 기능 설명의 제목 혼입 제거",
+      "title_proofs": {
+        "e72e6ae125a7952ca15080b1": "헬기유도등 시스템"
+      },
+      "titles": {
+        "e72e6ae125a7952ca15080b1": "헬기유도등 시스템 (Helicopter Visual Landing Aid Systems)"
+      }
+    },
+    "004_붙임2-3_RFP3_우주용 PCB 표준화 연구.pdf": {
+      "file_hash": "82ffce29103485d405be770178321837860f159eb87216987319a7496a8cbdb2",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "titles": {
+        "bc68501c7c62c6a0a18816e4": "우주용 PCB 표준화 연구"
+      }
+    },
+    "009_붙임 08. 품목개요서 및 RF_18322055398166019.PDF": {
+      "file_hash": "c71993f9ee10eb99d9fd4cfb3321b9df96d609c71a79820662afe2c17b3fcad0",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외"
+    },
+    "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf": {
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "6665e69b1db1e1c854a76737": "standalone"
+      },
+      "titles": {
+        "6665e69b1db1e1c854a76737": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발"
+      }
+    },
+    "010_붙임 08. 품목개요서(RFP_18180423276799269.pdf": {
+      "file_hash": "e9ac587f7cd94944658762e68bb03d94b3dc008f14537ce962d929315e3d6f9a",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "hold_tasks": [
+        "8edb449dd380138a77b2a014",
+        "f4fb39d80595c19f917dd148",
+        "7c22470e706a2061a6c532de",
+        "61761934e0b1dad1c5a242b1"
+      ]
+    },
+    "04. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 33-34)최종.pdf": {
+      "file_hash": "9d7261606b10275c32778fd8ffd3b31151984f300ec41ffc81ef9874d1b43a7a",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "8098d38a8a63e5ccfce398ea": "standalone"
+      },
+      "titles": {
+        "8098d38a8a63e5ccfce398ea": "물리지능행동모델 및 통합 프레임워크 기술 개발"
+      }
+    },
+    "1-1 26년_제2차_품목지정(RFP(안))_바이오산업기술_맞춤형진단치료_게시.PDF": {
+      "file_hash": "7658e3686e6bb71c525afd5df73767412fbc551c8d3394447a5fa6f1f26faeae",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외"
+    },
+    "1-2 26년-제2차_품목지정(RFP(안))_바이오산업기술개발_디지털헬스케어_게시.PDF": {
+      "file_hash": "f9993d5903b09774f1b53831fe8a182d504e6c1958c6fe679f983deb57e35e84",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외"
+    },
+    "1-3 26년_제2차_품목지정(RFP(안))_바이오산업기술_첨단바이오신소재_게시.PDF": {
+      "file_hash": "9a37f10db8d87a1259eab3ee0764b3669015544b246c8523c9d375d5b4fffe84",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외"
+    },
+    "11. 과제제안서_코오롱글로벌(주).PDF": {
+      "file_hash": "524d325f6b19f07c18198dd2d5b6c0fc4b88368440f267a4db9ee92afd51d92b",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "16. 과제제안서_호반그룹.PDF": {
+      "file_hash": "3565f5b5cbb46d0f3c3ad87951b36a017009c79cffd1ad737b28b9b2a40b1c6c",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "19. 과제제안서_신한카드.PDF": {
+      "file_hash": "8c8888a29da7fb851a94f2895a9558463aebaab35691a4f70b1702890d5879f1",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "2. Mixed-Domain을 지원하는 SDV미들웨어와 SW분리형 Edge 제어기 개발.PDF": {
+      "file_hash": "23bef933108a0106be4460ebf0bb049799a0d227eea29392a7e603d8832e9e64",
+      "action": "approve",
+      "reason": "과제 밖 의심 항목은 개발내용 제목·총괄 설명; 실제 개발내용은 연결된 상태로 유지"
+    },
+    "2. 과제제안서_(주)대동.pdf": {
+      "file_hash": "dba6bdda08527433c84a41e345f99bf47939a9a8f8f918ee655040256407d659",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "3. 과제제안서_대한항공_저궤도 우주 궤도수송선(OTV) 비행 궤도 천이 및 궤도 유지를 위한 고비추력 전기 추진 시스템 개발.pdf": {
+      "file_hash": "6d5bb90a6f0382b6f664484fbb285cb6afb50a6df1de0fe8d85218a48933ea20",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인"
+    },
+    "3. 오픈소스 기반 AI-SDV 플랫폼 개발 및 기업 협력 생태계 구축.PDF": {
+      "file_hash": "a0ba62c88a6350b3142e749202a698b7d0e49d9536464055d8c6637e23905f96",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외"
+    },
+    "4. 과제제안서_에코프로이엠.pdf": {
+      "file_hash": "cef9810d707330d0f232e0a8bc9b0184e399135181711fe7a793a999cb37ea49",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "4. 탈부착형 단말 기반 멀티차량 원격 운행 및 안전성 강화 기술 개발.PDF": {
+      "file_hash": "8ec31bbb55c42a3a97a85e215b17edc2973f25f21323ce4e95529c7765afaefd",
+      "action": "approve",
+      "reason": "과제 밖 의심 항목은 개발내용 제목·총괄 설명; 실제 개발내용은 연결된 상태로 유지"
+    },
+    "5. 자율주행 기반 스마트항만 모빌리티 플랫폼 기술개발.PDF": {
+      "file_hash": "7bc2c24373c5ae9b60570ab9c9b1ff19e2d4dff8950a818b1d914d70a3309bbe",
+      "action": "approve",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외"
+    },
+    "6. 과제제안서_교보생명보험.PDF": {
+      "file_hash": "14405cf304331480e79a6a1a48fa0c75fa227678d36cff90b6d20dc13c0d6f48",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "7. 과제제안서_대한항공_디지털 교범 연계형 체계장비 CMB정비지원기술개발.PDF": {
+      "file_hash": "71361dc26abbabc90c675359e2e62fd5327f73363ccdd8031f0a21b8fe950888",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "8. 과제제안서_에이치디현대삼호.PDF": {
+      "file_hash": "ba0f53e21b9211aac6b9375b252e23f10ac3f6c35795c3fee7f474f4f7b467da",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 10_자율주제(토륨)_미래유망융합기술파이오니어(도전형).pdf": {
+      "file_hash": "4a25d300ffa2ea8fc9e7de02de34a902cf439e4fa944c9d15ba179f6b9c0c755",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 11_인공근육 액츄에이터_미래유망융합기술파이오니어(유망신기술형).pdf": {
+      "file_hash": "42101738398cd9ae155223a383e7756d10a59f8990fc6595bf886c54f8bbc06b",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 12_구조 배터리 복합 소재_미래유망융합기술파이오니어(유망신기술형).pdf": {
+      "file_hash": "83ba6e42cf6032f94984bb1a7f1d08f45093478354aa029daf25c4cb7c3e938f",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 13_마약 탐지_미래유망융합기술파이오니어(유망신기술형).pdf": {
+      "file_hash": "d57884c2c618c672094346faffeb069bb65073c4d256d031cf9b0e3824de6495",
+      "action": "approve",
+      "reason": "6쪽은 로고·쪽번호만 있는 빈 페이지로 육안 확인; 개발내용 유지, 미검증 성능표 제외"
+    },
+    "RFP 1_환경 적응형 자율연산 플랫폼_미래유망융합기술파이오니어(도전형).pdf": {
+      "file_hash": "b97f89da1255c0ba53c1270dc294903023d787729f20270d4557ab1ca491283f",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 2_정보 저장처리용 바이오 컴퓨팅_미래유망융합기술파이오니어(도전형).pdf": {
+      "file_hash": "c7ce08f55df09199ee304007d207b2bb0c2e7065619f75113ead639ef7c0909b",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 4_극한 환경 제조_미래유망융합기술파이오니어(도전형).pdf": {
+      "file_hash": "59d0ac6eee5ebc993d72d3fb40042351b4a4096b58dbc0ffb43513d137c75bf4",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 5_그린 희토류 자원화_미래유망융합기술파이오니어(도전형).pdf": {
+      "file_hash": "2eb1880e4b3dce06b7655aae55fcb1b92d2d0b191e4fbdc56c2785f94a0617d4",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 6_단백질 미세구동체 집단 행동 설계_미래유망융합기술파이오니어(도전형).pdf": {
+      "file_hash": "3f948ed61859a46f841d20140c98f936ba54df160dc5b305d650b7cab74c1510",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 8_솔리드 스테이트 냉각_미래유망융합기술파이오니어(도전형).pdf": {
+      "file_hash": "8a858baee51acb34d0e629ea25cfa8db110bfaadcbf8e3bb4bacd6486c518a1f",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP 9_협력형 에너지 하베스팅_미래유망융합기술파이오니어(도전형).pdf": {
+      "file_hash": "fbe1432d9aea2babeb253e82e60422711b24d776dee884072cf6a06c64005c74",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "RFP1(2026-피지컬AI-1,2)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf": {
+      "file_hash": "dc95dde846af09571a3b3e3a42ef7bd463b6a6ecde9ea76ae3b6a122c79fe87e",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "95a8f662edecc9fb1dc47e80": "standalone",
+        "e13992bf08a1077ff85433a2": "standalone"
+      },
+      "titles": {
+        "95a8f662edecc9fb1dc47e80": "협업지능 피지컬AI SW 표준화 및 모듈형 SDF-OCS 설계·구축",
+        "e13992bf08a1077ff85433a2": "협업지능 피지컬AI 기반의 제조운영 시스템 개발 및 실증"
+      }
+    },
+    "RFP3(2026-피지컬AI-7,8)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf": {
+      "file_hash": "e395a94b12b9a4ccc88ebe59af5bcd81db10b216e82bfc578c09419691eafcb8",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "06d64aa000d6e7e5c6c526ef": "standalone"
+      },
+      "titles": {
+        "06d64aa000d6e7e5c6c526ef": "이기종 협업-피지컬AI SDF 특화 기반모델 연구개발"
+      }
+    },
+    "RFP4(2026-피지컬AI-9)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf": {
+      "file_hash": "bcffeb32ee7dc1c87215559c7537885f8f50cb02ee623b158ad6c4af780d8bcf",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "ea7e9348f46ccbac81e74650": "standalone"
+      },
+      "titles": {
+        "ea7e9348f46ccbac81e74650": "협업지능 시스템을 위한 피지컬AI 기반 다중 계층 보안 기술 개발"
+      }
+    },
+    "RFP5(2026-피지컬AI-10,11)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf": {
+      "file_hash": "75e72d8a5b70397d86132ad8d49037ebdf6324bd660b5e68e49333f8008d85f1",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "7580a97d4896306428170aa9": "standalone"
+      },
+      "titles": {
+        "7580a97d4896306428170aa9": "기술실증 테스트베드 플랫폼화 추진"
+      }
+    },
+    "RFP6(2026-피지컬AI-12)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf": {
+      "file_hash": "5c459a56bb3a6ab8b8ac3e8f6642604fa5a35b94b95ce935d2f1eb21886a80ca",
+      "action": "approve",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "task_types": {
+        "356e446aa808e64b60da404e": "standalone"
+      },
+      "titles": {
+        "356e446aa808e64b60da404e": "개방형 연구클러스터 조성"
+      }
+    },
+    "붙임 과제제안요구서(2026-공공기술-1-분야공모-05)_미래국방기술 역량강화를 위한 국가 R&D 추진방안 연구.pdf": {
+      "file_hash": "414f433243fb919f98d06b41a4ccc292994645dd30dd10f37511c9dedeb4b9c3",
+      "action": "approve",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외"
+    },
+    "(품목개요서) 양자 및 AI 컴퓨팅용 고안정성 패키징 평가 기반 구축.pdf": {
+      "file_hash": "1116620dd5ad49dfadbe503b040b446cfc6acf4e8329991d6e09ad8fd4226bdc",
+      "action": "exclude",
+      "reason": "사용자 확인 후 원본 PDF 삭제"
+    },
+    "001_2026년도 AI 완전자율운항선박 기술개발사업 신규과제 선정계획 공_21343955279434349.pdf": {
+      "file_hash": "67d1d2bc021c06b59beafaba45f783dd68da93dcdb4266fbebeb7adcbe080f47",
+      "action": "exclude",
+      "reason": "사용자 확인 후 원본 PDF 삭제"
+    },
+    "001_2026년도 연안하구 인간-자연시스템 관리기술 개발 사업 신규과제 선정계획 재공_2763162285490780.pdf": {
+      "file_hash": "270eccad6e898a7692fc75972bdefef2bee968e3488edaa7b5b7eea9262b30db",
+      "action": "exclude",
+      "reason": "사용자 확인 후 원본 PDF 삭제"
+    },
+    "001_AI 완전자율운항선박 기술개발사업 신규과제 선정계획 재공_21542185657688894.pdf": {
+      "file_hash": "8638e09c906a9a55814f91bdb93feb903a5fb8bd4e9889cb06de3c8d29ae1163",
+      "action": "exclude",
+      "reason": "사용자 확인 후 원본 PDF 삭제"
+    },
+    "002_1.프로그램 개요_18358145229825233.pdf": {
+      "file_hash": "e65f96456e1f092e69bb795a617bb6e1a9be463fec4f7ac6b25d8af24582a6c4",
+      "action": "exclude",
+      "reason": "사용자 확인 후 원본 PDF 삭제"
+    },
+    "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안서(재공고_20413578032138145.pdf": {
+      "file_hash": "292778dd7138d53785cd39cc7533da2053d7dd8bec2e7e5437016ecaca85a2e4",
+      "action": "exclude",
+      "reason": "사용자 확인 후 원본 PDF 삭제"
+    }
+  }
+}
