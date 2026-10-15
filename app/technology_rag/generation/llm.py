@@ -18,6 +18,8 @@ from typing import Any
 
 from app.technology_rag.paths import PROJECT_ROOT
 from app.technology_rag.config import LLMConfig
+from pydantic import BaseModel
+
 from app.technology_rag.generation.schemas import LLMAnswer, Usage
 
 log = logging.getLogger(__name__)
@@ -57,15 +59,17 @@ class LLMClient:
         return prompt_tokens / 1e6 * c.price_per_1m_input + completion_tokens / 1e6 * c.price_per_1m_output
 
     # ------------------------------------------------------------------
-    def ask(self, messages: list[dict]) -> tuple[LLMAnswer, Usage]:
+    def ask(self, messages: list[dict], response_model: type[BaseModel] = LLMAnswer,
+            max_output_tokens: int | None = None) -> tuple[Any, Usage]:
         client = self._get_client()
         kwargs: dict[str, Any] = dict(
             model=self.config.model,
             messages=messages,
-            response_format=LLMAnswer,
-            temperature=self.config.temperature,
-            max_completion_tokens=self.config.max_output_tokens,
+            response_format=response_model,
+            max_completion_tokens=max_output_tokens or self.config.max_output_tokens,
         )
+        if self.config.temperature is not None:  # 일부 모델은 기본값(1)만 허용한다
+            kwargs["temperature"] = self.config.temperature
         if self.config.seed is not None:
             kwargs["seed"] = self.config.seed
 
@@ -77,7 +81,7 @@ class LLMClient:
         if getattr(message, "refusal", None):
             raise LLMRefusalError(f"모델이 응답을 거부했습니다: {message.refusal}")
         if message.parsed is None:
-            raise RuntimeError("응답을 LLMAnswer 로 해석하지 못했습니다 (finish_reason="
+            raise RuntimeError(f"응답을 {response_model.__name__} 로 해석하지 못했습니다 (finish_reason="
                                f"{completion.choices[0].finish_reason})")
 
         u = completion.usage
