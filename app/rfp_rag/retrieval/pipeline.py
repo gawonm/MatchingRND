@@ -3,6 +3,7 @@ import os
 from app.common.validation import _positive_int
 from app.common.retrieval import rrf, _retrieve, _ranking_rows
 from ..config import CONTEXT_SECTIONS, TECHNICAL_SECTIONS
+from .eligibility import TechnologyRelevanceGate
 
 def _task_requirements(task):
     """검색된 과제의 명시적 요구항목 원문을 위치와 함께 반환합니다."""
@@ -17,12 +18,13 @@ def _task_requirements(task):
     }
 
 def search(index, question, *, top_k=None, context_tokens=None, run_reranker=False,
-           filters=None, reranker=None):
-    """RFP 후보와 요구사항 원문·문맥·출처·평가용 전체 순위를 반환합니다.
+           filters=None, reranker=None, relevance_llm=None):
+    """RFP 후보와 요구사항 원문·문맥·출처·검증된 검색 순위를 반환합니다.
 
     question은 문자열 또는 build_query(..., return_details=True)의 결과입니다.
     top_k는 중복 청크 수가 아닌 고유 과제 후보 수입니다. 필터는 키워드·벡터
-    검색 및 문맥 확장에 동일하게 적용합니다. LLM 답변·기술 Gap 판정은 수행하지 않습니다.
+    검색 및 문맥 확장에 동일하게 적용합니다. 보유+보완 기술 입력은 LLM으로 양쪽
+    관련성을 검증합니다(relevance_llm 주입 가능). 답변 생성·Gap 판정은 수행하지 않습니다.
     """
     details = dict(question) if isinstance(question, dict) else None
     query = details.get('query') if details is not None else question
@@ -62,16 +64,30 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
             raise ValueError('리랭커의 점수 개수 또는 값이 올바르지 않습니다.')
         reranker_scores = {cid: float(score) for (cid, _), score in zip(ranking, scores)}
         ranking.sort(key=lambda pair: -reranker_scores[pair[0]])
-    ranking_rows = _ranking_rows(index, ranking, keyword_ranks, vector_ranks, reranker_scores)
-    rows_by_id = {row['chunk_id']: row for row in ranking_rows}
+    gate = TechnologyRelevanceGate(question, relevance_llm)
+    tasks_by_id = index.get('tasks_by_id') or {
+        task['task_id']: task for task in index['dataset'].get('tasks', [])
+    }
+    relevance_checks = {}
     selected, seen_tasks = [], set()
     for cid, score in ranking:
         task_id = chunks[cid].metadata['task_id']
         if task_id not in seen_tasks:
             seen_tasks.add(task_id)
+            if gate.active:
+                check = gate.check(tasks_by_id.get(task_id, {}))
+                relevance_checks[task_id] = check
+                if not check['accepted']:
+                    continue
             selected.append((cid, score))
         if len(selected) == top_k:
             break
+    if gate.active:
+        accepted_tasks = {chunks[cid].metadata['task_id'] for cid, _ in selected}
+        ranking = [(cid, score) for cid, score in ranking
+                   if chunks[cid].metadata['task_id'] in accepted_tasks]
+    ranking_rows = _ranking_rows(index, ranking, keyword_ranks, vector_ranks, reranker_scores)
+    rows_by_id = {row['chunk_id']: row for row in ranking_rows}
 
     # 모든 후보의 대표 근거를 먼저 배치한 뒤 같은 과제의 조건을 보충합니다.
     sources, context_parts = [], []
@@ -139,9 +155,6 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
                     add(related.metadata['chunk_id'], candidate_rank, expanded_from=cid)
 
     hits = []
-    tasks_by_id = index.get('tasks_by_id') or {
-        task['task_id']: task for task in index['dataset'].get('tasks', [])
-    }
     for candidate_rank, (cid, _) in enumerate(selected, 1):
         metadata = chunks[cid].metadata
         task = tasks_by_id.get(metadata['task_id'], {})
@@ -150,6 +163,7 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
             'task_number': metadata.get('task_number', ''), 'filename': metadata['filename'],
             'source': metadata['source'], 'result_type': 'technical_candidate',
             'requirements': _task_requirements(task), 'metrics': task.get('metrics', []),
+            'technology_relevance': relevance_checks.get(metadata['task_id']),
             'context_evidence_ids': [row['chunk_id'] for row in sources if row['task_id'] == metadata['task_id']],
             'review_notes': [row for row in index.get('review_list', []) if row.get('filename') == metadata['filename']],
         })
@@ -157,9 +171,11 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
     return {
         'question': query, 'query_details': details, 'context': '\n\n'.join(context_parts),
         'sources': sources, 'hits': hits, 'ranking': ranking_rows, 'status': status,
+        'message': '관련 공고가 없습니다.' if status == 'no_matches' else '',
         'result_type': 'technical_candidate', 'filters': dict(filters or {}),
         'context_truncated': bool(skipped_ids), 'omitted_context_ids': sorted(skipped_ids),
         'diagnostics': {
+            'technology_relevance': {'enabled': gate.active, 'checks': relevance_checks},
             'failed_files': index.get('failed_files', []),
             'excluded_files': index.get('excluded_files', []),
             'matching_issues': index.get('matching_issues', []),
