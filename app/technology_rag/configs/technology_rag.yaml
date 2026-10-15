@@ -36,7 +36,7 @@ retrieval:
   top_docs: 10                   # ModuleResult.candidates 개수
 
 rerank:
-  enabled: true                  # [선택됨] Hybrid(RRF) 위에 리랭커 사용. 지연 0.03초→0.4초, VRAM +1.2GB
+  enabled: false                 # [선택됨] Hybrid(RRF) 위에 리랭커 사용안 함. 지연 0.03초→0.4초, VRAM +1.2GB
   model: BAAI/bge-reranker-v2-m3
   device: auto
   fp16: true
@@ -50,13 +50,14 @@ rerank:
 
 llm:                             # 생성 단계. OPENAI_API_KEY 는 프로젝트 루트 .env (.env.example 참고)
   provider: openai
-  model: gpt-4o-mini
-  n_docs: 3                      # LLM 에게 문서 '전체'를 줄 기술 수 (검색 상위 N건). 많을수록 비용·노이즈 증가
-  temperature: 0.0
+  model: gpt-5.6-luna
+  judge_docs: 10                  # B와 같거나 유사한지 문서별로 판정할 기술 수 (검색 상위 N건, 문서 '전체'를 줌). 많을수록 비용 증가
+  analyze_query: true            # 입력 문장을 보유기술(A)/확보하려는 기술(B)로 나눠 B로만 검색 (LLM 1회 추가)
+  min_term_overlap: 0            # 매칭 근거가 B·검색어와 공유해야 하는 분야 고유 글자쌍 수. 0 이면 검사 안 함
+  temperature: null              # null 이면 미지정(gpt-5 계열은 기본값만 허용)
   seed: 0                        # 재현성(best-effort). null 이면 미지정
-  max_output_tokens: 2000        # 출력 상한 (보통 ~500)
-  price_per_1m_input: 0.15       # USD/1M 토큰 — 비용 추정용. 요금은 바뀔 수 있으니 확인
-  price_per_1m_output: 0.60
+  max_output_tokens: 6000        # 출력 상한 (보통 ~800)
+
 
 index:
   backend: chroma               # 현재 chroma 만 구현 (Supabase 교체 지점: indexing/vector_store.py)

@@ -19,8 +19,9 @@
 ----------------
 search(query)  검색만. hits(청크 단위 전 점수)·candidates(문서 식별정보·점수)·stats 를 채운다.
                candidates[].relation_summary / tech_elements / evidences 는 **비어 있다**.
-answer(query)  search 결과 상위 기술의 문서 전체를 LLM 에 주고, 인용을 코드로 검증한 뒤
-               위 빈 필드를 채워 돌려준다 (`generation/`). OpenAI 키가 필요하며 `dry_run=True` 면 호출 없이 프롬프트만 만든다.
+answer(query)  입력 문장을 보유기술(A)/확보하려는 기술(B)로 나눠 B 로 검색하고, 상위 기술의 문서 전체를 LLM 에 주어
+               B 와 같거나 유사한 문서만 남긴다. 인용·관련성을 코드로 검증한 뒤 위 빈 필드를 채워 돌려준다 (`generation/`).
+               OpenAI 키가 필요하며 `dry_run=True` 면 호출 없이 프롬프트만 만든다.
 """
 
 from __future__ import annotations
@@ -210,28 +211,48 @@ class TechnologyRagPipeline:
         n_docs: int | None = None,
         client=None,
     ):
-        """검색 → 상위 `llm.n_docs` 기술의 **문서 전체**를 LLM 에 제공 → 답변 → 인용 검증.
+        """질의 분해 → B 로 검색 → 상위 `llm.judge_docs` 기술을 문서별로 판정 → 인용·관련성 검증.
+
+        사용자 문장을 '이미 보유한 기술(A)'과 '확보하려는 기술(B)'로 나눠 B 와 그 동의어로만 검색하고,
+        B 와 같거나(full) 유사한(similar) 문서만 `result.candidates` 에 남긴다. 무관한 문서는 탈락한다.
 
         반환 `GenerationResult`:
-          .answer / .verdict        최종 답변과, 코드 검증 후의 판정 (검증된 근거가 없으면 no_answer 로 강등)
-          .references               참고한 문서·인용·검증 결과(✅/❌)·원문 위치(페이지·섹션·bbox)
-          .result                   검증을 통과한 evidences·tech_elements 가 채워진 ModuleResult (팀 통합 계약)
+          .has_match / .verdict     B 와 같거나 유사한 나눔기술이 있는가 (코드가 검증한 매칭 기준)
+          .answer                   LLM 의 요약 답변
+          .references               문서별 매칭(level)·인용·검증 결과(✅/❌)·원문 위치(페이지·섹션·bbox)
+          .dropped_doc_ids          판정했지만 탈락한 문서
+          .query_analysis           질의 분해 결과 (보유기술·목표·B·검색어)
+          .result                   매칭된 문서만 candidates 로 남은 ModuleResult (팀 통합 계약)
 
         Args:
-            dry_run: True 면 API 를 호출하지 않고 LLM 에 보낼 프롬프트만 만든다 (키 없이 확인 가능)
-            n_docs: 이번 호출에서 LLM 에게 문서 전체를 줄 기술 수 (기본: 설정 `llm.n_docs`)
+            dry_run: True 면 API 를 호출하지 않는다. 질의 분해도 건너뛰고 입력 문장으로 검색해,
+                     LLM 에 보낼 프롬프트만 만든다 (키 없이 확인 가능)
+            n_docs: 이번 호출에서 판정할 기술 수 (기본: 설정 `llm.judge_docs`)
             client: 테스트용 가짜 OpenAI 클라이언트
         """
         from app.technology_rag.generation import Generator, LLMClient   # 지연 import
+        from app.technology_rag.generation.query_analysis import analyze_query
 
-        search = self.search(query, where=where, use_reranker=use_reranker)
         if client is not None:                        # 테스트: 캐시하지 않고 그 클라이언트만 쓴다
             gen = Generator(self.config.llm, LLMClient(self.config.llm, client))
         else:
             if self._generator is None:
                 self._generator = Generator(self.config.llm)
             gen = self._generator
-        return gen.run(query, search, self.documents, dry_run=dry_run, n_docs=n_docs)
+
+        analysis, analysis_usage = None, None
+        if self.config.llm.analyze_query and not dry_run:
+            analysis, analysis_usage = analyze_query(gen.llm, query)
+        search_query = analysis.retrieval_query() if analysis else query
+
+        search = self.search(search_query, where=where, use_reranker=use_reranker)
+        search = search.model_copy(update={          # query 는 사용자 입력 원문, 실제 검색 질의는 stats 에 남긴다
+            "query": query,
+            "stats": {**search.stats, "retrieval_query": search_query,
+                      "query_analysis": analysis.model_dump() if analysis else None},
+        })
+        return gen.run(query, search, self.documents, dry_run=dry_run, n_docs=n_docs,
+                       analysis=analysis, analysis_usage=analysis_usage)
 
     # ------------------------------------------------------------------ 변환
     def _to_retrieval_hit(self, h, detail, bm25_scores, rrf_scores, rerank_scores, rerank_on) -> RetrievalHit:
