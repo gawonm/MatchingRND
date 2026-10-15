@@ -19,8 +19,9 @@
 ----------------
 search(query)  검색만. hits(청크 단위 전 점수)·candidates(문서 식별정보·점수)·stats 를 채운다.
                candidates[].relation_summary / tech_elements / evidences 는 **비어 있다**.
-answer(query)  입력 문장을 보유기술(A)/확보하려는 기술(B)로 나눠 B 로 검색하고, 상위 기술의 문서 전체를 LLM 에 주어
-               B 와 같거나 유사한 문서만 남긴다. 인용·관련성을 코드로 검증한 뒤 위 빈 필드를 채워 돌려준다 (`generation/`).
+answer(owned, target)  상류에서 이미 나뉘어 온 보유기술(A)/원하는 기술(B)을 받아 B 로 검색하고, 상위 기술의 문서 전체를 LLM 에 주어
+               B 와 같거나(same) 유사한(similar) 문서만 남기고 나머지는 none(탈락)으로 처리한다. 인용·관련성을 코드로 검증한 뒤
+               위 빈 필드를 채워 돌려준다 (`generation/`). 문장 분해는 하지 않는다.
                OpenAI 키가 필요하며 `dry_run=True` 면 호출 없이 프롬프트만 만든다.
 """
 
@@ -203,35 +204,41 @@ class TechnologyRagPipeline:
     # ------------------------------------------------------------------ 생성
     def answer(
         self,
-        query: str,
+        owned: Sequence[str] | str | None,
+        target: Sequence[str] | str,
         *,
+        search_terms: Sequence[str] | str | None = None,
         where: dict | None = None,
         use_reranker: bool | None = None,
         dry_run: bool = False,
         n_docs: int | None = None,
         client=None,
     ):
-        """질의 분해 → B 로 검색 → 상위 `llm.judge_docs` 기술을 문서별로 판정 → 인용·관련성 검증.
+        """B 로 검색 → 상위 `llm.judge_docs` 기술을 문서별로 판정(same/similar/none) → 인용·관련성 검증.
 
-        사용자 문장을 '이미 보유한 기술(A)'과 '확보하려는 기술(B)'로 나눠 B 와 그 동의어로만 검색하고,
-        B 와 같거나(full) 유사한(similar) 문서만 `result.candidates` 에 남긴다. 무관한 문서는 탈락한다.
+        입력은 상류에서 이미 나뉘어 온 '이미 보유한 기술(A)'과 '확보하려는 기술(B)'이다. 이 모듈은 문장을 분해하지 않는다.
+        B 와 그 검색어로만 검색하고, B 와 같거나(same) 유사한(similar) 문서만 `result.candidates` 에 남긴다.
+        B 와 매칭되지 않은 문서(none)는 탈락하며 `result.stats["match"]["none"]` 에 사유와 함께 기록된다.
 
         반환 `GenerationResult`:
-          .has_match / .verdict     B 와 같거나 유사한 나눔기술이 있는가 (코드가 검증한 매칭 기준)
+          .has_match / .verdict     B 와 같거나 유사한 나눔기술이 있는가 (코드가 검증한 매칭 기준: same | similar | none)
           .answer                   LLM 의 요약 답변
           .references               문서별 매칭(level)·인용·검증 결과(✅/❌)·원문 위치(페이지·섹션·bbox)
-          .dropped_doc_ids          판정했지만 탈락한 문서
-          .query_analysis           질의 분해 결과 (보유기술·목표·B·검색어)
-          .result                   매칭된 문서만 candidates 로 남은 ModuleResult (팀 통합 계약)
+          .dropped_doc_ids          판정했지만 탈락(none)한 문서
+          .tech_input               입력으로 받은 보유기술(A)·원하는 기술(B)·검색어
+          .result                   매칭된 문서만 candidates 로 남은 ModuleResult (팀 통합 계약).
+                                    candidates[].extra["match_level"] = same | similar, ["matched_target"] = 대응한 B 항목
 
         Args:
-            dry_run: True 면 API 를 호출하지 않는다. 질의 분해도 건너뛰고 입력 문장으로 검색해,
-                     LLM 에 보낼 프롬프트만 만든다 (키 없이 확인 가능)
+            owned: 이미 보유한 기술(A). 문자열 하나 또는 목록. 매칭 근거로 쓰지 않고 판정 단계에 참고로만 전달한다
+            target: 확보하려는 기술(B). 문자열 하나 또는 목록 (하나 이상 필요)
+            search_terms: B 의 동의어·상하위 표현 (선택). 없으면 B 만으로 검색한다
+            dry_run: True 면 API 를 호출하지 않고, LLM 에 보낼 프롬프트만 만든다 (키 없이 확인 가능)
             n_docs: 이번 호출에서 판정할 기술 수 (기본: 설정 `llm.judge_docs`)
             client: 테스트용 가짜 OpenAI 클라이언트
         """
         from app.technology_rag.generation import Generator, LLMClient   # 지연 import
-        from app.technology_rag.generation.query_analysis import analyze_query
+        from app.technology_rag.generation.schemas import TechInput
 
         if client is not None:                        # 테스트: 캐시하지 않고 그 클라이언트만 쓴다
             gen = Generator(self.config.llm, LLMClient(self.config.llm, client))
@@ -240,19 +247,14 @@ class TechnologyRagPipeline:
                 self._generator = Generator(self.config.llm)
             gen = self._generator
 
-        analysis, analysis_usage = None, None
-        if self.config.llm.analyze_query and not dry_run:
-            analysis, analysis_usage = analyze_query(gen.llm, query)
-        search_query = analysis.retrieval_query() if analysis else query
+        inp = TechInput(owned_technologies=owned, targets=target, search_terms=search_terms)
+        search_query = inp.retrieval_query()
 
         search = self.search(search_query, where=where, use_reranker=use_reranker)
-        search = search.model_copy(update={          # query 는 사용자 입력 원문, 실제 검색 질의는 stats 에 남긴다
-            "query": query,
-            "stats": {**search.stats, "retrieval_query": search_query,
-                      "query_analysis": analysis.model_dump() if analysis else None},
+        search = search.model_copy(update={          # 검색 질의와 입력을 stats 에 남긴다 (query 는 실제 검색 질의 그대로)
+            "stats": {**search.stats, "retrieval_query": search_query, "tech_input": inp.model_dump()},
         })
-        return gen.run(query, search, self.documents, dry_run=dry_run, n_docs=n_docs,
-                       analysis=analysis, analysis_usage=analysis_usage)
+        return gen.run(inp, search, self.documents, dry_run=dry_run, n_docs=n_docs)
 
     # ------------------------------------------------------------------ 변환
     def _to_retrieval_hit(self, h, detail, bm25_scores, rrf_scores, rerank_scores, rerank_on) -> RetrievalHit:

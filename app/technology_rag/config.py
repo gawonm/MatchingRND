@@ -91,8 +91,6 @@ class LLMConfig(BaseModel):
     model: str = "gpt-5.6-luna"
     #: B와 같거나 유사한지 문서별로 판정할 기술 수 (검색 상위 N건, 문서 전체를 LLM 에게 준다). 많을수록 비용이 늘어난다
     judge_docs: int = Field(default=8, ge=1, le=20)
-    #: 사용자 문장을 보유기술(A)·확보하려는 기술(B)로 나눠 B로만 검색한다. False 면 입력 문장 전체로 검색한다
-    analyze_query: bool = True
     #: 매칭 근거(인용문+문서명)가 B·검색어와 공유해야 하는 분야 고유 글자쌍 수의 하한. 0 이면 검사하지 않는다
     min_term_overlap: int = Field(default=2, ge=0)
     temperature: float | None = None

@@ -16,36 +16,58 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from app.common.schemas import ModuleResult
 
-Verdict = Literal["answerable", "partial", "no_answer"]
-MatchLevel = Literal["full", "similar"]
+Verdict = Literal["same", "similar", "none"]      # 문서 전체 중 가장 높은 등급 (same > similar > none)
+MatchLevel = Literal["same", "similar"]           # 문서별 등급. 매칭 안 됨(none)은 목록에서 빠진다
 
 
 # =============================================================================
 # 1. LLM 이 돌려주는 형식
 # =============================================================================
 
-class QueryAnalysis(BaseModel):
-    """사용자 문장을 '이미 보유한 기술(A)'과 '확보하려는 기술(B)'로 나눈 결과 (질의 분해 LLM 응답)."""
+def _as_list(value) -> list[str]:
+    """문자열 하나 또는 목록을 받아 공백을 정리하고 중복·빈 항목을 뺀 목록으로 만든다."""
+    if value is None:
+        return []
+    items = [value] if isinstance(value, str) else list(value)
+    return list(dict.fromkeys(s.strip() for s in items if isinstance(s, str) and s.strip()))
 
-    owned_technologies: list[str] = Field(description="이미 보유하고 있다고 말한 기술들")
-    goal: str = Field(description="개발하려는 제품·프로젝트")
-    target: str = Field(description="새로 확보하려는 기술(B). 기능과 적용대상을 포함한 하나의 명사구")
-    search_terms: list[str] = Field(description="B를 나눔기술 문서에서 찾기 위한 검색어 (동의어·상하위 표현). 보유기술명 제외")
+
+class TechInput(BaseModel):
+    """Technology RAG 입력. 상류에서 이미 나뉘어 온 '보유기술(A)'과 '원하는 기술(B)'.
+
+    검색과 매칭 판정은 B 에 대해서만 한다. A 는 '이미 가진 기술(매칭 근거가 아님)'로 판정 단계에만 전달한다.
+    """
+
+    owned_technologies: list[str] = Field(default_factory=list, description="이미 보유한 기술들 (A)")
+    targets: list[str] = Field(description="새로 확보하려는 기술들 (B). 하나 이상")
+    search_terms: list[str] = Field(default_factory=list, description="B 의 동의어·상하위 표현 (선택). 보유기술명 제외")
+
+    @field_validator("owned_technologies", "targets", "search_terms", mode="before")
+    @classmethod
+    def _clean(cls, value):
+        return _as_list(value)
+
+    @field_validator("targets")
+    @classmethod
+    def _targets_required(cls, value):
+        if not value:
+            raise ValueError("원하는 기술(B)이 비어 있습니다. 하나 이상 입력하세요.")
+        return value
 
     def retrieval_query(self) -> str:
-        """검색에 쓰는 질의. 보유기술(A)과 최종 제품은 넣지 않는다."""
-        terms = [t.strip() for t in self.search_terms if t.strip()]
-        return "\n".join(part for part in (self.target.strip(), " / ".join(terms)) if part)
+        """검색에 쓰는 질의. 보유기술(A)은 넣지 않는다."""
+        return "\n".join(part for part in (" / ".join(self.targets), " / ".join(self.search_terms)) if part)
 
 
 class DocMatch(BaseModel):
     """B와 같거나 유사하다고 판정한 문서 1건. 무관한 문서는 목록에 넣지 않는다."""
 
     doc_id: str = Field(description="제공된 문서의 doc_id. 제공되지 않은 것은 쓰지 말 것")
+    matched_target: str = Field(description="B 목록 중 이 문서가 가장 잘 대응하는 항목을 한 글자도 바꾸지 말고 그대로 복사")
     # 필드 순서가 생성 순서다. 이유를 먼저 쓰게 해서 이유와 모순되는 level을 줄인다.
     reason: str = Field(description="B가 요구하는 기능과 문서가 서술한 기능을 비교한 한두 문장")
     difference: str = Field(description="B와 다른 점 (적용 대상·설치 환경·센싱 원리·범위). 없으면 '없음'")
@@ -53,7 +75,7 @@ class DocMatch(BaseModel):
         description="문서의 기술이 B의 적용 대상·환경(예: 지중 매설 배관)에 적용하거나 응용할 수 있는 구조인가. "
                     "기능 이름만 같고 대상이 다른 공정·설비 전용 기술이면 false"
     )
-    level: MatchLevel = Field(description="full=B의 핵심 기능을 직접 서술 / similar=B의 일부·인접 기능을 명시적으로 서술")
+    level: MatchLevel = Field(description="same=B의 핵심 기능을 직접 서술 / similar=B의 일부·인접 기능을 명시적으로 서술")
     quote: str = Field(description="판단 근거가 된, 문서 본문의 문장을 한 글자도 바꾸지 말고 그대로 복사 (한 문장)")
 
 
@@ -66,7 +88,7 @@ class TechElementOut(BaseModel):
 
 class LLMAnswer(BaseModel):
     verdict: Verdict = Field(
-        description="answerable=full 매칭 있음 / partial=similar 매칭만 있음 / no_answer=매칭 없음"
+        description="same=same 매칭 있음 / similar=similar 매칭만 있음 / none=매칭 없음"
     )
     answer: str = Field(description="기술기획 담당자에게 주는 한국어 답변. 문서에 적힌 내용만 사용")
     matches: list[DocMatch]
@@ -95,7 +117,8 @@ class VerifiedReference(BaseModel):
     quote: str
     ok: bool
     reason: str                         # 일치 | 제공 안 한 문서 | 본문에 없음 | 너무 짧음 | 분야 고유 표현 불일치
-    level: str | None = None            # full | similar
+    level: str | None = None            # same | similar
+    matched_target: str | None = None   # 이 문서가 대응하는 B 항목 (B 가 하나면 그 항목)
     difference: str = ""                # B와 다른 점 (LLM 서술)
     section: str | None = None
     page: int | None = None             # 0-based
@@ -131,7 +154,7 @@ class GenerationResult(BaseModel):
 
     answer: str
     llm_verdict: Verdict                # LLM 이 말한 판정
-    verdict: Verdict                    # 코드 검증 후 최종 판정 (근거가 없으면 no_answer 로 강등)
+    verdict: Verdict                    # 코드 검증 후 최종 판정 (근거가 없으면 none 으로 강등)
     downgrade_note: str = ""
     gaps: list[str] = Field(default_factory=list)
 
@@ -144,9 +167,9 @@ class GenerationResult(BaseModel):
     unsupported_rate: float = 0.0       # 검증 실패한 참고문헌 비율 (PRD: Unsupported Claim Rate)
     usage: Usage = Field(default_factory=Usage)
 
-    #: 검증을 통과한 full/similar 매칭이 하나라도 있는가 ("B와 같거나 유사한 나눔기술이 있는가"의 답)
+    #: 검증을 통과한 same/similar 매칭이 하나라도 있는가 ("B와 같거나 유사한 나눔기술이 있는가"의 답)
     has_match: bool = False
-    query_analysis: QueryAnalysis | None = None   # 질의 분해 결과 (실패·비활성이면 None → 원문 질의로 검색)
+    tech_input: TechInput | None = None           # 입력으로 받은 보유기술(A)·원하는 기술(B)·검색어
     retrieval_query: str = ""                     # 실제로 검색에 쓴 질의
     dropped_doc_ids: list[str] = Field(default_factory=list)   # LLM 에게 줬지만 매칭에서 탈락한 문서
 
