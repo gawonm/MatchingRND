@@ -207,3 +207,81 @@ python -X utf8 -m tests.tech_rag 3 4      # 번호(0부터)로 일부만
 - 시험 쿼리가 7건뿐이라 일반화할 수 없다. 특히 재현율은 정답이 1~3건인 케이스만으로 측정했다.
 - 판정은 LLM의 의미 판단에 의존하며 실행마다 달라질 수 있다.
 - `min_term_overlap` 을 끈 상태에서는 약한 유사 후보가 섞인다. 정밀도와 재현율은 맞바꿈 관계이며 현재는 재현율을 우선한 설정이다.
+
+---
+
+## 9. 2026-10-16 변경: 분해된 입력 수신 + same / similar / none
+
+> 1~8절은 이 변경 **이전** 동작(질의 분해 포함, full/similar, answerable/partial/no_answer)을 기록한 것이라 그대로 두었다.
+> 현재 코드는 아래 내용을 따른다. 아래 변경 이후의 시험 결과는 아직 측정하지 않았다 (6절 수치는 이전 구현 기준).
+
+### 9.1 한 줄 요약
+
+팀 합의 흐름에서 입력은 상류에서 이미 보유기술(A)과 원하는 기술(B)로 나뉘어 온다. 그래서 Technology RAG 안의
+**질의 분해(LLM 1회)를 삭제**하고, `answer()` 가 A·B 를 직접 받아 **B 에 대해서만** same / similar / none 으로 판정하도록 바꿨다.
+
+### 9.2 무엇이 달라졌나
+
+| 구분 | 변경 전 (1~8절) | 변경 후 |
+|---|---|---|
+| 호출 | `answer(query: str)` | `answer(owned, target, *, search_terms=None, ...)` |
+| 입력 분해 | LLM 이 문장을 A / 개발목표 / B / 검색어로 분해 (실패하면 원문 전체로 검색) | **없음.** 입력으로 받은 A·B 를 그대로 사용. B 가 비면 오류 (원문 fallback 없음) |
+| 검색 질의 | `target` + 분해 LLM 이 만든 동의어 `search_terms` | B(여러 개면 ` / ` 로 연결) + 호출자가 넘긴 `search_terms`(선택). 없으면 B 만 |
+| 판정 프롬프트 입력 | B, 개발 목표, A, 사용자 입력 원문 | B 목록, A 목록 (개발 목표·원문 없음). A 는 계속 "매칭 근거 아님" |
+| 문서별 등급 | `full` / `similar` (무관은 목록에서 빠짐) | `same` / `similar` / `none` |
+| 전체 verdict | `answerable` / `partial` / `no_answer` | `same` / `similar` / `none` (문서 중 가장 높은 등급, 코드가 결정) |
+| LLM 호출 수 | 2회 (분해 + 판정) | 1회 (판정) |
+| `ModuleResult.query` | 사용자 입력 원문 | 실제 검색 질의 (계약 문구 "실제 실행된 최종 query" 와 일치) |
+| `dry_run=True` | 분해를 건너뛰고 원문으로 검색 | B 로 검색한 결과로 프롬프트를 만든다 |
+| 설정 | `llm.analyze_query` | 삭제 |
+
+### 9.3 새로 생긴 출력
+
+- `candidates[].extra["match_level"]`: `"same"` 또는 `"similar"`. 이전에는 `relation_summary` 앞의 "[동일]"/"[유사]" 문자열과 `stats["match"]` 에만 있었다.
+- `candidates[].extra["matched_target"]`: 문서가 대응한 B 항목. B 가 하나면 그 항목, 여러 개면 LLM 이 고른 항목 (목록에 없는 값이면 `None`).
+- `relation_summary` 접두어: `"[same] …"` / `"[similar] …"` (이전: `"[동일]"` / `"[유사]"`).
+- `stats["match"]` 변경:
+  - `target`(문자열) → `targets`(목록)
+  - `verdict`, `items[].matched_target` 추가
+  - `none`: 판정했지만 매칭되지 않은 문서와 사유 — `[{"doc_id", "title", "level": "none", "reason"}]`.
+    `reason` 은 `LLM 미선택(B와 관련 없음)` 또는 `검증 탈락: <사유>` (인용이 본문에 없음 / B의 적용 대상에 적용 불가 / 분야 고유 표현 불일치).
+  - `dropped`, `dropped_titles`, `rejected` 는 그대로 유지
+- `GenerationResult.query_analysis` → `tech_input` (입력 A·B·검색어).
+- LLM 응답 스키마 `DocMatch` 에 `matched_target` 필드가 추가되고 `level` 은 `same | similar` 가 되었다. 무관한 문서를 `matches` 에 넣지 않는 방식은 그대로다.
+
+```python
+r = pipe.answer(
+    ["폐열을 회수하는 폐열 회수시스템 기술"],        # 보유기술 A (문자열 하나도 가능)
+    "터빈 발전 및 열교환 연동 제어 기술",            # 원하는 기술 B (목록도 가능)
+    search_terms=["ORC 터빈 발전", "열교환 연동 제어"],  # 선택
+)
+r.verdict                       # same | similar | none
+r.result.candidates[0].extra    # {"match_level": "same", "matched_target": "..."}
+r.result.stats["match"]["none"] # 탈락 문서와 사유
+```
+
+### 9.4 바뀌지 않은 것
+
+검색(`search()`: BM25 + Dense + RRF, 리랭커 꺼짐, 문서 단위 집계), 청킹·인덱스, 판정 대상 문서 수(`judge_docs`),
+인용의 원문 대조(`validation.py`), 분야 겹침 검사(`relevance.py`, 현재 `min_term_overlap: 0`), `applicable_to_target` 검사,
+"verdict·has_match 는 LLM 이 아니라 검증을 통과한 매칭으로 코드가 정한다"는 원칙, `evidences`·`tech_elements` 생성, 사용 모델·비용 계산.
+따라서 6절에서 확인된 한계(약한 similar 후보, 실행마다 달라지는 판정, 경계 문서)는 이번 변경으로 해결되지 않았다.
+다만 "분해된 B 의 문구가 매번 달라진다"는 원인은 입력 고정으로 없어진다.
+
+### 9.5 변경한 파일
+
+`app/technology_rag/` 안에서만 수정했다.
+`pipeline.py`, `config.py`, `configs/technology_rag.yaml`, `generation/{__init__,generator,prompt,schemas}.py` 를 고쳤고
+`generation/query_analysis.py` 를 삭제했다. 시험 스크립트 `tests/tech_rag.py` 는 A·B 를 따로 적는 입력으로 바꿨다.
+
+### 9.6 아직 따라가지 못한 곳 (이 폴더 밖)
+
+- `app/orchestrator.py` 의 `_technology_answer` 는 여전히 `answer(query)` 에 합친 문자열을 넘긴다. 새 시그니처와 맞지 않아 통합 경로에서는 호출이 실패한다.
+  `request.owned_technologies` 와 B(`unmet_elements` 등)를 따로 넘기도록 바꿔야 한다.
+- 7절의 "B 가 두 군데에서 정의된다"(5번), "Orchestrator 가 보내는 문자열 형식"(6번), "dry_run 이 원문으로 검색한다"(12번)는 이번 변경으로 해소되는 항목이다. 단 오케스트레이터를 고치기 전에는 해소되지 않는다.
+- B 가 여러 개일 때의 판정 규칙 (문서가 B 항목 중 하나만 충족해도 매칭으로 보는지, 전부 충족해야 하는지)은 팀 결정이 필요하다. 현재 구현은 "하나 이상 대응하면 매칭"이다.
+
+### 9.7 시험 방법 변경
+
+실행 방법은 5절과 같다 (`python -X utf8 -m tests.tech_rag`). 케이스는 문장 하나(`q`)가 아니라 `owned`(A 목록)와 `target`(B)으로 적는다.
+출력에는 문서별 `[same]/[similar]` 와 대응 B 항목, `none` 문서와 사유가 추가되었다.
