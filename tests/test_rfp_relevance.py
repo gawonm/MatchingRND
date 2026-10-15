@@ -56,6 +56,38 @@ def question(**options):
 
 
 class RfpRelevanceTests(unittest.TestCase):
+    def test_problem_only_B_never_disables_gate_or_uses_external_C_instead(self):
+        details = build_query(['보유 A'], '요청 B', external_elements=[
+            {'technology': '무관 C', 'quote': 'C 근거', 'source_id': 'c'}], return_details=True)
+        for inputs in (details, details['query']):
+            self.assertEqual(query_constraints(inputs), (['보유 A'], ['요청 B'], True))
+            index, retrieved, llm, _ = fixture([('same', 'different')])
+            with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
+                result = search_module_result(index, inputs, relevance_llm=llm)
+            self.assertEqual(result.candidates, [])
+            self.assertEqual(result.hits, [])
+            self.assertEqual(llm.call_count, 2)
+
+    def test_problem_only_B_allows_same_or_partial_with_verified_evidence(self):
+        details = build_query(['보유 A'], '요청 B', return_details=True)
+        index, retrieved, llm, _ = fixture([('same', 'similar')])
+        with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
+            result = search_module_result(index, details, relevance_llm=llm)
+        self.assertEqual(len(result.candidates), 1)
+
+    def test_multiline_original_problem_survives_string_input(self):
+        details = build_query(['A'], 'B 첫째 줄\nB 둘째 줄', external_elements=[
+            {'technology': 'C', 'quote': '근거', 'source_id': 'c'}], return_details=True)
+        self.assertEqual(query_constraints(details['query']), (['A'], ['B 첫째 줄\nB 둘째 줄'], True))
+
+    def test_missing_owned_input_cannot_bypass_pair_filter(self):
+        details = build_query([], '요청 B', return_details=True)
+        index, retrieved, llm, _ = fixture([('same', 'same')])
+        with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
+            result = search_module_result(index, details, relevance_llm=llm)
+        self.assertEqual(result.candidates, [])
+        llm.assert_not_called()
+
     def test_llm_progress_is_silent_unless_verbose(self):
         from app.rfp_rag.scripts import try_search
 

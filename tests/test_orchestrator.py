@@ -122,8 +122,16 @@ class OrchestratorTests(unittest.TestCase):
         self.rfp.side_effect = search
         result = self.orchestrator.run({**self.request, "unmet_elements": ["실증", "실증"]})
         self.assertEqual(result.request.unmet_elements, ["실증"])
+        self.assertEqual(self.ntis.call_args.kwargs['requested_technologies'], ['실증'])
         self.assertIn("미충족 검토 요소 (기업 입력): 실증", result.queries["rfp"])
         self.assertNotEqual(result.queries["rfp"], "덮어쓴 Query")
+
+    def test_ntis_keeps_user_B_when_technology_has_no_match(self):
+        self.technology.return_value = ModuleResult(module='technology', query='A+B')
+        self.orchestrator.run({**self.request, 'unmet_elements': ['센서융합']})
+        self.assertEqual(self.ntis.call_args.args[0], self.request['problem'])
+        self.assertEqual(self.ntis.call_args.kwargs['external_technologies'], [])
+        self.assertEqual(self.ntis.call_args.kwargs['requested_technologies'], ['센서융합'])
 
     def test_default_pdf_index_is_reused_between_questions(self):
         from app.rfp_rag import pipeline
