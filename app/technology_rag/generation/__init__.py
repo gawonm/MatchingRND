@@ -10,7 +10,8 @@ from app.technology_rag.generation.llm import LLMClient, LLMRefusalError, Missin
 from app.technology_rag.generation.schemas import (
     GenerationResult,
     LLMAnswer,
-    Reference,
+    DocMatch,
+    QueryAnalysis,
     TechElementOut,
     Usage,
     VerifiedElement,
@@ -20,6 +21,6 @@ from app.technology_rag.generation.validation import QuoteCheck, check_quote, lo
 
 __all__ = [
     "Generator", "LLMClient", "MissingApiKeyError", "LLMRefusalError",
-    "GenerationResult", "LLMAnswer", "Reference", "TechElementOut", "Usage",
+    "GenerationResult", "LLMAnswer", "DocMatch", "QueryAnalysis", "TechElementOut", "Usage",
     "VerifiedElement", "VerifiedReference", "QuoteCheck", "check_quote", "locate",
 ]
