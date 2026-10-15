@@ -48,6 +48,131 @@ class FakeLLM:
 
 
 class FinalAnswerTests(unittest.TestCase):
+    def test_automatic_support_linking_does_not_remove_other_row_citations(self):
+        state, report = fixture()
+        other = Evidence(doc_id='rfp-2', source='rfp', quote='다른 과제는 수소 생산 공정 개발을 요구한다.', verified=True)
+        state.rfp.candidates.append(ExternalTechCandidate(doc_id='rfp-2', title='다른 과제', relevance_score=1,
+            relation_summary='', evidences=[other], extra={'requirements': {
+                '개발내용': [{'text': other.quote, 'page': 1}]}}))
+        answer = generate_final_answer(state, report,
+            llm=FakeLLM(evidence_id='E2', quote=other.quote), max_retries=0)
+        self.assertFalse(answer.claims[0].accepted)
+        self.assertEqual({c.evidence_id for c in answer.claims[0].draft.citations}, {'E1', 'E2'})
+        self.assertIn('해당 Gap 행', answer.claims[0].reason)
+
+    def test_source_and_gap_linkage_are_enforced_by_response_schema(self):
+        from pydantic import ValidationError
+        for section, gap_index in [('rfp', 0), ('external', 2), ('gap', None)]:
+            with self.subTest(section=section, gap_index=gap_index), self.assertRaises(ValidationError):
+                AnswerDraft.model_validate({'claims': [{'section': section, 'gap_index': gap_index,
+                    'text': 'claim', 'citations': [{'evidence_id': 'E1', 'quote': None}]}]})
+
+    def test_optional_large_context_cannot_crowd_out_requirement_evidence(self):
+        state, report = fixture()
+        ev = Evidence(doc_id='pub-optional', source='pub', quote='任意の長い参考資料です。' * 300, verified=True)
+        state.technology.candidates = [ExternalTechCandidate(doc_id=ev.doc_id, title='optional',
+            relevance_score=1, relation_summary='', evidences=[ev])]
+        def llm(messages, model):
+            payload = json.loads(messages[-1]['content'])
+            if model is AnswerDraft:
+                ids = payload['gap'][0]['evidence_ids']['rfp']
+                self.assertTrue(ids)
+                self.assertLessEqual(sum(len(row['quote']) for row in payload['evidence']), 40)
+                return AnswerDraft(claims=[DraftClaim(section='gap', gap_index=0,
+                    text='추가 검토 후보입니다.', citations=[CitationRequest(evidence_id=ids[0])])])
+            return SupportReview(decisions=[SupportDecision(claim_index=0, supported=True, reason='지원됨')])
+        answer = generate_final_answer(state, report, llm=llm, max_evidence_chars=40)
+        self.assertEqual(answer.status, 'ok')
+
+    def test_duplicate_semantic_reviews_remain_rejected(self):
+        state, report = fixture()
+        def llm(messages, model):
+            if model is AnswerDraft:
+                return AnswerDraft(claims=[DraftClaim(section='gap', gap_index=0, text='추가 검토 후보입니다.',
+                                                     citations=[CitationRequest(evidence_id='E1')])])
+            return SupportReview(decisions=[SupportDecision(claim_index=0, supported=True, reason='first'),
+                                            SupportDecision(claim_index=0, supported=True, reason='duplicate')])
+        answer = generate_final_answer(state, report, llm=llm, max_retries=0)
+        self.assertEqual(answer.status, 'insufficient')
+        self.assertFalse(answer.claims[0].accepted)
+
+    def test_evidence_id_selects_exact_supplied_quote_and_row_mapping_reaches_reviewer(self):
+        state, report = fixture()
+        payloads = []
+        def llm(messages, model):
+            payload = json.loads(messages[-1]['content'])
+            payloads.append(payload)
+            if model is AnswerDraft:
+                ids = payload['gap'][0]['evidence_ids']['rfp']
+                return AnswerDraft(claims=[DraftClaim(section='gap', gap_index=0,
+                    text='현재 제공 자료에서 충족 근거를 확인하지 못하여 추가 개발 검토 후보입니다.',
+                    citations=[CitationRequest(evidence_id=ids[0])])])
+            self.assertEqual(payload['claims'][0]['gap']['label'], GapLabel.RND_NEEDED.value)
+            self.assertIn('assessment_scope', payload['claims'][0]['gap'])
+            return SupportReview(decisions=[SupportDecision(claim_index=0, supported=True, reason='분석 범위와 근거 일치')])
+        answer = generate_final_answer(state, report, llm=llm)
+        self.assertEqual(answer.status, 'ok')
+        self.assertEqual(answer.claims[0].draft.citations[0].quote, '동적 객체 추적 기술을 개발한다.')
+        self.assertEqual(len(payloads), 2)
+
+    def test_invalid_reference_is_regenerated_with_feedback_and_never_auto_accepted(self):
+        state, report = fixture()
+        generated = 0
+        def llm(messages, model):
+            nonlocal generated
+            payload = json.loads(messages[-1]['content'])
+            if model is AnswerDraft:
+                generated += 1
+                if generated > 1:
+                    self.assertIn('repair', payload)
+                return AnswerDraft(claims=[DraftClaim(section='gap', gap_index=0, text='추가 검토 후보입니다.',
+                    citations=[CitationRequest(evidence_id='invented' if generated == 1 else 'E1')])])
+            return SupportReview(decisions=[SupportDecision(claim_index=0, supported=True, reason='지원됨')])
+        answer = generate_final_answer(state, report, llm=llm)
+        self.assertEqual(answer.status, 'ok')
+        self.assertEqual(len(answer.stats['draft_attempts']), 2)
+        self.assertFalse(answer.stats['draft_attempts'][0]['claims'][0]['accepted'])
+        self.assertTrue(answer.claims[0].accepted)
+
+    def test_external_gap_requires_both_RFP_and_matching_external_evidence(self):
+        from app.gap_analysis import SourceMatch
+        state, report = fixture()
+        ev = Evidence(doc_id='pub-1', source='pub', quote='동적 객체 추적을 지원하는 외부 센서 기술입니다.', verified=True)
+        state.technology.candidates = [ExternalTechCandidate(doc_id='pub-1', title='센서',
+            relevance_score=1, relation_summary='', evidences=[ev])]
+        report.items[0].external = [SourceMatch(source='pub', element_name='센서', coverage='full',
+            verified=True, reason='일치', evidences=[ev])]
+        report.items[0].label = GapLabel.EXTERNAL
+        # Generation links the row's real mandatory source, while the standalone guard stays strict.
+        answer = generate_final_answer(state, report, llm=FakeLLM(evidence_id='E2'), max_retries=0)
+        self.assertTrue(answer.claims[0].accepted)
+        from app.final_answer import _check_claim
+        bank = {r.evidence_id: r for r in answer.evidence}
+        unlinked = DraftClaim(section='gap', gap_index=0, text='외부기술보완입니다.',
+                              citations=[CitationRequest(evidence_id='E2', quote=bank['E2'].evidence.quote)])
+        self.assertFalse(_check_claim(unlinked, bank, report).accepted)
+
+    def test_accepted_claims_are_preserved_while_only_rejected_claims_are_repaired(self):
+        state, report = fixture()
+        generated = 0
+        def llm(messages, model):
+            nonlocal generated
+            if model is AnswerDraft:
+                generated += 1
+                if generated == 1:
+                    return AnswerDraft(claims=[
+                        DraftClaim(section='gap', gap_index=0, text='추가 검토 후보입니다.', citations=[CitationRequest(evidence_id='E1')]),
+                        DraftClaim(section='rfp', gap_index=None, text='RFP 원문을 확인하세요.', citations=[CitationRequest(evidence_id='bad')])])
+                return AnswerDraft(claims=[DraftClaim(section='rfp', gap_index=None,
+                    text='동적 객체 추적을 요구합니다.', citations=[CitationRequest(evidence_id='E1')])])
+            payload = json.loads(messages[-1]['content'])
+            return SupportReview(decisions=[SupportDecision(claim_index=row['claim_index'], supported=True, reason='지원됨')
+                                             for row in payload['claims']])
+        answer = generate_final_answer(state, report, llm=llm)
+        self.assertEqual(answer.status, 'ok')
+        self.assertEqual(len(answer.claims), 2)
+        self.assertTrue(all(claim.accepted for claim in answer.claims))
+
     def test_valid_citation_and_semantic_review(self):
         state, report = fixture()
         llm = FakeLLM()
@@ -62,7 +187,7 @@ class FinalAnswerTests(unittest.TestCase):
         for options in ({"evidence_id": "E999"}, {"quote": "원문에 없는 실시간 추론 기술"}):
             state, report = fixture()
             llm = FakeLLM(**options)
-            answer = generate_final_answer(state, report, llm=llm)
+            answer = generate_final_answer(state, report, llm=llm, max_retries=0)
             self.assertFalse(answer.claims[0].accepted)
             self.assertNotIn("추가 개발을 검토할 후보", answer.markdown)
             self.assertEqual(llm.calls, ["AnswerDraft"])

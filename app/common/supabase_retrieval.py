@@ -124,15 +124,7 @@ def retrieve_ntis(structured_query, analysis_top_n):
 
 
 def run_ntis_module(problem, **options):
-    from app.ntis_rag.config import ANALYSIS_TOP_N
-    from app.ntis_rag.generation.analysis import structure_query,extract_all_project_tech,canonicalize_technologies,aggregate_prior_rd_axes
+    from app.ntis_rag.pipeline import run_ntis_pipeline
     from app.ntis_rag.adapter import to_module_result
-    top_n = options.pop('analysis_top_n',ANALYSIS_TOP_N)
-    if top_n < 1:
-        raise ValueError('analysis_top_n은 1 이상이어야 합니다.')
-    structured = structure_query(problem,**options)
-    projects = retrieve_ntis(structured,top_n)
-    analyses = extract_all_project_tech(projects)
-    canonical = canonicalize_technologies(analyses)
-    return to_module_result(dict(query={'original_query':problem,'structured_query':structured},related_projects=projects,
-                                 project_analyses=analyses,canonical_technologies=canonical,prior_rd_axes=aggregate_prior_rd_axes(canonical)))
+
+    return to_module_result(run_ntis_pipeline(problem, _retriever=retrieve_ntis, **options))

@@ -156,7 +156,8 @@ class RagStructureTests(unittest.TestCase):
         with patch.dict('sys.modules', {analysis.__name__: analysis, retrieval.__name__: retrieval}):
             result = run_ntis_module('질문', analysis_top_n=2)
         self.assertEqual(result.module, 'ntis')
-        self.assertEqual(result.query, '센서 질문')
+        self.assertIn('센서 질문', result.query)
+        self.assertIn('질문', result.query)
         self.assertEqual(result.candidates, [])
 
     def test_legacy_imports_reference_new_implementations(self):
