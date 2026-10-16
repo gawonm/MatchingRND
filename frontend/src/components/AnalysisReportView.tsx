@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { AnalysisReport } from '../types/analysisReport';
 import { parseReportMarkdown, REPORT_HEADINGS, safeLink, type MarkdownBlock } from '../lib/reportMarkdown';
 
@@ -34,12 +35,13 @@ const overviewSections = [
   ['Gap 요약', REPORT_HEADINGS[2]], ['후속 확인사항', REPORT_HEADINGS[6]],
 ] as const;
 
-export function ReportOverview({ report, onOpenReport }: { report: AnalysisReport; onOpenReport: () => void }) {
+// children(구조화 추천)이 있으면 Markdown 섹션 요약 대신 표시한다. 없으면(view 실패) 기존 Markdown 요약을 유지한다.
+export function ReportOverview({ report, onOpenReport, children }: { report: AnalysisReport; onOpenReport: () => void; children?: ReactNode }) {
   const sections = parseReportMarkdown(report.markdown);
   return <div className="overview-grid" data-testid="analysis-overview">
     <div className="app-card p-3 overview-status"><strong>{statusLabels[report.status]}</strong><span className="small text-secondary"> · status: {report.status} · 근거 {report.evidence.length}건</span>
       {report.warnings.length > 0 && <ul className="small mb-0 mt-2">{report.warnings.map(warning => <li key={warning}>{warning}</li>)}</ul>}</div>
-    {overviewSections.map(([title, heading]) => {
+    {children ?? overviewSections.map(([title, heading]) => {
       const section = sections.find(item => item.heading === heading);
       const end = section?.blocks.findIndex(block => block.type === 'subheading') ?? -1;
       const blocks = section ? section.blocks.slice(0, end === -1 ? undefined : end) : [];

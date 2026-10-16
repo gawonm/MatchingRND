@@ -116,3 +116,9 @@ export function gapTechnologies(gap: GapItem, technologies: TechnologyCandidate[
   const linked = ids.flatMap(id => technologies.find(t => t.id === id && t.gap_item_ids.includes(gap.id)) ?? []);
   return { linked, unresolved: ids.length - linked.length };
 }
+
+// overview.primary_*_id가 가리키는 후보만 쓴다. 없거나 일치하지 않으면 다른 후보로 대체하지 않는다.
+export function primaryCandidate<T extends { id: string; rank: number }>(items: T[], id: string | null): T | 'empty' | 'missing' {
+  if (!items.length) return 'empty';
+  return rankedSelection(items, null).ordered.find(item => item.id === id) ?? 'missing';
+}

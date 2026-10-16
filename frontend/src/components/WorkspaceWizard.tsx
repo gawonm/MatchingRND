@@ -10,6 +10,7 @@ import EvidenceExplorer from './analysis/EvidenceExplorer';
 import RfpExplorer from './analysis/RfpExplorer';
 import TechnologyExplorer from './analysis/TechnologyExplorer';
 import GapExplorer, { type GapViewState } from './analysis/GapExplorer';
+import PrimaryPicks from './analysis/PrimaryPicks';
 import type { SplitViewState } from './analysis/SplitExplorer';
 import { COMMON_RND_NOTICE_TITLE, COMMON_RND_NOTICES, reportHasCommonNotice, viewAvailability } from '../lib/analysisView';
 import type { TechnologyElement } from '../types/technologyElement';
@@ -44,6 +45,7 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
   useEffect(() => { if (focusRequest) document.getElementById(focusRequest.id)?.focus(); }, [focusRequest]);
   const openGap = (rfpId: string, gapItemId: string) => { setExplore(current => ({ ...current, gap: { rfpId, selectedId: gapItemId, mobileDetailOpen: true } })); setTab('gap'); setFocusRequest({ id: 'gap-detail-title' }); };
   const openTechnology = (technologyId: string) => { setExplore(current => ({ ...current, technology: { selectedId: technologyId, mobileDetailOpen: true } })); setTab('technology'); setFocusRequest({ id: 'technology-detail-title' }); };
+  const openRfp = (rfpId: string) => { setExplore(current => ({ ...current, rfp: { selectedId: rfpId, mobileDetailOpen: true } })); setTab('rfp'); setFocusRequest({ id: 'rfp-detail-title' }); };
 
   const submitInput = async (next: TechnologyInput, mode: 'extract' | 'manual') => {
     onInputChange(next);
@@ -77,7 +79,10 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
     </div>
     <Tabs activeKey={tab} onSelect={key => setTab(key ?? 'overview')} className="mb-3" id="workspace-result-tabs">
       <Tab eventKey="overview" title="Overview">
-        <ReportOverview report={report.result.report} onOpenReport={() => setTab('report')} />
+        {/* 구조화 view가 있으면 우선 추천 카드, 없으면(Projection 실패) 기존 Markdown 요약을 그대로 쓴다. */}
+        <ReportOverview report={report.result.report} onOpenReport={() => setTab('report')}>
+          {structured && <PrimaryPicks view={structured} onOpenTechnology={openTechnology} onOpenRfp={openRfp} />}
+        </ReportOverview>
         {!reportHasCommonNotice(report.result.report.markdown) && <section className="app-card p-3 mt-3" aria-labelledby="common-rnd-notice">
           <h3 id="common-rnd-notice" className="h6">{COMMON_RND_NOTICE_TITLE}</h3>
           <p className="small text-secondary">모든 분석에 공통으로 적용되는 일반 확인사항입니다. 개별 공고·기술에 대한 법적 검토 결과가 아닙니다.</p>
