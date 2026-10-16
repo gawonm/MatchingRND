@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Badge, Button, Form, Nav, Offcanvas } from 'react-bootstrap';
 import { mockDiscoverItems } from '../data/mockDiscover';
 import { selectedItems, toggleSelection } from '../state/analysisSession';
@@ -75,4 +75,3 @@ export default function DiscoverExplorer({ profile, historical, run, onRunChange
     </>}</Offcanvas.Body></Offcanvas>
   </>;
 }
-

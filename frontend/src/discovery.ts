@@ -1,4 +1,4 @@
-﻿
+
 import type {
   DiscoverItem,
   DiscoverSource,
@@ -41,4 +41,3 @@ export async function searchDiscovery(
 
   return (await response.json()) as DiscoveryResponse;
 }
-
