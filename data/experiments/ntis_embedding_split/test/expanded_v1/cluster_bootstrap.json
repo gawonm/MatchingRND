@@ -1,0 +1,23 @@
+{
+  "method": "paired source-cluster bootstrap; union shared-positive groups; micro-average per sampled question",
+  "clusters": 110,
+  "replicates": 4000,
+  "seed": 20261016,
+  "metrics": {
+    "hit_at_1": {
+      "delta": -0.003257328990228013,
+      "ci95_low": -0.016666666666666666,
+      "ci95_high": 0.009836065573770493
+    },
+    "hit_at_5": {
+      "delta": -0.006514657980456026,
+      "ci95_low": -0.0165016501650165,
+      "ci95_high": 0.0
+    },
+    "mrr_at_10": {
+      "delta": -0.0004420660772452307,
+      "ci95_low": -0.008000806032984252,
+      "ci95_high": 0.006918887979230743
+    }
+  }
+}

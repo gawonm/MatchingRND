@@ -1,0 +1,21 @@
+{
+  "original_count": 5,
+  "generated_count": 41,
+  "total_count": 46,
+  "target_logical_tasks": 39,
+  "generator": "gpt-4o-mini",
+  "prompt_sha256": "fb3caa6dd53ce4ac6dcf0cb83a0db7d23b2c0e97312a234a6aad78c122625285",
+  "questions_sha256": "7302fe0a99f789b93d687aa9393be538037e9dd4ac806a6faa5cff1440d4e1f6",
+  "generated_after_model_selection": true,
+  "training_performed": false,
+  "human_reviewed_generated_questions": 0,
+  "failures": 17,
+  "supabase_modified": false,
+  "api_usage": {
+    "calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cache_hits": 105
+  },
+  "quote_normalization": "Only remove added leading list marker when remaining quote matches source exactly"
+}

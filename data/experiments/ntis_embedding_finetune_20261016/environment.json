@@ -1,0 +1,16 @@
+{
+  "packages": {
+    "torch": "2.7.1+cu126",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.18.0",
+    "peft": "0.21.2",
+    "numpy": "2.5.2",
+    "openai": "3.24.0"
+  },
+  "source_code_sha256": {
+    "app/scripts/finetune_ntis_embedding.py": "243fbfe4db8886f941bcaf5f360944eedbc532e2435c6e38e5f1c63d949ddeaa",
+    "app/scripts/prepare_ntis_training_data.py": "3f0ffaa52e0b3fb019ba112dbae19d0b90368ad9861119dfb6e5a09d958bb8b8",
+    "app/scripts/retrain_rfp_embedding.py": "2fa2d5280aae0fcefc45a4c8eaaa741420d84b968e803ac14890ed70625cd654"
+  },
+  "uses_rfp_or_technology_weights": false
+}

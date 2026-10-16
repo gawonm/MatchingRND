@@ -1,0 +1,25 @@
+{
+  "original_count": 10,
+  "generated_count": 297,
+  "total_count": 307,
+  "added_source_groups": 100,
+  "added_styles": {
+    "constraint": 98,
+    "technical": 100,
+    "scenario": 99
+  },
+  "api_usage": {
+    "calls": 100,
+    "cache_hits": 0,
+    "input_tokens": 78568,
+    "output_tokens": 18384
+  },
+  "original_test_unchanged": true,
+  "human_reviewed_generated_questions": 0,
+  "training_performed": false,
+  "model_choice_fixed_before_generation": true,
+  "questions_sha256": "ae36bfdc391ae0b959eed1d862482bbe95840954c7d38c693a1b25f4d3cdc2c5",
+  "sources_checked": true,
+  "labels_modified_after_scoring": false,
+  "supabase_modified": false
+}

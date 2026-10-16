@@ -1,0 +1,14 @@
+{
+  "generator": "gpt-4o-mini",
+  "usage": {
+    "calls": 511,
+    "cache_hits": 0,
+    "input_tokens": 868799,
+    "output_tokens": 89525
+  },
+  "train_queries": 646,
+  "validation_queries": 334,
+  "failed_jobs": 21,
+  "human_reviewed_labels": 0,
+  "test_contents_used": false
+}

@@ -1,0 +1,16 @@
+{
+  "raw_questions": 334,
+  "kept_questions": 332,
+  "excluded_projects": [
+    {
+      "document_id": "ntis-2800000972",
+      "matching_train_document_ids": [
+        "ntis-2800000975"
+      ],
+      "exact_query_overlap": true,
+      "reason": "exact shared query or long source research anchor; project excluded from pilot Validation"
+    }
+  ],
+  "rule_uses_test_or_search_scores": false,
+  "original_split_unchanged": true
+}

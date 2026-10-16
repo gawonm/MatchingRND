@@ -1,0 +1,17 @@
+[
+  {
+    "job_id": "ntis-extra-ntis-2410019633",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019633",
+    "style": "scenario",
+    "reason": "application context missing"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019633",
+    "style": "constraint",
+    "reason": "application context missing"
+  }
+]

@@ -1,9 +1,7 @@
 # 통합 분석·답변 테스트
 
-LLM Gap 분석을 주요 결과로, local 분석을 비교 실험으로 사용합니다.
-두 방식은 Orchestrator를 한 번 실행해 얻은 같은 `AnalysisState`에서 시작합니다.
-local은 기본적으로 키워드만 사용합니다. Python 함수에 `embed`를 전달하면
-두 방식의 후보 비교에 같은 임베딩 함수를 적용할 수 있습니다.
+Orchestrator의 검색 결과를 LLM Gap 분석과 최종 답변 생성에 연결합니다.
+비교 실험용 local Gap 분석기는 제거했으며, 운영 경로는 LLM 방식만 사용합니다.
 
 ## 실행 전 준비
 
@@ -73,17 +71,16 @@ python -X utf8 -m app.scripts.run_analysis --problem "제조환경에서 작업�
 | 파일 | 용도 |
 |---|---|
 | `state.json` | 공통 Retrieval 입력·출력·Query 이력, 이후 재실행에 사용 |
-| `gap_llm.json` / `gap_local.json` | 방식별 Gap 원본 리포트 |
+| `gap_llm.json` | Gap 원본 리포트 |
 | `answer.md` | LLM 주요 분석에 대한 최종 답변 |
-| `answer_llm.md` / `answer_local.md` | 방식별 설명; local은 잠정 판정으로 표시 |
-| `answer_llm.json` / `answer_local.json` | 인용·의미 검토 및 제외된 주장 기록 |
-| `comparison.json` | 동일 명칭 판정 비교, 각 방식에만 있는 항목, 실행 정보·실패 단계 |
+| `answer_llm.md` | 최종 답변의 Markdown 사본 |
+| `answer_llm.json` | 인용·의미 검토 및 제외된 주장 기록 |
+| `comparison.json` | 실행 결과와 실패 단계 |
 
-기존 결과가 있는 폴더는 덮어쓰지 않습니다. 한 방식이 실패하면 다른 방식은 계속 실행하며,
-실패 단계는 `comparison.json`에 남기고 CLI 종료코드는 1로 반환합니다.
-LLM 결과가 없을 때 local을 주요 답변으로 자동 대체하지 않습니다.
+기존 결과가 있는 폴더는 덮어쓰지 않습니다. 실패 단계는 `comparison.json`에 남기고
+CLI 종료코드는 1로 반환합니다.
 
-## 검색을 반복하지 않고 분석 비교
+## 검색을 반복하지 않고 다시 분석
 
 실제 출력 폴더 이름으로 바꿔 실행하세요.
 
@@ -91,15 +88,8 @@ LLM 결과가 없을 때 local을 주요 답변으로 자동 대체하지 않습
 python -X utf8 -m app.scripts.run_analysis --state outputs/실행폴더/state.json
 ```
 
-LLM만 실행하려면 `--mode llm`, local만 실행하려면 `--mode local`을 추가합니다.
-기존 state에서 local 결과를 API 호출 없이 표·근거만으로 확인하려면:
-
-```powershell
-python -X utf8 -m app.scripts.run_analysis --state outputs/실행폴더/state.json --mode local --template-only
-```
-
 `--template-only`는 최종 설명 생성·의미 검토 호출만 생략합니다.
-`--mode llm`이면 Gap LLM은 여전히 호출됩니다. `--request`나 `--problem`이면
+Gap LLM은 여전히 호출됩니다. `--request`나 `--problem`이면
 Orchestrator의 Technology·NTIS 호출도 발생합니다.
 
 ## 답변 검증 방식과 한계
@@ -127,8 +117,6 @@ Orchestrator의 Technology·NTIS 호출도 발생합니다.
 
 인용 검증은 문장이 실제 자료에 존재한다는 확인입니다. LLM 의미 검토도 오류가 가능하며,
 기술 충족 여부나 사업 신청자격을 입증하지 않습니다.
-두 Gap 방식은 추출 단위가 다르므로 같은 이름의 요구기술만 직접 비교합니다.
-한쪽에만 추출된 항목의 수나 라벨 차이를 정확도 지표로 해석하지 마세요.
 
 자동 테스트:
 

@@ -1,0 +1,11 @@
+{
+  "original_questions_preserved": true,
+  "frozen_inputs_hashes_verified": true,
+  "total_questions": 191,
+  "all_evidence_exact_in_source": true,
+  "all_positive_ids_in_test": true,
+  "labels_changed_after_scoring": false,
+  "pending_review_flags": 1,
+  "training_performed": false,
+  "supabase_modified": false
+}

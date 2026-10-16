@@ -1,0 +1,26 @@
+{
+  "generator": "gpt-4o-mini",
+  "prompt_sha256": "1ae577c76b503975befcc73353bc0f7d02591d47571ab1d33c0eea5ee1998c7b",
+  "train_queries": 688,
+  "validation_queries": 334,
+  "train_with_explicit_negatives": 688,
+  "jobs": 520,
+  "failed_jobs": 9,
+  "input_sha256": {
+    "manifest.json": "2ac84f75708f875b48730279d5d5a59aa53b860606b9058c3d08664dd615d1f5",
+    "corpus.jsonl": "4059af2c99cd8129f53f75fb64af8ced1be479d4cd5d364cab39adb97e1f76b6",
+    "test\\questions.json": "40f24f89f7c2b4b60c21d62224708b734e2e7251d589f041911ab79307e00cd9",
+    "train\\technology_catalog.json": "681aa281b90f8070a7da74793852b3cb8ac5fbce43c2e7a3358b3dc4449404f9",
+    "train\\chunks.jsonl": "8ef46ebb633f1083a59eb368d9c2f9e38a982e260f547e8da8a390baba180f0f",
+    "validation\\technology_catalog.json": "6496654d243e713193d7cc2f5e004a413d505c806e9e3246a18ee69cf90c95b7",
+    "validation\\chunks.jsonl": "7c857c5693c87d569379fcfb0cecedcd0dbc16a035e40163b1af031d09f9cc3b"
+  },
+  "api_usage": {
+    "calls": 528,
+    "prompt_tokens": 713506,
+    "completion_tokens": 134245,
+    "cache_hits": 1
+  },
+  "test_contents_used_for_generation": false,
+  "human_reviewed_labels": 0
+}

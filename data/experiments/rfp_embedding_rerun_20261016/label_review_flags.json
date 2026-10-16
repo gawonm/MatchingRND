@@ -1,0 +1,24 @@
+[
+  {
+    "query_id": "expanded-38dd3ce0caa2fc",
+    "labelled_task_ids": [
+      "55ddf49c2e894e7291fe82f6"
+    ],
+    "alternative_candidate": "6575e8714c3c28581e40ff46",
+    "same_title": true,
+    "source_quote_also_in_candidate": true,
+    "review_status": "pending human review; scoring labels unchanged",
+    "observation": "Rank 1/2 among same-title tasks switched with inference numerical precision; do not attribute historical baseline change to model improvement"
+  },
+  {
+    "query_id": "expanded-6a58bd3fdb478f",
+    "labelled_task_ids": [
+      "55ddf49c2e894e7291fe82f6"
+    ],
+    "alternative_candidate": "6575e8714c3c28581e40ff46",
+    "same_title": true,
+    "source_quote_also_in_candidate": true,
+    "review_status": "pending human review; scoring labels unchanged",
+    "observation": "Rank 1/2 among same-title tasks switched with inference numerical precision; do not attribute historical baseline change to model improvement"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "packages": {
+    "torch": "2.7.1+cu126",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.18.0",
+    "peft": "0.21.2",
+    "numpy": "2.5.2"
+  },
+  "code_sha256": {
+    "app/scripts/retrain_technology_embedding.py": "1c9734db4d041c666b332db71883f5658aec48336e5c06f2822628803f6311c5",
+    "app/scripts/retrain_rfp_embedding.py": "e1a6e7a82194491caab9c138fb4f4e8bda94d92a3c864476fda3d9c4ff86be5c"
+  },
+  "rfp_data_or_adapter_used": false
+}

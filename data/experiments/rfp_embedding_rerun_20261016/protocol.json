@@ -1,0 +1,20 @@
+{
+  "model": "dragonkue/BGE-m3-ko",
+  "revision": "7074d66aa46562342193ca4feb3d89bf9dad71b4",
+  "seed": 20261016,
+  "epochs": 2,
+  "learning_rate": 2e-05,
+  "lora_rank": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.05,
+  "train_tokens": 384,
+  "inference_tokens": 8192,
+  "accumulation": 8,
+  "loss": "explicit-negative softmax, temperature 0.05; no in-batch negatives",
+  "selection": "highest validation MRR@10, earliest tie",
+  "test_used_for_selection": false,
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "git_commit": "f86c975552b6ade5b8ce68f413c06486f68088b0",
+  "supabase_modified": false,
+  "model_deployed": false
+}

@@ -1,0 +1,73 @@
+{
+  "removed": [
+    {
+      "query_id": "ntis-extra-06326ea33c6ab22d",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-0d5629e2aca06f0a",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-1b1c558f39325c61",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-2c7849be8ef03412",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-3b9f2c0063a9d983",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-3caaef408dfabe78",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-491ebf7702eb536f",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-766326af6e8ad202",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-7fb96dad9ad93118",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-8c0dd7fb139fa7d9",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-8f702c0792968dd4",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-91e439af92150f56",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-96860e282bd2ae5f",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-c03d8f65968ab9c1",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-cd9ebfc689380e01",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    },
+    {
+      "query_id": "ntis-extra-d03c41f23a586472",
+      "reason": "context is function word, stage label, unit, or generic activity"
+    }
+  ],
+  "uses_retrieval_scores": false,
+  "same_100_source_jobs_as_preliminary_v1": true,
+  "preliminary_v1_results_preserved": true,
+  "revision_after_preliminary_evaluation": true,
+  "not_an_independent_confirmatory_test": true
+}

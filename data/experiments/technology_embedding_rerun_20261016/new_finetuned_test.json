@@ -1,0 +1,172 @@
+{
+  "question_count": 10,
+  "aggregate": {
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0,
+    "hit_at_5": 1.0,
+    "hit_at_10": 1.0,
+    "mrr_at_10": 1.0
+  },
+  "results": [
+    {
+      "query_id": "tech-test-001",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pos-2025-008",
+        "pos-2025-262",
+        "pos-2025-183",
+        "pos-2025-095",
+        "pos-2025-232",
+        "pos-2025-132",
+        "pos-2025-206",
+        "pos-2025-052",
+        "pub-2026-037",
+        "pos-2025-106"
+      ]
+    },
+    {
+      "query_id": "tech-test-002",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pos-2025-068",
+        "pos-2025-164",
+        "pos-2025-012",
+        "pos-2025-095",
+        "pub-2026-136",
+        "pos-2025-028",
+        "pos-2025-057",
+        "pub-2026-137",
+        "pub-2026-065",
+        "pos-2025-063"
+      ]
+    },
+    {
+      "query_id": "tech-test-003",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pos-2025-024",
+        "pos-2025-074",
+        "pos-2025-078",
+        "pos-2025-199",
+        "pos-2025-027",
+        "pos-2025-095",
+        "pos-2025-015",
+        "pos-2025-081",
+        "pos-2025-077",
+        "pos-2025-193"
+      ]
+    },
+    {
+      "query_id": "tech-test-004",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pos-2025-088",
+        "pos-2025-065",
+        "pos-2025-208",
+        "pos-2025-129",
+        "pos-2025-086",
+        "pos-2025-059",
+        "pos-2025-064",
+        "pos-2025-062",
+        "pub-2026-049",
+        "pos-2025-172"
+      ]
+    },
+    {
+      "query_id": "tech-test-005",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pos-2025-148",
+        "pub-2026-179",
+        "pos-2025-249",
+        "pub-2026-187",
+        "pos-2025-131",
+        "pos-2025-280",
+        "pos-2025-103",
+        "pub-2026-227",
+        "pub-2026-233",
+        "pos-2025-217"
+      ]
+    },
+    {
+      "query_id": "tech-test-006",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pub-2026-054",
+        "pub-2026-041",
+        "pos-2025-248",
+        "pos-2025-002",
+        "pub-2026-008",
+        "pub-2026-028",
+        "pub-2026-040",
+        "pos-2025-110",
+        "pub-2026-274",
+        "pos-2025-175"
+      ]
+    },
+    {
+      "query_id": "tech-test-007",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pub-2026-106",
+        "pos-2025-282",
+        "pos-2025-041",
+        "pos-2025-054",
+        "pos-2025-156",
+        "pos-2025-052",
+        "pos-2025-280",
+        "pub-2026-114",
+        "pos-2025-155",
+        "pub-2026-208"
+      ]
+    },
+    {
+      "query_id": "tech-test-008",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pub-2026-157",
+        "pos-2025-085",
+        "pos-2025-040",
+        "pos-2025-056",
+        "pub-2026-111",
+        "pub-2026-286",
+        "pos-2025-195",
+        "pos-2025-289",
+        "pos-2025-014",
+        "pos-2025-039"
+      ]
+    },
+    {
+      "query_id": "tech-test-009",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pub-2026-173",
+        "pub-2026-172",
+        "pos-2025-252",
+        "pub-2026-169",
+        "pub-2026-268",
+        "pos-2025-251",
+        "pub-2026-170",
+        "pub-2026-176",
+        "pub-2026-112",
+        "pos-2025-250"
+      ]
+    },
+    {
+      "query_id": "tech-test-010",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "pub-2026-243",
+        "pub-2026-242",
+        "pub-2026-247",
+        "pub-2026-236",
+        "pub-2026-248",
+        "pub-2026-246",
+        "pub-2026-237",
+        "pub-2026-296",
+        "pub-2026-229",
+        "pub-2026-245"
+      ]
+    }
+  ]
+}

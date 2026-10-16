@@ -1,0 +1,4351 @@
+[
+  {
+    "task_id": "aa3a2e0af34b284ba85c7e9b",
+    "document_id": "4e0cab57e4a30033c2e4c754",
+    "title": "(1-2-5) AI 기반 지능형 조직 운영 플랫폼 기술개발",
+    "task_number": "2026-지역AX-4",
+    "filename": "(1-2-5)_RFP(2026-지역AX-4)_(도시·생활 혁신 AX-지정공모)_AI 기반 통합 혁신형 조직 운영 플랫폼 기술개발.pdf",
+    "source": "(1-2-5)_RFP(2026-지역AX-4)_(도시·생활 혁신 AX-지정공모)_AI 기반 통합 혁신형 조직 운영 플랫폼 기술개발.pdf",
+    "file_hash": "3976b6b1ee680ab05fb41c1706a81e877aad07bce86dac730847781508bb8914",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "3976b6b1ee680ab05fb41c1706a81e877aad07bce86dac730847781508bb8914"
+    },
+    "group_id": "fb037a18cf9314488562",
+    "chunk_ids": [
+      "ab7eccbc4aea134966eca76bc5dc4a74",
+      "28dfbe00db138235bb8076c901cc6953",
+      "cdce8098888c99730406881f38529ae7",
+      "82fb0576242714453a3c98d75c630a7b",
+      "398513eeb825446543915ad5c88aa4c7",
+      "5eacd6882d9c2d09dd4a791812bc2338",
+      "17d9fdefd4dc3899ca97751151d1e57f",
+      "d56c9d7ce37edca249df045a83a6e39b"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "task_id": "6f9a745e46bb6801302575bd",
+    "document_id": "66f513e479a743760149035e",
+    "title": "(2-2-1)로봇-작업자 협업을 위한 완전 지능형 SDF 및 서비타이제이션 통합기술",
+    "task_number": "2026-로봇-지정-AX실증밸리-01",
+    "filename": "(2-2-1)_RFP(2026-로봇-지정-AX실증밸리-1)_(자율주행 모빌리티 AX 혁신-지정공모)_로봇-작업자 협업을 위한 완전 지능형 SDF 및 서비타이제이션 통합기술(수정).PDF",
+    "source": "(2-2-1)_RFP(2026-로봇-지정-AX실증밸리-1)_(자율주행 모빌리티 AX 혁신-지정공모)_로봇-작업자 협업을 위한 완전 지능형 SDF 및 서비타이제이션 통합기술(수정).PDF",
+    "file_hash": "2380464bb0f1e9251a821b6357c0f3bd741fcbc6394efcc8706569b77f235f10",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "2380464bb0f1e9251a821b6357c0f3bd741fcbc6394efcc8706569b77f235f10"
+    },
+    "group_id": "6d25c4993b15f9d0d08f",
+    "chunk_ids": [
+      "7e860c6030f917ee7a27d94a72bf15ee",
+      "8256170fe285ec55c539511dcdddd87c",
+      "c8faeb7a565ab590d16643fd677d2287",
+      "3f5dc9bc9687a1e41e4d5093494b3341",
+      "68ae183b7a8d0e44c9bf3ca3f3b1f841",
+      "b5b405c41de2af4eabe340fd48a3d5b1"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  {
+    "task_id": "2e482b16268bdfb0aa10165f",
+    "document_id": "7e0d3503891dc47ec5411452",
+    "title": "로봇-작업자 협업을 위한 완전 지능형 SDF 및 서비타이제이션 통합기술",
+    "task_number": "2026-로봇-지정-AX실증밸리-01",
+    "filename": "(2-2-1)_RFP(2026-로봇-지정-AX실증밸리-1)_(자율주행 모빌리티 AX 혁신-지정공모)_로봇-작업자 협업을 위한 완전 지능형 SDF 및 서비타이제이션 통합기술.PDF",
+    "source": "(2-2-1)_RFP(2026-로봇-지정-AX실증밸리-1)_(자율주행 모빌리티 AX 혁신-지정공모)_로봇-작업자 협업을 위한 완전 지능형 SDF 및 서비타이제이션 통합기술.PDF",
+    "file_hash": "d5c6fe26d0cb5a702b4b79be10f523f40ad94456f41f83877e552f059cb82eca",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "d5c6fe26d0cb5a702b4b79be10f523f40ad94456f41f83877e552f059cb82eca"
+    },
+    "group_id": "6d25c4993b15f9d0d08f",
+    "chunk_ids": [
+      "721ffed7422c43ed6c0d95c9c5f8e144",
+      "6e6b1dd82fec18453f6ab5044ace8316",
+      "336d5e0f6e07399555de0d35121d22db",
+      "38fb3ec4e17abf80e6f0e635f5c3ef22",
+      "1e84a39d95158d35daa3e33e344ddb59",
+      "1aab031e55fcccc053811975dc41651b"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  {
+    "task_id": "2642019343d822186df8db21",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "(3-1)AI 분산전력망 프로그램형 R&D 사업기획 및 PoC 설비 구축",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "7d0789a2b1714be257f77ab41b00c323",
+      "b311488e9fcdfd068fbbd435a2866a96",
+      "2ccfe2c9217edacba3916628b757dc5b",
+      "36a81f679b1716cecacb828964bc7812",
+      "3e24b1969ff5e26fa154eb556c97988a"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "4918334cf2e44b858195af97",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "AI 기반 다중 마이크로그리드 연계 및 자율운영 알고리즘 기본설계",
+    "task_number": "2026–AX실증밸리조성–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "2fcc54e23df6f4ad37b9ac556b477a77",
+      "9adad1fc0059c81cc6022799a1af128d",
+      "fc5e336ef404324ebdfbc818216eb984",
+      "e3e3cb312fc01422f8831fc2268bfa7b"
+    ],
+    "pages": [
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "task_id": "63ab5beeea3fb87c4b306f1c",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "AI 기반 하이브리드 ESS 시스템 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "ecea660b4caf27423686849be7a43418",
+      "182bc274550c7641f6d054007883ffa4",
+      "9b9c276b4d2b58c6b159750db30df361",
+      "035cd71ed762469a9d109a991f913825"
+    ],
+    "pages": [
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "task_id": "aaf2418ca37d2bbd6a51cb58",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "배전망 BESS 수익 다각화 및 계통서비스 기술 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "a08417374262db57a1d7a832a4896c59",
+      "587d26cfa110dbf4914a769f3b6427d5",
+      "becad801dd893bbc5db77779396ff092",
+      "076b7e4128431313f344cb380c4cb27c"
+    ],
+    "pages": [
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "task_id": "041c7bb2152412269c787800",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "IBR 기반의 바텀업 배전망 Black-Start 기술 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "6a92adb3d480b07a86fdf2379bc46809",
+      "2cd4a62abc1c9175c4f89c438275df5c",
+      "d5c2fa9e67aa8778301e887b0b3cc042",
+      "91cc3ae828dcfa1f9e8246e127b4f0d7"
+    ],
+    "pages": [
+      13,
+      14,
+      15,
+      16
+    ]
+  },
+  {
+    "task_id": "3c6c853c7d4c9672a2302427",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "분산전력망 가상 테스트베드 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "1f74e33dac1e4779c4a681410bb4a3b5",
+      "edede8b4c0318157ecc1f80dcd70f8f3",
+      "44667709eca68622ea9b436d13cdf4f6",
+      "14d5158e6b83d344227af40fe3ef7bee"
+    ],
+    "pages": [
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "task_id": "1c42d0ebac40b96c19dd91e5",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "이종 분산에너지 실시간 Co-Simulation 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "78c65c869214e02b396352e34acd4c56",
+      "e7aba1e58788a14494339be5d0340c68",
+      "5ee4a5277be1015f45869590dfe4e29a",
+      "baa516f82305ffbd88d83f1d23902613"
+    ],
+    "pages": [
+      19,
+      20,
+      21,
+      22
+    ]
+  },
+  {
+    "task_id": "0eb5c9afe3fc260c6b28f923",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "분산전원 연계 계통 공진 현상 실시간 해석 및 안정화 솔루션 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "7fb79b366f935f3603aa57fc41dac4e1",
+      "389dcceb313306a1ebe2b4cdd6be598b",
+      "9443731f1df7fe5568afefdee551d319",
+      "4374c1d6a8f23626695c6f950088aed1"
+    ],
+    "pages": [
+      22,
+      23,
+      24,
+      25
+    ]
+  },
+  {
+    "task_id": "80e1a70cfe62e482e7c6937c",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "실계통 데이터 기반 배전망 동적특성 해석 기술 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "31ee76c259866e9b95ab7276031dd0f6",
+      "40a40c09bee3dc9b22b6e4a58bff1c40",
+      "f4ddae51c76d257322d807444c45bb03",
+      "bba01b5843d163f520d0f013618cd7b5"
+    ],
+    "pages": [
+      25,
+      26,
+      27,
+      28
+    ]
+  },
+  {
+    "task_id": "b9a322346cf082c1bd6fb604",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "SOP 활용 다중 배전망 최적 운영기술 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "ba8186c790b809b8c0e226ce0e5de582",
+      "8ce4ec669fb60907ea0fe3a6e3ae6022",
+      "d846ddec3519adc1f7bcb773df2c9b57",
+      "9be3c3051f80eaee521c764c01beb967",
+      "da9b66fb5c1953b2afb07036290bbcdb"
+    ],
+    "pages": [
+      28,
+      29,
+      30,
+      31
+    ]
+  },
+  {
+    "task_id": "82d1f10d6724bb07af5b4ac7",
+    "document_id": "edf26662fd5afe5df3eb4fe9",
+    "title": "고안전․장수명․저비용 차세대 이차전지 기반 ESS 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__6c54712c.PDF",
+    "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e12564efa111a5d7ff511701a92d04de1d72c2bdda8255315562db476598d384"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "8ad3de0a64da5126aae711e30ba7ecd9",
+      "12f084d43872492a51406db8cb1b79e6",
+      "e7cdd83831464cd077b40741b3144322",
+      "741adaa1ce6628aba864540ae22af126"
+    ],
+    "pages": [
+      31,
+      32,
+      33
+    ]
+  },
+  {
+    "task_id": "78e8926949c55135b4312bbf",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "AI 분산전력망 프로그램형 R&D 사업기획 및 PoC 설비 구축",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "f04467a671fd6b8cbc4fe6f53346649d",
+      "3ae1449896986ecf78c8895ff6a958a8",
+      "9f7b40ab6fe586de4fa3d7599e111564",
+      "ff3176e8c338c622129cb819e64c3eae",
+      "f5cec3d3ce09ac3210080b30a52d979b"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "c80981ca47b4a4656c55df31",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "AI 기반 다중 마이크로그리드 연계 및 자율운영 알고리즘 기본설계",
+    "task_number": "2026–AX실증밸리조성–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "51bea891222b76e7c02fcf4bbda52ea2",
+      "704dfbfd3c0188b43a871108c0a7fbb0",
+      "dba34aad62922285140ec2a2d3f1ee5e",
+      "a0a655566a22bb44bf7890ef074edd42"
+    ],
+    "pages": [
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "task_id": "48dd46e78d7bbafd7103db6e",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "AI 기반 하이브리드 ESS 시스템 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "d083b8b0b96400f9be04a5fd6056bb44",
+      "7c88235bcbcc5d0103ec46e0bb5dc024",
+      "cb0d8885788fd3d091cedcf995d0a737",
+      "1d363a20cbd86f527cf187e01bf88f2c"
+    ],
+    "pages": [
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "task_id": "909965e8a53c3317d5aecc16",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "배전망 BESS 수익 다각화 및 계통서비스 기술 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "c262584801d5d582ae3579f70acca273",
+      "555bcf584cea07ed5a21c98c8d10bf19",
+      "f878cdae50d772bcd3f69b4016e6f3ab",
+      "4b69c7071be86c05a98e89b55bd850d7"
+    ],
+    "pages": [
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "task_id": "b423f01609955c9bd333447f",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "IBR 기반의 바텀업 배전망 Black-Start 기술 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "c1bb41a182baa8f0fd6991607722de2a",
+      "fd43cf756237d4edd8c14de3b3af8322",
+      "f72612fce88dfdcedb52b48cf2a92b26",
+      "12340926f950e2df8ca3b89ed0b459fd"
+    ],
+    "pages": [
+      13,
+      14,
+      15,
+      16
+    ]
+  },
+  {
+    "task_id": "7fd7a8fa82f0e398ce7fadfb",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "분산전력망 가상 테스트베드 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "f012641a36778b777335964664c06ac4",
+      "a9d895821c0d1bd03215c9a04d27e359",
+      "a8719c5bcad1ccba491142a701ce5102",
+      "fb3e28aa7b5e302a4002f1949790a660"
+    ],
+    "pages": [
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "task_id": "7f815882cd5dbb516d4b76d8",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "이종 분산에너지 실시간 Co-Simulation 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "633101af4bc37b8ee2addc21e46e90d2",
+      "ef1c6afe74a42271c3e865d25c3c17b3",
+      "99206b1b4cd30731ac3d41cde2e7c585",
+      "a87d5f8db09210899876aef9f9554e75"
+    ],
+    "pages": [
+      19,
+      20,
+      21,
+      22
+    ]
+  },
+  {
+    "task_id": "c02914085dcdffd8b7d9e41e",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "분산전원 연계 계통 공진 현상 실시간 해석 및 안정화 솔루션 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "14eeba4abad957d4c26657aedc5e4516",
+      "f921584ea5969692603cba9048256364",
+      "298a758cc6d3207685498648dfdce294",
+      "bcb8b94937254b1edf1475096c8ab2d2"
+    ],
+    "pages": [
+      22,
+      23,
+      24,
+      25
+    ]
+  },
+  {
+    "task_id": "0969e7e2178c6eb7296eb500",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "실계통 데이터 기반 배전망 동적특성 해석 기술 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "6ee4971902edcf8fcf0239e65152cdd1",
+      "6d832fe9195f88b287ff43d322e09d6e",
+      "1e199574c5d8fcaa221c640838eaa87f",
+      "77773974cf547059b84c7b828cac3c58"
+    ],
+    "pages": [
+      25,
+      26,
+      27,
+      28
+    ]
+  },
+  {
+    "task_id": "baff17d76676d05b686b5ac5",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "SOP 활용 다중 배전망 최적 운영기술 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "1077a8beb7f353a29d816fef565ff83f",
+      "8adfa71ad344e054ff7d884a7c2d4c2c",
+      "425f3012ec4db1da86856a47bc128391",
+      "7957d655cc0bfa7ec761d9e50b9a6236",
+      "f88d7eb730b38e55e6c10ab68ac28794"
+    ],
+    "pages": [
+      28,
+      29,
+      30,
+      31
+    ]
+  },
+  {
+    "task_id": "0a23c4f0aed70f15ce0aa921",
+    "document_id": "2d05ec1fdc6f31748c70b4e8",
+    "title": "고안전․장수명․저비용 차세대 이차전지 기반 ESS 기본설계",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "source": "(3-1)_RFP(2026–AX실증밸리-분산전력망-품목-1~11)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_AI 분산 전력망 브릿지 핵심기술 개발__e28494b5.PDF",
+    "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f49dfe579df350c0b61019491ba4991a6f58f332ccd3740eb03dae712f0da6bd"
+    },
+    "group_id": "7e7aa9d4b95d0d9c6c21",
+    "chunk_ids": [
+      "b97bbc2612654a953c31131cac12db4a",
+      "3e8c27bd51f084e9e659cda1b2834c11",
+      "e9ac8f4371bc0fe001eecb651b6ec587",
+      "9dd7852546506d7ca8fe67b823e3a1af"
+    ],
+    "pages": [
+      31,
+      32,
+      33
+    ]
+  },
+  {
+    "task_id": "e37755fcec6811be9b7f5d94",
+    "document_id": "8a25e439d76328204b59d1d6",
+    "title": "(3-2)분산에너지 공급-수요데이터 유형별 표준화 및 전처리 기술개발",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-2)_RFP(2026–AX실증밸리–전처리-품목-1)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_분산에너지 공급-수요데이터 유형별 표준화 및 전처리 기술개발__c85df2d2.pdf",
+    "source": "(3-2)_RFP(2026–AX실증밸리–전처리-품목-1)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_분산에너지 공급-수요데이터 유형별 표준화 및 전처리 기술개발__c85df2d2.pdf",
+    "file_hash": "b49684e586d72d0e32f7bdf6d2c0ea2688569f4159c32ea192d588708686f086",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "b49684e586d72d0e32f7bdf6d2c0ea2688569f4159c32ea192d588708686f086"
+    },
+    "group_id": "c759d8ecc2ece7c6daec",
+    "chunk_ids": [
+      "077435b4d25fb318fd7003a4a9672023"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "493702abb4f4a9bbba51b1b9",
+    "document_id": "fee5eccced5e5f496b9bee6c",
+    "title": "분산에너지 공급-수요데이터 유형별 표준화 및 전처리 기술개발",
+    "task_number": "2026–AX실증밸리–",
+    "filename": "(3-2)_RFP(2026–AX실증밸리–전처리-품목-1)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_분산에너지 공급-수요데이터 유형별 표준화 및 전처리 기술개발__ef3d8adb.pdf",
+    "source": "(3-2)_RFP(2026–AX실증밸리–전처리-품목-1)_(AI기반 에너지 운영 최적화 및 안전관리-품목지정)_분산에너지 공급-수요데이터 유형별 표준화 및 전처리 기술개발__ef3d8adb.pdf",
+    "file_hash": "937fa724c7eebaa74a795d93b0183df57a520d3c0e61fefbd5f3cd548074d9e8",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "937fa724c7eebaa74a795d93b0183df57a520d3c0e61fefbd5f3cd548074d9e8"
+    },
+    "group_id": "c759d8ecc2ece7c6daec",
+    "chunk_ids": [
+      "8fd41484e266343608ee6de4fbf4c60d"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "5b7bcfcef1bda325f796f263",
+    "document_id": "63aafa064cc06bb5ea099a34",
+    "title": "우주기술혁신인재양성사업 – 우주항공 글로벌 인력양성 및 활용",
+    "task_number": "2026-혁신인재-02",
+    "filename": "001_(RFP) 내역2 우주항공 글로벌 인력양성 및 활용.pdf",
+    "source": "001_(RFP) 내역2 우주항공 글로벌 인력양성 및 활용.pdf",
+    "file_hash": "dbb1b5f606a6f537771f0e45c625182e013d62b3f03672d7545a486b68841954",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "dbb1b5f606a6f537771f0e45c625182e013d62b3f03672d7545a486b68841954"
+    },
+    "group_id": "40dea5d261fe7416bae7",
+    "chunk_ids": [
+      "7dc993865f9d2a4aadb009663b4f32ea",
+      "a52eabc788d5104a9218b88ead58a297",
+      "1adb7358d71d148b9be8faf1b69f08d8",
+      "79272f39ea71e45d5d82b7e14513165f",
+      "b93d3bd1ff86c1db6b4aa53aa8841381",
+      "21f92f444453a1e4a2ca12063131a508",
+      "d7a2243b9cd4c12f2b6dd30fc09ab2eb",
+      "c5d5512b2332764c7192ea104655b276",
+      "4e05e253e27f0480c0cba0f77b654061"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ]
+  },
+  {
+    "task_id": "190c963e8391d4ef6b476337",
+    "document_id": "58ed266691779668790c0e63",
+    "title": "건물 환기 루버와 차양에 탈부착 가능한 태양광 모듈 시스템 개발 및 실증",
+    "task_number": "2026-신재생-태양광-품목-1",
+    "filename": "002_1. 신규과제 기술개요서(태양광 3차 공고_3206536762360939.pdf",
+    "source": "002_1. 신규과제 기술개요서(태양광 3차 공고_3206536762360939.pdf",
+    "file_hash": "11b4fd4235bb5bba9b8b2c870696176a96ecebfc4ac94f1eb6325eda9d303146",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "11b4fd4235bb5bba9b8b2c870696176a96ecebfc4ac94f1eb6325eda9d303146"
+    },
+    "group_id": "575e4a3a2f16647d9c14",
+    "chunk_ids": [
+      "677e4e20745cbf1a4072dfb96be8c859",
+      "defe3b3d05fefdfc3e69d2ee794655b7",
+      "dafadf470916cdf28b846b5cce1b7e15",
+      "d1ac515dcb38a981ef7c5685022950c3"
+    ],
+    "pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "task_id": "d16558560e2847c6e9e1d25c",
+    "document_id": "6d96d6f79b94710169001787",
+    "title": "임무수요기반 성층권 드론 실증 플랫폼 개발",
+    "task_number": "(2단계) 총괄",
+    "filename": "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf",
+    "source": "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf",
+    "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a",
+    "task_type": "total",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "25~26쪽 기술 운용개념도의 이미지 텍스트 추가 추출까지 연결 과제 보류; 다른 과제는 성능표 제외 후 유지",
+      "unverified_metric_pages": [
+        3,
+        4,
+        13,
+        15,
+        16
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a"
+    },
+    "group_id": "640f69a4790eecb6c048",
+    "chunk_ids": [
+      "8d591b4f472b216deff522338a09b2fa",
+      "d490f25d5d4e3bd727b9a0e988c939c3",
+      "7a54bf3c46e806ab979dd786aaf0e806",
+      "34f41b129040b24d05c7454eda3ae55f"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "task_id": "5254800de46c693a7114ee14",
+    "document_id": "6d96d6f79b94710169001787",
+    "title": "공공임무용 성층권 드론 실증기 체계종합 및 실증",
+    "task_number": "(2단계) 1세부(체계종합)",
+    "filename": "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf",
+    "source": "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf",
+    "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a",
+    "task_type": "subtask",
+    "parent_task_id": "d16558560e2847c6e9e1d25c",
+    "parent_title": "임무수요기반 성층권 드론 실증 플랫폼 개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "25~26쪽 기술 운용개념도의 이미지 텍스트 추가 추출까지 연결 과제 보류; 다른 과제는 성능표 제외 후 유지",
+      "unverified_metric_pages": [
+        3,
+        4,
+        13,
+        15,
+        16
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a"
+    },
+    "group_id": "640f69a4790eecb6c048",
+    "chunk_ids": [
+      "dfebbe21bd0bacaaccbabc7ea5bae072",
+      "37e1806781393f83ae5b8fe723c5cabb",
+      "b7a2805af90cc3021a9f0ccb9730b764",
+      "c98f03179c44f2cd7465c03984d77e0b",
+      "97c33239904f13e6862fd42ad0b4ce2c",
+      "b867d8c0c04b4da9677d5fab14a6cb77",
+      "3db141e1d6cff6850258b113b1ca48c6"
+    ],
+    "pages": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  {
+    "task_id": "ed66a8637c2f37e81ea432c9",
+    "document_id": "6d96d6f79b94710169001787",
+    "title": "성층권 드론 특화 임무장비 개발",
+    "task_number": "(2단계) 2세부(임무장비 개발)",
+    "filename": "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf",
+    "source": "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf",
+    "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a",
+    "task_type": "subtask",
+    "parent_task_id": "d16558560e2847c6e9e1d25c",
+    "parent_title": "임무수요기반 성층권 드론 실증 플랫폼 개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "25~26쪽 기술 운용개념도의 이미지 텍스트 추가 추출까지 연결 과제 보류; 다른 과제는 성능표 제외 후 유지",
+      "unverified_metric_pages": [
+        3,
+        4,
+        13,
+        15,
+        16
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a"
+    },
+    "group_id": "640f69a4790eecb6c048",
+    "chunk_ids": [
+      "6712c6666a991358b6d0596e4dbf1aaf",
+      "51bb8fc2019082f2cd08949b2c6aaac5",
+      "3ef4cd7572dd37bc5821f68082a2c05c",
+      "f2e92fdc5acc5f3e89607c9843b008d1",
+      "327dc3ac6d871ac645bbaf64a945e732"
+    ],
+    "pages": [
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  {
+    "task_id": "1829832c79bbbd0bfc948d8f",
+    "document_id": "6d96d6f79b94710169001787",
+    "title": "성층권 드론 동력원 핵심부품 국산화",
+    "task_number": "(2단계) 3세부(동력원 국산화)",
+    "filename": "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf",
+    "source": "002_2. (별첨1) 과제제안요구서_임무수요기반 성층권 드론 실증 플랫폼 개발사_21098677581644720.pdf",
+    "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a",
+    "task_type": "subtask",
+    "parent_task_id": "d16558560e2847c6e9e1d25c",
+    "parent_title": "임무수요기반 성층권 드론 실증 플랫폼 개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "25~26쪽 기술 운용개념도의 이미지 텍스트 추가 추출까지 연결 과제 보류; 다른 과제는 성능표 제외 후 유지",
+      "unverified_metric_pages": [
+        3,
+        4,
+        13,
+        15,
+        16
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "0b0c461dc189d4b3e03c6266ecf98f94d92516e88294c6bd56dbc8e12f9e548a"
+    },
+    "group_id": "640f69a4790eecb6c048",
+    "chunk_ids": [
+      "41767c547c2d42366f3961fefecbe4b0"
+    ],
+    "pages": [
+      15,
+      16,
+      17
+    ]
+  },
+  {
+    "task_id": "ba937825c2eba1d996f56dcf",
+    "document_id": "ad3d57efbc70ce31e7825973",
+    "title": "글로벌 산업환경규제(PFAS 등) 대응 핵심기술개발사업 기획연구",
+    "task_number": "",
+    "filename": "002_2.산업기술R&D연구기획사업(26년 3차) 제안요청서(RFP_338778747326083.pdf",
+    "source": "002_2.산업기술R&D연구기획사업(26년 3차) 제안요청서(RFP_338778747326083.pdf",
+    "file_hash": "b6f0bcba3ce1b92452decfa6f4a8992d35df6ac5a40f31669df9240af21fe3bb",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "b6f0bcba3ce1b92452decfa6f4a8992d35df6ac5a40f31669df9240af21fe3bb"
+    },
+    "group_id": "2d58d1a49b5be9a14219",
+    "chunk_ids": [
+      "39c5ce629d4878378c48e7058298d51c",
+      "c31bbd95e2a41987cc36d1e41ff66412",
+      "05898aba167c186d0f5bff3880a88cda",
+      "6a7512c1a42881ce2ffde2c65d044533",
+      "c7a0fdafbf00d1f1177001983a95d426",
+      "1d9c80577836c1cdb1e52fca3ec1b9dd"
+    ],
+    "pages": [
+      1
+    ]
+  },
+  {
+    "task_id": "488f595e5c95d9756b8798db",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "피지컬 AI기반 지능항해 통합 에이전트 시스템 개발",
+    "task_number": "2026-3차-AI완전자율운항-01",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "870e8fe166a9ab639033b3764b18cbee",
+      "e47163d732d30ebd75b52875e3cae468",
+      "f9d1b1b9990c23bdbb1e4e7dc14773b2",
+      "38d90a357eb8ddd89845d458af0224f7",
+      "afeabe11093617599db5b1b924955211",
+      "3a8e0474ca44a12963d4a38d10ba72ed"
+    ],
+    "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "task_id": "5ecd8f47d518671f2e7dc916",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "완전자율운항선박용 항해 통합인지 기술 개발",
+    "task_number": "2026-3차-AI완전자율운항-02",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "7322c5e564fc11827655ab9f54a1ca64",
+      "285f7d66fc0521570ec527a9601c4090",
+      "f82e70a2354105e068c432b2b268d219",
+      "05a718909fc3b52730e903976b84e216",
+      "db951cf2ec3f189c82fcd3f09457af25",
+      "a9293f994e1045e8c4cd7425bc916a1e",
+      "07d73efa4ec22dd557b6a9583a7329a9"
+    ],
+    "pages": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  {
+    "task_id": "1778c357f228cbac51b77b03",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "AI기반 Port2Port 전구간 대응 지능항해시스템 개발",
+    "task_number": "2026-3차-AI완전자율운항-03",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "48f527ee319372d533a25ed5333235f9",
+      "75cdf00d6b951d4f00ca55d32aa1c96b",
+      "36109c952d9c7dfd53c4f38ee5f51bc3",
+      "d26670c59bc149209bf8992134b09e1d",
+      "ae12d4b4da7121688c4181b54c9887a9",
+      "fe0a3240ec87602db1d4ea7c5e9cbcea",
+      "ad24e1dfcb3330045cca9e0bb3a5d73b"
+    ],
+    "pages": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  {
+    "task_id": "c32608807fa4c2efe465d692",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "AI 자율운항선박 실증 협업 지원 기술 개발",
+    "task_number": "2026-3차-AI완전자율운항-04",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "4b998c44d5a3ecc1cee23679ff92a423",
+      "911a3e59ee46788688197f4354a9240b",
+      "ca1105c9b86195ce0435d74245ed349d",
+      "7d3bad504cb6027c2afddc71eb7b430c",
+      "ce7f749a06386623425b7752461bb119"
+    ],
+    "pages": [
+      24,
+      25,
+      26,
+      27,
+      28
+    ]
+  },
+  {
+    "task_id": "7598ccdecefa2b8c690ab105",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "완전자율운항선박 전선(Ship-wide) 자율안전관리 통합 대응플랫폼 개발",
+    "task_number": "2026-3차-AI완전자율운항-05",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "af4bdb5a90dc6e4efed0e14f9f7bb046",
+      "124542fd3474d7e2d2582486d260fcfa",
+      "92883b0d3ce12041e70a0d5b4aeec9c2",
+      "980ea8962a29c44f0942a26a7936dcff",
+      "f2eb7c0cb01457245322fb3c297e1ff1"
+    ],
+    "pages": [
+      29,
+      30,
+      31,
+      32,
+      33
+    ]
+  },
+  {
+    "task_id": "ef16d0fc4cdcd7dc30e89970",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "완전자율운항선박 지능형 통합 사이버 보안 및 복원 체계 개발",
+    "task_number": "2026-3차-AI완전자율운항-06",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "7181e1ad251c0449976a3045a70ed262",
+      "52cc75b6120ba59c315bc3b3ab581a68",
+      "5be61e58e50a7e371291b1ec4e440972",
+      "2fa68b7d110dab7d36d1468d233e3a4c",
+      "e4c481e9b4bcefb285a759dfc90d6331",
+      "79975ceccb65c1535831ce228277d471",
+      "14ab10ddfbcb9c4b97a528a7938b691d"
+    ],
+    "pages": [
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ]
+  },
+  {
+    "task_id": "3508b172e8b3e41c3250c34f",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "기관실 안전관리 AI 시스템 개발",
+    "task_number": "2026-3차-AI완전자율운항-07",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "5466b2caa9c8f217d83c4182a533406e",
+      "898d365f0b29d08e32716d146c495d05",
+      "a6f11931a36c006d47d898a1fe854a06",
+      "ae33c0e4a89f9723d153a92341e90148",
+      "89864d20d1e2e1f09ec8febc41382833"
+    ],
+    "pages": [
+      43,
+      44,
+      45,
+      46,
+      47
+    ]
+  },
+  {
+    "task_id": "633291591c4bf6730672d66e",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "기관장비 수명예측 AI 모델 개발을 위한 빅 데이터 플랫폼 구축 및\n신뢰성 평가 기술 개발",
+    "task_number": "2026-3차-AI완전자율운항-08",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "6619e2cb6e9849b1998c7054558fa7ae",
+      "496b902e035b204b7c309b9ba837632b",
+      "1490337afab118bbc38b5c55f78657aa",
+      "0b0fb808924612333933e2e8006cff03",
+      "898d9bb05bfe60d6abadfbf6b62b45d6"
+    ],
+    "pages": [
+      48,
+      49,
+      50,
+      51,
+      52
+    ]
+  },
+  {
+    "task_id": "e996cf35900e46de4d524405",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "AI기반 기관시스템 수명예측(CBM+) 및 무인제어/운용 기술 개발",
+    "task_number": "2026-3차-AI완전자율운항-09",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "98bd4928dbbb5dd1f6a09a79407d229c",
+      "96ecf3ab7f19e45e7c86f6ccf48ed327",
+      "933807d6335645d4e97aee00f698ff94",
+      "629c94957f689f7d150c0ef6df66b3e4",
+      "8d8b336e4132525d90377794f060edac",
+      "8ab196a8f2d105bff3b39ab59645b150",
+      "45bde697b7926b097e8d3228698fb849"
+    ],
+    "pages": [
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ]
+  },
+  {
+    "task_id": "f54827ce2cc6b95e40ec80e5",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "AI기반 전기추진 제어관리 및 전력변환장치 개발",
+    "task_number": "2026-3차-AI완전자율운항-10",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "2e13d7ca60de71a0a2fd229bc886d670",
+      "6e767e1322936e119f09e0f8ed40afce",
+      "cdf194cedba46527866ed2e98e03937e",
+      "b1cf272414c1562ce228303d5b3bdcdc",
+      "a02c51e5dd36bf9c48385c0ede862c1a"
+    ],
+    "pages": [
+      61,
+      62,
+      63,
+      64,
+      65,
+      66
+    ]
+  },
+  {
+    "task_id": "6e0e35698699106a1416bf02",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "친환경 하이브리드 추진시스템(암모니아, 배터리) 무인 원격제어 및\n고정밀 PMS 기술 개발",
+    "task_number": "2026-3차-AI완전자율운항-11",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "73cc93538b2e281390cd8efd6af8bd16",
+      "4d9dd4046010034ea5432228413905d8",
+      "1197ce7517104a77744de42bf04c8545",
+      "2fd6a13154d07d9fa2af57537a774858",
+      "23520113e1056a6fad2c4bf22518f48e"
+    ],
+    "pages": [
+      67,
+      68,
+      69,
+      70,
+      71
+    ]
+  },
+  {
+    "task_id": "ef0188b548e3e72ad29f3159",
+    "document_id": "ada38f62c87a1216b11cb6bf",
+    "title": "AI 완전자율운항선박 기술개발 총괄관리",
+    "task_number": "2026-3차-AI완전자율운항-12",
+    "filename": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "source": "002_붙임 01. 품목개요서(상세 RFP_18702725530817565.pdf",
+    "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외; 빈 페이지는 텍스트·이미지 없음 확인",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "f757ed8bd5b344e9ffddc5d27bd8b7be4def0e84baf39adb0d6f6dcb803cd630"
+    },
+    "group_id": "8028f864519e61eb6766",
+    "chunk_ids": [
+      "fbf0044ec427697a9210c44aa58b1b26"
+    ],
+    "pages": [
+      72,
+      73
+    ]
+  },
+  {
+    "task_id": "513086abd1c65e0f34e977f3",
+    "document_id": "3bc99334afe0d245ffd3dc78",
+    "title": "방사선 독성 및 치료시간이 최소화된 초고선량 방사선 암치료기 개발",
+    "task_number": "2026-1-2-플래그십-4",
+    "filename": "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf",
+    "source": "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf",
+    "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "품목 정의 표를 별도 과제로 오인한 결과 제거; 이후 지원내용을 심장박동기 과제로 재연결",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798"
+    },
+    "group_id": "bc569853c922a599100b",
+    "chunk_ids": [
+      "77c6cef03168f63da70b82c7b1f470c3",
+      "3f92ee60c3b6f4adcb3927e9eccdcf59",
+      "4c39b27eb6145b37eb67fdfbabf606a0",
+      "2da6228246ee6c00b8b845af517613cd",
+      "8ab249ff14913696f4fa8b1884bf528c",
+      "53cb3b06f5ee752972946278aca4a7ab"
+    ],
+    "pages": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "task_id": "cd656677f9cf5ab7b61fe700",
+    "document_id": "3bc99334afe0d245ffd3dc78",
+    "title": "이식형 심장박동기의 국산화 기술개발",
+    "task_number": "2026-2-2-필수의료기기-8",
+    "filename": "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf",
+    "source": "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf",
+    "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "품목 정의 표를 별도 과제로 오인한 결과 제거; 이후 지원내용을 심장박동기 과제로 재연결",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798"
+    },
+    "group_id": "bc569853c922a599100b",
+    "chunk_ids": [
+      "4c4d9a3b6225783400537a5e91a183ed",
+      "0c77d5d59e5ef3a57ffeac7c875c7d6f",
+      "39c3dc446dd7519250a7e0b1026ce103",
+      "651ab8d910bd3b0df32f26d22a106e4f",
+      "b05636c2bcb1cece1711840fa4bcbcad"
+    ],
+    "pages": [
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  {
+    "task_id": "5f42642dc07420500b889b38",
+    "document_id": "3bc99334afe0d245ffd3dc78",
+    "title": "의료기기 국내 임상시험지원",
+    "task_number": "2026-3-1-임상시험-3",
+    "filename": "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf",
+    "source": "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf",
+    "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "품목 정의 표를 별도 과제로 오인한 결과 제거; 이후 지원내용을 심장박동기 과제로 재연결",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798"
+    },
+    "group_id": "bc569853c922a599100b",
+    "chunk_ids": [
+      "dc2275e78b891e75bbfed03f35d72432",
+      "2f4caf3640065d675d7c347cbc5db0e9",
+      "7be9a7ebc1b9c556b97ef34376b04c06",
+      "4366c479b73e322a796775bfb0ead5a0",
+      "a9a052ce9e4c6cb72b652e6db40633d6"
+    ],
+    "pages": [
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "task_id": "6b827a380ddcbe3c6e82c455",
+    "document_id": "3bc99334afe0d245ffd3dc78",
+    "title": "글로벌 초격차 기술분야 국제표준(NP) 개발",
+    "task_number": "2026-3-2-국제표준-5",
+    "filename": "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf",
+    "source": "002_붙임1. 2026년 제2차 범부처 첨단 의료기기 연구개발사업 신규지원 대상과제 RF_18173652308521980.pdf",
+    "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "품목 정의 표를 별도 과제로 오인한 결과 제거; 이후 지원내용을 심장박동기 과제로 재연결",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "1f1c981d343d9cc9175f0bf5d2b51c5b29f18a24ea96b47dea2664d7bf514798"
+    },
+    "group_id": "bc569853c922a599100b",
+    "chunk_ids": [
+      "cdaf96965e0a0d63a0b02898770bec71"
+    ],
+    "pages": [
+      10,
+      11
+    ]
+  },
+  {
+    "task_id": "713ff62d2620252fff4bcec3",
+    "document_id": "525d3c128c3fba4d93785799",
+    "title": "SMR 조기 배치 민간 협력방안 연구",
+    "task_number": "",
+    "filename": "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안_19023370783426543.pdf",
+    "source": "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안_19023370783426543.pdf",
+    "file_hash": "ddcaed02ea22eb80ef6cc99e58d05e21e35363b3ab8cb2763f9ff4faf2862aca",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "ddcaed02ea22eb80ef6cc99e58d05e21e35363b3ab8cb2763f9ff4faf2862aca"
+    },
+    "group_id": "102cdf1d4f3e4357b047",
+    "chunk_ids": [
+      "f2cf773a349c27ecd73377f3955679c1"
+    ],
+    "pages": [
+      5
+    ]
+  },
+  {
+    "task_id": "05258823d59603a0bd799070",
+    "document_id": "525d3c128c3fba4d93785799",
+    "title": "일반 특구·지역균형발전 정책\n(기회발전특구·교육발전특구 등)",
+    "task_number": "",
+    "filename": "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안_19023370783426543.pdf",
+    "source": "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안_19023370783426543.pdf",
+    "file_hash": "ddcaed02ea22eb80ef6cc99e58d05e21e35363b3ab8cb2763f9ff4faf2862aca",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "ddcaed02ea22eb80ef6cc99e58d05e21e35363b3ab8cb2763f9ff4faf2862aca"
+    },
+    "group_id": "102cdf1d4f3e4357b047",
+    "chunk_ids": [
+      "127bd98f5432e3e0fd95bb6646722b90",
+      "840fad73f92e4eaab872d2f7e4009fec",
+      "5912a81f5e5fae7596867ca1c9a2d3b0",
+      "c85f22353c4defe267022d89e7a3d3c1"
+    ],
+    "pages": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "task_id": "0989c33a4304de39d899416b",
+    "document_id": "8fb66d0841742ab0794723be",
+    "title": "SMR 조기 배치 민간 협력방안 연구",
+    "task_number": "",
+    "filename": "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안서(2차_756714625032422.pdf",
+    "source": "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안서(2차_756714625032422.pdf",
+    "file_hash": "b7750efdc52c7147477fbc8b7bd7ac832a4b3cdb4b7e168ee827d67afb572b7a",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "b7750efdc52c7147477fbc8b7bd7ac832a4b3cdb4b7e168ee827d67afb572b7a"
+    },
+    "group_id": "102cdf1d4f3e4357b047",
+    "chunk_ids": [
+      "a75d822c2940c31b19598f5c48fd3dec"
+    ],
+    "pages": [
+      2
+    ]
+  },
+  {
+    "task_id": "cd692d96986e7a526fe25cd4",
+    "document_id": "8fb66d0841742ab0794723be",
+    "title": "일반 특구·지역균형발전 정책\n(기회발전특구·교육발전특구 등)",
+    "task_number": "",
+    "filename": "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안서(2차_756714625032422.pdf",
+    "source": "002_붙임1. 2026년도 하반기 원자력정책연구사업 과제제안서(2차_756714625032422.pdf",
+    "file_hash": "b7750efdc52c7147477fbc8b7bd7ac832a4b3cdb4b7e168ee827d67afb572b7a",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "b7750efdc52c7147477fbc8b7bd7ac832a4b3cdb4b7e168ee827d67afb572b7a"
+    },
+    "group_id": "102cdf1d4f3e4357b047",
+    "chunk_ids": [
+      "603769f5b3e80ce594e3b068c5df557c"
+    ],
+    "pages": [
+      2
+    ]
+  },
+  {
+    "task_id": "09c8db1b72a907cb4256faab",
+    "document_id": "05bd36d1e021c4d8cfbb3551",
+    "title": "저장링 입사요동 저감을 위한 비선형 킥커 (Non-Linear Kicker) 시스템 개발",
+    "task_number": "2026-거대인프라방사선-",
+    "filename": "002_붙임1. 과제제안요구서(RFP)_저장링 입사요동 저감을 위한 비선형 킥커 (Non-Linear Kicker) 시스템 개_1125736196222526.pdf",
+    "source": "002_붙임1. 과제제안요구서(RFP)_저장링 입사요동 저감을 위한 비선형 킥커 (Non-Linear Kicker) 시스템 개_1125736196222526.pdf",
+    "file_hash": "d80e66f63607d0cddb867b33852de0066424e85e222f0870c263a8bea6121b44",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "d80e66f63607d0cddb867b33852de0066424e85e222f0870c263a8bea6121b44"
+    },
+    "group_id": "14c301a304ba835ffefc",
+    "chunk_ids": [
+      "24a6d29b08b4f85d7f77e64337a644c3",
+      "48fefc704a47e959aab04960c43fe134",
+      "d04cd98623dc16612dedc54b2657bb7a",
+      "8e9de2570ecd2b9853f6e0706a8c3f2f",
+      "0deff9c233ad17d69a22b8099d4023b2"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "36314ae67461462cf3bca79e",
+    "document_id": "6a7a4ab3092a2b2f36328b38",
+    "title": "이식형 심장박동기의 국산화 기술개발",
+    "task_number": "2026-2-2-필수의료기기-8",
+    "filename": "002_붙임1._2026년_제2차_범부처_첨단_의료기기_연구개발사업_신규지원_대상과제_RFP.pdf",
+    "source": "002_붙임1._2026년_제2차_범부처_첨단_의료기기_연구개발사업_신규지원_대상과제_RFP.pdf",
+    "file_hash": "b64d0cd76caac64f6745e1e98fd73985c59e3304bd2ccd05aaf67e2fae751f7f",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "품목 정의 표를 별도 과제로 오인한 결과 제거; 이후 지원내용을 심장박동기 과제로 재연결",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "b64d0cd76caac64f6745e1e98fd73985c59e3304bd2ccd05aaf67e2fae751f7f"
+    },
+    "group_id": "bc569853c922a599100b",
+    "chunk_ids": [
+      "ba72fae4604aa4f19186c049123f7050",
+      "903c6d11f498f5815cac81caecc05a67",
+      "c37ccc6f8462c729a8328fd5c655138d",
+      "6b0f449b8970149bac6bd8e16fffc890",
+      "50b4062cfa4b1d537497cbbd48d8e776"
+    ],
+    "pages": [
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "f047fb51c66be633596f3077",
+    "document_id": "f27b609d855738ac2b94d679",
+    "title": "건물 환기 루버와 차양에 탈부착 가능한 태양광 모듈 시스템 개발 및 실증",
+    "task_number": "2026-신재생-태양광-품목-1",
+    "filename": "003_2. 연구개발과제기획보고서(태양광 3차 공고_3206536389794941.pdf",
+    "source": "003_2. 연구개발과제기획보고서(태양광 3차 공고_3206536389794941.pdf",
+    "file_hash": "b8eefc47a16717a24b416f4cc661da4d32dd781ade6d96f3f610447f9649d29a",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "20쪽은 기획보고서 시험절차 그림·27쪽 목차 확인; 28쪽부터 명시적 RFP 유지",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "b8eefc47a16717a24b416f4cc661da4d32dd781ade6d96f3f610447f9649d29a"
+    },
+    "group_id": "575e4a3a2f16647d9c14",
+    "chunk_ids": [
+      "e466ad01aafa967346f3ef4edc8b568c",
+      "5a930fda5ada0600971bd4cf4caceaf0",
+      "1a0b6a32c2386f6a56ca1c8676c81cf6",
+      "423e560f36c906fe2318f2192d3936ca"
+    ],
+    "pages": [
+      28,
+      29
+    ]
+  },
+  {
+    "task_id": "b8b410f4e4cbc8e2510eb380",
+    "document_id": "457e0ad3adb87c06b556288d",
+    "title": "장기 면역 유도 백신 플랫폼 개발 (ENDUREx: ENduring Defense & Ultra-long Response EXtension)",
+    "task_number": "",
+    "filename": "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf",
+    "source": "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf",
+    "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "unverified_metric_pages": [
+        25
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8"
+    },
+    "group_id": "ea5ba362c08feb9bfeee",
+    "chunk_ids": [
+      "cd16e7cc07b4605b5cac2477067729df",
+      "9076f5bf5c76180b30818763335ec05f",
+      "a9231c5c952835b3a8ecd4f648877317",
+      "bde8e0084807c491de1ee4ed96e5d311",
+      "19905b1958c7c1b97c987483e796dc6d",
+      "12acb6a7258963f497409b06972f9401"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "e5420fa3f862fead3baa6957",
+    "document_id": "457e0ad3adb87c06b556288d",
+    "title": "잠복 감염 활성화 원천 차단 플랫폼 개발 (ERASEx: Eradication of Reservoir & Activation Silencing for Eternal eXclusion)",
+    "task_number": "",
+    "filename": "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf",
+    "source": "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf",
+    "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "unverified_metric_pages": [
+        25
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8"
+    },
+    "group_id": "ea5ba362c08feb9bfeee",
+    "chunk_ids": [
+      "1c1d1fe58d317a2940decebf816c1dec",
+      "00484462992ab85464509aaaff5f53be",
+      "64fca14080fc8eca6441fba7cb429f8f",
+      "64060a46d47841c435ccdd490a9d014d",
+      "32d56e61a507251bf07ff02f9dccaf32",
+      "dea8e226343ee74e38ef187dd828d4c2"
+    ],
+    "pages": [
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "task_id": "d29f2af35d262c5824a62988",
+    "document_id": "457e0ad3adb87c06b556288d",
+    "title": "암 관리를 위한 혈액정화기술 개발 (PURIFY: Precision Universal Removal by Immune-cell-mimetic Filteration&Yielding-theranostics)",
+    "task_number": "",
+    "filename": "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf",
+    "source": "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf",
+    "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "unverified_metric_pages": [
+        25
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8"
+    },
+    "group_id": "ea5ba362c08feb9bfeee",
+    "chunk_ids": [
+      "12d011b4fad6cdd2d399310d24120b7e",
+      "f249d576c826b3d1dcaba4386f667efb",
+      "2bbcf9e5c6be29ab5473f644603ece6f",
+      "d6c948952e7bb6c3852ccf560be54d99",
+      "a12945cbe33e33ed0dbc3a5e155f0a35"
+    ],
+    "pages": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  {
+    "task_id": "e684461f92628898cf554286",
+    "document_id": "457e0ad3adb87c06b556288d",
+    "title": "고령층의 보이지 않는 고통의 가시화와 해결방안 (VISTA: Visualizing Invisible Suffering of pain & itch and Treating the Aging society)",
+    "task_number": "",
+    "filename": "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf",
+    "source": "003_3. 2026년도 한국형 ARPA-H 프로젝트 신규지원 대상과제 RFP 취_17513544797490970.pdf",
+    "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "unverified_metric_pages": [
+        25
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "6644405d8159d916299d6c1b527cc94470c841e03469a69d51e9a71c2aa7bbd8"
+    },
+    "group_id": "ea5ba362c08feb9bfeee",
+    "chunk_ids": [
+      "1cca95b4a213cf27474ebda4cb1effa7",
+      "15e0164d191b3378c624b1c3a8f75b6f",
+      "3b826001043e40f3bde4a1cb291171ed",
+      "cd4b797e8739b274e9a0cee36e70905d",
+      "df503eee684cb543b8819fd6c14fe7f6",
+      "a32e49b4a426d8b408d96da8863b3c2c",
+      "918c5d3245ef3415dd4a1c5129b9f13d"
+    ],
+    "pages": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ]
+  },
+  {
+    "task_id": "0f0ea5f0e6244b4d3bf74d8b",
+    "document_id": "22437e2af997e5a49abd9c0a",
+    "title": "모듈단위 전력변환장치(MLPE) KS 표준 제(개)정 및 인증평가체계 고도화",
+    "task_number": "",
+    "filename": "004_공고문_2026년 차세대 재생에너지 표준화 및 인증고도화 혁신 지_20517589735830140.pdf",
+    "source": "004_공고문_2026년 차세대 재생에너지 표준화 및 인증고도화 혁신 지_20517589735830140.pdf",
+    "file_hash": "d0b09172103ca07bba8b71d964a38fcc767be07fbcf5c8dbe891989936c1e223",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "d0b09172103ca07bba8b71d964a38fcc767be07fbcf5c8dbe891989936c1e223"
+    },
+    "group_id": "e4937650551604b048ba",
+    "chunk_ids": [
+      "223fd0d61b04d862e9182bcdb914d7cb",
+      "0f39a18ab375975d78be3f5d2c6d477d",
+      "a7ade9352c6cea7d78efeb434b846ae5",
+      "26d218209e0a35ae8b61d04e005d866c"
+    ],
+    "pages": [
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "task_id": "bc68501c7c62c6a0a18816e4",
+    "document_id": "0dd472f1c30fe94b93edec1b",
+    "title": "우주용 PCB 표준화 연구",
+    "task_number": "",
+    "filename": "004_붙임2-3_RFP3_우주용 PCB 표준화 연구.pdf",
+    "source": "004_붙임2-3_RFP3_우주용 PCB 표준화 연구.pdf",
+    "file_hash": "82ffce29103485d405be770178321837860f159eb87216987319a7496a8cbdb2",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "복원 제목을 원문 텍스트와 대조; 불명확한 과제 보류, 미검증 성능표 제외",
+      "unverified_metric_pages": [
+        4
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "82ffce29103485d405be770178321837860f159eb87216987319a7496a8cbdb2"
+    },
+    "group_id": "b724aa44d986b756ed12",
+    "chunk_ids": [
+      "8eca332a654990371ac00331686685c2",
+      "f90cc29dc79ff5f157a9ea7c05b51c3c",
+      "794358385ea3863a96adfe9b6f2d9db1",
+      "fe7d2323361d862c36819b112fd08aff",
+      "7fa30ec0cae782d7b2ebde9606b62fd9",
+      "d544331561067a17d9fb711843247bc7"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  {
+    "task_id": "6665e69b1db1e1c854a76737",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-13",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "5e130cc66853e8ed397f820678556ee4",
+      "0d810cbfbf0ac16029968819c9397c17",
+      "6fccf3ff151deaf777afb41de274f7c8",
+      "aeed27d4a3717c3928785b3f76af0959",
+      "790c2bd420b647cc33ce094091fa406c"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "task_id": "c1155e7f572d567623a7274b",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "정밀부품 절삭 가공 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-14",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "c457068b9c75cf9d3202b7b910fb0c5d",
+      "dafa5dcad40a70bfe809afc2f1d8e9b1",
+      "e369b76f7b3b7a1bbab0e2d31f375c5d",
+      "0ddb2b331aa5ca9391048d8b3ecf2db3",
+      "88f5b5885cdb28d6c3f8e4f5b8ae90d3"
+    ],
+    "pages": [
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "task_id": "679de1d2755c8f584a4ef8b8",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "전동식 워터펌프 프레스 성형 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-15",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "c1e11ef8b14c292c5700ce5465836c8f",
+      "dbd5510f76c1e534c21fdf8a90da2868",
+      "f25e52cc620e7439b19f1a0ffe4d00ad",
+      "d3813bed48c5a4f0659cdc1289f255f3",
+      "4601a7af282b299830c2ba78318f340a"
+    ],
+    "pages": [
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "task_id": "bda02082091bf8d52ed316ec",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "고무 소재 성형 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-16",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "de8481cbeb0f031af03f9382349d660a",
+      "fa413fe3554f4dd02f2c3e7e47cb6973",
+      "f322ead84e868953bfa1c4e425a27f40",
+      "9589606a8df2aee4d6dd44ce80855c84",
+      "11eb38fdd72bc9806cc536155fbc9217"
+    ],
+    "pages": [
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  {
+    "task_id": "9b421c81f56d7163f8deb496",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "차량 경량 부품 제조 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-17",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "09f037ff7623b753697032a8b99275b9",
+      "c1b86b388511c4dd8edca8716d871fd1",
+      "df4f7f8f0162778eb9ac83dab38ac763",
+      "c3141e41e7caf4a72950369188889594",
+      "01fb1d66599df2d9decedfa1aa800560"
+    ],
+    "pages": [
+      18,
+      19,
+      20,
+      21
+    ]
+  },
+  {
+    "task_id": "ed74ba6cc858fef849c74584",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "플라스틱 사출 연계 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-18",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "bca4de7351d95b55c99732afae3705cb",
+      "590fad03b076197e7e21fc3e9f88aaf9",
+      "e67df40fa4eee7adbf185e8acead477c",
+      "8d7860534996af9337ac293eb4d31837",
+      "479be99103a2ce57ca9135f9a3cde2e6"
+    ],
+    "pages": [
+      22,
+      23,
+      24,
+      25
+    ]
+  },
+  {
+    "task_id": "33f501485f4451d0c305d067",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "안전벨트 제조 및 조립 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-19",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "e85e4c997cfec295cbd4c07000b8caf1",
+      "e702fd1252332923d33743657ad0f093",
+      "9c6e57f2ae62fc1180ec4025deb799e6",
+      "e7e70bf93107bdc88c68ecf1e0ba0e75",
+      "bb7318a5cb5057f8378d2fbcfd60c041"
+    ],
+    "pages": [
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "task_id": "2bf32355db473f23667a5f4a",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "액츄에이터 제조 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-20",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "76810ccc41eb9dbc1df67295b8687140",
+      "76289cc79bf53117e8af83802e250e3e",
+      "d10afb9daa318bc5f98f46e6a3edce7f",
+      "53bbb9275e085d21a3a9a6e7731a086d",
+      "598dd8bf52d58b37cb9c548a8b665394"
+    ],
+    "pages": [
+      30,
+      31,
+      32,
+      33
+    ]
+  },
+  {
+    "task_id": "e778026bdab58c5355840e13",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "차량용 열교환 장치 제조 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-21",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "e3a36d0c068eea16db47df0d8558a354",
+      "ecfbc5256265d5011546c43083ac5838",
+      "6c5b5fed7ec073e270b9e97a20efffb7",
+      "c887b2c7889a78fe82b2de2e02da2ea2",
+      "fb85e94934a6a3477efc07f52acfbcaa"
+    ],
+    "pages": [
+      34,
+      35,
+      36,
+      37
+    ]
+  },
+  {
+    "task_id": "f52e38c048ac0d55ca5250ea",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "합금 원소 첨가 철강 제조 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-22",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "9095d8ba286edd77f3e47b9610696f2d",
+      "8cdd777b498b4f983ee016e316ffb741",
+      "a0088e8b6cfee1d6fdaa5580bdc2973f",
+      "7eba5d49632d60bea6cd43e223333dae",
+      "af6961d2f801688a6a2137d618bdda81"
+    ],
+    "pages": [
+      38,
+      39,
+      40,
+      41
+    ]
+  },
+  {
+    "task_id": "c1989da9fd04eeadbe4ab520",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "곡면 외판 구조물 용접 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-23",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "f0d2117f2a28e64070494bea2e2eb0d9",
+      "9ea1dab106cae8d99c1c13133d6c0cb9",
+      "db2a960b74bc53fb46d62c46c217dd83",
+      "decb29ebbc1ce74a4556c06f67d51c9e",
+      "c313fc3681781a81703ee40a16f9fbab"
+    ],
+    "pages": [
+      42,
+      43,
+      44,
+      45
+    ]
+  },
+  {
+    "task_id": "2b29fafe309d231a1ea13b07",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "고온-고압 발전용 중량물 제조 용접 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-24",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "172560361945fc8f225eda183c923ef2",
+      "148ef3d4c70a90f90cb92821c827ff90",
+      "98bd2bca9db526bf10ac692ca2f8eb22",
+      "140d707b9e6e19941342eda16e70ee71",
+      "ff28aa7631e023a4fb9c0b354cb79bc3"
+    ],
+    "pages": [
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  {
+    "task_id": "d4250e65769e0c856d94a8dd",
+    "document_id": "fdbe3cc2c36fa1c46283ce8f",
+    "title": "반도체 패키징 구조 부품 제조 공정 융합데이터 수집 및 실증 기술개발",
+    "task_number": "2026-피지컬AI-25",
+    "filename": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "source": "01. 2026년도 인간-AI 협업형 LAM 개발·글로벌 실증 신규 지원대상 과제 RFP(피지컬AI 13-25)최종.pdf",
+    "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624",
+    "task_type": "subtask",
+    "parent_task_id": "6665e69b1db1e1c854a76737",
+    "parent_title": "정밀 로봇 제어 공정 융합데이터 수집 및 실증 기술개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27,
+        31,
+        35,
+        39,
+        43,
+        47,
+        51
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "7fdbe1eca40a5daa971db394a2eb9b9d895947da21a63816bb25e989147ff624"
+    },
+    "group_id": "aae607da775f112e88b4",
+    "chunk_ids": [
+      "af45ac1497ece5f4295af97454c54d80",
+      "2ec0d2267cf43399ca4f22ad0db3e664",
+      "241f2265fb6de9b43c2f2e1ac4fd0d0a",
+      "d85921f55046b2db956586f36c6cf4e9",
+      "4639203bcdda0d83713cf4200aa9125f"
+    ],
+    "pages": [
+      50,
+      51,
+      52,
+      53
+    ]
+  },
+  {
+    "task_id": "cb2ef6376847351b854bd80d",
+    "document_id": "317f94ce3c4fd1bd3f479c7f",
+    "title": "20MW+급 초격차 해상풍력터빈 블레이드 공통 핵심기술 개발 및\n상세설계",
+    "task_number": "2026-신재생-풍력-품목-1",
+    "filename": "1.20MW+급 초격차 해상풍력터빈 블레이드 공통 핵심기술 개발 및 상세설계.pdf",
+    "source": "1.20MW+급 초격차 해상풍력터빈 블레이드 공통 핵심기술 개발 및 상세설계.pdf",
+    "file_hash": "719790fb724932b57eaa1f905196dd34e0667c8e2070a5eb8cf488a1d41e3b0d",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "719790fb724932b57eaa1f905196dd34e0667c8e2070a5eb8cf488a1d41e3b0d"
+    },
+    "group_id": "d7a526ac49d9a271ceb4",
+    "chunk_ids": [
+      "0427f6f62bb4956d4e8fa2eb88bb50c5"
+    ],
+    "pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "task_id": "a0eff8b844ce4354a6d3e7a4",
+    "document_id": "59131c89976449839ec6e234",
+    "title": "양면형 탠덤 태양전지 기술개발 및 효율 검증\n(초혁신경제성장 15대 선도프로젝트)",
+    "task_number": "2026-신재생-태양광-품목-1",
+    "filename": "1.양면형 탠덤 태양전지 기술개발 및 효율 검증.pdf",
+    "source": "1.양면형 탠덤 태양전지 기술개발 및 효율 검증.pdf",
+    "file_hash": "eb8c3bd6dfff0ab81ba59e0f0f5ed03304aa4f0754f1b88079072fb7906965d0",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "eb8c3bd6dfff0ab81ba59e0f0f5ed03304aa4f0754f1b88079072fb7906965d0"
+    },
+    "group_id": "790667491fab4a59870d",
+    "chunk_ids": [
+      "44fc6e6cc0f741186dd4f7d6a8867569"
+    ],
+    "pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "task_id": "9b00838410340718ff5badd3",
+    "document_id": "8ee7c13ec385c5c89a4e8d7b",
+    "title": "인공위성 자료 기반 북극항로 거점 연안 환경변화 분석",
+    "task_number": "",
+    "filename": "1.위탁연구과제 제안요구서(RFP)_인공위성 자료 기반 북극항로 거점 연안 환경변화 분석.PDF",
+    "source": "1.위탁연구과제 제안요구서(RFP)_인공위성 자료 기반 북극항로 거점 연안 환경변화 분석.PDF",
+    "file_hash": "8f96791b3a03605b99145109cc35021125b2f7ac800e7512942a10371ac65a86",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "8f96791b3a03605b99145109cc35021125b2f7ac800e7512942a10371ac65a86"
+    },
+    "group_id": "63a6e7a08553bf1dfccd",
+    "chunk_ids": [
+      "143d70a3a7d8d5b01cdf44905c27e6df",
+      "a6d87720f4ed3ca480111e165685aaec",
+      "a21c97df9a9307c68d2af61b5cd5f8ee"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "ee4046a03f7d09268cf57398",
+    "document_id": "8eaeee768fc6b42d9f4438f2",
+    "title": "굴착공사 중대재해 예방을 위한 AI기반 안전관리 솔루션 개발",
+    "task_number": "",
+    "filename": "10. 과제제안서_지에스건설.PDF",
+    "source": "10. 과제제안서_지에스건설.PDF",
+    "file_hash": "5a58ea171854397191612bd04395e778bf35485ef915800db3dd0a2a820a284a",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "5a58ea171854397191612bd04395e778bf35485ef915800db3dd0a2a820a284a"
+    },
+    "group_id": "9430e3617ef9813e0f53",
+    "chunk_ids": [
+      "60025308c2e4ffcc503578dc2b07dabe",
+      "e6d5caf8ee6fd0ab4128d873a66349f4",
+      "66eca9a731299a83b1d1b78cad9e9f85",
+      "a446b999b76fd3b306e3da3e56a6dec2",
+      "ea2d0a67fa596f178d8514ac9557503b",
+      "c4254a880435c506e5af7075e030656c"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "539fd733c58dcd86fcdcb83e",
+    "document_id": "5ff163338117f44985e66645",
+    "title": "비정형 명세서 정형화 및 Batch Scanning 기반 현장 탐색·분류\n자동화 기술 개발",
+    "task_number": "",
+    "filename": "12. 과제제안서_풀무원 엑소후레쉬.PDF",
+    "source": "12. 과제제안서_풀무원 엑소후레쉬.PDF",
+    "file_hash": "fdcf26f0354d4a8f3671ade7875d796617fba2cdf95d57dc7f24b65804f727bc",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "fdcf26f0354d4a8f3671ade7875d796617fba2cdf95d57dc7f24b65804f727bc"
+    },
+    "group_id": "e474ae073acf9b064264",
+    "chunk_ids": [
+      "0270b6ee1967cdf14b5f3bfee7936439",
+      "2c59004c857b41c73424be22a24d9ee0",
+      "fca9a1fdcbe3423a391810558fbe8005",
+      "22e0e19777e5bb3c909d0bd3cb3acfa0"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "6d9187a838cf8a5b2005751a",
+    "document_id": "0ed899e65f5728283da34c50",
+    "title": "Agent Commerce 시대 대응을 위한\n실시간 금융상품 최적 매칭 및 자율 의사결정 AI 엔진 개발",
+    "task_number": "",
+    "filename": "19. 과제제안서_신한카드.PDF",
+    "source": "19. 과제제안서_신한카드.PDF",
+    "file_hash": "8c8888a29da7fb851a94f2895a9558463aebaab35691a4f70b1702890d5879f1",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "8c8888a29da7fb851a94f2895a9558463aebaab35691a4f70b1702890d5879f1"
+    },
+    "group_id": "e781b34d28096a821619",
+    "chunk_ids": [
+      "c9ea19ae1f29a721fba616de6e4bb6db",
+      "0401175cebc35fb18800fce788fcb471",
+      "160ff0fb68db124eaed7e20794af569d",
+      "eb1912fa853b2ff5b63920c7a00b86ea"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      5
+    ]
+  },
+  {
+    "task_id": "94cc8a7a0aa4845a48062d8d",
+    "document_id": "8c35050eeae08ef81d890de0",
+    "title": "무인기뢰처리기용 기뢰제거 절단구 부품 국산화 및 성능 고도화 기술 개발",
+    "task_number": "",
+    "filename": "20. 과제제안서_대양전기공업.PDF",
+    "source": "20. 과제제안서_대양전기공업.PDF",
+    "file_hash": "7af8a5e259c82c12b0cf4a6175817b55d86d64ca01bbc625cc0332af46ec6a5b",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "7af8a5e259c82c12b0cf4a6175817b55d86d64ca01bbc625cc0332af46ec6a5b"
+    },
+    "group_id": "efd634a843fd7c381e10",
+    "chunk_ids": [
+      "24953cf2665cab1386fb60b36857d772",
+      "126ea4d69d8ce593bb947a1a6d3262cc",
+      "80ad1d42e74e9af613e3c2360c860cf4",
+      "1bbeee2219bb833b2afde7d265a211b9"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "a4100e2d5d2cc613f762af60",
+    "document_id": "2a8f63840ed1557bad4b3033",
+    "title": "지역수요 기반 첨단 모빌리티 서비스 통합실증 및 사업화 플랫폼",
+    "task_number": "2026-지역자율R&D-첨단모빌리티-5",
+    "filename": "2026-지역자율R&D-첨단모빌리티-5.pdf",
+    "source": "2026-지역자율R&D-첨단모빌리티-5.pdf",
+    "file_hash": "a7c6b145b9e59805736a8b9cd53d938857654c0a336b102b782dd16c667221e1",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "a7c6b145b9e59805736a8b9cd53d938857654c0a336b102b782dd16c667221e1"
+    },
+    "group_id": "f1d5dccb80d4106b01ac",
+    "chunk_ids": [
+      "179b731125b754b909f3dc49b4258066",
+      "9f58c3522834de01242974c21c62d15c",
+      "229c025e291581b871cb295e65d375a0"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "489af26729b38b9d2e6a3cad",
+    "document_id": "6b44f84c272f4092dc0499d6",
+    "title": "고신뢰 특수환경 다중이동체 관제·제어 통합 실증 플랫폼",
+    "task_number": "2026-지역자율R&D-첨단모빌리티-6",
+    "filename": "2026-지역자율R&D-첨단모빌리티-6.pdf",
+    "source": "2026-지역자율R&D-첨단모빌리티-6.pdf",
+    "file_hash": "d7e4a3a56779660a41bf03fee0688db51d35c541cb438c2217a45459e0f5d91b",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "d7e4a3a56779660a41bf03fee0688db51d35c541cb438c2217a45459e0f5d91b"
+    },
+    "group_id": "eb7ce221b5db8ebff7c4",
+    "chunk_ids": [
+      "4865d0ce31ed8face4539e501a3496be",
+      "73d0553fc45241117acb2e4eba9afd79",
+      "a7f961bfb25d5456e41de609c01f74bf",
+      "56873d3647d950bbcfb94147c7fab5c8"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "d1a79647108db77651fa8a75",
+    "document_id": "30d76bfcc113e0381829bfb6",
+    "title": "혁신 신약 딥테크 기술 고도화 및 산업 실증 연구",
+    "task_number": "2026-지역자율R&D-첨단바이오-4",
+    "filename": "2026-지역자율R&D-첨단바이오-4.pdf",
+    "source": "2026-지역자율R&D-첨단바이오-4.pdf",
+    "file_hash": "6ef0dd13eb0a33ab239f40cf15bc43b556bf95c913aec20d6a419c3c8c9520d0",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "6ef0dd13eb0a33ab239f40cf15bc43b556bf95c913aec20d6a419c3c8c9520d0"
+    },
+    "group_id": "a0b090183340d8cc78d8",
+    "chunk_ids": [
+      "559d16fa1d65cf2c4e13274df4e56ab8",
+      "d0d632506b1dbf6144f16f4d190f2660",
+      "edee1c040084848cc783ba71102a52d2",
+      "5a2d7563283a71fa6ca25d5bdd249594"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "38d0261fd7cf41d4628f74a6",
+    "document_id": "a77ed9c207f3ef48b5d7421d",
+    "title": "아라미드 방사공정 가혹환경 대응 비접촉식 Vision AI 수위 정밀 계측 및\n다변수 기반 AI 스마트 팩토리 제어 시스템 개발",
+    "task_number": "",
+    "filename": "23. 과제제안서_코오롱인더스트리.PDF",
+    "source": "23. 과제제안서_코오롱인더스트리.PDF",
+    "file_hash": "207154e751255e4f2398dd1715187057d2e02a6f2f24f797c28710cda4ca4d88",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "207154e751255e4f2398dd1715187057d2e02a6f2f24f797c28710cda4ca4d88"
+    },
+    "group_id": "a198b9f659c83f5c149b",
+    "chunk_ids": [
+      "4804113e147b48bd197d067f71bbe968",
+      "d1756130359518719265d93514876c7d",
+      "f7d12121624b2c58f556cc9134b876cb",
+      "b9c98b5baca88b1ea0a74b6da7593cbc",
+      "13ed9c3b9a9dc857468205282f08f92d"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "0783221544a6f41387ddc1d6",
+    "document_id": "f489adae9e38b6efd1eb9d0d",
+    "title": "전자의무기록(EMR) 데이터 기반 의약품 안전성 관리 솔루션 개발",
+    "task_number": "",
+    "filename": "24. 과제제안서_대웅제약.PDF",
+    "source": "24. 과제제안서_대웅제약.PDF",
+    "file_hash": "9339118b9ee83bd6cfd928a450a7129bff3ab847faf24fe25d2b8ffcb5964ed2",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "9339118b9ee83bd6cfd928a450a7129bff3ab847faf24fe25d2b8ffcb5964ed2"
+    },
+    "group_id": "d475b6a66c2472e97b2a",
+    "chunk_ids": [
+      "9d36a642e194a634cbc60f01f28ac554",
+      "0a34d0908cf822546226b3bc441c61cd",
+      "4c15fa61228e58c7429d79740b46a075",
+      "d545dc19699a46eed1c36942996bdf47",
+      "2ba47e9ef86abeb18354aade66f8f788"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "7ebb2266a0d7eaee764e683b",
+    "document_id": "d30f0af9e94e5e4afae976b4",
+    "title": "가열로 중저온 배가스 폐열 회수용 200kW급 고효율 ORC 터빈 발전 시스템 개발",
+    "task_number": "2026-철강-7",
+    "filename": "3. [2026-철강-7] 가열로 중저온 배가스 폐열 회수용 200kW급 고효율 ORC 터빈 발전 시스템 개발.PDF",
+    "source": "3. [2026-철강-7] 가열로 중저온 배가스 폐열 회수용 200kW급 고효율 ORC 터빈 발전 시스템 개발.PDF",
+    "file_hash": "4dde0d97ef428c219338115141ea17360403f1461be42e9fe2862491a756335d",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "4dde0d97ef428c219338115141ea17360403f1461be42e9fe2862491a756335d"
+    },
+    "group_id": "3631bc1ff3c2fab80f94",
+    "chunk_ids": [
+      "c3a80e22a9abe4b466bd97bbbf57d496",
+      "d3e576b8ebdb0d92c7a8fc9c5131ee48",
+      "b349c684c63f28c6a094a2b9b3472717"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "11f8b5c3f4a68f17700ed645",
+    "document_id": "4d1bfd86614a435f40b4e473",
+    "title": "북극 연안 매체 내 과불화화합물(PFAS)의\n다매체 분포 및 거동 분석 연구",
+    "task_number": "",
+    "filename": "3. 위탁연구과제 제안요구서(RFP)_북극 연안 매체 내 과불화화합물(PFAS)의 다매체 분포 및 거동 분석 연구.PDF",
+    "source": "3. 위탁연구과제 제안요구서(RFP)_북극 연안 매체 내 과불화화합물(PFAS)의 다매체 분포 및 거동 분석 연구.PDF",
+    "file_hash": "5e9450adf8d4d02a89c60fb145de43aad6cd6c1b762e9a60e9a9aa7bec44ede6",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "5e9450adf8d4d02a89c60fb145de43aad6cd6c1b762e9a60e9a9aa7bec44ede6"
+    },
+    "group_id": "469b91b2593e8a3b3a8f",
+    "chunk_ids": [
+      "3763ff3950a54d5989af5515acfae0bc",
+      "555ceec9fce33bb76ab440565622ef36",
+      "3e6165328d12cbd92512d2b9d5a960f3"
+    ],
+    "pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "task_id": "785d06cbc27aa99faa92d32d",
+    "document_id": "4aeef8387fc2679d2db5241b",
+    "title": "공동주택 거주 고령층의 보호자 특화 AI기반 원격건강관리 솔루션",
+    "task_number": "",
+    "filename": "5. 과제제안서_공동주택 거주 고령층의 보호자 특화 AI기반 원격건강관리 솔루션 개발_현대건설.pdf",
+    "source": "5. 과제제안서_공동주택 거주 고령층의 보호자 특화 AI기반 원격건강관리 솔루션 개발_현대건설.pdf",
+    "file_hash": "49c5b9d4754d2f1930b37bd041d912da697641cae92f21d120abe4e77d5cc6a2",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "49c5b9d4754d2f1930b37bd041d912da697641cae92f21d120abe4e77d5cc6a2"
+    },
+    "group_id": "33cc38c445676b65d38b",
+    "chunk_ids": [
+      "6cd64eeb9ec9e5ab905dd64811989164",
+      "1ec2977222eebeca058e473f6f0dd4fb",
+      "b5c0ec88c98bb0e09b287ab5101b8d57",
+      "5ed8935edba0f69995e8bba6dbf5efc3",
+      "3cb4961d9b935c5113a3605ceb83e6be"
+    ],
+    "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "task_id": "8ca4aec5412963163439f43a",
+    "document_id": "e0dd88fdb7465fe06bbb3199",
+    "title": "기상증착 기반 페로브스카이트 태양전지 핵심소재 및 공정 개발\n(초혁신경제성장 15대 선도프로젝트)",
+    "task_number": "2026-신재생-태양광-품목-5",
+    "filename": "5.기상증착 기반 페로브스카이트 태양전지 핵심소재 및 공정 개발.pdf",
+    "source": "5.기상증착 기반 페로브스카이트 태양전지 핵심소재 및 공정 개발.pdf",
+    "file_hash": "344cecd8f26531e397958513380169e5d90815e7788bc2f4dc2f0824bf00a4bc",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "344cecd8f26531e397958513380169e5d90815e7788bc2f4dc2f0824bf00a4bc"
+    },
+    "group_id": "36c00b57681c1ba3b85d",
+    "chunk_ids": [
+      "4de6ab4a8ea6973587c273db43cc11eb"
+    ],
+    "pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "task_id": "416ab094aa8f3d41d29e4885",
+    "document_id": "e0fcd45e85d47aceaa4e1c73",
+    "title": "고객 맞춤형 보험설계사 AI 영업 트레이닝 플랫폼 개발",
+    "task_number": "",
+    "filename": "6. 과제제안서_교보생명보험.PDF",
+    "source": "6. 과제제안서_교보생명보험.PDF",
+    "file_hash": "14405cf304331480e79a6a1a48fa0c75fa227678d36cff90b6d20dc13c0d6f48",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외",
+      "unverified_metric_pages": [
+        7
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "14405cf304331480e79a6a1a48fa0c75fa227678d36cff90b6d20dc13c0d6f48"
+    },
+    "group_id": "87e93f0b5684c2c79b93",
+    "chunk_ids": [
+      "9c65e8344ef91ccb133ba7908ea5df84",
+      "e28de949532bae4a3309af3abbb41c5a",
+      "db0cc08026d50266c6b3be6dbbdb619d",
+      "782796b00b0dc0d2f2256eca487220d7",
+      "bdfe57756be4bae26fada2a16927e9b7",
+      "6c7535319dfceabd0ff7704bf97aebc1"
+    ],
+    "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  {
+    "task_id": "18e354099fe6f96350ef7717",
+    "document_id": "84bdbdc3861ce23b0ae62b47",
+    "title": "2.0GPa급 3개 공정단축된 일체형 알루미늄 프론트 로어암 기술 개발",
+    "task_number": "2026-알루미늄-3",
+    "filename": "7. [2026-알루미늄-3] 2.0GPa급 3개 공정단축된 일체형 알루미늄 프론트 로어암 기술개발.PDF",
+    "source": "7. [2026-알루미늄-3] 2.0GPa급 3개 공정단축된 일체형 알루미늄 프론트 로어암 기술개발.PDF",
+    "file_hash": "8ed6873e98ef6df6dc9c350bb6f6d81e7a2fbac60d2e43344012b60992fa6d73",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "8ed6873e98ef6df6dc9c350bb6f6d81e7a2fbac60d2e43344012b60992fa6d73"
+    },
+    "group_id": "e642e8c0a91e09160177",
+    "chunk_ids": [
+      "c107859391592c89b4d2d2b541669cc7",
+      "eefcf33184f695e3091e76fce6015077",
+      "8c918b27ae3b8bc6c902952130f6e1c8"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "843569d687265fcd54034d61",
+    "document_id": "c7451c4e3d94d1121e63c35d",
+    "title": "AI 스마트 미세분사 열환경 제어 냉각 시스템 개발",
+    "task_number": "",
+    "filename": "8. 과제제안서_에이치디현대삼호.PDF",
+    "source": "8. 과제제안서_에이치디현대삼호.PDF",
+    "file_hash": "ba0f53e21b9211aac6b9375b252e23f10ac3f6c35795c3fee7f474f4f7b467da",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외",
+      "unverified_metric_pages": [
+        3,
+        5
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "ba0f53e21b9211aac6b9375b252e23f10ac3f6c35795c3fee7f474f4f7b467da"
+    },
+    "group_id": "e63f1698b0e497b17eb3",
+    "chunk_ids": [
+      "58ae09dca6a3dac77d194f8b406abe83",
+      "5b0f56aeb10318848daebab3c3d192d1",
+      "263154fcc5b76b4cd7d4af8fff2b397b",
+      "460f26e9938641ed891366d8b6a2d6d9",
+      "b4ed3f65469101e73d0058ba414a38a8",
+      "0316697b6c90ef065367cf2b4fbabe61"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      6
+    ]
+  },
+  {
+    "task_id": "d17116416d4439a223209c4d",
+    "document_id": "da4ecbee1ace073ed03cb6fe",
+    "title": "AI 생체분자 기반 자가농축형 희토류 분리 플랫폼",
+    "task_number": "2026-정보·융합기술-7-",
+    "filename": "RFP 5_그린 희토류 자원화_미래유망융합기술파이오니어(도전형).pdf",
+    "source": "RFP 5_그린 희토류 자원화_미래유망융합기술파이오니어(도전형).pdf",
+    "file_hash": "2eb1880e4b3dce06b7655aae55fcb1b92d2d0b191e4fbdc56c2785f94a0617d4",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외",
+      "unverified_metric_pages": [
+        2
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "2eb1880e4b3dce06b7655aae55fcb1b92d2d0b191e4fbdc56c2785f94a0617d4"
+    },
+    "group_id": "4ee41173aa240c6d4259",
+    "chunk_ids": [
+      "39c5870431352eef50a23565fe21826d",
+      "9caa783110de46d5547f346491d17ad8",
+      "58ee12d301595092ddca22f7a095a38e",
+      "10a276d404818887862a4bb107aed50e"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "e218e8aa2c799b1d749dfc4d",
+    "document_id": "36b3c90bf4f9e3efdffba5ab",
+    "title": "유연영역 프로그래밍 기반 협동형 동적 단백질 자기조립 소재(단백질봇) 개발",
+    "task_number": "2026-정보·융합기술-7-",
+    "filename": "RFP 6_단백질 미세구동체 집단 행동 설계_미래유망융합기술파이오니어(도전형).pdf",
+    "source": "RFP 6_단백질 미세구동체 집단 행동 설계_미래유망융합기술파이오니어(도전형).pdf",
+    "file_hash": "3f948ed61859a46f841d20140c98f936ba54df160dc5b305d650b7cab74c1510",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외",
+      "unverified_metric_pages": [
+        2
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "3f948ed61859a46f841d20140c98f936ba54df160dc5b305d650b7cab74c1510"
+    },
+    "group_id": "2e3c6e397c750e2168e3",
+    "chunk_ids": [
+      "8f813efb3c4e2b7834fd679ea70d5163",
+      "ebe6fb39962fae049aab684ccf290ecb",
+      "66ef2df67077b82da33e4ef7d3c1e8b5",
+      "e08739566110e5e4f3889df22ed06bb4"
+    ],
+    "pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "task_id": "f13b76d3bc2117cc0db33d8d",
+    "document_id": "17dd1abcb4adc949ab0b3838",
+    "title": "초소형 온칩(On-Chip) 일렉트로 칼로릭 냉각 기술",
+    "task_number": "2026-정보·융합기술-7-",
+    "filename": "RFP 8_솔리드 스테이트 냉각_미래유망융합기술파이오니어(도전형).pdf",
+    "source": "RFP 8_솔리드 스테이트 냉각_미래유망융합기술파이오니어(도전형).pdf",
+    "file_hash": "8a858baee51acb34d0e629ea25cfa8db110bfaadcbf8e3bb4bacd6486c518a1f",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외",
+      "unverified_metric_pages": [
+        3
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "8a858baee51acb34d0e629ea25cfa8db110bfaadcbf8e3bb4bacd6486c518a1f"
+    },
+    "group_id": "35319ed9d0d13f79a00e",
+    "chunk_ids": [
+      "9c562e8cbb4d340ee936dcd5d4c4d741",
+      "41b228f303709159882052a5c8642a29",
+      "bc371e96b133b2dec1bfcc5c564da518",
+      "26ddc43c521251d7bd80fb2e7aded254",
+      "25d2d7e0d9d67a58c59f6d8dfba7dd5f"
+    ],
+    "pages": [
+      1,
+      2,
+      4
+    ]
+  },
+  {
+    "task_id": "5bf2e9331f01a21ee87d2a2c",
+    "document_id": "0d4b95b88c7ca3a051115ddd",
+    "title": "복합홍수 대응을 위한 하굿둑 동적 사전방류 AI기반 의사결정지원체계(DSS) 개발",
+    "task_number": "2026–공공기술-",
+    "filename": "RFP19 하굿둑 동적 사전방류 AI기반 의사결정지원체계(DSS).pdf",
+    "source": "RFP19 하굿둑 동적 사전방류 AI기반 의사결정지원체계(DSS).pdf",
+    "file_hash": "12b9586eb973c6b49a98ebeecf404e1b78adc92d48cfc52369a8f6bc0ba996d7",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "12b9586eb973c6b49a98ebeecf404e1b78adc92d48cfc52369a8f6bc0ba996d7"
+    },
+    "group_id": "9dd3c1dd67c310b5ce85",
+    "chunk_ids": [
+      "a780682d00e8bae7f365a1187bf84348",
+      "d9a1155280860a04a1adb48bd8ffab19",
+      "4a3482f221dae4ed589b60a2efa7d02f",
+      "496ccff91f1a07334384563126a6f958"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "task_id": "06d64aa000d6e7e5c6c526ef",
+    "document_id": "2ff1395eaf8ccdcfc5c6dcb7",
+    "title": "이기종 협업-피지컬AI SDF 특화 기반모델 연구개발",
+    "task_number": "2026-피지컬AI-7",
+    "filename": "RFP3(2026-피지컬AI-7,8)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf",
+    "source": "RFP3(2026-피지컬AI-7,8)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf",
+    "file_hash": "e395a94b12b9a4ccc88ebe59af5bcd81db10b216e82bfc578c09419691eafcb8",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        9
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "e395a94b12b9a4ccc88ebe59af5bcd81db10b216e82bfc578c09419691eafcb8"
+    },
+    "group_id": "9e1332af304ed54de280",
+    "chunk_ids": [
+      "ef0a1f5c50f35f81518d39e2bf15f12d",
+      "d2c880a1fe1c329e13be101a75f0af3c",
+      "e6d9f380fca081dbe5bdd41620891372",
+      "57b19a125bd5b63603668999e14a3d6c",
+      "8145c64b6a492b8c1bc89a8bfe01323f"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  {
+    "task_id": "acd656418d96a74caa72c9e0",
+    "document_id": "2ff1395eaf8ccdcfc5c6dcb7",
+    "title": "무인공장 운용-피지컬AI SDF 특화 기반모델 연구개발",
+    "task_number": "2026-피지컬AI-8",
+    "filename": "RFP3(2026-피지컬AI-7,8)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf",
+    "source": "RFP3(2026-피지컬AI-7,8)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf",
+    "file_hash": "e395a94b12b9a4ccc88ebe59af5bcd81db10b216e82bfc578c09419691eafcb8",
+    "task_type": "subtask",
+    "parent_task_id": "06d64aa000d6e7e5c6c526ef",
+    "parent_title": "이기종 협업-피지컬AI SDF 특화 기반모델 연구개발",
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        4,
+        9
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "e395a94b12b9a4ccc88ebe59af5bcd81db10b216e82bfc578c09419691eafcb8"
+    },
+    "group_id": "9e1332af304ed54de280",
+    "chunk_ids": [
+      "50dc334693d041ee4206ef8a6da72c86",
+      "f313e8f8a0d7a7e4fe2e322b7badff89",
+      "a0164eaf44e2aba945d8db2e998897e9",
+      "88eb9220d40be461ac24891e963bc604",
+      "3aa0bd48cefca1e2700559cf4c3f9b1e"
+    ],
+    "pages": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  {
+    "task_id": "356e446aa808e64b60da404e",
+    "document_id": "b1ca650bbb4143a10a0b11bb",
+    "title": "개방형 연구클러스터 조성",
+    "task_number": "2026-피지컬AI-12",
+    "filename": "RFP6(2026-피지컬AI-12)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf",
+    "source": "RFP6(2026-피지컬AI-12)_2026년 협업지능 피지컬AI 기반 SW플랫폼 연구개발 생태계 조성 사업 지원대상과제.pdf",
+    "file_hash": "5c459a56bb3a6ab8b8ac3e8f6642604fa5a35b94b95ce935d2f1eb21886a80ca",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "총괄 사업명 대신 원문 세부과제명을 검색 제목으로 사용; 병합 성능표 제외",
+      "unverified_metric_pages": [
+        3
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "5c459a56bb3a6ab8b8ac3e8f6642604fa5a35b94b95ce935d2f1eb21886a80ca"
+    },
+    "group_id": "6b2b1695331fb4b6d7a7",
+    "chunk_ids": [
+      "849a772b9f3ba41e896b49afffe28bb4",
+      "3835163dff33f76b4446f2aa7c204bf1",
+      "b1c2356b82b552511ca5619b5b7870f4",
+      "4d6db46c03ebed857760b9731d55a6a2",
+      "aae23e47b289eb1bf30e799db1ef36ac",
+      "d67d1bf3c2e79c15ee0b15330459f3fa",
+      "2adc6ccd46e0336273fe965792ecbce1"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "task_id": "f3139d3fc45f36c32d8e5be3",
+    "document_id": "748aba43f11ce74efe4be716",
+    "title": "특수목적기계 열관리 및 EMI 제어 복합소재 개발",
+    "task_number": "2026–전북–복합소재–산학연",
+    "filename": "RFP_특수목적기계_과제2_열관리소재.pdf",
+    "source": "RFP_특수목적기계_과제2_열관리소재.pdf",
+    "file_hash": "6a41e0689ee70060295be088d87bd7796f39f2f1f54b21577cf533b9339d2cf3",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "6a41e0689ee70060295be088d87bd7796f39f2f1f54b21577cf533b9339d2cf3"
+    },
+    "group_id": "5ad6186fd3cffd2de42a",
+    "chunk_ids": [
+      "8431b970ae6faaa29e13b7792232c31c",
+      "b6124c662060d9e80b9c66fa892a4e4d",
+      "9dddedba1cc1e13c068e146a24606f06",
+      "c684478519f60a1f9f27f32b21ac41be",
+      "18dbb738b79df1c1d32592b4e1f0d4eb",
+      "54ee2c801fba326cdc010b829e900deb"
+    ],
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "task_id": "93b84423dcc0270ad371f4c5",
+    "document_id": "92937f20585d8c0536d66c4f",
+    "title": "용융염 원자로 구조재 부식 온라인 모니터링 및 능동제어 기술 개발",
+    "task_number": "2026-DCP-01",
+    "filename": "[RFP]_2026-DCP-01_용융염 원자로 구조재 부식 온라인 모니터링 및 능동제어 기술 개발_★.pdf",
+    "source": "[RFP]_2026-DCP-01_용융염 원자로 구조재 부식 온라인 모니터링 및 능동제어 기술 개발_★.pdf",
+    "file_hash": "66564ff0f00648aafa9aae7036cbea68c8d2a0d019641b303cd0e2592e351469",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "66564ff0f00648aafa9aae7036cbea68c8d2a0d019641b303cd0e2592e351469"
+    },
+    "group_id": "6d1205c3dca7a0214bda",
+    "chunk_ids": [
+      "62295ea9aa81df37b57ddaad1fe9bc68",
+      "8b13496a668aa767fe6abbc5e95bb4ae",
+      "1ed06d8af1357896d7d08a3e0a5cc614",
+      "4c1876a5ab7fa917e599abf5cc3db566",
+      "80dbfb63673e84c2563abe20dc1a6213",
+      "a93eb2196dde9e9c9d6fc4b891d4b273"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "84e1d5de65e336e13f25b2fb",
+    "document_id": "aa486642e93a6bd2340b31bb",
+    "title": "뇌혈관용 고속·고해상도 영상 취득을 위한 초소형 OCT 카테터 기기\n개발과 검증",
+    "task_number": "2026-DCP-05",
+    "filename": "[RFP]_2026-DCP-05_뇌혈관용 고속·고해상도 영상 취득을 위한 초소형 OCT 카테터 기기 개발과 검증_★.pdf",
+    "source": "[RFP]_2026-DCP-05_뇌혈관용 고속·고해상도 영상 취득을 위한 초소형 OCT 카테터 기기 개발과 검증_★.pdf",
+    "file_hash": "6ccf4c67222b7a64668a7a30d64fbe02cfcf172d5cc8c087ef0b9d56bb4aa369",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "6ccf4c67222b7a64668a7a30d64fbe02cfcf172d5cc8c087ef0b9d56bb4aa369"
+    },
+    "group_id": "768f4a946ebd04929763",
+    "chunk_ids": [
+      "98d160b860e2a25ae60fd3c4d95d4ea0",
+      "77d7381c6f8d50ac779517d637d63824",
+      "729a6aebd6e203ad13254a0f8ee3025d",
+      "33e89aaa3390971f5d7e2bae8b6461fd",
+      "a17afa6dd0d8f3cf8609151d3d6e3861",
+      "0faaa96d36cd18ca54f42d5afe3825ab",
+      "06c11a74d186e9cf5781129f6206c13c"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "14fc192734e8b62fef5b1f3f",
+    "document_id": "0f428d4504c737e7ff541aed",
+    "title": "Al 이종 칩렛 2.5/3D 패키지 구현을 위한 하이브리드·퓨전 본딩용\n저손상 및 파티클 프리 플라즈마 전처리 장비·공정 개발",
+    "task_number": "2026-DCP-13",
+    "filename": "[RFP]_2026-DCP-13_Al 이종 칩렛 2.5 3D 패키지 구현을 위한 하이브리드·퓨전 본딩용 저손상 및 파티클 프리 플라즈마 전처리 장비·공정 개발_★.pdf",
+    "source": "[RFP]_2026-DCP-13_Al 이종 칩렛 2.5 3D 패키지 구현을 위한 하이브리드·퓨전 본딩용 저손상 및 파티클 프리 플라즈마 전처리 장비·공정 개발_★.pdf",
+    "file_hash": "59ed3f26743ecbfef33443a02079448a9c20568cab4ad5ead2ad5781641ce532",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "59ed3f26743ecbfef33443a02079448a9c20568cab4ad5ead2ad5781641ce532"
+    },
+    "group_id": "eab0e688c3af39971899",
+    "chunk_ids": [
+      "5bd59be95fb350d383f634c6b1e7810b",
+      "2afc60cce7cd950d7fd679aaab20601b",
+      "1965259c917a41768d2e3aa95d4a2a8f",
+      "ceec33cf3e74243c64a87013cee06eed",
+      "2b87c4c0d50c00b6882bc9958726c0b8",
+      "c84d2300b21a4243a1fb3623d30be863"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "fb1913d3984cb7fd3f32cfee",
+    "document_id": "f21dc1521ab69d8fa5a2ede0",
+    "title": "온디바이스 AI 기반 DSA 예측 및 피지컬 AI 오케스트레이션을 활용한\n글로벌 표준 대응형 능동 돌봄 플랫폼 개발",
+    "task_number": "2026-DCP-18",
+    "filename": "[RFP]_2026-DCP-18_온디바이스 AI 기반 DSA 예측 및 피지컬 AI 오케스트레이션을 활용한 글로벌 표준 대응형 능동 돌봄 플랫폼 개발_★.pdf",
+    "source": "[RFP]_2026-DCP-18_온디바이스 AI 기반 DSA 예측 및 피지컬 AI 오케스트레이션을 활용한 글로벌 표준 대응형 능동 돌봄 플랫폼 개발_★.pdf",
+    "file_hash": "bcafa940edfc61f73fe09b504762c30d424559315954400ab8ffec2eec3b247d",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "bcafa940edfc61f73fe09b504762c30d424559315954400ab8ffec2eec3b247d"
+    },
+    "group_id": "b7c07a880666211a5ca4",
+    "chunk_ids": [
+      "204cbaf16f86920d79ab91c2b489acb0",
+      "b98ee920226ead7f8fe3e65ad0ec7cf4",
+      "1e2c5e2efda3c21e229fa4bae18c08ff",
+      "406bcbb4862eabecccd9588585370285",
+      "423699bf7d12af1bc6d3569dddb8ac66",
+      "97ba8ed702e07412d4efe0c933bf273d"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "95ec45862bb6762f0c68b7a6",
+    "document_id": "ecefdb85287a8f912a2f2352",
+    "title": "실환경 데이터 기반 인간형 로봇 핸드 범용 조작 지능 기술 개발",
+    "task_number": "2026-DCP-20",
+    "filename": "[RFP]_2026-DCP-20_실환경 데이터 기반 인간형 로봇 핸드 범용 조작 지능 기술 개발_★.pdf",
+    "source": "[RFP]_2026-DCP-20_실환경 데이터 기반 인간형 로봇 핸드 범용 조작 지능 기술 개발_★.pdf",
+    "file_hash": "50dec9ee024da8904f88792e3bb3f9ef160be864636775ab31f4b53dd40021c1",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "50dec9ee024da8904f88792e3bb3f9ef160be864636775ab31f4b53dd40021c1"
+    },
+    "group_id": "4f2b26172123aabbf108",
+    "chunk_ids": [
+      "c6751182dac225d83a59a24b2f9a19eb",
+      "c29b26bd23df13e6e3c6ec2c1766f6d5",
+      "02f9f66b324388148e3b121c5a094ff9",
+      "bd461dcd3367f32465f314721f7e8f49",
+      "71726e87937a242c8a2442436f7d66c7",
+      "e6cb151cdb5f19e98707536e9b9ebff5"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "51db0473ea9e07ef2df01347",
+    "document_id": "f87d8d23f632389e4b1a75f8",
+    "title": "AI 기반 재난 신속대응 eVTOL 모선-자선 드론 운용 시스템 개발",
+    "task_number": "2026-DCP-29",
+    "filename": "[RFP]_2026-DCP-29_AI 기반 재난 신속 대응 eVTOL 모선-자선 드론 운용 시스템 개발_★.pdf",
+    "source": "[RFP]_2026-DCP-29_AI 기반 재난 신속 대응 eVTOL 모선-자선 드론 운용 시스템 개발_★.pdf",
+    "file_hash": "9b800b9d46767e39e86cd5af4904aa9808ad1303c92c28803731a9c631b889f3",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "9b800b9d46767e39e86cd5af4904aa9808ad1303c92c28803731a9c631b889f3"
+    },
+    "group_id": "255d866ffc3a6494a2d9",
+    "chunk_ids": [
+      "ab1f1a26c1ff657cd8aed4fae9e1c31d",
+      "beafbde692f918f5ec7bddf273a676b3",
+      "e74f4b3f1aacac6e166c2445e6b45f4d",
+      "fdbb675ff9bdc74481981aae062017b8",
+      "170af6162d00f7a3a2cd9653bb4a45a6",
+      "7861b7c09075fcffbbef9b903bc0a723"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "15d71a478e02c6d9f4cd6fa0",
+    "document_id": "893ed7c6b404eefa1efef5d4",
+    "title": "AI 기반 고감도 드론 탐지 이동형 레이더 기술 개발",
+    "task_number": "2026-DCP-30",
+    "filename": "[RFP]_2026-DCP-30_AI 기반 고감도 드론 탐지 이동형 레이더 기술 개발_★.pdf",
+    "source": "[RFP]_2026-DCP-30_AI 기반 고감도 드론 탐지 이동형 레이더 기술 개발_★.pdf",
+    "file_hash": "81993429479fd20be41f1f079b3f8b9eee7c41945148b651a4ef901cd65a5d7e",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "81993429479fd20be41f1f079b3f8b9eee7c41945148b651a4ef901cd65a5d7e"
+    },
+    "group_id": "d08a44ee067df1f322dd",
+    "chunk_ids": [
+      "f9d2a42a84d0428ec343d9c89cf8af98",
+      "cc7ebb9770fda22d6c6dfec5404f386a",
+      "4a01cfa393c8c9a35d38f4cca5ad0015",
+      "785ae6e1514c3829278d1c3034ae3f0e",
+      "318e2493b12f8215c6778d401f343e27",
+      "9485424e98122fbfc75259e027edf35d"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "cb0abdf81e2ded04b8642d54",
+    "document_id": "95918617c37ae2d4d28e8b18",
+    "title": "폐차 PU폼의 화학적 해중합 기반 재생폴리올 생산 및\n차량용 시트폼 제작 기술 개발",
+    "task_number": "2026-DCP-33",
+    "filename": "[RFP]_2026-DCP-33_폐차 PU폼의 화학적 해중합 기반 재생폴리올 생산 및 차량용 시트폼 제작 기술 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-33_폐차 PU폼의 화학적 해중합 기반 재생폴리올 생산 및 차량용 시트폼 제작 기술 개발_260804.pdf",
+    "file_hash": "acb6430cf59a182bcada96ad1e97fab9703d07f6533183c66790701047a741c2",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "acb6430cf59a182bcada96ad1e97fab9703d07f6533183c66790701047a741c2"
+    },
+    "group_id": "ef709466e0921db8abd2",
+    "chunk_ids": [
+      "697c1a341362c6cdf7f2603fff798d5c",
+      "695ccad484b28d972a36f548647060b4",
+      "f6a98d53650aae9b5cd6aceabe26b89a",
+      "0f9b1141e6ea5ebf707ecf0a87a44d17",
+      "45dec06cab3cf1e6ede9473ae729ae15",
+      "46dd120b59b6ec32f2fe4b89933abf4a"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "73bf330f61f1d77bef480479",
+    "document_id": "846857e921e861b07bf179b3",
+    "title": "적층형 메모리 반도체 내·외부 공정 결함 검출을 위한\nSWIR 기반 지능형 비파괴 검사 장비 기술 개발",
+    "task_number": "2026-DCP-41",
+    "filename": "[RFP]_2026-DCP-41_적층형 메모리 반도체 내·외부 공정 결함 검출을 위한 SWIR 기반 지능형 비파괴 검사 장비 기술 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-41_적층형 메모리 반도체 내·외부 공정 결함 검출을 위한 SWIR 기반 지능형 비파괴 검사 장비 기술 개발_260804.pdf",
+    "file_hash": "2fa00fc1f7b7e6e28ece94df3ece45310c6661cccb98b60a61f18e97418b45bc",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "2fa00fc1f7b7e6e28ece94df3ece45310c6661cccb98b60a61f18e97418b45bc"
+    },
+    "group_id": "c712ea4a2292c1b177e4",
+    "chunk_ids": [
+      "ae3b266a945b299f4ca2c51cb2b295d7"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "3cc45149950c7f6c4d19e484",
+    "document_id": "8be67c1223fc57e44669700c",
+    "title": "고밀도 핀구조가 적용된 파이널 테스트 핸들러 개발",
+    "task_number": "2026-DCP-44 (전략투자로드맵 기반)",
+    "filename": "[RFP]_2026-DCP-44_(전략투자로드맵 기반)_고밀도 핀구조가 적용된 파이널 테스트 핸들러 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-44_(전략투자로드맵 기반)_고밀도 핀구조가 적용된 파이널 테스트 핸들러 개발_260804.pdf",
+    "file_hash": "7e0476ba4fadf60129f21cec8dc18ace5de43f05bf3e97d3c1c1e9b63f3b2354",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "7e0476ba4fadf60129f21cec8dc18ace5de43f05bf3e97d3c1c1e9b63f3b2354"
+    },
+    "group_id": "8804e3851ac225205662",
+    "chunk_ids": [
+      "54075cc9e9fdc0efea66786c53b69b3f",
+      "718f3452e8a0760390aba1fa1795e487",
+      "3ed71aa8f33288da2c57ba4daa10d3dc",
+      "e99c7a880124d6a4ffcc91d8ec935d57",
+      "729e52f3a5a0577e0ffc1f3415cf7754",
+      "4640f1c9cccb72ad59393a51bb3912af"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "872852326231f8cd2299d2d0",
+    "document_id": "a2d0d1420ae2ac95f3f50cc4",
+    "title": "학습형 NPU 기반 실시간 지능교체 및 현장 자율진화형 엣지 AI 플랫폼\n기술 개발",
+    "task_number": "2026-DCP-46",
+    "filename": "[RFP]_2026-DCP-46_학습형 NPU 기반 실시간 지능교체 및 현장 자율진화형 엣지 AI 플랫폼 기술 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-46_학습형 NPU 기반 실시간 지능교체 및 현장 자율진화형 엣지 AI 플랫폼 기술 개발_260804.pdf",
+    "file_hash": "81a28e0edc8aaf9908eebf4b2d5472017813f2ce59ecfce5881227fd11cc54ef",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "81a28e0edc8aaf9908eebf4b2d5472017813f2ce59ecfce5881227fd11cc54ef"
+    },
+    "group_id": "a4c8c5c7523330b840d2",
+    "chunk_ids": [
+      "7ae50cd02863daf6d2a69ea95e3f86ec",
+      "607482af9f0535069b9b250e72d96c79",
+      "fd8f336d1255e6c5ee9d3258f29340d8",
+      "56f7011cde3e6821afa1448cefcef4cd",
+      "2f4413d62b27125c09da3cd35214ee76",
+      "45dda2e654e6ff8f92f20bfb4eb25f2d"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "1104ebaedf6a40914898d89e",
+    "document_id": "0ed036a66d5769a5d3a69173",
+    "title": "부품 데이터의 자율 통합과 3D 형상 탐색·생성을 지원하는 에이전틱 AI\n기반 설계 지원 플랫폼 개발",
+    "task_number": "2026-DCP-50 (전략투자로드맵 기반)",
+    "filename": "[RFP]_2026-DCP-50_(전략투자로드맵 기반)_부품 데이터의 자율 통합과 3D 형상 탐색·생성을 지원하는 에이전틱 AI 기반 설계 지원 플랫폼 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-50_(전략투자로드맵 기반)_부품 데이터의 자율 통합과 3D 형상 탐색·생성을 지원하는 에이전틱 AI 기반 설계 지원 플랫폼 개발_260804.pdf",
+    "file_hash": "be3d4afb9cdf27fdb3059d8a70f8e62b9a7c78e05050fe75a05d5a302d1fd80e",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "be3d4afb9cdf27fdb3059d8a70f8e62b9a7c78e05050fe75a05d5a302d1fd80e"
+    },
+    "group_id": "a071d0d1bf04c167ce5b",
+    "chunk_ids": [
+      "521af5d1ad3cbd4b32a3e6dcc1eb3d5e",
+      "1f230480759ffe1eac15f0700a219dd7",
+      "88581f720c49d47486c62222f64de8b9",
+      "ae0f726943321b8e753dd3d9a07033a4",
+      "748143c1b5faabb5d2aa886747358289",
+      "8a037b1b6ddf2beaf3d26f2d0edd9924"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "4c40e342accdd981eca9fd76",
+    "document_id": "d84584d8e54f6e9007991102",
+    "title": "극저온 환경 내 자율작업을 위한 모바일 휴머노이드 기술 개발",
+    "task_number": "2026-DCP-51",
+    "filename": "[RFP]_2026-DCP-51_극저온 환경 내 자율작업을 위한 모바일 휴머노이드 기술 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-51_극저온 환경 내 자율작업을 위한 모바일 휴머노이드 기술 개발_260804.pdf",
+    "file_hash": "a36e2a76afad2f49865beef121ac582ee1dbdb1b83bbfbd00a2436b5679cdb95",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "a36e2a76afad2f49865beef121ac582ee1dbdb1b83bbfbd00a2436b5679cdb95"
+    },
+    "group_id": "30bdd4d0afe382f3068d",
+    "chunk_ids": [
+      "a5a23bb98507cfc71bc8f33d374a4712",
+      "15e6deb1952ab0e05d130ccaf3999449",
+      "bbcce86a4b8b842b2c4cdfaff9d584a1",
+      "c80b73efbe75ecb2f13657afbe6ed13c",
+      "90e93366d83b6e29528c2987a49d2073",
+      "c09e11516c4dcc30753becf0a5a6a894"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "52fd8ae2b579005350e2e0ee",
+    "document_id": "44179348fd0ab031e071670d",
+    "title": "실내외 복합환경 대응 산업용 모바일 로봇 자율작업을 위한 VLA 기술 개발",
+    "task_number": "2026-DCP-52",
+    "filename": "[RFP]_2026-DCP-52_실내외 복합환경 대응 산업용 모바일 로봇 자율작업을 위한 VLA 기술 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-52_실내외 복합환경 대응 산업용 모바일 로봇 자율작업을 위한 VLA 기술 개발_260804.pdf",
+    "file_hash": "d6de69bdd0ecf3a74696406fd22337235295f83ef14fadbc4b3bedf2baa8c6f9",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "d6de69bdd0ecf3a74696406fd22337235295f83ef14fadbc4b3bedf2baa8c6f9"
+    },
+    "group_id": "ab8242c09586a31cfc25",
+    "chunk_ids": [
+      "59afee8fc514ba13680d81c4c8b60a06",
+      "3d0e421c875e05177d703e4fa9d29596",
+      "3fa5b68ce460ae658411d2f94f832a22",
+      "e1619a3a732c5060fd497a38ab27a974",
+      "3eb19a1c025d61d22c43fc68640158d9",
+      "391895530d5904a72d0ef48879c67ba2"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "90702471a96bb8bcc0c724e9",
+    "document_id": "da20a16cf54e4edf22b8aaac",
+    "title": "SWIR 융합영상·온디바이스 AI 기반 무인체 협업·관제 플랫폼 개발",
+    "task_number": "2026-DCP-57",
+    "filename": "[RFP]_2026-DCP-57_SWIR 융합영상·온디바이스 AI 기반 무인체 협업·관제 플랫폼 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-57_SWIR 융합영상·온디바이스 AI 기반 무인체 협업·관제 플랫폼 개발_260804.pdf",
+    "file_hash": "27f5646c22bc515f5a27784943a23ca74d7d250f8f71f504d9d600c609660c51",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "27f5646c22bc515f5a27784943a23ca74d7d250f8f71f504d9d600c609660c51"
+    },
+    "group_id": "55e5dc3feb93564257d6",
+    "chunk_ids": [
+      "7323aae34b3bbf0f0b53cdbc7c4e6baa",
+      "1a07e7f8cb1f3a13b1e296a38c5d50b5",
+      "bd8290dd4d2030405da8f2fd0b675866",
+      "1f3e5b3c8fb2e6ccbaa7df99de46b061",
+      "4b2b71e4934ada9a399c1a67d1d6daa1",
+      "a6528b45be41c5062d8f60afd1102e74"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "1350becb225c866bf0a101b3",
+    "document_id": "d7c027b9c04946f74b516487",
+    "title": "AI 다중 프로토콜 변환 기술 및 객체/센서 모의 기반 대드론 훈련\n체계 개발",
+    "task_number": "2026-DCP-58",
+    "filename": "[RFP]_2026-DCP-58_AI 다중 프로토콜 변환 기술 및 객체센서 모의 기반 대드론 훈련 체계 개발_260804.pdf",
+    "source": "[RFP]_2026-DCP-58_AI 다중 프로토콜 변환 기술 및 객체센서 모의 기반 대드론 훈련 체계 개발_260804.pdf",
+    "file_hash": "34984ff9f110e72a9b019e90b4ed7ea9de194661348c29093a8c51032e1165b2",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "34984ff9f110e72a9b019e90b4ed7ea9de194661348c29093a8c51032e1165b2"
+    },
+    "group_id": "e536832ac9b2272d9ad4",
+    "chunk_ids": [
+      "c4726db722923a72051b3635e7744432",
+      "6b9fcaff49cfcc53a680c985b8f5a396",
+      "7092c64c16929e8183a16bcd32c67108",
+      "0e0d8411340b40168b6a9a0b203bc5c2",
+      "c8315075bc925147c35f463f38f8747f",
+      "c15c3d58eea028c2b52360913fe2d01e"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "821faa89fdfac3d7cddc1c5f",
+    "document_id": "46560a9d5a584e7d6d82e9c7",
+    "title": "저원가 고성능 나트륨이온전지(SIB) 양극재 제조 및 양산 기술 개발",
+    "task_number": "2026-DCP-60",
+    "filename": "[RFP]_2026-DCP-60_저원가 고성능 나트륨이온전지(SIB) 양극재 제조 및 양산 기술 개발_260813.pdf",
+    "source": "[RFP]_2026-DCP-60_저원가 고성능 나트륨이온전지(SIB) 양극재 제조 및 양산 기술 개발_260813.pdf",
+    "file_hash": "e064a627fff3bf0044772dc627f00aad6d6daefef545e6023d3771f5475ce36d",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "e064a627fff3bf0044772dc627f00aad6d6daefef545e6023d3771f5475ce36d"
+    },
+    "group_id": "ec6cb03abe9f274bfc8a",
+    "chunk_ids": [
+      "07f42fedbbc837407365b193dcbb7864",
+      "c439a394b055c98f2ae59c12a8da3d92",
+      "f976becd3f0179ba77d7b46615ecfc53",
+      "c2a59210fc74469e7140e05a462628ee",
+      "cdd7c2e64507ba99fd0f9240511a6277",
+      "22e285cdf9713698fe98dccd91744195"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "69e649c9d00ae6933ff9db18",
+    "document_id": "6abf08915a2c66e5bf443b23",
+    "title": "미래 모빌리티용 환경규제 대응 다기능성 점착제 개발",
+    "task_number": "2026-DCP-61",
+    "filename": "[RFP]_2026-DCP-61_미래 모빌리티용 환경규제 대응 다기능성 점착제 개발_260813.pdf",
+    "source": "[RFP]_2026-DCP-61_미래 모빌리티용 환경규제 대응 다기능성 점착제 개발_260813.pdf",
+    "file_hash": "8adcfdf7152deb4d7e3ff037566c58e350502f250c7dfac8c2d1daae49e66396",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "8adcfdf7152deb4d7e3ff037566c58e350502f250c7dfac8c2d1daae49e66396"
+    },
+    "group_id": "8a9da5c42bfd99c399bb",
+    "chunk_ids": [
+      "0bc663508bc54c8fc0b5b28b88bee02b",
+      "f373fca16a25c82fa4edbaaa6e1e8840",
+      "723c240c013426fd2d22b7ba23f9bbc0",
+      "4a82fc16dc19f1c9f57b187b4ca0026f",
+      "7daa94b2a0ba85a6a8fc4e30f3eb266d",
+      "183d055ee4dc904ffdfc609187456e61"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "def4bfb609355670797f1ca9",
+    "document_id": "b7c4e72544fe84698b638562",
+    "title": "BNNT 기반 우주용 신소재 및 상용화 제품 기술개발",
+    "task_number": "2026-DCP-62",
+    "filename": "[RFP]_2026-DCP-62_BNNT 기반 우주용 신소재 및 상용화 제품 기술개발_260813.pdf",
+    "source": "[RFP]_2026-DCP-62_BNNT 기반 우주용 신소재 및 상용화 제품 기술개발_260813.pdf",
+    "file_hash": "13fc274da3271b3acc41dfc0a91abbcd313e4d3ac821efaf70d8ea86457a44d6",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "13fc274da3271b3acc41dfc0a91abbcd313e4d3ac821efaf70d8ea86457a44d6"
+    },
+    "group_id": "df7064ca3935d4579b03",
+    "chunk_ids": [
+      "d0d969a3946f525377a960ce9c2c2d9b",
+      "b0786894c358e07be03a8bafddee90b7",
+      "1cb11d040ef4fcd71f2960ee7f3f9b0e",
+      "5a1f511b6b5f8cc35718584bb1991d1b",
+      "d383b185ebdf089e71c7cb76d23dd2d2",
+      "1f3c966349fedd7b78f2e7b3b6933255",
+      "4ce2058d85e7065600f6169cd28668e6"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "77aba3b88c252f5aaa5b52aa",
+    "document_id": "20cd1d4c4423a32c57fc913a",
+    "title": "차세대 반도체 공정용 스캔형 고속 레이저 어닐링 장비 기술 개발",
+    "task_number": "2026-DCP-63",
+    "filename": "[RFP]_2026-DCP-63_차세대 반도체 공정용 스캔형 고속 레이저 어닐링 장비 기술 개발_260813.pdf",
+    "source": "[RFP]_2026-DCP-63_차세대 반도체 공정용 스캔형 고속 레이저 어닐링 장비 기술 개발_260813.pdf",
+    "file_hash": "bcc0ffc10463f2296b6f78705c10b32d3389ba41f48c3f0c2625038e7e82e166",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "bcc0ffc10463f2296b6f78705c10b32d3389ba41f48c3f0c2625038e7e82e166"
+    },
+    "group_id": "2d2574b3d9a54600c53b",
+    "chunk_ids": [
+      "2c9fd4fb0aff75c4ff2384d897ca3e72",
+      "d53bc056ea62120d00f5333f070e8332",
+      "f8b133994ee7e98561bd1aefac1cddf9",
+      "17af823091ccf67b61cb31090291f6ca",
+      "3ed05b7c518544969324fc1668cd028f",
+      "3a39c3cfb7b0db351093e8af8dd3dd64"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "bdb65dc05b08d38ac9a4a85c",
+    "document_id": "ffbcdcd9e01fc121a2160b89",
+    "title": "바이오가스 이용 차세대 청정수소 생산시스템 개발 및 실증",
+    "task_number": "2026-DCP-66",
+    "filename": "[RFP]_2026-DCP-66_바이오가스 이용 차세대 청정수소 생산시스템 개발 및 실증_260813.pdf",
+    "source": "[RFP]_2026-DCP-66_바이오가스 이용 차세대 청정수소 생산시스템 개발 및 실증_260813.pdf",
+    "file_hash": "d372185d90595737c032fba06dc3ee4b8cc85d32f9e6457a1bdc003d9432c136",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved",
+      "reason": "자동 구조 검사 통과",
+      "unverified_metric_pages": [],
+      "excluded_context_pages": [],
+      "file_hash": "d372185d90595737c032fba06dc3ee4b8cc85d32f9e6457a1bdc003d9432c136"
+    },
+    "group_id": "24b82431c10c8aed303d",
+    "chunk_ids": [
+      "a54b0f462fade78f5ffd0e0b3aedf219",
+      "85a5a0fb7617c5cb4114d3b2812318af",
+      "9762d514df86a5fdf6862a4b10297155",
+      "be0f6530b7b09555ff24168901ba66eb",
+      "d369dac669a9cc7132071171c8e4badd",
+      "f343a9fa75fe9f83d27335b6ab8436ea"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "task_id": "1be35e32e1d61ee3cd45f0f3",
+    "document_id": "9495a227928776d17ccb4c76",
+    "title": "미래국방기술 역량강화를 위한 국가 R&D 추진방안 연구",
+    "task_number": "2026-공공기술-",
+    "filename": "붙임 과제제안요구서(2026-공공기술-1-분야공모-05)_미래국방기술 역량강화를 위한 국가 R&D 추진방안 연구.pdf",
+    "source": "붙임 과제제안요구서(2026-공공기술-1-분야공모-05)_미래국방기술 역량강화를 위한 국가 R&D 추진방안 연구.pdf",
+    "file_hash": "414f433243fb919f98d06b41a4ccc292994645dd30dd10f37511c9dedeb4b9c3",
+    "task_type": "standalone",
+    "parent_task_id": null,
+    "parent_title": null,
+    "review": {
+      "status": "approved_with_metric_hold",
+      "reason": "구조 검사 통과 과제 유지; 미검증 병합 성능표 제외",
+      "unverified_metric_pages": [
+        2
+      ],
+      "excluded_context_pages": [],
+      "file_hash": "414f433243fb919f98d06b41a4ccc292994645dd30dd10f37511c9dedeb4b9c3"
+    },
+    "group_id": "143d7e6011db5b53f37d",
+    "chunk_ids": [
+      "7287598476b2701155c7df53818e34bc",
+      "f5d93f0c077500906d88513e94e75512",
+      "6b35fc432077224a5e07f9d6924304e5"
+    ],
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  }
+]

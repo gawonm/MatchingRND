@@ -1,0 +1,15 @@
+{
+  "python": "3.12.10",
+  "packages": {
+    "torch": "2.7.1+cu126",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.18.0",
+    "peft": "0.21.2",
+    "accelerate": "1.15.0",
+    "numpy": "2.5.2"
+  },
+  "git_commit": "01307bd56a937b265c951ad22302470c1c48882c",
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU, 8188 MiB",
+  "base_model_revision": "7074d66aa46562342193ca4feb3d89bf9dad71b4",
+  "base_config_sha256": "a20b07ed6fb38e0ad84c645ca45a5ad8ef7e06868d89d41e04417532b17d04bc"
+}

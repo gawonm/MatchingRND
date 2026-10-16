@@ -1,0 +1,11 @@
+{
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\test\\questions.json": "5df6a133518b8f67ec315cefcec6ae96555e0010439b7770105496827d3b9993",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\test\\equivalent_tasks.json": "763d81f77eb05877def8f830a2547c13440208db9dc7f370ab69cd70c59764db",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\test\\task_catalog.json": "0325b3db9270eef16abe4e281f03c974d8647abfe70b3228aa56fa917f076629",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\test\\chunks.jsonl": "8bd892162102643e5a4162c01d976f324214ba8232652dccef614ca083168c2d",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\corpus.jsonl": "93f3274c76b064f4bd218f15c748b44cf14bed83666e298d30040c2855971abe",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\results\\lora_pilot_v1\\selection.json": "e39fa868cb410710b278b91812d656b0a082baff46cf4ba782395c0ce4784630",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\results\\lora_pilot_v1\\adapter_epoch_2\\adapter_model.safetensors": "9512a45e12b5c941833299501cef5b027c0eb9dd7c96f7ab6e37c639d57a2b97",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\results\\lora_pilot_v1\\test_base_corpus.npy": "197c4ebfa929ba571ea22770678c9872d09febe197d2d4ca216466074c7db947",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\rfp_embedding_split\\results\\lora_pilot_v1\\test_finetuned_corpus.npy": "3250725f65aebd6333bf7b9815f11c9a926617f0e62284e284e5ed392c3ff091"
+}

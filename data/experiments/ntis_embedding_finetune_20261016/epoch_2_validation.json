@@ -1,0 +1,5324 @@
+{
+  "question_count": 332,
+  "aggregate": {
+    "hit_at_1": 0.9096385542168675,
+    "hit_at_3": 0.9759036144578314,
+    "hit_at_5": 0.9849397590361446,
+    "hit_at_10": 0.9939759036144579,
+    "mrr_at_10": 0.9442890610059285
+  },
+  "results": [
+    {
+      "query_id": "ntis-0066559d4225aa4a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710101417",
+        "ntis-2710108796",
+        "ntis-2420031693",
+        "ntis-2420028228",
+        "ntis-2710108671",
+        "ntis-2420033189",
+        "ntis-2420031431",
+        "ntis-2410019155",
+        "ntis-2420033746",
+        "ntis-2710104452"
+      ]
+    },
+    {
+      "query_id": "ntis-009e34f4dc1dfcae",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029882",
+        "ntis-2420029881",
+        "ntis-2410016204",
+        "ntis-2420027933",
+        "ntis-2480001882",
+        "ntis-2710108755",
+        "ntis-2480001881",
+        "ntis-2420026514",
+        "ntis-2410018230",
+        "ntis-2410015742"
+      ]
+    },
+    {
+      "query_id": "ntis-0157a9fc0b87e70a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710107713",
+        "ntis-2610000694",
+        "ntis-2710106101",
+        "ntis-2390003014",
+        "ntis-2420026862",
+        "ntis-2340055636",
+        "ntis-2710104823",
+        "ntis-2340055800",
+        "ntis-2420034576",
+        "ntis-2420029054"
+      ]
+    },
+    {
+      "query_id": "ntis-01bcdab37d7802e5",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420034193",
+        "ntis-2540001500",
+        "ntis-2410017958",
+        "ntis-2710101144",
+        "ntis-2420031269",
+        "ntis-2710107532",
+        "ntis-2420028954",
+        "ntis-2340055645",
+        "ntis-2420031255",
+        "ntis-2420027181"
+      ]
+    },
+    {
+      "query_id": "ntis-02c9021c6fe9d080",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520001047",
+        "ntis-2520001034",
+        "ntis-2520001216",
+        "ntis-2410019903",
+        "ntis-2410019859",
+        "ntis-2410020049",
+        "ntis-2420030815",
+        "ntis-2710101844",
+        "ntis-2520001217",
+        "ntis-2410018633"
+      ]
+    },
+    {
+      "query_id": "ntis-03c285c3e1022a24",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029023",
+        "ntis-2410017839",
+        "ntis-2410017840",
+        "ntis-2410016039",
+        "ntis-2410015996",
+        "ntis-2410017047",
+        "ntis-2420028299",
+        "ntis-2410017049",
+        "ntis-2410019374",
+        "ntis-2420033083"
+      ]
+    },
+    {
+      "query_id": "ntis-03eaca17b1d97ab4",
+      "first_relevant_rank": 3,
+      "top_10_document_ids": [
+        "ntis-2410017972",
+        "ntis-2410019016",
+        "ntis-2410019351",
+        "ntis-2410019157",
+        "ntis-2420029258",
+        "ntis-2410019146",
+        "ntis-2340064931",
+        "ntis-2410018564",
+        "ntis-2420030015",
+        "ntis-2410019325"
+      ]
+    },
+    {
+      "query_id": "ntis-05a3686645e0abe1",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420034056",
+        "ntis-2710113065",
+        "ntis-2710109316",
+        "ntis-2710102296",
+        "ntis-2340055996",
+        "ntis-2710101874",
+        "ntis-2710107305",
+        "ntis-2710098415",
+        "ntis-2710110754",
+        "ntis-2340066048"
+      ]
+    },
+    {
+      "query_id": "ntis-05d6894c09eb900b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2390002955",
+        "ntis-2480000970",
+        "ntis-2420030182",
+        "ntis-2420030478",
+        "ntis-2420028832",
+        "ntis-2710107713",
+        "ntis-2410015904",
+        "ntis-2480001914",
+        "ntis-2420029945",
+        "ntis-2420033516"
+      ]
+    },
+    {
+      "query_id": "ntis-0724fec4f0308467",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420033514",
+        "ntis-2410017438",
+        "ntis-2410016055",
+        "ntis-2410019376",
+        "ntis-2420034396",
+        "ntis-2420030461",
+        "ntis-2410017603",
+        "ntis-2420029682",
+        "ntis-2410016436",
+        "ntis-2710097340"
+      ]
+    },
+    {
+      "query_id": "ntis-0744378b70edb9f8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000591",
+        "ntis-2340050804",
+        "ntis-2610000508",
+        "ntis-2410018527",
+        "ntis-2710114650",
+        "ntis-2710104127",
+        "ntis-2410015966",
+        "ntis-2480000945",
+        "ntis-2710109841",
+        "ntis-2340054726"
+      ]
+    },
+    {
+      "query_id": "ntis-0845629db2b78838",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031625",
+        "ntis-2420031635",
+        "ntis-2410018296",
+        "ntis-2410018200",
+        "ntis-2710095442",
+        "ntis-2420033122",
+        "ntis-2710105058",
+        "ntis-2410017161",
+        "ntis-2420030667",
+        "ntis-2410017603"
+      ]
+    },
+    {
+      "query_id": "ntis-08b03476bec28fbc",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2610000730",
+        "ntis-2710110716",
+        "ntis-2420026479",
+        "ntis-2410016411",
+        "ntis-2410018296",
+        "ntis-2710107928",
+        "ntis-2410016183",
+        "ntis-2410017993",
+        "ntis-2710110261",
+        "ntis-2420028277"
+      ]
+    },
+    {
+      "query_id": "ntis-08dccb756b3546c4",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000596",
+        "ntis-2420027724",
+        "ntis-2410016586",
+        "ntis-2410015067",
+        "ntis-2610000592",
+        "ntis-2420030595",
+        "ntis-2410019735",
+        "ntis-2420030299",
+        "ntis-2480001455",
+        "ntis-2610000582"
+      ]
+    },
+    {
+      "query_id": "ntis-09b5119d7aebfd58",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710107586",
+        "ntis-2420033894",
+        "ntis-2410019222",
+        "ntis-2710113918",
+        "ntis-2710105640",
+        "ntis-2710098086",
+        "ntis-2420033468",
+        "ntis-2710110446",
+        "ntis-2340055937",
+        "ntis-2420033203"
+      ]
+    },
+    {
+      "query_id": "ntis-09f52368a59a3cd3",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410015696",
+        "ntis-2340051670",
+        "ntis-2410017758",
+        "ntis-2410019441",
+        "ntis-2480001421",
+        "ntis-2410018468",
+        "ntis-2410019410",
+        "ntis-2410019408",
+        "ntis-2410019424",
+        "ntis-2410019427"
+      ]
+    },
+    {
+      "query_id": "ntis-0ac6f6c2a29e3115",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420034193",
+        "ntis-2410019699",
+        "ntis-2480001049",
+        "ntis-2540001497",
+        "ntis-2540001406",
+        "ntis-2410019110",
+        "ntis-2710093418",
+        "ntis-2390003519",
+        "ntis-2420027161",
+        "ntis-2410019698"
+      ]
+    },
+    {
+      "query_id": "ntis-0bb83e6d4e9627ca",
+      "first_relevant_rank": 4,
+      "top_10_document_ids": [
+        "ntis-2050001593",
+        "ntis-2420031013",
+        "ntis-2710102425",
+        "ntis-2050001591",
+        "ntis-2420027421",
+        "ntis-2410016142",
+        "ntis-2420030510",
+        "ntis-2410016735",
+        "ntis-2410018673",
+        "ntis-2410016578"
+      ]
+    },
+    {
+      "query_id": "ntis-0cb250c54363086c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800001107",
+        "ntis-2340053071",
+        "ntis-2710114476",
+        "ntis-2800000943",
+        "ntis-2710096263",
+        "ntis-2710106068",
+        "ntis-2420033611",
+        "ntis-2710103053",
+        "ntis-2710101147",
+        "ntis-2800001127"
+      ]
+    },
+    {
+      "query_id": "ntis-0cc82a4264c1a334",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710103654",
+        "ntis-2710110783",
+        "ntis-2410017145",
+        "ntis-2420033112",
+        "ntis-2480001882",
+        "ntis-2420033398",
+        "ntis-2420033858",
+        "ntis-2340055659",
+        "ntis-2420028818",
+        "ntis-2480001881"
+      ]
+    },
+    {
+      "query_id": "ntis-0d3bee659eb0844a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102316",
+        "ntis-2710095922",
+        "ntis-2420029409",
+        "ntis-2710106330",
+        "ntis-2710104900",
+        "ntis-2710115163",
+        "ntis-2420027953",
+        "ntis-2420034241",
+        "ntis-2710109538",
+        "ntis-2410018993"
+      ]
+    },
+    {
+      "query_id": "ntis-0e95c36816da61af",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031605",
+        "ntis-2420031585",
+        "ntis-2710107952",
+        "ntis-2410019062",
+        "ntis-2420028163",
+        "ntis-2710110125",
+        "ntis-2420033390",
+        "ntis-2420034402",
+        "ntis-2710096245",
+        "ntis-2710105893"
+      ]
+    },
+    {
+      "query_id": "ntis-0ec0e32f7b894850",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710096823",
+        "ntis-2410018938",
+        "ntis-2340052679",
+        "ntis-2710107767",
+        "ntis-2710093729",
+        "ntis-2710100672",
+        "ntis-2710103161",
+        "ntis-2710100228",
+        "ntis-2710111069",
+        "ntis-2420031231"
+      ]
+    },
+    {
+      "query_id": "ntis-102dec4b84b98a14",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340065121",
+        "ntis-2710103305",
+        "ntis-2710112569",
+        "ntis-2710113017",
+        "ntis-2340063928",
+        "ntis-2710101890",
+        "ntis-2420034385",
+        "ntis-2340055084",
+        "ntis-2420032595",
+        "ntis-2410018027"
+      ]
+    },
+    {
+      "query_id": "ntis-1207e9903888fd11",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800000926",
+        "ntis-2340052282",
+        "ntis-2410016969",
+        "ntis-2800001042",
+        "ntis-2710097558",
+        "ntis-2420029378",
+        "ntis-2410017634",
+        "ntis-2710098422",
+        "ntis-2420029714",
+        "ntis-2710107124"
+      ]
+    },
+    {
+      "query_id": "ntis-126744e389ad4e6e",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420028461",
+        "ntis-2420028974",
+        "ntis-2480000950",
+        "ntis-2400000545",
+        "ntis-2230000038",
+        "ntis-2340056345",
+        "ntis-2420026557",
+        "ntis-2420034431",
+        "ntis-2420029297",
+        "ntis-2420034492"
+      ]
+    },
+    {
+      "query_id": "ntis-1284d8a843099f64",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420026703",
+        "ntis-2420029674",
+        "ntis-2420030262",
+        "ntis-2710094130",
+        "ntis-2710102495",
+        "ntis-2710100438",
+        "ntis-2610000507",
+        "ntis-2420028983",
+        "ntis-2410019194",
+        "ntis-2420027300"
+      ]
+    },
+    {
+      "query_id": "ntis-1474eeae28525efe",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102961",
+        "ntis-2410017651",
+        "ntis-2420027842",
+        "ntis-2420026921",
+        "ntis-2420026846",
+        "ntis-2420030374",
+        "ntis-2410018800",
+        "ntis-2420027988",
+        "ntis-2420031318",
+        "ntis-2710110333"
+      ]
+    },
+    {
+      "query_id": "ntis-162e56e7bc314bc9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410019296",
+        "ntis-2410017970",
+        "ntis-2410017937",
+        "ntis-2410017924",
+        "ntis-2420030265",
+        "ntis-2410016073",
+        "ntis-2610000570",
+        "ntis-2410019112",
+        "ntis-2410016075",
+        "ntis-2710110729"
+      ]
+    },
+    {
+      "query_id": "ntis-17a6eaf6e21b25fa",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029288",
+        "ntis-2710111765",
+        "ntis-2420033894",
+        "ntis-2540001501",
+        "ntis-2410019222",
+        "ntis-2710107840",
+        "ntis-2420033547",
+        "ntis-2420034097",
+        "ntis-2710111762",
+        "ntis-2710106607"
+      ]
+    },
+    {
+      "query_id": "ntis-17ab8ac4db8a8a2b",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410018018",
+        "ntis-2410018019",
+        "ntis-2410018468",
+        "ntis-2410016037",
+        "ntis-2420028215",
+        "ntis-2420034504",
+        "ntis-2710108918",
+        "ntis-2420030576",
+        "ntis-2410019048",
+        "ntis-2710109316"
+      ]
+    },
+    {
+      "query_id": "ntis-17d91268f5edc1f9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410017198",
+        "ntis-2420031947",
+        "ntis-2410019135",
+        "ntis-2420029473",
+        "ntis-2420030340",
+        "ntis-2340050970",
+        "ntis-2420030579",
+        "ntis-2410019257",
+        "ntis-2420030534",
+        "ntis-2710098556"
+      ]
+    },
+    {
+      "query_id": "ntis-17fe1c531c70aac0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410020037",
+        "ntis-2410019621",
+        "ntis-2410019537",
+        "ntis-2410019545",
+        "ntis-2410019793",
+        "ntis-2420029991",
+        "ntis-2420033639",
+        "ntis-2410019986",
+        "ntis-2420033496",
+        "ntis-2420028397"
+      ]
+    },
+    {
+      "query_id": "ntis-1a085c960566e637",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420026624",
+        "ntis-2540001449",
+        "ntis-2400000571",
+        "ntis-2420031810",
+        "ntis-2420031988",
+        "ntis-2400000405",
+        "ntis-2540001453",
+        "ntis-2390003008",
+        "ntis-2710107586",
+        "ntis-2540001497"
+      ]
+    },
+    {
+      "query_id": "ntis-1ac27bae24481e38",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710115929",
+        "ntis-2710101258",
+        "ntis-2610000617",
+        "ntis-2610000704",
+        "ntis-2800001096",
+        "ntis-2710097558",
+        "ntis-2340056223",
+        "ntis-2420031566",
+        "ntis-2420030825",
+        "ntis-2710093072"
+      ]
+    },
+    {
+      "query_id": "ntis-1bc75d57344ea1cb",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016166",
+        "ntis-2420030897",
+        "ntis-2410016008",
+        "ntis-2410017848",
+        "ntis-2480001846",
+        "ntis-2480001599",
+        "ntis-2480001586",
+        "ntis-2800001056",
+        "ntis-2420030895",
+        "ntis-2710107755"
+      ]
+    },
+    {
+      "query_id": "ntis-1bf1ffc331e89962",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340066441",
+        "ntis-2710107388",
+        "ntis-2410015986",
+        "ntis-2340054827",
+        "ntis-2340051774",
+        "ntis-2340064173",
+        "ntis-2340052525",
+        "ntis-2340055226",
+        "ntis-2710108118",
+        "ntis-2420028915"
+      ]
+    },
+    {
+      "query_id": "ntis-1c5c23c8852febaa",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2460006834",
+        "ntis-2710101722",
+        "ntis-2420026937",
+        "ntis-2410019029",
+        "ntis-2710101941",
+        "ntis-2710106060",
+        "ntis-2420033754",
+        "ntis-2340053418",
+        "ntis-2710104428",
+        "ntis-2410016967"
+      ]
+    },
+    {
+      "query_id": "ntis-1cda0b6b1e40cb82",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710115489",
+        "ntis-2710096085",
+        "ntis-2710096440",
+        "ntis-2410015986",
+        "ntis-2800000963",
+        "ntis-2340053331",
+        "ntis-2340053910",
+        "ntis-2710113308",
+        "ntis-2410018134",
+        "ntis-2710108944"
+      ]
+    },
+    {
+      "query_id": "ntis-1d711177b1986ac0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112196",
+        "ntis-2710104417",
+        "ntis-2410015986",
+        "ntis-2340053437",
+        "ntis-2710104022",
+        "ntis-2420026908",
+        "ntis-2710102259",
+        "ntis-2410018482",
+        "ntis-2420027353",
+        "ntis-2340065363"
+      ]
+    },
+    {
+      "query_id": "ntis-1df94b14afd8abb8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710105904",
+        "ntis-2420026959",
+        "ntis-2710103321",
+        "ntis-2710114668",
+        "ntis-2410019242",
+        "ntis-2410017261",
+        "ntis-2410018756",
+        "ntis-2410018037",
+        "ntis-2420026911",
+        "ntis-2410016853"
+      ]
+    },
+    {
+      "query_id": "ntis-1e089bba1104c181",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710108121",
+        "ntis-2710104769",
+        "ntis-2710098874",
+        "ntis-2710113711",
+        "ntis-2710114775",
+        "ntis-2340054388",
+        "ntis-2710115684",
+        "ntis-2710101521",
+        "ntis-2710112763",
+        "ntis-2710112878"
+      ]
+    },
+    {
+      "query_id": "ntis-1e2dd242fb5f7a82",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520000862",
+        "ntis-2540001158",
+        "ntis-2420027267",
+        "ntis-2420031255",
+        "ntis-2420026419",
+        "ntis-2520001089",
+        "ntis-2410019855",
+        "ntis-2420033675",
+        "ntis-2520000998",
+        "ntis-2800000998"
+      ]
+    },
+    {
+      "query_id": "ntis-1ebe70a58701502f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102998",
+        "ntis-2710107305",
+        "ntis-2420033158",
+        "ntis-2710105069",
+        "ntis-2410018835",
+        "ntis-2710110764",
+        "ntis-2420027410",
+        "ntis-2410019048",
+        "ntis-2710108918",
+        "ntis-2420033166"
+      ]
+    },
+    {
+      "query_id": "ntis-1f6853ae9129d525",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018927",
+        "ntis-2410017128",
+        "ntis-2410017127",
+        "ntis-2340065901",
+        "ntis-2410016536",
+        "ntis-2410018610",
+        "ntis-2410019795",
+        "ntis-2410018777",
+        "ntis-2340051974",
+        "ntis-2410016200"
+      ]
+    },
+    {
+      "query_id": "ntis-2021bd6f831b54cd",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340053479",
+        "ntis-2340056074",
+        "ntis-2410017963",
+        "ntis-2410018862",
+        "ntis-2710104452",
+        "ntis-2540001522",
+        "ntis-2410019468",
+        "ntis-2340052711",
+        "ntis-2710111715",
+        "ntis-2710102286"
+      ]
+    },
+    {
+      "query_id": "ntis-207ec2314a791903",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710109578",
+        "ntis-2410017407",
+        "ntis-2710113202",
+        "ntis-2340065604",
+        "ntis-2340053831",
+        "ntis-2710105952",
+        "ntis-2710094971",
+        "ntis-2420033472",
+        "ntis-2710109438",
+        "ntis-2340056347"
+      ]
+    },
+    {
+      "query_id": "ntis-20fe4337fec8de2c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029882",
+        "ntis-2420029881",
+        "ntis-2410016204",
+        "ntis-2420027933",
+        "ntis-2420029519",
+        "ntis-2410017230",
+        "ntis-2480001881",
+        "ntis-2710106285",
+        "ntis-2410017145",
+        "ntis-2420030313"
+      ]
+    },
+    {
+      "query_id": "ntis-21cfb4a49ee39ba8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710103654",
+        "ntis-2480001881",
+        "ntis-2340053554",
+        "ntis-2340065138",
+        "ntis-2710110783",
+        "ntis-2340065073",
+        "ntis-2340066535",
+        "ntis-2420033080",
+        "ntis-2420027933",
+        "ntis-2710113420"
+      ]
+    },
+    {
+      "query_id": "ntis-21d4aeab7625b7a2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340053578",
+        "ntis-2340056195",
+        "ntis-2420034215",
+        "ntis-2710093736",
+        "ntis-2410016377",
+        "ntis-2710111257",
+        "ntis-2420027418",
+        "ntis-2710109013",
+        "ntis-2710095535",
+        "ntis-2710102968"
+      ]
+    },
+    {
+      "query_id": "ntis-21dfffdd1941fc00",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710104934",
+        "ntis-2710111762",
+        "ntis-2710111769",
+        "ntis-2410016956",
+        "ntis-2710111730",
+        "ntis-2410019996",
+        "ntis-2420033728",
+        "ntis-2710105642",
+        "ntis-2420033277",
+        "ntis-2420029246"
+      ]
+    },
+    {
+      "query_id": "ntis-21e68de139922cc3",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030566",
+        "ntis-2420033733",
+        "ntis-2410016803",
+        "ntis-2410015695",
+        "ntis-2340053910",
+        "ntis-2420033881",
+        "ntis-2710104452",
+        "ntis-2420028292",
+        "ntis-2420028332",
+        "ntis-2420031826"
+      ]
+    },
+    {
+      "query_id": "ntis-21ef4e23f3481573",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2370000404",
+        "ntis-2340054392",
+        "ntis-2340063951",
+        "ntis-2420026582",
+        "ntis-2710113594",
+        "ntis-2410019151",
+        "ntis-2340052230",
+        "ntis-2710102307",
+        "ntis-2710105176",
+        "ntis-2710099113"
+      ]
+    },
+    {
+      "query_id": "ntis-228290b766143b2b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410015457",
+        "ntis-2480001899",
+        "ntis-2480000974",
+        "ntis-2480000973",
+        "ntis-2480001909",
+        "ntis-2340066147",
+        "ntis-2410016908",
+        "ntis-2410018706",
+        "ntis-2480000972",
+        "ntis-2420030900"
+      ]
+    },
+    {
+      "query_id": "ntis-23b553caf048fa30",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2320000440",
+        "ntis-2320000454",
+        "ntis-2320000428",
+        "ntis-2540001500",
+        "ntis-2410017958",
+        "ntis-2420027928",
+        "ntis-2410019123",
+        "ntis-2710107392",
+        "ntis-2340052294",
+        "ntis-2420033857"
+      ]
+    },
+    {
+      "query_id": "ntis-2551ccaf51d6a29b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710108210",
+        "ntis-2710114164",
+        "ntis-2420031571",
+        "ntis-2710094966",
+        "ntis-2710102259",
+        "ntis-2340056265",
+        "ntis-2410018163",
+        "ntis-2420029686",
+        "ntis-2420027007",
+        "ntis-2710104715"
+      ]
+    },
+    {
+      "query_id": "ntis-257157b0cec2bb94",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029994",
+        "ntis-2410019567",
+        "ntis-2420032309",
+        "ntis-2420028066",
+        "ntis-2420033793",
+        "ntis-2340065992",
+        "ntis-2420034119",
+        "ntis-2420030114",
+        "ntis-2420033016",
+        "ntis-2710107533"
+      ]
+    },
+    {
+      "query_id": "ntis-25dceab6487009df",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030566",
+        "ntis-2420033733",
+        "ntis-2410016803",
+        "ntis-2410015695",
+        "ntis-2340053910",
+        "ntis-2710107634",
+        "ntis-2420034523",
+        "ntis-2420030138",
+        "ntis-2710101775",
+        "ntis-2710104201"
+      ]
+    },
+    {
+      "query_id": "ntis-266029e231d2e06f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340053479",
+        "ntis-2340056074",
+        "ntis-2710108944",
+        "ntis-2410017963",
+        "ntis-2410017546",
+        "ntis-2710102286",
+        "ntis-2420031471",
+        "ntis-2710105051",
+        "ntis-2410018800",
+        "ntis-2410018862"
+      ]
+    },
+    {
+      "query_id": "ntis-284cd5958b6001b2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2540001177",
+        "ntis-2410020058",
+        "ntis-2420033273",
+        "ntis-2420029117",
+        "ntis-2420030500",
+        "ntis-2710103976",
+        "ntis-2540001210",
+        "ntis-2420034415",
+        "ntis-2410018055",
+        "ntis-2420027587"
+      ]
+    },
+    {
+      "query_id": "ntis-286c62423271ea36",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2070000482",
+        "ntis-2070000348",
+        "ntis-2800001006",
+        "ntis-2480001152",
+        "ntis-2420029885",
+        "ntis-2710104248",
+        "ntis-2480001041",
+        "ntis-2710110714",
+        "ntis-2070000352",
+        "ntis-2710098414"
+      ]
+    },
+    {
+      "query_id": "ntis-295d98a55cad4db0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112558",
+        "ntis-2340053463",
+        "ntis-2070000352",
+        "ntis-2710110400",
+        "ntis-2340053191",
+        "ntis-2710097875",
+        "ntis-2420032578",
+        "ntis-2710108800",
+        "ntis-2710093828",
+        "ntis-2710115099"
+      ]
+    },
+    {
+      "query_id": "ntis-29e312c52decbd03",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420034549",
+        "ntis-2420031571",
+        "ntis-2710106060",
+        "ntis-2340051374",
+        "ntis-2420026803",
+        "ntis-2420026795",
+        "ntis-2410020049",
+        "ntis-2420029863",
+        "ntis-2710108796",
+        "ntis-2420031852"
+      ]
+    },
+    {
+      "query_id": "ntis-2a1a7ac8d81c5b35",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112552",
+        "ntis-2340053847",
+        "ntis-2340055996",
+        "ntis-2710108933",
+        "ntis-2340055063",
+        "ntis-2340054786",
+        "ntis-2710104342",
+        "ntis-2710110291",
+        "ntis-2420026771",
+        "ntis-2710100125"
+      ]
+    },
+    {
+      "query_id": "ntis-2a4ba2e9e680ebb9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030263",
+        "ntis-2760000066",
+        "ntis-2420027783",
+        "ntis-2760000065",
+        "ntis-2420033832",
+        "ntis-2410019057",
+        "ntis-2760000070",
+        "ntis-2420031817",
+        "ntis-2760000069",
+        "ntis-2760000068"
+      ]
+    },
+    {
+      "query_id": "ntis-2b6a7c51eb96adec",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102961",
+        "ntis-2710111715",
+        "ntis-2410018655",
+        "ntis-2710111095",
+        "ntis-2710097875",
+        "ntis-2710109061",
+        "ntis-2710099157",
+        "ntis-2340052047",
+        "ntis-2410019736",
+        "ntis-2340053800"
+      ]
+    },
+    {
+      "query_id": "ntis-2c316bc4ee53636f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029994",
+        "ntis-2410019567",
+        "ntis-2420026447",
+        "ntis-2420033527",
+        "ntis-2420031313",
+        "ntis-2710102485",
+        "ntis-2710095442",
+        "ntis-2420026470",
+        "ntis-2420028330",
+        "ntis-2420030409"
+      ]
+    },
+    {
+      "query_id": "ntis-2cf6a6cf655b8d0b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2050001591",
+        "ntis-2520001049",
+        "ntis-2520000872",
+        "ntis-2050001595",
+        "ntis-2410015979",
+        "ntis-2520001032",
+        "ntis-2520000836",
+        "ntis-2050001612",
+        "ntis-2520001005",
+        "ntis-2340053804"
+      ]
+    },
+    {
+      "query_id": "ntis-2eebada69af5f131",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410017310",
+        "ntis-2480001733",
+        "ntis-2410018655",
+        "ntis-2420031972",
+        "ntis-2710111065",
+        "ntis-2410015469",
+        "ntis-2420034026",
+        "ntis-2420027141",
+        "ntis-2410018464",
+        "ntis-2420032576"
+      ]
+    },
+    {
+      "query_id": "ntis-2fb59775c1a579e3",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410019550",
+        "ntis-2480001846",
+        "ntis-2480001599",
+        "ntis-2480001586",
+        "ntis-2480001834",
+        "ntis-2410018084",
+        "ntis-2410016907",
+        "ntis-2410016166",
+        "ntis-2410016953",
+        "ntis-2410016376"
+      ]
+    },
+    {
+      "query_id": "ntis-305798ffbaa0e68e",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029356",
+        "ntis-2710114476",
+        "ntis-2710098831",
+        "ntis-2800001072",
+        "ntis-2710114632",
+        "ntis-2420029353",
+        "ntis-2710098415",
+        "ntis-2710107305",
+        "ntis-2410016402",
+        "ntis-2340054860"
+      ]
+    },
+    {
+      "query_id": "ntis-3063eaf3d2a73aa4",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340063815",
+        "ntis-2340065127",
+        "ntis-2340055629",
+        "ntis-2710105318",
+        "ntis-2710098806",
+        "ntis-2710095497",
+        "ntis-2710102653",
+        "ntis-2340054676",
+        "ntis-2710105209",
+        "ntis-2710107124"
+      ]
+    },
+    {
+      "query_id": "ntis-308077bb4a0f8ea5",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710115929",
+        "ntis-2340051783",
+        "ntis-2710113420",
+        "ntis-2340065073",
+        "ntis-2710101258",
+        "ntis-2710114084",
+        "ntis-2710100233",
+        "ntis-2340054099",
+        "ntis-2340066663",
+        "ntis-2710103345"
+      ]
+    },
+    {
+      "query_id": "ntis-314efd12b20a79c9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340065901",
+        "ntis-2710107167",
+        "ntis-2710104185",
+        "ntis-2710102353",
+        "ntis-2710097987",
+        "ntis-2410018927",
+        "ntis-2410016208",
+        "ntis-2710103997",
+        "ntis-2420029038",
+        "ntis-2710109986"
+      ]
+    },
+    {
+      "query_id": "ntis-320c17d1837fa7bd",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000592",
+        "ntis-2420032522",
+        "ntis-2340066463",
+        "ntis-2410018387",
+        "ntis-2420030262",
+        "ntis-2420031932",
+        "ntis-2410019194",
+        "ntis-2610000596",
+        "ntis-2410017800",
+        "ntis-2420026716"
+      ]
+    },
+    {
+      "query_id": "ntis-322d5acea83461b9",
+      "first_relevant_rank": 4,
+      "top_10_document_ids": [
+        "ntis-2410016111",
+        "ntis-2420034440",
+        "ntis-2410015539",
+        "ntis-2410018902",
+        "ntis-2710105159",
+        "ntis-2420030216",
+        "ntis-2410015555",
+        "ntis-2710095779",
+        "ntis-2410017230",
+        "ntis-2410018307"
+      ]
+    },
+    {
+      "query_id": "ntis-32b3d70b34985819",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710103161",
+        "ntis-2710096823",
+        "ntis-2710097937",
+        "ntis-2340053163",
+        "ntis-2710100672",
+        "ntis-2710111069",
+        "ntis-2710099619",
+        "ntis-2340053418",
+        "ntis-2710093765",
+        "ntis-2410018938"
+      ]
+    },
+    {
+      "query_id": "ntis-33785389f52cbf1d",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2800001102",
+        "ntis-2800001113",
+        "ntis-2800001112",
+        "ntis-2800001097",
+        "ntis-2800001098",
+        "ntis-2800000936",
+        "ntis-2420027722",
+        "ntis-2800001101",
+        "ntis-2800001104",
+        "ntis-2800000978"
+      ]
+    },
+    {
+      "query_id": "ntis-34fe0fabd6f27fee",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340053578",
+        "ntis-2710095535",
+        "ntis-2710103275",
+        "ntis-2340056195",
+        "ntis-2420028170",
+        "ntis-2710114780",
+        "ntis-2710093414",
+        "ntis-2710099052",
+        "ntis-2710102968",
+        "ntis-2710096522"
+      ]
+    },
+    {
+      "query_id": "ntis-35b633654fdd8f07",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029353",
+        "ntis-2410018594",
+        "ntis-2710112301",
+        "ntis-2710107611",
+        "ntis-2710107317",
+        "ntis-2710110748",
+        "ntis-2710108096",
+        "ntis-2710098592",
+        "ntis-2410017910",
+        "ntis-2420033482"
+      ]
+    },
+    {
+      "query_id": "ntis-362d269a87354894",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029052",
+        "ntis-2420029239",
+        "ntis-2420031670",
+        "ntis-2410019159",
+        "ntis-2710115524",
+        "ntis-2710098127",
+        "ntis-2710106470",
+        "ntis-2710100438",
+        "ntis-2340052591",
+        "ntis-2420031482"
+      ]
+    },
+    {
+      "query_id": "ntis-362dfad0dde36b89",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018019",
+        "ntis-2410018018",
+        "ntis-2410018016",
+        "ntis-2710113908",
+        "ntis-2420028703",
+        "ntis-2420030569",
+        "ntis-2410015087",
+        "ntis-2420026969",
+        "ntis-2710093952",
+        "ntis-2410016945"
+      ]
+    },
+    {
+      "query_id": "ntis-370f0dbdd4f98815",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410019351",
+        "ntis-2410018981",
+        "ntis-2410017106",
+        "ntis-2410017337",
+        "ntis-2410019157",
+        "ntis-2410016840",
+        "ntis-2410016094",
+        "ntis-2480001874",
+        "ntis-2710108655",
+        "ntis-2410019089"
+      ]
+    },
+    {
+      "query_id": "ntis-381c84f7ec3d3cc1",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102998",
+        "ntis-2410018594",
+        "ntis-2710096440",
+        "ntis-2420033073",
+        "ntis-2710115297",
+        "ntis-2710104900",
+        "ntis-2410016467",
+        "ntis-2420033482",
+        "ntis-2420031711",
+        "ntis-2710111257"
+      ]
+    },
+    {
+      "query_id": "ntis-3983afcb15f1ec38",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710108096",
+        "ntis-2420029353",
+        "ntis-2710110809",
+        "ntis-2420033482",
+        "ntis-2460006875",
+        "ntis-2710107329",
+        "ntis-2710101761",
+        "ntis-2420033960",
+        "ntis-2390003304",
+        "ntis-2710093342"
+      ]
+    },
+    {
+      "query_id": "ntis-39d4067441cba04a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420026771",
+        "ntis-2420029408",
+        "ntis-2710110006",
+        "ntis-2420026806",
+        "ntis-2340055367",
+        "ntis-2420026821",
+        "ntis-2420030569",
+        "ntis-2340065986",
+        "ntis-2710107317",
+        "ntis-2710105176"
+      ]
+    },
+    {
+      "query_id": "ntis-3d1203495aee57e1",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710109689",
+        "ntis-2420030232",
+        "ntis-2230000038",
+        "ntis-2610000742",
+        "ntis-2310000369",
+        "ntis-2410018998",
+        "ntis-2420031382",
+        "ntis-2420030358",
+        "ntis-2410019968",
+        "ntis-2710109361"
+      ]
+    },
+    {
+      "query_id": "ntis-3e4a26723699f7cd",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710108096",
+        "ntis-2710107329",
+        "ntis-2710107800",
+        "ntis-2340053158",
+        "ntis-2340064126",
+        "ntis-2420028919",
+        "ntis-2710097376",
+        "ntis-2710098618",
+        "ntis-2340066605",
+        "ntis-2420033073"
+      ]
+    },
+    {
+      "query_id": "ntis-3ea31b5fbf03fc65",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000709",
+        "ntis-2420032522",
+        "ntis-2420033978",
+        "ntis-2410019154",
+        "ntis-2610000711",
+        "ntis-2410019423",
+        "ntis-2420033454",
+        "ntis-2340066463",
+        "ntis-2710108333",
+        "ntis-2410019503"
+      ]
+    },
+    {
+      "query_id": "ntis-3ee2d1a33a9348dc",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2310000326",
+        "ntis-2310000402",
+        "ntis-2710105305",
+        "ntis-2420032270",
+        "ntis-2420031615",
+        "ntis-2420030232",
+        "ntis-2310000369",
+        "ntis-2710103796",
+        "ntis-2520001036",
+        "ntis-2710097236"
+      ]
+    },
+    {
+      "query_id": "ntis-3f0320fcf2379d1f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000596",
+        "ntis-2410016586",
+        "ntis-2410015067",
+        "ntis-2420027724",
+        "ntis-2420029201",
+        "ntis-2340053689",
+        "ntis-2410015069",
+        "ntis-2480001551",
+        "ntis-2610000524",
+        "ntis-2340065462"
+      ]
+    },
+    {
+      "query_id": "ntis-3f6a9928db834203",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029023",
+        "ntis-2420028299",
+        "ntis-2410017839",
+        "ntis-2420029972",
+        "ntis-2410017450",
+        "ntis-2410017453",
+        "ntis-2410019334",
+        "ntis-2410017840",
+        "ntis-2410017698",
+        "ntis-2420027203"
+      ]
+    },
+    {
+      "query_id": "ntis-4276e22bfbeea5bf",
+      "first_relevant_rank": 3,
+      "top_10_document_ids": [
+        "ntis-2420030359",
+        "ntis-2420034546",
+        "ntis-2710109572",
+        "ntis-2710108858",
+        "ntis-2420026806",
+        "ntis-2710109361",
+        "ntis-2340056178",
+        "ntis-2420026803",
+        "ntis-2420026886",
+        "ntis-2410017965"
+      ]
+    },
+    {
+      "query_id": "ntis-42a0dbc63c885963",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031605",
+        "ntis-2420031585",
+        "ntis-2420028163",
+        "ntis-2420034284",
+        "ntis-2710105893",
+        "ntis-2420028974",
+        "ntis-2410019062",
+        "ntis-2710107952",
+        "ntis-2420030483",
+        "ntis-2410019015"
+      ]
+    },
+    {
+      "query_id": "ntis-44240d2f4cfb0ab2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710097937",
+        "ntis-2710106607",
+        "ntis-2710093765",
+        "ntis-2710105961",
+        "ntis-2710096823",
+        "ntis-2710106214",
+        "ntis-2710095963",
+        "ntis-2460006553",
+        "ntis-2340064009",
+        "ntis-2340051974"
+      ]
+    },
+    {
+      "query_id": "ntis-45732eed52436143",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112571",
+        "ntis-2340051549",
+        "ntis-2420032201",
+        "ntis-2710112382",
+        "ntis-2710109577",
+        "ntis-2710110445",
+        "ntis-2340063742",
+        "ntis-2410019097",
+        "ntis-2420026625",
+        "ntis-2710106741"
+      ]
+    },
+    {
+      "query_id": "ntis-47585bb1879ef77a",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410019252",
+        "ntis-2410019158",
+        "ntis-2410020009",
+        "ntis-2410019187",
+        "ntis-2410020043",
+        "ntis-2410019364",
+        "ntis-2410019015",
+        "ntis-2420029938",
+        "ntis-2410019307",
+        "ntis-2410016495"
+      ]
+    },
+    {
+      "query_id": "ntis-47e64b8382540a6c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520001060",
+        "ntis-2710107532",
+        "ntis-2420030825",
+        "ntis-2420030810",
+        "ntis-2420030679",
+        "ntis-2710101811",
+        "ntis-2710101844",
+        "ntis-2710111937",
+        "ntis-2410016165",
+        "ntis-2340056178"
+      ]
+    },
+    {
+      "query_id": "ntis-4811ebf579862867",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710103161",
+        "ntis-2340064122",
+        "ntis-2410018938",
+        "ntis-2340065957",
+        "ntis-2710093765",
+        "ntis-2340053163",
+        "ntis-2420033777",
+        "ntis-2340051876",
+        "ntis-2710107767",
+        "ntis-2710098419"
+      ]
+    },
+    {
+      "query_id": "ntis-482e8e85a52c57ad",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112281",
+        "ntis-2710098840",
+        "ntis-2710114021",
+        "ntis-2340055017",
+        "ntis-2420033519",
+        "ntis-2340065109",
+        "ntis-2610000701",
+        "ntis-2710103831",
+        "ntis-2340053766",
+        "ntis-2410016674"
+      ]
+    },
+    {
+      "query_id": "ntis-487a63f4c8d23321",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340053328",
+        "ntis-2410016185",
+        "ntis-2340065469",
+        "ntis-2340065533",
+        "ntis-2710097637",
+        "ntis-2710099118",
+        "ntis-2340054976",
+        "ntis-2340054388",
+        "ntis-2710115684",
+        "ntis-2710099075"
+      ]
+    },
+    {
+      "query_id": "ntis-48d140b822f83702",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420026703",
+        "ntis-2420031620",
+        "ntis-2420031622",
+        "ntis-2420026891",
+        "ntis-2420033073",
+        "ntis-2420027129",
+        "ntis-2420034351",
+        "ntis-2410018883",
+        "ntis-2410019180",
+        "ntis-2420031086"
+      ]
+    },
+    {
+      "query_id": "ntis-49e3091933041660",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710113979",
+        "ntis-2340065548",
+        "ntis-2420031345",
+        "ntis-2420032136",
+        "ntis-2710110449",
+        "ntis-2710106732",
+        "ntis-2340066256",
+        "ntis-2420033744",
+        "ntis-2420029195",
+        "ntis-2420034097"
+      ]
+    },
+    {
+      "query_id": "ntis-4a6e21881b2c8633",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340063815",
+        "ntis-2340065214",
+        "ntis-2710098806",
+        "ntis-2710102616",
+        "ntis-2710113017",
+        "ntis-2710103421",
+        "ntis-2710093302",
+        "ntis-2340053554",
+        "ntis-2710114718",
+        "ntis-2420031377"
+      ]
+    },
+    {
+      "query_id": "ntis-4a73c1f7880a2867",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800000950",
+        "ntis-2800001056",
+        "ntis-2800000951",
+        "ntis-2800000933",
+        "ntis-2410016884",
+        "ntis-2410016008",
+        "ntis-2610000544",
+        "ntis-2410019934",
+        "ntis-2710107755",
+        "ntis-2800001066"
+      ]
+    },
+    {
+      "query_id": "ntis-4b34cb0370dde1d0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710105411",
+        "ntis-2710096753",
+        "ntis-2710098625",
+        "ntis-2340065185",
+        "ntis-2710092637",
+        "ntis-2340051555",
+        "ntis-2710110115",
+        "ntis-2340053075",
+        "ntis-2710110291",
+        "ntis-2710114785"
+      ]
+    },
+    {
+      "query_id": "ntis-4b45f0a601ba81b1",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001820",
+        "ntis-2710098055",
+        "ntis-2480001680",
+        "ntis-2410019044",
+        "ntis-2410017693",
+        "ntis-2800000993",
+        "ntis-2410019317",
+        "ntis-2420028976",
+        "ntis-2410018873",
+        "ntis-2420028357"
+      ]
+    },
+    {
+      "query_id": "ntis-4b4a8afd90c277a7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016199",
+        "ntis-2340064922",
+        "ntis-2420026910",
+        "ntis-2420031003",
+        "ntis-2710110289",
+        "ntis-2340065214",
+        "ntis-2420033390",
+        "ntis-2410018756",
+        "ntis-2420026873",
+        "ntis-2710111766"
+      ]
+    },
+    {
+      "query_id": "ntis-4bb10caba644e93e",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710104897",
+        "ntis-2340054170",
+        "ntis-2710111778",
+        "ntis-2340065073",
+        "ntis-2710111920",
+        "ntis-2710096908",
+        "ntis-2710115920",
+        "ntis-2340055469",
+        "ntis-2340066017",
+        "ntis-2340066224"
+      ]
+    },
+    {
+      "query_id": "ntis-4bdd7b2cc53fe822",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420028832",
+        "ntis-2420029265",
+        "ntis-2420026816",
+        "ntis-2420030318",
+        "ntis-2710105735",
+        "ntis-2610000725",
+        "ntis-2420034497",
+        "ntis-2420033506",
+        "ntis-2420029117",
+        "ntis-2480001910"
+      ]
+    },
+    {
+      "query_id": "ntis-4c31f242be97c383",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340066441",
+        "ntis-2710107972",
+        "ntis-2340051698",
+        "ntis-2710111258",
+        "ntis-2420030318",
+        "ntis-2410018005",
+        "ntis-2340064005",
+        "ntis-2710101248",
+        "ntis-2710098627",
+        "ntis-2710112479"
+      ]
+    },
+    {
+      "query_id": "ntis-4caa36e4cb1d715a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112753",
+        "ntis-2710112868",
+        "ntis-2340056125",
+        "ntis-2710110714",
+        "ntis-2710093190",
+        "ntis-2710113292",
+        "ntis-2710111012",
+        "ntis-2710112751",
+        "ntis-2710112865",
+        "ntis-2410019453"
+      ]
+    },
+    {
+      "query_id": "ntis-4ce7eceaff71b7e1",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102985",
+        "ntis-2340055963",
+        "ntis-2710102589",
+        "ntis-2410017627",
+        "ntis-2340051227",
+        "ntis-2710100885",
+        "ntis-2710106312",
+        "ntis-2710110400",
+        "ntis-2410017775",
+        "ntis-2710112479"
+      ]
+    },
+    {
+      "query_id": "ntis-4f7d674692c08c52",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420033538",
+        "ntis-2480002022",
+        "ntis-2420027024",
+        "ntis-2410019140",
+        "ntis-2410019589",
+        "ntis-2410019149",
+        "ntis-2410019721",
+        "ntis-2410019145",
+        "ntis-2410019611",
+        "ntis-2420031848"
+      ]
+    },
+    {
+      "query_id": "ntis-4f8d89c56eb661cc",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031785",
+        "ntis-2410014906",
+        "ntis-2410017775",
+        "ntis-2410018685",
+        "ntis-2410015986",
+        "ntis-2420028107",
+        "ntis-2420029738",
+        "ntis-2340064173",
+        "ntis-2420031224",
+        "ntis-2410019370"
+      ]
+    },
+    {
+      "query_id": "ntis-50555e0d36003412",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710113043",
+        "ntis-2710097890",
+        "ntis-2710103886",
+        "ntis-2710101535",
+        "ntis-2710109633",
+        "ntis-2710093935",
+        "ntis-2340051867",
+        "ntis-2710098824",
+        "ntis-2710112301",
+        "ntis-2420029038"
+      ]
+    },
+    {
+      "query_id": "ntis-52dd306fe8677ec8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710105904",
+        "ntis-2420031418",
+        "ntis-2410019124",
+        "ntis-2410018367",
+        "ntis-2410018915",
+        "ntis-2420026819",
+        "ntis-2410018657",
+        "ntis-2420033168",
+        "ntis-2340056217",
+        "ntis-2710115314"
+      ]
+    },
+    {
+      "query_id": "ntis-5359a71d99455bea",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710114116",
+        "ntis-2710113854",
+        "ntis-2710113314",
+        "ntis-2420032174",
+        "ntis-2340065109",
+        "ntis-2410019159",
+        "ntis-2710112501",
+        "ntis-2340066535",
+        "ntis-2410018843",
+        "ntis-2410018820"
+      ]
+    },
+    {
+      "query_id": "ntis-5822ace08685b34b",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2420029191",
+        "ntis-2420026624",
+        "ntis-2410015535",
+        "ntis-2420029225",
+        "ntis-2710114375",
+        "ntis-2420032431",
+        "ntis-2420026625",
+        "ntis-2710106382",
+        "ntis-2420033850",
+        "ntis-2340065462"
+      ]
+    },
+    {
+      "query_id": "ntis-5966e82b116b3006",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420034056",
+        "ntis-2710113065",
+        "ntis-2420029144",
+        "ntis-2710110764",
+        "ntis-2420028842",
+        "ntis-2710096515",
+        "ntis-2420030587",
+        "ntis-2410017302",
+        "ntis-2710107305",
+        "ntis-2710098415"
+      ]
+    },
+    {
+      "query_id": "ntis-5ad834c92c676b63",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710098800",
+        "ntis-2710112552",
+        "ntis-2710114719",
+        "ntis-2340065533",
+        "ntis-2710108731",
+        "ntis-2420031659",
+        "ntis-2340065415",
+        "ntis-2420034119",
+        "ntis-2710097941",
+        "ntis-2710106520"
+      ]
+    },
+    {
+      "query_id": "ntis-5b59d3d32a12f26f",
+      "first_relevant_rank": 7,
+      "top_10_document_ids": [
+        "ntis-2710100228",
+        "ntis-2710100973",
+        "ntis-2340051974",
+        "ntis-2460005865",
+        "ntis-2340064606",
+        "ntis-2340053158",
+        "ntis-2310000419",
+        "ntis-2420031231",
+        "ntis-2710110608",
+        "ntis-2340053588"
+      ]
+    },
+    {
+      "query_id": "ntis-5b6fa73ee689d8d8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016882",
+        "ntis-2420031318",
+        "ntis-2410016320",
+        "ntis-2410017300",
+        "ntis-2420030450",
+        "ntis-2340064705",
+        "ntis-2420030527",
+        "ntis-2410019668",
+        "ntis-2420033508",
+        "ntis-2410016287"
+      ]
+    },
+    {
+      "query_id": "ntis-5bb2893c2778fe47",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030221",
+        "ntis-2410016042",
+        "ntis-2410017234",
+        "ntis-2410017628",
+        "ntis-2420029512",
+        "ntis-2420034586",
+        "ntis-2410016288",
+        "ntis-2420030207",
+        "ntis-2410016040",
+        "ntis-2710101287"
+      ]
+    },
+    {
+      "query_id": "ntis-5c1fd643a61d089f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710105475",
+        "ntis-2710115098",
+        "ntis-2340053735",
+        "ntis-2710114252",
+        "ntis-2340051614",
+        "ntis-2710102703",
+        "ntis-2420030623",
+        "ntis-2710095497",
+        "ntis-2340065238",
+        "ntis-2420030340"
+      ]
+    },
+    {
+      "query_id": "ntis-5c99a755e83e6dd6",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001093",
+        "ntis-2420030203",
+        "ntis-2410019639",
+        "ntis-2420030138",
+        "ntis-2420028218",
+        "ntis-2420034435",
+        "ntis-2340053910",
+        "ntis-2420033864",
+        "ntis-2420034272",
+        "ntis-2710108845"
+      ]
+    },
+    {
+      "query_id": "ntis-5c9c9e5d754f0e85",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520001047",
+        "ntis-2520001034",
+        "ntis-2410019903",
+        "ntis-2710101844",
+        "ntis-2410018353",
+        "ntis-2410018352",
+        "ntis-2410020049",
+        "ntis-2410018354",
+        "ntis-2520001217",
+        "ntis-2410018242"
+      ]
+    },
+    {
+      "query_id": "ntis-5ce8a4232b196359",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710092639",
+        "ntis-2710108203",
+        "ntis-2420031622",
+        "ntis-2410019009",
+        "ntis-2420026715",
+        "ntis-2410019739",
+        "ntis-2710098932",
+        "ntis-2710109099",
+        "ntis-2710104446",
+        "ntis-2420026832"
+      ]
+    },
+    {
+      "query_id": "ntis-5e2342152489f4d9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420026771",
+        "ntis-2340056068",
+        "ntis-2410019441",
+        "ntis-2420029408",
+        "ntis-2420030576",
+        "ntis-2710108918",
+        "ntis-2340065986",
+        "ntis-2410015087",
+        "ntis-2710106324",
+        "ntis-2420029985"
+      ]
+    },
+    {
+      "query_id": "ntis-5e918488e1591327",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520000989",
+        "ntis-2520001164",
+        "ntis-2520000929",
+        "ntis-2410016165",
+        "ntis-2410016767",
+        "ntis-2530000051",
+        "ntis-2520001083",
+        "ntis-2520001037",
+        "ntis-2420032935",
+        "ntis-2410017848"
+      ]
+    },
+    {
+      "query_id": "ntis-5ed1ee7ba6999464",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031625",
+        "ntis-2420031635",
+        "ntis-2410018200",
+        "ntis-2410018296",
+        "ntis-2420030667",
+        "ntis-2710105058",
+        "ntis-2410017161",
+        "ntis-2420029299",
+        "ntis-2410015663",
+        "ntis-2410015758"
+      ]
+    },
+    {
+      "query_id": "ntis-5ef39b9c28676b6f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018927",
+        "ntis-2410017128",
+        "ntis-2410017127",
+        "ntis-2410019005",
+        "ntis-2410019055",
+        "ntis-2340065901",
+        "ntis-2410019795",
+        "ntis-2710109071",
+        "ntis-2710100450",
+        "ntis-2410016200"
+      ]
+    },
+    {
+      "query_id": "ntis-5f2b301be1a5525d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029356",
+        "ntis-2710098415",
+        "ntis-2710114476",
+        "ntis-2710115251",
+        "ntis-2710106068",
+        "ntis-2710096275",
+        "ntis-2710108933",
+        "ntis-2340051796",
+        "ntis-2710107903",
+        "ntis-2340055996"
+      ]
+    },
+    {
+      "query_id": "ntis-603d1c9848520e56",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2540001177",
+        "ntis-2420026816",
+        "ntis-2420032325",
+        "ntis-2420032994",
+        "ntis-2410019635",
+        "ntis-2710113199",
+        "ntis-2710111700",
+        "ntis-2390002955",
+        "ntis-2710111688",
+        "ntis-2420033487"
+      ]
+    },
+    {
+      "query_id": "ntis-62edbb0c9ffa6683",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710113043",
+        "ntis-2710104981",
+        "ntis-2340051866",
+        "ntis-2710110608",
+        "ntis-2710103450",
+        "ntis-2710107611",
+        "ntis-2340050810",
+        "ntis-2340054377",
+        "ntis-2460005888",
+        "ntis-2710111049"
+      ]
+    },
+    {
+      "query_id": "ntis-63681f66cfe48e07",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710109572",
+        "ntis-2340053831",
+        "ntis-2710109361",
+        "ntis-2420034546",
+        "ntis-2420030359",
+        "ntis-2420031920",
+        "ntis-2710110370",
+        "ntis-2420026806",
+        "ntis-2420026834",
+        "ntis-2340056178"
+      ]
+    },
+    {
+      "query_id": "ntis-63ed0d5c2becb7d0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710110373",
+        "ntis-2710110803",
+        "ntis-2480001820",
+        "ntis-2710096245",
+        "ntis-2710093252",
+        "ntis-2410018596",
+        "ntis-2410019771",
+        "ntis-2410018339",
+        "ntis-2710096499",
+        "ntis-2420031007"
+      ]
+    },
+    {
+      "query_id": "ntis-646faafdfd470905",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2390002525",
+        "ntis-2390003519",
+        "ntis-2540001156",
+        "ntis-2420029883",
+        "ntis-2400000405",
+        "ntis-2420026883",
+        "ntis-2420026834",
+        "ntis-2540001454",
+        "ntis-2710114059",
+        "ntis-2340056217"
+      ]
+    },
+    {
+      "query_id": "ntis-6474096f09ca927d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2310000340",
+        "ntis-2420026808",
+        "ntis-2420034379",
+        "ntis-2710109065",
+        "ntis-2420026591",
+        "ntis-2420026798",
+        "ntis-2710108858",
+        "ntis-2420031615",
+        "ntis-2710097073",
+        "ntis-2420026976"
+      ]
+    },
+    {
+      "query_id": "ntis-65276129d70f7314",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030263",
+        "ntis-2760000066",
+        "ntis-2420031817",
+        "ntis-2410019057",
+        "ntis-2760000065",
+        "ntis-2420027783",
+        "ntis-2760000068",
+        "ntis-2420034555",
+        "ntis-2410016023",
+        "ntis-2420031616"
+      ]
+    },
+    {
+      "query_id": "ntis-660f33ae4be27894",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031955",
+        "ntis-2410015469",
+        "ntis-2420026662",
+        "ntis-2410016523",
+        "ntis-2480001733",
+        "ntis-2480001355",
+        "ntis-2710110754",
+        "ntis-2420032576",
+        "ntis-2420034059",
+        "ntis-2410017310"
+      ]
+    },
+    {
+      "query_id": "ntis-66f4250df85aa742",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710108210",
+        "ntis-2420026520",
+        "ntis-2420026834",
+        "ntis-2420026406",
+        "ntis-2420026937",
+        "ntis-2420034559",
+        "ntis-2480001980",
+        "ntis-2420034431",
+        "ntis-2710109572",
+        "ntis-2420026976"
+      ]
+    },
+    {
+      "query_id": "ntis-6878e427862f809a",
+      "first_relevant_rank": 3,
+      "top_10_document_ids": [
+        "ntis-2420028974",
+        "ntis-2400000545",
+        "ntis-2420028461",
+        "ntis-2340056345",
+        "ntis-2420026557",
+        "ntis-2420028744",
+        "ntis-2420034492",
+        "ntis-2480000950",
+        "ntis-2410018505",
+        "ntis-2410018354"
+      ]
+    },
+    {
+      "query_id": "ntis-68960cf42250a328",
+      "first_relevant_rank": 9,
+      "top_10_document_ids": [
+        "ntis-2480001911",
+        "ntis-2420029496",
+        "ntis-2420031212",
+        "ntis-2710104612",
+        "ntis-2420033273",
+        "ntis-2420032136",
+        "ntis-2710103057",
+        "ntis-2420028437",
+        "ntis-2710107642",
+        "ntis-2410018512"
+      ]
+    },
+    {
+      "query_id": "ntis-69ac4876f4cc2697",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710114198",
+        "ntis-2420027158",
+        "ntis-2710095963",
+        "ntis-2710115729",
+        "ntis-2420026591",
+        "ntis-2340064009",
+        "ntis-2340064260",
+        "ntis-2710111796",
+        "ntis-2420026704",
+        "ntis-2410019192"
+      ]
+    },
+    {
+      "query_id": "ntis-6ae6fc45f5002c5b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710105513",
+        "ntis-2420031212",
+        "ntis-2420033273",
+        "ntis-2340052267",
+        "ntis-2340064966",
+        "ntis-2710104612",
+        "ntis-2480001009",
+        "ntis-2420029496",
+        "ntis-2710103057",
+        "ntis-2480000984"
+      ]
+    },
+    {
+      "query_id": "ntis-6bbfe897cfeac09a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480000988",
+        "ntis-2420027503",
+        "ntis-2410019103",
+        "ntis-2480000961",
+        "ntis-2420031471",
+        "ntis-2420030887",
+        "ntis-2420029776",
+        "ntis-2410019317",
+        "ntis-2480000991",
+        "ntis-2340051796"
+      ]
+    },
+    {
+      "query_id": "ntis-6d2e19b041416b6a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018902",
+        "ntis-2420032410",
+        "ntis-2410016317",
+        "ntis-2420034440",
+        "ntis-2410016343",
+        "ntis-2410017603",
+        "ntis-2410019033",
+        "ntis-2410015758",
+        "ntis-2410016464",
+        "ntis-2420029941"
+      ]
+    },
+    {
+      "query_id": "ntis-6d9df3892045c9b3",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030571",
+        "ntis-2420030530",
+        "ntis-2710112608",
+        "ntis-2710112849",
+        "ntis-2410018034",
+        "ntis-2410018482",
+        "ntis-2410017259",
+        "ntis-2410018410",
+        "ntis-2410018131",
+        "ntis-2520001035"
+      ]
+    },
+    {
+      "query_id": "ntis-6ef49043b0ed81c8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420026860",
+        "ntis-2410019187",
+        "ntis-2420030299",
+        "ntis-2410015743",
+        "ntis-2420029921",
+        "ntis-2410019103",
+        "ntis-2420026878",
+        "ntis-2420027988",
+        "ntis-2420027108",
+        "ntis-2710111071"
+      ]
+    },
+    {
+      "query_id": "ntis-7130c519c6064e23",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2390002955",
+        "ntis-2410015879",
+        "ntis-2420030182",
+        "ntis-2410018410",
+        "ntis-2420030285",
+        "ntis-2420029053",
+        "ntis-2410018034",
+        "ntis-2410018673",
+        "ntis-2420029156",
+        "ntis-2710094778"
+      ]
+    },
+    {
+      "query_id": "ntis-7244965b23586317",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340064565",
+        "ntis-2410016770",
+        "ntis-2420030108",
+        "ntis-2340055921",
+        "ntis-2420026419",
+        "ntis-2710105831",
+        "ntis-2420026851",
+        "ntis-2410019927",
+        "ntis-2710104130",
+        "ntis-2710108933"
+      ]
+    },
+    {
+      "query_id": "ntis-73bdd7ffe8ef8267",
+      "first_relevant_rank": 6,
+      "top_10_document_ids": [
+        "ntis-2340063876",
+        "ntis-2340065752",
+        "ntis-2710099146",
+        "ntis-2710103609",
+        "ntis-2340053818",
+        "ntis-2340066395",
+        "ntis-2410018767",
+        "ntis-2340065766",
+        "ntis-2710105499",
+        "ntis-2710106330"
+      ]
+    },
+    {
+      "query_id": "ntis-744724e5ffa1bc35",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710103965",
+        "ntis-2710098113",
+        "ntis-2710097175",
+        "ntis-2710105671",
+        "ntis-2710111676",
+        "ntis-2320000464",
+        "ntis-2420026797",
+        "ntis-2710105961",
+        "ntis-2710098645",
+        "ntis-2390003014"
+      ]
+    },
+    {
+      "query_id": "ntis-75a92f3843649eb9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420034549",
+        "ntis-2420031614",
+        "ntis-2420026795",
+        "ntis-2420026922",
+        "ntis-2420033867",
+        "ntis-2410018217",
+        "ntis-2420031517",
+        "ntis-2420026935",
+        "ntis-2420030363",
+        "ntis-2420030360"
+      ]
+    },
+    {
+      "query_id": "ntis-75be475bd1c60be4",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030182",
+        "ntis-2410016558",
+        "ntis-2540001199",
+        "ntis-2420027503",
+        "ntis-2410019065",
+        "ntis-2410017310",
+        "ntis-2420032944",
+        "ntis-2390003304",
+        "ntis-2540001173",
+        "ntis-2410018655"
+      ]
+    },
+    {
+      "query_id": "ntis-75f41b6879f464b8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710107586",
+        "ntis-2410018429",
+        "ntis-2410019635",
+        "ntis-2420031509",
+        "ntis-2710104485",
+        "ntis-2410016947",
+        "ntis-2540001502",
+        "ntis-2480001445",
+        "ntis-2420031518",
+        "ntis-2420027618"
+      ]
+    },
+    {
+      "query_id": "ntis-7647a869f75e09e7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410020037",
+        "ntis-2710110310",
+        "ntis-2050001595",
+        "ntis-2410016763",
+        "ntis-2410018084",
+        "ntis-2410015686",
+        "ntis-2410019829",
+        "ntis-2410017614",
+        "ntis-2410019496",
+        "ntis-2710099340"
+      ]
+    },
+    {
+      "query_id": "ntis-76b97fd2bccea84d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410015728",
+        "ntis-2340064611",
+        "ntis-2710109061",
+        "ntis-2710111700",
+        "ntis-2340052586",
+        "ntis-2340051974",
+        "ntis-2420028919",
+        "ntis-2710111637",
+        "ntis-2710102485",
+        "ntis-2410019769"
+      ]
+    },
+    {
+      "query_id": "ntis-771695c2f8e7463a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340066395",
+        "ntis-2420031392",
+        "ntis-2410015492",
+        "ntis-2420031955",
+        "ntis-2710115323",
+        "ntis-2420031224",
+        "ntis-2410016198",
+        "ntis-2710108032",
+        "ntis-2710106072",
+        "ntis-2420031321"
+      ]
+    },
+    {
+      "query_id": "ntis-77f90065b275b1b7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710098594",
+        "ntis-2710105305",
+        "ntis-2710093733",
+        "ntis-2710110920",
+        "ntis-2420028683",
+        "ntis-2320000465",
+        "ntis-2420027101",
+        "ntis-2420029199",
+        "ntis-2710096066",
+        "ntis-2420033080"
+      ]
+    },
+    {
+      "query_id": "ntis-77f9a27608025800",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016882",
+        "ntis-2410017514",
+        "ntis-2410015902",
+        "ntis-2410015503",
+        "ntis-2710107903",
+        "ntis-2410016320",
+        "ntis-2710105159",
+        "ntis-2420027421",
+        "ntis-2420033675",
+        "ntis-2480001829"
+      ]
+    },
+    {
+      "query_id": "ntis-782885568ae26fbb",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340050970",
+        "ntis-2420031392",
+        "ntis-2710104836",
+        "ntis-2420031899",
+        "ntis-2410020008",
+        "ntis-2710105891",
+        "ntis-2710110754",
+        "ntis-2420033753",
+        "ntis-2410019242",
+        "ntis-2710101154"
+      ]
+    },
+    {
+      "query_id": "ntis-78506dc50de35bf3",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000591",
+        "ntis-2420026798",
+        "ntis-2420030887",
+        "ntis-2420029122",
+        "ntis-2420030057",
+        "ntis-2480001917",
+        "ntis-2480001086",
+        "ntis-2710108433",
+        "ntis-2420029728",
+        "ntis-2420033690"
+      ]
+    },
+    {
+      "query_id": "ntis-7b8dd40187c9d85d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112552",
+        "ntis-2340065831",
+        "ntis-2340053847",
+        "ntis-2420031659",
+        "ntis-2710098625",
+        "ntis-2710107211",
+        "ntis-2710114644",
+        "ntis-2420029373",
+        "ntis-2340054786",
+        "ntis-2710114755"
+      ]
+    },
+    {
+      "query_id": "ntis-7ba0a7ccddfcc958",
+      "first_relevant_rank": 15,
+      "top_10_document_ids": [
+        "ntis-2710103161",
+        "ntis-2340056195",
+        "ntis-2420031733",
+        "ntis-2710111069",
+        "ntis-2340053163",
+        "ntis-2340056154",
+        "ntis-2710112569",
+        "ntis-2710099619",
+        "ntis-2420031387",
+        "ntis-2710106623"
+      ]
+    },
+    {
+      "query_id": "ntis-7ba1617d685b1c31",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2800001112",
+        "ntis-2800001113",
+        "ntis-2800001102",
+        "ntis-2800001104",
+        "ntis-2800000993",
+        "ntis-2800001101",
+        "ntis-2610000577",
+        "ntis-2420027722",
+        "ntis-2800000936",
+        "ntis-2800001097"
+      ]
+    },
+    {
+      "query_id": "ntis-7d58c8184c15509c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710101939",
+        "ntis-2800001093",
+        "ntis-2800000940",
+        "ntis-2420028524",
+        "ntis-2710109222",
+        "ntis-2800001083",
+        "ntis-2710100505",
+        "ntis-2800001103",
+        "ntis-2800001109",
+        "ntis-2800001101"
+      ]
+    },
+    {
+      "query_id": "ntis-7ea9370e35f7d0ae",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710101417",
+        "ntis-2710108796",
+        "ntis-2410016140",
+        "ntis-2420031693",
+        "ntis-2410019707",
+        "ntis-2410016157",
+        "ntis-2410016159",
+        "ntis-2710112774",
+        "ntis-2710112889",
+        "ntis-2410016158"
+      ]
+    },
+    {
+      "query_id": "ntis-7eb0274c797ed468",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710105411",
+        "ntis-2340053075",
+        "ntis-2710096753",
+        "ntis-2710109057",
+        "ntis-2710092637",
+        "ntis-2710107452",
+        "ntis-2710098625",
+        "ntis-2420027101",
+        "ntis-2420026771",
+        "ntis-2340065185"
+      ]
+    },
+    {
+      "query_id": "ntis-7ebc35eeaa3bd3f8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710097937",
+        "ntis-2410018938",
+        "ntis-2710106607",
+        "ntis-2710105588",
+        "ntis-2710096823",
+        "ntis-2710111069",
+        "ntis-2340056154",
+        "ntis-2710103161",
+        "ntis-2340053908",
+        "ntis-2710105961"
+      ]
+    },
+    {
+      "query_id": "ntis-80b6bcb8a2bb3109",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031785",
+        "ntis-2340054455",
+        "ntis-2420034058",
+        "ntis-2420031211",
+        "ntis-2710104201",
+        "ntis-2710098800",
+        "ntis-2420030088",
+        "ntis-2410017236",
+        "ntis-2710100957",
+        "ntis-2340054488"
+      ]
+    },
+    {
+      "query_id": "ntis-821967c2d9b40a97",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016303",
+        "ntis-2420030670",
+        "ntis-2710107298",
+        "ntis-2710113614",
+        "ntis-2710096206",
+        "ntis-2340066048",
+        "ntis-2710098637",
+        "ntis-2410016185",
+        "ntis-2420027483",
+        "ntis-2340051555"
+      ]
+    },
+    {
+      "query_id": "ntis-82c76f7453562bc2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001395",
+        "ntis-2520000903",
+        "ntis-2410016502",
+        "ntis-2710105735",
+        "ntis-2420030442",
+        "ntis-2480001847",
+        "ntis-2410018734",
+        "ntis-2710101728",
+        "ntis-2410019177",
+        "ntis-2410016840"
+      ]
+    },
+    {
+      "query_id": "ntis-82ff8529c68fa6f2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016904",
+        "ntis-2410016374",
+        "ntis-2410017614",
+        "ntis-2420027680",
+        "ntis-2410015666",
+        "ntis-2410018308",
+        "ntis-2420029916",
+        "ntis-2410016180",
+        "ntis-2410015674",
+        "ntis-2410015848"
+      ]
+    },
+    {
+      "query_id": "ntis-835dc064c3c437be",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710110373",
+        "ntis-2610000554",
+        "ntis-2420033696",
+        "ntis-2480001820",
+        "ntis-2710096245",
+        "ntis-2710093233",
+        "ntis-2710109215",
+        "ntis-2420033232",
+        "ntis-2710093252",
+        "ntis-2410018001"
+      ]
+    },
+    {
+      "query_id": "ntis-836515789b631e97",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2310000381",
+        "ntis-2310000339",
+        "ntis-2420031592",
+        "ntis-2710106382",
+        "ntis-2420031190",
+        "ntis-2420032539",
+        "ntis-2420031525",
+        "ntis-2410015882",
+        "ntis-2420026937",
+        "ntis-2420034196"
+      ]
+    },
+    {
+      "query_id": "ntis-8477922722946996",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410018144",
+        "ntis-2410018253",
+        "ntis-2420033639",
+        "ntis-2420033850",
+        "ntis-2610000741",
+        "ntis-2410018195",
+        "ntis-2410016553",
+        "ntis-2410015797",
+        "ntis-2340053158",
+        "ntis-2410018861"
+      ]
+    },
+    {
+      "query_id": "ntis-84e47034c809b069",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410019550",
+        "ntis-2410019548",
+        "ntis-2480001846",
+        "ntis-2480000957",
+        "ntis-2480001599",
+        "ntis-2480001354",
+        "ntis-2410016903",
+        "ntis-2420030895",
+        "ntis-2410016907",
+        "ntis-2480000990"
+      ]
+    },
+    {
+      "query_id": "ntis-855a9ca6522f9d9c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016911",
+        "ntis-2410019007",
+        "ntis-2410019006",
+        "ntis-2410017035",
+        "ntis-2410019145",
+        "ntis-2410016773",
+        "ntis-2420028755",
+        "ntis-2410016907",
+        "ntis-2710106565",
+        "ntis-2410016190"
+      ]
+    },
+    {
+      "query_id": "ntis-85c8f73e06bb1114",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710111097",
+        "ntis-2410018440",
+        "ntis-2710111063",
+        "ntis-2410017308",
+        "ntis-2420033650",
+        "ntis-2420030405",
+        "ntis-2420026923",
+        "ntis-2420033368",
+        "ntis-2410018838",
+        "ntis-2420027673"
+      ]
+    },
+    {
+      "query_id": "ntis-85fd21a19886f9a0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710114198",
+        "ntis-2340064824",
+        "ntis-2710098938",
+        "ntis-2710101681",
+        "ntis-2710115729",
+        "ntis-2340064308",
+        "ntis-2420034438",
+        "ntis-2710102595",
+        "ntis-2710094966",
+        "ntis-2420029063"
+      ]
+    },
+    {
+      "query_id": "ntis-861c6deb22011bbd",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016391",
+        "ntis-2410017060",
+        "ntis-2710112215",
+        "ntis-2420027003",
+        "ntis-2420031412",
+        "ntis-2420028314",
+        "ntis-2410014840",
+        "ntis-2420029332",
+        "ntis-2410015477",
+        "ntis-2340052943"
+      ]
+    },
+    {
+      "query_id": "ntis-884d79485c4c7d04",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001395",
+        "ntis-2420030524",
+        "ntis-2710106425",
+        "ntis-2410016922",
+        "ntis-2420032008",
+        "ntis-2050001612",
+        "ntis-2340056178",
+        "ntis-2710114785",
+        "ntis-2710105735",
+        "ntis-2480001497"
+      ]
+    },
+    {
+      "query_id": "ntis-890c61de17f39c38",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410015696",
+        "ntis-2410019941",
+        "ntis-2420034396",
+        "ntis-2420029682",
+        "ntis-2410017300",
+        "ntis-2410016322",
+        "ntis-2420032575",
+        "ntis-2410017438",
+        "ntis-2410016323",
+        "ntis-2420027960"
+      ]
+    },
+    {
+      "query_id": "ntis-8a9f8f6b7f4094a1",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112571",
+        "ntis-2340051549",
+        "ntis-2340050810",
+        "ntis-2410018232",
+        "ntis-2420030394",
+        "ntis-2340064922",
+        "ntis-2710100919",
+        "ntis-2710112382",
+        "ntis-2340053576",
+        "ntis-2710104595"
+      ]
+    },
+    {
+      "query_id": "ntis-8adfd6c8ef141de3",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030221",
+        "ntis-2410016223",
+        "ntis-2420034396",
+        "ntis-2420032364",
+        "ntis-2410016322",
+        "ntis-2420034526",
+        "ntis-2420030322",
+        "ntis-2420032575",
+        "ntis-2410018203",
+        "ntis-2410016323"
+      ]
+    },
+    {
+      "query_id": "ntis-8b25906eaab5ef32",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112281",
+        "ntis-2340065109",
+        "ntis-2410019536",
+        "ntis-2410016674",
+        "ntis-2410016676",
+        "ntis-2410016675",
+        "ntis-2410018873",
+        "ntis-2420034526",
+        "ntis-2540001365",
+        "ntis-2710113393"
+      ]
+    },
+    {
+      "query_id": "ntis-8bcc96ff0d64da08",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016303",
+        "ntis-2410018429",
+        "ntis-2320000462",
+        "ntis-2710112782",
+        "ntis-2710112897",
+        "ntis-2340051555",
+        "ntis-2420030670",
+        "ntis-2410018425",
+        "ntis-2230000042",
+        "ntis-2420033073"
+      ]
+    },
+    {
+      "query_id": "ntis-8bf5d7f237b46b5f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000683",
+        "ntis-2340064232",
+        "ntis-2480001001",
+        "ntis-2710107306",
+        "ntis-2420030459",
+        "ntis-2760000064",
+        "ntis-2710098840",
+        "ntis-2340056356",
+        "ntis-2710107300",
+        "ntis-2710114980"
+      ]
+    },
+    {
+      "query_id": "ntis-8c1c78b0cbd8adfb",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410015728",
+        "ntis-2710102616",
+        "ntis-2420026610",
+        "ntis-2420032945",
+        "ntis-2420029094",
+        "ntis-2340055155",
+        "ntis-2420028919",
+        "ntis-2410019723",
+        "ntis-2410019693",
+        "ntis-2710106040"
+      ]
+    },
+    {
+      "query_id": "ntis-8c22c92ee3820ef5",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016199",
+        "ntis-2420031003",
+        "ntis-2340064922",
+        "ntis-2420026910",
+        "ntis-2710099890",
+        "ntis-2710105753",
+        "ntis-2710103606",
+        "ntis-2340054341",
+        "ntis-2410019350",
+        "ntis-2420026802"
+      ]
+    },
+    {
+      "query_id": "ntis-8da7b757676ea35a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030313",
+        "ntis-2420031677",
+        "ntis-2420029789",
+        "ntis-2410016019",
+        "ntis-2710104201",
+        "ntis-2420027208",
+        "ntis-2420032121",
+        "ntis-2710109218",
+        "ntis-2420027206",
+        "ntis-2710108703"
+      ]
+    },
+    {
+      "query_id": "ntis-8e7624b8a6c71d62",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001821",
+        "ntis-2340065214",
+        "ntis-2710112730",
+        "ntis-2420026873",
+        "ntis-2420026419",
+        "ntis-2420033728",
+        "ntis-2710102616",
+        "ntis-2410019996",
+        "ntis-2710098286",
+        "ntis-2340056223"
+      ]
+    },
+    {
+      "query_id": "ntis-8ec6f4b8bc6a25da",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710114116",
+        "ntis-2710101803",
+        "ntis-2710112576",
+        "ntis-2710113854",
+        "ntis-2340052087",
+        "ntis-2710098556",
+        "ntis-2340064606",
+        "ntis-2710106899",
+        "ntis-2410017257",
+        "ntis-2710111219"
+      ]
+    },
+    {
+      "query_id": "ntis-8f9cdd906c4e93d7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710098800",
+        "ntis-2420026921",
+        "ntis-2710107146",
+        "ntis-2710113628",
+        "ntis-2710102209",
+        "ntis-2410019084",
+        "ntis-2420029298",
+        "ntis-2710111528",
+        "ntis-2420026959",
+        "ntis-2420033754"
+      ]
+    },
+    {
+      "query_id": "ntis-90c74df42f98c909",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340066028",
+        "ntis-2410015885",
+        "ntis-2410015882",
+        "ntis-2410015881",
+        "ntis-2340054134",
+        "ntis-2420028541",
+        "ntis-2710096141",
+        "ntis-2320000462",
+        "ntis-2410016423",
+        "ntis-2710107190"
+      ]
+    },
+    {
+      "query_id": "ntis-916c1326dbdae67c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710103965",
+        "ntis-2340055017",
+        "ntis-2320000464",
+        "ntis-2710113113",
+        "ntis-2340066299",
+        "ntis-2710098113",
+        "ntis-2710105891",
+        "ntis-2410015877",
+        "ntis-2420026827",
+        "ntis-2420026797"
+      ]
+    },
+    {
+      "query_id": "ntis-92cf7a317553af60",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420028832",
+        "ntis-2420032436",
+        "ntis-2410019053",
+        "ntis-2420033506",
+        "ntis-2410015770",
+        "ntis-2420033516",
+        "ntis-2340053838",
+        "ntis-2410017226",
+        "ntis-2420029743",
+        "ntis-2420030112"
+      ]
+    },
+    {
+      "query_id": "ntis-93cb102bcf1f0418",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410016770",
+        "ntis-2340064565",
+        "ntis-2410016008",
+        "ntis-2410019927",
+        "ntis-2420027842",
+        "ntis-2420026851",
+        "ntis-2340052048",
+        "ntis-2710105271",
+        "ntis-2710111049",
+        "ntis-2420030108"
+      ]
+    },
+    {
+      "query_id": "ntis-941ed83b52cbcd0d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000683",
+        "ntis-2340056356",
+        "ntis-2340064931",
+        "ntis-2410016501",
+        "ntis-2480001001",
+        "ntis-2410016520",
+        "ntis-2710111294",
+        "ntis-2420030060",
+        "ntis-2420026977",
+        "ntis-2420026920"
+      ]
+    },
+    {
+      "query_id": "ntis-947302eab4bd2b12",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410019296",
+        "ntis-2410017970",
+        "ntis-2410017937",
+        "ntis-2410017924",
+        "ntis-2410019112",
+        "ntis-2410016073",
+        "ntis-2420030265",
+        "ntis-2610000570",
+        "ntis-2420027042",
+        "ntis-2410015673"
+      ]
+    },
+    {
+      "query_id": "ntis-9532af2bc6ca8ac9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000709",
+        "ntis-2410018260",
+        "ntis-2480001875",
+        "ntis-2410018326",
+        "ntis-2410018756",
+        "ntis-2410019350",
+        "ntis-2710107103",
+        "ntis-2340066463",
+        "ntis-2410019996",
+        "ntis-2340066604"
+      ]
+    },
+    {
+      "query_id": "ntis-9adc47aaf096c52a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420028839",
+        "ntis-2420031505",
+        "ntis-2410018050",
+        "ntis-2420029983",
+        "ntis-2420030144",
+        "ntis-2420026533",
+        "ntis-2480001918",
+        "ntis-2410016030",
+        "ntis-2420032419",
+        "ntis-2710110818"
+      ]
+    },
+    {
+      "query_id": "ntis-9b29c686db555005",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340066017",
+        "ntis-2340055469",
+        "ntis-2710115047",
+        "ntis-2420029035",
+        "ntis-2710106382",
+        "ntis-2710098295",
+        "ntis-2340065833",
+        "ntis-2710110318",
+        "ntis-2340053136",
+        "ntis-2410018117"
+      ]
+    },
+    {
+      "query_id": "ntis-9b7070c840581fc7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420026860",
+        "ntis-2420034385",
+        "ntis-2340054093",
+        "ntis-2710115493",
+        "ntis-2710114785",
+        "ntis-2420026870",
+        "ntis-2420031412",
+        "ntis-2480001904",
+        "ntis-2340054058",
+        "ntis-2420031765"
+      ]
+    },
+    {
+      "query_id": "ntis-9bb5fed3ca7c612e",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710111097",
+        "ntis-2420033072",
+        "ntis-2410016144",
+        "ntis-2340064232",
+        "ntis-2420030405",
+        "ntis-2420030459",
+        "ntis-2710115061",
+        "ntis-2410017541",
+        "ntis-2710097340",
+        "ntis-2710097375"
+      ]
+    },
+    {
+      "query_id": "ntis-9c3d9200c3e82d07",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420033514",
+        "ntis-2410016287",
+        "ntis-2420033124",
+        "ntis-2410017438",
+        "ntis-2410017300",
+        "ntis-2420034396",
+        "ntis-2420029682",
+        "ntis-2420029517",
+        "ntis-2410016675",
+        "ntis-2420030450"
+      ]
+    },
+    {
+      "query_id": "ntis-9d087c1628295800",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001464",
+        "ntis-2410019008",
+        "ntis-2480001899",
+        "ntis-2410018705",
+        "ntis-2480000974",
+        "ntis-2410018704",
+        "ntis-2410016432",
+        "ntis-2710112377",
+        "ntis-2420029668",
+        "ntis-2410016908"
+      ]
+    },
+    {
+      "query_id": "ntis-9d32fbf8560affc9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112558",
+        "ntis-2340053463",
+        "ntis-2340052357",
+        "ntis-2710108655",
+        "ntis-2710110400",
+        "ntis-2410019821",
+        "ntis-2340055636",
+        "ntis-2710097875",
+        "ntis-2410018882",
+        "ntis-2420033853"
+      ]
+    },
+    {
+      "query_id": "ntis-9dea549755215f92",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420033631",
+        "ntis-2610000698",
+        "ntis-2420028385",
+        "ntis-2420033611",
+        "ntis-2480001919",
+        "ntis-2420032932",
+        "ntis-2610000740",
+        "ntis-2410018106",
+        "ntis-2420031810",
+        "ntis-2460005888"
+      ]
+    },
+    {
+      "query_id": "ntis-9fb334dcdd6df473",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340050970",
+        "ntis-2710100926",
+        "ntis-2340065702",
+        "ntis-2340053908",
+        "ntis-2710105051",
+        "ntis-2340054765",
+        "ntis-2410018889",
+        "ntis-2710104836",
+        "ntis-2340065548",
+        "ntis-2420027158"
+      ]
+    },
+    {
+      "query_id": "ntis-a12567cfbf3d98d7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029353",
+        "ntis-2710100919",
+        "ntis-2710104759",
+        "ntis-2340052246",
+        "ntis-2710096597",
+        "ntis-2410019404",
+        "ntis-2710110748",
+        "ntis-2410016280",
+        "ntis-2340053576",
+        "ntis-2710109057"
+      ]
+    },
+    {
+      "query_id": "ntis-a1872f5ae2274117",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016911",
+        "ntis-2410016907",
+        "ntis-2410016903",
+        "ntis-2410016953",
+        "ntis-2410018084",
+        "ntis-2410016638",
+        "ntis-2410016902",
+        "ntis-2480001680",
+        "ntis-2480001599",
+        "ntis-2410016376"
+      ]
+    },
+    {
+      "query_id": "ntis-a1dcba285d554e72",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016274",
+        "ntis-2410016159",
+        "ntis-2340065462",
+        "ntis-2410016158",
+        "ntis-2710104452",
+        "ntis-2710095448",
+        "ntis-2710107235",
+        "ntis-2410017509",
+        "ntis-2410019707",
+        "ntis-2410016140"
+      ]
+    },
+    {
+      "query_id": "ntis-a23c5b36b7f26fb7",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410016531",
+        "ntis-2410016658",
+        "ntis-2410016660",
+        "ntis-2410016855",
+        "ntis-2410016525",
+        "ntis-2410017241",
+        "ntis-2320000406",
+        "ntis-2410019226",
+        "ntis-2410017243",
+        "ntis-2410016495"
+      ]
+    },
+    {
+      "query_id": "ntis-a252cfdcd67d7b2a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480000943",
+        "ntis-2340056178",
+        "ntis-2420029728",
+        "ntis-2420028985",
+        "ntis-2710098460",
+        "ntis-2420030430",
+        "ntis-2420029122",
+        "ntis-2420033472",
+        "ntis-2340051374",
+        "ntis-2420034493"
+      ]
+    },
+    {
+      "query_id": "ntis-a29f21566e74ee37",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102511",
+        "ntis-2710101162",
+        "ntis-2710104769",
+        "ntis-2710111814",
+        "ntis-2710094966",
+        "ntis-2710097274",
+        "ntis-2710102312",
+        "ntis-2340052795",
+        "ntis-2710104243",
+        "ntis-2340053735"
+      ]
+    },
+    {
+      "query_id": "ntis-a328957543494528",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016166",
+        "ntis-2410018084",
+        "ntis-2410016376",
+        "ntis-2410017363",
+        "ntis-2710110233",
+        "ntis-2480001599",
+        "ntis-2340059390",
+        "ntis-2480001817",
+        "ntis-2410016198",
+        "ntis-2410017793"
+      ]
+    },
+    {
+      "query_id": "ntis-a40f75c01403023e",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2420033415",
+        "ntis-2420026659",
+        "ntis-2410019565",
+        "ntis-2710109594",
+        "ntis-2420030432",
+        "ntis-2340054050",
+        "ntis-2420028320",
+        "ntis-2420026705",
+        "ntis-2420034523",
+        "ntis-2420030629"
+      ]
+    },
+    {
+      "query_id": "ntis-a45986543120d3f2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800001019",
+        "ntis-2800001007",
+        "ntis-2800001138",
+        "ntis-2800000928",
+        "ntis-2800001067",
+        "ntis-2710109222",
+        "ntis-2420032136",
+        "ntis-2420033611",
+        "ntis-2420033029",
+        "ntis-2800000950"
+      ]
+    },
+    {
+      "query_id": "ntis-a481489627ac938a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2310000419",
+        "ntis-2710107611",
+        "ntis-2410016117",
+        "ntis-2340051974",
+        "ntis-2710111816",
+        "ntis-2710101421",
+        "ntis-2710094748",
+        "ntis-2710101839",
+        "ntis-2710104540",
+        "ntis-2420026591"
+      ]
+    },
+    {
+      "query_id": "ntis-a496ca36aa442d35",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001821",
+        "ntis-2480001652",
+        "ntis-2420027993",
+        "ntis-2710102997",
+        "ntis-2710096078",
+        "ntis-2800001078",
+        "ntis-2480000991",
+        "ntis-2800001032",
+        "ntis-2420030436",
+        "ntis-2420030109"
+      ]
+    },
+    {
+      "query_id": "ntis-a5a43ad8cc681280",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029052",
+        "ntis-2710109027",
+        "ntis-2340055800",
+        "ntis-2710115259",
+        "ntis-2340065032",
+        "ntis-2710106382",
+        "ntis-2710100438",
+        "ntis-2610000549",
+        "ntis-2420029335",
+        "ntis-2400000397"
+      ]
+    },
+    {
+      "query_id": "ntis-a6d88abaf8ce9481",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710107642",
+        "ntis-2410017750",
+        "ntis-2410017749",
+        "ntis-2710098282",
+        "ntis-2710109926",
+        "ntis-2410015752",
+        "ntis-2340066358",
+        "ntis-2420034414",
+        "ntis-2410017751",
+        "ntis-2420030506"
+      ]
+    },
+    {
+      "query_id": "ntis-a6ec940362d31ae7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029267",
+        "ntis-2420026708",
+        "ntis-2410019235",
+        "ntis-2420034402",
+        "ntis-2420031990",
+        "ntis-2410019114",
+        "ntis-2710107554",
+        "ntis-2420030305",
+        "ntis-2410016531",
+        "ntis-2710093399"
+      ]
+    },
+    {
+      "query_id": "ntis-a764a9411a218120",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001058",
+        "ntis-2410016857",
+        "ntis-2410016632",
+        "ntis-2410016515",
+        "ntis-2410018872",
+        "ntis-2420034452",
+        "ntis-2410016488",
+        "ntis-2420030359",
+        "ntis-2420031650",
+        "ntis-2710101088"
+      ]
+    },
+    {
+      "query_id": "ntis-a8d39851df3f2766",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410017634",
+        "ntis-2410016969",
+        "ntis-2800001042",
+        "ntis-2420029714",
+        "ntis-2410018552",
+        "ntis-2340055226",
+        "ntis-2410018877",
+        "ntis-2420030594",
+        "ntis-2420030936",
+        "ntis-2420026464"
+      ]
+    },
+    {
+      "query_id": "ntis-a91729bc39cac26d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800000951",
+        "ntis-2800001103",
+        "ntis-2710101147",
+        "ntis-2420033611",
+        "ntis-2710109222",
+        "ntis-2800001008",
+        "ntis-2800001072",
+        "ntis-2800001109",
+        "ntis-2340059394",
+        "ntis-2800001093"
+      ]
+    },
+    {
+      "query_id": "ntis-aa05496fd76c8e04",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520001060",
+        "ntis-2520000936",
+        "ntis-2710101811",
+        "ntis-2520000893",
+        "ntis-2410019886",
+        "ntis-2710101844",
+        "ntis-2420033782",
+        "ntis-2420034046",
+        "ntis-2520000994",
+        "ntis-2410018668"
+      ]
+    },
+    {
+      "query_id": "ntis-abb23d296d50ee39",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340053328",
+        "ntis-2710100672",
+        "ntis-2340052927",
+        "ntis-2710111069",
+        "ntis-2340065533",
+        "ntis-2340053163",
+        "ntis-2710097563",
+        "ntis-2710102387",
+        "ntis-2710102629",
+        "ntis-2410016185"
+      ]
+    },
+    {
+      "query_id": "ntis-ac746af6beeb928b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340066017",
+        "ntis-2710106382",
+        "ntis-2710100524",
+        "ntis-2710115047",
+        "ntis-2420027846",
+        "ntis-2340053203",
+        "ntis-2340055645",
+        "ntis-2410018117",
+        "ntis-2420034163",
+        "ntis-2340065833"
+      ]
+    },
+    {
+      "query_id": "ntis-ada4c73e6a6cfdae",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340055987",
+        "ntis-2710115124",
+        "ntis-2710097350",
+        "ntis-2710093330",
+        "ntis-2410016518",
+        "ntis-2710104022",
+        "ntis-2340055983",
+        "ntis-2340065073",
+        "ntis-2340052622",
+        "ntis-2710115278"
+      ]
+    },
+    {
+      "query_id": "ntis-ae74a7e5e3a09959",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420026659",
+        "ntis-2420033415",
+        "ntis-2420028073",
+        "ntis-2420030432",
+        "ntis-2710109594",
+        "ntis-2340053203",
+        "ntis-2420034414",
+        "ntis-2410015639",
+        "ntis-2420029914",
+        "ntis-2710107572"
+      ]
+    },
+    {
+      "query_id": "ntis-b014fbe6e978118c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710108339",
+        "ntis-2410018949",
+        "ntis-2340052246",
+        "ntis-2710096816",
+        "ntis-2710100908",
+        "ntis-2710100919",
+        "ntis-2710106329",
+        "ntis-2410017243",
+        "ntis-2420029415",
+        "ntis-2410017021"
+      ]
+    },
+    {
+      "query_id": "ntis-b076b94f6dfb03e7",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410019012",
+        "ntis-2410019013",
+        "ntis-2410016843",
+        "ntis-2410018639",
+        "ntis-2410015639",
+        "ntis-2410018883",
+        "ntis-2420029778",
+        "ntis-2340054866",
+        "ntis-2410018654",
+        "ntis-2710097637"
+      ]
+    },
+    {
+      "query_id": "ntis-b083ed7468ba60b7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018111",
+        "ntis-2410018778",
+        "ntis-2410016215",
+        "ntis-2410018863",
+        "ntis-2410017812",
+        "ntis-2410016163",
+        "ntis-2410017211",
+        "ntis-2410016475",
+        "ntis-2410016474",
+        "ntis-2410015818"
+      ]
+    },
+    {
+      "query_id": "ntis-b0c287a870679acd",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102985",
+        "ntis-2340055963",
+        "ntis-2410017627",
+        "ntis-2340051227",
+        "ntis-2480001056",
+        "ntis-2710100885",
+        "ntis-2410017775",
+        "ntis-2050001646",
+        "ntis-2710106312",
+        "ntis-2710102589"
+      ]
+    },
+    {
+      "query_id": "ntis-b0d26e84781653b9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018058",
+        "ntis-2410017444",
+        "ntis-2410017609",
+        "ntis-2410019602",
+        "ntis-2420033472",
+        "ntis-2420028976",
+        "ntis-2410017965",
+        "ntis-2410020048",
+        "ntis-2420026817",
+        "ntis-2710109578"
+      ]
+    },
+    {
+      "query_id": "ntis-b126dd2e1ef8c97b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340055987",
+        "ntis-2710097350",
+        "ntis-2410020048",
+        "ntis-2410019152",
+        "ntis-2340065073",
+        "ntis-2420033592",
+        "ntis-2420028976",
+        "ntis-2710101509",
+        "ntis-2340054093",
+        "ntis-2410016518"
+      ]
+    },
+    {
+      "query_id": "ntis-b13c529ba4ab1d8c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800001107",
+        "ntis-2800000943",
+        "ntis-2420034297",
+        "ntis-2710107247",
+        "ntis-2710114476",
+        "ntis-2800001127",
+        "ntis-2420033041",
+        "ntis-2420027039",
+        "ntis-2710107395",
+        "ntis-2710096263"
+      ]
+    },
+    {
+      "query_id": "ntis-b1647c2576f0451c",
+      "first_relevant_rank": 4,
+      "top_10_document_ids": [
+        "ntis-2710106607",
+        "ntis-2710095963",
+        "ntis-2710106129",
+        "ntis-2710093765",
+        "ntis-2710113773",
+        "ntis-2710105891",
+        "ntis-2710105961",
+        "ntis-2420030172",
+        "ntis-2710097937",
+        "ntis-2460006553"
+      ]
+    },
+    {
+      "query_id": "ntis-b31eba73b4cd8e17",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029288",
+        "ntis-2420029938",
+        "ntis-2420034584",
+        "ntis-2410016958",
+        "ntis-2420026861",
+        "ntis-2410018440",
+        "ntis-2420028397",
+        "ntis-2420033040",
+        "ntis-2420031768",
+        "ntis-2420026508"
+      ]
+    },
+    {
+      "query_id": "ntis-b3bd93f7a9ab162e",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018058",
+        "ntis-2420031471",
+        "ntis-2420033568",
+        "ntis-2480001355",
+        "ntis-2710109578",
+        "ntis-2480000950",
+        "ntis-2410019015",
+        "ntis-2410019602",
+        "ntis-2420030887",
+        "ntis-2410017444"
+      ]
+    },
+    {
+      "query_id": "ntis-b48471a27aa26d0c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410015457",
+        "ntis-2340050889",
+        "ntis-2710110115",
+        "ntis-2410017965",
+        "ntis-2410016200",
+        "ntis-2710100467",
+        "ntis-2710112308",
+        "ntis-2480001909",
+        "ntis-2410017627",
+        "ntis-2710105069"
+      ]
+    },
+    {
+      "query_id": "ntis-b4fd0848461580a4",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016144",
+        "ntis-2410015818",
+        "ntis-2410016146",
+        "ntis-2410017211",
+        "ntis-2410016470",
+        "ntis-2410015821",
+        "ntis-2410019806",
+        "ntis-2710107572",
+        "ntis-2420033072",
+        "ntis-2340064232"
+      ]
+    },
+    {
+      "query_id": "ntis-b6926754687b263a",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2710100228",
+        "ntis-2710096823",
+        "ntis-2410018009",
+        "ntis-2460005736",
+        "ntis-2710100973",
+        "ntis-2410016157",
+        "ntis-2340052309",
+        "ntis-2710101114",
+        "ntis-2410016140",
+        "ntis-2710111258"
+      ]
+    },
+    {
+      "query_id": "ntis-b7a91c3c71dd14e2",
+      "first_relevant_rank": 30,
+      "top_10_document_ids": [
+        "ntis-2420033398",
+        "ntis-2310000343",
+        "ntis-2420027418",
+        "ntis-2710100535",
+        "ntis-2420034164",
+        "ntis-2710110934",
+        "ntis-2420028683",
+        "ntis-2410018998",
+        "ntis-2710110321",
+        "ntis-2710101144"
+      ]
+    },
+    {
+      "query_id": "ntis-b9129a21360fa43d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410014886",
+        "ntis-2420027933",
+        "ntis-2480001881",
+        "ntis-2710103654",
+        "ntis-2480001059",
+        "ntis-2420029882",
+        "ntis-2410017143",
+        "ntis-2410017144",
+        "ntis-2410017230",
+        "ntis-2710108755"
+      ]
+    },
+    {
+      "query_id": "ntis-ba92d51210338125",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420033631",
+        "ntis-2410020087",
+        "ntis-2410018633",
+        "ntis-2520001217",
+        "ntis-2410019903",
+        "ntis-2410019286",
+        "ntis-2410018352",
+        "ntis-2410019949",
+        "ntis-2410019893",
+        "ntis-2410019947"
+      ]
+    },
+    {
+      "query_id": "ntis-ba98db674b20926f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2400000391",
+        "ntis-2400000364",
+        "ntis-2400000366",
+        "ntis-2400000389",
+        "ntis-2400000390",
+        "ntis-2420026391",
+        "ntis-2420026935",
+        "ntis-2760000082",
+        "ntis-2420031461",
+        "ntis-2710108858"
+      ]
+    },
+    {
+      "query_id": "ntis-bb217a1c3fef96ed",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340065121",
+        "ntis-2710101890",
+        "ntis-2710100672",
+        "ntis-2710105502",
+        "ntis-2710093765",
+        "ntis-2710108516",
+        "ntis-2420031231",
+        "ntis-2340053163",
+        "ntis-2710103161",
+        "ntis-2420032136"
+      ]
+    },
+    {
+      "query_id": "ntis-bc8cc832e31fb81a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710108121",
+        "ntis-2710101521",
+        "ntis-2340064173",
+        "ntis-2420026755",
+        "ntis-2710103566",
+        "ntis-2410017470",
+        "ntis-2710100885",
+        "ntis-2710108433",
+        "ntis-2710099118",
+        "ntis-2710111447"
+      ]
+    },
+    {
+      "query_id": "ntis-bde7b49ddeb02939",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410016190",
+        "ntis-2390003519",
+        "ntis-2340066604",
+        "ntis-2410019795",
+        "ntis-2710109215",
+        "ntis-2480001962",
+        "ntis-2340065876",
+        "ntis-2410017017",
+        "ntis-2410018505",
+        "ntis-2410017092"
+      ]
+    },
+    {
+      "query_id": "ntis-be8a4a1d219a50b2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016904",
+        "ntis-2410016374",
+        "ntis-2420028324",
+        "ntis-2410015666",
+        "ntis-2420028925",
+        "ntis-2410017614",
+        "ntis-2410017615",
+        "ntis-2410018321",
+        "ntis-2410015848",
+        "ntis-2410018779"
+      ]
+    },
+    {
+      "query_id": "ntis-bf003f36db8f662a",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2070000482",
+        "ntis-2480001152",
+        "ntis-2710104248",
+        "ntis-2480001041",
+        "ntis-2710094971",
+        "ntis-2710107452",
+        "ntis-2070000348",
+        "ntis-2800001006",
+        "ntis-2420033927",
+        "ntis-2710103192"
+      ]
+    },
+    {
+      "query_id": "ntis-bfe7f56780e36477",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2400000545",
+        "ntis-2400000560",
+        "ntis-2420034492",
+        "ntis-2610000567",
+        "ntis-2420031430",
+        "ntis-2340052547",
+        "ntis-2420031269",
+        "ntis-2710100535",
+        "ntis-2410016540",
+        "ntis-2420032539"
+      ]
+    },
+    {
+      "query_id": "ntis-c16ccbd218f1d778",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031548",
+        "ntis-2520000839",
+        "ntis-2420032317",
+        "ntis-2420029117",
+        "ntis-2520000930",
+        "ntis-2420029281",
+        "ntis-2410016470",
+        "ntis-2410018735",
+        "ntis-2340064236",
+        "ntis-2410018777"
+      ]
+    },
+    {
+      "query_id": "ntis-c39e050e3432d5f7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018602",
+        "ntis-2410018630",
+        "ntis-2410016981",
+        "ntis-2410016506",
+        "ntis-2410018604",
+        "ntis-2410018596",
+        "ntis-2410018505",
+        "ntis-2410018636",
+        "ntis-2410018677",
+        "ntis-2410018701"
+      ]
+    },
+    {
+      "query_id": "ntis-c5c2c3c25022d111",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800000951",
+        "ntis-2800001097",
+        "ntis-2800001109",
+        "ntis-2800000950",
+        "ntis-2710110932",
+        "ntis-2800001099",
+        "ntis-2710109222",
+        "ntis-2800001041",
+        "ntis-2800001103",
+        "ntis-2800001069"
+      ]
+    },
+    {
+      "query_id": "ntis-c760c8558d834490",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2310000326",
+        "ntis-2310000402",
+        "ntis-2310000330",
+        "ntis-2310000369",
+        "ntis-2420032270",
+        "ntis-2420030232",
+        "ntis-2710105305",
+        "ntis-2710098594",
+        "ntis-2710109689",
+        "ntis-2310000403"
+      ]
+    },
+    {
+      "query_id": "ntis-c79d42f8cd154acc",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710110980",
+        "ntis-2410018767",
+        "ntis-2420031973",
+        "ntis-2710114792",
+        "ntis-2410017622",
+        "ntis-2420030338",
+        "ntis-2710109219",
+        "ntis-2410018452",
+        "ntis-2710107619",
+        "ntis-2410018208"
+      ]
+    },
+    {
+      "query_id": "ntis-c7f77c508d37e4d4",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710110716",
+        "ntis-2410016052",
+        "ntis-2410015698",
+        "ntis-2420028277",
+        "ntis-2410015899",
+        "ntis-2410019734",
+        "ntis-2420030406",
+        "ntis-2410017223",
+        "ntis-2420030492",
+        "ntis-2420032069"
+      ]
+    },
+    {
+      "query_id": "ntis-c8e4204862bbf397",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018360",
+        "ntis-2710104831",
+        "ntis-2710112479",
+        "ntis-2410018083",
+        "ntis-2340066413",
+        "ntis-2340053859",
+        "ntis-2410017049",
+        "ntis-2340053972",
+        "ntis-2340051774",
+        "ntis-2410016253"
+      ]
+    },
+    {
+      "query_id": "ntis-c937a53a2a6d5355",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480000988",
+        "ntis-2420030396",
+        "ntis-2410017768",
+        "ntis-2420029858",
+        "ntis-2420029250",
+        "ntis-2710092644",
+        "ntis-2410019487",
+        "ntis-2410015581",
+        "ntis-2410019468",
+        "ntis-2420026780"
+      ]
+    },
+    {
+      "query_id": "ntis-caa1244e5bdce4a9",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2400000560",
+        "ntis-2400000545",
+        "ntis-2410017302",
+        "ntis-2420031592",
+        "ntis-2710103680",
+        "ntis-2340066527",
+        "ntis-2710114792",
+        "ntis-2420031809",
+        "ntis-2420026625",
+        "ntis-2410018162"
+      ]
+    },
+    {
+      "query_id": "ntis-caa2b9c87add4f2e",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520000996",
+        "ntis-2320000406",
+        "ntis-2420033516",
+        "ntis-2410016676",
+        "ntis-2410016039",
+        "ntis-2420033514",
+        "ntis-2480002022",
+        "ntis-2420026586",
+        "ntis-2420028832",
+        "ntis-2410017236"
+      ]
+    },
+    {
+      "query_id": "ntis-cb2b9253676622cb",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800000926",
+        "ntis-2710107124",
+        "ntis-2340065330",
+        "ntis-2520001170",
+        "ntis-2710115426",
+        "ntis-2420026921",
+        "ntis-2800000986",
+        "ntis-2710098422",
+        "ntis-2800000938",
+        "ntis-2710100545"
+      ]
+    },
+    {
+      "query_id": "ntis-ccdec55fbb053bde",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001093",
+        "ntis-2410019639",
+        "ntis-2410019536",
+        "ntis-2420030203",
+        "ntis-2420034272",
+        "ntis-2410016471",
+        "ntis-2410018308",
+        "ntis-2710101248",
+        "ntis-2710095542",
+        "ntis-2420030335"
+      ]
+    },
+    {
+      "query_id": "ntis-cd89627916f76e28",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031615",
+        "ntis-2710105305",
+        "ntis-2480001086",
+        "ntis-2310000330",
+        "ntis-2420032270",
+        "ntis-2480001777",
+        "ntis-2420034550",
+        "ntis-2420028862",
+        "ntis-2310000369",
+        "ntis-2310000326"
+      ]
+    },
+    {
+      "query_id": "ntis-ce3479bd96ab3322",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410016969",
+        "ntis-2410017634",
+        "ntis-2420029378",
+        "ntis-2800001042",
+        "ntis-2710112847",
+        "ntis-2710112737",
+        "ntis-2710112607",
+        "ntis-2710112848",
+        "ntis-2710112215",
+        "ntis-2800000926"
+      ]
+    },
+    {
+      "query_id": "ntis-ce3dea0924a2fc0b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480000943",
+        "ntis-2480000950",
+        "ntis-2710100419",
+        "ntis-2420029728",
+        "ntis-2480001875",
+        "ntis-2710114263",
+        "ntis-2420029122",
+        "ntis-2420030887",
+        "ntis-2420028630",
+        "ntis-2410015480"
+      ]
+    },
+    {
+      "query_id": "ntis-ce6e589a54d44050",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2610000592",
+        "ntis-2610000736",
+        "ntis-2410019194",
+        "ntis-2610000596",
+        "ntis-2420030262",
+        "ntis-2420031932",
+        "ntis-2420029116",
+        "ntis-2410019116",
+        "ntis-2420027300",
+        "ntis-2420032522"
+      ]
+    },
+    {
+      "query_id": "ntis-ceb7e43acedf2450",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112753",
+        "ntis-2710112868",
+        "ntis-2710112751",
+        "ntis-2710112865",
+        "ntis-2410018714",
+        "ntis-2410019453",
+        "ntis-2340056125",
+        "ntis-2710111028",
+        "ntis-2800001099",
+        "ntis-2410019284"
+      ]
+    },
+    {
+      "query_id": "ntis-cf545838ac4ec907",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410019013",
+        "ntis-2340051774",
+        "ntis-2410016159",
+        "ntis-2410016068",
+        "ntis-2410019012",
+        "ntis-2480001434",
+        "ntis-2420028228",
+        "ntis-2410019155",
+        "ntis-2420028442",
+        "ntis-2410016158"
+      ]
+    },
+    {
+      "query_id": "ntis-d1479fc7cb494b17",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102316",
+        "ntis-2710104900",
+        "ntis-2710103766",
+        "ntis-2710109593",
+        "ntis-2710115297",
+        "ntis-2710108656",
+        "ntis-2710109676",
+        "ntis-2710109538",
+        "ntis-2710106060",
+        "ntis-2710094156"
+      ]
+    },
+    {
+      "query_id": "ntis-d1f94c308fc57cfc",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520000862",
+        "ntis-2480001365",
+        "ntis-2520000998",
+        "ntis-2540001158",
+        "ntis-2420030235",
+        "ntis-2420033174",
+        "ntis-2540001432",
+        "ntis-2420029923",
+        "ntis-2410019017",
+        "ntis-2710094205"
+      ]
+    },
+    {
+      "query_id": "ntis-d30d4794f2f8a006",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340065134",
+        "ntis-2710102201",
+        "ntis-2710107211",
+        "ntis-2340052048",
+        "ntis-2710104529",
+        "ntis-2340054746",
+        "ntis-2710110537",
+        "ntis-2710098263",
+        "ntis-2710109579",
+        "ntis-2710100877"
+      ]
+    },
+    {
+      "query_id": "ntis-d3f9ce51fcc2eaed",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031548",
+        "ntis-2420031659",
+        "ntis-2420029117",
+        "ntis-2420030318",
+        "ntis-2540001241",
+        "ntis-2480001910",
+        "ntis-2420029265",
+        "ntis-2340053585",
+        "ntis-2610000725",
+        "ntis-2420034497"
+      ]
+    },
+    {
+      "query_id": "ntis-d6097fd8d70db167",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2460006834",
+        "ntis-2420026435",
+        "ntis-2610000638",
+        "ntis-2420033185",
+        "ntis-2710107231",
+        "ntis-2410017039",
+        "ntis-2420029940",
+        "ntis-2460005320",
+        "ntis-2410016074",
+        "ntis-2460006060"
+      ]
+    },
+    {
+      "query_id": "ntis-d67e4cd66b30e4b6",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030182",
+        "ntis-2410017310",
+        "ntis-2410019062",
+        "ntis-2420028818",
+        "ntis-2420026747",
+        "ntis-2410019044",
+        "ntis-2410019122",
+        "ntis-2420034059",
+        "ntis-2420031011",
+        "ntis-2420028895"
+      ]
+    },
+    {
+      "query_id": "ntis-d6c79c9a6a1d889e",
+      "first_relevant_rank": 3,
+      "top_10_document_ids": [
+        "ntis-2410018144",
+        "ntis-2410019197",
+        "ntis-2410018253",
+        "ntis-2420033850",
+        "ntis-2420030179",
+        "ntis-2340055909",
+        "ntis-2410015797",
+        "ntis-2710095525",
+        "ntis-2410020003",
+        "ntis-2420031592"
+      ]
+    },
+    {
+      "query_id": "ntis-d739e1b2a4d22233",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710108339",
+        "ntis-2410018882",
+        "ntis-2410018949",
+        "ntis-2340052246",
+        "ntis-2410019722",
+        "ntis-2410017243",
+        "ntis-2710107317",
+        "ntis-2410018737",
+        "ntis-2420030116",
+        "ntis-2340052256"
+      ]
+    },
+    {
+      "query_id": "ntis-d7bba565d33b3ac8",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410017198",
+        "ntis-2410016038",
+        "ntis-2410016037",
+        "ntis-2420030624",
+        "ntis-2420034383",
+        "ntis-2410016339",
+        "ntis-2420034391",
+        "ntis-2410018468",
+        "ntis-2410018627",
+        "ntis-2420030034"
+      ]
+    },
+    {
+      "query_id": "ntis-d81e3b8b4b9a84e4",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2400000391",
+        "ntis-2400000366",
+        "ntis-2420026935",
+        "ntis-2400000390",
+        "ntis-2420030276",
+        "ntis-2410019058",
+        "ntis-2420026798",
+        "ntis-2310000343",
+        "ntis-2420029720",
+        "ntis-2420030015"
+      ]
+    },
+    {
+      "query_id": "ntis-da252c159e7ef3f4",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2310000381",
+        "ntis-2410018653",
+        "ntis-2420029171",
+        "ntis-2710093302",
+        "ntis-2420031636",
+        "ntis-2710108080",
+        "ntis-2420026937",
+        "ntis-2710093399",
+        "ntis-2710093733",
+        "ntis-2410018668"
+      ]
+    },
+    {
+      "query_id": "ntis-dae5e6cf9ffb25f0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710101939",
+        "ntis-2340056089",
+        "ntis-2710097685",
+        "ntis-2420033792",
+        "ntis-2710107247",
+        "ntis-2710114732",
+        "ntis-2420033158",
+        "ntis-2800001093",
+        "ntis-2800000999",
+        "ntis-2420028524"
+      ]
+    },
+    {
+      "query_id": "ntis-db1d902f9b8a56bb",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018602",
+        "ntis-2410018604",
+        "ntis-2420026415",
+        "ntis-2520001030",
+        "ntis-2800001022",
+        "ntis-2420031813",
+        "ntis-2410018927",
+        "ntis-2410018778",
+        "ntis-2410017812",
+        "ntis-2410016736"
+      ]
+    },
+    {
+      "query_id": "ntis-db835122a047134b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018360",
+        "ntis-2410018083",
+        "ntis-2710107677",
+        "ntis-2710104831",
+        "ntis-2710112479",
+        "ntis-2410018549",
+        "ntis-2710104674",
+        "ntis-2340065533",
+        "ntis-2410017049",
+        "ntis-2410016843"
+      ]
+    },
+    {
+      "query_id": "ntis-dbbea45f432643e6",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016039",
+        "ntis-2410016111",
+        "ntis-2410016041",
+        "ntis-2480001912",
+        "ntis-2410016783",
+        "ntis-2410015974",
+        "ntis-2410017950",
+        "ntis-2420034221",
+        "ntis-2410019009",
+        "ntis-2420030031"
+      ]
+    },
+    {
+      "query_id": "ntis-dc58cd1a6063790c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410019158",
+        "ntis-2420026878",
+        "ntis-2420031512",
+        "ntis-2420029311",
+        "ntis-2420033556",
+        "ntis-2410019364",
+        "ntis-2410019176",
+        "ntis-2410019132",
+        "ntis-2710100535",
+        "ntis-2410019161"
+      ]
+    },
+    {
+      "query_id": "ntis-dcf2c715aa105f2e",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2710114674",
+        "ntis-2710109578",
+        "ntis-2420031801",
+        "ntis-2420033472",
+        "ntis-2420033960",
+        "ntis-2340056178",
+        "ntis-2420028759",
+        "ntis-2710108858",
+        "ntis-2480001371",
+        "ntis-2420030629"
+      ]
+    },
+    {
+      "query_id": "ntis-dd21724008842bc0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2310000340",
+        "ntis-2420031636",
+        "ntis-2710108858",
+        "ntis-2710108210",
+        "ntis-2420030363",
+        "ntis-2420026808",
+        "ntis-2710097073",
+        "ntis-2420030359",
+        "ntis-2420030358",
+        "ntis-2420026798"
+      ]
+    },
+    {
+      "query_id": "ntis-dd5ecc178ad966d3",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420033538",
+        "ntis-2410018389",
+        "ntis-2410017972",
+        "ntis-2410016094",
+        "ntis-2420026841",
+        "ntis-2410016210",
+        "ntis-2410016501",
+        "ntis-2420026524",
+        "ntis-2420027024",
+        "ntis-2420028324"
+      ]
+    },
+    {
+      "query_id": "ntis-ddbc1e9a6224af0d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710109689",
+        "ntis-2420030232",
+        "ntis-2410019886",
+        "ntis-2410018352",
+        "ntis-2420033714",
+        "ntis-2710110934",
+        "ntis-2400000364",
+        "ntis-2410015690",
+        "ntis-2710104316",
+        "ntis-2710111505"
+      ]
+    },
+    {
+      "query_id": "ntis-de015d9ea92a9af2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520000989",
+        "ntis-2410016165",
+        "ntis-2520000929",
+        "ntis-2480001580",
+        "ntis-2710111118",
+        "ntis-2530000051",
+        "ntis-2520000910",
+        "ntis-2410016907",
+        "ntis-2420031934",
+        "ntis-2410019787"
+      ]
+    },
+    {
+      "query_id": "ntis-dfc1f435da81254f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001820",
+        "ntis-2410019235",
+        "ntis-2480001680",
+        "ntis-2710098055",
+        "ntis-2410019044",
+        "ntis-2420028976",
+        "ntis-2420034104",
+        "ntis-2420026708",
+        "ntis-2410018998",
+        "ntis-2710093620"
+      ]
+    },
+    {
+      "query_id": "ntis-dfcf4e83ad00a119",
+      "first_relevant_rank": 2,
+      "top_10_document_ids": [
+        "ntis-2410016660",
+        "ntis-2410016658",
+        "ntis-2410016531",
+        "ntis-2410016525",
+        "ntis-2410016855",
+        "ntis-2420033016",
+        "ntis-2340056174",
+        "ntis-2410016495",
+        "ntis-2710102128",
+        "ntis-2710094130"
+      ]
+    },
+    {
+      "query_id": "ntis-e04df46ba95d35a2",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710105475",
+        "ntis-2340053554",
+        "ntis-2710098414",
+        "ntis-2340065918",
+        "ntis-2340066188",
+        "ntis-2340053735",
+        "ntis-2710096753",
+        "ntis-2420026765",
+        "ntis-2420031345",
+        "ntis-2420029237"
+      ]
+    },
+    {
+      "query_id": "ntis-e08e8878272e0a9b",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710092639",
+        "ntis-2420026495",
+        "ntis-2340051726",
+        "ntis-2420031947",
+        "ntis-2420026735",
+        "ntis-2710104446",
+        "ntis-2710110291",
+        "ntis-2340053735",
+        "ntis-2410015708",
+        "ntis-2420030585"
+      ]
+    },
+    {
+      "query_id": "ntis-e2eda8898fa41315",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410018111",
+        "ntis-2420029281",
+        "ntis-2410015821",
+        "ntis-2410016215",
+        "ntis-2410019177",
+        "ntis-2410019024",
+        "ntis-2410017812",
+        "ntis-2410018778",
+        "ntis-2410018863",
+        "ntis-2410015818"
+      ]
+    },
+    {
+      "query_id": "ntis-e46d68d93546e5b4",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420028839",
+        "ntis-2410017751",
+        "ntis-2710107639",
+        "ntis-2420034383",
+        "ntis-2410018758",
+        "ntis-2710113384",
+        "ntis-2710093952",
+        "ntis-2420028163",
+        "ntis-2410017750",
+        "ntis-2420030137"
+      ]
+    },
+    {
+      "query_id": "ntis-e52e813dddba8451",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031615",
+        "ntis-2420031650",
+        "ntis-2420028862",
+        "ntis-2710105124",
+        "ntis-2410018998",
+        "ntis-2410018152",
+        "ntis-2420026557",
+        "ntis-2340052547",
+        "ntis-2420026798",
+        "ntis-2710097073"
+      ]
+    },
+    {
+      "query_id": "ntis-e53f2bbcfe81eedf",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030313",
+        "ntis-2420029789",
+        "ntis-2420031677",
+        "ntis-2410016019",
+        "ntis-2410016208",
+        "ntis-2710108703",
+        "ntis-2410016321",
+        "ntis-2420033824",
+        "ntis-2710106312",
+        "ntis-2420031323"
+      ]
+    },
+    {
+      "query_id": "ntis-e58e547f3781948d",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710112196",
+        "ntis-2710104417",
+        "ntis-2340055469",
+        "ntis-2710107452",
+        "ntis-2410017970",
+        "ntis-2710100524",
+        "ntis-2420033168",
+        "ntis-2340055909",
+        "ntis-2710115524",
+        "ntis-2420029674"
+      ]
+    },
+    {
+      "query_id": "ntis-e754af4bc7923ebb",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001058",
+        "ntis-2410016632",
+        "ntis-2410018584",
+        "ntis-2420031013",
+        "ntis-2420033100",
+        "ntis-2410016515",
+        "ntis-2410016857",
+        "ntis-2420034452",
+        "ntis-2410016578",
+        "ntis-2050001593"
+      ]
+    },
+    {
+      "query_id": "ntis-e9053d6d703963b0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016274",
+        "ntis-2410016158",
+        "ntis-2410016159",
+        "ntis-2410016157",
+        "ntis-2410019707",
+        "ntis-2410017222",
+        "ntis-2710115710",
+        "ntis-2410016068",
+        "ntis-2710109200",
+        "ntis-2410016140"
+      ]
+    },
+    {
+      "query_id": "ntis-e96332eb7ef5da9f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410014886",
+        "ntis-2480001881",
+        "ntis-2710108755",
+        "ntis-2420027933",
+        "ntis-2410016204",
+        "ntis-2710108845",
+        "ntis-2310000354",
+        "ntis-2410016184",
+        "ntis-2410017144",
+        "ntis-2710102985"
+      ]
+    },
+    {
+      "query_id": "ntis-eb5db6ad329edcd7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710104934",
+        "ntis-2340052447",
+        "ntis-2420026625",
+        "ntis-2710107450",
+        "ntis-2420030581",
+        "ntis-2710106617",
+        "ntis-2710112571",
+        "ntis-2420027926",
+        "ntis-2410018568",
+        "ntis-2460005888"
+      ]
+    },
+    {
+      "query_id": "ntis-eb7b3cee89411a66",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710102511",
+        "ntis-2710104769",
+        "ntis-2710094966",
+        "ntis-2710108077",
+        "ntis-2410015395",
+        "ntis-2710110924",
+        "ntis-2340053259",
+        "ntis-2410018300",
+        "ntis-2710113628",
+        "ntis-2710102674"
+      ]
+    },
+    {
+      "query_id": "ntis-ed67a1cf78681d94",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410017310",
+        "ntis-2410015879",
+        "ntis-2420027520",
+        "ntis-2410016893",
+        "ntis-2420031955",
+        "ntis-2420026597",
+        "ntis-2420027988",
+        "ntis-2420028803",
+        "ntis-2420034006",
+        "ntis-2420033853"
+      ]
+    },
+    {
+      "query_id": "ntis-ee1d6ecf76c3c148",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800001019",
+        "ntis-2800001007",
+        "ntis-2710109765",
+        "ntis-2800001097",
+        "ntis-2420029378",
+        "ntis-2710098831",
+        "ntis-2800000935",
+        "ntis-2710096475",
+        "ntis-2800000928",
+        "ntis-2800001008"
+      ]
+    },
+    {
+      "query_id": "ntis-ef07636cc44c92ba",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710107713",
+        "ntis-2420027963",
+        "ntis-2540001243",
+        "ntis-2540001435",
+        "ntis-2410019564",
+        "ntis-2420030182",
+        "ntis-2420030183",
+        "ntis-2420032944",
+        "ntis-2420031838",
+        "ntis-2480001754"
+      ]
+    },
+    {
+      "query_id": "ntis-f0446bd8c0ed8c65",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2370000404",
+        "ntis-2420031430",
+        "ntis-2320000454",
+        "ntis-2320000428",
+        "ntis-2420034492",
+        "ntis-2410017958",
+        "ntis-2710114792",
+        "ntis-2420028527",
+        "ntis-2610000606",
+        "ntis-2310000400"
+      ]
+    },
+    {
+      "query_id": "ntis-f08c6a1ca864dc0c",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420030571",
+        "ntis-2410018482",
+        "ntis-2420030530",
+        "ntis-2410017259",
+        "ntis-2710114650",
+        "ntis-2410018410",
+        "ntis-2800001024",
+        "ntis-2420030413",
+        "ntis-2410018034",
+        "ntis-2710115426"
+      ]
+    },
+    {
+      "query_id": "ntis-f1817998cca55b49",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710110980",
+        "ntis-2410017622",
+        "ntis-2410018208",
+        "ntis-2710103159",
+        "ntis-2710109219",
+        "ntis-2410018210",
+        "ntis-2710106470",
+        "ntis-2340063876",
+        "ntis-2710096066",
+        "ntis-2710096784"
+      ]
+    },
+    {
+      "query_id": "ntis-f189531a77ac9d70",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016144",
+        "ntis-2410015818",
+        "ntis-2410017258",
+        "ntis-2410017211",
+        "ntis-2410015821",
+        "ntis-2410018770",
+        "ntis-2410015834",
+        "ntis-2410016163",
+        "ntis-2410016146",
+        "ntis-2410016688"
+      ]
+    },
+    {
+      "query_id": "ntis-f1dff783113e3ead",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710115489",
+        "ntis-2710096085",
+        "ntis-2410017616",
+        "ntis-2340053910",
+        "ntis-2410015986",
+        "ntis-2710115426",
+        "ntis-2710096196",
+        "ntis-2340052927",
+        "ntis-2710107149",
+        "ntis-2800000963"
+      ]
+    },
+    {
+      "query_id": "ntis-f5a5067402b3de8f",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016391",
+        "ntis-2410017060",
+        "ntis-2420027003",
+        "ntis-2410019497",
+        "ntis-2340053859",
+        "ntis-2410017655",
+        "ntis-2420032055",
+        "ntis-2420028239",
+        "ntis-2420031791",
+        "ntis-2420029738"
+      ]
+    },
+    {
+      "query_id": "ntis-f6e4d481a0995e89",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420031955",
+        "ntis-2420029514",
+        "ntis-2710099669",
+        "ntis-2420027568",
+        "ntis-2310000377",
+        "ntis-2410018365",
+        "ntis-2420031317",
+        "ntis-2710098310",
+        "ntis-2410019235",
+        "ntis-2400000571"
+      ]
+    },
+    {
+      "query_id": "ntis-f7233ad37039efe5",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340066028",
+        "ntis-2710096522",
+        "ntis-2710108463",
+        "ntis-2710104875",
+        "ntis-2710109013",
+        "ntis-2710111759",
+        "ntis-2340054805",
+        "ntis-2340065300",
+        "ntis-2710095507",
+        "ntis-2340056195"
+      ]
+    },
+    {
+      "query_id": "ntis-f8821f99556ee6da",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2420029267",
+        "ntis-2420026708",
+        "ntis-2410019235",
+        "ntis-2410019084",
+        "ntis-2420034104",
+        "ntis-2710113216",
+        "ntis-2710096784",
+        "ntis-2420029172",
+        "ntis-2410019701",
+        "ntis-2420029433"
+      ]
+    },
+    {
+      "query_id": "ntis-f93eec041c41de01",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710105513",
+        "ntis-2710104612",
+        "ntis-2420031212",
+        "ntis-2710103057",
+        "ntis-2340064966",
+        "ntis-2420033273",
+        "ntis-2420028134",
+        "ntis-2410019015",
+        "ntis-2420033099",
+        "ntis-2410019376"
+      ]
+    },
+    {
+      "query_id": "ntis-fa88813fabd614c7",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2480001464",
+        "ntis-2410019008",
+        "ntis-2480001899",
+        "ntis-2480000974",
+        "ntis-2480000972",
+        "ntis-2410016908",
+        "ntis-2710109841",
+        "ntis-2410015772",
+        "ntis-2420029668",
+        "ntis-2410018705"
+      ]
+    },
+    {
+      "query_id": "ntis-fb12c597cd46ff05",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710098594",
+        "ntis-2710105305",
+        "ntis-2420026834",
+        "ntis-2710093733",
+        "ntis-2420030358",
+        "ntis-2420034550",
+        "ntis-2340053831",
+        "ntis-2800001062",
+        "ntis-2710095945",
+        "ntis-2420026976"
+      ]
+    },
+    {
+      "query_id": "ntis-fbdc5978d7e6f905",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710104897",
+        "ntis-2710113854",
+        "ntis-2340053191",
+        "ntis-2710111920",
+        "ntis-2710115920",
+        "ntis-2340064122",
+        "ntis-2710106803",
+        "ntis-2340055469",
+        "ntis-2710098931",
+        "ntis-2340065138"
+      ]
+    },
+    {
+      "query_id": "ntis-fc08df8a32f2fd56",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2800000950",
+        "ntis-2800000928",
+        "ntis-2800000933",
+        "ntis-2800001103",
+        "ntis-2800000930",
+        "ntis-2800001071",
+        "ntis-2480001829",
+        "ntis-2800001099",
+        "ntis-2800000951",
+        "ntis-2800001056"
+      ]
+    },
+    {
+      "query_id": "ntis-fc33de2d833e45bd",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2410016039",
+        "ntis-2410016041",
+        "ntis-2410016040",
+        "ntis-2410016783",
+        "ntis-2420034221",
+        "ntis-2480001912",
+        "ntis-2710102511",
+        "ntis-2420033083",
+        "ntis-2420029023",
+        "ntis-2410015986"
+      ]
+    },
+    {
+      "query_id": "ntis-fc50f4014aad2f50",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340065901",
+        "ntis-2710107167",
+        "ntis-2410018927",
+        "ntis-2710107800",
+        "ntis-2710100908",
+        "ntis-2340064849",
+        "ntis-2710111447",
+        "ntis-2710114754",
+        "ntis-2710109986",
+        "ntis-2420034002"
+      ]
+    },
+    {
+      "query_id": "ntis-fe0dc19f7c4e82f0",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2520000996",
+        "ntis-2540001437",
+        "ntis-2320000406",
+        "ntis-2420026586",
+        "ntis-2420030167",
+        "ntis-2410017236",
+        "ntis-2480001822",
+        "ntis-2530000049",
+        "ntis-2390002525",
+        "ntis-2420028832"
+      ]
+    },
+    {
+      "query_id": "ntis-ffad75f23907cdde",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2340065134",
+        "ntis-2420032032",
+        "ntis-2340055651",
+        "ntis-2710098637",
+        "ntis-2410018341",
+        "ntis-2340053743",
+        "ntis-2710106312",
+        "ntis-2410016406",
+        "ntis-2710110537",
+        "ntis-2410016136"
+      ]
+    },
+    {
+      "query_id": "ntis-fff2693e89f2bfd6",
+      "first_relevant_rank": 1,
+      "top_10_document_ids": [
+        "ntis-2710113979",
+        "ntis-2420031345",
+        "ntis-2710106732",
+        "ntis-2340065548",
+        "ntis-2410016575",
+        "ntis-2420032136",
+        "ntis-2340066256",
+        "ntis-2710107852",
+        "ntis-2710110449",
+        "ntis-2410019386"
+      ]
+    }
+  ]
+}

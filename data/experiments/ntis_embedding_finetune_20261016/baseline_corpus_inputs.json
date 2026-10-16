@@ -1,0 +1,7 @@
+{
+  "source_sha256": "46e2921fbd98bb3d6706a3b3be8922efe32d511867b7394a9d31e459d244bfce",
+  "model": "dragonkue/BGE-m3-ko",
+  "revision": "7074d66aa46562342193ca4feb3d89bf9dad71b4",
+  "test_questions_read": false,
+  "gradient_updates": false
+}

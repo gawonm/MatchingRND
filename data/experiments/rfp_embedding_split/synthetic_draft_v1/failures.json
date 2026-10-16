@@ -1,0 +1,326 @@
+[
+  {
+    "status": "validation_failed",
+    "task_id": "0ba927f8bdb9046fe7554964",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "560d81b9b42c100b5b36ea33",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "2b5e60cc8cd6f24775a17d86",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "183b3f5127aebefe4cc0f43c",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "f135a5420e1784f72c3fd25e",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "48aa9f741fd7fc09ecb9e5b2",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "5ce37bed0a7152897de25f2c",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "d5925bc96b30f7843cc6522b",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "243f2bdaf9fabe81cf96364a",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "71902457033cfb074194fdc1",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "70188c8fafeccaff21e8bff2",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "cd8693982aa2a847b131e23d",
+    "split": "train",
+    "error": "질문 수 초과"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "f65d8cce1aed7d5c864a9d41",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "fbf4d8887bbaa861f2304b95",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "cdf8b530f72d7d95f408f8e8",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "c536f9679315383e7cd33227",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "c9803fdb2ee18c660a2c4249",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "6656e9e9d34265b46cfaf99e",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "01626ece8b1a6ac0d0a91150",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "a4dbe6b0d2603e398e9d9c3e",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "238d94da94b49db703cda2fc",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "280b85ff70cf65c4e76f89bc",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "8d50b3bafbf32153628fdd0a",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "bd803365476457bf186386b2",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "343365211b08bb941b3121a1",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "04a4d557bc4813267a494942",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "45187baf857b30ebe45e0981",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "049f8f0aa6699ba557e5f013",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "021bfc28eac26072ebf3e6ac",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "f1a06f0dafe4dd08e3b25eb3",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "894261b15318842bec96ce69",
+    "split": "train",
+    "error": "허용되지 않은 positive 청크"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "308871932a6ccdc2262e0fc7",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "12742c3688e29f11fefb3925",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "98275b46064cc32b2363a24c",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "a8427c6a0f2ba85ba77093da",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "44632790ab660c2b1bf7bda0",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "2bea74ac9b3860b37328209e",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "b8aa345c481e871dfd2997ce",
+    "split": "train",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "15d71a478e02c6d9f4cd6fa0",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "aa3a2e0af34b284ba85c7e9b",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "843569d687265fcd54034d61",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "c1989da9fd04eeadbe4ab520",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "94cc8a7a0aa4845a48062d8d",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "11f8b5c3f4a68f17700ed645",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "d29f2af35d262c5824a62988",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "5ecd8f47d518671f2e7dc916",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "ef16d0fc4cdcd7dc30e89970",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "bc68501c7c62c6a0a18816e4",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "e218e8aa2c799b1d749dfc4d",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "cd656677f9cf5ab7b61fe700",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "e5420fa3f862fead3baa6957",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "821faa89fdfac3d7cddc1c5f",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "0783221544a6f41387ddc1d6",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  },
+  {
+    "status": "validation_failed",
+    "task_id": "cb0abdf81e2ded04b8642d54",
+    "split": "validation",
+    "error": "positive 인용문이 청크에 없음"
+  }
+]

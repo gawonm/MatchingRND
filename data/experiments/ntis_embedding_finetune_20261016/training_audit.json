@@ -1,0 +1,9 @@
+{
+  "accepted": 646,
+  "rejected": [],
+  "validation": 332,
+  "test": 10,
+  "all_test_labels_verified": true,
+  "test_changed": false,
+  "train_projects": 323
+}

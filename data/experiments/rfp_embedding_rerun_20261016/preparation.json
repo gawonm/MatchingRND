@@ -1,0 +1,24 @@
+{
+  "current_chunks_rebuilt": true,
+  "corpus_identical_to_previous": true,
+  "approved_tasks": 416,
+  "chunks": 1633,
+  "train": 190,
+  "validation": 184,
+  "original_test": 5,
+  "expanded_test": 46,
+  "source_sha256": {
+    "data\\experiments\\rfp_embedding_split\\corpus.jsonl": "93f3274c76b064f4bd218f15c748b44cf14bed83666e298d30040c2855971abe",
+    "data\\experiments\\rfp_embedding_split\\manifest.json": "8cf9bab3dafa97b5019c3377fa909c77ee508f1dfa3b3740e9914361789e31a8",
+    "data\\experiments\\rfp_embedding_split\\results\\lora_pilot_v1\\training_windows.jsonl": "03125745efd042e9044ed89c032fc2ae4395b1fad4ed639aeb4967887ce1979c",
+    "data\\experiments\\rfp_embedding_split\\synthetic_draft_v1\\train\\questions.draft.json": "d6d05c446de400551bb3af14132d9dd9ab5ec196ad340dd78bc5097de1a0b027",
+    "data\\experiments\\rfp_embedding_split\\synthetic_draft_v1\\validation\\questions.draft.json": "0e6bb15acfdc0119e44f31a94910053b407b46c56d0784af17f6bd486fdb0710",
+    "data\\experiments\\rfp_embedding_split\\test\\questions.json": "5df6a133518b8f67ec315cefcec6ae96555e0010439b7770105496827d3b9993",
+    "data\\experiments\\rfp_embedding_split\\test\\expanded_v3\\questions.json": "7302fe0a99f789b93d687aa9393be538037e9dd4ac806a6faa5cff1440d4e1f6",
+    "data\\experiments\\rfp_embedding_split\\test\\equivalent_tasks.json": "763d81f77eb05877def8f830a2547c13440208db9dc7f370ab69cd70c59764db"
+  },
+  "reused_synthetic_training_labels": true,
+  "human_reviewed_training_labels": false,
+  "production_rag_changed": "retrieval relevance filtering; parser unchanged",
+  "supabase_modified": false
+}

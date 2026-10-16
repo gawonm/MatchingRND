@@ -1,0 +1,4693 @@
+[
+  {
+    "query_id": "ntis-test-001",
+    "query": "장거리(5M) 소화가 가능한 친환경 2액형 소화액을 적용한 리튬 배터리 화재 대응 소화장치 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2710107382"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2710107382",
+        "project_id": "2710107382",
+        "project_title": "장거리(5M) 소화가 가능한 친환경 2액형 소화액을 이용한 리튬 배터리 소화장치",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "장거리(5M) 소화가 가능한 친환경 2액형 소화액을 적용한 리튬 배터리 화재 대응 소화장치를 개발하는 것을 내용으로 한다."
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-002",
+    "query": "제직기계에 장착된 'Corduroy 자동 절개장비'로 제직과 동시에 자동으로 Corduroy를 절개하여 생산하는 기술 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420026554"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420026554",
+        "project_id": "2420026554",
+        "project_title": "제직공정에서 'Corduroy자동절개장비'에 의한 Corduroy(골덴)제품 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "본 연구 과제로 생산 할 Corduroy직물 생산방법은, 제직기계에 장착된 'Corduroy 자동 절개장비'에 의해 제직기상에서 제직과 동시에 자동으로 Corduroy를 절개하여 생산하는 기술이다."
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-003",
+    "query": "화약을 사용하지 않고 열선방식을 이용한 점화관속 부속물을 통해 고온의 열에너지를 소화약제에 직접 전달하여 열분해 반응을 유도하는 고체에어로졸 소화기 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420034085"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420034085",
+        "project_id": "2420034085",
+        "project_title": "비화약식 점화방법과 이중단열관 구조의 고체에어로졸 소화기 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "본 연구개발에서는 화약을 사용하지 않고, 열선방식을 이용한 점화관속 부속물을 통해 고온의 열에너지를 소화약제에 직접 전달하여 열분해 반응을 유도하는 고체에어로졸 소화기를 개발하고자 함"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-004",
+    "query": "선박용 액체수소용 Flexible 배관 및 진공 단열형 커플러 개발 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2410016470"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2410016470",
+        "project_id": "2410016470",
+        "project_title": "선박용 극저온 플랙시블 호스 및 커넥터 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "선박용 액체수소용 Flexible 배관 및 진공 단열형 커플러 개발"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-005",
+    "query": "외부 자기장에 반응해 3차원 형태로 변하는 자성 소프트 로봇을 인공지능 물리 모델로 설계하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2340052414"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2340052414",
+        "project_id": "2340052414",
+        "project_title": "물리 정보 신경망을 이용한 3차원 프로그래머블 마그네틱 소프트 로봇 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "(1) 연구개발과제의 최종 목표 - 물리 정보 신경망을 이용한 3차원 프로그래머블 마그네틱 소프트 로봇 개발"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-006",
+    "query": "금속 파편과 지뢰를 구분해서 오경보를 줄일 수 있는, 물리 법칙을 반영한 신경망 기반 탐지 센서 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420033080"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420033080",
+        "project_id": "2420033080",
+        "project_title": "단일채널 PI(Pulse Induction) 기반 PINN(Physics -Informed Neural Network) 역변환 적용지능형 지뢰탐지 센서 시스템 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "기존PI 방식 지뢰탐지기는 금속 파편, 토양 특성 및 환경 변화에 의해 유사 신호가 다수 발생하며, 신호 세기 기반 임계값 판별 방식만으로는 오경보 저감 및 표적 구분 능력 향상에 근본적인 한계가 존재한다."
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-007",
+    "query": "여성이나 고령 농가 노동자도 쉽게 쓸 수 있는 가벼운 젖소 세척 장비를 수출용으로 개발하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420032325"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420032325",
+        "project_id": "2420032325",
+        "project_title": "IoT 기반 인공지능 알고리즘을 적용한 수출형 젖소 유두 자동 세척기 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "여성과 고령 노동자를 고려한 경량형 유두세척기를 개발하여 국제 경쟁력을 확보하고"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-008",
+    "query": "대형 디스플레이 기판 노광 장비에 들어가는 초정밀 이송 스테이지를 개발하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2410016038"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2410016038",
+        "project_id": "2410016038",
+        "project_title": "8세대 1.5㎛급 해상도 디지털 노광기 시스템 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "[최종목표]ㅇ 8세대 디지털 노광 공정을 위한 반복 정밀도 ±0.2um이하, 스캔 최고 속도 200mm/s, 정지 안정화 (settling time) 1s 이하 고정밀 6DOF 통합 모션 스테이지 개발"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-009",
+    "query": "드론으로 항만 터미널 상황을 실시간 관측해서 무인 운반차량 운영을 관리하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2710102865"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2710102865",
+        "project_id": "2710102865",
+        "project_title": "드론 기반 모니터링 정보를 활용한 통합형 항만 AGV 운영시스템 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "본 연구의 최종 목표는 드론 기반 실시간 모니터링 정보를 활용하여 항만 터미널 내 AGV 운영을 효율적이고 안전하게 관리할 수 있는 통합형 항만 AGV 운영시스템을 개발하는 것이다."
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-010",
+    "query": "사람 대신 도로 위 차선을 스스로 주행하며 칠하는 로봇을 개발하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420031008"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420031008",
+        "project_id": "2420031008",
+        "project_title": "딥러닝 기반 차선도장용 자율주행 로봇 제작 및 실증",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "ㅇ자율 주행형 차선 도장 로봇개발 및 로봇도장공법을 이용한 실 도로상 차선 도장 작업 공정 실증"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-extra-01364ae8dee57f8a",
+    "query": "초장수명 분야에서 전극 두께 변화율 관련 기술을 찾고 있습니다. 전극 두께 변화율이 1.0% 이하인 저부피팽창형 양극소재 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410015857"
+    ],
+    "source_document_id": "ntis-2410015857",
+    "context_term": "초장수명",
+    "source_term": "전극 두께 변화율",
+    "need_statement": "전극 두께 변화율이 1.0% 이하인 저부피팽창형 양극소재 개발이 필요합니다.",
+    "source_group_id": "3bcf85cef5b9c403f174",
+    "science_medium": "전지",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015857",
+        "text": "[최종목표] 다중금속 도입을 통한 산소 결합 제어형 저부피팽창 미드니켈양극소재 개발 (I양극재 부피변화율I ≤ 0.8%(한 사이클 내), I전극 두께 변화율I ≤ 1.0%, 방전용량: 180mAh/g≤ @0.1C, 수명: 100th;97%≤ / 600th;93%≤ @1C, 차단전압: 4.3V vsLi/Li+)-1차년도 목표: 저부피팽창 인자 규명 및 산소"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-06326ea33c6ab22d",
+    "query": "양산화 분야에서 전자빔 공정 변수 최적화 기술 관련 기술을 찾고 있습니다. 소형 전자빔을 이용한 촉매 양산공정에서 전자빔 공정 변수 최적화 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420030116"
+    ],
+    "source_document_id": "ntis-2420030116",
+    "context_term": "양산화",
+    "source_term": "전자빔 공정 변수 최적화 기술",
+    "need_statement": "소형 전자빔을 이용한 촉매 양산공정에서 전자빔 공정 변수 최적화 기술이 필요합니다.",
+    "source_group_id": "f5718aad6f4942625deb",
+    "science_medium": "측정표준/시험평가기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030116",
+        "text": "1.소형 전자빔 이용 촉매 양산공정 개발 - 합성 scale up에 따른 전자빔 공정 변수 최적화 기술개발 - 생산성 향상을 위한 사이클 타임 단축 공정 개발 2.전자빔 적용 고분산 촉매 양산화 - 양산성: 1 ton/년 이상, 불량률 0.5% 이하 - 촉매 입자 결정립 크기: 2.2 nm 이하 3. 전자빔 적용 고결정성 탄소 기반 고분산 백금 합금"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-08f6acdf05abe86c",
+    "query": "유지비용 분야에서 유류비용 관련 기술을 찾고 있습니다. 조선소 안벽에 장기 계류 중인 선박의 유류비용 절감을 위한 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420033090"
+    ],
+    "source_document_id": "ntis-2420033090",
+    "context_term": "유지비용",
+    "source_term": "유류비용",
+    "need_statement": "조선소 안벽에 장기 계류 중인 선박의 유류비용 절감을 위한 기능이 필요합니다.",
+    "source_group_id": "b9c3bc81a9448d8e5afc",
+    "science_medium": "전력시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033090",
+        "text": "1. 조선소 안벽에 장기 계류 중 발생 하는 유류비용 ,선박 배기가스 저감 및 육상전력 활용률 제고를 위해 친환경 통합 전력 지원시스템을 개발 및 실증함으로써 국내외 조선소 및 항만 대상 사업화 및 글로벌 확산 추진 가. 본 과제는 건조가 완료된 후 선주사 인도 전 조선소 야드(안벽)에 장기 정박 중인 선박에 친환경 전력을 안정적으로 공급하는 시스템을"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-0b1d3dda375db425",
+    "query": "스폰지테이프 분야에서 테이핑헤드 관련 기술을 찾고 있습니다. 스폰지테이프 자동 투입 및 부착을 위한 테이핑헤드 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420026824"
+    ],
+    "source_document_id": "ntis-2420026824",
+    "context_term": "스폰지테이프",
+    "source_term": "테이핑헤드",
+    "need_statement": "스폰지테이프 자동 투입 및 부착을 위한 테이핑헤드 개발이 필요합니다.",
+    "source_group_id": "d0a5fc1c71cfbdba160b",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026824",
+        "text": "□ 자동 테이핑이 가능한 테이핑헤드 기반 협동로봇을 이용한 스마트 테이핑 시스템 개발 및 현장 적용 ㅇ (협동로봇) 스폰지테이프 자동 투입 및 부착을 위한 테이핑헤드 개발 ㅇ (MES) 취급, 이송, 작업 등 단위 공정별 생산관리 시스템 개발 ㅇ (산업용 통신) CCLink를 이용해 단위 모듈 간 통신 및 동기화 가능한 관리 체계 구축 ㅇ (HMI) 작업"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-0d5629e2aca06f0a",
+    "query": "상용화 분야에서 상용화 가능한 수준의 기술 완성도 관련 기술을 찾고 있습니다. 상용화 가능한 수준의 기술 완성도를 확보하기 위한 실환경 실증이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420031973"
+    ],
+    "source_document_id": "ntis-2420031973",
+    "context_term": "상용화",
+    "source_term": "상용화 가능한 수준의 기술 완성도",
+    "need_statement": "상용화 가능한 수준의 기술 완성도를 확보하기 위한 실환경 실증이 필요합니다.",
+    "source_group_id": "4e4629099f43d89404ea",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031973",
+        "text": "특장차 애프터마켓 환경에서 3D AVM의 시각 정보 기반으로 즉시 응답 가능한 온디바이스 AI기반 객체 인식, 환경 인지, 상황 맥락 분석 결과를 융합한 증강 시각 기반 지능형 안전 플랫폼을 개발. 실환경 실증을 통해 상용화 가능한 수준의 기술 완성도를 확보하고 즉시 장착 가능한 Plug-and-Play형 증강 시각 기반 상황 인지 제품을 3년 내 상용화("
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-0f4657df46f4bbb0",
+    "query": "ESL을 분야에서 ESL을 이용해서 노출 관련 기술을 찾고 있습니다. 중소 제조업의 물류 창고에서 ESL을 통해 재고 정보를 쉽게 확인할 수 있는 시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420026918"
+    ],
+    "source_document_id": "ntis-2420026918",
+    "context_term": "ESL을",
+    "source_term": "ESL을 이용해서 노출",
+    "need_statement": "중소 제조업의 물류 창고에서 ESL을 통해 재고 정보를 쉽게 확인할 수 있는 시스템이 필요합니다.",
+    "source_group_id": "78cd692831d8c33ad39b",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026918",
+        "text": "중소 제조업 상품 또는 재고 창고에 관련 관리를 자동화 해서 편리하게 재고관리를 목표로 한다 이 최종 목적을 달성하기 위해서 비전 인식 로봇을 개발하고 개발된 로봇에 비전인식과 AI 사물 인식기술로 하이브리드 물류 재고를 인식해서 정보화 하고 이렇게 정보화된 내용을 ESL을 이용해서 노출해줘서 창고 관리자가 아니라도 어느 누구나 확인 할수 있는 시스템 구"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-0fbf34d95a3cd03b",
+    "query": "자동화 분야에서 직교 로봇 개발 관련 기술을 찾고 있습니다. 고정밀 유압식 툴 홀더 자동화 시스템의 경제성 확보를 위한 직교 로봇 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420031338"
+    ],
+    "source_document_id": "ntis-2420031338",
+    "context_term": "자동화",
+    "source_term": "직교 로봇 개발",
+    "need_statement": "고정밀 유압식 툴 홀더 자동화 시스템의 경제성 확보를 위한 직교 로봇 개발이 필요합니다.",
+    "source_group_id": "eb394146e3805787673e",
+    "science_medium": "산업/일반기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031338",
+        "text": "? 고정밀 유압식 툴 홀더 장비 자동화를 위한 장비 개발(국산화) ? 로봇 자동화와 경제성 확보를 위한 직교 로봇 개발 및 적용 ? AI 비전 기술을 활용 유압식 툴 결합 검수 장치 개발 및 적용 ? 고정밀 유압식 툴 홀더 자동화 시스템 개발 및 사업화"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-0fd1af775198e48b",
+    "query": "나노포어 분야에서 고체상태 나노포어 관련 기술을 찾고 있습니다. 저비용 대량 제조 기술을 통한 2차원 물질 기반의 고체상태 나노포어 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710096440"
+    ],
+    "source_document_id": "ntis-2710096440",
+    "context_term": "나노포어",
+    "source_term": "고체상태 나노포어",
+    "need_statement": "저비용 대량 제조 기술을 통한 2차원 물질 기반의 고체상태 나노포어 개발이 필요합니다.",
+    "source_group_id": "c9c7701edbb365b9a9dc",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710096440",
+        "text": "장기적으로 유효한 2차원 물질 기반의 고체상태 나노포어에 대한 저비용 대량 제조 기술, 다양한 물리적 힘을 이용한 단분자 수준의 DNA 및 단백질에 대한 거동 정밀제어 기술, 그리고 이온 전류 및 터널링 전류 동시 측정 기술 확립을 바탕으로 단분자 수준에서의 초고감도, 저비용, 무표지, 초고속, 대용량 오믹스 분석이 가능한 기계학습 기반의 멀티모드 디지털"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-10329fd99f65ac0a",
+    "query": "성형기술 분야에서 치수 표준안 관련 기술을 찾고 있습니다. 소성가공 공정 중 발생하는 소성 저항에 효과적으로 대응할 수 있는 치수 표준안 설정이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420032440"
+    ],
+    "source_document_id": "ntis-2420032440",
+    "context_term": "성형기술",
+    "source_term": "치수 표준안",
+    "need_statement": "소성가공 공정 중 발생하는 소성 저항에 효과적으로 대응할 수 있는 치수 표준안 설정이 필요합니다.",
+    "source_group_id": "0440d286d17c1607c0cb",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420032440",
+        "text": "- 1년차에 분석한 전용 소재 DATA 기반으로 파이프 원자재 확정- 극소 곡면 파이프 벤딩 성형 금형에 대한 설계 연구- 제조 공정의 조건 선정 및 제작한 금형을 활용한 성형 테스트 - 소성가공 공정중 발생하는 소성 저항에 효과적 대응을 위한 치수 표준안 설정- 재질 별 금형 개발을 통한 재질 별 시제품 도출 및 성능평가 - 냉각수 유동 성능 확보를 위"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-10ff8f111e0aaffa",
+    "query": "이미징 분야에서 재료 물성 분석 장비화 관련 기술을 찾고 있습니다. 자기장 이미징을 통한 재료 물성 분석 장비화에 필요한 성능 수준 및 필요 기능 구체화가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710107329"
+    ],
+    "source_document_id": "ntis-2710107329",
+    "context_term": "이미징",
+    "source_term": "재료 물성 분석 장비화",
+    "need_statement": "자기장 이미징을 통한 재료 물성 분석 장비화에 필요한 성능 수준 및 필요 기능 구체화가 필요합니다.",
+    "source_group_id": "f2bb2d858f6466da51af",
+    "science_medium": "측정표준/시험평가기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2710107329",
+        "text": "■ 자기장 기반의 비파괴 검사 기법 고도화 및 기존 모니터링 기법 비교 : (1) 열 및 물리적 변형에 의한 스테인리스 자화 시험편 제작; (2) 자기장 이미징을 통한 결함탐지 비파괴 검사 원천기술 개발 (3) 금속재료 자기 물성 분석 기법 개발; (4) 자기장 이미징을 통한 재료 물성 분석 장비화를 위해 요구되는 성능 수준 및 필요 기능 구체화; (5)"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-1237dfc8e6e463d1",
+    "query": "매니퓰레이터 분야에서 최대 작동 반경 : 800mm 관련 기술을 찾고 있습니다. 최대 작동 반경이 800mm인 매니퓰레이터 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420026657"
+    ],
+    "source_document_id": "ntis-2420026657",
+    "context_term": "매니퓰레이터",
+    "source_term": "최대 작동 반경 : 800mm",
+    "need_statement": "최대 작동 반경이 800mm인 매니퓰레이터 개발이 필요합니다.",
+    "source_group_id": "9c3288ba244cf3e83f43",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026657",
+        "text": "1) 산업용 ROV에 적용하여 7DoF 자유도로 원격조종할 수 있는 로봇팔 개발 [개발목표] a. 기계 구조 - 자유도 : 7 DoF / 실제 동작 테스트를 통해 검증 - 최대 작동 반경 : 800mm / CAD 모델 기준 + 실측 - 최대 인양력 : 20kg(수중) / 수중 부하 테스트 수행 b. 제어 성능 - 위치 제어 정확도 :"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-124a8583a84b3147",
+    "query": "풍력터빈 분야에서 고정밀 상태감시 진단 솔루션 관련 기술을 찾고 있습니다. 음향 방출(AE)·진동 융합 기반의 고정밀 상태감시 진단 솔루션이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2480001980"
+    ],
+    "source_document_id": "ntis-2480001980",
+    "context_term": "풍력터빈",
+    "source_term": "고정밀 상태감시 진단 솔루션",
+    "need_statement": "음향 방출(AE)·진동 융합 기반의 고정밀 상태감시 진단 솔루션이 필요합니다.",
+    "source_group_id": "1e4808466764ea50ba7c",
+    "science_medium": "신재생에너지",
+    "evidence": [
+      {
+        "document_id": "ntis-2480001980",
+        "text": "ㅇ 풍력터빈 대형화에 따라 고장 중요도가 급증하는 메인베어링의 초기 결함을 조기에 감지하기 위해, 음향 방출(AE)·진동 융합 기반의 고정밀 상태감시 진단 솔루션을 개발하고, 엣지(Edge) AI 및 디지털 트윈(AX/DX) 연계 통합 플랫폼을 구축하여 대형 풍력터빈에 범용 적용 가능한 상용제품 인증 및 수요기업 납품을 통한 사업화 Track Record를"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-12e11640b911d707",
+    "query": "프레임워크 분야에서 테스트베드 관련 기술을 찾고 있습니다. 이기종 다중로봇 환경을 고려한 시뮬레이션 및 테스트베드를 구축하여 실시간 경로 생성 결과를 통합적으로 검증할 수 있는 시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710103054"
+    ],
+    "source_document_id": "ntis-2710103054",
+    "context_term": "프레임워크",
+    "source_term": "테스트베드",
+    "need_statement": "이기종 다중로봇 환경을 고려한 시뮬레이션 및 테스트베드를 구축하여 실시간 경로 생성 결과를 통합적으로 검증할 수 있는 시스템이 필요합니다.",
+    "source_group_id": "297a65c0d51c7d687fa2",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710103054",
+        "text": "1. 이기종 다중로봇 환경을 고려한 시뮬레이션 및 테스트베드 구축: 각 로봇의 기구학적 특징을 반영하여 다중로봇 시뮬레이션 환경을 구현함. 로봇 유형별 모듈화된 구조로 설계하여 실시간 경로 생성 결과를 통합적으로 검증할 수 있는 테스트베드를 구축함.2. 이기종 다중로봇 충돌 회피 기법 개발: Car-like robot, unicycle robot 등 서로"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-131c1043ef7bc18e",
+    "query": "물리정보 분야에서 능동탐색 관련 기술을 찾고 있습니다. 제조 현장에서 로봇이 능동 탐색을 통해 객체와 공간 관계를 인식하고 활용할 수 있는 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410019989"
+    ],
+    "source_document_id": "ntis-2410019989",
+    "context_term": "물리정보",
+    "source_term": "능동탐색",
+    "need_statement": "제조 현장에서 로봇이 능동 탐색을 통해 객체와 공간 관계를 인식하고 활용할 수 있는 기능이 필요합니다.",
+    "source_group_id": "8e3257f783a9635a6e2a",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019989",
+        "text": "본 과제의 연차별 연구개발내용은 다음과 같음. [1차년도] - 제조 현장 5D 월드 모델링 요구사항, 데이터 취득 환경, 공통 인터페이스를 정의함.- SLAM·5D mapping/update·5D scene graph·world model, 능동탐색·경로계획·물리속성 취득·전신제어의 기본 아키텍처를 수립함. - 물리속성 분류, 상호작용 primitive,"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-14285d7e1b35c78e",
+    "query": "팩토리 분야에서 디지털 트윈 관련 기술을 찾고 있습니다. 디지털 트윈 및 리빙랩 기반의 실증을 통해 RIAM 러닝 팩토리 플랫폼의 검증이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710111126"
+    ],
+    "source_document_id": "ntis-2710111126",
+    "context_term": "팩토리",
+    "source_term": "디지털 트윈",
+    "need_statement": "디지털 트윈 및 리빙랩 기반의 실증을 통해 RIAM 러닝 팩토리 플랫폼의 검증이 필요합니다.",
+    "source_group_id": "1c32b1aa99157863c8c4",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710111126",
+        "text": "러닝 팩토리 플랫폼 개념을 정의하고 실제 구현을 위한 요소기술과 산업 RIAM 확산을 위한 기폭제 기술을 개발 디지털 트윈 및 리빙랩 기반 실증을 통한 사전 , 검증 수행- (세부1) RIAM 러닝 팩토리 플랫폼 구축을 위한 프레임워크 도출 및 사전 검증을 위한 디지털 트윈 및 리빙랩 실증을 통한 글로컬 혁신모델 창출- (세부2) RIAM 러닝 팩토리"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-16818c1be937621f",
+    "query": "비행체 분야에서 극초음속 환경 관련 기술을 찾고 있습니다. 극초음속 비행체의 레이돔이 공력가열을 견디기 위한 고성능 복합재 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710105017"
+    ],
+    "source_document_id": "ntis-2710105017",
+    "context_term": "비행체",
+    "source_term": "극초음속 환경",
+    "need_statement": "극초음속 비행체의 레이돔이 공력가열을 견디기 위한 고성능 복합재 개발이 필요합니다.",
+    "source_group_id": "3049b81f2b0a0e39dc34",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710105017",
+        "text": "● 최종목표 : 저온 저압 신제조 세라믹 복합재 제작 공정을 활용한 극초음속 비행체용 고성능-고강도-고내열 스텔스 레이돔 복합재 핵심기술 개발 ■ 산화물 기반 세라믹 스텔스 레이돔 복합재 개발 필요성 ● 극초음속 환경(마하 5 이상)에서 운용되는 비행체 레이돔(Radome)은 레이돔 외벽과 유동 사이에 점성 소산 현상과 공력가열(500-2,000℃)을 견디"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-17b0469327a3d77d",
+    "query": "무선충전 분야에서 전기적 안전 NP 관련 기술을 찾고 있습니다. 전기자동차 양방향 무선충전의 전기적 안전성을 확보하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410015788"
+    ],
+    "source_document_id": "ntis-2410015788",
+    "context_term": "무선충전",
+    "source_term": "전기적 안전 NP",
+    "need_statement": "전기자동차 양방향 무선충전의 전기적 안전성을 확보하는 기술이 필요합니다.",
+    "source_group_id": "b6d2306aca8f076c45b7",
+    "science_medium": "중전기기",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015788",
+        "text": "[1단계 개발내용]ㅇ 전기자동차 양방향 무선충전 국제표준(IEC TC69) NP 제안 - 전기자동차 양방향 무선충전 전기적 안전 NP - 전기자동차 양방향 무선충전 전자파 안전 NP ㅇ 전기자동차 양방향 무선충전 국제표준(IEC TC69) NP 승인 - 전기자동차 양방향 무선충전 전기적 안전 NP - 전기자동차 양방향 무선충전 전자파 안전"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-18e0ef2b8cef6f66",
+    "query": "통합전력변환장치 분야에서 일체형 OBC/LDC 전력모듈 관련 기술을 찾고 있습니다. 일체형 OBC/LDC 전력모듈 개발을 통해 전기차의 충전 효율성을 높일 필요가 있습니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420030396"
+    ],
+    "source_document_id": "ntis-2420030396",
+    "context_term": "통합전력변환장치",
+    "source_term": "일체형 OBC/LDC 전력모듈",
+    "need_statement": "일체형 OBC/LDC 전력모듈 개발을 통해 전기차의 충전 효율성을 높일 필요가 있습니다.",
+    "source_group_id": "6ce6a3277d684ec704bb",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030396",
+        "text": "[1차년도 개발내용]ㅇ 인써트 몰딩형 고 효율 저 노이즈 자성부품 개발ㅇ Trans 설계방식 선정 및 검토ㅇ 기초 특성 검토를 위한 목업(Mock-up) 샘플 제작ㅇ LDC 및 양방향 충전(V2L) 구현을 위한 기본 concept 설계 [2차년도 개발내용]ㅇ 일체형 OBC/LDC 전력모듈 개발ㅇ 일체형 OBC/LDC A'SSY 케이스 설계ㅇ MCU Prot"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-1a954de6c535b914",
+    "query": "내화피복 분야에서 작업대상 인식 알고리즘 관련 기술을 찾고 있습니다. 내화피복 작업대상 인식 알고리즘을 통해 작업 환경을 자율적으로 탐지하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2340053145"
+    ],
+    "source_document_id": "ntis-2340053145",
+    "context_term": "내화피복",
+    "source_term": "작업대상 인식 알고리즘",
+    "need_statement": "내화피복 작업대상 인식 알고리즘을 통해 작업 환경을 자율적으로 탐지하는 기술이 필요합니다.",
+    "source_group_id": "dbf66b7b970fbeba1896",
+    "science_medium": "건설시공/재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2340053145",
+        "text": "(1차년도)■ 내화피복 작업대상 인식 데이터셋 수집■ 내화피복 작업대상 인식 알고리즘 개발■ 내화피복 작업대상 인식 알고리즘 테스트(2차년도)■ 내화피복 시공품질 관련 문헌 고찰■ 내화피복 시공품질 알고리즘 개발 ■ 내화피복 시공품질 알고리즘 테스트 (3차년도)■ 작업대상인식 및 시공품질 기술 통합 설계■ 통합 기술 개발 및 테스트■ 통합 기술 현장적용 및"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-1b1c558f39325c61",
+    "query": "사용한 분야에서 분사기 관련 기술을 찾고 있습니다. 액체 추진기관의 미립화, 증발, 혼합성능을 갖춘 분사기가 필수적입니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2340050796"
+    ],
+    "source_document_id": "ntis-2340050796",
+    "context_term": "사용한",
+    "source_term": "분사기",
+    "need_statement": "액체 추진기관의 미립화, 증발, 혼합성능을 갖춘 분사기가 필수적입니다.",
+    "source_group_id": "aaf41671f428e20ec262",
+    "science_medium": "국방기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340050796",
+        "text": "액체 추진제 분사기 연구1. 액체 추진기관은 높은 성능을 위해 미립화, 증발, 혼합성능을 가지는 분사기가 필수 2. 회전 데토네이션이 유지되기 위해서는 추진제 충전 영역인 fill-height를 고려한 추진제의 분무 속도 결정 필요 3. Fill-height는 데토네이션 전파에 필수적이며, 회전 데토네이션 파의 개수와도 관련4. 액체 추진제를 사용한 RDE"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-1be75988f6005536",
+    "query": "자율제조 분야에서 데이터 인터페이스 설계 관련 기술을 찾고 있습니다. SMT·IMT 품질검사 장비와 센서 간 데이터 인터페이스 설계가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410019161"
+    ],
+    "source_document_id": "ntis-2410019161",
+    "context_term": "자율제조",
+    "source_term": "데이터 인터페이스 설계",
+    "need_statement": "SMT·IMT 품질검사 장비와 센서 간 데이터 인터페이스 설계가 필요합니다.",
+    "source_group_id": "7572751ce3ccfaddf908",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019161",
+        "text": "[최종목표]ㅇ 고신뢰성 방위·위성 전장부품 생산을 위한 AI자율제조 및 공급망 안정화를 위한 대중소 협업플랫폼 기술개발[1단계-1차년도 목표] ㅇ SMT·IMT 품질검사 장비와 센서 간 데이터 인터페이스 설계ㅇ AI 학습을 위한 데이터 수집 플랫폼 표준화 및 개발 환경 설계ㅇ 공정 결함 예측 및 품질 이상 감지를 위한 Feature 도출 및 분석 기법 설계"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-1d39f944db248269",
+    "query": "미드니켈 분야에서 저부피팽창 양극소재의 초기 성능 관련 기술을 찾고 있습니다. 저부피팽창 양극소재의 초기 성능 실험 데이터 수집이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410015857"
+    ],
+    "source_document_id": "ntis-2410015857",
+    "context_term": "미드니켈",
+    "source_term": "저부피팽창 양극소재의 초기 성능",
+    "need_statement": "저부피팽창 양극소재의 초기 성능 실험 데이터 수집이 필요합니다.",
+    "source_group_id": "3bcf85cef5b9c403f174",
+    "science_medium": "전지",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015857",
+        "text": "[1차년도 개발내용]-합성: 전구체 선정 및 다성분계 미드니켈조성 양극소재 구현-소재/벌크: 제일원리계산 기반 산소 결합성 제어를 통한 저부피팽창 양극 설계-소재/표면: 제일원리계산 기반 다중금속의 표면 선호도 및 도입에 따른 표면 산소 안정성 평가-전극: 전극 단위 기초 물성평가 및 표준화를 위한 저부피팽창 양극소재의 초기 성능 실험 데이터 수집-고도분석"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-1dc6f44f4c4f2e0d",
+    "query": "선박용 분야에서 항해안전 지원 알고리즘 개발 관련 기술을 찾고 있습니다. 충돌위험, 항로이탈, 얕은 수심 접근 등 위험상황을 사전에 인지·경고하는 알고리즘이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410019700"
+    ],
+    "source_document_id": "ntis-2410019700",
+    "context_term": "선박용",
+    "source_term": "항해안전 지원 알고리즘 개발",
+    "need_statement": "충돌위험, 항로이탈, 얕은 수심 접근 등 위험상황을 사전에 인지·경고하는 알고리즘이 필요합니다.",
+    "source_group_id": "44ad49235391f2be2a44",
+    "science_medium": "조선/해양시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019700",
+        "text": "① (항해정보 연계 및 통합 수집 미들웨어 개발) GIS, AIS, 레이더, ECDIS, 기관정보 등 이기종 데이터를 실시간으로 연계?통합 (세부과제2 연계)② (통합 항해 디스플레이 플랫폼 개발) 항해자가 단일 화면에서 핵심 정보를 직관적으로 확인할 수 있는 표시체계구현③ (항해안전 지원 알고리즘 개발) 충돌위험, 항로이탈, 얕은 수심 접근 등 위험상황을"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-1e787e825bd77cc8",
+    "query": "열배터리 분야에서 냉방시스템 개발 관련 기술을 찾고 있습니다. 폐열 및 태양열을 활용한 친환경 냉방 시스템 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420029265"
+    ],
+    "source_document_id": "ntis-2420029265",
+    "context_term": "열배터리",
+    "source_term": "냉방시스템 개발",
+    "need_statement": "폐열 및 태양열을 활용한 친환경 냉방 시스템 개발이 필요합니다.",
+    "source_group_id": "d90a632e782ed644b572",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420029265",
+        "text": "연구개발은 크게 네 단계로 진행된다.첫째, 폐열·태양열 회수 기반 냉방시스템 개발이다. 공장 폐열 및 태양열을 200℃까지 저장 가능한 수평열성층 ITP Battery에 축열하고, 이를 흡수식 냉동기와 연계하여 10℃ 냉열을 생산한다. 이는 전력·CO₂ 배출이 거의 없는 친환경 냉방 솔루션으로, 열사용 공장 및 중동·열대지방 냉방 시장을 타겟으로 한다.둘째"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-204663dc74c7e039",
+    "query": "공정기술 분야에서 디지털트윈 모델 관련 기술을 찾고 있습니다. 주조 후공정 자동화기술을 위한 디지털트윈 모델 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410015993"
+    ],
+    "source_document_id": "ntis-2410015993",
+    "context_term": "공정기술",
+    "source_term": "디지털트윈 모델",
+    "need_statement": "주조 후공정 자동화기술을 위한 디지털트윈 모델 개발이 필요합니다.",
+    "source_group_id": "be809f45707bcc1f9293",
+    "science_medium": "주조/용접/접합",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015993",
+        "text": "[1차년도 개발내용]ㅇ (주조공정기술 개발내용 - 고강도 주강품 생산기술) - 전술차량 허브리덕션 주조 공정 분석 및 개선 방안 도출 - 해석 기반 주조 공정 최적화를 위한 기초 자료 확보ㅇ (공정자동화기술 개발내용 - 유연생산을 위한 주조 후공정 자동화기술) - 대상품에 대한 개발 요인 및 디지털트윈 모델 개발을 위한 기본 요소 도출 - 주조 후공정 분석"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2375a219a25bab04",
+    "query": "다자유도 분야에서 역운동학 기반 알고리즘 관련 기술을 찾고 있습니다. 역운동학 기반 알고리즘 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420026657"
+    ],
+    "source_document_id": "ntis-2420026657",
+    "context_term": "다자유도",
+    "source_term": "역운동학 기반 알고리즘",
+    "need_statement": "역운동학 기반 알고리즘 개발이 필요합니다.",
+    "source_group_id": "9c3288ba244cf3e83f43",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026657",
+        "text": "1) 개발 방법 - 요구사항 분석 및 개념설계(작업환경 고려 시스템 사양 도출) - 3D CAE기반 기구설계(모델링 및 분석시뮬레이션을 통한 해석) - 역운동학 기반 알고리즘 개발(작업경로 및 위치제어 알고리즘 확보) - 제어모듈 및 통신 프로토콜 개발(기존 콘솔 대응 제어 및 통신 모듈구성) - 부력 보정 및 방수구조 설계(부력 및 무게를 위한 재료 및"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-24643656fe700e47",
+    "query": "부품소재 분야에서 주름 억제 방안 관련 기술을 찾고 있습니다. Forming 공법 변경에 따른 주름 억제 방안을 적용할 수 있는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710111095"
+    ],
+    "source_document_id": "ntis-2710111095",
+    "context_term": "부품소재",
+    "source_term": "주름 억제 방안",
+    "need_statement": "Forming 공법 변경에 따른 주름 억제 방안을 적용할 수 있는 기술이 필요합니다.",
+    "source_group_id": "bc5038126afc95a9e48f",
+    "science_medium": "요소부품",
+    "evidence": [
+      {
+        "document_id": "ntis-2710111095",
+        "text": "○ Forming 제조 금형 및 공정 개발 - Drawing 공법에서 Forming 공법 변경에 따른 주름 억제 방안 - 제품의 외형 구속 조건 변경에 따른 Spring back 제어 - Forming 공법 변경, 금형 설계 및 신작 - Blank Line 변경에 따른 금형 신작○ 신작 Blanking 금형으로 제품 양산 Test - 제품의 치수정밀도와 불"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-256823dbfe93f000",
+    "query": "전비성능 분야에서 전비성능 최소 10% 이상 개선 관련 기술을 찾고 있습니다. HEV의 Battery 열관리시스템은 -6.7℃에서 안정적인 성능을 유지해야 합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410014904"
+    ],
+    "source_document_id": "ntis-2410014904",
+    "context_term": "전비성능",
+    "source_term": "전비성능 최소 10% 이상 개선",
+    "need_statement": "HEV의 Battery 열관리시스템은 -6.7℃에서 안정적인 성능을 유지해야 합니다.",
+    "source_group_id": "99147cbc116316b5e0e0",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410014904",
+        "text": "HEV 저온 환경(-6.7℃) 전비성능 최소 10% 이상 개선을 위한 Battery 열관리시스템 확보"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-272223316c66589d",
+    "query": "PLANAR 분야에서 Trans 설계방식 관련 기술을 찾고 있습니다. 고출력밀도의 고효율 코아 개발을 위한 Trans 설계방식 선정 및 검토가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420030396"
+    ],
+    "source_document_id": "ntis-2420030396",
+    "context_term": "PLANAR",
+    "source_term": "Trans 설계방식",
+    "need_statement": "고출력밀도의 고효율 코아 개발을 위한 Trans 설계방식 선정 및 검토가 필요합니다.",
+    "source_group_id": "6ce6a3277d684ec704bb",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030396",
+        "text": "1차년도 목표-고출력밀도의 고효율 코아 개발을 위한 Trans 설계방식 선정 및 검토2차년도 목표-고출력밀도의 자성체를 활용한 7.2kW OBC/2.4kW LDC일체형 전력모듈개발3차년도 목표-MCU Proto 샘플을 개선한 DV 샘플 설계4차년도 목표-일체형 OBC/LDC 전력모듈 검증시험 및 성능개선"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-293fcdf4b62df9d4",
+    "query": "초고감도 분야에서 동시 측정 기술 관련 기술을 찾고 있습니다. 이온 전류 및 터널링 전류를 동시에 측정할 수 있는 기술적 조건이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710096440"
+    ],
+    "source_document_id": "ntis-2710096440",
+    "context_term": "초고감도",
+    "source_term": "동시 측정 기술",
+    "need_statement": "이온 전류 및 터널링 전류를 동시에 측정할 수 있는 기술적 조건이 필요합니다.",
+    "source_group_id": "c9c7701edbb365b9a9dc",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710096440",
+        "text": "장기적으로 유효한 2차원 물질 기반의 고체상태 나노포어에 대한 저비용 대량 제조 기술, 다양한 물리적 힘을 이용한 단분자 수준의 DNA 및 단백질에 대한 거동 정밀제어 기술, 그리고 이온 전류 및 터널링 전류 동시 측정 기술 확립을 바탕으로 단분자 수준에서의 초고감도, 저비용, 무표지, 초고속, 대용량 오믹스 분석이 가능한 기계학습 기반의 멀티모드 디지털"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2abaf7efc0f89998",
+    "query": "안전관리 분야에서 방폭 자산관리 솔루션 관련 기술을 찾고 있습니다. Class/Division 시스템 기반 방폭 자산관리 솔루션의 적합성 평가 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420033927"
+    ],
+    "source_document_id": "ntis-2420033927",
+    "context_term": "안전관리",
+    "source_term": "방폭 자산관리 솔루션",
+    "need_statement": "Class/Division 시스템 기반 방폭 자산관리 솔루션의 적합성 평가 기능이 필요합니다.",
+    "source_group_id": "9103cd326a67e989de37",
+    "science_medium": "소프트웨어",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033927",
+        "text": "1) 연구개발 내용 ○ 북중미 NEC 코드 기반 방폭 안전관리 디지털 플랫폼 - 방폭 관리 플랫폼 Dashboard 구현 - 방폭 안전관리 데이터 기록 및 유지관리 솔루션 ○ Class/Division 시스템 기반 방폭 자산관리 솔루션 - Class/Division 시스템 기반 방폭체계 DB 설계 및 구현 - 북중미 방폭 규정 기반 적합성"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2b08679c92f31eda",
+    "query": "CNC 분야에서 가공 물리 내재 지문 관련 기술을 찾고 있습니다. CNC 가공 신호에 내재된 물리적 특성을 기반으로 개체차를 안정적으로 식별하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710112501"
+    ],
+    "source_document_id": "ntis-2710112501",
+    "context_term": "CNC",
+    "source_term": "가공 물리 내재 지문",
+    "need_statement": "CNC 가공 신호에 내재된 물리적 특성을 기반으로 개체차를 안정적으로 식별하는 기술이 필요합니다.",
+    "source_group_id": "cf122f091adca3f45826",
+    "science_medium": "정밀생산기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710112501",
+        "text": "본 연구의 최종 목표는 CNC 가공 신호에 내재된 물리적 특성을 기반으로 장비·공정·재료의 개체차를 안정적으로 식별하는 가공 물리 내재 지문 기술을 확립하고, 이를 활용한 물리 기반 지능형 가공 진단 및 의사결정 원천 기술을 개발하는 데 있음.본 연구는 4개년에 걸쳐 다음과 같은 단계적 목표를 달성하고자 함.첫째, 가공 물리 내재 지문의 원형 구축 및 물리"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2c7849be8ef03412",
+    "query": "활용한 분야에서 절삭 해석 모델 관련 기술을 찾고 있습니다. 소재의 소성 변형과 공구 접촉 특성을 반영한 절삭 해석 모델 구축이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710112501"
+    ],
+    "source_document_id": "ntis-2710112501",
+    "context_term": "활용한",
+    "source_term": "절삭 해석 모델",
+    "need_statement": "소재의 소성 변형과 공구 접촉 특성을 반영한 절삭 해석 모델 구축이 필요합니다.",
+    "source_group_id": "cf122f091adca3f45826",
+    "science_medium": "정밀생산기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710112501",
+        "text": "데이터 수집 환경 구축 및 가공 물리 내재 지문 원형 도출-장비 간 개체차를 규명하기 위한 첫 단계로, 수치해석과 실측 데이터를 연계한 가공 물리 데이터베이스를 구축하고 지문의 원형을 정의.-수치해석-실측 연계 가공 반응 분석: 소재의 소성 변형과 공구 접촉 특성을 반영한 절삭 해석 모델을 구축하여 원천(부하, 압력) 및 누적(마모, 표면 거칠기) 반응 간"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2cf31824cf4a3dd7",
+    "query": "통합운영 분야에서 지능형 운영 플랫폼 관련 기술을 찾고 있습니다. 분산 운영되는 태양광 발전소의 점검 및 진단을 무인화하기 위한 지능형 운영 플랫폼이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420033823"
+    ],
+    "source_document_id": "ntis-2420033823",
+    "context_term": "통합운영",
+    "source_term": "지능형 운영 플랫폼",
+    "need_statement": "분산 운영되는 태양광 발전소의 점검 및 진단을 무인화하기 위한 지능형 운영 플랫폼이 필요합니다.",
+    "source_group_id": "a1892f28552e785949c3",
+    "science_medium": "신재생에너지",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033823",
+        "text": "분산되어 운영되는 태양광 발전소를 대상으로 드론 도킹 스테이션, Private Cloud 서버, CPS 기반 WebGL 디지털 트윈, 멀티모달 인공지능 예측 API를 통합하여 태양광 발전설비의 점검·진단·예측·관제를 무인화하는 지능형 운영 플랫폼 개발."
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2dc5194753793003",
+    "query": "온디바이스 분야에서 온디바이스 MPC 구조 관련 기술을 찾고 있습니다. 경량화된 온디바이스 MPC 구조를 설계하기 위해 동역학 모델링 및 제약조건 정의가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710112505"
+    ],
+    "source_document_id": "ntis-2710112505",
+    "context_term": "온디바이스",
+    "source_term": "온디바이스 MPC 구조",
+    "need_statement": "경량화된 온디바이스 MPC 구조를 설계하기 위해 동역학 모델링 및 제약조건 정의가 필요합니다.",
+    "source_group_id": "3bf299fa3ffd39104771",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2710112505",
+        "text": "본 연구는 조향,구동,현가 통합 모듈 기반의 2휠 단위 모빌리티를 설계하고, 이를 결합,분리 가능한 형상 재구성형 플랫폼으로 확장함. 동역학 모델링 및 제약조건 정의를 기반으로 경량화 온디바이스 MPC 구조를 설계하고, 하드웨어 및 환경 맥락에 따라 제어 구조를 적응적으로 변경하는 알고리즘을 개발함. 또한 XR 기반 실?가상 통합 환경을 구축하여 단일 및"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2ed6f5120a238071",
+    "query": "감응형 분야에서 고성능 감응형 로봇 관련 기술을 찾고 있습니다. 고성능 감응형 로봇 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2340054816"
+    ],
+    "source_document_id": "ntis-2340054816",
+    "context_term": "감응형",
+    "source_term": "고성능 감응형 로봇",
+    "need_statement": "고성능 감응형 로봇 개발이 필요합니다.",
+    "source_group_id": "8e6e86a957074cdb7e26",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340054816",
+        "text": "1. 체강 삽입형 초음파 탐촉자의 안전한 조작과 정확한 스캔을 위한 고성능 감응형 로봇 개발2. 체강 삽입형 탐촉자 원격조작용 6-DOF 힘 피드백이 가능한 마스터 디바이스 개발3. 전립선 초음파 영상 판독 보조를 위한 딥러닝 기반의 영상분석 알고리즘 개발 4. 숙련된 전문의 수준으로 초음파 영상을 자동 획득할 수 있는 로봇-인공지능 통합 제어시스템 개발"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2edf1290d39be4d6",
+    "query": "현수형 분야에서 로봇 하드웨어 구현 관련 기술을 찾고 있습니다. 로봇 하드웨어 구현을 통해 질량 분포 제어를 통한 흔들림 억제 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710112016"
+    ],
+    "source_document_id": "ntis-2710112016",
+    "context_term": "현수형",
+    "source_term": "로봇 하드웨어 구현",
+    "need_statement": "로봇 하드웨어 구현을 통해 질량 분포 제어를 통한 흔들림 억제 기술이 필요합니다.",
+    "source_group_id": "f173d0f55229b00e90ce",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710112016",
+        "text": "> 최종연구목표: 공중 정밀 작업이 가능한 현수형 휴머노이드 Physical AI 시스템 개발- 질량 분포 제어를 통해 흔들림(진자운동)을 억제하고 동적 안정성을 확보한 로봇 하드웨어 구현 - 비정형 고소 환경을 이해하고 물리법칙을 학습하여 강인하게 동작하는 자율조작 지능 확보- 비계 조립, 선박 도장 등 고위험 고소작업에 범용적으로 활용 가능한 원천기술"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-2f5d3b7823fc49cd",
+    "query": "저조도 분야에서 엣지 실시간 SDK 관련 기술을 찾고 있습니다. 저조도 환경에서도 단안 카메라 기반으로 충돌·근접 위험을 예측하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710109138"
+    ],
+    "source_document_id": "ntis-2710109138",
+    "context_term": "저조도",
+    "source_term": "엣지 실시간 SDK",
+    "need_statement": "저조도 환경에서도 단안 카메라 기반으로 충돌·근접 위험을 예측하는 기술이 필요합니다.",
+    "source_group_id": "24fb48016605a70ddd58",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2710109138",
+        "text": "본 연구개발과제의 최종 목표는 저조도 환경에서도 단안 카메라 기반으로 충돌·근접 위험을 사전에 예측할 수 있는 엣지 실시간 SDK를 개발·제품화하는 것이다. 기존 AMR은 LiDAR 중심의 보수적 제어 구조로 인해 저조도·혼재 환경에서 불필요한 정지와 판단 지연이 누적되는 한계가 있으며, 본 과제는 이를 기존 하드웨어를 대체하지 않고 소프트웨어 추가만으로"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-3029c76f2f0a7d3f",
+    "query": "나노균열 분야에서 나노균열 관련 기술을 찾고 있습니다. 다축 응력 커플링 현상을 탐구하여 나노균열의 위치와 형상을 정확히 제어할 수 있는 나노 패터닝 방법이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710100136"
+    ],
+    "source_document_id": "ntis-2710100136",
+    "context_term": "나노균열",
+    "source_term": "나노균열",
+    "need_statement": "다축 응력 커플링 현상을 탐구하여 나노균열의 위치와 형상을 정확히 제어할 수 있는 나노 패터닝 방법이 필요합니다.",
+    "source_group_id": "14a3a4bf441f6d02a43e",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710100136",
+        "text": "본 연구과제에서 연구진은 다축 응력 커플링(coupling) 현상 탐구를 통해 박막 내(內) 나노균열의 위치, 형상을 정확히 설계하고 제어 할 수 있는 새로운 나노 패터닝 방법을 개발하고, 이를 통해 무선?초소형?고민감도 멀티모달(multi-modal) 센서를 구현함으로써 노인성 질병 진단에 활용될 수 있는 혁신적인 센서 플랫폼 기술을 개발하고자 한다. 제"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-33d4753caa12573c",
+    "query": "과채류 분야에서 AI 기반 작물 인식 관련 기술을 찾고 있습니다. AI 기반 작물 인식 및 로봇 제어 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2540001211"
+    ],
+    "source_document_id": "ntis-2540001211",
+    "context_term": "과채류",
+    "source_term": "AI 기반 작물 인식",
+    "need_statement": "AI 기반 작물 인식 및 로봇 제어 기술이 필요합니다.",
+    "source_group_id": "7ccce68c7dc90e127421",
+    "science_medium": "농업·식품 기계·설비",
+    "evidence": [
+      {
+        "document_id": "ntis-2540001211",
+        "text": "최종 목표: 과채류 적과 및 적심 농작업 지능로봇 및 통합관제 시스템 개발 및 실증- 과채류(토마토, 오이) 적과 및 적심 농작업을 수행할 수 있는 자율주행 기반 지능형 로봇 및 통합 관제 시스템 개발- AI 기반 작물 인식 및 로봇 제어 기술을 적용하여 정밀한 적과 및 적심 작업 구현- 고소작업이 가능한 자율주행 모바일 로봇 플랫폼 개발 및 농장 실증 수"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-353ca8d4a771b8f8",
+    "query": "복합소재 분야에서 플라스틱 복합소재 관련 기술을 찾고 있습니다. 고강성 및 NVH 성능 강화를 위한 플라스틱 복합소재의 설계 및 개발 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420028275"
+    ],
+    "source_document_id": "ntis-2420028275",
+    "context_term": "복합소재",
+    "source_term": "플라스틱 복합소재",
+    "need_statement": "고강성 및 NVH 성능 강화를 위한 플라스틱 복합소재의 설계 및 개발 기술이 필요합니다.",
+    "source_group_id": "a00fa7095636e406bb30",
+    "science_medium": "고분자 공정기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028275",
+        "text": "본 기술개발은 기존 금속소재의 리어액슬크래들 브라켓 부품을 고강성/NVH 성능 강화 플라스틱 복합소재로 대체하여 부품 경량화를 통해 이산화탄소 배출 감축을 실현하고자 함. 또한 금속 인서트 사출물의 플라스틱-금속 일체화 설계를 위한 PMH(Polymer Metal Hybrid) 사출기술을 개발하여 NVH (Noise, Vibration, Harshness)"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-3572857ec891ced4",
+    "query": "전기차 분야에서 능동형 예방 방재 플랫폼 관련 기술을 찾고 있습니다. 전기차의 배터리 열폭주 전조를 조기에 예측할 수 있는 예방형 솔루션이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420031817"
+    ],
+    "source_document_id": "ntis-2420031817",
+    "context_term": "전기차",
+    "source_term": "능동형 예방 방재 플랫폼",
+    "need_statement": "전기차의 배터리 열폭주 전조를 조기에 예측할 수 있는 예방형 솔루션이 필요합니다.",
+    "source_group_id": "b33863eb949322760345",
+    "science_medium": "재난안전기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031817",
+        "text": "본 연구개발은 2심 광섬유를 활용해 온도(DTS)와 음향/진동(DAVS)을 동시에 측정하는 멀티모달 하이브리드 센싱 기술을 기반으로, 전기차 화재의 핵심인 배터리 열폭주 전조를 10분 전에 예지하는 '능동형 예방 방재 플랫폼' 개발을 목표로 한다. 기존의 수동적 사후 조치에서 탈피하여 배터리 자가 가열 단계의 미세 발열과 벤팅음을 정밀하게 포착함으로써 10"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-35742b5d1bde707b",
+    "query": "상호작용하는 분야에서 정량 평가 체계 관련 기술을 찾고 있습니다. 온라인 정합 및 지도 갱신이 가능한 시스템을 위한 전역 정합 오차와 에이전트 간 상대 정합 오차를 정량 평가할 수 있는 체계가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710105786"
+    ],
+    "source_document_id": "ntis-2710105786",
+    "context_term": "상호작용하는",
+    "source_term": "정량 평가 체계",
+    "need_statement": "온라인 정합 및 지도 갱신이 가능한 시스템을 위한 전역 정합 오차와 에이전트 간 상대 정합 오차를 정량 평가할 수 있는 체계가 필요합니다.",
+    "source_group_id": "9e83d53a74498197d8c4",
+    "science_medium": "무기센서 및 제어",
+    "evidence": [
+      {
+        "document_id": "ntis-2710105786",
+        "text": "핵심요소1: 스케일 일관성 공유지도 구축- 이기종 센서·플랫폼 간 지도 스케일·좌표계 불일치 문제를 Sim(3) 정합과 AI 기반 보정으로 통합- 에이전트 추가/제거/재방문/동시운용 상황에서 온라인 정합 및 지도 갱신이 가능한 운영 알고리즘 개발- 전역 정합 오차, 에이전트 간 상대 정합 오차, 장기 드리프트 지표로 공유지도 품질 정량 평가 체계 구축핵심요"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-368e81dfa6d0166b",
+    "query": "자율작업을 분야에서 자율조작 지능 확보 관련 기술을 찾고 있습니다. 비정형 고소 환경에서 강인하게 동작하는 자율조작 지능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710112016"
+    ],
+    "source_document_id": "ntis-2710112016",
+    "context_term": "자율작업을",
+    "source_term": "자율조작 지능 확보",
+    "need_statement": "비정형 고소 환경에서 강인하게 동작하는 자율조작 지능이 필요합니다.",
+    "source_group_id": "f173d0f55229b00e90ce",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710112016",
+        "text": "> 최종연구목표: 공중 정밀 작업이 가능한 현수형 휴머노이드 Physical AI 시스템 개발- 질량 분포 제어를 통해 흔들림(진자운동)을 억제하고 동적 안정성을 확보한 로봇 하드웨어 구현 - 비정형 고소 환경을 이해하고 물리법칙을 학습하여 강인하게 동작하는 자율조작 지능 확보- 비계 조립, 선박 도장 등 고위험 고소작업에 범용적으로 활용 가능한 원천기술"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-371086378353f2e0",
+    "query": "제조공정혁신 분야에서 디지털 전환 플랫폼 활용 지원 관련 기술을 찾고 있습니다. 디지털 전환 플랫폼 활용 지원을 위한 기술적 체계가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410015894"
+    ],
+    "source_document_id": "ntis-2410015894",
+    "context_term": "제조공정혁신",
+    "source_term": "디지털 전환 플랫폼 활용 지원",
+    "need_statement": "디지털 전환 플랫폼 활용 지원을 위한 기술적 체계가 필요합니다.",
+    "source_group_id": "57f1559e2f3bb229ac87",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015894",
+        "text": "□ 디지털전환 컨설팅-현장데이터분석-공정지원-평가지원의 제조공정 全주기 디지털 전환체계 마련 ○ 디지털전환 컨설팅 및 뿌리공정/평가, DX요소기술(D.N.A)지원 ○ 디지털 전환 플랫폼 활용 지원, 시제품제작 및 지식재산권 출원지원 ○ 기업기술지원 663건 및 산학연 연계 협업네트워크 구축 및 운영 47건□ 뿌리산업 제조공정 디지털전환을 위한 뿌리기술 장"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-3829b163e42a2948",
+    "query": "소듐이온전지의 분야에서 전극 구조 설계론 관련 기술을 찾고 있습니다. 소듐이온 확산 한계를 극복하기 위한 전극 구조 설계론이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710113024"
+    ],
+    "source_document_id": "ntis-2710113024",
+    "context_term": "소듐이온전지의",
+    "source_term": "전극 구조 설계론",
+    "need_statement": "소듐이온 확산 한계를 극복하기 위한 전극 구조 설계론이 필요합니다.",
+    "source_group_id": "21eac60754e6f995e600",
+    "science_medium": "정밀생산기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710113024",
+        "text": "최종 목표는,1. 소듐이온전지의 장기적인 용량·수명·충전/방전 성능의 동시 향상을 위한 레이저 기반의 전극 구조 개선 메커니즘을 규명하고, 2. 전극 내 소듐이온 확산 한계를 극복하기 위한 전극 구조 설계론을 정립하고자 함3. 이와 같은 원천·기초 연구 수행과 이 결과를 적용한 고용량 전지 장기 성능 검증을 통해 실용성까지 모두 갖춘 연구 결과를 도출하고자"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-3b9f2c0063a9d983",
+    "query": "사업화 분야에서 End-to-End 사업화 패키지 관련 기술을 찾고 있습니다. 필름형 소재공급 기반 광중합 세라믹 3D프린팅 기술의 End-to-End 사업화 패키지를 완성하기 위한 기술적 요소가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710107637"
+    ],
+    "source_document_id": "ntis-2710107637",
+    "context_term": "사업화",
+    "source_term": "End-to-End 사업화 패키지",
+    "need_statement": "필름형 소재공급 기반 광중합 세라믹 3D프린팅 기술의 End-to-End 사업화 패키지를 완성하기 위한 기술적 요소가 필요합니다.",
+    "source_group_id": "95e558e944548f54c30e",
+    "science_medium": "세라믹재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2710107637",
+        "text": "본 과제는 필름형 소재공급 기반 광중합 세라믹 3D프린팅 전주기 기술을 End-to-End 사업화 패키지(장비-소재-공정-품질/데이터)로 완성하고, 포트폴리오형 IP와 CTQ 검증데이터로 기술이전 경쟁력을 확보하여 1단계 기술이전 계약, 2단계 스케일업·시장검증을 통한 마일스톤/경상 기술료 창출까지 연결하는 것을 목표로 한다."
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-3ca1bbf10f8e9511",
+    "query": "위한온디바이스 분야에서 온디바이스 AI 관련 기술을 찾고 있습니다. 온디바이스 AI 시스템이 실내외 연속 측위를 지원하고, 스마트글래스와 연동될 수 있는 조건이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420032203"
+    ],
+    "source_document_id": "ntis-2420032203",
+    "context_term": "위한온디바이스",
+    "source_term": "온디바이스 AI",
+    "need_statement": "온디바이스 AI 시스템이 실내외 연속 측위를 지원하고, 스마트글래스와 연동될 수 있는 조건이 필요합니다.",
+    "source_group_id": "7b47ba63938948b318ac",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2420032203",
+        "text": "본 과제의 최종 목표는 완성차 물류 최적화를 위한 '온디바이스 AI 실내외 연속 측위 엣지 단말 및 스마트글래스 연동 작업지시 시스템'을 개발하는 것입니다. 기존 RTLS(실시간 위치 추적 시스템)가 가진 단순 가시성 제공의 한계를 넘어, 복잡한 물류 현장의 수많은 경우의 수를 실시간으로 연산하여 최적의 작업 지시를 내리는 '의사결정 자동화(Decision"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-3caaef408dfabe78",
+    "query": "분석을 분야에서 거동 정밀제어 기술 관련 기술을 찾고 있습니다. 단분자 수준의 DNA 및 단백질 거동을 정밀하게 제어할 수 있는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710096440"
+    ],
+    "source_document_id": "ntis-2710096440",
+    "context_term": "분석을",
+    "source_term": "거동 정밀제어 기술",
+    "need_statement": "단분자 수준의 DNA 및 단백질 거동을 정밀하게 제어할 수 있는 기술이 필요합니다.",
+    "source_group_id": "c9c7701edbb365b9a9dc",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710096440",
+        "text": "장기적으로 유효한 2차원 물질 기반의 고체상태 나노포어에 대한 저비용 대량 제조 기술, 다양한 물리적 힘을 이용한 단분자 수준의 DNA 및 단백질에 대한 거동 정밀제어 기술, 그리고 이온 전류 및 터널링 전류 동시 측정 기술 확립을 바탕으로 단분자 수준에서의 초고감도, 저비용, 무표지, 초고속, 대용량 오믹스 분석이 가능한 기계학습 기반의 멀티모드 디지털"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-3cc1671765b1e39c",
+    "query": "플랫폼 분야에서 요소기술 관련 기술을 찾고 있습니다. 로봇 통합형 자율 제조를 위한 RIAM 러닝 팩토리 플랫폼의 요소기술 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710111126"
+    ],
+    "source_document_id": "ntis-2710111126",
+    "context_term": "플랫폼",
+    "source_term": "요소기술",
+    "need_statement": "로봇 통합형 자율 제조를 위한 RIAM 러닝 팩토리 플랫폼의 요소기술 개발이 필요합니다.",
+    "source_group_id": "1c32b1aa99157863c8c4",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710111126",
+        "text": "○ 로봇 통합형 자율 제조(Robot Integration & Autonomous Manufacturing: RIAM) 러닝 팩토리 플랫폼 구축을 위한 기술 개발* 및 전문 인력 양성 등 지속적 협력을 위한 기반 조성 (RIAM 러닝 팩토리 센터) * 학연 공동 R&D를 통해 RIAM 플랫폼 요소기술 및 산업확산을 위한 기폭제 기술 개발"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-3cc36a634656fd26",
+    "query": "상용수소엔진차량 분야에서 수소 직분식 연소엔진(H2DI) 관련 기술을 찾고 있습니다. 수소 직분식 연소엔진(H2DI) 설계 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410019633"
+    ],
+    "source_document_id": "ntis-2410019633",
+    "context_term": "상용수소엔진차량",
+    "source_term": "수소 직분식 연소엔진(H2DI)",
+    "need_statement": "수소 직분식 연소엔진(H2DI) 설계 기술이 필요합니다.",
+    "source_group_id": "5cc504af860f212e23f1",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019633",
+        "text": "1.다목적 엔진 및 시제 차량(소형 상용-픽업) 기본 설계2.엔진 구성(1차 시제작) 및 기능 개발, 차량 구성품 개발(1차 구성) 및 차량 상세 설계3.엔진 (최종 시제작) 및 차량(1차 시제작) 성능 개발4.엔진 및 차량 성능 최적화 및 연구 개발 목표 검증 o 엔진/차량 설계 제작 및 성능 개발o 수소 직분식 연소엔진(H2DI) 설계o 수소연료분사계"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-413a7edd5ad719c6",
+    "query": "온디바이스 분야에서 온디바이스 AI 반도체 관련 기술을 찾고 있습니다. 제조생산설비 로봇의 핵심부품에 대한 고장진단 및 잔존수명 예측이 가능한 온디바이스 AI 반도체의 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410017093"
+    ],
+    "source_document_id": "ntis-2410017093",
+    "context_term": "온디바이스",
+    "source_term": "온디바이스 AI 반도체",
+    "need_statement": "제조생산설비 로봇의 핵심부품에 대한 고장진단 및 잔존수명 예측이 가능한 온디바이스 AI 반도체의 개발이 필요합니다.",
+    "source_group_id": "e8af94332098688ab822",
+    "science_medium": "반도체 소자·회로",
+    "evidence": [
+      {
+        "document_id": "ntis-2410017093",
+        "text": "ㅇ 제조생산설비 로봇의 핵심부품에 대한 고장진단 및 잔존수 명 예측이 가능한 온디바이스 AI 반도체의 개발 및 실증 [1차년도 목표 - 상위레벨 요구사항 분석 및 개별 IP 설계]ㅇ 디지털 트윈 기반의 시스템 모델링 및 시뮬레이션ㅇ 고장모드 구현을 위한 부품 및 시스템 설계ㅇ 요구사항 분석 및 PHM SoC 아키텍쳐 설계ㅇ 멀티모델 인공신경망 모델"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-41fc4da42731b251",
+    "query": "온톨로지 분야에서 온톨로지 기반 의미 구조 관련 기술을 찾고 있습니다. 온톨로지 기반 의미 구조를 통해 센서 간 물리적 상관관계를 통합적으로 해결하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2340065249"
+    ],
+    "source_document_id": "ntis-2340065249",
+    "context_term": "온톨로지",
+    "source_term": "온톨로지 기반 의미 구조",
+    "need_statement": "온톨로지 기반 의미 구조를 통해 센서 간 물리적 상관관계를 통합적으로 해결하는 기술이 필요합니다.",
+    "source_group_id": "984252ec3423b6ecdcc3",
+    "science_medium": "산업/일반기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340065249",
+        "text": "본 연구개발과제의 최종 목표는 산업 설비 센서 데이터에 온톨로지 기반 의미 구조를 체계적으로 부여하여, 센서·모달리티·도메인 세 수준의 한계를 통합적으로 해결하는 고신뢰 PHM(Prognostics and Health Management) 프레임워크를 구축하는 것이다. 기존 딥러닝 기반 상태진단 기술은 데이터 내 통계적 패턴만을 학습하므로, 센서 간 물리적"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-4265edebdb545c6e",
+    "query": "마이크로볼로미터 분야에서 마이크로볼로미터 관련 기술을 찾고 있습니다. 높은 fill-factor와 높은 원적외선 흡수율을 갖는 2층구조 마이크로볼로미터 센서를 개발할 필요가 있습니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420029373"
+    ],
+    "source_document_id": "ntis-2420029373",
+    "context_term": "마이크로볼로미터",
+    "source_term": "마이크로볼로미터",
+    "need_statement": "높은 fill-factor와 높은 원적외선 흡수율을 갖는 2층구조 마이크로볼로미터 센서를 개발할 필요가 있습니다.",
+    "source_group_id": "cb1a3de62255301abbaa",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420029373",
+        "text": "높은 fill-factor와 높은 원적외선 흡수율 그리고 빠른 동작 속도를 갖는 2층구조 17um 피치 마이크로볼로미터 센서를 단위픽셀로 하고 기판단위 진공패키징된 중해상도 비냉각형 열화상 이미지 센서와 열화상 이미지센서 모듈- fill-factor : 85%- 원적외선 흡수율 : 90%- 픽셀 시정수(동작속도) : 5msec- 1/f noise : 10"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-42a19f909d962e9e",
+    "query": "생산성 분야에서 초고속 회전 기반 스캐닝 메커니즘 관련 기술을 찾고 있습니다. 초고속 회전 기반 스캐닝 메커니즘을 적용한 3D 프린팅 공정의 생산성 향상이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2340066305"
+    ],
+    "source_document_id": "ntis-2340066305",
+    "context_term": "생산성",
+    "source_term": "초고속 회전 기반 스캐닝 메커니즘",
+    "need_statement": "초고속 회전 기반 스캐닝 메커니즘을 적용한 3D 프린팅 공정의 생산성 향상이 필요합니다.",
+    "source_group_id": "da0c8a9edcb97ef4cf53",
+    "science_medium": "정밀생산기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340066305",
+        "text": "본 연구의 최종 목표는 초고속 회전 기반 스캐닝 메커니즘을 광경화 3D 프린팅 공정에 적용하여, 기존 Stereolithography(SLA) 공정이 갖는 생산성 한계를 근본적으로 극복하고, 고속·고정밀 출력이 동시에 가능한 차세대 적층 제조 기술을 개발하는 데 있다. 기존 SLA 방식은 액상 광경화성 수지를 레이저로 선택적으로 조사하여 점 단위로 경화시키"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-47ad84809939c987",
+    "query": "비정상 분야에서 비정상 동작 예측 시스템 관련 기술을 찾고 있습니다. 실시간 배터리 비정상 동작 예측 시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420027612"
+    ],
+    "source_document_id": "ntis-2420027612",
+    "context_term": "비정상",
+    "source_term": "비정상 동작 예측 시스템",
+    "need_statement": "실시간 배터리 비정상 동작 예측 시스템이 필요합니다.",
+    "source_group_id": "6475ae59ac55a3cc2437",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420027612",
+        "text": "자사는 본 팁스 과제를 통해 효율성 증진을 위한 정교한 배터리 잔존 수명 예측 기술을 개발하고 불가역적 사고 방지를 위한 실시간 배터리 비정상 동작 예측 시스템을 개발하고자 하며, 이를 경량화된 On-Chip 시스템으로 개발하여 온/오프라인 통합 관리를 통해 즉각 조치가 가능한 시스템으로 고도화하고자 함"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-48e0b5da46cf7557",
+    "query": "제트무인기 분야에서 고속 제트무인기 관련 기술을 찾고 있습니다. 450km/h 이상 고속 비행을 위한 AI 기반 제트무인기 설계 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420028845"
+    ],
+    "source_document_id": "ntis-2420028845",
+    "context_term": "제트무인기",
+    "source_term": "고속 제트무인기",
+    "need_statement": "450km/h 이상 고속 비행을 위한 AI 기반 제트무인기 설계 기술이 필요합니다.",
+    "source_group_id": "da74aa5146592709d09a",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028845",
+        "text": "최종목표내용 - 국내 최초 AI 기반 450km/h급 고속 제트무인기 통합시스템 개발 - 국방 AI 분야 선도기업인 Anduril사의 AI Pilot 소프트웨어를 탑재, AI 비행학습, 유무인 복합 선제공격·정찰·전자전 등 전시 복합임무 자율 수행 - 45kg급 MTOW, 20분 이상 체공, 15km 작전반경을 만족하는 고기동·고효율 플랫폼 실현"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-491ebf7702eb536f",
+    "query": "국산화를 분야에서 대량 생산 공정 최적화 관련 기술을 찾고 있습니다. 대량 생산 공정 최적화를 통한 연료전지 촉매의 국산화가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420030116"
+    ],
+    "source_document_id": "ntis-2420030116",
+    "context_term": "국산화를",
+    "source_term": "대량 생산 공정 최적화",
+    "need_statement": "대량 생산 공정 최적화를 통한 연료전지 촉매의 국산화가 필요합니다.",
+    "source_group_id": "f5718aad6f4942625deb",
+    "science_medium": "측정표준/시험평가기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030116",
+        "text": "1. 대량 생산 공정 최적화를 통한 연료전지 촉매의 국산화: 전자빔 조사를 통한 촉매 합성법은 금속염을 포함하는 수용액에 전자빔을 조사하여 균일한 금속나노입자를 빠른 시간에 제조하는 간단한 공정으로, 화학적 부산물 발생이 적고 연속공정이 가능하기 때문에 공정 최적화를 통하여 고성능 과 고 내구성을 만족하는 연료전지 촉매의 국화산 실현 2. 고성능 탄소 담지"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-497b7d1b10c441f3",
+    "query": "제조생산설비 분야에서 PHM SoC 아키텍쳐 설계 관련 기술을 찾고 있습니다. PHM SoC 아키텍쳐 설계 시 다양한 센서 데이터 취득 및 기준 정립이 필수적입니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410017093"
+    ],
+    "source_document_id": "ntis-2410017093",
+    "context_term": "제조생산설비",
+    "source_term": "PHM SoC 아키텍쳐 설계",
+    "need_statement": "PHM SoC 아키텍쳐 설계 시 다양한 센서 데이터 취득 및 기준 정립이 필수적입니다.",
+    "source_group_id": "e8af94332098688ab822",
+    "science_medium": "반도체 소자·회로",
+    "evidence": [
+      {
+        "document_id": "ntis-2410017093",
+        "text": "[1차년도 개발내용]ㅇ PHM SoC의 요구사항 분석ㅇ PHM SoC 아키텍쳐 설계ㅇ 물류 로봇의 상태별 센서 데이터 취득 및 기준 정립ㅇ 생산 공장에서 발생하는 고장사례 조사ㅇ SoC 구조 및 플랫폼 설계 인터페이스 제안 및 검증ㅇ 기존 선행 연구 기반의 AI 모델 SoC의 연동용 SDK 설계ㅇ 기존 선행연구 기반의 검증을 통한 환경 및 데이터 분석ㅇ 상"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-4a6021e575199faa",
+    "query": "기가캐스팅 분야에서 칠벤트 국산화 관련 기술을 찾고 있습니다. 기가캐스팅 금형의 진공도 70mbar 이하 구현을 위한 텅스텐 칠벤트의 국산화가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420031518"
+    ],
+    "source_document_id": "ntis-2420031518",
+    "context_term": "기가캐스팅",
+    "source_term": "칠벤트 국산화",
+    "need_statement": "기가캐스팅 금형의 진공도 70mbar 이하 구현을 위한 텅스텐 칠벤트의 국산화가 필요합니다.",
+    "source_group_id": "9066a55e244ffb01efcd",
+    "science_medium": "금속재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031518",
+        "text": "? 개발 목표 : 대면적 전기자동차 차체 및 섀시용 기가캐스팅 금형의 진공도 70mbar 이하 구현이 가능한 텅스텐 재질 칠벤트 국산화 개발 - 텅스텐 스크랩 업사이클링을 통한 원소재 확보 및 분말화 기술을 국산화함 - 대부분 수입에 의존하는 텅스텐 적용 칠벤트는 금형 진공도에 직접적인 영향을 주는 소모품으로, 대형 부품 제조 시 안정성과 직결됨에 따라"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-4a7328e153a72b0b",
+    "query": "연구교육과정 분야에서 AI+X 융합 고급인재 양성 관련 기술을 찾고 있습니다. AI+X 융합 고급인재 양성을 위한 실전문제의 융합적 해결지식을 갖춘 교육 프로그램 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710093233"
+    ],
+    "source_document_id": "ntis-2710093233",
+    "context_term": "연구교육과정",
+    "source_term": "AI+X 융합 고급인재 양성",
+    "need_statement": "AI+X 융합 고급인재 양성을 위한 실전문제의 융합적 해결지식을 갖춘 교육 프로그램 개발이 필요합니다.",
+    "source_group_id": "96ef55477d8ec7b15ea1",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2710093233",
+        "text": "- 실전문제의 융합적 해결지식을 갖춘 기업협업형 AI+X 융합 고급인재 양성- 매년 본 프로그램 참여 AI+X 석박사 졸업생 10명이상 배출- 10개 이상의 참여기업체와 취업연계형 다학제간 PBL 연구교육프로그램 운영을 통해 매년 30% 이상의 졸업생의 참여기업체 취업"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-4c05b5d8414b0861",
+    "query": "상용수소엔진차량 분야에서 2 리터급 디젤 기반 수소 엔진 관련 기술을 찾고 있습니다. 다목적 활용이 가능한 2 리터급 디젤 기반 수소 엔진의 성능 최적화 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410019633"
+    ],
+    "source_document_id": "ntis-2410019633",
+    "context_term": "상용수소엔진차량",
+    "source_term": "2 리터급 디젤 기반 수소 엔진",
+    "need_statement": "다목적 활용이 가능한 2 리터급 디젤 기반 수소 엔진의 성능 최적화 기술이 필요합니다.",
+    "source_group_id": "5cc504af860f212e23f1",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019633",
+        "text": "산업용 및 차량용 등 다목적 활용이 가능한 2 리터급 디젤 기반 수소 엔진 개발 및 시제 차량의 개발1. 최대 BMEP 19bar. 엔진 최대 효율 38% 이상, 엔진 출력 110KW이상2. NOx 배출량 규제 수준 만족 (차량 모드 및 산업용 모드)3. 엔진 내구 300시간(전부하)4. 차량 항속 거리 500km 이상"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-4c10d85ed9ceeaeb",
+    "query": "제조데이터 분야에서 품질 예측 기술 관련 기술을 찾고 있습니다. 제조데이터 기반 품질 예측 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410015993"
+    ],
+    "source_document_id": "ntis-2410015993",
+    "context_term": "제조데이터",
+    "source_term": "품질 예측 기술",
+    "need_statement": "제조데이터 기반 품질 예측 기술이 필요합니다.",
+    "source_group_id": "be809f45707bcc1f9293",
+    "science_medium": "주조/용접/접합",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015993",
+        "text": "[최종목표]ㅇ 제조데이터 기반 품질 예측 기술 및 주조 공정 자동화 기술을 통한 고품질 제품 생산이 가능한 적응형 유연생산 주조 공정 기술개발 - 3D프린팅 모래 주형 활용 허브리덕션 하우징 생산 공정 개발 - 디지털트윈 기반 가상 주조 공장 개발 및 공정 작업 생산시간 최적화 - 다품종 부품 후처리 작업을 위한 AI 비전 인식 기반 로봇 제어 기술"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-4c5f1f9131396b42",
+    "query": "우주종합시험센터지원 분야에서 검증 시스템의 안정적인 운용 관련 기술을 찾고 있습니다. 위성 및 발사체 검증 시스템의 안정적인 운용을 위한 고도화 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2800001103"
+    ],
+    "source_document_id": "ntis-2800001103",
+    "context_term": "우주종합시험센터지원",
+    "source_term": "검증 시스템의 안정적인 운용",
+    "need_statement": "위성 및 발사체 검증 시스템의 안정적인 운용을 위한 고도화 기술이 필요합니다.",
+    "source_group_id": "5a7db2398707b9c22109",
+    "science_medium": "우주시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2800001103",
+        "text": "- 위성 및 발사체 검증 시스템의 안정적인 운용/확장 및 고도화- 조립/시험장비의 주기적인 유지보수 및 국산화 개발- 국제공인시험기관의 체계적 운영- 조립/시험 인원의 교육 훈련"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-4e8e88a06f708ba1",
+    "query": "재실자 분야에서 쾌적성 관련 기술을 찾고 있습니다. 재실자의 쾌적성을 높이기 위해 실내환경을 평가할 수 있는 체계적인 지표가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2340064303"
+    ],
+    "source_document_id": "ntis-2340064303",
+    "context_term": "재실자",
+    "source_term": "쾌적성",
+    "need_statement": "재실자의 쾌적성을 높이기 위해 실내환경을 평가할 수 있는 체계적인 지표가 필요합니다.",
+    "source_group_id": "10da7f0d5a8ed086aa6b",
+    "science_medium": "건설 환경설비 기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2340064303",
+        "text": "[실내 재실자 웰빙 지수 정의 및 지표]- 재실자 웰빙을 실내환경 관점에서 건강성 및 쾌적성, 재실자 관점에서 주관적 만족도로 구조화하고, 각 요소를 반영할 수 있는 평가항목을 체계적으로 정의하여 통합 지표를 구축함.- 건강성은 실내 오염물질 노출과 직접적으로 관련된 지표를, 쾌적성은 재실자의 물리적 쾌적감에 영향을 미치는 항목을, 만족도는 재실자의 주관적"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-50781d4a4cba125d",
+    "query": "Battery 분야에서 Battery 열관리시스템 확보 관련 기술을 찾고 있습니다. HEV 저온 환경에서 전비성능을 최소 10% 이상 개선하기 위한 Battery 열관리시스템 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410014904"
+    ],
+    "source_document_id": "ntis-2410014904",
+    "context_term": "Battery",
+    "source_term": "Battery 열관리시스템 확보",
+    "need_statement": "HEV 저온 환경에서 전비성능을 최소 10% 이상 개선하기 위한 Battery 열관리시스템 기술이 필요합니다.",
+    "source_group_id": "99147cbc116316b5e0e0",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410014904",
+        "text": "HEV 저온 환경(-6.7℃) 전비성능 최소 10% 이상 개선을 위한 Battery 열관리시스템 확보"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-50a7e4a1d7295753",
+    "query": "eVTOL 분야에서 비행제어시스템 최적화 관련 기술을 찾고 있습니다. 극한 환경 하에서의 eVTOL 비행제어시스템 최적화 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710093265"
+    ],
+    "source_document_id": "ntis-2710093265",
+    "context_term": "eVTOL",
+    "source_term": "비행제어시스템 최적화",
+    "need_statement": "극한 환경 하에서의 eVTOL 비행제어시스템 최적화 기술이 필요합니다.",
+    "source_group_id": "09856adff8eae783ef93",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710093265",
+        "text": "(1세부)● 극한 환경 하에서의 eVTOL 비행제어시스템 최적화 연구● 극한 환경 하에서의 하이브리드 분산추진 기술연구 및 성능 평가● 48kW 급 대전력 변환 모듈(BLDC 모터 컨버터) 시스템 설계 및 신뢰성 평가● HILS 기반의 융합기술 검증 플랫폼 구축(2세부)● 위성항법신호 다중경로 환경에서 딥러닝을 통한 이동체의 측위 정확도 향상 연구 ●"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-555f5d2b5078e251",
+    "query": "광학용 분야에서 제조 형상 오차 관련 기술을 찾고 있습니다. 제조 과정에서 발생하는 색수차와 해상도 저하 문제를 동시에 해결할 수 있는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710111622"
+    ],
+    "source_document_id": "ntis-2710111622",
+    "context_term": "광학용",
+    "source_term": "제조 형상 오차",
+    "need_statement": "제조 과정에서 발생하는 색수차와 해상도 저하 문제를 동시에 해결할 수 있는 기술이 필요합니다.",
+    "source_group_id": "eb078e88b98d3d77ba18",
+    "science_medium": "정밀생산기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710111622",
+        "text": "초박형 대구경·고도수 평면 광학계의 핵심 난점은 단순한 박형화가 아니라, 박형화 과정에서 발생하는 색수차·해상도 저하·회절 효율 손실과 제조 형상 오차를 동시에 최적 제어하는 데 있다. 본 연구의 최종 목표는 대구경·고도수 시각 광학에서 제조한계를 고려한 굴절-회절 하이브리드 평면 렌즈(FA-HRDL: fabrication-aware hybrid refra"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-57b300d870730889",
+    "query": "재실자 분야에서 웰빙 지수 관련 기술을 찾고 있습니다. 재실자의 건강, 쾌적, 만족도를 반영한 웰빙 지수를 정의하고 이를 기반으로 최적 제어 기술을 개발할 필요가 있습니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2340064303"
+    ],
+    "source_document_id": "ntis-2340064303",
+    "context_term": "재실자",
+    "source_term": "웰빙 지수",
+    "need_statement": "재실자의 건강, 쾌적, 만족도를 반영한 웰빙 지수를 정의하고 이를 기반으로 최적 제어 기술을 개발할 필요가 있습니다.",
+    "source_group_id": "10da7f0d5a8ed086aa6b",
+    "science_medium": "건설 환경설비 기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2340064303",
+        "text": "재실자의 건강, 쾌적, 만족도를 통합 반영한 웰빙 지수를 정의하고, 이를 기반으로 재실자 웰빙 향상과 HVAC 에너지 저감을 동시에 달성할 수 있는 AI 기반 다목적 최적 제어기술을 개발·검증하는 것."
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-589a09ecb7eb32ec",
+    "query": "농작업 분야에서 자율주행 기반 지능형 로봇 관련 기술을 찾고 있습니다. 과채류 적과 및 적심 작업을 수행할 수 있는 자율주행 로봇이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2540001211"
+    ],
+    "source_document_id": "ntis-2540001211",
+    "context_term": "농작업",
+    "source_term": "자율주행 기반 지능형 로봇",
+    "need_statement": "과채류 적과 및 적심 작업을 수행할 수 있는 자율주행 로봇이 필요합니다.",
+    "source_group_id": "7ccce68c7dc90e127421",
+    "science_medium": "농업·식품 기계·설비",
+    "evidence": [
+      {
+        "document_id": "ntis-2540001211",
+        "text": "최종 목표: 과채류 적과 및 적심 농작업 지능로봇 및 통합관제 시스템 개발 및 실증- 과채류(토마토, 오이) 적과 및 적심 농작업을 수행할 수 있는 자율주행 기반 지능형 로봇 및 통합 관제 시스템 개발- AI 기반 작물 인식 및 로봇 제어 기술을 적용하여 정밀한 적과 및 적심 작업 구현- 고소작업이 가능한 자율주행 모바일 로봇 플랫폼 개발 및 농장 실증 수"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-596cf8fb6a2d22e3",
+    "query": "Sea-State 분야에서 Sea-State 파라미터 관련 기술을 찾고 있습니다. Sea-State 변화가 Wave Glider의 운동 및 에너지 거동에 미치는 영향을 반영한 확률적 동역학 모델이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710105037"
+    ],
+    "source_document_id": "ntis-2710105037",
+    "context_term": "Sea-State",
+    "source_term": "Sea-State 파라미터",
+    "need_statement": "Sea-State 변화가 Wave Glider의 운동 및 에너지 거동에 미치는 영향을 반영한 확률적 동역학 모델이 필요합니다.",
+    "source_group_id": "14a9973f07c9d1a76ec6",
+    "science_medium": "조선/해양시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710105037",
+        "text": "1차년도에는 Wave Glider의 위치, 속도, 자세를 포함하는 다물체 운동 상태와 배터리 SOC 및 파랑 가용 에너지를 포함한 에너지 상태, 그리고 유의파고·파주기·스펙트럼 특성으로 표현되는 Sea-State 파라미터를 통합한 상태 표현을 정의한다. 이를 기반으로 Sea-State 변화가 운동 및 에너지 거동에 미치는 영향을 반영한 확률적 동역학 모델을"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-5b2aad31308c3de5",
+    "query": "공작기계 분야에서 고효율 유니트 관련 기술을 찾고 있습니다. 소비에너지 저감이 가능한 고효율 유니트 및 장비구동 메커니즘 개선 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410016980"
+    ],
+    "source_document_id": "ntis-2410016980",
+    "context_term": "공작기계",
+    "source_term": "고효율 유니트",
+    "need_statement": "소비에너지 저감이 가능한 고효율 유니트 및 장비구동 메커니즘 개선 기술이 필요합니다.",
+    "source_group_id": "439126ba01bfe14b08d0",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410016980",
+        "text": "[최종목표]ㅇ 다양한 장비/공정에 적용할 수 있는 소비에너지 저감형 고효율 유니트 및 장비 운영기술 개발, 관련 국제표준 기반 정량평가가 가능한 시스템의 보급을 통한 공작기계 산업 전반의 친환경화 기틀마련 및 고효율 공작기계 인증체계 구축 - (지능형 유니트 개발) 실시간 지능형 제어기반 소비에너지 저감이 가능한, 고효율 유니트 및 장비구동 메커니즘 개선"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-5c6a61bc62dc8dd7",
+    "query": "META표면구조가 분야에서 META표면구조 관련 기술을 찾고 있습니다. META표면구조 흡수체를 적용하여 높은 원적외선 흡수율을 갖는 비냉각형 열화상 센서 모듈이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420029373"
+    ],
+    "source_document_id": "ntis-2420029373",
+    "context_term": "META표면구조가",
+    "source_term": "META표면구조",
+    "need_statement": "META표면구조 흡수체를 적용하여 높은 원적외선 흡수율을 갖는 비냉각형 열화상 센서 모듈이 필요합니다.",
+    "source_group_id": "cb1a3de62255301abbaa",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420029373",
+        "text": "■ META표면구조 흡수체를 적용하여 높은 원적외선 흡수율을 갖으며 열고립부와 열흡수부가 분리되어 높은 fill-factor를 갖은 2층 구조의 마이크로볼로미터 센서를 단위픽셀로 하는 비냉각형 열화상 FPA 제작 공정 ○ META표면구조 흡수체를 설계함. - 최적 흡수 소재의 선정 - 일정한 피치내에 일정한 META홀을 설계"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-5edc9e6ef247ee49",
+    "query": "고장진단 분야에서 스마트 센서 통합 관련 기술을 찾고 있습니다. 실시간 고장진단을 위한 스마트 센서 통합 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420034196"
+    ],
+    "source_document_id": "ntis-2420034196",
+    "context_term": "고장진단",
+    "source_term": "스마트 센서 통합",
+    "need_statement": "실시간 고장진단을 위한 스마트 센서 통합 기술이 필요합니다.",
+    "source_group_id": "762d6904d03f32388900",
+    "science_medium": "재난안전기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420034196",
+        "text": "【 1단계】데이터를 만들어 AI를 훈련한다(1~2개월) : 시뮬레이션이 필요한 이유 - AI 데이터 부족 문제의 근본 해결, 3가지 핵심 기술 개발(1. 물리법칙을 배운 AI (Physics-Informed LSTM), 2. 스마트 센서 통합(Attention-based Sensor Fusion), 3. 맞춤형 경보 기준 학습(Adaptive Thresh"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-5fe15801060336c4",
+    "query": "힘센서 분야에서 힘센서 관련 기술을 찾고 있습니다. 자동차 및 항공 산업에서 활용 가능한 극단적인 민감도를 가진 힘센서 구현이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710100136"
+    ],
+    "source_document_id": "ntis-2710100136",
+    "context_term": "힘센서",
+    "source_term": "힘센서",
+    "need_statement": "자동차 및 항공 산업에서 활용 가능한 극단적인 민감도를 가진 힘센서 구현이 필요합니다.",
+    "source_group_id": "14a3a4bf441f6d02a43e",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710100136",
+        "text": "역학적 힘을 전기신호로 변환하는“힘센서”는 자동차, 공장, 항공과 같은 전통 산업에서 뿐만 아니라, 헬스케어, 우주, 로봇 등과 같은 차세대 산업에도 활발히 사용되는 기본적이면서도 중요한 센서이다. 최근 활발히 연구되고 있는 나노균열을 이용한 힘센서는 기존 힘센서 대비 수백배 이상의 극단적인 민감도를 보여주고 있어서 전 세계 센서 연구자들의 많은 관심을"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-6036443ce22fa601",
+    "query": "방폭설비 분야에서 디지털 안전관리 플랫폼 관련 기술을 찾고 있습니다. 북중미 NEC 코드 기반 방폭 안전관리 디지털 플랫폼의 Dashboard 구현 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420033927"
+    ],
+    "source_document_id": "ntis-2420033927",
+    "context_term": "방폭설비",
+    "source_term": "디지털 안전관리 플랫폼",
+    "need_statement": "북중미 NEC 코드 기반 방폭 안전관리 디지털 플랫폼의 Dashboard 구현 기술이 필요합니다.",
+    "source_group_id": "9103cd326a67e989de37",
+    "science_medium": "소프트웨어",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033927",
+        "text": "○ 개발 목적 : 북중미 규격(NEC/UL)에 대응하는 폭발위험구역 방폭 설비의 디지털 안전관리 플랫폼을 개발·상용화하여 안전성과 운영 효율성을 향상하고 글로벌 시장 진출○ 개발 목표 - 북중미 NEC 코드 기반 방폭 안전관리 디지털 플랫폼 - Class/Division 기반 방폭 자산관리 솔루션 - 방폭 현장 업무용 모바일 솔루션 개발"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-622bb4f23cd2c26a",
+    "query": "대구경 분야에서 FA-HRDL 관련 기술을 찾고 있습니다. 대구경·고도수 시각 광학에서의 제조 한계를 고려한 굴절-회절 평면 렌즈의 설계 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710111622"
+    ],
+    "source_document_id": "ntis-2710111622",
+    "context_term": "대구경",
+    "source_term": "FA-HRDL",
+    "need_statement": "대구경·고도수 시각 광학에서의 제조 한계를 고려한 굴절-회절 평면 렌즈의 설계 기술이 필요합니다.",
+    "source_group_id": "eb078e88b98d3d77ba18",
+    "science_medium": "정밀생산기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710111622",
+        "text": "본 과제는 5년간 (2+2+1) 3단계 로드맵으로 다음과 같은 연구 내용을 수행한다.[1단계: 1~2년차] 하이브리드 렌즈 설계·해석·마스터 제조공정 구축굴절력 분배 92%/8%를 핵심 변수로 하는 FA-HRDL 설계 알고리즘을 정식화하고, MATLAB 기반 기하-파동 광학 통합 해석 체계를 구축한다. -5 D × Ø70 mm 실증예의 측벽(sidewall"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-678d62a1c9d39d0a",
+    "query": "parameter 분야에서 경량화된 On-Chip 시스템 관련 기술을 찾고 있습니다. 경량화된 On-Chip 시스템으로 배터리 관리가 가능해야 합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420027612"
+    ],
+    "source_document_id": "ntis-2420027612",
+    "context_term": "parameter",
+    "source_term": "경량화된 On-Chip 시스템",
+    "need_statement": "경량화된 On-Chip 시스템으로 배터리 관리가 가능해야 합니다.",
+    "source_group_id": "6475ae59ac55a3cc2437",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420027612",
+        "text": "자사는 본 팁스 과제를 통해 효율성 증진을 위한 정교한 배터리 잔존 수명 예측 기술을 개발하고 불가역적 사고 방지를 위한 실시간 배터리 비정상 동작 예측 시스템을 개발하고자 하며, 이를 경량화된 On-Chip 시스템으로 개발하여 온/오프라인 통합 관리를 통해 즉각 조치가 가능한 시스템으로 고도화하고자 함"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-69bf83eb0fcb7d3e",
+    "query": "공작기계 분야에서 제어시스템 개념설계 관련 기술을 찾고 있습니다. 에너지 저감형 고성능 쿨런트/유압 펌프 제어시스템의 개념설계가 요구되는 성능조건이 있습니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410016980"
+    ],
+    "source_document_id": "ntis-2410016980",
+    "context_term": "공작기계",
+    "source_term": "제어시스템 개념설계",
+    "need_statement": "에너지 저감형 고성능 쿨런트/유압 펌프 제어시스템의 개념설계가 요구되는 성능조건이 있습니다.",
+    "source_group_id": "439126ba01bfe14b08d0",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410016980",
+        "text": "[1차년도 개발내용]ㅇ 압축공기 정밀 공급제어용 공압유니트 개발 및 장비구조 개선설계ㅇ 소비에너지 저감 공작기계 시작품 설계 및 에너지 관리/모니터링 App 설계ㅇ 에너지 저감형 고성능 쿨런트/유압 펌프 제어시스템 개념설계ㅇ 에너지 저감형 고성능 쿨런트, 유압용 제어기 인터페이스 설계ㅇ 장비 모니터링/제어용 Energy Box 설계 및 프로토타입 개발ㅇ 실"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-69d49f7c69df3de7",
+    "query": "위생시스템 분야에서 모듈형 진공식 변기 시스템 관련 기술을 찾고 있습니다. 조선 및 해양 분야에서의 유지보수 요구를 충족할 수 있는 친환경 모듈형 진공식 변기 시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420034029"
+    ],
+    "source_document_id": "ntis-2420034029",
+    "context_term": "위생시스템",
+    "source_term": "모듈형 진공식 변기 시스템",
+    "need_statement": "조선 및 해양 분야에서의 유지보수 요구를 충족할 수 있는 친환경 모듈형 진공식 변기 시스템이 필요합니다.",
+    "source_group_id": "259dee07aabef0c9c8f0",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420034029",
+        "text": "[1차년도]○ 친환경 초절수형 저소음 모듈형 진공식 변기 시스템 설계- 국내외 적용 사례 및 요구조건 조사(건축/공공/조선/철도 적용환경, 유지보수 요구 등)- Water flushing control 기술 구현 ( Flushing nozzle 분사 각도, 타공 간격, 타공 Size 조절 및 Water valve 복원력 최적화를 통한 초 절수 기술 실현)-"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-6c09fe23141e251c",
+    "query": "물리정보신경망 분야에서 물리 정보 신경망 관련 기술을 찾고 있습니다. 물리 정보 신경망 기반으로 다중 열원 및 다층 구조의 열 확산을 정밀하게 예측하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2340055700"
+    ],
+    "source_document_id": "ntis-2340055700",
+    "context_term": "물리정보신경망",
+    "source_term": "물리 정보 신경망",
+    "need_statement": "물리 정보 신경망 기반으로 다중 열원 및 다층 구조의 열 확산을 정밀하게 예측하는 기술이 필요합니다.",
+    "source_group_id": "9c9a959f3450b99205ae",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2340055700",
+        "text": "본 연구과제는 물리 정보 신경망 기반 방열 패키징 실시간 예측 기술 및 레이아웃 설계 공동 최적화 기술을 개발하여, 고성능·고신뢰도 전력 반도체 구조 설계를 위한 원천 기술을 확보하는 것을 최종 목표로 함. 이를 위해 다중 열원 및 다층 구조의 열 확산 시뮬레이션 데이터를 확보하고, 설계 조건에 따라 지배방정식을 표현할 수 있는 연산자 학습 기반 신경망 구"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-6c6e609c12f9f480",
+    "query": "UAM 분야에서 완전 자율 관련 기술을 찾고 있습니다. UAM 체계에서의 eVTOL의 완전자율 비행제어 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710093265"
+    ],
+    "source_document_id": "ntis-2710093265",
+    "context_term": "UAM",
+    "source_term": "완전 자율",
+    "need_statement": "UAM 체계에서의 eVTOL의 완전자율 비행제어 기능이 필요합니다.",
+    "source_group_id": "09856adff8eae783ef93",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710093265",
+        "text": "도심항공모빌리티(UAM, Urban Aerial Mobility) 생태계 선도를 위한 高 안전(Safety), 완전 자율(Full Autonomy)의 eVTOL(electric powered Vertical Take-Off & Landing, 전기동력 수직이착륙) 비행체의 핵심 융합기술 연구● UAM 체계에서의 운송체인 eVTOL의 난해한 완전자율 비행제어"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-6d4dcd3d38cd9311",
+    "query": "화물승강기 분야에서 3D 모델링 관련 기술을 찾고 있습니다. Cantilever 방식의 화물승강기에서 3D 모델링을 통한 구조적 간섭 여부 확인 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420030656"
+    ],
+    "source_document_id": "ntis-2420030656",
+    "context_term": "화물승강기",
+    "source_term": "3D 모델링",
+    "need_statement": "Cantilever 방식의 화물승강기에서 3D 모델링을 통한 구조적 간섭 여부 확인 기술이 필요합니다.",
+    "source_group_id": "6ed674599723d8ad66ca",
+    "science_medium": "조선/해양시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030656",
+        "text": "1차년- 개념설계 및 사양선정- IP-R&D 사업화 기획(IP-R&D 외부전문가 협업검토)- Cantilever 방식 화물용승강기 관련 특허 출원1건- 개념설계 도면 작성 및 BoM 작성2차년- 주요부품 및 안전장치 설계- 구조적 간섭여부 확인 및 구조해석을 위한 3D 모델링- 5ton급 실린더 설계/제작 및 성능시험- SeaState 5 조건의 동적구조해"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-6d4fa2ccf9966648",
+    "query": "에뮬레이터 분야에서 양방향 전력제어 알고리즘 관련 기술을 찾고 있습니다. 빠른 동특성을 갖는 배터리 에뮬레이터의 안정적 전원 공급을 위한 양방향 전력제어 알고리즘이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410018272"
+    ],
+    "source_document_id": "ntis-2410018272",
+    "context_term": "에뮬레이터",
+    "source_term": "양방향 전력제어 알고리즘",
+    "need_statement": "빠른 동특성을 갖는 배터리 에뮬레이터의 안정적 전원 공급을 위한 양방향 전력제어 알고리즘이 필요합니다.",
+    "source_group_id": "5d9ee31790a9cd240d8e",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410018272",
+        "text": "o 고응답/고정밀 특성을 갖는 대용량 컨버터와 차량용 배터리 모사 알고리즘 개발을 통한 고성능 다이나모 시스템용 배터리 에뮬레이터 개발 - 빠른 동특성을 갖는 배터리 에뮬레이터의 안정적 전원 공급을 위한 고속/정밀 대용량 컨버터의 설계 기술과 계통연계 양방향 전력제어 알고리즘 개발 - 차세대 전기차용 인버터에 적용가능한 넓은 출력 범위를 갖는 양방향 컨버터"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-6eefdff2a6016753",
+    "query": "공급라인 분야에서 압력 감쇠 특성 계측 관련 기술을 찾고 있습니다. 인젝터 공급라인에서 발생하는 압력 섭동을 효과적으로 저감할 수 있는 실험적 방법이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710114908"
+    ],
+    "source_document_id": "ntis-2710114908",
+    "context_term": "공급라인",
+    "source_term": "압력 감쇠 특성 계측",
+    "need_statement": "인젝터 공급라인에서 발생하는 압력 섭동을 효과적으로 저감할 수 있는 실험적 방법이 필요합니다.",
+    "source_group_id": "37dec41c8abadc4d907d",
+    "science_medium": "국방기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710114908",
+        "text": "본 연구는 1년 단기 집중 검증 연구로서 다음 4개 세부 내용으로 구성된다.[공급라인 헬름홀츠 공명기 적용 및 압력 감쇠 특성 계측] 목표 주파수 대역에 동조된 공명기를 인젝터 공급라인에 설치하고, 음향 가진 장치로 단일 주파수 가진을 인가하여 공명기 설치 전후의 압력 섭동 진폭·위상을 다채널 동압센서로 계측한다. 전달 행렬법 등으로 공명기의 음향 임피던스"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-713bdde718059275",
+    "query": "D프린팅 분야에서 3D프린팅 모래 주형 관련 기술을 찾고 있습니다. 3D프린팅 모래 주형을 활용한 허브리덕션 하우징 생산 공정이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410015993"
+    ],
+    "source_document_id": "ntis-2410015993",
+    "context_term": "D프린팅",
+    "source_term": "3D프린팅 모래 주형",
+    "need_statement": "3D프린팅 모래 주형을 활용한 허브리덕션 하우징 생산 공정이 필요합니다.",
+    "source_group_id": "be809f45707bcc1f9293",
+    "science_medium": "주조/용접/접합",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015993",
+        "text": "[최종목표]ㅇ 제조데이터 기반 품질 예측 기술 및 주조 공정 자동화 기술을 통한 고품질 제품 생산이 가능한 적응형 유연생산 주조 공정 기술개발 - 3D프린팅 모래 주형 활용 허브리덕션 하우징 생산 공정 개발 - 디지털트윈 기반 가상 주조 공장 개발 및 공정 작업 생산시간 최적화 - 다품종 부품 후처리 작업을 위한 AI 비전 인식 기반 로봇 제어 기술"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-7145ee90f0f7da16",
+    "query": "하이브리드 분야에서 음향/진동(DAVS) 관련 기술을 찾고 있습니다. 전기차 화재에 대한 대응을 위해, 배터리의 음향 패턴을 정밀하게 포착할 수 있는 하이브리드 센싱 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420031817"
+    ],
+    "source_document_id": "ntis-2420031817",
+    "context_term": "하이브리드",
+    "source_term": "음향/진동(DAVS)",
+    "need_statement": "전기차 화재에 대한 대응을 위해, 배터리의 음향 패턴을 정밀하게 포착할 수 있는 하이브리드 센싱 기술이 필요합니다.",
+    "source_group_id": "b33863eb949322760345",
+    "science_medium": "재난안전기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031817",
+        "text": "본 연구개발은 2심 광섬유를 활용해 온도(DTS)와 음향/진동(DAVS)을 동시에 측정하는 멀티모달 하이브리드 센싱 기술을 기반으로, 전기차 화재의 핵심인 배터리 열폭주 전조를 10분 전에 예지하는 '능동형 예방 방재 플랫폼' 개발을 목표로 한다. 기존의 수동적 사후 조치에서 탈피하여 배터리 자가 가열 단계의 미세 발열과 벤팅음을 정밀하게 포착함으로써 10"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-735ca00ac80eac76",
+    "query": "청소로봇 분야에서 자율적으로 동작하는 E2E 모델 관련 기술을 찾고 있습니다. 복잡한 청소 환경에서 자율적으로 동작하는 로봇이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420028620"
+    ],
+    "source_document_id": "ntis-2420028620",
+    "context_term": "청소로봇",
+    "source_term": "자율적으로 동작하는 E2E 모델",
+    "need_statement": "복잡한 청소 환경에서 자율적으로 동작하는 로봇이 필요합니다.",
+    "source_group_id": "55aa3dc6e8f36bba3bef",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028620",
+        "text": "(1) LLM 기반 E2E 모델 개발- 자연어 명령어를 이해하고 복잡한 청소 환경에서 자율적으로 동작하는 E2E 모델 개발.- 모호한 사용자 명령을 해석하고, 센서 데이터를 융합하여 작업을 수행.(2) 맥스봇과 미니봇 설계 및 개발- 넓은 오픈 스페이스에서 대규모 청소 작업을 하는 로봇 제작.- 책상 아래 혹은 복잡한 공간을 정밀하게 청소하는 소형 로봇 제"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-74165df0a82dab63",
+    "query": "신뢰성 분야에서 환경영향 분석 관련 기술을 찾고 있습니다. 서보 가속도 센서의 신뢰성 검증을 위한 환경영향 분석 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420029755"
+    ],
+    "source_document_id": "ntis-2420029755",
+    "context_term": "신뢰성",
+    "source_term": "환경영향 분석",
+    "need_statement": "서보 가속도 센서의 신뢰성 검증을 위한 환경영향 분석 기술이 필요합니다.",
+    "source_group_id": "967f098831b1ba5a98b2",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420029755",
+        "text": "1. 서보 가속도 센서 개념설계 및 성능해석 (테스트플랫폼 설계 및 제작)2. 서보 가속도 센서 시작품 제작3. 센서 성능평가, 성능개선방안 연구 및 환경영향 분석4. 센서 성능 최적화 및 Field Test5. 서보 가속도 센서 양산기술 개발"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-766326af6e8ad202",
+    "query": "AI를 분야에서 지능형 빌딩운영시스템 관련 기술을 찾고 있습니다. 공간의 점유 상태와 활동 패턴을 실시간으로 인지하는 AI 기반 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420028759"
+    ],
+    "source_document_id": "ntis-2420028759",
+    "context_term": "AI를",
+    "source_term": "지능형 빌딩운영시스템",
+    "need_statement": "공간의 점유 상태와 활동 패턴을 실시간으로 인지하는 AI 기반 기술이 필요합니다.",
+    "source_group_id": "5a372a7d1930cbba8dc7",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028759",
+        "text": "본 연구의 최종 목표는 다중 데이터와 인공지능(AI)을 활용하여 공간의 점유 상태와 활동 패턴을 실시간으로 인지하고, 이를 기반으로 시설 운영을 자동화하는 지능형 빌딩운영시스템(Intelligent Building Operation System)을 개발·실증하는 것이다.기존 시설관리(Facility Management) 시스템은 에너지·조명·냉난방 등의 설"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-77a011cb2e320b34",
+    "query": "인젝터 분야에서 헬름홀츠 공명기 관련 기술을 찾고 있습니다. 헬름홀츠 공명기를 이용한 인젝터 공급라인의 압력 섭동 진폭 및 위상 계측 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710114908"
+    ],
+    "source_document_id": "ntis-2710114908",
+    "context_term": "인젝터",
+    "source_term": "헬름홀츠 공명기",
+    "need_statement": "헬름홀츠 공명기를 이용한 인젝터 공급라인의 압력 섭동 진폭 및 위상 계측 기술이 필요합니다.",
+    "source_group_id": "37dec41c8abadc4d907d",
+    "science_medium": "국방기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710114908",
+        "text": "본 연구의 최종 목표는 인젝터 공급라인 내 헬름홀츠 공명기 설치를 통한 분무 섭동 저감 특성의 실험적 규명 및 유효 ITF 데이터베이스 구축이다. 항공용 가스터빈 인젝터의 공급라인에 가변 체적(variable cavity) 방식의 헬름홀츠 공명기를 설치하여, 인젝터로 유입되는 압력 섭동이 분무 거동으로 전이되는 메커니즘을 실험적으로 규명하고 이를 원천 차단"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-7b79c54a2b81503c",
+    "query": "뿌리산업 분야에서 설계/해석 관련 기술을 찾고 있습니다. 뿌리산업 제조기업의 설계 및 해석 지원을 위한 데이터 분석 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410015894"
+    ],
+    "source_document_id": "ntis-2410015894",
+    "context_term": "뿌리산업",
+    "source_term": "설계/해석",
+    "need_statement": "뿌리산업 제조기업의 설계 및 해석 지원을 위한 데이터 분석 기능이 필요합니다.",
+    "source_group_id": "57f1559e2f3bb229ac87",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015894",
+        "text": "□ 사업수행 프로세스 ○ 본 사업의 수혜대상을 “뿌리산업 제조기업”, “자동차/국방 등 수요기업”, “산업전환을 희망하는 기업”, “부품을 개발하고 납품을 희망하는 기업” 등으로 분류 ○ 각 기업의 수요를 “설계/해석”, “기술지원”, “평가/분석”, “플랫폼지원”, “네트워킹” 등으로 분류 - (설계/해석) 금형 및 열처리 관련 설계 및 (열, 물성,"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-7cccb34fef06d9d6",
+    "query": "상용수소엔진차량 분야에서 엔진 내구 300시간 관련 기술을 찾고 있습니다. 엔진 내구 300시간(전부하) 조건을 만족하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410019633"
+    ],
+    "source_document_id": "ntis-2410019633",
+    "context_term": "상용수소엔진차량",
+    "source_term": "엔진 내구 300시간",
+    "need_statement": "엔진 내구 300시간(전부하) 조건을 만족하는 기술이 필요합니다.",
+    "source_group_id": "5cc504af860f212e23f1",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019633",
+        "text": "산업용 및 차량용 등 다목적 활용이 가능한 2 리터급 디젤 기반 수소 엔진 개발 및 시제 차량의 개발1. 최대 BMEP 19bar. 엔진 최대 효율 38% 이상, 엔진 출력 110KW이상2. NOx 배출량 규제 수준 만족 (차량 모드 및 산업용 모드)3. 엔진 내구 300시간(전부하)4. 차량 항속 거리 500km 이상"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-7fb96dad9ad93118",
+    "query": "안전하고 분야에서 실시간 위험 감지용 엣지센서 관련 기술을 찾고 있습니다. 중대형 로봇워크셀 실시간 위험 감지용 엣지센서가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410017407"
+    ],
+    "source_document_id": "ntis-2410017407",
+    "context_term": "안전하고",
+    "source_term": "실시간 위험 감지용 엣지센서",
+    "need_statement": "중대형 로봇워크셀 실시간 위험 감지용 엣지센서가 필요합니다.",
+    "source_group_id": "872c5e33a6bfc05f7b61",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2410017407",
+        "text": "[1차년도 개발내용]ㅇ 다중 광복합 센서 기반 인간협업 로봇워크셀 공간 DX* 기반기술개발 * 공간 DX(Digitalization): 관심 공간의 3D 디지털 데이터 구현ㅇ 실시간 센서 데이터 및 공간 데이터 융합 기초기술 개발ㅇ 로봇워크셀 안전 인식 결과에 관해 설명 가능한 XAI 활용 기반기술 개발ㅇ 중대형 로봇워크셀 실시간 위험 감지용 엣지센서"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8059b1c165db1707",
+    "query": "기능성 분야에서 고분자 네트워크 관련 기술을 찾고 있습니다. 열 자극 기반 구동 환경에서 반복 구동 시 안정적인 성능을 확보하기 위한 고분자 네트워크 설계 전략이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410019072"
+    ],
+    "source_document_id": "ntis-2410019072",
+    "context_term": "기능성",
+    "source_term": "고분자 네트워크",
+    "need_statement": "열 자극 기반 구동 환경에서 반복 구동 시 안정적인 성능을 확보하기 위한 고분자 네트워크 설계 전략이 필요합니다.",
+    "source_group_id": "70d14ca0d47b45283bec",
+    "science_medium": "고분자재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019072",
+        "text": "(1) 소재: 전열 구동 인공근육에 적합한 고분자 매트릭스 후보 소재군을 도출하고, 열 자극 기반 구동 환경에서의 점탄성 및 기계적 물성을 평가함. 또한 반복 구동 환경에서 안정적인 성능을 확보하기 위한 고분자 네트워크 설계 전략을 수립함.(2) 복합화 및 구동: 나노필러 고분자 복합화를 통해 인공근육 소재를 설계하고, 전열 기반 인공근육 구동 구조 및 모"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-81592a6e7d6ff174",
+    "query": "이기종 분야에서 미들웨어 개발 관련 기술을 찾고 있습니다. 이기종 데이터를 실시간으로 연계·통합하는 미들웨어가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410019700"
+    ],
+    "source_document_id": "ntis-2410019700",
+    "context_term": "이기종",
+    "source_term": "미들웨어 개발",
+    "need_statement": "이기종 데이터를 실시간으로 연계·통합하는 미들웨어가 필요합니다.",
+    "source_group_id": "44ad49235391f2be2a44",
+    "science_medium": "조선/해양시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019700",
+        "text": "① (항해정보 연계 및 통합 수집 미들웨어 개발) GIS, AIS, 레이더, ECDIS, 기관정보 등 이기종 데이터를 실시간으로 연계?통합 (세부과제2 연계)② (통합 항해 디스플레이 플랫폼 개발) 항해자가 단일 화면에서 핵심 정보를 직관적으로 확인할 수 있는 표시체계구현③ (항해안전 지원 알고리즘 개발) 충돌위험, 항로이탈, 얕은 수심 접근 등 위험상황을"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-83488c364e6206e3",
+    "query": "멀티모달 분야에서 MAAL-AWA LLM모델 관련 기술을 찾고 있습니다. 산업안전 도메인 데이터 수집 및 정제를 위한 고도화된 AI 모델이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420033053"
+    ],
+    "source_document_id": "ntis-2420033053",
+    "context_term": "멀티모달",
+    "source_term": "MAAL-AWA LLM모델",
+    "need_statement": "산업안전 도메인 데이터 수집 및 정제를 위한 고도화된 AI 모델이 필요합니다.",
+    "source_group_id": "82d526e9459fa8b9c005",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033053",
+        "text": "2. 기술개발 방법가. 도메인 특화 핵심 AI 모델 개발 방법● (LLM) 기존 안전관리 문서지원에 특화시킨 MAAL-AWA LLM모델을 고도화 하여 산업안전 도메인 데이터(TBM, 작업계획서, 사고사례 등) 수집 및 정제, RAG구조 적용, 작업계획서 입력 > 위험요소 도출 > 대응 가이드 생성 파이프라인을 구현함● (VLM) 기존 안전모 미착용 등에 적"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-842d60ce95d689a1",
+    "query": "자동화를 분야에서 관리 체계 관련 기술을 찾고 있습니다. 단위 모듈 간 통신 및 동기화 가능한 관리 체계 구축이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420026824"
+    ],
+    "source_document_id": "ntis-2420026824",
+    "context_term": "자동화를",
+    "source_term": "관리 체계",
+    "need_statement": "단위 모듈 간 통신 및 동기화 가능한 관리 체계 구축이 필요합니다.",
+    "source_group_id": "d0a5fc1c71cfbdba160b",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026824",
+        "text": "□ 자동 테이핑이 가능한 테이핑헤드 기반 협동로봇을 이용한 스마트 테이핑 시스템 개발 및 현장 적용 ㅇ (협동로봇) 스폰지테이프 자동 투입 및 부착을 위한 테이핑헤드 개발 ㅇ (MES) 취급, 이송, 작업 등 단위 공정별 생산관리 시스템 개발 ㅇ (산업용 통신) CCLink를 이용해 단위 모듈 간 통신 및 동기화 가능한 관리 체계 구축 ㅇ (HMI) 작업"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-864f049b9242bd41",
+    "query": "초음파 분야에서 초음파 모듈 설계 및 사양 정의 관련 기술을 찾고 있습니다. 출력, 주파수, 변환 효율, 진동 강도 등 주요 사양을 설정하는 초음파 모듈 설계 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410018368"
+    ],
+    "source_document_id": "ntis-2410018368",
+    "context_term": "초음파",
+    "source_term": "초음파 모듈 설계 및 사양 정의",
+    "need_statement": "출력, 주파수, 변환 효율, 진동 강도 등 주요 사양을 설정하는 초음파 모듈 설계 기술이 필요합니다.",
+    "source_group_id": "d795aa88659b61df1241",
+    "science_medium": "도로교통기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410018368",
+        "text": "- 소노시스(주관기관)· 초음파 모듈 설계 및 사양 정의: 출력, 주파수, 변환 효율, 진동 강도 등 주요 사양을 설정하고, 시장·경쟁 기술 분석을 통해 차별화된 요구 조건을 도출· 초음파 웰딩 스테이션 설계 및 해석: 35kHz/1000W급 저진폭·고출력 초음파 유닛(진동자, 부스터, 공구혼, 발진기)을 설계하고, ATILA 등 FEM 해석으로 임피던스,"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8654528d80350343",
+    "query": "데이터플랫폼 분야에서 어선안전 설계 데이터플랫폼 관련 기술을 찾고 있습니다. 어선의 요소별 표준모듈을 조합하여 설계 및 검증할 수 있는 데이터플랫폼이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2520000856"
+    ],
+    "source_document_id": "ntis-2520000856",
+    "context_term": "데이터플랫폼",
+    "source_term": "어선안전 설계 데이터플랫폼",
+    "need_statement": "어선의 요소별 표준모듈을 조합하여 설계 및 검증할 수 있는 데이터플랫폼이 필요합니다.",
+    "source_group_id": "6faf1679430b20148fa1",
+    "science_medium": "조선/해양시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2520000856",
+        "text": "ㅇ연구 최종 목표-안전한 고효율 어선을 낮은 비용으로 건조 할 수 있도록 안전을 보장할 수 있는 어선의 요소별 표준모듈(선형, 추진기, 어로시스템 등)을 개발-인공지능 기술을 통해 모듈을 조합하여 다양한 형태로 설계 및 검증할 수 있는 어선안전 설계 데이터플랫폼 구축 및 보급ㅇ연차별 추진 목표- (1차년) AI기반 어선안전 설계 데이터플랫폼 개발을 위한 현"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-872118679caadfbb",
+    "query": "헬름홀츠 분야에서 음향 임피던스 관련 기술을 찾고 있습니다. 인젝터 공급라인에 설치되는 헬름홀츠 공명기의 음향 임피던스 특성을 고려한 설계 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710114908"
+    ],
+    "source_document_id": "ntis-2710114908",
+    "context_term": "헬름홀츠",
+    "source_term": "음향 임피던스",
+    "need_statement": "인젝터 공급라인에 설치되는 헬름홀츠 공명기의 음향 임피던스 특성을 고려한 설계 기술이 필요합니다.",
+    "source_group_id": "37dec41c8abadc4d907d",
+    "science_medium": "국방기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710114908",
+        "text": "본 연구는 1년 단기 집중 검증 연구로서 다음 4개 세부 내용으로 구성된다.[공급라인 헬름홀츠 공명기 적용 및 압력 감쇠 특성 계측] 목표 주파수 대역에 동조된 공명기를 인젝터 공급라인에 설치하고, 음향 가진 장치로 단일 주파수 가진을 인가하여 공명기 설치 전후의 압력 섭동 진폭·위상을 다채널 동압센서로 계측한다. 전달 행렬법 등으로 공명기의 음향 임피던스"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8845d59eb5b4e1ce",
+    "query": "AMR 분야에서 제품형 엣지 SDK 관련 기술을 찾고 있습니다. 저조도, 역광, 그림자, 혼잡 환경에서의 AMR 충돌 위험 예측 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710109138"
+    ],
+    "source_document_id": "ntis-2710109138",
+    "context_term": "AMR",
+    "source_term": "제품형 엣지 SDK",
+    "need_statement": "저조도, 역광, 그림자, 혼잡 환경에서의 AMR 충돌 위험 예측 기능이 필요합니다.",
+    "source_group_id": "24fb48016605a70ddd58",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2710109138",
+        "text": "2단계의 최종목표는 1단계에서 확립된 기술 기준선을 바탕으로, 난환경 대응 성능과 현장 적용성을 강화한 제품형 엣지 SDK를 완성하고 실증까지 달성하는 것이다. 본 단계에서는 기술 검증을 넘어, 실제 도입·운영이 가능한 상용 수준의 소프트웨어 패키지 완성을 목표로 한다.이를 위해 저조도, 역광, 그림자, 혼잡 환경 등 다양한 난환경에서도 성능 편차가 최소화"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-89705da32120bec1",
+    "query": "인공지능 분야에서 딥러닝 기반의 영상분석 알고리즘 관련 기술을 찾고 있습니다. 딥러닝 기반의 영상분석 알고리즘 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2340054816"
+    ],
+    "source_document_id": "ntis-2340054816",
+    "context_term": "인공지능",
+    "source_term": "딥러닝 기반의 영상분석 알고리즘",
+    "need_statement": "딥러닝 기반의 영상분석 알고리즘 개발이 필요합니다.",
+    "source_group_id": "8e6e86a957074cdb7e26",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340054816",
+        "text": "1. 체강 삽입형 초음파 탐촉자의 안전한 조작과 정확한 스캔을 위한 고성능 감응형 로봇 개발2. 체강 삽입형 탐촉자 원격조작용 6-DOF 힘 피드백이 가능한 마스터 디바이스 개발3. 전립선 초음파 영상 판독 보조를 위한 딥러닝 기반의 영상분석 알고리즘 개발 4. 숙련된 전문의 수준으로 초음파 영상을 자동 획득할 수 있는 로봇-인공지능 통합 제어시스템 개발"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8b0c638df6d3027a",
+    "query": "성능테스트 분야에서 간이 테스트 베드의 설계 및 제작 관련 기술을 찾고 있습니다. 모터 성능 및 NVH 검사를 위한 간이 테스트 베드의 설계 및 제작이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420030614"
+    ],
+    "source_document_id": "ntis-2420030614",
+    "context_term": "성능테스트",
+    "source_term": "간이 테스트 베드의 설계 및 제작",
+    "need_statement": "모터 성능 및 NVH 검사를 위한 간이 테스트 베드의 설계 및 제작이 필요합니다.",
+    "source_group_id": "8a1a43f469bb9890a58e",
+    "science_medium": "측정표준/시험평가기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030614",
+        "text": "□ 간이 테스트 베드의 설계 및 제작□ 테스트 베드를 이용한 각 검사 요소별 측정 방법 및 솔루션의 개발□ 모터 성능 및 NVH 검사 개발□ 시스템 전체 프레임 구조 최적화□ 시스템 전체 프레임 구조 및 강도 해석□ 시스템 구성 부품의 진동해석을 통한 구조적 기술검증□ EOL 시스템 동작상태 및 정밀제어방식 연구 ο 기구부와 PC/PLC의 자동 동작 상태"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8bae70e76ea5aed1",
+    "query": "D프린팅 분야에서 최소 검증 패키지 관련 기술을 찾고 있습니다. 필름공급형 광중합 세라믹 3D프린팅 기술의 시장 검증을 위한 최소 검증 패키지가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710107637"
+    ],
+    "source_document_id": "ntis-2710107637",
+    "context_term": "D프린팅",
+    "source_term": "최소 검증 패키지",
+    "need_statement": "필름공급형 광중합 세라믹 3D프린팅 기술의 시장 검증을 위한 최소 검증 패키지가 필요합니다.",
+    "source_group_id": "95e558e944548f54c30e",
+    "science_medium": "세라믹재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2710107637",
+        "text": "1단계 연구개발은 “IP 고도화·기획 → 기술마케팅·중개 → 기술이전 체결”을 따르는 R&BD 체계로 추진한다. 민간 사업화전문기관과 함께 특허·기술 DB 정리, 경쟁/대체기술·FTO 분석, 공백기술 도출을 통해 핵심·요소특허 포트폴리오와 권리화 로드맵을 확정한다. 동시에 최소 검증 패키지를 구축하고, 수요기업을 유형별로 세분해 SMK/BMK·데모·PoC"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8beada433e195efc",
+    "query": "고장진단 분야에서 물리법칙 결합AI 고장 예측모델 관련 기술을 찾고 있습니다. 온디바이스 AI 기반의 물리법칙 결합 AI 고장 예측모델 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420034196"
+    ],
+    "source_document_id": "ntis-2420034196",
+    "context_term": "고장진단",
+    "source_term": "물리법칙 결합AI 고장 예측모델",
+    "need_statement": "온디바이스 AI 기반의 물리법칙 결합 AI 고장 예측모델 개발이 필요합니다.",
+    "source_group_id": "762d6904d03f32388900",
+    "science_medium": "재난안전기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420034196",
+        "text": "온디바이스AI기반 실시간 고장진단·사고예방·운영최적화 통합시스템(SafeGuard AI Pro) 개발1) 시뮬레이션 기반 AI 학습 데이터 증강 시스템 개발 : 현재수준은 실장비 데이터 320시간(부족) 인데, 개발목표는 합성 데이터 포함 총 5,000시간 수준 학습 달성(KTC 인증), 2) 물리법칙 결합AI 고장 예측모델(Physics- Informed"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8c0dd7fb139fa7d9",
+    "query": "ton급 분야에서 5ton급 관련 기술을 찾고 있습니다. SeaState 5 조건에서의 성능시험을 위한 5ton급 화물승강기 설계 기준이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420030656"
+    ],
+    "source_document_id": "ntis-2420030656",
+    "context_term": "ton급",
+    "source_term": "5ton급",
+    "need_statement": "SeaState 5 조건에서의 성능시험을 위한 5ton급 화물승강기 설계 기준이 필요합니다.",
+    "source_group_id": "6ed674599723d8ad66ca",
+    "science_medium": "조선/해양시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030656",
+        "text": "1차년- 개념설계 및 사양선정- IP-R&D 사업화 기획(IP-R&D 외부전문가 협업검토)- Cantilever 방식 화물용승강기 관련 특허 출원1건- 개념설계 도면 작성 및 BoM 작성2차년- 주요부품 및 안전장치 설계- 구조적 간섭여부 확인 및 구조해석을 위한 3D 모델링- 5ton급 실린더 설계/제작 및 성능시험- SeaState 5 조건의 동적구조해"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8c152efcdc8e7aca",
+    "query": "공간지능 분야에서 5D 월드 모델 관련 기술을 찾고 있습니다. 제조 현장에서 로봇이 물리특성 데이터를 자율적으로 취득하고 이를 5D 월드 모델로 통합하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410019989"
+    ],
+    "source_document_id": "ntis-2410019989",
+    "context_term": "공간지능",
+    "source_term": "5D 월드 모델",
+    "need_statement": "제조 현장에서 로봇이 물리특성 데이터를 자율적으로 취득하고 이를 5D 월드 모델로 통합하는 기술이 필요합니다.",
+    "source_group_id": "8e3257f783a9635a6e2a",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019989",
+        "text": "본 과제에서는 제조 현장에서 로봇이 스스로 공간·객체·시간 변화·물리특성 데이터를 취득하고, 이를 5D 월드 모델로 통합·갱신하여 자율 이동, 능동 탐색, 물리데이터 취득 및 전신제어에 활용 가능한 물리정보 멀티모달 공간지능 기술을 개발하는 것을 목표로 함. - 본 과제에서 5D 월드 모델은 3차원 기하 구조, 시간 변화, 객체·공간 관계, 물리특성, 관측"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8cde6913db6aab5d",
+    "query": "분산PV 분야에서 데이터 통합 관련 기술을 찾고 있습니다. 태양광 물리적 설비와 디지털 진단 데이터를 연결하고 정합하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420033823"
+    ],
+    "source_document_id": "ntis-2420033823",
+    "context_term": "분산PV",
+    "source_term": "데이터 통합",
+    "need_statement": "태양광 물리적 설비와 디지털 진단 데이터를 연결하고 정합하는 기술이 필요합니다.",
+    "source_group_id": "a1892f28552e785949c3",
+    "science_medium": "신재생에너지",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033823",
+        "text": "○ CPS 연계 PV 통합 AI 진단·분석 표준모델 개발 - (데이터 통합)태양광 물리적 설비와 디지털 진단 데이터(IR · EL · RGB, IV · SCADA) 연결· 정합 - (AI 예측기반 운영 최적화)설계 · 운영 · 환경 딥러닝 데이터 학습으로 출력 손실 및 잔존수명 예측 - (PV 모듈단위 모니터링)셀 · 모듈 · 스트링의 핫스팟 · PID ·"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8d4c8ccb7d21da50",
+    "query": "HW/SW 분야에서 유연한 프레임워크 관련 기술을 찾고 있습니다. HW/SW를 통합 관리할 수 있는 유연한 프레임워크 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2340053929"
+    ],
+    "source_document_id": "ntis-2340053929",
+    "context_term": "HW/SW",
+    "source_term": "유연한 프레임워크",
+    "need_statement": "HW/SW를 통합 관리할 수 있는 유연한 프레임워크 개발이 필요합니다.",
+    "source_group_id": "8a72df3a258cd185beb3",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2340053929",
+        "text": "본 연구의 최종목표는 하드웨어/소프트웨어를 통합 모니터링하여 운용 중 발생할 수 있는 결함을 탐지하기 위한 디지털 트윈 프레임워크를 개발하여 무인항공체의 가용성 및 안전성을 향상시키는 것임.○ 결함 탐지를 위한 디지털 트윈 프레임워크는 개방형으로 개발할 예정임. - 호환성: 하드웨어/소프트웨어를 통합 관리할 수 있는 유연한 프레임워크 - 확장성: 다양한"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8d53fd32a9184f10",
+    "query": "전장용 분야에서 발광 효율(EQE) 관련 기술을 찾고 있습니다. 자동차 전장 환경에서 발광 효율(EQE), 색온도 안정성, 장기 신뢰성을 확보하는 연구가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420026999"
+    ],
+    "source_document_id": "ntis-2420026999",
+    "context_term": "전장용",
+    "source_term": "발광 효율(EQE)",
+    "need_statement": "자동차 전장 환경에서 발광 효율(EQE), 색온도 안정성, 장기 신뢰성을 확보하는 연구가 필요합니다.",
+    "source_group_id": "5f3116ca7b6e4180ff9b",
+    "science_medium": "광학·양자전자학",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026999",
+        "text": "본 연구는 자동차 전장 환경에서 요구되는 발광 효율(EQE), 색온도 안정성, 장기 신뢰성(LT50) 확보를 위해 QD 합성과 디바이스 설계 연구를 통합적으로 수행하고자 함. 연구는 ▲소재 개발(1차년도) ▲소재-디바이스 연계(2차년도) ▲디바이스 고도화(3차년도) ▲양산·표준화(4차년도) 순으로 진행하고자 함. 합성 연구에서는 모플랫이 보유한 자동차 전장"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8f4b887cd66b3244",
+    "query": "다이나모용 분야에서 대용량 컨버터 관련 기술을 찾고 있습니다. 고성능 다이나모 시스템용 배터리 에뮬레이터 개발을 위한 고속/정밀 대용량 컨버터 설계 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410018272"
+    ],
+    "source_document_id": "ntis-2410018272",
+    "context_term": "다이나모용",
+    "source_term": "대용량 컨버터",
+    "need_statement": "고성능 다이나모 시스템용 배터리 에뮬레이터 개발을 위한 고속/정밀 대용량 컨버터 설계 기술이 필요합니다.",
+    "source_group_id": "5d9ee31790a9cd240d8e",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410018272",
+        "text": "o 고응답/고정밀 특성을 갖는 대용량 컨버터와 차량용 배터리 모사 알고리즘 개발을 통한 고성능 다이나모 시스템용 배터리 에뮬레이터 개발 - 빠른 동특성을 갖는 배터리 에뮬레이터의 안정적 전원 공급을 위한 고속/정밀 대용량 컨버터의 설계 기술과 계통연계 양방향 전력제어 알고리즘 개발 - 차세대 전기차용 인버터에 적용가능한 넓은 출력 범위를 갖는 양방향 컨버터"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-8f702c0792968dd4",
+    "query": "세부2 분야에서 20m/s 초고속 기류 관련 기술을 찾고 있습니다. 20m/s의 초고속 기류에 대응할 수 있는 검사 기술이 요구됩니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2480001881"
+    ],
+    "source_document_id": "ntis-2480001881",
+    "context_term": "세부2",
+    "source_term": "20m/s 초고속 기류",
+    "need_statement": "20m/s의 초고속 기류에 대응할 수 있는 검사 기술이 요구됩니다.",
+    "source_group_id": "3e7dda2ccfda8d4c20ed",
+    "science_medium": "재난안전기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2480001881",
+        "text": "[최종목표]ㅇ 10MPa 고압 수소 환경 및 20m/s 초고속 기류 대응 '초고해상도 하이브리드 자가진단(ILI) 플랫폼'상용화 및 수소 수용성(H2-Readiness) 국가 안전 표준(KGS Code) 확립ㅇ 기술적 지향점: '결함 탐지'를 넘어선 '재질 무결성(Material Integrity)'보증 체계 구축[최종 연구개발결과물]ㅇ [통합 탐상 및 분"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-9083e6dcd36c5702",
+    "query": "공작기계 분야에서 공압유니트 관련 기술을 찾고 있습니다. 압축공기 정밀 공급제어용 공압유니트 개발이 필요한 현장 문제를 해결해야 합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410016980"
+    ],
+    "source_document_id": "ntis-2410016980",
+    "context_term": "공작기계",
+    "source_term": "공압유니트",
+    "need_statement": "압축공기 정밀 공급제어용 공압유니트 개발이 필요한 현장 문제를 해결해야 합니다.",
+    "source_group_id": "439126ba01bfe14b08d0",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410016980",
+        "text": "[1차년도 개발내용]ㅇ 압축공기 정밀 공급제어용 공압유니트 개발 및 장비구조 개선설계ㅇ 소비에너지 저감 공작기계 시작품 설계 및 에너지 관리/모니터링 App 설계ㅇ 에너지 저감형 고성능 쿨런트/유압 펌프 제어시스템 개념설계ㅇ 에너지 저감형 고성능 쿨런트, 유압용 제어기 인터페이스 설계ㅇ 장비 모니터링/제어용 Energy Box 설계 및 프로토타입 개발ㅇ 실"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-91333313ed8ada0c",
+    "query": "통합시스템 분야에서 AI 비행학습 관련 기술을 찾고 있습니다. 복합임무 자율 수행을 위한 AI 비행학습 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420028845"
+    ],
+    "source_document_id": "ntis-2420028845",
+    "context_term": "통합시스템",
+    "source_term": "AI 비행학습",
+    "need_statement": "복합임무 자율 수행을 위한 AI 비행학습 기능이 필요합니다.",
+    "source_group_id": "da74aa5146592709d09a",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028845",
+        "text": "최종목표내용 - 국내 최초 AI 기반 450km/h급 고속 제트무인기 통합시스템 개발 - 국방 AI 분야 선도기업인 Anduril사의 AI Pilot 소프트웨어를 탑재, AI 비행학습, 유무인 복합 선제공격·정찰·전자전 등 전시 복합임무 자율 수행 - 45kg급 MTOW, 20분 이상 체공, 15km 작전반경을 만족하는 고기동·고효율 플랫폼 실현"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-91e439af92150f56",
+    "query": "활용한 분야에서 AI 비전 기술 관련 기술을 찾고 있습니다. AI 비전 기술을 활용한 유압식 툴 결합 검수 장치가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420031338"
+    ],
+    "source_document_id": "ntis-2420031338",
+    "context_term": "활용한",
+    "source_term": "AI 비전 기술",
+    "need_statement": "AI 비전 기술을 활용한 유압식 툴 결합 검수 장치가 필요합니다.",
+    "source_group_id": "eb394146e3805787673e",
+    "science_medium": "산업/일반기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031338",
+        "text": "? 고정밀 유압식 툴 홀더 장비 자동화를 위한 장비 개발(국산화) ? 로봇 자동화와 경제성 확보를 위한 직교 로봇 개발 및 적용 ? AI 비전 기술을 활용 유압식 툴 결합 검수 장치 개발 및 적용 ? 고정밀 유압식 툴 홀더 자동화 시스템 개발 및 사업화"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-923dc11eab8541c5",
+    "query": "체적형 분야에서 UV 체적 경화 전략 관련 기술을 찾고 있습니다. 생체 적합 소재를 활용한 UV 체적 경화 전략이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710098943"
+    ],
+    "source_document_id": "ntis-2710098943",
+    "context_term": "체적형",
+    "source_term": "UV 체적 경화 전략",
+    "need_statement": "생체 적합 소재를 활용한 UV 체적 경화 전략이 필요합니다.",
+    "source_group_id": "468187bc63d822b25a6b",
+    "science_medium": "기타 기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710098943",
+        "text": "연구 내용 및 범위○ (체적 제조 기반 다중 기능성 소재 하이브리드 쾌속 3D 프린팅 시스템 개발) ▶ 생체 적합 소재 UV 체적 경화 전략, 적층 베드 설계, 직접 주사 Hybrid 적층 시스템 개발을 비롯한 일체형 체적 제조 기반 디지털 혈관 쾌속 3D 프린팅 시스템 연구 ▶ 맞춤형 혈관 3D 형상 프레임을 체적 인쇄 방식으로 일정 부분 쾌속 제조 /"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-925c45c3a2e06d6e",
+    "query": "열에너지 분야에서 수평열성층 ITP Battery 관련 기술을 찾고 있습니다. 200℃까지 저장 가능한 열배터리 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420029265"
+    ],
+    "source_document_id": "ntis-2420029265",
+    "context_term": "열에너지",
+    "source_term": "수평열성층 ITP Battery",
+    "need_statement": "200℃까지 저장 가능한 열배터리 기술이 필요합니다.",
+    "source_group_id": "d90a632e782ed644b572",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420029265",
+        "text": "연구개발은 크게 네 단계로 진행된다.첫째, 폐열·태양열 회수 기반 냉방시스템 개발이다. 공장 폐열 및 태양열을 200℃까지 저장 가능한 수평열성층 ITP Battery에 축열하고, 이를 흡수식 냉동기와 연계하여 10℃ 냉열을 생산한다. 이는 전력·CO₂ 배출이 거의 없는 친환경 냉방 솔루션으로, 열사용 공장 및 중동·열대지방 냉방 시장을 타겟으로 한다.둘째"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-937780b726fb8f60",
+    "query": "모빌리티를 분야에서 메모리 증강 공간지능 관련 기술을 찾고 있습니다. 다중 자율 모빌리티 환경에서 인간의 암묵적 지시를 이해하고 상호작용하는 메모리 증강 공간지능 통합 시스템 구현이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710105786"
+    ],
+    "source_document_id": "ntis-2710105786",
+    "context_term": "모빌리티를",
+    "source_term": "메모리 증강 공간지능",
+    "need_statement": "다중 자율 모빌리티 환경에서 인간의 암묵적 지시를 이해하고 상호작용하는 메모리 증강 공간지능 통합 시스템 구현이 필요합니다.",
+    "source_group_id": "9e83d53a74498197d8c4",
+    "science_medium": "무기센서 및 제어",
+    "evidence": [
+      {
+        "document_id": "ntis-2710105786",
+        "text": "- 다중 자율 모빌리티 환경에서 인간의 암묵적 지시(implicit instruction)를 이해하고 상호작용으로 불확실성을 줄이며 목적지/경로/보조행동을 결정하는 메모리 증강 공간지능(Memory-Augmented Spatial Intelligence) 통합 시스템 구현- 고정 목표, 단일 경로 출력 중심의 기존 방식에서 벗어나, 암묵적 지시가 포함하는"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-94a57c74abb8fb2d",
+    "query": "평가시스템 분야에서 EOL 성능특성 평가시스템 관련 기술을 찾고 있습니다. 모터 및 드라이브 설계, 개발 및 제어에 대한 새로운 접근 방식을 조사할 수 있는 EOL 성능특성 평가시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420030614"
+    ],
+    "source_document_id": "ntis-2420030614",
+    "context_term": "평가시스템",
+    "source_term": "EOL 성능특성 평가시스템",
+    "need_statement": "모터 및 드라이브 설계, 개발 및 제어에 대한 새로운 접근 방식을 조사할 수 있는 EOL 성능특성 평가시스템이 필요합니다.",
+    "source_group_id": "8a1a43f469bb9890a58e",
+    "science_medium": "측정표준/시험평가기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030614",
+        "text": "□ EOL 성능특성 평가시스템 ο 고객사에서 요규하는 성능특성에 대해 모든 평가수행이 가능한 시스템 ο 모터 및 드라이브 설계, 개발 및 제어에 대한 새로운 접근 방식에 대한 조사를 가능하게 함 ο 동력계에는 부하 모터, 배터리 시뮬레이터 및 전력 측정 모듈이 포함 ο 모든 데이터 채널을 동기화하여 하이브리드 모터, 컨트롤러 및 기타 이러한 장치의 기능을"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-9519c843df66ae04",
+    "query": "CPS 분야에서 AI 예측기반 운영 최적화 관련 기술을 찾고 있습니다. 설계, 운영, 환경 딥러닝 데이터 학습을 통한 출력 손실 및 잔존수명 예측 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420033823"
+    ],
+    "source_document_id": "ntis-2420033823",
+    "context_term": "CPS",
+    "source_term": "AI 예측기반 운영 최적화",
+    "need_statement": "설계, 운영, 환경 딥러닝 데이터 학습을 통한 출력 손실 및 잔존수명 예측 기술이 필요합니다.",
+    "source_group_id": "a1892f28552e785949c3",
+    "science_medium": "신재생에너지",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033823",
+        "text": "○ CPS 연계 PV 통합 AI 진단·분석 표준모델 개발 - (데이터 통합)태양광 물리적 설비와 디지털 진단 데이터(IR · EL · RGB, IV · SCADA) 연결· 정합 - (AI 예측기반 운영 최적화)설계 · 운영 · 환경 딥러닝 데이터 학습으로 출력 손실 및 잔존수명 예측 - (PV 모듈단위 모니터링)셀 · 모듈 · 스트링의 핫스팟 · PID ·"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-96860e282bd2ae5f",
+    "query": "환경에서의 분야에서 구조 배터리 시스템 실현 관련 기술을 찾고 있습니다. 극한 우주 환경에서 안정적으로 작동 가능한 구조 배터리 시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710101681"
+    ],
+    "source_document_id": "ntis-2710101681",
+    "context_term": "환경에서의",
+    "source_term": "구조 배터리 시스템 실현",
+    "need_statement": "극한 우주 환경에서 안정적으로 작동 가능한 구조 배터리 시스템이 필요합니다.",
+    "source_group_id": "f8fd7c5bfcbf676ac0af",
+    "science_medium": "우주시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710101681",
+        "text": "1. 다기능 구조 배터리 개발- 오리가미 코어와 CFRP 기반 구조 배터리를 결합하여 경량화 및 우주 방사선 차폐 성능을 동시에 제공하는 다기능 구조 설계 구현.- 극한 우주 환경(초고진공, 초저온 및 고온 조건)에서 안정적으로 작동 가능한 구조 배터리 시스템 실현.2. 1U 큐브위성 적용- 구조 배터리-오리가미 코어 샌드위치 구조를 큐브위성(1U) 크기에"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-96c03b75068f50dd",
+    "query": "Etching 분야에서 Circular Slot 관련 기술을 찾고 있습니다. CVD-SiC Circular Slot의 정밀 가공 기술이 필요하며, 이는 Etching 공정의 신뢰성을 높이는 데 기여해야 합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420028241"
+    ],
+    "source_document_id": "ntis-2420028241",
+    "context_term": "Etching",
+    "source_term": "Circular Slot",
+    "need_statement": "CVD-SiC Circular Slot의 정밀 가공 기술이 필요하며, 이는 Etching 공정의 신뢰성을 높이는 데 기여해야 합니다.",
+    "source_group_id": "c2c378a0d5021da9e0a8",
+    "science_medium": "반도체장비",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028241",
+        "text": "(1) 주관기관분리형 Curved Etching Plate 설계 및 CVD-SiC Slope Drilling 기술 확보CVD-SiC 곡면 형상 가공 및 CVD SiC+Si 이종소재 Stack Drilling 기술 확보Circular Slot Ring 및 2분할 결합 Bolting 구조 설계CVD-SiC Circular Slot 정밀 가공 기술 확보(2)공동"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-96d05d587b9f30d9",
+    "query": "연구교육과정 분야에서 기술 수요의 다양성 확보 관련 기술을 찾고 있습니다. 15개 이상의 관련 분야 참여기업을 통해 기술 수요의 다양성을 확보할 수 있는 인력양성 체계 구축이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710093233"
+    ],
+    "source_document_id": "ntis-2710093233",
+    "context_term": "연구교육과정",
+    "source_term": "기술 수요의 다양성 확보",
+    "need_statement": "15개 이상의 관련 분야 참여기업을 통해 기술 수요의 다양성을 확보할 수 있는 인력양성 체계 구축이 필요합니다.",
+    "source_group_id": "96ef55477d8ec7b15ea1",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2710093233",
+        "text": "에너지, 환경 산업으로 참여기업 확대 및 실전문제 발굴 강화 - [실전문제] 매년 5건 이상의 실전문제 발굴 및 PBL 교육 수행 - [참여기업] 15개 이상의 관련분야 참여기업을 통해 기술 수요의 다양성 확보 AI+X 전문 대학원 브랜드화로 지속적 인력양성 체계 구축 - [수혜인원] 지속적으로 매년 15명 이상의 참여 대학원생 유지 - [참여기관] 인천대"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-97ddd54dc9858c9b",
+    "query": "제트무인기 분야에서 MTOW 45kg급 관련 기술을 찾고 있습니다. MTOW 45kg, 20분 이상 체공을 만족하는 고기동 플랫폼 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420028845"
+    ],
+    "source_document_id": "ntis-2420028845",
+    "context_term": "제트무인기",
+    "source_term": "MTOW 45kg급",
+    "need_statement": "MTOW 45kg, 20분 이상 체공을 만족하는 고기동 플랫폼 개발이 필요합니다.",
+    "source_group_id": "da74aa5146592709d09a",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028845",
+        "text": "연구개발내용 - AI 기반 제트무인기 개발 : MTOW 45kg급, 26kgf급 터보제트 엔진 최적 통합, 공력 최적화(TNT형 주익+T-테일) 설계로 450km/h 이상 고속·고기동 비행 달성, 압축튜브형 연료탱크 적용, 20분 이상 체공 확보 - AI 통합 자"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-9a2a584040f5685a",
+    "query": "FMCW 분야에서 IEC63551-7 관련 기술을 찾고 있습니다. FMCW LiDAR의 성능 평가 시 IEC 표준에 따른 절차 준수가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410016200"
+    ],
+    "source_document_id": "ntis-2410016200",
+    "context_term": "FMCW",
+    "source_term": "IEC63551-7",
+    "need_statement": "FMCW LiDAR의 성능 평가 시 IEC 표준에 따른 절차 준수가 필요합니다.",
+    "source_group_id": "222793630709d70654c1",
+    "science_medium": "측정표준/시험평가기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410016200",
+        "text": "● IEC TC47에서 IS 1건, PWI 2건 달성1. IS 달성 목표- IEC63551-7 Detection devices for autonomous vehicle ? Part 7. Testing methods of detection performance for FMCW LiDAR2. PWI 달성 목표- IEC63551-8 Detection device"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-9edcc14d4fe0dd66",
+    "query": "액체수소 분야에서 지속성, 재현성, 안전성 검증 관련 기술을 찾고 있습니다. 액체수소 연료탱크의 진동 및 단열 성능 검증 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410019079"
+    ],
+    "source_document_id": "ntis-2410019079",
+    "context_term": "액체수소",
+    "source_term": "지속성, 재현성, 안전성 검증",
+    "need_statement": "액체수소 연료탱크의 진동 및 단열 성능 검증 기술이 필요합니다.",
+    "source_group_id": "5f87a79526ec81975bfd",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019079",
+        "text": "[주관연구개발기관(티엠씨)]o Package Ass'y 대상 MAWP, 단열, 진동 등이 고려된 지속성, 재현성, 안전성 검증ㆍ구성품 결합부 탈락, 용접부 등의 파손으로 인한 Leak 그리고 진공도 저하로 단열성능 감소 등 관련하여 선행 개발 내용을 통한 문제점 사전분석내용 및 同 사업을 통한 개발내용을 접목하여 Troubleshooting Process"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-a04fd48cc842d5dc",
+    "query": "양자자기력계 분야에서 소형 자기장 센싱 모듈 관련 기술을 찾고 있습니다. 다이아몬드 NV 센터 기반 소형 자기장 센싱 모듈 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710107329"
+    ],
+    "source_document_id": "ntis-2710107329",
+    "context_term": "양자자기력계",
+    "source_term": "소형 자기장 센싱 모듈",
+    "need_statement": "다이아몬드 NV 센터 기반 소형 자기장 센싱 모듈 개발이 필요합니다.",
+    "source_group_id": "f2bb2d858f6466da51af",
+    "science_medium": "측정표준/시험평가기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2710107329",
+        "text": "■ 다이아몬드 NV 센터 기반 소형 자기장 센싱 모듈 개발■ 계측 제어 통신 회로 통합 컨트롤 모듈 개발■ 3축 헬름홀츠 코일 기반 물성 정밀 분석 장비 개발■ 금속 3D 프린터 In-line 자기장 검사 활용"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-a07b8a57548913a1",
+    "query": "공간지능 분야에서 운영 알고리즘 개발 관련 기술을 찾고 있습니다. 이기종 센서·플랫폼 간 지도 스케일·좌표계 불일치 문제를 해결하기 위한 운영 알고리즘 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710105786"
+    ],
+    "source_document_id": "ntis-2710105786",
+    "context_term": "공간지능",
+    "source_term": "운영 알고리즘 개발",
+    "need_statement": "이기종 센서·플랫폼 간 지도 스케일·좌표계 불일치 문제를 해결하기 위한 운영 알고리즘 개발이 필요합니다.",
+    "source_group_id": "9e83d53a74498197d8c4",
+    "science_medium": "무기센서 및 제어",
+    "evidence": [
+      {
+        "document_id": "ntis-2710105786",
+        "text": "핵심요소1: 스케일 일관성 공유지도 구축- 이기종 센서·플랫폼 간 지도 스케일·좌표계 불일치 문제를 Sim(3) 정합과 AI 기반 보정으로 통합- 에이전트 추가/제거/재방문/동시운용 상황에서 온라인 정합 및 지도 갱신이 가능한 운영 알고리즘 개발- 전역 정합 오차, 에이전트 간 상대 정합 오차, 장기 드리프트 지표로 공유지도 품질 정량 평가 체계 구축핵심요"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-a10594ac1c4e03e8",
+    "query": "공동주택 분야에서 절단 정밀도 ±5mm 관련 기술을 찾고 있습니다. 최대 절단 두께 300mm 및 절단 정밀도 ±5mm를 만족하는 절단 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410019503"
+    ],
+    "source_document_id": "ntis-2410019503",
+    "context_term": "공동주택",
+    "source_term": "절단 정밀도 ±5mm",
+    "need_statement": "최대 절단 두께 300mm 및 절단 정밀도 ±5mm를 만족하는 절단 기술이 필요합니다.",
+    "source_group_id": "b145449800eddde3b5dd",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019503",
+        "text": "① 직교형 자율 절단 로봇 개발- 3축 직교 구조(수직 리프트·수평 리니어·전후 리니어) 기반 절단 메커니즘 설계 및 시제품 제작.- 파트너 톱날·링쏘·코어링 드릴 교체형 모듈 엔드이펙터 적용으로 벽체 수직·수평 절단 및 슬라브 코어링 통합 수행. 목표 사양은 절단 정밀도 ±5mm, 최대 절단 두께 300mm, 작업 높이 0~2,400mm, 로봇 폭 900"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-a50ac3d862e3065e",
+    "query": "워크셀 분야에서 공간 DX* 기반기술개발 관련 기술을 찾고 있습니다. 다중 광복합 센서 기반 인간협업 로봇워크셀 공간 DX 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410017407"
+    ],
+    "source_document_id": "ntis-2410017407",
+    "context_term": "워크셀",
+    "source_term": "공간 DX* 기반기술개발",
+    "need_statement": "다중 광복합 센서 기반 인간협업 로봇워크셀 공간 DX 기술이 필요합니다.",
+    "source_group_id": "872c5e33a6bfc05f7b61",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2410017407",
+        "text": "[1차년도 개발내용]ㅇ 다중 광복합 센서 기반 인간협업 로봇워크셀 공간 DX* 기반기술개발 * 공간 DX(Digitalization): 관심 공간의 3D 디지털 데이터 구현ㅇ 실시간 센서 데이터 및 공간 데이터 융합 기초기술 개발ㅇ 로봇워크셀 안전 인식 결과에 관해 설명 가능한 XAI 활용 기반기술 개발ㅇ 중대형 로봇워크셀 실시간 위험 감지용 엣지센서"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-a59c5765c846703d",
+    "query": "업사이클링 분야에서 분말화 기술 관련 기술을 찾고 있습니다. 텅스텐 스크랩을 활용한 분말화 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420031518"
+    ],
+    "source_document_id": "ntis-2420031518",
+    "context_term": "업사이클링",
+    "source_term": "분말화 기술",
+    "need_statement": "텅스텐 스크랩을 활용한 분말화 기술이 필요합니다.",
+    "source_group_id": "9066a55e244ffb01efcd",
+    "science_medium": "금속재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031518",
+        "text": "? 텅스텐 스크랩 업사이클링 기반 원소재 분말화 기술 개발 - 텅스텐 스크랩 칩 수거 및 확보 → 오염 세척(공정 설계 및 조건 확보) → 산화 열처리(공정 설계 및 조건 확보) → 밀링 분쇄(공정 설계 및 조건 확보) → 환원 열처리(공정 설계 및 조건 확보) → 텅스텐 분말화 및 물성 제어 공정 확립 → 분말 회수(공정 설계 및 조건 확보) → 분급"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-a7cb9e106aed0088",
+    "query": "액체추진제를 분야에서 RDE (회전 데토네이션 엔진) 관련 기술을 찾고 있습니다. 액체 추진제를 사용한 RDE의 설계 및 개발 기술 확보가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2340050796"
+    ],
+    "source_document_id": "ntis-2340050796",
+    "context_term": "액체추진제를",
+    "source_term": "RDE (회전 데토네이션 엔진)",
+    "need_statement": "액체 추진제를 사용한 RDE의 설계 및 개발 기술 확보가 필요합니다.",
+    "source_group_id": "aaf41671f428e20ec262",
+    "science_medium": "국방기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340050796",
+        "text": "액체 추진제를 사용한 RDE (회전 데토네이션 엔진) 설계 및 개발 기술 확보1. 로켓연소기 형태의 Disk-type RDE 설계 확보- 환형 RDE에 비해 냉각이 필요한 부품이 적고 구조적으로 간단하며 경량- 일반적인 로켓연소기와 유사하며, 매우 짧은 연소기 길이를 가짐- RDE는 로켓 연소불안정의 극한조건에서 작동: 작동 안정성 보장(불안정 발달 없음)"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-a8ebd70b16f02621",
+    "query": "Operando 분야에서 가시화 시스템 구축 관련 기술을 찾고 있습니다. 공극 구조 및 반응 제어를 위한 최적화된 설계가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710111670"
+    ],
+    "source_document_id": "ntis-2710111670",
+    "context_term": "Operando",
+    "source_term": "가시화 시스템 구축",
+    "need_statement": "공극 구조 및 반응 제어를 위한 최적화된 설계가 필요합니다.",
+    "source_group_id": "be1b596da7b16b8e669a",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710111670",
+        "text": "1년차: 광석 모사 반응성 Ore-on-a-chip 플랫폼 구축1. 대상 광물의 미세 공극 구조 및 광물학적 특성 분석2. 반응성 모사 Ore-on-a-chip 설계 및 가시화 시스템 구축 - 공극 제어: 공극 구조(크기, 형상, 연결성) 및 반응/비반응성 물질 구현 - 반응 제어: 광석 용해(dissolution) 및 석출(precipita"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-aa7771d3d5b86d54",
+    "query": "부착공정 분야에서 공정 분석 관련 기술을 찾고 있습니다. 고난이도 수작업 공정의 협동로봇 적용을 위한 공정 분석이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420026824"
+    ],
+    "source_document_id": "ntis-2420026824",
+    "context_term": "부착공정",
+    "source_term": "공정 분석",
+    "need_statement": "고난이도 수작업 공정의 협동로봇 적용을 위한 공정 분석이 필요합니다.",
+    "source_group_id": "d0a5fc1c71cfbdba160b",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026824",
+        "text": "□ 협동로봇 기반 테이핑헤드 개발 및 시스템 통합ㅇ 스폰지 테이프 자동 공급, 도포 및 재단 메커니즘 설계ㅇ 협동로봇 적용 및 작업을 위한 테이핑헤드 형상 최적화 ㅇ 단위 공정별 작업 최적화 및 시스템 통합 □ 테이핑헤드가 적용된 협동로봇 적용 현장 구축 및 실증ㅇ 고난이도 수작업 공정의 협동로봇 적용을 위한 공정 분석ㅇ 협동로봇 기반 적용 현장 구축 및"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-adb435e4d27a752c",
+    "query": "고해상도 분야에서 고해상도 텐던 장력 센서 관련 기술을 찾고 있습니다. 로봇 핸드의 힘 제어 대역폭과 힘 추정 해상도 간의 삼중 trade-off 문제를 해결하기 위한 고해상도 텐던 장력 센서가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2340065714"
+    ],
+    "source_document_id": "ntis-2340065714",
+    "context_term": "고해상도",
+    "source_term": "고해상도 텐던 장력 센서",
+    "need_statement": "로봇 핸드의 힘 제어 대역폭과 힘 추정 해상도 간의 삼중 trade-off 문제를 해결하기 위한 고해상도 텐던 장력 센서가 필요합니다.",
+    "source_group_id": "2f6c73870d8779d438fa",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340065714",
+        "text": "본 연구는 로봇 핸드의 힘 제어 대역폭, 기계 임피던스, 힘 추정 해상도 간의 삼중 상충(Trade-off) 문제를 극복하기 위해 '비선형 스프링 기반 고해상도 텐던 장력 센서'와 이를 적용한 다자유도 로봇 핸드를 개발합니다.주요 연구 내용은 세 단계로 나뉩니다. 첫째, 비선형 스프링의 강성 변화를 수학적으로 모델링하고, 시스템 요구 조건에 맞춰 최적의 설"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-b094a75febba4f9d",
+    "query": "안전사고 분야에서 전주기 안전업무 관련 기술을 찾고 있습니다. 실시간 감시, 위험도 판단, 안전 리포트 외에 전주기 안전업무를 지원하는 시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420033053"
+    ],
+    "source_document_id": "ntis-2420033053",
+    "context_term": "안전사고",
+    "source_term": "전주기 안전업무",
+    "need_statement": "실시간 감시, 위험도 판단, 안전 리포트 외에 전주기 안전업무를 지원하는 시스템이 필요합니다.",
+    "source_group_id": "82d526e9459fa8b9c005",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033053",
+        "text": "1. 기술개발 목표본 과제의 최종 목표는 산업 현장에서 발생할 수 있는 안전사고를 사전에 예방하기 위하여, 근로자 행동 데이터와 작업 환경 정보를 통합 분석을 하여, 다업종 중소기업 현장에 공통 적용 가능한 AI 안전예방 플랫폼을 개발하는 것임. 또한 공고RFP 필수3종(실시간 감시·위험도 판단·안전 리포트) 외에 작업 전·중·후 전주기 안전업무를 지원하"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-b15b60da7a6163a5",
+    "query": "체적형 분야에서 체적형 쾌속 생산 시스템 관련 기술을 찾고 있습니다. 체적을 한 번에 프린팅하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710098943"
+    ],
+    "source_document_id": "ntis-2710098943",
+    "context_term": "체적형",
+    "source_term": "체적형 쾌속 생산 시스템",
+    "need_statement": "체적을 한 번에 프린팅하는 기술이 필요합니다.",
+    "source_group_id": "468187bc63d822b25a6b",
+    "science_medium": "기타 기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710098943",
+        "text": "○ Layer by layer 방식을 사용하는 기존 3D 프린팅과 달리 체적을 한 번에 프린팅하는 기술과 직접 주사 방식의 장점을 가지는 디지털 혈관 체적형 쾌속 생산 시스템 연구 ○ 기존 인공 혈관 적층 제조의 긴 제작 소요 시간을 10여분 이내로 10배 이상 단축하고 높은 기계적 강도와 복잡한 형상 맞춤 제작이 가능한 인공 혈관 적층 제조 시스템을 개발"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-b1c74f465a4bada0",
+    "query": "중소기업 분야에서 AI 안전예방 플랫폼 관련 기술을 찾고 있습니다. 다업종 중소기업 현장에서 발생할 수 있는 안전사고를 사전에 예방하기 위한 AI 안전예방 플랫폼이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420033053"
+    ],
+    "source_document_id": "ntis-2420033053",
+    "context_term": "중소기업",
+    "source_term": "AI 안전예방 플랫폼",
+    "need_statement": "다업종 중소기업 현장에서 발생할 수 있는 안전사고를 사전에 예방하기 위한 AI 안전예방 플랫폼이 필요합니다.",
+    "source_group_id": "82d526e9459fa8b9c005",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033053",
+        "text": "1. 기술개발 목표본 과제의 최종 목표는 산업 현장에서 발생할 수 있는 안전사고를 사전에 예방하기 위하여, 근로자 행동 데이터와 작업 환경 정보를 통합 분석을 하여, 다업종 중소기업 현장에 공통 적용 가능한 AI 안전예방 플랫폼을 개발하는 것임. 또한 공고RFP 필수3종(실시간 감시·위험도 판단·안전 리포트) 외에 작업 전·중·후 전주기 안전업무를 지원하"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-b3d4ccc4b60362ce",
+    "query": "상태진단 분야에서 가상 센싱 기술 관련 기술을 찾고 있습니다. 산업 설비의 상태 정보를 정밀하게 진단하기 위해, 가상 센싱 기술을 활용한 센서 관계 구조화가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2340065249"
+    ],
+    "source_document_id": "ntis-2340065249",
+    "context_term": "상태진단",
+    "source_term": "가상 센싱 기술",
+    "need_statement": "산업 설비의 상태 정보를 정밀하게 진단하기 위해, 가상 센싱 기술을 활용한 센서 관계 구조화가 필요합니다.",
+    "source_group_id": "984252ec3423b6ecdcc3",
+    "science_medium": "산업/일반기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340065249",
+        "text": "본 연구는 세 가지 핵심 주제를 단계적으로 수행한다. [주제 1] 온톨로지 기반 센서 관계 구조화 및 가상 센싱 기술: 산업 설비에서는 물리적·경제적 제약으로 모든 위치에 센서를 설치하기 어려워 상태 정보의 공백이 발생하며, 이는 정밀한 상태진단의 근본적 한계로 작용한다. 이를 해결하기 위해 센서 신호의 측정 특징을 노드로, 신호 간 물리적 상관관계를 엣지"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-b45b72fdce4c5b06",
+    "query": "RIAM 분야에서 글로컬 혁신모델 관련 기술을 찾고 있습니다. RIAM 러닝 팩토리 플랫폼 구축을 위한 프레임워크 도출 시, 글로컬 혁신모델을 고려해야 합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710111126"
+    ],
+    "source_document_id": "ntis-2710111126",
+    "context_term": "RIAM",
+    "source_term": "글로컬 혁신모델",
+    "need_statement": "RIAM 러닝 팩토리 플랫폼 구축을 위한 프레임워크 도출 시, 글로컬 혁신모델을 고려해야 합니다.",
+    "source_group_id": "1c32b1aa99157863c8c4",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710111126",
+        "text": "러닝 팩토리 플랫폼 개념을 정의하고 실제 구현을 위한 요소기술과 산업 RIAM 확산을 위한 기폭제 기술을 개발 디지털 트윈 및 리빙랩 기반 실증을 통한 사전 , 검증 수행- (세부1) RIAM 러닝 팩토리 플랫폼 구축을 위한 프레임워크 도출 및 사전 검증을 위한 디지털 트윈 및 리빙랩 실증을 통한 글로컬 혁신모델 창출- (세부2) RIAM 러닝 팩토리"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-b6258053b2853e91",
+    "query": "애프터마켓용 분야에서 온디바이스 AI기반 객체 인식 관련 기술을 찾고 있습니다. 특장차 애프터마켓 환경에서 즉시 응답 가능한 온디바이스 AI 기반 객체 인식 및 상황 맥락 분석 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420031973"
+    ],
+    "source_document_id": "ntis-2420031973",
+    "context_term": "애프터마켓용",
+    "source_term": "온디바이스 AI기반 객체 인식",
+    "need_statement": "특장차 애프터마켓 환경에서 즉시 응답 가능한 온디바이스 AI 기반 객체 인식 및 상황 맥락 분석 기능이 필요합니다.",
+    "source_group_id": "4e4629099f43d89404ea",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031973",
+        "text": "특장차 애프터마켓 환경에서 3D AVM의 시각 정보 기반으로 즉시 응답 가능한 온디바이스 AI기반 객체 인식, 환경 인지, 상황 맥락 분석 결과를 융합한 증강 시각 기반 지능형 안전 플랫폼을 개발. 실환경 실증을 통해 상용화 가능한 수준의 기술 완성도를 확보하고 즉시 장착 가능한 Plug-and-Play형 증강 시각 기반 상황 인지 제품을 3년 내 상용화("
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-b7bd1709676ddc5b",
+    "query": "체적형 분야에서 인공 혈관 적층 제조 관련 기술을 찾고 있습니다. 기존 인공 혈관 적층 제조의 긴 제작 소요 시간을 단축할 수 있는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710098943"
+    ],
+    "source_document_id": "ntis-2710098943",
+    "context_term": "체적형",
+    "source_term": "인공 혈관 적층 제조",
+    "need_statement": "기존 인공 혈관 적층 제조의 긴 제작 소요 시간을 단축할 수 있는 기술이 필요합니다.",
+    "source_group_id": "468187bc63d822b25a6b",
+    "science_medium": "기타 기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710098943",
+        "text": "○ Layer by layer 방식을 사용하는 기존 3D 프린팅과 달리 체적을 한 번에 프린팅하는 기술과 직접 주사 방식의 장점을 가지는 디지털 혈관 체적형 쾌속 생산 시스템 연구 ○ 기존 인공 혈관 적층 제조의 긴 제작 소요 시간을 10여분 이내로 10배 이상 단축하고 높은 기계적 강도와 복잡한 형상 맞춤 제작이 가능한 인공 혈관 적층 제조 시스템을 개발"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-babcd555f9482939",
+    "query": "모빌리티 분야에서 형상 재구성형 플랫폼 관련 기술을 찾고 있습니다. 형상 재구성형 모빌리티 플랫폼에서 조향, 구동, 현가 통합 모듈을 기반으로 한 2휠 단위 모빌리티의 제어 구조를 적응적으로 변경하는 알고리즘이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710112505"
+    ],
+    "source_document_id": "ntis-2710112505",
+    "context_term": "모빌리티",
+    "source_term": "형상 재구성형 플랫폼",
+    "need_statement": "형상 재구성형 모빌리티 플랫폼에서 조향, 구동, 현가 통합 모듈을 기반으로 한 2휠 단위 모빌리티의 제어 구조를 적응적으로 변경하는 알고리즘이 필요합니다.",
+    "source_group_id": "3bf299fa3ffd39104771",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2710112505",
+        "text": "본 연구는 조향,구동,현가 통합 모듈 기반의 2휠 단위 모빌리티를 설계하고, 이를 결합,분리 가능한 형상 재구성형 플랫폼으로 확장함. 동역학 모델링 및 제약조건 정의를 기반으로 경량화 온디바이스 MPC 구조를 설계하고, 하드웨어 및 환경 맥락에 따라 제어 구조를 적응적으로 변경하는 알고리즘을 개발함. 또한 XR 기반 실?가상 통합 환경을 구축하여 단일 및"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-bc62cca9c47d207e",
+    "query": "청소로봇 분야에서 성능 저하율 8% 이하 관련 기술을 찾고 있습니다. 환경 변화 시 성능 저하율 8% 이하를 유지하는 청소로봇이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420028620"
+    ],
+    "source_document_id": "ntis-2420028620",
+    "context_term": "청소로봇",
+    "source_term": "성능 저하율 8% 이하",
+    "need_statement": "환경 변화 시 성능 저하율 8% 이하를 유지하는 청소로봇이 필요합니다.",
+    "source_group_id": "55aa3dc6e8f36bba3bef",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028620",
+        "text": "LLM 기반의 End-to-End(E2E) 자율주행 모델을 개발하여 상업용 로봇 청소기에 적용해 다양한 실내 환경에서 효율적이고 정밀한 청소를 수행할 수 있도록 한다.(1) LLM 기반 E2E 모델 적용:- 모호한 명령(예: \"책상 주변만 청소해\")을 이해하고 행동으로 전환.- 환경 변화(가구 배치, 조명, 장애물 등) 시 성능 저하율 8% 이하.(2)실내"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-be05d95eca8658fb",
+    "query": "내화피복 분야에서 시공품질 알고리즘 관련 기술을 찾고 있습니다. 내화피복 시공품질 알고리즘이 현장 적용 가능하도록 개발되어야 합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2340053145"
+    ],
+    "source_document_id": "ntis-2340053145",
+    "context_term": "내화피복",
+    "source_term": "시공품질 알고리즘",
+    "need_statement": "내화피복 시공품질 알고리즘이 현장 적용 가능하도록 개발되어야 합니다.",
+    "source_group_id": "dbf66b7b970fbeba1896",
+    "science_medium": "건설시공/재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2340053145",
+        "text": "(1차년도)■ 내화피복 작업대상 인식 데이터셋 수집■ 내화피복 작업대상 인식 알고리즘 개발■ 내화피복 작업대상 인식 알고리즘 테스트(2차년도)■ 내화피복 시공품질 관련 문헌 고찰■ 내화피복 시공품질 알고리즘 개발 ■ 내화피복 시공품질 알고리즘 테스트 (3차년도)■ 작업대상인식 및 시공품질 기술 통합 설계■ 통합 기술 개발 및 테스트■ 통합 기술 현장적용 및"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-bfbb68ddaa260b32",
+    "query": "로봇과 분야에서 비전 인식 로봇 관련 기술을 찾고 있습니다. 비전 인식 로봇에 AI 사물 인식 기술을 적용하여 하이브리드 물류 재고를 인식하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420026918"
+    ],
+    "source_document_id": "ntis-2420026918",
+    "context_term": "로봇과",
+    "source_term": "비전 인식 로봇",
+    "need_statement": "비전 인식 로봇에 AI 사물 인식 기술을 적용하여 하이브리드 물류 재고를 인식하는 기술이 필요합니다.",
+    "source_group_id": "78cd692831d8c33ad39b",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026918",
+        "text": "중소 제조업 상품 또는 재고 창고에 관련 관리를 자동화 해서 편리하게 재고관리를 목표로 한다 이 최종 목적을 달성하기 위해서 비전 인식 로봇을 개발하고 개발된 로봇에 비전인식과 AI 사물 인식기술로 하이브리드 물류 재고를 인식해서 정보화 하고 이렇게 정보화된 내용을 ESL을 이용해서 노출해줘서 창고 관리자가 아니라도 어느 누구나 확인 할수 있는 시스템 구"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-c011d9ae0ef276d8",
+    "query": "작업지시 분야에서 의사결정 자동화 관련 기술을 찾고 있습니다. 복잡한 물류 현장에서 최적의 작업 지시를 내리는 의사결정 자동화 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420032203"
+    ],
+    "source_document_id": "ntis-2420032203",
+    "context_term": "작업지시",
+    "source_term": "의사결정 자동화",
+    "need_statement": "복잡한 물류 현장에서 최적의 작업 지시를 내리는 의사결정 자동화 기능이 필요합니다.",
+    "source_group_id": "7b47ba63938948b318ac",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2420032203",
+        "text": "본 과제의 최종 목표는 완성차 물류 최적화를 위한 '온디바이스 AI 실내외 연속 측위 엣지 단말 및 스마트글래스 연동 작업지시 시스템'을 개발하는 것입니다. 기존 RTLS(실시간 위치 추적 시스템)가 가진 단순 가시성 제공의 한계를 넘어, 복잡한 물류 현장의 수많은 경우의 수를 실시간으로 연산하여 최적의 작업 지시를 내리는 '의사결정 자동화(Decision"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-c03d8f65968ab9c1",
+    "query": "kW급 분야에서 양방향 컨버터 관련 기술을 찾고 있습니다. 차세대 전기차용 인버터에 적용 가능한 넓은 출력 범위를 갖는 양방향 컨버터 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410018272"
+    ],
+    "source_document_id": "ntis-2410018272",
+    "context_term": "kW급",
+    "source_term": "양방향 컨버터",
+    "need_statement": "차세대 전기차용 인버터에 적용 가능한 넓은 출력 범위를 갖는 양방향 컨버터 개발이 필요합니다.",
+    "source_group_id": "5d9ee31790a9cd240d8e",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410018272",
+        "text": "o 고응답/고정밀 특성을 갖는 대용량 컨버터와 차량용 배터리 모사 알고리즘 개발을 통한 고성능 다이나모 시스템용 배터리 에뮬레이터 개발 - 빠른 동특성을 갖는 배터리 에뮬레이터의 안정적 전원 공급을 위한 고속/정밀 대용량 컨버터의 설계 기술과 계통연계 양방향 전력제어 알고리즘 개발 - 차세대 전기차용 인버터에 적용가능한 넓은 출력 범위를 갖는 양방향 컨버터"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-c19d63c9687fdfeb",
+    "query": "모달리티 분야에서 물리적·경제적 제약 관련 기술을 찾고 있습니다. 물리적·경제적 제약으로 인해 모든 위치에 센서를 설치할 수 없는 상황을 고려한 상태진단 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2340065249"
+    ],
+    "source_document_id": "ntis-2340065249",
+    "context_term": "모달리티",
+    "source_term": "물리적·경제적 제약",
+    "need_statement": "물리적·경제적 제약으로 인해 모든 위치에 센서를 설치할 수 없는 상황을 고려한 상태진단 기술이 필요합니다.",
+    "source_group_id": "984252ec3423b6ecdcc3",
+    "science_medium": "산업/일반기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340065249",
+        "text": "본 연구는 세 가지 핵심 주제를 단계적으로 수행한다. [주제 1] 온톨로지 기반 센서 관계 구조화 및 가상 센싱 기술: 산업 설비에서는 물리적·경제적 제약으로 모든 위치에 센서를 설치하기 어려워 상태 정보의 공백이 발생하며, 이는 정밀한 상태진단의 근본적 한계로 작용한다. 이를 해결하기 위해 센서 신호의 측정 특징을 노드로, 신호 간 물리적 상관관계를 엣지"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-c62dda8e13e50dfe",
+    "query": "고진공을 분야에서 진공도 70mbar 이하 관련 기술을 찾고 있습니다. 고진공 환경에서 안정성을 확보할 수 있는 텅스텐 재질의 소모품 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420031518"
+    ],
+    "source_document_id": "ntis-2420031518",
+    "context_term": "고진공을",
+    "source_term": "진공도 70mbar 이하",
+    "need_statement": "고진공 환경에서 안정성을 확보할 수 있는 텅스텐 재질의 소모품 개발이 필요합니다.",
+    "source_group_id": "9066a55e244ffb01efcd",
+    "science_medium": "금속재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2420031518",
+        "text": "? 개발 목표 : 대면적 전기자동차 차체 및 섀시용 기가캐스팅 금형의 진공도 70mbar 이하 구현이 가능한 텅스텐 재질 칠벤트 국산화 개발 - 텅스텐 스크랩 업사이클링을 통한 원소재 확보 및 분말화 기술을 국산화함 - 대부분 수입에 의존하는 텅스텐 적용 칠벤트는 금형 진공도에 직접적인 영향을 주는 소모품으로, 대형 부품 제조 시 안정성과 직결됨에 따라"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-c9553a67b075ce24",
+    "query": "예지보전 분야에서 예지보전 관련 기술을 찾고 있습니다. 롤포밍 공정의 예지보전을 위한 5종 산업 AI 에이전트 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410019119"
+    ],
+    "source_document_id": "ntis-2410019119",
+    "context_term": "예지보전",
+    "source_term": "예지보전",
+    "need_statement": "롤포밍 공정의 예지보전을 위한 5종 산업 AI 에이전트 개발이 필요합니다.",
+    "source_group_id": "b3d16df6d0d9e05d9946",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019119",
+        "text": "ㅇ 롤포밍 공정의 예지보전·품질분석·공정자동화용 5종 산업 AI 에이전트 개발- 구성: Orchestrator, 산업 AI용 데이터 플랫폼, Data·Maintenance·Quality AI Agentㅇ 성우하이텍 롤포밍 실증 라인 적용 ― Shear & Welder, Pre-piercing, 16-step Roll Formingㅇ 폐루프 구조 하 Agen"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-ca38c21284069af8",
+    "query": "배터리 분야에서 AI 잔존 수명 예측 프로 관련 기술을 찾고 있습니다. AI 기반 배터리 잔존 수명 예측 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420027612"
+    ],
+    "source_document_id": "ntis-2420027612",
+    "context_term": "배터리",
+    "source_term": "AI 잔존 수명 예측 프로",
+    "need_statement": "AI 기반 배터리 잔존 수명 예측 기술이 필요합니다.",
+    "source_group_id": "6475ae59ac55a3cc2437",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420027612",
+        "text": "자사는 현재 실시간 원격 배터리 모니터링 시스템으로 배터리 사용기업 및 배터리 리스 기업 대상으로 온라인 배터리 관리 시스템을 공급하고자 하며, AI 기반 배터리 잔존 수명 예측 및 비정상 행동 예측 시스템이 완성 후 고도화를 통해 on-chip 형태로 온/오프라인 통합 배터리 관리가 가능하게 할 계획을 가지고 있음. 최종적으로는 AI 잔존 수명 예측 프로"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-cabff306e973cc9a",
+    "query": "수소상용차용 분야에서 금형 설계 및 최적화 관련 기술을 찾고 있습니다. 액체수소 연료탱크의 금형 설계 및 최적화 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410019079"
+    ],
+    "source_document_id": "ntis-2410019079",
+    "context_term": "수소상용차용",
+    "source_term": "금형 설계 및 최적화",
+    "need_statement": "액체수소 연료탱크의 금형 설계 및 최적화 기술이 필요합니다.",
+    "source_group_id": "5f87a79526ec81975bfd",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019079",
+        "text": "최종목표: 수소상용차용 액체수소 저장 및 공급 기술개발[1단계-1차년도 ]ㅇ 티엠씨 - 액체수소 연료탱크 및 공급시스템 선행연구 및 시스템 사양 확정 - 액체수소 연료탱크 설계기준 정립, 기본설계 및 설계검증, 상세설계 - 액체수소 연료탱크 금형 설계 및 최적화 - 액체수소 연료탱크 및 핵심 주요 구성품 배치 최적화 및 구매 - 액체수소 연료탱크용 SUS"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-cb856f8eb1e93a7b",
+    "query": "단일탱크 분야에서 정온 출력 단일 탱크 열베터리 관련 기술을 찾고 있습니다. 이동이 용이한 컨테이너형 정온 출력 단일 탱크 열배터리 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420029265"
+    ],
+    "source_document_id": "ntis-2420029265",
+    "context_term": "단일탱크",
+    "source_term": "정온 출력 단일 탱크 열베터리",
+    "need_statement": "이동이 용이한 컨테이너형 정온 출력 단일 탱크 열배터리 기술이 필요합니다.",
+    "source_group_id": "d90a632e782ed644b572",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420029265",
+        "text": "본 사업의 최종 목표는 이동이 용이한 컨테이너형 정온 출력 단일 탱크 열베터리 기술을 기반으로 열에너지 플랫폼을 구축하는 것이다. 열 부분은 전세계 에너지 소비의 절반을 차지하지만 전력에 비해 탈탄소율이 현저히 낮다. 탄소중립 달성을 위해 반드시 열분야에 탈탄소화가 필수적이다. 기존의 이중탱크 열배터리는 복잡한 구조와 높은 설치비용, 설치 및 이동의 한계"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-cbe1ca9258d587b8",
+    "query": "자율주행 분야에서 LLM 기반 E2E 모델 관련 기술을 찾고 있습니다. 모호한 명령을 이해하고 행동으로 전환하는 LLM 기반의 End-to-End 자율주행 모델이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420028620"
+    ],
+    "source_document_id": "ntis-2420028620",
+    "context_term": "자율주행",
+    "source_term": "LLM 기반 E2E 모델",
+    "need_statement": "모호한 명령을 이해하고 행동으로 전환하는 LLM 기반의 End-to-End 자율주행 모델이 필요합니다.",
+    "source_group_id": "55aa3dc6e8f36bba3bef",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028620",
+        "text": "LLM 기반의 End-to-End(E2E) 자율주행 모델을 개발하여 상업용 로봇 청소기에 적용해 다양한 실내 환경에서 효율적이고 정밀한 청소를 수행할 수 있도록 한다.(1) LLM 기반 E2E 모델 적용:- 모호한 명령(예: \"책상 주변만 청소해\")을 이해하고 행동으로 전환.- 환경 변화(가구 배치, 조명, 장애물 등) 시 성능 저하율 8% 이하.(2)실내"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-cc8cf90b1c442fcf",
+    "query": "eVTOL 분야에서 하이브리드 분산추진 기술 관련 기술을 찾고 있습니다. 극한 환경 하에서의 하이브리드 분산추진 기술의 성능 평가가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710093265"
+    ],
+    "source_document_id": "ntis-2710093265",
+    "context_term": "eVTOL",
+    "source_term": "하이브리드 분산추진 기술",
+    "need_statement": "극한 환경 하에서의 하이브리드 분산추진 기술의 성능 평가가 필요합니다.",
+    "source_group_id": "09856adff8eae783ef93",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710093265",
+        "text": "(1세부)● 극한 환경 하에서의 eVTOL 비행제어시스템 최적화 연구● 극한 환경 하에서의 하이브리드 분산추진 기술연구 및 성능 평가● 48kW 급 대전력 변환 모듈(BLDC 모터 컨버터) 시스템 설계 및 신뢰성 평가● HILS 기반의 융합기술 검증 플랫폼 구축(2세부)● 위성항법신호 다중경로 환경에서 딥러닝을 통한 이동체의 측위 정확도 향상 연구 ●"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-cd0f189adc8195c2",
+    "query": "우주종합시험센터지원 분야에서 우주 종합 환경시험 시스템 관련 기술을 찾고 있습니다. 위성 및 발사체의 발사 전 우주 종합 환경시험 시스템의 안정적인 운영을 위한 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2800001103"
+    ],
+    "source_document_id": "ntis-2800001103",
+    "context_term": "우주종합시험센터지원",
+    "source_term": "우주 종합 환경시험 시스템",
+    "need_statement": "위성 및 발사체의 발사 전 우주 종합 환경시험 시스템의 안정적인 운영을 위한 기술이 필요합니다.",
+    "source_group_id": "5a7db2398707b9c22109",
+    "science_medium": "우주시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2800001103",
+        "text": "국가 우주 사업의 성공적 완수를 위한 위성 및 위성발사체의 발사 전 우주 종합 환경시험 시스템의 안정적인 운영"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-cd1a193c82e919ad",
+    "query": "무선충전 분야에서 전자파 안전 NP 관련 기술을 찾고 있습니다. 전기자동차 양방향 무선충전 시스템에서 전자파 안전성을 검증할 수 있는 방법이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410015788"
+    ],
+    "source_document_id": "ntis-2410015788",
+    "context_term": "무선충전",
+    "source_term": "전자파 안전 NP",
+    "need_statement": "전기자동차 양방향 무선충전 시스템에서 전자파 안전성을 검증할 수 있는 방법이 필요합니다.",
+    "source_group_id": "b6d2306aca8f076c45b7",
+    "science_medium": "중전기기",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015788",
+        "text": "[1단계 개발내용]ㅇ 전기자동차 양방향 무선충전 국제표준(IEC TC69) NP 제안 - 전기자동차 양방향 무선충전 전기적 안전 NP - 전기자동차 양방향 무선충전 전자파 안전 NP ㅇ 전기자동차 양방향 무선충전 국제표준(IEC TC69) NP 승인 - 전기자동차 양방향 무선충전 전기적 안전 NP - 전기자동차 양방향 무선충전 전자파 안전"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-cd9ebfc689380e01",
+    "query": "상용화 분야에서 권리화 로드맵 관련 기술을 찾고 있습니다. 필름공급형 광중합 세라믹 3D프린팅 기술의 상용화를 위한 권리화 로드맵이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710107637"
+    ],
+    "source_document_id": "ntis-2710107637",
+    "context_term": "상용화",
+    "source_term": "권리화 로드맵",
+    "need_statement": "필름공급형 광중합 세라믹 3D프린팅 기술의 상용화를 위한 권리화 로드맵이 필요합니다.",
+    "source_group_id": "95e558e944548f54c30e",
+    "science_medium": "세라믹재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2710107637",
+        "text": "1단계 연구개발은 “IP 고도화·기획 → 기술마케팅·중개 → 기술이전 체결”을 따르는 R&BD 체계로 추진한다. 민간 사업화전문기관과 함께 특허·기술 DB 정리, 경쟁/대체기술·FTO 분석, 공백기술 도출을 통해 핵심·요소특허 포트폴리오와 권리화 로드맵을 확정한다. 동시에 최소 검증 패키지를 구축하고, 수요기업을 유형별로 세분해 SMK/BMK·데모·PoC"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-ce12067e111bda9d",
+    "query": "PMH 분야에서 PMH 사출 부품 관련 기술을 찾고 있습니다. 리어 액슬 크래들 브라켓의 경량화를 위한 PMH 사출 부품 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420028275"
+    ],
+    "source_document_id": "ntis-2420028275",
+    "context_term": "PMH",
+    "source_term": "PMH 사출 부품",
+    "need_statement": "리어 액슬 크래들 브라켓의 경량화를 위한 PMH 사출 부품 기술이 필요합니다.",
+    "source_group_id": "a00fa7095636e406bb30",
+    "science_medium": "고분자 공정기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2420028275",
+        "text": "리어 액슬 크래들 브라켓 제품 설계 및 개발을 위해 금속(Al) Insert를 적용한 PMH 사출 부품 기술이 개발됩니다. 고강성·고감쇠 복합소재 성형을 위한 고정밀 3D 금형 시스템 설계 및 제작이 이루어지며, Conformal cooling Core 응용과 유동 해석 기반 게이트/러너 시스템 최적화가 포함됩니다.최적의 복합소재 Recipe 설계를 위해"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-cf338b472aaad301",
+    "query": "데토네이션 분야에서 fill-height 관련 기술을 찾고 있습니다. 회전 데토네이션이 유지되기 위한 추진제의 분무 속도 결정이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2340050796"
+    ],
+    "source_document_id": "ntis-2340050796",
+    "context_term": "데토네이션",
+    "source_term": "fill-height",
+    "need_statement": "회전 데토네이션이 유지되기 위한 추진제의 분무 속도 결정이 필요합니다.",
+    "source_group_id": "aaf41671f428e20ec262",
+    "science_medium": "국방기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340050796",
+        "text": "액체 추진제 분사기 연구1. 액체 추진기관은 높은 성능을 위해 미립화, 증발, 혼합성능을 가지는 분사기가 필수 2. 회전 데토네이션이 유지되기 위해서는 추진제 충전 영역인 fill-height를 고려한 추진제의 분무 속도 결정 필요 3. Fill-height는 데토네이션 전파에 필수적이며, 회전 데토네이션 파의 개수와도 관련4. 액체 추진제를 사용한 RDE"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d03c41f23a586472",
+    "query": "최적화 분야에서 지배방정식 관련 기술을 찾고 있습니다. 복잡한 물리적 현상을 고려하여 설계 조건에 맞는 지배방정식을 표현할 수 있는 성능 조건이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2340055700"
+    ],
+    "source_document_id": "ntis-2340055700",
+    "context_term": "최적화",
+    "source_term": "지배방정식",
+    "need_statement": "복잡한 물리적 현상을 고려하여 설계 조건에 맞는 지배방정식을 표현할 수 있는 성능 조건이 필요합니다.",
+    "source_group_id": "9c9a959f3450b99205ae",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2340055700",
+        "text": "본 연구과제는 다중 열원 및 다층 구조의 전력 반도체에서 발생하는 복잡한 물리적 현상을 빠르고 정밀 하게 예측하기 위해, 물리 기반 지배방정식을 학습하는 심층 연산자 신경망 개발을 첫 번째 축으로 삼음. 동시에, 설명가능 인공지능을 기반으로 특정 열 거동에 큰 영향을 미치는 주요 설계 인자를 규명하고, 설계 최적화를 위한 가상 계측 모델을 설계하는 것을 목"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d0ace20507cffac9",
+    "query": "휴머노이드 분야에서 소프트 휴머노이드 관련 기술을 찾고 있습니다. 소프트 휴머노이드 구조를 구현하기 위해 자가감지형 기능성 인공근육 모듈을 기반으로 한 전신 구동 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410019072"
+    ],
+    "source_document_id": "ntis-2410019072",
+    "context_term": "휴머노이드",
+    "source_term": "소프트 휴머노이드",
+    "need_statement": "소프트 휴머노이드 구조를 구현하기 위해 자가감지형 기능성 인공근육 모듈을 기반으로 한 전신 구동 기술이 필요합니다.",
+    "source_group_id": "70d14ca0d47b45283bec",
+    "science_medium": "고분자재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019072",
+        "text": "본 연구개발과제의 최종목표는 자가감지형 기능성 인공근육 모듈을 기반으로 전신 구동이 가능한 소프트 휴머노이드 구조를 구현하고, 이를 대량 생산할 수 있는 인공근육 기반 휴머노이드 파운드리 플랫폼 기술을 확보하는 것임."
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d32024444bf6f306",
+    "query": "알루미늄 분야에서 고체 알루미늄 빌렛 예열기능 관련 기술을 찾고 있습니다. 알루미늄 다이캐스팅 공정에서 고체 알루미늄 빌렛의 예열 기능이 부재하여 에너지가 과다 사용되는 문제를 해결하기 위한 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420033508"
+    ],
+    "source_document_id": "ntis-2420033508",
+    "context_term": "알루미늄",
+    "source_term": "고체 알루미늄 빌렛 예열기능",
+    "need_statement": "알루미늄 다이캐스팅 공정에서 고체 알루미늄 빌렛의 예열 기능이 부재하여 에너지가 과다 사용되는 문제를 해결하기 위한 기능이 필요합니다.",
+    "source_group_id": "666693c7f172bda057df",
+    "science_medium": "에너지/환경기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033508",
+        "text": "- 본 과제는 국내 알루미늄 다이캐스팅 공정에서 사용되는 기존 직접가열식 용해로의 폐열 미활용, 고체 알루미늄 빌렛 예열기능 부재, 보온실·탈가스로 분리 운전에 따른 열에너지 과다 사용 문제를 해결하기 위한 간접가열 호퍼식 일체형 알루미늄 용해로 개발을 목표로 - 기존 공정은 용해 과정에서 발생하는 폐가스 열에너지를 원재료 예열에 활용하지 못하고, 용해·"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d3b43347475f6421",
+    "query": "NEC 분야에서 방폭체계 DB 설계 관련 기술을 찾고 있습니다. 북중미 방폭 규정에 적합한 방폭체계 DB 설계 및 구현 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420033927"
+    ],
+    "source_document_id": "ntis-2420033927",
+    "context_term": "NEC",
+    "source_term": "방폭체계 DB 설계",
+    "need_statement": "북중미 방폭 규정에 적합한 방폭체계 DB 설계 및 구현 기술이 필요합니다.",
+    "source_group_id": "9103cd326a67e989de37",
+    "science_medium": "소프트웨어",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033927",
+        "text": "1) 연구개발 내용 ○ 북중미 NEC 코드 기반 방폭 안전관리 디지털 플랫폼 - 방폭 관리 플랫폼 Dashboard 구현 - 방폭 안전관리 데이터 기록 및 유지관리 솔루션 ○ Class/Division 시스템 기반 방폭 자산관리 솔루션 - Class/Division 시스템 기반 방폭체계 DB 설계 및 구현 - 북중미 방폭 규정 기반 적합성"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d41f9552aac10495",
+    "query": "휴머노이드 분야에서 능동적으로 조절 관련 기술을 찾고 있습니다. 내부 이동 질량의 분포를 능동적으로 조절하는 제어 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710112016"
+    ],
+    "source_document_id": "ntis-2710112016",
+    "context_term": "휴머노이드",
+    "source_term": "능동적으로 조절",
+    "need_statement": "내부 이동 질량의 분포를 능동적으로 조절하는 제어 기술이 필요합니다.",
+    "source_group_id": "f173d0f55229b00e90ce",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710112016",
+        "text": "> 현수형 휴머노이드 시스템 구축을 위해 하드웨어, 제어, 인공지능(AI) 기술을 유기적으로 융합하는 풀 스택(Full-stack) 연구 수행- 하드웨어: 선행 연구로써 수행한 프로토타입 시스템의 최적화 및 경량화를 통한 고도화 진행- 제어: 외부 추력 없이 내부 이동 질량의 분포를 능동적으로 조절하여 로봇 베이스의 흔들림을 억제하고, 접촉에 안전하게 대응"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d489e3ed6e1cdea4",
+    "query": "소성가공 분야에서 AI 모델링 관련 기술을 찾고 있습니다. 프레스 공정에서 숙련 제조명장이 보유한 외관 판정, 소리 판정 등의 암묵지식을 디지털화하는 AI 모델링 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410019793"
+    ],
+    "source_document_id": "ntis-2410019793",
+    "context_term": "소성가공",
+    "source_term": "AI 모델링",
+    "need_statement": "프레스 공정에서 숙련 제조명장이 보유한 외관 판정, 소리 판정 등의 암묵지식을 디지털화하는 AI 모델링 기술이 필요합니다.",
+    "source_group_id": "2ebc3eb641d05a322145",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019793",
+        "text": "(과제의 목표) 인공지능 핵심 기술인 ① 시각-청각 하이브리드 기반 제조 암묵지 AI 모델링, ② 저지연 AR 추천 결과 피드백 ③ 현장 가이드 시스템 개발을 통해 자동차용 프레스 부품 생산 과정에서 숙련 제조명장이 보유한 외관 판정, 소리 판정, 절단면 분석, 설비 상태 판단, 소재·보관 상태 판단, 불량 리스크 판단 등의 암묵지식을 디지털화하고, 이를"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d67c1032d73cc159",
+    "query": "철거공사용 분야에서 직교형 자율 절단 로봇 관련 기술을 찾고 있습니다. 3축 직교 구조 기반의 절단 메커니즘 설계가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2410019503"
+    ],
+    "source_document_id": "ntis-2410019503",
+    "context_term": "철거공사용",
+    "source_term": "직교형 자율 절단 로봇",
+    "need_statement": "3축 직교 구조 기반의 절단 메커니즘 설계가 필요합니다.",
+    "source_group_id": "b145449800eddde3b5dd",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019503",
+        "text": "① 직교형 자율 절단 로봇 개발- 3축 직교 구조(수직 리프트·수평 리니어·전후 리니어) 기반 절단 메커니즘 설계 및 시제품 제작.- 파트너 톱날·링쏘·코어링 드릴 교체형 모듈 엔드이펙터 적용으로 벽체 수직·수평 절단 및 슬라브 코어링 통합 수행. 목표 사양은 절단 정밀도 ±5mm, 최대 절단 두께 300mm, 작업 높이 0~2,400mm, 로봇 폭 900"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d87530484970e59d",
+    "query": "멀티모달 분야에서 멀티모달 관련 기술을 찾고 있습니다. 헬스케어 분야에서 노인성 질병 진단을 위한 무선 초소형 고민감도 멀티모달 센서가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710100136"
+    ],
+    "source_document_id": "ntis-2710100136",
+    "context_term": "멀티모달",
+    "source_term": "멀티모달",
+    "need_statement": "헬스케어 분야에서 노인성 질병 진단을 위한 무선 초소형 고민감도 멀티모달 센서가 필요합니다.",
+    "source_group_id": "14a3a4bf441f6d02a43e",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710100136",
+        "text": "본 연구과제에서 연구진은 다축 응력 커플링(coupling) 현상 탐구를 통해 박막 내(內) 나노균열의 위치, 형상을 정확히 설계하고 제어 할 수 있는 새로운 나노 패터닝 방법을 개발하고, 이를 통해 무선?초소형?고민감도 멀티모달(multi-modal) 센서를 구현함으로써 노인성 질병 진단에 활용될 수 있는 혁신적인 센서 플랫폼 기술을 개발하고자 한다. 제"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d9773e473fa3626d",
+    "query": "고강도 분야에서 미세조직 제어 소재 설계기술 개발 관련 기술을 찾고 있습니다. 치형 베어링의 성능 향상을 위해 열역학 기반의 합금 설계 및 미세조직 제어 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2410015998"
+    ],
+    "source_document_id": "ntis-2410015998",
+    "context_term": "고강도",
+    "source_term": "미세조직 제어 소재 설계기술 개발",
+    "need_statement": "치형 베어링의 성능 향상을 위해 열역학 기반의 합금 설계 및 미세조직 제어 기술이 필요합니다.",
+    "source_group_id": "91c621a5ae3ed5731697",
+    "science_medium": "요소부품",
+    "evidence": [
+      {
+        "document_id": "ntis-2410015998",
+        "text": "[1단계 개발내용]ㅇ 열역학 기반 합금설계 및 상제어를 통한 미세조직 제어 소재 설계기술 개발ㅇ 시작품 제작을 위한 화학 성분안 수립ㅇ Prototype 소재 단조성 평가ㅇ 표면 열처리 시험 확립 및 DB 화 기반 구축 [1단계 개발내용]ㅇ 열역학 기반 합금설계 및 상제어를 통한 미세조직 제"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-d9cdf892b3e67931",
+    "query": "Social 분야에서 Social Perception 관련 기술을 찾고 있습니다. 모호 지시어를 처리할 수 있는 멀티모달 정보 통합 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2710105499"
+    ],
+    "source_document_id": "ntis-2710105499",
+    "context_term": "Social",
+    "source_term": "Social Perception",
+    "need_statement": "모호 지시어를 처리할 수 있는 멀티모달 정보 통합 기술이 필요합니다.",
+    "source_group_id": "649c8aa08fb955b1aae3",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710105499",
+        "text": "인간의 자연어 명령과 내재된 의도를 이해하고, 이종 다중 로봇이 최적의 역할 분담을 통해 안전하게 협업하는Safety-Aware Social VLA 파운데이션 모델 및 통합 제어 시스템 개발(1) Social Perception· 인간의 언어/시선/제스처/동선 등 멀티모달 정보를 통합하여 의도/우선순위/위험도/불확실성을 추정함.· 모호 지시어(“그거/저기”"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-dc84cfbe9df617b6",
+    "query": "마이크로볼로미터 분야에서 동작속도 관련 기술을 찾고 있습니다. 17um 피치의 2층 구조 마이크로볼로미터 센서의 동작속도를 5msec로 유지할 수 있는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420029373"
+    ],
+    "source_document_id": "ntis-2420029373",
+    "context_term": "마이크로볼로미터",
+    "source_term": "동작속도",
+    "need_statement": "17um 피치의 2층 구조 마이크로볼로미터 센서의 동작속도를 5msec로 유지할 수 있는 기술이 필요합니다.",
+    "source_group_id": "cb1a3de62255301abbaa",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420029373",
+        "text": "높은 fill-factor와 높은 원적외선 흡수율 그리고 빠른 동작 속도를 갖는 2층구조 17um 피치 마이크로볼로미터 센서를 단위픽셀로 하고 기판단위 진공패키징된 중해상도 비냉각형 열화상 이미지 센서와 열화상 이미지센서 모듈- fill-factor : 85%- 원적외선 흡수율 : 90%- 픽셀 시정수(동작속도) : 5msec- 1/f noise : 10"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-decb3a86c2abc82a",
+    "query": "스프링 분야에서 소형 비선형 스프링 관련 기술을 찾고 있습니다. 고장력 반복 구동에 강인한 소형 비선형 스프링 기구 설계가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2340065714"
+    ],
+    "source_document_id": "ntis-2340065714",
+    "context_term": "스프링",
+    "source_term": "소형 비선형 스프링",
+    "need_statement": "고장력 반복 구동에 강인한 소형 비선형 스프링 기구 설계가 필요합니다.",
+    "source_group_id": "2f6c73870d8779d438fa",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2340065714",
+        "text": "로봇 핸드의 삼중 trade-off 문제를 극복할 수 있는 비선형 스프링 기반 텐던 센서 개발세부 목표 1: 비선형 스프링 구조를 수식적으로 정의하고 이를 기반으로 최적의 설계 변수를 책정하는 프레임워크 제안세부 목표 2: 고장력 반복 구동에 강인한 소형 비선형 스프링 기구 설계 및 고정밀 장력 추정 센서 시스템 통합 개발세부 목표 3: 최적 비선형 스프"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-e0803d651dca229d",
+    "query": "내화피복 분야에서 시각 지능 관련 기술을 찾고 있습니다. 내화피복 로봇의 시각 인공지능 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2340053145"
+    ],
+    "source_document_id": "ntis-2340053145",
+    "context_term": "내화피복",
+    "source_term": "시각 지능",
+    "need_statement": "내화피복 로봇의 시각 인공지능 기술이 필요합니다.",
+    "source_group_id": "dbf66b7b970fbeba1896",
+    "science_medium": "건설시공/재료",
+    "evidence": [
+      {
+        "document_id": "ntis-2340053145",
+        "text": "■ 본 연구는 철골조 내화피복 전과정에 있어서 인간처럼 시각 지능을 이용해 외부 환경을 스스로 탐지하고 필요한 작업을 자율적으로 실행하는 지능형 건설로봇을 구현하기 위한 핵심 기반기술인 내화피복 로봇의 시각 인공지능 기술을 개발하고자 함."
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-e16aa4db3fd6d3cd",
+    "query": "에너지 분야에서 실내 오염물질 관련 기술을 찾고 있습니다. HVAC 시스템의 에너지 소비를 저감하기 위해 실내 오염물질 노출과 관련된 지표를 고려해야 합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2340064303"
+    ],
+    "source_document_id": "ntis-2340064303",
+    "context_term": "에너지",
+    "source_term": "실내 오염물질",
+    "need_statement": "HVAC 시스템의 에너지 소비를 저감하기 위해 실내 오염물질 노출과 관련된 지표를 고려해야 합니다.",
+    "source_group_id": "10da7f0d5a8ed086aa6b",
+    "science_medium": "건설 환경설비 기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2340064303",
+        "text": "[실내 재실자 웰빙 지수 정의 및 지표]- 재실자 웰빙을 실내환경 관점에서 건강성 및 쾌적성, 재실자 관점에서 주관적 만족도로 구조화하고, 각 요소를 반영할 수 있는 평가항목을 체계적으로 정의하여 통합 지표를 구축함.- 건강성은 실내 오염물질 노출과 직접적으로 관련된 지표를, 쾌적성은 재실자의 물리적 쾌적감에 영향을 미치는 항목을, 만족도는 재실자의 주관적"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-e32752202d0a2fa1",
+    "query": "자동차 분야에서 디스플레이 기능 관련 기술을 찾고 있습니다. 차량용 조명이 운전자와 탑승자에게 직관적인 정보를 제공할 수 있는 디스플레이 기능을 갖춘 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420026999"
+    ],
+    "source_document_id": "ntis-2420026999",
+    "context_term": "자동차",
+    "source_term": "디스플레이 기능",
+    "need_statement": "차량용 조명이 운전자와 탑승자에게 직관적인 정보를 제공할 수 있는 디스플레이 기능을 갖춘 기술이 필요합니다.",
+    "source_group_id": "5f3116ca7b6e4180ff9b",
+    "science_medium": "광학·양자전자학",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026999",
+        "text": "본 연구는 차량 전장 환경에서도 색 안정성, 고휘도, 장수명, 고효율을 확보한 백색 QD-LED를 개발하는 것을 최종 목표로 함. 최근 차량 내부는 단순한 이동 수단을 넘어 업무·휴식·엔터테인먼트가 결합된 제3의 공간으로 변화하고 있으며, 차량용 조명은 단순 시각효과를 넘어 운전자와 탑승자에게 직관적인 정보를 제공하는 디스플레이 기능까지 수행하고 있음. 이"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-e374fe30dce2378e",
+    "query": "HW/SW 분야에서 결함 탐지 알고리즘 관련 기술을 찾고 있습니다. HW/SW 결함 탐지를 위한 알고리즘 기반 결함 탐지 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2340053929"
+    ],
+    "source_document_id": "ntis-2340053929",
+    "context_term": "HW/SW",
+    "source_term": "결함 탐지 알고리즘",
+    "need_statement": "HW/SW 결함 탐지를 위한 알고리즘 기반 결함 탐지 기술이 필요합니다.",
+    "source_group_id": "8a72df3a258cd185beb3",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2340053929",
+        "text": "1단계 목표(24.9 ~ 25.8(12개월))○ HW/SW 결함 탐지를 위한 디지털 트윈 개발- 알고리즘 기반 결함탐지● HW/SW 결함 분석 및 분류● 데이터 기반 결함 탐지 알고리즘 개발- 디지털 트윈 통신 프로토콜 및 인터페이스● TCP/UDP 혼잡 제어 알고리즘 개발● FACE 기반 개방형 인터페이스 개발- HW/SW 시각화● HW/SW 모델링 기"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-e7e2c7f30ee68a94",
+    "query": "우주종합시험센터지원 분야에서 주기적인 유지보수 및 국산화 개발 관련 기술을 찾고 있습니다. 조립/시험장비의 주기적인 유지보수 및 국산화 개발을 위한 체계적인 접근이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2800001103"
+    ],
+    "source_document_id": "ntis-2800001103",
+    "context_term": "우주종합시험센터지원",
+    "source_term": "주기적인 유지보수 및 국산화 개발",
+    "need_statement": "조립/시험장비의 주기적인 유지보수 및 국산화 개발을 위한 체계적인 접근이 필요합니다.",
+    "source_group_id": "5a7db2398707b9c22109",
+    "science_medium": "우주시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2800001103",
+        "text": "- 위성 및 발사체 검증 시스템의 안정적인 운용/확장 및 고도화- 조립/시험장비의 주기적인 유지보수 및 국산화 개발- 국제공인시험기관의 체계적 운영- 조립/시험 인원의 교육 훈련"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-e82268e8251a86b9",
+    "query": "성형기술 분야에서 벤딩 성형 금형 관련 기술을 찾고 있습니다. 극소 곡면 파이프 벤딩 성형 금형에 대한 설계 연구가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420032440"
+    ],
+    "source_document_id": "ntis-2420032440",
+    "context_term": "성형기술",
+    "source_term": "벤딩 성형 금형",
+    "need_statement": "극소 곡면 파이프 벤딩 성형 금형에 대한 설계 연구가 필요합니다.",
+    "source_group_id": "0440d286d17c1607c0cb",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420032440",
+        "text": "개발목표- 확정된 원자재를 활용하여 개발 금형 성형테스트 및 1차 시제품 제작개발내용- 1년차에 분석한 전용 소재 DATA 기반으로 파이프 원자재 확정- 극소 곡면 파이프 벤딩 성형 금형에 대한 설계 연구- 제조 공정의 조건 선정 및 제작한 금형을 활용한 성형 테스트 - 소성가공 공정중 발생하는 소성 저항에 효과적 대응을 위한 치수 표준안 설정- 재질 별"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-ea6e1bc52cbd33b9",
+    "query": "무인항공체의 분야에서 디지털 트윈 프레임워크 관련 기술을 찾고 있습니다. 무인항공체 운용 중 발생할 수 있는 결함을 조기에 탐지할 수 있는 디지털 트윈 프레임워크가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2340053929"
+    ],
+    "source_document_id": "ntis-2340053929",
+    "context_term": "무인항공체의",
+    "source_term": "디지털 트윈 프레임워크",
+    "need_statement": "무인항공체 운용 중 발생할 수 있는 결함을 조기에 탐지할 수 있는 디지털 트윈 프레임워크가 필요합니다.",
+    "source_group_id": "8a72df3a258cd185beb3",
+    "science_medium": "항공시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2340053929",
+        "text": "본 연구의 최종목표는 하드웨어/소프트웨어를 통합 모니터링하여 운용 중 발생할 수 있는 결함을 탐지하기 위한 디지털 트윈 프레임워크를 개발하여 무인항공체의 가용성 및 안전성을 향상시키는 것임.○ 결함 탐지를 위한 디지털 트윈 프레임워크는 개방형으로 개발할 예정임. - 호환성: 하드웨어/소프트웨어를 통합 관리할 수 있는 유연한 프레임워크 - 확장성: 다양한"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-ee763b36c4287f72",
+    "query": "가속도 분야에서 다자유도 테스트 플랫폼 개념설계 관련 기술을 찾고 있습니다. 다자유도 테스트 플랫폼을 활용한 가속도 센서 성능 평가 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420029755"
+    ],
+    "source_document_id": "ntis-2420029755",
+    "context_term": "가속도",
+    "source_term": "다자유도 테스트 플랫폼 개념설계",
+    "need_statement": "다자유도 테스트 플랫폼을 활용한 가속도 센서 성능 평가 기술이 필요합니다.",
+    "source_group_id": "967f098831b1ba5a98b2",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420029755",
+        "text": "1. 1차년도 : 서보 가속도 센서 설계, 성능 해석, 테스트 플랫폼 설계 가. 가속도 센서 설계 및 제작 나. 가속도 센서 성능평가용 다자유도 테스트 플랫폼 개념설계 다. 가속도 센서 성능 해석 라. 테스트 플랫폼 구조해석2. 2차년도 : 서보 가속도 센서 시작품 제작, 성능평가, 개선방안 연구 가. 가속도 센서 시작품 제작 나. 가속도 센서 성능 해석"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-ef2a6abad2ab7422",
+    "query": "Ore-on-a-chip 분야에서 Ore-on-a-chip 관련 기술을 찾고 있습니다. CO2-EMR 유동/반응 기작을 규명하는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2710111670"
+    ],
+    "source_document_id": "ntis-2710111670",
+    "context_term": "Ore-on-a-chip",
+    "source_term": "Ore-on-a-chip",
+    "need_statement": "CO2-EMR 유동/반응 기작을 규명하는 기술이 필요합니다.",
+    "source_group_id": "be1b596da7b16b8e669a",
+    "science_medium": "나노/마이크로기계시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2710111670",
+        "text": "Ore-on-a-chip 및 Operando XCT 기반 CO2-EMR 유동/반응 기작 규명 및 최적 회수 시점도출"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-ef53299dcad6df85",
+    "query": "유로형성 분야에서 유로형성 관련 기술을 찾고 있습니다. 유압식 잭의 유로형성 기술을 활용하여 중국산과 동등한 제조원가로 생산할 수 있는 기술이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420030434"
+    ],
+    "source_document_id": "ntis-2420030434",
+    "context_term": "유로형성",
+    "source_term": "유로형성",
+    "need_statement": "유압식 잭의 유로형성 기술을 활용하여 중국산과 동등한 제조원가로 생산할 수 있는 기술이 필요합니다.",
+    "source_group_id": "bc0f43ad73055f03d4b1",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030434",
+        "text": "당사의 선행개발 기술인 “유압식잭”의 유로형성 기술을 활용하여 중국산과 동등한 제조원가로 한국에서 생산할 수 있는 제품을 개발하고 한국 자동차연구원과 공동개발을 통해 품질 검증과 인증을 획득하고자 함.-개발단계에서 당사의 기존 고객사인 현대/기아 자동차와 개발내용을 공유하고 고객사의 요구성능을 개발단계부터 적용하는 맞춤형 제품개발. (기아 봉고3, TK전"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-efa24067a34f0ccd",
+    "query": "기반기술의 분야에서 의료기기 인허가 관련 기술을 찾고 있습니다. 의료기기 인허가 및 KGMP 인·허가를 고려한 로봇 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420027449"
+    ],
+    "source_document_id": "ntis-2420027449",
+    "context_term": "기반기술의",
+    "source_term": "의료기기 인허가",
+    "need_statement": "의료기기 인허가 및 KGMP 인·허가를 고려한 로봇 개발이 필요합니다.",
+    "source_group_id": "f644501eea9a9b6fed53",
+    "science_medium": "의료기기",
+    "evidence": [
+      {
+        "document_id": "ntis-2420027449",
+        "text": "1년차 목표① 주사제 자동조제 로봇 H/W 모듈 제작② 의료기기 외형 디자인 진행③ 로봇 운용 S/W 개발④ 로봇 전용 소모품 개발2년차 목표① 시제품 제작② 병원 정보시스템 연동 인터페이스 개발③ 로봇전용 소모품 시제품 제작3년차목표① 사용적합성 평가 진행 ② 공인시험성적서 발급③ 의료기기 인허가④ KGMP 인·허가 ⑤ 수요처 PoC 진행"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f05eee2a23b02d1c",
+    "query": "X융합인재 분야에서 실전문제 발굴 및 PBL 교육 관련 기술을 찾고 있습니다. 에너지 및 환경 산업에서 실전문제를 매년 5건 이상 발굴하고 PBL 교육을 수행할 수 있는 시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710093233"
+    ],
+    "source_document_id": "ntis-2710093233",
+    "context_term": "X융합인재",
+    "source_term": "실전문제 발굴 및 PBL 교육",
+    "need_statement": "에너지 및 환경 산업에서 실전문제를 매년 5건 이상 발굴하고 PBL 교육을 수행할 수 있는 시스템이 필요합니다.",
+    "source_group_id": "96ef55477d8ec7b15ea1",
+    "science_medium": "정보이론",
+    "evidence": [
+      {
+        "document_id": "ntis-2710093233",
+        "text": "에너지, 환경 산업으로 참여기업 확대 및 실전문제 발굴 강화 - [실전문제] 매년 5건 이상의 실전문제 발굴 및 PBL 교육 수행 - [참여기업] 15개 이상의 관련분야 참여기업을 통해 기술 수요의 다양성 확보 AI+X 전문 대학원 브랜드화로 지속적 인력양성 체계 구축 - [수혜인원] 지속적으로 매년 15명 이상의 참여 대학원생 유지 - [참여기관] 인천대"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f1cc767172449cc9",
+    "query": "안전관제 분야에서 모니터링 시스템 관련 기술을 찾고 있습니다. 웨어러블 기기를 통해 수집된 신체정보를 기반으로 사용자의 건강조건을 판단하고 알람을 생성하는 모니터링 시스템이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420033484"
+    ],
+    "source_document_id": "ntis-2420033484",
+    "context_term": "안전관제",
+    "source_term": "모니터링 시스템",
+    "need_statement": "웨어러블 기기를 통해 수집된 신체정보를 기반으로 사용자의 건강조건을 판단하고 알람을 생성하는 모니터링 시스템이 필요합니다.",
+    "source_group_id": "abe3ca3061a03189919c",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033484",
+        "text": "본 장치는 사용자의 신체에 장착된 웨어러블 기기에 의해 측정된 신체정보를 상기 사용자의 단말기로부터 수신하는 송수신모듈, 상기 신체정보를 기초로 상기 사용자가 미리 정해진 건강조건이 만족되는지 여부를 판단하는 판단모듈 및 상기 신체정보가 상기 미리 정해진 건강조건에 만족되지 않는 경우, 미리 정해진 알람신호를 생성하는 알람모듈을 포함하는 모니터링 시스템임"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f68a150fc6051e47",
+    "query": "제어관리 분야에서 외함부 설계 관련 기술을 찾고 있습니다. 고염, 강품 환경에 대응 가능한 외함 설계가 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420033090"
+    ],
+    "source_document_id": "ntis-2420033090",
+    "context_term": "제어관리",
+    "source_term": "외함부 설계",
+    "need_statement": "고염, 강품 환경에 대응 가능한 외함 설계가 필요합니다.",
+    "source_group_id": "b9c3bc81a9448d8e5afc",
+    "science_medium": "전력시스템",
+    "evidence": [
+      {
+        "document_id": "ntis-2420033090",
+        "text": "* 개발대상 : 조선소안벽 장기 계류 선박의 탄소저감 및 유지비용 최적화를 위한 500kW급 AI기반 친환경 통합전력(ESS+AMP) 제어관리 시스템 개발 * 기관별 연구내용1.주관기관 YGTOMS : 해상환경대응 외함개발, ESS 시스템 제작1) 고염, 강품 환경에 대응 가능한 외함부 설계2) ESS 배터리 팩 구성 및 열관리 시스템 설계 3) 외함 제작"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f6e8130431dd6a57",
+    "query": "자율제어 분야에서 폐루프 관련 기술을 찾고 있습니다. 폐루프 구조를 기반으로 한 자율제어 시스템의 성능 조건을 충족하는 기술 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2410019119"
+    ],
+    "source_document_id": "ntis-2410019119",
+    "context_term": "자율제어",
+    "source_term": "폐루프",
+    "need_statement": "폐루프 구조를 기반으로 한 자율제어 시스템의 성능 조건을 충족하는 기술 개발이 필요합니다.",
+    "source_group_id": "b3d16df6d0d9e05d9946",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2410019119",
+        "text": "ㅇ 롤포밍 공정의 예지보전·품질분석·공정자동화용 5종 산업 AI 에이전트 개발- 구성: Orchestrator, 산업 AI용 데이터 플랫폼, Data·Maintenance·Quality AI Agentㅇ 성우하이텍 롤포밍 실증 라인 적용 ― Shear & Welder, Pre-piercing, 16-step Roll Formingㅇ 폐루프 구조 하 Agen"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f769c02c7e575b43",
+    "query": "ROV용 분야에서 최대 인양력 : 20kg(수중) 관련 기술을 찾고 있습니다. 수중에서 20kg의 하중을 안전하게 인양할 수 있는 로봇팔이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420026657"
+    ],
+    "source_document_id": "ntis-2420026657",
+    "context_term": "ROV용",
+    "source_term": "최대 인양력 : 20kg(수중)",
+    "need_statement": "수중에서 20kg의 하중을 안전하게 인양할 수 있는 로봇팔이 필요합니다.",
+    "source_group_id": "9c3288ba244cf3e83f43",
+    "science_medium": "로봇/자동화기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026657",
+        "text": "1) 산업용 ROV에 적용하여 7DoF 자유도로 원격조종할 수 있는 로봇팔 개발 [개발목표] a. 기계 구조 - 자유도 : 7 DoF / 실제 동작 테스트를 통해 검증 - 최대 작동 반경 : 800mm / CAD 모델 기준 + 실측 - 최대 인양력 : 20kg(수중) / 수중 부하 테스트 수행 b. 제어 성능 - 위치 제어 정확도 :"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f7e80c00f60b8d46",
+    "query": "배터리팩 분야에서 배터리 팩 관련 기술을 찾고 있습니다. 전기차의 배터리 수급이 불가능한 상황에서 수리 및 재운행이 가능한 배터리 팩 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420027151"
+    ],
+    "source_document_id": "ntis-2420027151",
+    "context_term": "배터리팩",
+    "source_term": "배터리 팩",
+    "need_statement": "전기차의 배터리 수급이 불가능한 상황에서 수리 및 재운행이 가능한 배터리 팩 개발이 필요합니다.",
+    "source_group_id": "84c892935e941823e9aa",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420027151",
+        "text": "배터리 수급이 불가능한 전기차에 수리 및 다시 운행할 수 있는 배터리 팩을 개발하며, 내부의 배터리 셀을 고정하기 위한 배터리 모듈은 열을 흡수하고 화염을 견디며 셀 단위의 열폭주를 최소화 할 수 있는 재료 및 기술을 적용하여 개발하고자 합니다. 그 외 배터리 팩의 부속품 중 메인 부품인 배터리 케이스, BMS, PRA, 배터리 모듈 고정 프레임은 기존"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f8308a9da1527e92",
+    "query": "반도체 분야에서 설계 인자 관련 기술을 찾고 있습니다. 전력 반도체의 설계 최적화를 위해 특정 열 거동에 영향을 미치는 주요 설계 인자를 규명하는 기능이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2340055700"
+    ],
+    "source_document_id": "ntis-2340055700",
+    "context_term": "반도체",
+    "source_term": "설계 인자",
+    "need_statement": "전력 반도체의 설계 최적화를 위해 특정 열 거동에 영향을 미치는 주요 설계 인자를 규명하는 기능이 필요합니다.",
+    "source_group_id": "9c9a959f3450b99205ae",
+    "science_medium": "생산기반기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2340055700",
+        "text": "본 연구과제는 다중 열원 및 다층 구조의 전력 반도체에서 발생하는 복잡한 물리적 현상을 빠르고 정밀 하게 예측하기 위해, 물리 기반 지배방정식을 학습하는 심층 연산자 신경망 개발을 첫 번째 축으로 삼음. 동시에, 설명가능 인공지능을 기반으로 특정 열 거동에 큰 영향을 미치는 주요 설계 인자를 규명하고, 설계 최적화를 위한 가상 계측 모델을 설계하는 것을 목"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f932870753483a8a",
+    "query": "부품의 분야에서 재질 별 금형 관련 기술을 찾고 있습니다. 냉각수 유동 성능 확보를 위한 재질 별 금형 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "constraint",
+    "relevant_document_ids": [
+      "ntis-2420032440"
+    ],
+    "source_document_id": "ntis-2420032440",
+    "context_term": "부품의",
+    "source_term": "재질 별 금형",
+    "need_statement": "냉각수 유동 성능 확보를 위한 재질 별 금형 개발이 필요합니다.",
+    "source_group_id": "0440d286d17c1607c0cb",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420032440",
+        "text": "- 1년차에 분석한 전용 소재 DATA 기반으로 파이프 원자재 확정- 극소 곡면 파이프 벤딩 성형 금형에 대한 설계 연구- 제조 공정의 조건 선정 및 제작한 금형을 활용한 성형 테스트 - 소성가공 공정중 발생하는 소성 저항에 효과적 대응을 위한 치수 표준안 설정- 재질 별 금형 개발을 통한 재질 별 시제품 도출 및 성능평가 - 냉각수 유동 성능 확보를 위"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-f9c62494a29707a6",
+    "query": "개체차 분야에서 가공 물리 데이터베이스 관련 기술을 찾고 있습니다. 장비 간 개체차를 규명하기 위한 가공 물리 데이터베이스 구축이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710112501"
+    ],
+    "source_document_id": "ntis-2710112501",
+    "context_term": "개체차",
+    "source_term": "가공 물리 데이터베이스",
+    "need_statement": "장비 간 개체차를 규명하기 위한 가공 물리 데이터베이스 구축이 필요합니다.",
+    "source_group_id": "cf122f091adca3f45826",
+    "science_medium": "정밀생산기계",
+    "evidence": [
+      {
+        "document_id": "ntis-2710112501",
+        "text": "데이터 수집 환경 구축 및 가공 물리 내재 지문 원형 도출-장비 간 개체차를 규명하기 위한 첫 단계로, 수치해석과 실측 데이터를 연계한 가공 물리 데이터베이스를 구축하고 지문의 원형을 정의.-수치해석-실측 연계 가공 반응 분석: 소재의 소성 변형과 공구 접촉 특성을 반영한 절삭 해석 모델을 구축하여 원천(부하, 압력) 및 누적(마모, 표면 거칠기) 반응 간"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-fa4c02d54c344fcb",
+    "query": "전장용 분야에서 백색 QD-LED 관련 기술을 찾고 있습니다. 자동차 전장 환경에서 색 안정성, 고휘도, 장수명, 고효율을 확보한 백색 QD-LED의 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "technical",
+    "relevant_document_ids": [
+      "ntis-2420026999"
+    ],
+    "source_document_id": "ntis-2420026999",
+    "context_term": "전장용",
+    "source_term": "백색 QD-LED",
+    "need_statement": "자동차 전장 환경에서 색 안정성, 고휘도, 장수명, 고효율을 확보한 백색 QD-LED의 개발이 필요합니다.",
+    "source_group_id": "5f3116ca7b6e4180ff9b",
+    "science_medium": "광학·양자전자학",
+    "evidence": [
+      {
+        "document_id": "ntis-2420026999",
+        "text": "본 연구는 차량 전장 환경에서도 색 안정성, 고휘도, 장수명, 고효율을 확보한 백색 QD-LED를 개발하는 것을 최종 목표로 함. 최근 차량 내부는 단순한 이동 수단을 넘어 업무·휴식·엔터테인먼트가 결합된 제3의 공간으로 변화하고 있으며, 차량용 조명은 단순 시각효과를 넘어 운전자와 탑승자에게 직관적인 정보를 제공하는 디스플레이 기능까지 수행하고 있음. 이"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-fa9ae4f40fbd3a73",
+    "query": "혁신연구장비 분야에서 결함탐지 비파괴 검사 관련 기술을 찾고 있습니다. 자기장 이미징을 통한 결함탐지 비파괴 검사 원천기술 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2710107329"
+    ],
+    "source_document_id": "ntis-2710107329",
+    "context_term": "혁신연구장비",
+    "source_term": "결함탐지 비파괴 검사",
+    "need_statement": "자기장 이미징을 통한 결함탐지 비파괴 검사 원천기술 개발이 필요합니다.",
+    "source_group_id": "f2bb2d858f6466da51af",
+    "science_medium": "측정표준/시험평가기술",
+    "evidence": [
+      {
+        "document_id": "ntis-2710107329",
+        "text": "■ 자기장 기반의 비파괴 검사 기법 고도화 및 기존 모니터링 기법 비교 : (1) 열 및 물리적 변형에 의한 스테인리스 자화 시험편 제작; (2) 자기장 이미징을 통한 결함탐지 비파괴 검사 원천기술 개발 (3) 금속재료 자기 물성 분석 기법 개발; (4) 자기장 이미징을 통한 재료 물성 분석 장비화를 위해 요구되는 성능 수준 및 필요 기능 구체화; (5)"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  },
+  {
+    "query_id": "ntis-extra-fdb3721636a11c9a",
+    "query": "유압식잭 분야에서 유압식잭 관련 기술을 찾고 있습니다. 현대/기아 자동차와의 협력을 통해 고객사의 요구 성능을 반영한 맞춤형 유압식 잭 개발이 필요합니다. 관련 국가 R&D 과제가 있나요?",
+    "style": "scenario",
+    "relevant_document_ids": [
+      "ntis-2420030434"
+    ],
+    "source_document_id": "ntis-2420030434",
+    "context_term": "유압식잭",
+    "source_term": "유압식잭",
+    "need_statement": "현대/기아 자동차와의 협력을 통해 고객사의 요구 성능을 반영한 맞춤형 유압식 잭 개발이 필요합니다.",
+    "source_group_id": "bc0f43ad73055f03d4b1",
+    "science_medium": "자동차/철도차량",
+    "evidence": [
+      {
+        "document_id": "ntis-2420030434",
+        "text": "당사의 선행개발 기술인 “유압식잭”의 유로형성 기술을 활용하여 중국산과 동등한 제조원가로 한국에서 생산할 수 있는 제품을 개발하고 한국 자동차연구원과 공동개발을 통해 품질 검증과 인증을 획득하고자 함.-개발단계에서 당사의 기존 고객사인 현대/기아 자동차와 개발내용을 공유하고 고객사의 요구성능을 개발단계부터 적용하는 맞춤형 제품개발. (기아 봉고3, TK전"
+      }
+    ],
+    "generator": "gpt-4o-mini",
+    "synthetic": true,
+    "review_status": "pending_human_review"
+  }
+]

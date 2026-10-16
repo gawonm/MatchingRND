@@ -9,7 +9,7 @@ from unittest.mock import Mock, patch
 from app.common.schemas import Evidence, ExternalTechCandidate, GapLabel, ModuleResult, TechElement
 from app.final_answer import AnswerDraft, DraftClaim, CitationRequest, SupportReview, SupportDecision, generate_final_answer
 from app.gap_analysis import GapItem, GapReport
-from app.integrated_analysis import compare_reports, run_integrated_analysis
+from app.integrated_analysis import run_integrated_analysis
 from app.orchestrator import AnalysisRequest, AnalysisState
 
 
@@ -267,6 +267,7 @@ class FinalAnswerTests(unittest.TestCase):
 
 
 class IntegratedAnalysisTests(unittest.TestCase):
+    @unittest.skip("local Gap analyzer was removed")
     def test_cli_reuses_saved_state_without_remote_calls(self):
         from app.scripts.run_analysis import main
         state, _ = fixture()
@@ -282,7 +283,7 @@ class IntegratedAnalysisTests(unittest.TestCase):
             self.assertIn("local", result["answers"])
             self.assertFalse((root / "run" / "answer.md").exists())
 
-    def test_shared_retrieval_snapshot_outputs_and_main_first(self):
+    def test_retrieval_snapshot_outputs(self):
         state, report = fixture()
         request = state.request
         orchestrator = Mock()
@@ -291,21 +292,22 @@ class IntegratedAnalysisTests(unittest.TestCase):
         def runner(state, **options):
             snapshots.append(state.request.problem)
             returned = report.model_copy(deep=True)
-            returned.method = "llm" if "llm" in options else "local"
+            returned.method = "llm"
             state.request.problem = "변경된 입력"
             return returned
         with tempfile.TemporaryDirectory() as temp:
             result = run_integrated_analysis(request=request, orchestrator=orchestrator,
-                gap_runners={"llm": runner, "local": runner}, llm_factory=FakeLLM,
+                gap_runner=runner, llm_factory=FakeLLM,
                 template_only=True, output_dir=temp)
             self.assertFalse(result.errors)
-            self.assertEqual(list(result.answers), ["llm", "local"])
-            for name in ("state.json", "gap_llm.json", "gap_local.json", "answer.md", "answer_llm.md", "answer_local.md", "comparison.json"):
+            self.assertEqual(list(result.answers), ["llm"])
+            for name in ("state.json", "gap_llm.json", "answer.md", "answer_llm.md", "comparison.json"):
                 self.assertTrue((Path(temp) / name).is_file())
             json.loads((Path(temp) / "comparison.json").read_text(encoding="utf-8"))
-        self.assertEqual(snapshots, [request.problem, request.problem])
+        self.assertEqual(snapshots, [request.problem])
         orchestrator.run.assert_called_once_with(request)
 
+    @unittest.skip("local Gap analyzer was removed")
     def test_one_mode_failure_does_not_hide_other_result(self):
         state, report = fixture("local")
         result = run_integrated_analysis(state=state, template_only=True, llm_factory=FakeLLM,
@@ -314,6 +316,7 @@ class IntegratedAnalysisTests(unittest.TestCase):
         self.assertIn("gap_llm", result.errors)
         self.assertIn("local", result.answers)
 
+    @unittest.skip("local Gap analyzer was removed")
     def test_different_extraction_granularity_not_reported_as_accuracy(self):
         _, report = fixture()
         other = report.model_copy(deep=True)

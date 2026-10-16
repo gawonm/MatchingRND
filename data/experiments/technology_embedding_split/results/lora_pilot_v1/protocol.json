@@ -1,0 +1,37 @@
+{
+  "model": "dragonkue/BGE-m3-ko",
+  "seed": 20261015,
+  "epochs": 2,
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "lora_rank": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.05,
+  "target_modules": [
+    "query",
+    "value"
+  ],
+  "train_max_tokens": 384,
+  "inference_max_tokens": 8192,
+  "accumulation": 8,
+  "temperature": 0.05,
+  "precision": "fp16 autocast; fp32 parameters",
+  "initial_loss_scale": 1024,
+  "loss": "explicit-negative softmax; no in-batch negatives",
+  "checkpoint_selection": "maximum synthetic validation MRR@10; earliest tie",
+  "evaluation": "exact cosine; all 1773 frozen chunks; max chunk score per technology; no duplicate collapse",
+  "human_reviewed_training_labels": 0,
+  "input_sha256": {
+    "manifest.json": "2ac84f75708f875b48730279d5d5a59aa53b860606b9058c3d08664dd615d1f5",
+    "corpus.jsonl": "4059af2c99cd8129f53f75fb64af8ced1be479d4cd5d364cab39adb97e1f76b6",
+    "test\\questions.json": "40f24f89f7c2b4b60c21d62224708b734e2e7251d589f041911ab79307e00cd9",
+    "source_snapshot\\documents.json": "6ffa9c2ec3c6e836b0b0215f6588855853f6842d7e776fb40de41733ef860c7a",
+    "synthetic_draft_v1\\manifest.json": "00396ac2dffabd86485a1004f0b943ee422a05bfa478abbb6e4ac64063b03681",
+    "synthetic_draft_v1\\train\\questions.draft.json": "c0858c809b63af1a68b05f0d1b1c9db80edf704a38dd39909cdbfa6e5f38a9e1",
+    "synthetic_draft_v1\\validation\\questions.draft.json": "1491c38126744361391abb6e920736fb8047b1bf935364b64d710cf861b8a730"
+  },
+  "supabase_modified": false,
+  "uses_rfp_adapter": false,
+  "trainable_parameters": 786432,
+  "base_revision": "7074d66aa46562342193ca4feb3d89bf9dad71b4"
+}

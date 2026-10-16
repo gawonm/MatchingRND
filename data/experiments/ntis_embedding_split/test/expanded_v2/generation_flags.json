@@ -1,0 +1,517 @@
+[
+  {
+    "job_id": "ntis-extra-ntis-2420030434",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410020065",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410020065",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410020065",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410017093",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2480001881",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2480001881",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410015788",
+    "style": "constraint",
+    "reason": "whole-title copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2340054816",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710105017",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710105017",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420034029",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420034029",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420028759",
+    "style": "scenario",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420028759",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2340066305",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2340066305",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019161",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019161",
+    "style": "constraint",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420033508",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420033508",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420033103",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420033103",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420033103",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410018368",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410018368",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420027151",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420027151",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420026918",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2340065714",
+    "style": "technical",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710101681",
+    "style": "technical",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710101681",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710111622",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019503",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710112505",
+    "style": "technical",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420033484",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420033484",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710114327",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710114327",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710114327",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019079",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710113024",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710113024",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420027449",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420027449",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019793",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019793",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420028275",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420029755",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2520000856",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2520000856",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710109138",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420031817",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2050001593",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2050001593",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2050001593",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410014904",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420032203",
+    "style": "technical",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420028241",
+    "style": "technical",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420028241",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410016200",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410016200",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710109762",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710109762",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710109762",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410015894",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420030116",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420034196",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420033090",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710105499",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710105499",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2480001980",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2480001980",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019072",
+    "style": "technical",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410015998",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410015998",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710100206",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710100206",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710100206",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410017407",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410015857",
+    "style": "technical",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2540001211",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420030614",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420030656",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710111670",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420031973",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019989",
+    "style": "constraint",
+    "reason": "unsupported numeric detail"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710111095",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710111095",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420031338",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710107850",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710107850",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710107850",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2420030396",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710105037",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710105037",
+    "style": "constraint",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019119",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2410019700",
+    "style": "scenario",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2340055636",
+    "style": "technical",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2340055636",
+    "style": "scenario",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2340055636",
+    "style": "constraint",
+    "reason": "technical term unsupported by chosen anchor"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710103054",
+    "style": "technical",
+    "reason": "long verbatim source copy"
+  },
+  {
+    "job_id": "ntis-extra-ntis-2710103054",
+    "style": "constraint",
+    "reason": "long verbatim source copy"
+  }
+]

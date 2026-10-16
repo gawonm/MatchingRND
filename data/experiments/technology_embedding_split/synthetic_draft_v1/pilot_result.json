@@ -1,0 +1,100 @@
+{
+  "status": "generated",
+  "job": {
+    "document_id": "pos-2025-002",
+    "title": "편심하중 방지용 유해드잭",
+    "group_id": "4e0f3b8a62a1b61e3f46",
+    "split": "train",
+    "positive_anchors": [
+      {
+        "anchor_id": "a0",
+        "chunk_id": "pos-2025-002#overview+problem#0",
+        "text": "본 기술은 건설 현장에서 사용되는 시스템 서포트(동바리) 상단에 설치되는 유해드잭(U-Head Jack)에 관한 것으로, 핵심은 멍에재(수평 부재)를 받치는 'ㄷ'자형 채널 내부에 스프링 탄성체를 부착하여, 멍에재를 자동으로 중앙에 고정시키고 유격을 제거하는 안전 강화형 유헤드잭임",
+        "section": "overview",
+        "pdf_page": 7
+      },
+      {
+        "anchor_id": "a1",
+        "chunk_id": "pos-2025-002#strength+composition#0",
+        "text": "유해드채널: 시스템 서포트 상단에 위치하며 멍에재를 받치는 상부가 개방된 'ㄷ'자형 채널",
+        "section": "composition",
+        "pdf_page": 8
+      },
+      {
+        "anchor_id": "a2",
+        "chunk_id": "pos-2025-002#strength+composition#0",
+        "text": "스프링탄성체: 유해드채널의 마주 보는 양 측벽 내측에 결합",
+        "section": "composition",
+        "pdf_page": 8
+      },
+      {
+        "anchor_id": "a3",
+        "chunk_id": "pos-2025-002#strength+composition#0",
+        "text": "스프링: 멍에재를 밀어내는 탄성력을 제공하며, 2개 이상 구성 가능",
+        "section": "composition",
+        "pdf_page": 8
+      }
+    ],
+    "negative_candidates": [
+      {
+        "candidate_id": "pos-2025-231",
+        "document_id": "pos-2025-231",
+        "title": "횡력 보강재를 구비한 철골 구조물의 내력벽",
+        "chunk_id": "pos-2025-231#overview+problem#0",
+        "text": "본 기술은 철골 스터드(경량 철골) 구조의 내력벽(전단벽)에 관한 것으로, 이 내력벽은 수직 부재(스터드)와 상·하부의 수평 부재(지지 부재)로 기본 뼈대를 이루는데, 핵심은 지진이나 바람 등 수평력(횡력)에 저항하는 '횡력 보강재'를, 기존의 ㄷ-형강 대신 상·하부 수평 부재와 '동일한 두께'를 가진 '플레이트(평판) 형상'으로 제작한 것임",
+        "group_id": "1ae20c2602ee9e856175"
+      },
+      {
+        "candidate_id": "pos-2025-197",
+        "document_id": "pos-2025-197",
+        "title": "스카핑 장치 및 방법",
+        "chunk_id": "pos-2025-197#overview+problem#0",
+        "text": "본 기술은 연속 주조 공정에서 주편(처리물)의 표면 결함을 제거(스카핑)할 때 발생하는 스케일을 고압수(분사물)로 제거하는 '분사부'에 관한 것으로, 핵심은 분사물 노즐의 위치를 상하(Z축), 좌우(X축)로 정밀하게 조절할 수 있는 '조절 부재'를 제공하는 것으로, 나사 운동 원리를 이용한 제1, 제2 위치 조절기를 통해 노즐의 위치 적합성을 확보함",
+        "group_id": "8d4132a04342a751925e"
+      },
+      {
+        "candidate_id": "pos-2025-032",
+        "document_id": "pos-2025-032",
+        "title": "부착탄 자동제거 시스템",
+        "chunk_id": "pos-2025-032#overview+problem#0",
+        "text": "본 기술은 석탄 등을 저장하는 호퍼(Hopper) 내부에 눌러붙은 원료(부착탄)를 별도의 외부 동력원 없이 자동으로 제거하는 시스템에 관한 것으로, 호퍼 하부의 배출 게이트(빈게이트)가 열리고 닫히는 직선 운동 에너지를 회전 운동으로 변환하여, 호퍼 내부의 스크래퍼(긁개)를 작동시키는 친환경 무동력 클리닝 솔루션임",
+        "group_id": "316b9c081d0ab9892ac4"
+      }
+    ]
+  },
+  "draft": {
+    "examples": [
+      {
+        "style": "technical",
+        "query": "건설 현장에서 시스템 서포트 상단에 설치되는 유해드잭을 사용하여 멍에재를 자동으로 중앙에 고정시키고 유격을 제거하려고 합니다. 관련 나눔기술이 있나요?",
+        "positive_anchor_id": "a0",
+        "negatives": [
+          {
+            "candidate_id": "pos-2025-231",
+            "reason": "이 기술은 철골 구조물의 내력벽에 관한 것으로, 멍에재를 고정하는 기능과는 관련이 없습니다."
+          },
+          {
+            "candidate_id": "pos-2025-197",
+            "reason": "이 기술은 주조 공정에서 표면 결함을 제거하는 장치에 관한 것으로, 유해드잭의 기능과는 관련이 없습니다."
+          }
+        ]
+      },
+      {
+        "style": "scenario",
+        "query": "건설 현장에서 멍에재가 흔들리거나 중앙에 고정되지 않아 안전 문제가 발생하고 있습니다. 이를 해결하기 위해 유해드잭을 사용하고 싶은데, 관련 나눔기술이 있나요?",
+        "positive_anchor_id": "a0",
+        "negatives": [
+          {
+            "candidate_id": "pos-2025-032",
+            "reason": "이 기술은 호퍼 내부의 부착탄을 제거하는 시스템으로, 멍에재 고정과는 관련이 없습니다."
+          },
+          {
+            "candidate_id": "pos-2025-197",
+            "reason": "이 기술은 주조 공정에서의 스카핑 장치에 관한 것으로, 유해드잭의 기능과는 관련이 없습니다."
+          }
+        ]
+      }
+    ],
+    "skip_reason": null
+  }
+}

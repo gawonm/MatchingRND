@@ -29,7 +29,7 @@ python -m app.scripts.supabase_rag ingest --modules technology rfp policy ntis c
 python -m app.scripts.supabase_rag status
 python -m app.scripts.verify_supabase_rag
 python -m app.scripts.supabase_rag search --module rfp --query "폐열 회수 열교환기 ORC 터빈" --top-k 5
-python -m app.scripts.run_analysis --backend supabase --mode llm --query "보유기술과 개발 목표를 입력하세요"
+python -m app.scripts.run_analysis --backend supabase --query "보유기술과 개발 목표를 입력하세요"
 ```
 
 GPU 환경이 `.venv-gpu`에 있으면 위 `python` 대신 `.\.venv-gpu\Scripts\python.exe -X utf8`를 사용합니다. VS Code의 Python 인터프리터도 해당 파일을 선택합니다. 이 PC에서 만든 GPU 환경은 기존 `itda/.venv`의 RAG 의존성을 `.pth`로 읽습니다. 다른 PC에서는 독립적으로 의존성을 설치해야 합니다.

@@ -1,0 +1,22 @@
+{
+  "documents": 6580,
+  "chunks": 6580,
+  "train": 646,
+  "validation": 332,
+  "original_test": 10,
+  "source": "Frozen original NTIS split snapshot (2026-10-15)",
+  "source_sha256": {
+    "data\\experiments\\ntis_embedding_split\\manifest.json": "445baf3d4bcc59f0a1005199407c91ad35a865f57d3a96ff00ffee13f391f3ff",
+    "data\\experiments\\ntis_embedding_split\\corpus.jsonl": "46e2921fbd98bb3d6706a3b3be8922efe32d511867b7394a9d31e459d244bfce",
+    "data\\experiments\\ntis_embedding_split\\test\\questions.json": "9c9fd56032c43916986811b9079a6ee32137eff8383a00e125f005a44dd36f86",
+    "data\\experiments\\ntis_embedding_split\\source_snapshot\\documents.json": "b1ff184d84b5fe2dd3025dbf17b66d6b8cc4be99dc1a3908536cc6a25012ccc7",
+    "data\\experiments\\ntis_embedding_finetune_20261016\\train_questions.draft.json": "951a0aa8f9ff2aa3a20efa1672f673e5811b5b2886a1fef4918aa91e826797b2",
+    "data\\experiments\\ntis_embedding_finetune_20261016\\validation_questions.draft.json": "6c4e6679f28d346d5489bd0b0af59ae06466c2e247ad1946300562616668407c",
+    "data\\experiments\\ntis_embedding_finetune_20261016\\generation_plan.json": "48580dcc438d0187be01a20dbd0a50b140b530fa6e7e85a3e72577d0a927a63c"
+  },
+  "no_rfp_or_technology_adapter": true,
+  "expanded_test_created": false,
+  "synthetic_labels": true,
+  "supabase_modified": false,
+  "original_test_modified": false
+}

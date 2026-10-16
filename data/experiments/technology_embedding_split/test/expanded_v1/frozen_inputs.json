@@ -1,0 +1,13 @@
+{
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\manifest.json": "2ac84f75708f875b48730279d5d5a59aa53b860606b9058c3d08664dd615d1f5",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\corpus.jsonl": "4059af2c99cd8129f53f75fb64af8ced1be479d4cd5d364cab39adb97e1f76b6",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\test\\questions.json": "40f24f89f7c2b4b60c21d62224708b734e2e7251d589f041911ab79307e00cd9",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\test\\technology_catalog.json": "7ceba4d35f7645510bdb95d5bc27cc703a49b7b4e9fd4c4e02197ae04feeaae4",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\test\\chunks.jsonl": "353897c488eb221f7c364f6e3ac1f378bd9550cbf6019df4c3ee00c015fcdda6",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\source_snapshot\\documents.json": "6ffa9c2ec3c6e836b0b0215f6588855853f6842d7e776fb40de41733ef860c7a",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\results\\lora_pilot_v1\\protocol.json": "518a50f35bac9e87ce8d2bbd3af02821971f2db068eb594faba7a16521b0ff62",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\results\\lora_pilot_v1\\selection.json": "77a1e42ac12a8b3021f29298197388f1cc9eef2629d0dc7435850ea21268f7ec",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\results\\lora_pilot_v1\\adapter_epoch_2\\adapter_model.safetensors": "859691736290933eb83e6ec5515393a4973d2bc92408a1350fd3e23d9f0c4c71",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\results\\lora_pilot_v1\\validation_base_corpus.npy": "a58f98ce7fb31cd5bb36aeb31535f3eb9d666fbcdeea1efbd0d1aed6d2c10c3f",
+  "C:\\Users\\Admin\\Desktop\\MatchingRND\\data\\experiments\\technology_embedding_split\\results\\lora_pilot_v1\\validation_epoch_2_corpus.npy": "67a04d679007ef342185370f3a1216fb8b86899ee431ec78340a3e0712374894"
+}

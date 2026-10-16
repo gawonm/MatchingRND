@@ -1,0 +1,7 @@
+{
+  "status": "api_failed",
+  "document_id": "pos-2025-046",
+  "error_type": "RateLimitError",
+  "error_code": "project_spend_limit_exceeded",
+  "status_code": 429
+}

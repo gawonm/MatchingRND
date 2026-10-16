@@ -1,0 +1,8 @@
+{
+  "saved_adapter_reload_verified": true,
+  "validation_queries_checked": 334,
+  "max_absolute_error": 0.0,
+  "nonzero_lora_B_matrices": 48,
+  "frozen_inputs_unchanged": true,
+  "test_used_for_this_check": false
+}

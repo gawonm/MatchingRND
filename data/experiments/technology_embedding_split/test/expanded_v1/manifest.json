@@ -1,0 +1,19 @@
+{
+  "original_questions": 10,
+  "generated_questions": 144,
+  "total_questions": 154,
+  "target_uncovered_groups": 48,
+  "generated_groups": 48,
+  "all_groups": 58,
+  "generator": "Codex source-grounded draft; no external generation API",
+  "api_usage": {
+    "calls": 0,
+    "authored_input_sha256": "d215dede27c7b1cac70083cc5df344e6cf2589cdff1438f72487b69546764ead"
+  },
+  "prompt_sha256": "a9c88ef23fd19550fcbe3fd2ec81668266a24d0d1087307a882d4c3abadbebf3",
+  "questions_sha256": "304f7f649eadce4406ae143071cb67d667ad38a19c092eec823450fce2365357",
+  "generated_after_model_selection": true,
+  "human_reviewed_generated_questions": 0,
+  "training_performed": false,
+  "supabase_modified": false
+}

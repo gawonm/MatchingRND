@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "epoch": 1,
+      "all_48_lora_b_nonzero_and_finite": true,
+      "adapter_sha256": "a1057ff05666ea39f26bfea9bc580076018938ec275ef60b03563ad7a176e38d"
+    },
+    {
+      "epoch": 2,
+      "all_48_lora_b_nonzero_and_finite": true,
+      "adapter_sha256": "66dafee6e1993d2f864daa7ecc41827b304bf65c64bb3ff3e259635299a24829"
+    }
+  ],
+  "reload_vectors_match_exactly": true,
+  "corpus_vectors_checked": 6580,
+  "source_and_test_hashes_preserved": true,
+  "additional_test_files_deleted": true,
+  "no_extra_test_questions_generated": true
+}

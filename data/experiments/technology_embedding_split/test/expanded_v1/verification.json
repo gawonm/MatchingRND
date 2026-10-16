@@ -1,0 +1,14 @@
+{
+  "total_questions": 154,
+  "synthetic_questions": 144,
+  "source_groups": 58,
+  "styles": {
+    "user": 10,
+    "technical": 48,
+    "scenario": 48,
+    "constraint": 48
+  },
+  "evidence_quotes_verified": 283,
+  "no_exact_query_overlap_with_train_validation": true,
+  "frozen_models_sources_original_questions_unchanged": true
+}

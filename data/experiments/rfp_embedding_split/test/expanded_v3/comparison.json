@@ -1,0 +1,149 @@
+{
+  "counts": {
+    "original_count": 5,
+    "generated_count": 41,
+    "total_count": 46,
+    "target_logical_tasks": 39,
+    "generator": "gpt-4o-mini",
+    "prompt_sha256": "fb3caa6dd53ce4ac6dcf0cb83a0db7d23b2c0e97312a234a6aad78c122625285",
+    "questions_sha256": "7302fe0a99f789b93d687aa9393be538037e9dd4ac806a6faa5cff1440d4e1f6",
+    "generated_after_model_selection": true,
+    "training_performed": false,
+    "human_reviewed_generated_questions": 0,
+    "failures": 17,
+    "supabase_modified": false,
+    "api_usage": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cache_hits": 105
+    },
+    "quote_normalization": "Only remove added leading list marker when remaining quote matches source exactly"
+  },
+  "baseline": {
+    "all": {
+      "hit_at_1": 0.6739130434782609,
+      "recall_at_1": 0.6739130434782609,
+      "hit_at_3": 0.8913043478260869,
+      "recall_at_3": 0.8913043478260869,
+      "hit_at_5": 0.8913043478260869,
+      "recall_at_5": 0.8913043478260869,
+      "hit_at_10": 0.9347826086956522,
+      "recall_at_10": 0.9347826086956522,
+      "mrr_at_10": 0.7777777777777778,
+      "reciprocal_rank": 0.7797101449275362
+    },
+    "original": {
+      "hit_at_1": 0.4,
+      "recall_at_1": 0.4,
+      "hit_at_3": 0.6,
+      "recall_at_3": 0.6,
+      "hit_at_5": 0.6,
+      "recall_at_5": 0.6,
+      "hit_at_10": 0.8,
+      "recall_at_10": 0.8,
+      "mrr_at_10": 0.5,
+      "reciprocal_rank": 0.5026666666666666
+    },
+    "generated": {
+      "hit_at_1": 0.7073170731707317,
+      "recall_at_1": 0.7073170731707317,
+      "hit_at_3": 0.926829268292683,
+      "recall_at_3": 0.926829268292683,
+      "hit_at_5": 0.926829268292683,
+      "recall_at_5": 0.926829268292683,
+      "hit_at_10": 0.9512195121951219,
+      "recall_at_10": 0.9512195121951219,
+      "mrr_at_10": 0.8116531165311653,
+      "reciprocal_rank": 0.8134959349593496
+    },
+    "technical": {
+      "hit_at_1": 0.7,
+      "recall_at_1": 0.7,
+      "hit_at_3": 0.9,
+      "recall_at_3": 0.9,
+      "hit_at_5": 0.9,
+      "recall_at_5": 0.9,
+      "hit_at_10": 0.95,
+      "recall_at_10": 0.95,
+      "mrr_at_10": 0.7972222222222223,
+      "reciprocal_rank": 0.7982222222222222
+    },
+    "scenario": {
+      "hit_at_1": 0.7142857142857143,
+      "recall_at_1": 0.7142857142857143,
+      "hit_at_3": 0.9523809523809523,
+      "recall_at_3": 0.9523809523809523,
+      "hit_at_5": 0.9523809523809523,
+      "recall_at_5": 0.9523809523809523,
+      "hit_at_10": 0.9523809523809523,
+      "recall_at_10": 0.9523809523809523,
+      "mrr_at_10": 0.8253968253968254,
+      "reciprocal_rank": 0.828042328042328
+    }
+  },
+  "finetuned": {
+    "all": {
+      "hit_at_1": 0.6739130434782609,
+      "recall_at_1": 0.6739130434782609,
+      "hit_at_3": 0.8913043478260869,
+      "recall_at_3": 0.8913043478260869,
+      "hit_at_5": 0.9347826086956522,
+      "recall_at_5": 0.9347826086956522,
+      "hit_at_10": 0.9347826086956522,
+      "recall_at_10": 0.9347826086956522,
+      "mrr_at_10": 0.7804347826086956,
+      "reciprocal_rank": 0.7829622333195888
+    },
+    "original": {
+      "hit_at_1": 0.4,
+      "recall_at_1": 0.4,
+      "hit_at_3": 0.6,
+      "recall_at_3": 0.6,
+      "hit_at_5": 0.8,
+      "recall_at_5": 0.8,
+      "hit_at_10": 0.8,
+      "recall_at_10": 0.8,
+      "mrr_at_10": 0.5066666666666666,
+      "reciprocal_rank": 0.509406392694064
+    },
+    "generated": {
+      "hit_at_1": 0.7073170731707317,
+      "recall_at_1": 0.7073170731707317,
+      "hit_at_3": 0.926829268292683,
+      "recall_at_3": 0.926829268292683,
+      "hit_at_5": 0.9512195121951219,
+      "recall_at_5": 0.9512195121951219,
+      "hit_at_10": 0.9512195121951219,
+      "recall_at_10": 0.9512195121951219,
+      "mrr_at_10": 0.8138211382113821,
+      "reciprocal_rank": 0.8163227016885554
+    },
+    "technical": {
+      "hit_at_1": 0.7,
+      "recall_at_1": 0.7,
+      "hit_at_3": 0.9,
+      "recall_at_3": 0.9,
+      "hit_at_5": 0.95,
+      "recall_at_5": 0.95,
+      "hit_at_10": 0.95,
+      "recall_at_10": 0.95,
+      "mrr_at_10": 0.8016666666666667,
+      "reciprocal_rank": 0.802948717948718
+    },
+    "scenario": {
+      "hit_at_1": 0.7142857142857143,
+      "recall_at_1": 0.7142857142857143,
+      "hit_at_3": 0.9523809523809523,
+      "recall_at_3": 0.9523809523809523,
+      "hit_at_5": 0.9523809523809523,
+      "recall_at_5": 0.9523809523809523,
+      "hit_at_10": 0.9523809523809523,
+      "recall_at_10": 0.9523809523809523,
+      "mrr_at_10": 0.8253968253968254,
+      "reciprocal_rank": 0.829059829059829
+    }
+  },
+  "models_and_original_inputs_unchanged": true,
+  "protocol": "same frozen models/corpus; exact cosine; max chunk per task; confirmed duplicate collapse"
+}

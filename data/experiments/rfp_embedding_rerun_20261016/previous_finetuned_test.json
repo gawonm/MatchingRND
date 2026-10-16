@@ -1,0 +1,92 @@
+{
+  "question_count": 5,
+  "aggregate": {
+    "hit_at_1": 0.4,
+    "hit_at_3": 0.6,
+    "hit_at_5": 0.8,
+    "hit_at_10": 0.8,
+    "mrr_at_10": 0.5066666666666666
+  },
+  "results": [
+    {
+      "query_id": "test-001",
+      "first_relevant_rank": 73,
+      "top_10_task_ids": [
+        "90702471a96bb8bcc0c724e9",
+        "560d81b9b42c100b5b36ea33",
+        "5da6ee87ebf0428eb74d0206",
+        "fe1c4181492941346c3c898e",
+        "52fd8ae2b579005350e2e0ee",
+        "b7c513e32b9ab88dd7b1670c",
+        "45187baf857b30ebe45e0981",
+        "d6b492e7699b17ce598b0390",
+        "d133f5bfeff9ba4c1bf7590b",
+        "5ecd8f47d518671f2e7dc916"
+      ]
+    },
+    {
+      "query_id": "test-002",
+      "first_relevant_rank": 1,
+      "top_10_task_ids": [
+        "519827349fb8a249e67c5393",
+        "d29f2af35d262c5824a62988",
+        "98275b46064cc32b2363a24c",
+        "70188c8fafeccaff21e8bff2",
+        "c2e84ac9ee3868228b6b5fe3",
+        "edf091aa8a7b99b4ba5661b1",
+        "05775a9e65341decd5366367",
+        "6213dfb206545defdf5b3e90",
+        "bbd2430a0a015a2266a03b01",
+        "169e0c986bd06d87af42b4a0"
+      ]
+    },
+    {
+      "query_id": "test-003",
+      "first_relevant_rank": 1,
+      "top_10_task_ids": [
+        "859469113fbd121aa51ab1da",
+        "14fc192734e8b62fef5b1f3f",
+        "73bf330f61f1d77bef480479",
+        "9c15e6ffd5ae4d9f397ac577",
+        "dc0e3fb31d77ed19d6b82eb2",
+        "f13b76d3bc2117cc0db33d8d",
+        "3cc45149950c7f6c4d19e484",
+        "821faa89fdfac3d7cddc1c5f",
+        "77aba3b88c252f5aaa5b52aa",
+        "90bf86368712f7bbf22eb8e3"
+      ]
+    },
+    {
+      "query_id": "test-004",
+      "first_relevant_rank": 3,
+      "top_10_task_ids": [
+        "2fcf72e9f6f5fae979db213c",
+        "73a0ae886ca7f57aaababf15",
+        "0429588cfba5f676862d5ed8",
+        "ea7e9348f46ccbac81e74650",
+        "560d81b9b42c100b5b36ea33",
+        "3d1aa887ad33c0f8329e8ea9",
+        "f0bd60ca6f866382227505b9",
+        "243f2bdaf9fabe81cf96364a",
+        "872852326231f8cd2299d2d0",
+        "0ba927f8bdb9046fe7554964"
+      ]
+    },
+    {
+      "query_id": "test-005",
+      "first_relevant_rank": 5,
+      "top_10_task_ids": [
+        "55ddf49c2e894e7291fe82f6",
+        "6575e8714c3c28581e40ff46",
+        "5ae3d34d019f2a6885621bc4",
+        "e44657c52a1ab8e6ce4a8a2d",
+        "6be8beeb7da9d02b6581fa65",
+        "1778c357f228cbac51b77b03",
+        "50bc5899220c030ab8ab38b4",
+        "62327c0ecba622eda70d7766",
+        "7598ccdecefa2b8c690ab105",
+        "5ecd8f47d518671f2e7dc916"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,815 @@
+{
+  "accepted": 190,
+  "rejected": [
+    {
+      "query_id": "train-syn-f39035c2ed8e4c",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-bad3a2482a2f1b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-50a9ee1982fa17",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-fc9aac3044d7e1",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-c627dd1def48b7",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-46823338c3b135",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-0b882d62d51c22",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-63f3dfe306a913",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-85129711cc9a02",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-613f13a50e132b",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-cfd32d7d9bba4c",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-6947181473e1b3",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-aa21ab924b8543",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-666dd6824954aa",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-6898776830814f",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-756f89803a689a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-de79a7bcdd5d13",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-79d1ecbf259e30",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-3e2cb1fa617d0d",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-26d06c03a99ab6",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-5538b30480825c",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-fdb4e40e93f3cc",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-981ed13d683f41",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-335dc3cfc0829a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-d3388fa6421c5e",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-ba3e6cf5b37a3d",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-d7e23e51d19d99",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-26384d5ab9f8ad",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-69c8919079218d",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-3684ce960c82b7",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-ceacf8d651c74a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-ee8ae41aa07fa1",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-0664845b805500",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-dd74a61e993b9b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-1f42f0dd37a73a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-0feeb0cf37731c",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-510d3b1472bc29",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-7d76002f003a26",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-62a26c4ecb8276",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-d96772d84396e2",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-303d93dabaa801",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-d6ad0f36912b89",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-74953ad662cffd",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-448808cacf7371",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-8a2504c127a1c6",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-67c4e63f4727cf",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-dec98bfd825304",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-c74f69136fe4e5",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-4cbb56fd05d41d",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-b4c3d6d960b253",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-2cc3b5c2a066f0",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-566172400c6f70",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-e70c2044da176d",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-dcb61e406295e0",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-9871846b69a0d5",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-a40329bf6ea29f",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-86d1ca8683e1da",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-d92b0faf7257c4",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-47bbddbb77a7dc",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-6729c2e979b524",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-18e0eccc568016",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-aaba9f81fb1910",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-42ab4ace75d97e",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-c0c1fefe5e0ea3",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-5a6da9c1bcfa9e",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-d6368fbd5a2b2c",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-854a2e1cd1ea2a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-a68b1f88bf2f28",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-36830f2c33da81",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-471e3d0a1cbb54",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-241fd807ea6948",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-eb1b0e54c80ab0",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-594c74fff0cd85",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-9855efc61951ce",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-a3ae301f38feb6",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-58a5b6fc9801d0",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-2f7117b6c88c3b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-386dcd62a4d286",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-fea224ed2c2146",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-8e9ad9e33d5701",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-5dea64c1592e8a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-0ee6aa7bc7ce00",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-94c3b88b81c90b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-1b53c1b7d09455",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-0b604d105392df",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-bf4efccafaa12a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-6470542f369d0b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-1a94c1da7c2e17",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-b3fe3d182fe23d",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-9633263a34231a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-4bbc1874ad2b4a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-c6971de1a79866",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-542f6f4ee3fc33",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-060da404f9d63c",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-7f04898cc1cea3",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-ffe99bdba5c4e5",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-67bcebaf0fac50",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-57b5683e95f19f",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-09f61c7f363288",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-be5e73b7b5e7eb",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-bfae703eb12df4",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-89c8bf3666c831",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-10d0c21e9b859f",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-5fdcb39fc9caa4",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-e0506c05a9265d",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-4ae609fbbb6731",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-a5e181e0d2a169",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-a126fe51c524ee",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-77225e6732bd8a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-123e4f1591b64b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-5d9f545b608ad7",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-d84d487c9baef4",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-c4cf7439e83860",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-4d70fe3225b5d8",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-a90a34bd533fe3",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-2a3679b6fe22b7",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-cc47095d73c5b3",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-e93d9e96216b2f",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-cc8ab479c26f69",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-c0316e5d8bfacd",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-a50ae56994a09f",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-00d15fd5672340",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-4e018cb653d2db",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-81c061814c69b9",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-9fed64e07eeda2",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-b53b5ca035c46a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-6687818b08c02e",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-104319eb853fde",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-71359dec9ddd00",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-fe2b0439bad960",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-94f0f0e21c8fc8",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-e10bd49ddc86b9",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-e6ba0bf0befa1d",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-2b25dd462b9af6",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-fdcaae3afa440f",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-f8bc9fe4cf647c",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-f0106f3bbb0eec",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-22a096b38db744",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-dd00eaf5768ffe",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-f05ab553087ebd",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-60ca85ced72179",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-5a0971f84edf48",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-8675cf7185335e",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-ffa86ea86ba3bf",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-48936b7206f41e",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-05d9ad013544bf",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-d2656197fb277b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-0553d514b367a8",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-9b68922cbfe61e",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-859ea87d2aa84f",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-aecb6baa0435b0",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-88ad847758d578",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-8adc1174d6b57d",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-66c2c54bc58e19",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-3a28bcde8eec69",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-dc5c38a6a35f13",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-253598f0f286b3",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-e946face417678",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-fcb0b33edd5c7b",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-914a2e2eac95d3",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-d9c90683cd1e6e",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-aa348e4b2a9cac",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-bfbc66a3ab02c7",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-8ccbc914173e88",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-2936e8d6a678b9",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-6c702e866a9897",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-7f8d04d107e478",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-a9cbfe42dfa941",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-fb0cf6e34aa978",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-f7fb126673d073",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-70c22d72fd3e53",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-85df697bdb047c",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-681e0faef2cd02",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-6da7d42772789a",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-79943b2ea1895b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-04f381f31005bc",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-4e6e2152e04203",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-2f733e04f18062",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-f755f4ff27f81d",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-ac8e77fbfeba11",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-67b46a217cb09f",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-c1e692c05953e7",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-ed60df30d88f78",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-e6ac1bf6397d3d",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-2bd0f5cb78aded",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-91f51358572d0c",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-6e7b1efae0fe54",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-3a4a94c2b8bb1e",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-4fbee345bd0bd2",
+      "reason": "No verified negative"
+    },
+    {
+      "query_id": "train-syn-f5f8b978b96376",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-a1e5cab704df98",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-cafa8a1885822f",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-5da00ed4a6ac7b",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-e671b96dc16e77",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-80f3d6eeddc50b",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-1f6333b15d2a4c",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-09087c5f0900ff",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-d794cb924178cc",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-4de0c16ea51a82",
+      "reason": "Evidence is absent from source"
+    },
+    {
+      "query_id": "train-syn-a446d1cce4805c",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-d1bba03572deaa",
+      "reason": "Not clean train draft"
+    },
+    {
+      "query_id": "train-syn-315a79d6a73ca0",
+      "reason": "Evidence is absent from source"
+    }
+  ],
+  "checks": "clean draft flags; evidence present in windows; train-only; negative outside source group",
+  "semantic_human_review": false
+}

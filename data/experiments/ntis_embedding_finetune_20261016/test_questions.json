@@ -1,0 +1,162 @@
+[
+  {
+    "query_id": "ntis-test-001",
+    "query": "장거리(5M) 소화가 가능한 친환경 2액형 소화액을 적용한 리튬 배터리 화재 대응 소화장치 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2710107382"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2710107382",
+        "project_id": "2710107382",
+        "project_title": "장거리(5M) 소화가 가능한 친환경 2액형 소화액을 이용한 리튬 배터리 소화장치",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "장거리(5M) 소화가 가능한 친환경 2액형 소화액을 적용한 리튬 배터리 화재 대응 소화장치를 개발하는 것을 내용으로 한다."
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-002",
+    "query": "제직기계에 장착된 'Corduroy 자동 절개장비'로 제직과 동시에 자동으로 Corduroy를 절개하여 생산하는 기술 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420026554"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420026554",
+        "project_id": "2420026554",
+        "project_title": "제직공정에서 'Corduroy자동절개장비'에 의한 Corduroy(골덴)제품 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "본 연구 과제로 생산 할 Corduroy직물 생산방법은, 제직기계에 장착된 'Corduroy 자동 절개장비'에 의해 제직기상에서 제직과 동시에 자동으로 Corduroy를 절개하여 생산하는 기술이다."
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-003",
+    "query": "화약을 사용하지 않고 열선방식을 이용한 점화관속 부속물을 통해 고온의 열에너지를 소화약제에 직접 전달하여 열분해 반응을 유도하는 고체에어로졸 소화기 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420034085"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420034085",
+        "project_id": "2420034085",
+        "project_title": "비화약식 점화방법과 이중단열관 구조의 고체에어로졸 소화기 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "본 연구개발에서는 화약을 사용하지 않고, 열선방식을 이용한 점화관속 부속물을 통해 고온의 열에너지를 소화약제에 직접 전달하여 열분해 반응을 유도하는 고체에어로졸 소화기를 개발하고자 함"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-004",
+    "query": "선박용 액체수소용 Flexible 배관 및 진공 단열형 커플러 개발 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2410016470"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2410016470",
+        "project_id": "2410016470",
+        "project_title": "선박용 극저온 플랙시블 호스 및 커넥터 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "선박용 액체수소용 Flexible 배관 및 진공 단열형 커플러 개발"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-005",
+    "query": "외부 자기장에 반응해 3차원 형태로 변하는 자성 소프트 로봇을 인공지능 물리 모델로 설계하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2340052414"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2340052414",
+        "project_id": "2340052414",
+        "project_title": "물리 정보 신경망을 이용한 3차원 프로그래머블 마그네틱 소프트 로봇 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "(1) 연구개발과제의 최종 목표 - 물리 정보 신경망을 이용한 3차원 프로그래머블 마그네틱 소프트 로봇 개발"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-006",
+    "query": "금속 파편과 지뢰를 구분해서 오경보를 줄일 수 있는, 물리 법칙을 반영한 신경망 기반 탐지 센서 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420033080"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420033080",
+        "project_id": "2420033080",
+        "project_title": "단일채널 PI(Pulse Induction) 기반 PINN(Physics -Informed Neural Network) 역변환 적용지능형 지뢰탐지 센서 시스템 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "기존PI 방식 지뢰탐지기는 금속 파편, 토양 특성 및 환경 변화에 의해 유사 신호가 다수 발생하며, 신호 세기 기반 임계값 판별 방식만으로는 오경보 저감 및 표적 구분 능력 향상에 근본적인 한계가 존재한다."
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-007",
+    "query": "여성이나 고령 농가 노동자도 쉽게 쓸 수 있는 가벼운 젖소 세척 장비를 수출용으로 개발하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420032325"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420032325",
+        "project_id": "2420032325",
+        "project_title": "IoT 기반 인공지능 알고리즘을 적용한 수출형 젖소 유두 자동 세척기 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "여성과 고령 노동자를 고려한 경량형 유두세척기를 개발하여 국제 경쟁력을 확보하고"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-008",
+    "query": "대형 디스플레이 기판 노광 장비에 들어가는 초정밀 이송 스테이지를 개발하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2410016038"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2410016038",
+        "project_id": "2410016038",
+        "project_title": "8세대 1.5㎛급 해상도 디지털 노광기 시스템 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "[최종목표]ㅇ 8세대 디지털 노광 공정을 위한 반복 정밀도 ±0.2um이하, 스캔 최고 속도 200mm/s, 정지 안정화 (settling time) 1s 이하 고정밀 6DOF 통합 모션 스테이지 개발"
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-009",
+    "query": "드론으로 항만 터미널 상황을 실시간 관측해서 무인 운반차량 운영을 관리하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2710102865"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2710102865",
+        "project_id": "2710102865",
+        "project_title": "드론 기반 모니터링 정보를 활용한 통합형 항만 AGV 운영시스템 개발",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "본 연구의 최종 목표는 드론 기반 실시간 모니터링 정보를 활용하여 항만 터미널 내 AGV 운영을 효율적이고 안전하게 관리할 수 있는 통합형 항만 AGV 운영시스템을 개발하는 것이다."
+      }
+    ]
+  },
+  {
+    "query_id": "ntis-test-010",
+    "query": "사람 대신 도로 위 차선을 스스로 주행하며 칠하는 로봇을 개발하는 관련 과제가 있나요?",
+    "relevant_document_ids": [
+      "ntis-2420031008"
+    ],
+    "evidence": [
+      {
+        "document_id": "ntis-2420031008",
+        "project_id": "2420031008",
+        "project_title": "딥러닝 기반 차선도장용 자율주행 로봇 제작 및 실증",
+        "filename": "ntis_projects_2026_mechanical.xlsx",
+        "text": "ㅇ자율 주행형 차선 도장 로봇개발 및 로봇도장공법을 이용한 실 도로상 차선 도장 작업 공정 실증"
+      }
+    ]
+  }
+]

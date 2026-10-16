@@ -1,4 +1,4 @@
-"""Run once, compare LLM/local Gap methods, and save answers plus validation logs."""
+"""Run retrieval, LLM Gap analysis, and final-answer generation."""
 from __future__ import annotations
 
 import argparse
@@ -23,7 +23,6 @@ def main(argv=None) -> int:
     inputs.add_argument("--problem", help="기술문제 직접 입력")
     parser.add_argument("--owned", action="append", default=[], help="보유기술 (여러 번 지정 가능)")
     parser.add_argument("--policy-question")
-    parser.add_argument("--mode", choices=("both", "llm", "local"), default="both")
     parser.add_argument('--backend', choices=('local','supabase'), default='supabase', help='검색 저장소. Supabase는 사전 적재가 필요합니다.')
     parser.add_argument("--model", default="gpt-4o-mini", help="Gap LLM·답변 생성·의미 검토 모델")
     parser.add_argument("--template-only", action="store_true", help="최종 답변 LLM 호출 없이 표·근거 출력")
@@ -61,8 +60,7 @@ def main(argv=None) -> int:
             options["request"] = AnalysisRequest(problem=args.problem, owned_technologies=args.owned,
                                                   policy_question=args.policy_question)
         print("같은 Retrieval 결과에서 Gap 분석·답변 생성·검증을 실행합니다.", flush=True)
-        modes = ("llm", "local") if args.mode == "both" else (args.mode,)
-        result = run_integrated_analysis(**options, modes=modes, output_dir=output,
+        result = run_integrated_analysis(**options, output_dir=output,
                                          model=args.model, template_only=args.template_only)
         if "interpretation" in locals():
             (output / "input.json").write_text(interpretation.model_dump_json(indent=2) + "\n", encoding="utf-8")

@@ -1,0 +1,12 @@
+{
+  "seed": 20261016,
+  "cluster_bootstrap_replicates": 4000,
+  "metrics": [
+    "hit_at_1",
+    "hit_at_5",
+    "mrr_at_10"
+  ],
+  "selection": "all validated generated queries; no score filtering",
+  "question_sha256": "c8deccd17be80314036a7222820a8a1bd4831f39d889b6ad8ca50a0ac8fc87f4",
+  "model_selection_changed": false
+}
