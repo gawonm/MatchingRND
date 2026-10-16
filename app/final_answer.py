@@ -280,73 +280,9 @@ def _validated_report(report: GapReport, evidence: list[EvidenceRecord], warning
 
 def render_answer(state: AnalysisState, report: GapReport, claims: list[ClaimCheck],
                   evidence: list[EvidenceRecord], warnings: list[str]) -> str:
-    lines = ["# 기술기획 분석 결과", "", f"기술문제: {state.request.problem}",
-             f"제공한 보유기술: {', '.join(state.request.owned_technologies) or '없음'}", "",
-             f"Gap 분석 방식: {report.method}"]
-    if report.method == "local":
-        lines += ["로컬 결과는 키워드·유사도 점수에 따른 잠정 판정입니다. 실제 기술 충족 여부는 원문 검토가 필요합니다."]
-    if state.request.unmet_elements:
-        lines += [f"사용자가 보완을 요청한 기술: {', '.join(state.request.unmet_elements)}"]
-    for module, title in ((state.technology, "기술나눔 검색 후보"), (state.rfp, "공고·RFP 검색 후보")):
-        lines += ["", f"## {title}", ""]
-        if not module.candidates:
-            lines.append("현재 검색에서 후보를 확보하지 못했습니다.")
-        for candidate in module.candidates:
-            provider = f" — 제공기관: {candidate.provider}" if candidate.provider else ""
-            lines.append(f"- {candidate.title}{provider} (문서 ID: {candidate.doc_id})")
-            # URLs come from source metadata, never from generated prose.
-            urls = list(dict.fromkeys(url for ev in candidate.evidences
-                                     for url in ev.extra.get("notice_urls", []) if url.startswith(("https://", "http://"))))
-            for url in urls:
-                lines.append(f"  - [원 공고 확인]({url})")
-        lines.append("검색 후보는 기술적 관련성 및 도입·참여 조건을 추가 검토할 대상입니다.")
-    lines += ["", "## 기술요소별 Gap", "", "| RFP 요구기술 | 판정 | 판정 규칙 |", "|---|---|---|"]
-    bank = {(r.evidence.source, r.evidence.doc_id, r.evidence.quote) for r in evidence}
-    for item in report.items:
-        valid = any((ev.source, ev.doc_id, ev.quote) in bank for ev in item.requirement.evidences)
-        # A forged/unavailable RFP quotation cannot make a final coverage verdict.
-        label = item.label.value if valid else GapLabel.INSUFFICIENT.value
-        reason = item.decision_path if valid else "RFP 요구 원문을 제공 자료에서 확인하지 못함"
-        ids = [r.evidence_id for r in evidence if any(
-            (r.evidence.source, r.evidence.doc_id, r.evidence.quote) == (ev.source, ev.doc_id, ev.quote)
-            for ev in item.requirement.evidences)]
-        links = " ".join(f"[{eid}](#{eid.lower()})" for eid in ids)
-        lines.append(f"| {_escape(item.requirement.name)} {links} | {label} | {_escape(reason)} |")
-    if not report.items:
-        lines += ["", "RFP 요구기술 근거가 없어 Gap 판정을 제시하지 않습니다."]
-    names = {"external": "외부기술 검토", "ntis": "선행 R&D 맥락", "rfp": "관련 RFP",
-             "gap": "Gap 설명", "policy": "제도 확인", "next_steps": "후속 검토"}
-    used = set()
-    for section, title in names.items():
-        accepted = [c for c in claims if c.accepted and c.draft.section == section]
-        if accepted:
-            lines += ["", f"## {title}", ""]
-            for claim in accepted:
-                ids = list(dict.fromkeys(c.evidence_id for c in claim.draft.citations))
-                used.update(ids)
-                lines.append(f"- {claim.draft.text} " + " ".join(f"[{eid}](#{eid.lower()})" for eid in ids))
-    # Even template-only answers link each Gap to available original evidence.
-    for item in report.items:
-        for record in evidence:
-            if any(record.evidence.source == ev.source and record.evidence.doc_id == ev.doc_id
-                   and record.evidence.quote == ev.quote for ev in item.requirement.evidences):
-                used.add(record.evidence_id)
-    if used:
-        lines += ["", "## 원문 근거", ""]
-        for record in evidence:
-            if record.evidence_id not in used:
-                continue
-            ev = record.evidence
-            page = f", {ev.page + 1}쪽" if ev.page is not None else ""
-            lines += [f"<a id=\"{record.evidence_id.lower()}\"></a>",
-                      f"**{record.evidence_id} — {ev.source.value}/{ev.doc_id}{page}**",
-                      "> " + ev.quote.replace("\n", "\n> "), ""]
-    if warnings:
-        lines += ["", "## 확인이 필요한 사항", ""]
-        lines.extend(f"- {warning}" for warning in dict.fromkeys(warnings))
-    lines += ["", "추가 R&D 검토 후보는 현재 자료에서 충족 근거를 확인하지 못했다는 의미입니다. "
-              "기술 도입 가능성·사업 신청자격·법적 적합성을 확정하지 않습니다."]
-    return "\n".join(lines) + "\n"
+    from app.answer_format import render_answer as render_validated_answer
+
+    return render_validated_answer(state, report, claims, evidence, warnings)
 
 
 def generate_final_answer(state: AnalysisState, report: GapReport, *, llm: StructuredLLM | None = None,

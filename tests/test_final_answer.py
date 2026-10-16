@@ -225,7 +225,7 @@ class FinalAnswerTests(unittest.TestCase):
         llm = Mock(side_effect=AssertionError("LLM must not run"))
         answer = generate_final_answer(state, report, llm=llm, template_only=True)
         self.assertIn("잠정 판정", answer.markdown)
-        self.assertIn("[E1](#e1)", answer.markdown)
+        self.assertIn("동적 객체 추적 기술을 개발한다.", answer.markdown)
         llm.assert_not_called()
 
     def test_unseen_suffix_of_truncated_evidence_cannot_be_cited(self):
