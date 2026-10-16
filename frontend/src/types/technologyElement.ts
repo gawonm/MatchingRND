@@ -13,5 +13,5 @@ export type TechnologyElement = {
   category: TechnologyElementCategory;
   role: 'owned' | 'goal' | 'uncertain';
   evidence: string;
-  source: '보유 기술' | '기술 문제' | '사용자 추가';
+  source: '보유 기술' | '기술 문제' | '사용자 추가' | 'AI 추출';
 };

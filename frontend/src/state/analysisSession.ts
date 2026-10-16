@@ -1,4 +1,5 @@
 import type { AnalysisRun, AnalysisSession, ConfirmedProfile, DiscoverItem, DiscoverSource, ModuleSearch } from '../types/analysisSession';
+import type { TechnologyElement } from '../types/technologyElement';
 import type { TechnologyInput } from '../types/technologyInput';
 
 export const cloneInput = (value: TechnologyInput): TechnologyInput => ({ ...value, technology_domains: [...value.technology_domains], technology_tags: [...value.technology_tags], patent_numbers: [...(value.patent_numbers ?? [])] });
@@ -32,6 +33,11 @@ function createMockRun(profile: ConfirmedProfile | null, id: string): AnalysisRu
 export function ensureMockRun(session: AnalysisSession, runId = crypto.randomUUID()): AnalysisSession {
   if (activeRun(session)) return session;
   return { ...session, runs: [...session.runs, createMockRun(null, runId)], activeRunId: runId };
+}
+
+// 최신 승인 프로필이 현재 편집본과 같을 때만 반환한다. 편집하면 자동으로 승인 해제된다.
+export function approvedProfile(session: AnalysisSession): ConfirmedProfile | null {
+  return hasUnconfirmedChanges(session) ? null : session.profiles.at(-1) ?? null;
 }
 
 export function hasUnconfirmedChanges(session: AnalysisSession): boolean {
@@ -78,6 +84,13 @@ export function confirmProfile(session: AnalysisSession, runId = crypto.randomUU
   };
   const run = createMockRun(profile, runId);
   return { ...session, draftElements: elements, profiles: [...session.profiles, profile], runs: [...session.runs, run], activeRunId: run.id };
+}
+
+// Workspace 승인 게이트: A 요소가 있고 역할이 모두 정해진 경우에만 승인한다.
+export function approvalBlocker(elements: TechnologyElement[]): string | null {
+  if (!elements.some(element => element.role === 'owned')) return '보유 기술(A) 요소를 1개 이상 등록해야 승인할 수 있습니다.';
+  if (elements.some(element => element.role === 'uncertain')) return '‘구분 확인 필요’ 요소의 역할을 정해야 승인할 수 있습니다.';
+  return null;
 }
 
 export function updateRun(session: AnalysisSession, runId: string, change: (run: AnalysisRun) => AnalysisRun): AnalysisSession {

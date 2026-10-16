@@ -1,4 +1,6 @@
 import type { AnalysisReport } from './types/analysisReport';
+import type { TechnologyElement } from './types/technologyElement';
+import type { TechnologyInput } from './types/technologyInput';
 
 const configuredBase = import.meta.env?.VITE_API_BASE_URL?.trim();
 
@@ -31,4 +33,28 @@ export async function createAnalysisReport(request: AnalysisReportRequest): Prom
   });
   if (!response.ok) throw new Error(`보고서 생성 실패: HTTP ${response.status}`);
   return response.json() as Promise<AnalysisReport>;
+}
+
+type ExtractedTechnology = { name: string; quote: string };
+export type ExtractionResult = { elements: TechnologyElement[]; warnings: string[] };
+
+// POST /api/analysis/extract: LLM 후보 추출만 수행하며 서버에 승인 상태를 저장하지 않는다.
+export async function extractTechnologyElements(input: TechnologyInput): Promise<ExtractionResult> {
+  const response = await fetch(`${API_BASE_URL}/api/analysis/extract`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      owned_description: input.technology_description,
+      required_description: input.required_technology?.trim() || null,
+      problem: input.target_problem,
+    }),
+  });
+  if (!response.ok) {
+    const detail = await response.json().then(body => body?.detail?.message, () => null);
+    throw new Error(typeof detail === 'string' ? detail : `기술요소 추출 실패: HTTP ${response.status}`);
+  }
+  const body = await response.json() as { owned: ExtractedTechnology[]; requested: ExtractedTechnology[]; warnings: string[] };
+  const toElement = (role: 'owned' | 'goal') => (item: ExtractedTechnology, index: number): TechnologyElement =>
+    ({ id: `ai-${role}-${index + 1}`, name: item.name, category: '미분류', role, evidence: item.quote, source: 'AI 추출' });
+  return { elements: [...body.owned.map(toElement('owned')), ...body.requested.map(toElement('goal'))], warnings: body.warnings };
 }

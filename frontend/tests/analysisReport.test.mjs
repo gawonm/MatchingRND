@@ -6,6 +6,8 @@ import { parseReportMarkdown, REPORT_HEADINGS, safeLink } from '../src/lib/repor
 
 const component = readFileSync(new URL('../src/components/AnalysisReportView.tsx', import.meta.url), 'utf8');
 const app = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8');
+const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
+const mockViews = ['FlowViews', 'SessionViews', 'DiscoverExplorer'].map(name => readFileSync(new URL(`../src/components/${name}.tsx`, import.meta.url), 'utf8'));
 const types = readFileSync(new URL('../src/types/analysisReport.ts', import.meta.url), 'utf8');
 
 test('FinalAnswer 계약과 7개 공개 섹션을 사용한다', () => {
@@ -18,8 +20,14 @@ test('FinalAnswer 계약과 7개 공개 섹션을 사용한다', () => {
 
 test('AnalysisState API를 자동 호출하지 않고 Mock 경계를 유지한다', () => {
   assert.doesNotMatch(component, /fetch\(|api\/analysis/);
-  assert.match(app, /viewMode !== 'review'/);
-  assert.match(app, /고정 데모에서는 실제 분석을 실행하지 않습니다/);
+  // 실제 분석은 승인된 Workspace 프로필에서만 실행되며 Mock/데모 화면은 보고서 API에 접근하지 않는다.
+  assert.match(app, /if \(!approved \|\| !reportKey/);
+  assert.match(wizard, /disabled=\{!approved\} onClick=\{run\}/);
+  for (const view of mockViews) assert.doesNotMatch(view, /createAnalysisReport|api\/analysis/);
+  assert.match(app, /\{page === 'workspace' && <WorkspaceWizard/);
+  assert.equal(app.match(/createAnalysisReport\(/g).length, 1);
+  // 같은 승인 버전의 진행 중 요청이 있으면 중복 실행하지 않는다.
+  assert.match(app, /reportsInFlight\.current\.has\(reportKey\)\) return;/);
   assert.equal(mockAnalysisReport.status, 'template');
   assert.equal(mockAnalysisReport.method, 'local');
 });
@@ -52,8 +60,8 @@ test('추천 우선순위, 섹션 이동, 접을 수 있는 원문 인용을 제
 });
 
 test('장시간 분석은 가짜 퍼센트 없이 상태와 재시도를 안내한다', () => {
-  assert.match(app, /role="status"/);
-  assert.match(app, /실제 진행률은 제공되지 않으며/);
-  assert.match(app, /role="alert"[^]*다시 시도/);
-  assert.doesNotMatch(app, /reportStatus[^\n]*%/);
+  assert.match(wizard, /role="status"/);
+  assert.match(wizard, /실제 진행률은 제공되지 않으며/);
+  assert.match(wizard, /role="alert"[^]*다시 시도/);
+  assert.doesNotMatch(wizard, /\d+%|progress-bar|ProgressBar/);
 });

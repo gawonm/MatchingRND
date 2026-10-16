@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { activeRun, confirmProfile, createSession, ensureMockRun, hasUnconfirmedChanges, isHistoricalRun, runProfile, selectedItems, toggleSelection, updateRun } from '../src/state/analysisSession.ts';
+import { activeRun, approvalBlocker, approvedProfile, confirmProfile, createSession, ensureMockRun, hasUnconfirmedChanges, isHistoricalRun, runProfile, selectedItems, toggleSelection, updateRun } from '../src/state/analysisSession.ts';
 import { isNavigation, pageFromHash } from '../src/state/useNavigation.ts';
 
 const input = { technology_domains: [], technology_tags: [], technology_description: '진동 센서 분석', target_problem: '모터 고장 예측' };
@@ -75,4 +75,24 @@ test('브라우저 이동 이력은 페이지·세션·실행·데모 모드를 
   assert.equal(isNavigation({ page: 'discover', sessionId: 's1', runId: null, mode: 'review' }), true);
   assert.equal(isNavigation({ page: 'workspace', sessionId: 's1', runId: 'r1', mode: 'real' }), false);
   assert.equal(isNavigation({ page: 'unknown', sessionId: 's1', runId: 'r1', mode: 'review' }), false);
+  assert.equal(pageFromHash('#report'), 'home');
+  assert.equal(pageFromHash('#selection'), 'selection');
+});
+
+test('Workspace 승인 게이트: A 요소 없이·역할 미정 상태로는 승인되지 않고, 수정하면 승인이 해제된다', () => {
+  const owned = { id: 'a', name: '진동 분석', category: '미분류', role: 'owned', evidence: '진동 분석', source: 'AI 추출' };
+  const goal = { id: 'b', name: '잔존수명 예측', category: '미분류', role: 'goal', evidence: '잔존수명 예측', source: 'AI 추출' };
+  assert.match(approvalBlocker([goal]), /보유 기술/);
+  assert.match(approvalBlocker([owned, { ...goal, role: 'uncertain' }]), /구분 확인/);
+  assert.equal(approvalBlocker([owned, goal]), null);
+
+  const draft = { ...createSession('p1', 's1'), draftInput: input, draftElements: [owned, goal] };
+  assert.equal(approvedProfile(draft), null);
+  const approved = confirmProfile(draft, 'r1', 'v1');
+  assert.equal(approvedProfile(approved).version, 1);
+  const edited = { ...approved, draftElements: [owned, { ...goal, name: '파단 예측' }] };
+  assert.equal(approvedProfile(edited), null);
+  const reapproved = confirmProfile(edited, 'r2', 'v2');
+  assert.equal(approvedProfile(reapproved).version, 2);
+  assert.equal(approvedProfile({ ...reapproved, draftInput: { ...input, required_technology: '변경' } }), null);
 });

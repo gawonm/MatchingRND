@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { API_BASE_URL, createAnalysisReport, getHealth } from '../src/api.ts';
+import { API_BASE_URL, createAnalysisReport, extractTechnologyElements, getHealth } from '../src/api.ts';
 
 test('API base URL은 기본 FastAPI 주소를 사용한다', () => {
   assert.equal(API_BASE_URL, 'http://127.0.0.1:8000');
@@ -22,6 +22,29 @@ test('보고서는 명시적 POST 요청으로만 생성한다', async () => {
     assert.equal(calls, 0);
     assert.equal((await createAnalysisReport({ problem: '고장 예측', owned_technologies: ['진동 분석'], unmet_elements: [] })).method, 'llm');
     assert.equal(calls, 1);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('기술요소 추출은 A/B/문제를 분리 전송하고 후보를 승인 전 요소로 변환하며 실패 메시지를 보존한다', async () => {
+  const originalFetch = globalThis.fetch;
+  try {
+    const calls = [];
+    globalThis.fetch = async (url, options) => {
+      calls.push(url);
+      assert.deepEqual(JSON.parse(options.body), { owned_description: '진동 분석', required_description: null, problem: '고장 예측' });
+      return new Response(JSON.stringify({ owned: [{ name: '진동 분석', quote: '진동 분석' }], requested: [{ name: '고장 예측', quote: '고장 예측' }], warnings: ['w'] }), { status: 200 });
+    };
+    const result = await extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: '진동 분석', target_problem: '고장 예측', required_technology: ' ' });
+    assert.deepEqual(calls, ['http://127.0.0.1:8000/api/analysis/extract']);
+    assert.deepEqual(result.elements.map(e => [e.name, e.role, e.source, e.evidence]), [['진동 분석', 'owned', 'AI 추출', '진동 분석'], ['고장 예측', 'goal', 'AI 추출', '고장 예측']]);
+    assert.deepEqual(result.warnings, ['w']);
+
+    globalThis.fetch = async () => new Response(JSON.stringify({ detail: { error: 'extraction_unverified', message: '원문 확인 불가' } }), { status: 422 });
+    await assert.rejects(extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: 'a', target_problem: 'b' }), /원문 확인 불가/);
+    globalThis.fetch = async () => new Response('oops', { status: 502 });
+    await assert.rejects(extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: 'a', target_problem: 'b' }), /HTTP 502/);
   } finally {
     globalThis.fetch = originalFetch;
   }

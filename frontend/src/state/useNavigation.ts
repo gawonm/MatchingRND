@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const pages = ['home', 'discover', 'workspace', 'simulation', 'report'];
+const pages = ['home', 'workspace', 'discover', 'selection', 'simulation'];
 export type Navigation = { page: string; sessionId: string; runId: string | null; mode: 'review' | 'demo' };
 
 export function pageFromHash(hash: string): string {

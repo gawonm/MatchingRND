@@ -179,7 +179,7 @@ textarea.form-control { min-height: 94px; resize: vertical; }
 .review-group { margin-top: 22px; }
 .home-step { max-width: 980px; margin-inline: auto; }
 .hero-form { max-width: 940px; }
-.home-cta { display: flex; justify-content: flex-end; margin-top: 24px; }
+.home-cta { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; margin-top: 24px; }
 .patent-row { display: flex; align-items: stretch; gap: 8px; }
 .patent-row .form-control { min-width: 0; }
 .patent-add { flex: 0 0 auto; min-width: 64px; white-space: nowrap; }
@@ -254,3 +254,12 @@ textarea.form-control { min-height: 94px; resize: vertical; }
   .report-nav { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
   .report-nav button { flex: 0 0 auto; }
 }
+
+.wizard-steps { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0 0 16px; }
+.wizard-steps li { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #e8e2f7; border-radius: 9px; font-size: 13px; color: #6e697b; }
+.wizard-steps li span { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #f1eefe; font-size: 12px; }
+.wizard-steps li.active { color: #2b2540; font-weight: 600; border-color: currentColor; }
+.wizard-steps li.done span { background: #e3f4e8; }
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 12px; align-items: start; }
+.overview-grid .overview-status, .overview-grid .overview-wide, .overview-grid > button { grid-column: 1 / -1; }
+.overview-grid .analysis-markdown > :last-child { margin-bottom: 0; }

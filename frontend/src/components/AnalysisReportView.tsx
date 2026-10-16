@@ -1,5 +1,5 @@
 import type { AnalysisReport } from '../types/analysisReport';
-import { parseReportMarkdown, safeLink, type MarkdownBlock } from '../lib/reportMarkdown';
+import { parseReportMarkdown, REPORT_HEADINGS, safeLink, type MarkdownBlock } from '../lib/reportMarkdown';
 
 const inlinePattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
 
@@ -24,6 +24,30 @@ function Block({ block }: { block: MarkdownBlock }) {
   }
   if (block.type === 'table') return <div className="analysis-table-wrap"><table className="table"><thead><tr>{block.rows[0].map((cell, index) => <th key={index}><Inline text={cell} /></th>)}</tr></thead><tbody>{block.rows.slice(1).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, index) => <td key={index}><Inline text={cell} /></td>)}</tr>)}</tbody></table></div>;
   return <p><Inline text={block.text} /></p>;
+}
+
+const statusLabels: Record<AnalysisReport['status'], string> = { ok: '보고서 생성 완료', partial: '보고서 일부 항목 제한', insufficient: '근거 부족 보고서', template: '템플릿 보고서' };
+
+// Overview는 answer_format.py 정규 섹션의 첫 하위 제목 이전 블록만 그대로 보여준다(요약 생성·추정 없음).
+const overviewSections = [
+  ['핵심 분석 요약', '기술기획 분석 결과'], ['1순위 나눔기술', REPORT_HEADINGS[0]], ['1순위 RFP', REPORT_HEADINGS[1]],
+  ['Gap 요약', REPORT_HEADINGS[2]], ['후속 확인사항', REPORT_HEADINGS[6]],
+] as const;
+
+export function ReportOverview({ report, onOpenReport }: { report: AnalysisReport; onOpenReport: () => void }) {
+  const sections = parseReportMarkdown(report.markdown);
+  return <div className="overview-grid" data-testid="analysis-overview">
+    <div className="app-card p-3 overview-status"><strong>{statusLabels[report.status]}</strong><span className="small text-secondary"> · status: {report.status} · 근거 {report.evidence.length}건</span>
+      {report.warnings.length > 0 && <ul className="small mb-0 mt-2">{report.warnings.map(warning => <li key={warning}>{warning}</li>)}</ul>}</div>
+    {overviewSections.map(([title, heading]) => {
+      const section = sections.find(item => item.heading === heading);
+      const end = section?.blocks.findIndex(block => block.type === 'subheading') ?? -1;
+      const blocks = section ? section.blocks.slice(0, end === -1 ? undefined : end) : [];
+      return <section className={`app-card p-3 analysis-markdown${heading === REPORT_HEADINGS[2] ? ' overview-wide' : ''}`} key={title}><h3 className="h6">{title}</h3>
+        {blocks.length ? blocks.map((block, index) => <Block key={index} block={block} />) : <p className="small text-secondary mb-0">보고서에 해당 섹션이 없습니다.</p>}</section>;
+    })}
+    <button type="button" className="btn btn-accent-outline" onClick={onOpenReport}>전체 보고서 · 원문 근거 보기</button>
+  </div>;
 }
 
 export default function AnalysisReportView({ report, mode = 'mock' }: { report: AnalysisReport; mode?: 'mock' | 'real' }) {

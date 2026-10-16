@@ -43,6 +43,57 @@ from app.orchestrator import (
 )
 from app.final_answer import FinalAnswer
 from app.integrated_analysis import run_integrated_analysis
+from app.query_parser import InputTechnology, parse_query
+from pydantic import BaseModel, Field
+
+
+class ExtractionRequest(BaseModel):
+    """Wizard Step 1 input: A (required), B (optional), problem (required)."""
+
+    owned_description: str = Field(min_length=1)
+    required_description: str | None = None
+    problem: str = Field(min_length=1)
+
+
+class ExtractionResponse(BaseModel):
+    """Extraction candidates only; nothing is approved or stored server-side."""
+
+    owned: list[InputTechnology]
+    requested: list[InputTechnology]
+    warnings: list[str]
+
+
+def extraction_query(request: ExtractionRequest) -> str:
+    lines = [f"현재 보유한 기술: {request.owned_description.strip()}"]
+    if request.required_description and request.required_description.strip():
+        lines.append(f"보완·확보하고 싶은 기술: {request.required_description.strip()}")
+    lines.append(f"해결하려는 문제: {request.problem.strip()}")
+    return "\n".join(lines)
+
+
+@app.post("/api/analysis/extract", response_model=ExtractionResponse)
+async def extract_elements(request: ExtractionRequest):
+    if not request.owned_description.strip() or not request.problem.strip():
+        raise HTTPException(status_code=422, detail={
+            "error": "invalid_input",
+            "message": "보유 기술과 해결 문제를 입력해 주세요.",
+        })
+    try:
+        result = await run_in_threadpool(parse_query, extraction_query(request))
+    except ValueError as exc:
+        # parse_query could not ground the extracted names in the user's text.
+        raise HTTPException(status_code=422, detail={
+            "error": "extraction_unverified",
+            "message": "원문에서 확인 가능한 기술요소를 추출하지 못했습니다. 입력을 보완하거나 직접 정리해 주세요.",
+        }) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail={
+            "error": "extraction_failed",
+            "message": "기술요소 추출에 실패했습니다.",
+        }) from exc
+    return ExtractionResponse(
+        owned=result.parsed.owned, requested=result.parsed.requested, warnings=result.warnings,
+    )
 
 
 @lru_cache(maxsize=1)

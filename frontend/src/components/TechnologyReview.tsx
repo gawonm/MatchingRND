@@ -10,11 +10,13 @@ type Props = {
   elements: TechnologyElement[];
   onElementsChange: (elements: TechnologyElement[]) => void;
   onDone: () => void;
+  doneLabel: string;
+  doneBlocked?: string | null;
 };
 
 const roleLabels = { owned: '현재 보유 기술', goal: '확보·개발 목표 기술', uncertain: '구분 확인 필요' };
 
-export default function TechnologyReview({ input, elements, onElementsChange, onDone }: Props) {
+export default function TechnologyReview({ input, elements, onElementsChange, onDone, doneLabel, doneBlocked = null }: Props) {
   const [draft, setDraft] = useState<TechnologyElement | null>(null);
   const [isNew, setIsNew] = useState(false);
   const roles: TechnologyElement['role'][] = ['owned', 'goal'];
@@ -39,11 +41,10 @@ export default function TechnologyReview({ input, elements, onElementsChange, on
 
   return <section className="app-card p-4" aria-labelledby="review-title">
     <div className="d-flex justify-content-between align-items-start gap-3 flex-wrap">
-      <div><h3 id="review-title" className="h6 mb-1">기술요소 직접 정리 · 선택</h3><p className="small text-secondary mb-0">필요한 기술만 직접 추가해 주세요. 원문을 수정해도 등록된 요소는 유지됩니다.</p></div>
-      <span className="badge text-bg-light">직접 입력 · 추출 API 미연결</span>
+      <div><h3 id="review-title" className="h6 mb-1">기술요소 검토 · 수정</h3><p className="small text-secondary mb-0">AI 추출 요소는 후보입니다. 역할(보유 A / 필요 B)을 확인하고 수정·추가·삭제해 주세요.</p></div>
     </div>
-    <details className="review-source mt-3"><summary>입력한 원문 보기</summary><div className="small mt-3"><p><strong>보유 기술 설명</strong><br />{input.technology_description}</p><p><strong>해결하려는 기술 문제</strong><br />{input.target_problem}</p><p className="mb-0"><strong>특허번호</strong><br />{input.patent_numbers?.join(', ') || '없음'}</p></div></details>
-    {elements.length === 0 && <p className="small text-secondary mt-3 mb-0">아직 등록된 기술요소가 없습니다. 원문만으로 탐색을 시작하거나 필요한 기술을 직접 추가할 수 있습니다.</p>}
+    <details className="review-source mt-3"><summary>입력한 원문 보기</summary><div className="small mt-3"><p><strong>보유 기술 설명</strong><br />{input.technology_description}</p><p><strong>해결하려는 기술 문제</strong><br />{input.target_problem}</p><p><strong>필요 기술</strong><br />{input.required_technology || '입력 없음'}</p><p className="mb-0"><strong>특허번호</strong><br />{input.patent_numbers?.join(', ') || '없음'}</p></div></details>
+    {elements.length === 0 && <p className="small text-secondary mt-3 mb-0">아직 등록된 기술요소가 없습니다. 보유 기술을 1개 이상 추가해 주세요.</p>}
     {roles.map(role => <section className="review-group" key={role}>
       <h3 className="h6">{roleLabels[role]}</h3>
       {elements.filter(element => element.role === role).length === 0 && <p className="small text-secondary mb-0">등록된 요소 없음</p>}
@@ -60,8 +61,9 @@ export default function TechnologyReview({ input, elements, onElementsChange, on
       <Button variant="outline-secondary" size="sm" className="mt-2" onClick={() => add(role)}><i className="bi bi-plus-lg me-1" aria-hidden="true" />기술 추가</Button>
     </section>)}
     <div className="d-flex justify-content-between gap-2 flex-wrap mt-4">
-      <Button className="btn-accent" disabled={!!draft || elements.some(element => !element.name.trim())}
-        onClick={onDone}>기술요소 정리 완료</Button>
+      <Button className="btn-accent" disabled={!!draft || !!doneBlocked || elements.some(element => !element.name.trim())}
+        onClick={onDone}>{doneLabel}</Button>
+      {doneBlocked && <p className="small text-secondary mb-0 align-self-center">{doneBlocked}</p>}
     </div>
   </section>;
 }
