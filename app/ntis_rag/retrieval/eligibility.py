@@ -4,6 +4,8 @@ import os
 from typing import Literal
 
 from pydantic import BaseModel, ValidationError
+from app.common.paths import PROJECT_ROOT
+from app.common.relevance_batch import BatchedRelevanceLLM
 
 
 class TechnologyMatch(BaseModel):
@@ -40,35 +42,56 @@ class TechnologyRelevanceGate:
         # B always comes from the user, even when no external technology matched.
         self.requested = _names(requested_technologies) or _names([problem])
         self.llm = llm
+        self.runner = BatchedRelevanceLLM(self._client,
+            batch_size=int(os.getenv('NTIS_RELEVANCE_BATCH_SIZE', '5')),
+            max_chars=int(os.getenv('NTIS_RELEVANCE_MAX_CHARS', '24000')))
 
-    def check(self, project):
-        text = project.get('text') or ''
-        if not self.owned or not self.requested:
-            return {'accepted': False, 'reason': '보유기술 또는 기술문제 입력 없음', 'matches': []}
-        if not text.strip():
-            return {'accepted': False, 'reason': '과제 원문 근거 없음', 'matches': []}
+    @property
+    def stats(self):
+        return self.runner.stats
+
+    def _client(self):
         if self.llm is None:
             from app.gap_analysis import OpenAIStructuredLLM
             from app.ntis_rag.config import LLM_MODEL
 
-            self.llm = OpenAIStructuredLLM(model=os.getenv('NTIS_RELEVANCE_MODEL', LLM_MODEL))
-        matches = []
+            self.llm = OpenAIStructuredLLM(model=os.getenv('NTIS_RELEVANCE_MODEL', LLM_MODEL),
+                cache_dir=PROJECT_ROOT / 'storage/llm_cache/ntis_relevance')
+        return self.llm
+
+    def check(self, project):
+        return self.check_many([project])[0]
+
+    def check_many(self, projects):
+        projects = list(projects)
+        if not self.owned or not self.requested:
+            return [{'accepted': False, 'reason': '보유기술 또는 기술문제 입력 없음', 'matches': []} for _ in projects]
+        valid = [i for i, project in enumerate(projects) if (project.get('text') or '').strip()]
+        rows = {i: [] for i in valid}
         for role, technologies in (('owned', self.owned), ('requested', self.requested)):
             for technology in technologies:
-                payload = {'role': role, 'technology': technology, 'project_text': text}
-                response = self.llm([
-                    {'role': 'system', 'content': PROMPT},
-                    {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)},
-                ], TechnologyMatch)
-                try:
-                    match = TechnologyMatch.model_validate(response)
-                except ValidationError:
-                    return {'accepted': False, 'reason': '기술 관련성 판정 형식 오류', 'matches': matches}
-                quote = ''.join(match.quote.split())
-                verified = bool(quote and quote in ''.join(text.split()))
-                matches.append({**match.model_dump(), 'role': role, 'technology': technology,
-                                'verified': verified,
-                                'matched': verified and match.relation in {'same', 'similar'}})
+                requests = [[{'role': 'system', 'content': PROMPT},
+                    {'role': 'user', 'content': json.dumps({'role': role, 'technology': technology,
+                        'project_text': projects[i]['text']}, ensure_ascii=False)}] for i in valid]
+                for i, response in zip(valid, self.runner.map(requests, TechnologyMatch)):
+                    rows[i].append((role, technology, response))
+        return [self._evaluate(project, rows[i]) if i in rows else
+                {'accepted': False, 'reason': '과제 원문 근거 없음', 'matches': []}
+                for i, project in enumerate(projects)]
+
+    def _evaluate(self, project, responses):
+        text = project['text']
+        matches = []
+        for role, technology, response in responses:
+            try:
+                match = TechnologyMatch.model_validate(response)
+            except ValidationError:
+                return {'accepted': False, 'reason': '기술 관련성 판정 형식 오류', 'matches': matches}
+            quote = ''.join(match.quote.split())
+            verified = bool(quote and quote in ''.join(text.split()))
+            matches.append({**match.model_dump(), 'role': role, 'technology': technology,
+                            'verified': verified,
+                            'matched': verified and match.relation in {'same', 'similar'}})
         owned_match = any(row['matched'] for row in matches if row['role'] == 'owned')
         requested_match = all(row['matched'] for row in matches if row['role'] == 'requested')
         accepted = owned_match and requested_match

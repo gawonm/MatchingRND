@@ -69,18 +69,22 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
         task['task_id']: task for task in index['dataset'].get('tasks', [])
     }
     relevance_checks = {}
-    selected, seen_tasks = [], set()
+    selected, seen_tasks, candidates = [], set(), []
     for cid, score in ranking:
         task_id = chunks[cid].metadata['task_id']
         if task_id not in seen_tasks:
             seen_tasks.add(task_id)
-            if gate.active:
-                check = gate.check(tasks_by_id.get(task_id, {}))
+            candidates.append((cid, score))
+    for offset in range(0, len(candidates), gate.runner.batch_size):
+        batch = candidates[offset:offset + gate.runner.batch_size]
+        checks = gate.check_many([tasks_by_id.get(chunks[cid].metadata['task_id'], {}) for cid, _ in batch]) if gate.active else [None] * len(batch)
+        for (cid, score), check in zip(batch, checks):
+            task_id = chunks[cid].metadata['task_id']
+            if check is not None:
                 relevance_checks[task_id] = check
-                if not check['accepted']:
-                    continue
-            selected.append((cid, score))
-        if len(selected) == top_k:
+            if len(selected) < top_k and (check is None or check['accepted']):
+                selected.append((cid, score))
+        if len(selected) >= top_k:
             break
     if gate.active:
         accepted_tasks = {chunks[cid].metadata['task_id'] for cid, _ in selected}
@@ -175,7 +179,7 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
         'result_type': 'technical_candidate', 'filters': dict(filters or {}),
         'context_truncated': bool(skipped_ids), 'omitted_context_ids': sorted(skipped_ids),
         'diagnostics': {
-            'technology_relevance': {'enabled': gate.active, 'checks': relevance_checks},
+            'technology_relevance': {'enabled': gate.active, 'checks': relevance_checks, 'llm_usage': gate.stats},
             'failed_files': index.get('failed_files', []),
             'excluded_files': index.get('excluded_files', []),
             'matching_issues': index.get('matching_issues', []),

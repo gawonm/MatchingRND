@@ -43,9 +43,14 @@ def fixture(pairs):
 
     def llm(messages, model):
         payload = json.loads(messages[-1]['content'])
-        task_id = payload['sections'][0]['text'].split()[0]
-        technology_index = payload['technologies'][0]['index']
-        return model(matches=[m for m in judgments[task_id] if m['technology_index'] == technology_index])
+        def judgment(data):
+            task_id = data['sections'][0]['text'].split()[0]
+            technology_index = data['technologies'][0]['index']
+            return {'matches': [m for m in judgments[task_id] if m['technology_index'] == technology_index]}
+        if 'jobs' in payload:
+            return model(results=[{'job_index': job['job_index'], 'judgment': judgment(job['input'])}
+                                  for job in payload['jobs']])
+        return model(**judgment(payload))
 
     return index, (retrieved, retrieved, docs), Mock(side_effect=llm), judgments
 
@@ -175,7 +180,7 @@ class RfpRelevanceTests(unittest.TestCase):
         self.assertEqual({s['task_id'] for s in result.extra['sources']}, accepted)
         for task_id in {'task-2', 'task-5', 'task-6', 'task-7', 'task-8'}:
             self.assertNotIn(task_id, result.extra['context'])
-        self.assertEqual(llm.call_count, 18)  # once per technology/task, not per chunk
+        self.assertEqual(llm.call_count, 4)  # two technologies x two candidate batches
 
     def test_no_match_is_empty_even_when_retrievers_return_candidates(self):
         index, retrieved, llm, _ = fixture([('same', 'different'), ('different', 'similar')])
@@ -193,7 +198,7 @@ class RfpRelevanceTests(unittest.TestCase):
         with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
             result = search(index, question(), relevance_llm=llm, top_k=1)
         self.assertEqual([h['task_id'] for h in result['hits']], ['task-2'])
-        self.assertEqual(llm.call_count, 6)
+        self.assertEqual(llm.call_count, 2)
 
     def test_missing_forged_negative_and_duplicate_judgments_fail_closed(self):
         for mode in ('forged', 'missing', 'different', 'duplicate', 'insufficient'):

@@ -70,9 +70,10 @@ PDF 줄바꿈으로 문장이 여러 조각에 나뉜 경우에는 같은 과제
 검색은 기존 키워드 검색으로 동작하므로, 기술 조합 검증에는 위 입력 방식을 사용하세요.
 
 기본 LLM은 `gpt-4o-mini`이며 `RFP_RELEVANCE_MODEL`로 변경할 수 있습니다.
-`OPENAI_API_KEY`가 필요하고 검증한 과제의 입력 기술마다 추가 LLM 호출이 발생합니다.
-입력 기술끼리의 비교로 혼동하지 않도록 기술별로 별도 호출하며, 각 호출에는 해당
-기술 하나와 과제의 요구사항 원문만 제공합니다.
+`OPENAI_API_KEY`가 필요합니다. 입력 기술끼리의 비교로 혼동하지 않도록 기술별로
+분리하되, 같은 기술에 대한 과제 최대 5개를 묶어서 호출합니다. 각 과제의 원문·판정·인용은
+독립적으로 검증합니다. 동일 요청은 캐시를 재사용합니다. 호출 수와 설정은
+[NTIS/RFP 호출 최적화](NTIS_RFP_LLM_OPTIMIZATION.md)를 참고하세요.
 테스트·다른 LLM 연결에는 `search(..., relevance_llm=callable)`을 사용합니다.
 판정 근거는 후보의 `extra["technology_relevance"]`, 제외 사유는
 `result.extra["diagnostics"]["technology_relevance"]`에 보존합니다.
