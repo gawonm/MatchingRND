@@ -1,27 +1,38 @@
 import type { AnalysisReport } from '../types/analysisReport';
+import { parseReportMarkdown, safeLink, type MarkdownBlock } from '../lib/reportMarkdown';
 
-const sectionPattern = /^## (1\. 우선 추천 나눔기술|2\. 우선 추천 공고|3\. 기술요소 Gap|4\. 관련 RFP|5\. 관련 나눔기술|6\. 관련 법령|7\. 확인이 필요한 사항)$/;
+const inlinePattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
 
-function sections(markdown: string) {
-  const result: { heading: string; body: string[] }[] = [];
-  let current = { heading: '기술기획 분석 결과', body: [] as string[] };
-  for (const line of markdown.trim().split('\n')) {
-    if (sectionPattern.test(line)) {
-      result.push(current);
-      current = { heading: line.slice(3), body: [] };
-    } else if (!line.startsWith('# ')) current.body.push(line);
+function Inline({ text }: { text: string }) {
+  return <>{text.split(inlinePattern).filter(Boolean).map((part, index) => {
+    if (part.startsWith('**')) return <strong key={index}>{part.slice(2, -2)}</strong>;
+    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (link) {
+      const href = safeLink(link[2]);
+      return href ? <a key={index} href={href} {...(href.startsWith('#') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>{link[1]}</a> : <span key={index}>{link[1]}</span>;
+    }
+    return part;
+  })}</>;
+}
+
+function Block({ block }: { block: MarkdownBlock }) {
+  if (block.type === 'subheading') return <h3>{block.text}</h3>;
+  if (block.type === 'quote') return <blockquote><Inline text={block.text} /></blockquote>;
+  if (block.type === 'list') {
+    const List = block.ordered ? 'ol' : 'ul';
+    return <List>{block.items.map((item, index) => <li key={index}><Inline text={item} /></li>)}</List>;
   }
-  result.push(current);
-  return result;
+  if (block.type === 'table') return <div className="analysis-table-wrap"><table className="table"><thead><tr>{block.rows[0].map((cell, index) => <th key={index}><Inline text={cell} /></th>)}</tr></thead><tbody>{block.rows.slice(1).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, index) => <td key={index}><Inline text={cell} /></td>)}</tr>)}</tbody></table></div>;
+  return <p><Inline text={block.text} /></p>;
 }
 
 export default function AnalysisReportView({ report }: { report: AnalysisReport }) {
   return <article className="report-paper" data-testid="analysis-report">
     <div className="eyebrow">최종 답변 형식 / MOCK PREVIEW</div>
     <div className="mock-banner">실제 분석 결과가 아니며 실제 API는 연결되지 않았습니다.</div>
-    {sections(report.markdown).map(section => <section key={section.heading}>
+    {parseReportMarkdown(report.markdown).map(section => <section key={section.heading}>
       <h2>{section.heading}</h2>
-      <pre className="analysis-markdown">{section.body.join('\n').trim()}</pre>
+      <div className="analysis-markdown">{section.blocks.map((block, index) => <Block key={index} block={block} />)}</div>
     </section>)}
   </article>;
 }
