@@ -56,6 +56,10 @@ DEFAULT_MAX_RFPS = 2
 #: 기술나눔 후보 1건당 비교에 쓰는 근거 조각 수(섹션 단위)와 조각 길이 (LLM 입력 토큰 상한)
 HITS_PER_CANDIDATE = 2
 HIT_QUOTE_CHARS = 300
+#: 충족도 판단 LLM 1회에 묶어 보내는 요구기술 수
+DEFAULT_ALIGN_BATCH = 10
+#: 요구기술 1건에 참고로 붙이는 NTIS 과제 수 (LLM 없이 코드로 선별, 판정에는 쓰지 않는다)
+NTIS_REFERENCES = 3
 #: 기술 능력을 판단하는 근거로 쓰지 않는 섹션 제목의 일부 (적용 산업, 시장 전망은 기술 충족 근거가 아님)
 SKIP_SECTION_WORDS = ("적용 산업", "시장성")
 
@@ -147,6 +151,19 @@ class AlignmentJudgements(BaseModel):
     judgements: list[CoverageJudgement]
 
 
+class BatchJudgement(BaseModel):
+    # 필드 순서가 생성 순서다: 어떤 요구기술·후보인지 먼저 정하고, 이유를 쓴 뒤 coverage를 정한다.
+    requirement_index: int
+    candidate_index: int
+    reason: str
+    coverage: Coverage
+    quote: str
+
+
+class BatchJudgements(BaseModel):
+    judgements: list[BatchJudgement]
+
+
 EXTRACTION_PROMPT = """당신은 국가 R&D RFP에서 요구기술을 기술요소 단위로 추출합니다.
 - sections에 있는 원문만 사용하고 원문에 없는 기술을 만들지 마세요.
 - 각 기술요소는 하나의 기술(예: 'LiDAR 객체 인지', 'Edge AI 실시간 추론')로 작성하고 지원조건·사업 일반 설명은 제외합니다.
@@ -169,6 +186,18 @@ ALIGNMENT_PROMPT = """당신은 RFP 요구기술 하나를 비교 후보 기술�
 - 판단 근거는 각 후보의 evidence 문장만 사용하세요. 후보 이름이나 추측으로 판단하지 마세요.
 - quote에는 판단의 근거가 된 후보 evidence 문장을 그대로 복사하세요.
 - full 또는 partial인 후보만 candidate_index와 함께 반환하세요. 해당하는 후보가 없으면 빈 목록을 반환하세요."""
+
+ALIGNMENT_BATCH_PROMPT = """당신은 RFP 요구기술 여러 개를 비교 후보 기술들이 각각 얼마나 충족하는지 판정합니다.
+requirements의 각 항목은 서로 독립입니다. 한 요구기술을 판단할 때 다른 요구기술의 내용이나 판단을 근거로 쓰지 마세요.
+- 명칭이 달라도 기능·적용대상·상하위 관계를 함께 고려해 같은 기술인지 판단하세요.
+- 먼저 reason에 '요구기술이 구체적으로 요구하는 기능'과 '후보 evidence가 명시적으로 서술한 기능'을 비교해 쓰고, 그 결론에 맞게 coverage를 정하세요.
+- full: 후보 evidence가 요구기술의 핵심 기능을 직접 서술함.
+- partial: 후보 evidence가 요구기술의 구체적인 기능·구성요소 일부를 명시적으로 서술하지만 성능·적용대상·범위가 부족함.
+- 관련 없는 후보(none)는 judgements에 넣지 마세요. 둘 다 AI·센서·설비 진단처럼 분야나 주제만 비슷한 것은 partial이 아니라 관련 없음입니다.
+- reason을 '직접적인 관련성이 부족하다', '명시되어 있지 않다'처럼 쓰게 된다면 그 후보는 judgements에서 빼야 합니다.
+- 판단 근거는 각 후보의 evidence 문장만 사용하세요. 후보 이름이나 추측으로 판단하지 마세요.
+- quote에는 판단의 근거가 된 후보 evidence 문장을 그대로 복사하세요.
+- full 또는 partial인 (요구기술, 후보) 쌍만 requirement_index와 candidate_index를 함께 반환하세요. 해당하는 쌍이 없으면 빈 목록을 반환하세요."""
 
 
 class OpenAIStructuredLLM:
@@ -618,35 +647,23 @@ def _shortlist(requirement: TechElement, pool: Sequence[_PoolItem],
     return selected
 
 
-def _align(requirement: _Requirement, pool: Sequence[_PoolItem], llm: StructuredLLM,
-           embed: EmbedFn | None, max_candidates: int) -> list[SourceMatch]:
-    shortlisted = _shortlist(requirement.element, pool, embed, max_candidates)
-    if not shortlisted:
-        return []
-    element = requirement.element
-    # 요구기술 자신의 분야 용어. 일반 공정 용어뿐이면 비어 있어서 아래 겹침 검사를 건너뛴다.
-    domain_terms = _domain_bigrams([element.name, element.function, element.target, *element.synonyms,
-                                    *(ev.quote for ev in element.evidences if ev.verified)])
-    answer = llm(_messages(ALIGNMENT_PROMPT, {
-        "requirement": {
-            "name": element.name, "synonyms": element.synonyms, "function": element.function,
-            "target": element.target, "rfp_quotes": [ev.quote for ev in element.evidences if ev.verified],
-        },
-        "candidates": [
-            {"index": i, "source": item.source.value, "name": item.element.name,
-             "function": item.element.function, "target": item.element.target,
-             "evidence": [ev.quote for ev in item.element.evidences]}
-            for i, item in enumerate(shortlisted)
-        ],
-    }), AlignmentJudgements)
+def _domain_terms(element: TechElement) -> set[str]:
+    """요구기술 자신의 분야 용어. 일반 공정 용어뿐이면 비어 있어서 겹침 검사를 건너뛴다."""
+    return _domain_bigrams([element.name, element.function, element.target, *element.synonyms,
+                            *(ev.quote for ev in element.evidences if ev.verified)])
 
+
+def _to_matches(requirement: _Requirement, candidates: Sequence[_PoolItem],
+                judgements: Sequence[Any]) -> list[SourceMatch]:
+    """LLM 판단(candidate_index, coverage, quote, reason)을 원문 대조로 검증해 SourceMatch로 만든다."""
+    domain_terms = _domain_terms(requirement.element)
     matches, seen = [], set()
-    for judgement in answer.judgements:
+    for judgement in judgements:
         index = judgement.candidate_index
-        if judgement.coverage == "none" or not 0 <= index < len(shortlisted) or index in seen:
+        if judgement.coverage == "none" or not 0 <= index < len(candidates) or index in seen:
             continue
         seen.add(index)
-        item = shortlisted[index]
+        item = candidates[index]
         evidences = [ev for ev in item.element.evidences if _quote_in(judgement.quote, ev.quote)]
         verified = bool(evidences)
         if verified and domain_terms:
@@ -661,13 +678,91 @@ def _align(requirement: _Requirement, pool: Sequence[_PoolItem], llm: Structured
     return sorted(matches, key=lambda m: (m.coverage != "full", not m.verified))
 
 
+def _align_chunk(requirements: Sequence[_Requirement], shortlists: Sequence[Sequence[_PoolItem]],
+                 llm: StructuredLLM) -> list[list[SourceMatch]]:
+    """요구기술 여러 개를 LLM 1회로 판단한다. 후보는 묶음 안 요구기술들의 후보 합집합이다."""
+    union: list[_PoolItem] = []
+    position: dict[int, int] = {}
+    for shortlist in shortlists:
+        for item in shortlist:
+            if id(item) not in position:
+                position[id(item)] = len(union)
+                union.append(item)
+    if not union:
+        return [[] for _ in requirements]
+    try:
+        answer = llm(_messages(ALIGNMENT_BATCH_PROMPT, {
+            "requirements": [
+                {"index": i, "name": r.element.name, "synonyms": r.element.synonyms,
+                 "function": r.element.function, "target": r.element.target,
+                 "rfp_quotes": [ev.quote for ev in r.element.evidences if ev.verified]}
+                for i, r in enumerate(requirements)
+            ],
+            "candidates": [
+                {"index": i, "source": item.source.value, "name": item.element.name,
+                 "function": item.element.function, "target": item.element.target,
+                 "evidence": [ev.quote for ev in item.element.evidences]}
+                for i, item in enumerate(union)
+            ],
+        }), BatchJudgements)
+    except (ValueError, RuntimeError):
+        if len(requirements) == 1:
+            raise
+        # 응답 형식 오류 등은 묶음을 반으로 나눠 다시 시도한다 (한 건씩 남으면 그대로 실패시킨다).
+        mid = len(requirements) // 2
+        return (_align_chunk(requirements[:mid], shortlists[:mid], llm)
+                + _align_chunk(requirements[mid:], shortlists[mid:], llm))
+    by_requirement: list[list[BatchJudgement]] = [[] for _ in requirements]
+    for judgement in answer.judgements:
+        if 0 <= judgement.requirement_index < len(requirements):
+            by_requirement[judgement.requirement_index].append(judgement)
+    return [_to_matches(requirement, union, judgements)
+            for requirement, judgements in zip(requirements, by_requirement)]
+
+
+def _align_many(requirements: Sequence[_Requirement], pool: Sequence[_PoolItem], llm: StructuredLLM,
+                embed: EmbedFn | None, max_candidates: int, batch_size: int,
+                workers: int) -> list[list[SourceMatch]]:
+    """요구기술을 batch_size개씩 묶어 판단한다. 결과 순서는 입력 순서를 유지한다."""
+    shortlists = [_shortlist(r.element, pool, embed, max_candidates) for r in requirements]
+    chunks = [(requirements[i:i + batch_size], shortlists[i:i + batch_size])
+              for i in range(0, len(requirements), batch_size)]
+    results = _parallel_map(lambda chunk: _align_chunk(chunk[0], chunk[1], llm), chunks, workers)
+    return [matches for chunk_result in results for matches in chunk_result]
+
+
+def _ntis_references(requirement: _Requirement, ntis_pool: Sequence[_PoolItem],
+                     embed: EmbedFn | None, limit: int) -> list[SourceMatch]:
+    """NTIS 과제를 LLM 없이 참고 근거로 붙인다. 충족도는 판단하지 않으며(coverage=none) 판정에도 쓰지 않는다."""
+    domain_terms = _domain_terms(requirement.element)
+    if not domain_terms:
+        return []
+    references = []
+    for item in _shortlist(requirement.element, ntis_pool, embed, limit):
+        evidences = [ev for ev in item.element.evidences if ev.verified and ev.quote.strip()]
+        if not evidences or not (domain_terms & _domain_bigrams(
+                [item.element.name, item.element.function, item.element.target, *(ev.quote for ev in evidences)])):
+            continue
+        references.append(SourceMatch(
+            source=item.source, element_name=item.element.name, coverage="none",
+            reason="유사·선행 과제 참고 (충족도 미판단)", verified=True, doc_id=item.doc_id,
+            title=item.title, evidences=evidences,
+        ))
+    return references
+
+
 # =============================================================================
 # ④ 판정 (PROJECT_PLAN 판정 우선순위)
 # =============================================================================
 
 def decide_label(*, requirement_verified: bool, requirement_clear: bool,
-                 company: Sequence[SourceMatch], external: Sequence[SourceMatch]) -> tuple[GapLabel, str]:
-    """검증된 매칭만 사용해 라벨을 결정한다. NTIS 매칭은 입력으로 받지 않는다."""
+                 company: Sequence[SourceMatch], external: Sequence[SourceMatch],
+                 external_available: bool = True) -> tuple[GapLabel, str]:
+    """검증된 매칭만 사용해 라벨을 결정한다. NTIS 매칭은 입력으로 받지 않는다.
+
+    external_available: 비교할 기술나눔 후보가 있었는지. 후보가 아예 없으면 검색이 비었다는 사실만으로
+    추가 R&D를 권하지 않고 근거부족으로 둔다.
+    """
     if not requirement_verified:
         return GapLabel.INSUFFICIENT, "RFP 요구기술의 원문 근거를 검증하지 못함"
 
@@ -682,6 +777,8 @@ def decide_label(*, requirement_verified: bool, requirement_clear: bool,
         return GapLabel.EXTERNAL, "기업 근거 없음, 기술나눔 기술이 요구기술을 보완"
     if has(external, "partial"):
         return GapLabel.PARTIAL, "기업 근거 없음, 기술나눔 기술이 요구기술을 일부 보완"
+    if not external_available:
+        return GapLabel.INSUFFICIENT, "기술나눔 후보가 없고 보유기술 근거도 없어 충족 여부 판단 불가"
     if requirement_clear:
         return GapLabel.RND_NEEDED, "RFP가 명확히 요구하나 기업·외부기술 충족 근거 없음"
     return GapLabel.INSUFFICIENT, "RFP 요구가 명확하지 않아 충족 여부 판단 불가"
@@ -708,14 +805,17 @@ def _policy_checks(label: GapLabel, external: Sequence[SourceMatch]) -> list[str
 def run_gap_analysis(state: AnalysisState, *, llm: StructuredLLM | None = None,
                      embed: EmbedFn | None = None, max_candidates: int = 8,
                      max_section_chars: int = 6000, max_rfps: int | None = DEFAULT_MAX_RFPS,
-                     workers: int = 4) -> GapReport:
+                     workers: int = 4, batch_size: int = DEFAULT_ALIGN_BATCH) -> GapReport:
     """AnalysisState를 RFP 요구기술 축으로 정렬해 Gap 판정 결과를 반환한다.
 
     max_rfps: RFP 검색 순위 상위 몇 개만 분석할지 (None이면 전부)
     workers: LLM 동시 호출 수 (1이면 순차)
+    batch_size: 충족도 판단 LLM 1회에 묶는 요구기술 수. NTIS는 판단에 쓰지 않고 참고 근거로만 붙인다.
     """
     if max_candidates < 1:
         raise ValueError("max_candidates는 1 이상이어야 합니다.")
+    if batch_size < 1:
+        raise ValueError("batch_size는 1 이상이어야 합니다.")
     if not state.rfp.candidates:
         return empty_report(state, method="llm")
     llm = llm or OpenAIStructuredLLM()
@@ -726,14 +826,16 @@ def run_gap_analysis(state: AnalysisState, *, llm: StructuredLLM | None = None,
     requirements = extract_requirements(
         rfps, llm, warnings, max_section_chars=max_section_chars, excluded=excluded, workers=workers,
     )
+    ntis_pool = _document_pool(state.ntis_elements, state.ntis.candidates)
     report = build_report(
-        state, requirements, lambda req, pool: _align(req, pool, llm, embed, max_candidates),
-        warnings, method="llm", workers=workers,
+        state, requirements, None, warnings, method="llm", workers=workers,
+        align_many=lambda reqs, pool: _align_many(reqs, pool, llm, embed, max_candidates, batch_size, workers),
+        ntis_reference=lambda req: _ntis_references(req, ntis_pool, embed, NTIS_REFERENCES),
     )
     report.stats = {"seconds": round(time.perf_counter() - started, 2), "model": getattr(llm, "model", None),
                     **(getattr(llm, "usage", None) or {}), "excluded_requirements": excluded,
                     "rfps_analyzed": [c.doc_id for c in rfps], "rfps_skipped": skipped,
-                    "pool_size": report.stats.get("pool_size")}
+                    "pool_size": {**report.stats["pool_size"], "ntis": len(ntis_pool)}, "batch_size": batch_size}
     return report
 
 
@@ -757,44 +859,55 @@ def empty_report(state: AnalysisState, *, method: str) -> GapReport:
     )
 
 
-def build_pool(state: AnalysisState) -> list[_PoolItem]:
-    """비교 대상: 보유기술 + 기술나눔(기술요소 + 기술요소가 없는 후보의 검색 본문) + NTIS 기술요소."""
+def build_pool(state: AnalysisState, *, include_ntis: bool = True) -> list[_PoolItem]:
+    """비교 대상: 보유기술 + 기술나눔(기술요소 + 기술요소가 없는 후보의 검색 본문) + NTIS 기술요소(선택)."""
     elements = _document_pool(state.external_elements, state.technology.candidates)
     covered = {item.doc_id for item in elements}
     return (
         _company_pool(state.request.owned_technologies)
         + elements
         + _candidate_pool(state.technology, covered)
-        + _document_pool(state.ntis_elements, state.ntis.candidates)
+        + (_document_pool(state.ntis_elements, state.ntis.candidates) if include_ntis else [])
     )
 
 
 def build_report(state: AnalysisState, requirements: Sequence[_Requirement],
-                 align: Callable[[_Requirement, Sequence[_PoolItem]], list[SourceMatch]],
-                 warnings: list[str], *, method: str, workers: int = 1) -> GapReport:
+                 align: Callable[[_Requirement, Sequence[_PoolItem]], list[SourceMatch]] | None,
+                 warnings: list[str], *, method: str, workers: int = 1,
+                 align_many: Callable[[list[_Requirement], Sequence[_PoolItem]], list[list[SourceMatch]]] | None = None,
+                 ntis_reference: Callable[[_Requirement], list[SourceMatch]] | None = None) -> GapReport:
     """요구기술별 매칭 → 라벨 결정 → 리포트 조립. llm·local 모드가 공유해 판정 규칙을 동일하게 유지한다.
 
-    매칭은 요구기술별로 병렬 실행할 수 있다(workers). 결과 순서는 요구기술 순서를 유지한다.
+    `align`은 요구기술 1개씩, `align_many`는 원문 근거가 검증된 요구기술 전체를 한 번에 받아 같은 순서로
+    매칭 목록을 돌려준다. `ntis_reference`를 주면 NTIS는 비교 풀에서 빼고 참고 근거로만 붙인다.
+    `align`은 요구기술별로 병렬 실행할 수 있다(workers). 결과 순서는 요구기술 순서를 유지한다.
     """
     owned = list(state.request.owned_technologies)
     report = GapReport(problem=state.request.problem, method=method,
                        summary={label.value: 0 for label in GapLabel})
-    pool = build_pool(state)
+    pool = build_pool(state, include_ntis=ntis_reference is None)
     external_count = sum(item.source in TECHNOLOGY_SOURCES for item in pool)
     if not external_count:
         warnings.append("technology: 비교할 기술나눔 후보가 없어 외부기술보완 판정이 나올 수 없습니다.")
 
     verified_flags = [any(ev.verified for ev in r.element.evidences) for r in requirements]
-    all_matches = _parallel_map(
-        lambda pair: align(pair[0], pool) if pair[1] else [], list(zip(requirements, verified_flags)), workers,
-    )
+    if align_many is not None:
+        aligned = iter(align_many([r for r, ok in zip(requirements, verified_flags) if ok], pool))
+        all_matches = [next(aligned) if ok else [] for ok in verified_flags]
+    else:
+        all_matches = _parallel_map(
+            lambda pair: align(pair[0], pool) if pair[1] else [], list(zip(requirements, verified_flags)), workers,
+        )
     for requirement, verified, matches in zip(requirements, verified_flags, all_matches):
         company = [m for m in matches if m.source == SourceType.COMPANY]
         external = [m for m in matches if m.source in TECHNOLOGY_SOURCES]
-        ntis = [m for m in matches if m.source == SourceType.NTIS]
+        if ntis_reference is None:
+            ntis = [m for m in matches if m.source == SourceType.NTIS]
+        else:
+            ntis = ntis_reference(requirement) if verified else []
         label, path = decide_label(
             requirement_verified=verified, requirement_clear=requirement.clear,
-            company=company, external=external,
+            company=company, external=external, external_available=external_count > 0,
         )
         report.items.append(GapItem(
             requirement=requirement.element, rfp_doc_ids=requirement.rfp_doc_ids,
