@@ -1,66 +1,32 @@
-import { useEffect, useRef } from 'react';
-import { Button } from 'react-bootstrap';
 import type { AnalysisReport, EvidenceItem, GapItem, RFPCandidate } from '../../types/analysisReport';
-import { GAP_STATUS_LABELS, httpLinks, rfpRequirements, rfpSelection } from '../../lib/analysisView';
+import { GAP_STATUS_LABELS, httpLinks, rankedSelection, rfpRequirements } from '../../lib/analysisView';
 import EvidenceExplorer from './EvidenceExplorer';
-
-// 분석 요청 상태와 분리된 화면 상태. 새 분석 결과가 오면 Workspace가 초기화한다.
-export type RfpViewState = { selectedRfpId: string | null; mobileDetailOpen: boolean };
+import SplitExplorer, { type SplitViewState } from './SplitExplorer';
 
 type Props = {
   rfps: RFPCandidate[];
   gapItems: GapItem[];
   evidenceItems: EvidenceItem[];
   report: AnalysisReport;
-  state: RfpViewState;
-  onChange: (state: RfpViewState) => void;
+  state: SplitViewState;
+  onChange: (state: SplitViewState) => void;
 };
 
-const isMobile = () => window.matchMedia('(max-width: 767.98px)').matches;
-
 export default function RfpExplorer({ rfps, gapItems, evidenceItems, report, state, onChange }: Props) {
-  const { ordered, selected } = rfpSelection(rfps, state.selectedRfpId);
-  const heading = useRef<HTMLHeadingElement>(null);
-  const rows = useRef(new Map<string, HTMLButtonElement>());
-  const listScroll = useRef(0);
-  const returnTo = useRef<string | null>(null);
-  // 모바일: 상세가 열리면 제목으로, 목록으로 돌아오면 스크롤 위치와 선택 항목으로 포커스를 되돌린다.
-  useEffect(() => {
-    if (state.mobileDetailOpen) {
-      heading.current?.focus({ preventScroll: true });
-      heading.current?.closest('section')?.scrollIntoView({ block: 'start', behavior: 'instant' }); // 상단 '목록으로'까지 보이게
-      return;
-    }
-    if (!returnTo.current) return;
-    window.scrollTo({ top: listScroll.current, behavior: 'instant' }); // Bootstrap의 smooth scroll을 피한다
-    rows.current.get(returnTo.current)?.focus({ preventScroll: true });
-    returnTo.current = null;
-  }, [state.mobileDetailOpen, selected?.id]);
-
+  const { ordered, selected, duplicates } = rankedSelection(rfps, state.selectedId);
   if (!selected) return <div className="mock-banner mt-0">이번 분석에서 추천된 RFP가 없습니다. 보고서는 Report 탭에서 확인할 수 있습니다.</div>;
 
-  const select = (id: string) => { listScroll.current = window.scrollY; onChange({ selectedRfpId: id, mobileDetailOpen: isMobile() }); };
-  const back = () => { returnTo.current = selected.id; onChange({ selectedRfpId: selected.id, mobileDetailOpen: false }); };
   const { linked, unresolved } = rfpRequirements(selected, gapItems);
   const links = httpLinks(selected.notice_urls);
   const evidence = evidenceItems.filter(item => selected.evidence_ids.includes(item.id));
   const status = GAP_STATUS_LABELS[selected.gap_analysis_status];
 
-  return <div className={`rfp-split${state.mobileDetailOpen ? ' detail-open' : ''}`}>
-    <ul className="rfp-list list-unstyled mb-0" aria-label="추천 RFP 목록">
-      {ordered.map(rfp => <li key={rfp.id}>
-        <button type="button" className="evidence-row" aria-pressed={rfp.id === selected.id} aria-controls="rfp-detail"
-          ref={element => { if (element) rows.current.set(rfp.id, element); else rows.current.delete(rfp.id); }}
-          onClick={() => select(rfp.id)}>
-          <span className="small text-secondary">추천 {rfp.rank}순위 · {GAP_STATUS_LABELS[rfp.gap_analysis_status]}</span>
-          <strong className="small d-block">{rfp.title}</strong>
-        </button>
-      </li>)}
-    </ul>
-    <section id="rfp-detail" className="rfp-detail app-card" aria-labelledby="rfp-detail-title">
-      <Button className="rfp-back" size="sm" variant="outline-secondary" onClick={back}>← 목록으로</Button>
-      <div className="eyebrow">추천 {selected.rank}순위 · {status}</div>
-      <h3 id="rfp-detail-title" className="h6 mt-2" tabIndex={-1} ref={heading}>{selected.title}</h3>
+  return <SplitExplorer name="rfp" label="추천 RFP 목록" ordered={ordered} selected={selected} duplicates={duplicates} state={state} onChange={onChange}
+    row={rfp => <>
+      <span className="small text-secondary">추천 {rfp.rank}순위 · {GAP_STATUS_LABELS[rfp.gap_analysis_status]}</span>
+      <strong className="small d-block">{rfp.title}</strong>
+    </>}
+    eyebrow={<>추천 {selected.rank}순위 · {status}</>} title={selected.title}>
       <p className="small text-secondary mb-0">문서 ID {selected.document_id}</p>
       <p className="small text-secondary">추천 순서는 보고서의 정렬 순서이며 적합도나 지원 가능성을 뜻하지 않습니다. Gap 분석 여부는 기술요소별 판정을 수행했는지만 나타냅니다.</p>
 
@@ -83,6 +49,5 @@ export default function RfpExplorer({ rfps, gapItems, evidenceItems, report, sta
       <h4 className="evidence-label">검증된 근거</h4>
       {evidence.length ? <EvidenceExplorer key={selected.id} items={evidence} report={report} />
         : <p className="small text-secondary mb-0">연결된 검증 근거 없음</p>}
-    </section>
-  </div>;
+  </SplitExplorer>;
 }

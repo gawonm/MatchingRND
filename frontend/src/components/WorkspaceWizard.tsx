@@ -7,7 +7,9 @@ import { extractTechnologyElements } from '../api';
 import type { ReportEntry } from '../state/analysisReports';
 import { approvalBlocker } from '../state/analysisSession';
 import EvidenceExplorer from './analysis/EvidenceExplorer';
-import RfpExplorer, { type RfpViewState } from './analysis/RfpExplorer';
+import RfpExplorer from './analysis/RfpExplorer';
+import TechnologyExplorer from './analysis/TechnologyExplorer';
+import type { SplitViewState } from './analysis/SplitExplorer';
 import { COMMON_RND_NOTICE_TITLE, COMMON_RND_NOTICES, reportHasCommonNotice, viewAvailability } from '../lib/analysisView';
 import type { TechnologyElement } from '../types/technologyElement';
 import type { TechnologyInput } from '../types/technologyInput';
@@ -24,7 +26,7 @@ type Props = {
   onRun: () => void;
 };
 
-const initialRfpView: RfpViewState = { selectedRfpId: null, mobileDetailOpen: false };
+const initialSplitView: SplitViewState = { selectedId: null, mobileDetailOpen: false };
 const steps = ['기술 및 문제 입력', '기술요소 검토·승인', '통합 RAG 분석'];
 
 export default function WorkspaceWizard({ input, elements, onInputChange, onElementsChange, approvedVersion, onApprove, report, onRun }: Props) {
@@ -32,9 +34,9 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
   const [step, setStep] = useState<'input' | 'review' | 'result'>(() => report.result && approved ? 'result' : elements.length ? 'review' : 'input');
   const [extraction, setExtraction] = useState<{ status: 'idle' | 'loading' | 'error'; message?: string; warnings: string[] }>({ status: 'idle', warnings: [] });
   const [tab, setTab] = useState('overview');
-  // RFP 선택은 탭 이동에는 유지되고, 새 분석 결과(다른 Run)가 오면 초기화된다.
-  const [rfpView, setRfpView] = useState<RfpViewState & { source: ReportViewResponse | null }>({ source: report.result, ...initialRfpView });
-  if (rfpView.source !== report.result) setRfpView({ source: report.result, ...initialRfpView });
+  // 기술·RFP 선택은 탭 이동에는 유지되고, 새 분석 결과(다른 Run)가 오면 초기화된다.
+  const [explore, setExplore] = useState<{ source: ReportViewResponse | null; technology: SplitViewState; rfp: SplitViewState }>({ source: report.result, technology: initialSplitView, rfp: initialSplitView });
+  if (explore.source !== report.result) setExplore({ source: report.result, technology: initialSplitView, rfp: initialSplitView });
 
   const submitInput = async (next: TechnologyInput, mode: 'extract' | 'manual') => {
     onInputChange(next);
@@ -58,6 +60,7 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
         : step === 'input' || !elements.length && step !== 'review' ? 'input' : 'review';
   const activeStep = view === 'input' ? 0 : view === 'review' ? 1 : 2;
   const availability = report.result ? viewAvailability(report.result) : null;
+  const structured = report.result?.view && (availability === 'ok' || availability === 'empty') ? report.result.view : null;
   const viewCode = /^[a-z_]{1,40}$/.test(report.result?.view_error ?? '') ? ` (코드: ${report.result?.view_error})` : availability === 'mismatch' ? ' (코드: client_mismatch)' : '';
 
   if (view === 'dashboard' && report.result) return <section aria-labelledby="dashboard-title">
@@ -75,10 +78,16 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
         </section>}
       </Tab>
       {/* Report와 독립된 상태: Projection 실패는 보고서 실패가 아니다. */}
+      <Tab eventKey="technology" title="기술">
+        {structured
+          ? <TechnologyExplorer technologies={structured.technologies} gapItems={structured.gap_items} evidenceItems={structured.evidence_items}
+            report={report.result.report} state={explore.technology} onChange={next => setExplore(current => ({ ...current, technology: next }))} />
+          : <div className="mock-banner mt-0" role="status">구조화 기술 정보를 이용할 수 없습니다{viewCode}. 보고서는 정상 생성되었으며 Report 탭에서 확인할 수 있습니다.</div>}
+      </Tab>
       <Tab eventKey="rfp" title="RFP">
-        {report.result.view && (availability === 'ok' || availability === 'empty')
-          ? <RfpExplorer rfps={report.result.view.rfps} gapItems={report.result.view.gap_items} evidenceItems={report.result.view.evidence_items}
-            report={report.result.report} state={rfpView} onChange={next => setRfpView({ source: report.result, ...next })} />
+        {structured
+          ? <RfpExplorer rfps={structured.rfps} gapItems={structured.gap_items} evidenceItems={structured.evidence_items}
+            report={report.result.report} state={explore.rfp} onChange={next => setExplore(current => ({ ...current, rfp: next }))} />
           : <div className="mock-banner mt-0" role="status">구조화 RFP 정보를 이용할 수 없습니다{viewCode}. 보고서는 정상 생성되었으며 Report 탭에서 확인할 수 있습니다.</div>}
       </Tab>
       <Tab eventKey="evidence" title="Evidence">

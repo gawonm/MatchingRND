@@ -1,4 +1,4 @@
-import type { AnalysisReport, EvidenceItem, GapItem, ReportViewResponse, RFPCandidate, SourceType } from '../types/analysisReport';
+import type { AnalysisReport, EvidenceItem, GapItem, ReportViewResponse, RFPCandidate, SourceType, TechnologyCandidate } from '../types/analysisReport';
 import { safeLink } from './reportMarkdown.ts';
 
 export const SOURCE_LABELS: Record<SourceType, string> = {
@@ -63,7 +63,23 @@ export function rfpRequirements(rfp: RFPCandidate, gapItems: GapItem[]): { linke
 }
 
 // 추천 순서대로 정렬하고, 선택 ID가 이 결과에 없으면 첫 후보(후보가 없으면 null)로 전환한다.
-export function rfpSelection(rfps: RFPCandidate[], selectedId: string | null): { ordered: RFPCandidate[]; selected: RFPCandidate | null } {
-  const ordered = [...rfps].sort((a, b) => a.rank - b.rank);
-  return { ordered, selected: ordered.find(rfp => rfp.id === selectedId) ?? ordered[0] ?? null };
+// 같은 ID가 반복되는 비정상 입력은 첫 후보만 남겨 다른 후보의 상세·근거가 섞이지 않게 한다.
+export function rankedSelection<T extends { id: string; rank: number }>(items: T[], selectedId: string | null): { ordered: T[]; selected: T | null; duplicates: number } {
+  const sorted = [...items].sort((a, b) => a.rank - b.rank);
+  const ordered = sorted.filter((item, i) => sorted.findIndex(other => other.id === item.id) === i);
+  return { ordered, selected: ordered.find(item => item.id === selectedId) ?? ordered[0] ?? null, duplicates: sorted.length - ordered.length };
+}
+
+// 기술 RAG 매칭 판정(app/technology_rag: same | similar). 그 밖의 값은 일치·유사로 바꾸지 않는다.
+export const MATCH_LEVEL_LABELS: Record<string, string> = { same: '기술요소 일치', similar: '기술요소 유사' };
+export function matchLevelLabel(level: string | null): string {
+  if (level === null) return '판정 정보 미제공';
+  return Object.hasOwn(MATCH_LEVEL_LABELS, level) ? MATCH_LEVEL_LABELS[level] : `확인되지 않은 판정값 (${level})`;
+}
+
+// 기술의 matched_requirement_ids도 GapItem.id다. 그 GapItem이 이 기술을 검증된 외부 매칭(technology_ids)으로 가진 경우만 연결한다.
+export function technologyRequirements(technology: TechnologyCandidate, gapItems: GapItem[]): { linked: GapItem[]; unresolved: number } {
+  const ids = [...new Set(technology.matched_requirement_ids)];
+  const linked = ids.flatMap(id => gapItems.filter(gap => gap.id === id && gap.technology_ids.includes(technology.id)));
+  return { linked, unresolved: ids.length - linked.length };
 }

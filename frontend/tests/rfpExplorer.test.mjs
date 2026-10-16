@@ -1,22 +1,28 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { GAP_STATUS_LABELS, httpLinks, rfpRequirements, rfpSelection } from '../src/lib/analysisView.ts';
+import { GAP_STATUS_LABELS, httpLinks, rankedSelection, rfpRequirements } from '../src/lib/analysisView.ts';
 
 const rfpView = readFileSync(new URL('../src/components/analysis/RfpExplorer.tsx', import.meta.url), 'utf8');
+const split = readFileSync(new URL('../src/components/analysis/SplitExplorer.tsx', import.meta.url), 'utf8');
 const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
 
 const rfp = (id, rank, extra = {}) => ({ id, document_id: `doc-${id}`, rank, title: `과제 ${id}`, notice_titles: [], notice_urls: [], gap_analysis_status: 'analyzed', matched_requirement_ids: [], evidence_ids: [], ...extra });
 const gap = (id, name, rfp_ids) => ({ id, gap_index: Number(id.slice(4)), requirement_id: `req-${id}`, requirement_name: name, requirement_clear: true, label: '부분충족', decision_path: '', rfp_ids, technology_ids: [], owned_technologies: [], evidence_ids: [], claim_indices: [] });
 
 test('RFP 0·1·5건을 추천 순서로 정렬하고, 사라진 선택은 첫 후보로 전환한다', () => {
-  assert.deepEqual(rfpSelection([], 'r1'), { ordered: [], selected: null });
-  assert.equal(rfpSelection([rfp('r1', 1)], null).selected.id, 'r1');
+  assert.deepEqual(rankedSelection([], 'r1'), { ordered: [], selected: null, duplicates: 0 });
+  assert.equal(rankedSelection([rfp('r1', 1)], null).selected.id, 'r1');
   const five = [rfp('r3', 3), rfp('r1', 1), rfp('r5', 5), rfp('r2', 2), rfp('r4', 4)];
-  assert.deepEqual(rfpSelection(five, null).ordered.map(r => [r.rank, r.title]), [[1, '과제 r1'], [2, '과제 r2'], [3, '과제 r3'], [4, '과제 r4'], [5, '과제 r5']]);
-  assert.equal(rfpSelection(five, 'r4').selected.id, 'r4');
-  assert.equal(rfpSelection(five, 'old-run-id').selected.id, 'r1');
+  assert.deepEqual(rankedSelection(five, null).ordered.map(r => [r.rank, r.title]), [[1, '과제 r1'], [2, '과제 r2'], [3, '과제 r3'], [4, '과제 r4'], [5, '과제 r5']]);
+  assert.equal(rankedSelection(five, 'r4').selected.id, 'r4');
+  assert.equal(rankedSelection(five, 'old-run-id').selected.id, 'r1');
   assert.equal(five[0].id, 'r3'); // 원본 배열은 정렬하지 않는다
+  // 같은 ID가 반복되면 순위가 앞선 후보만 남겨 다른 후보의 상세가 섞이지 않게 한다.
+  const dup = rankedSelection([rfp('r2', 2, { evidence_ids: ['E2'] }), rfp('r1', 1, { evidence_ids: ['E1'] }), rfp('r1', 3, { evidence_ids: ['E9'] })], 'r1');
+  assert.deepEqual(dup.ordered.map(r => [r.id, r.rank]), [['r1', 1], ['r2', 2]]);
+  assert.deepEqual(dup.selected.evidence_ids, ['E1']);
+  assert.equal(dup.duplicates, 1);
 });
 
 test('Gap 상태는 분석 수행 여부만 표시하고 요구기술은 이 RFP 범위의 GapItem만 연결한다', () => {
@@ -51,19 +57,22 @@ test('RFP 근거는 선택 후보의 evidence_ids만 공통 EvidenceExplorer로 
 });
 
 test('목록은 선택 상태가 있는 버튼이고 모바일 상세는 목록으로 복귀하며 포커스·스크롤을 되돌린다', () => {
-  assert.match(rfpView, /<button type="button"[^>]*aria-pressed=\{rfp\.id === selected\.id\}/);
-  assert.match(rfpView, /목록으로/);
-  assert.match(rfpView, /window\.scrollTo\(\{ top: listScroll\.current, behavior: 'instant' \}\)/);
-  assert.match(rfpView, /returnTo\.current = selected\.id/);
-  assert.match(rfpView, /rows\.current\.get\(returnTo\.current\)\?\.focus/);
-  assert.match(rfpView, /heading\.current\?\.focus\(\{ preventScroll: true \}\);\n\s*heading\.current\?\.closest\('section'\)\?\.scrollIntoView/);
+  assert.match(rfpView, /<SplitExplorer name="rfp"/);
+  assert.match(split, /<button type="button"[^>]*aria-pressed=\{item\.id === selected\.id\}/);
+  assert.match(split, /목록으로/);
+  assert.match(split, /window\.scrollTo\(\{ top: listScroll\.current, behavior: 'instant' \}\)/);
+  assert.match(split, /returnTo\.current = selected\.id/);
+  assert.match(split, /rows\.current\.get\(returnTo\.current\)\?\.focus/);
+  assert.match(split, /heading\.current\?\.focus\(\{ preventScroll: true \}\);\n\s*heading\.current\?\.closest\('section'\)\?\.scrollIntoView/);
 });
 
-test('Workspace는 Overview·RFP·Evidence·Report 순서이고 선택은 새 결과에서만 초기화된다', () => {
+test('Workspace는 Overview·기술·RFP·Evidence·Report 순서이고 선택은 새 결과에서만 초기화된다', () => {
   const tabs = [...wizard.matchAll(/<Tab eventKey="(\w+)"/g)].map(m => m[1]);
-  assert.deepEqual(tabs, ['overview', 'rfp', 'evidence', 'report']);
-  assert.match(wizard, /if \(rfpView\.source !== report\.result\) setRfpView\(\{ source: report\.result, \.\.\.initialRfpView \}\)/);
+  assert.deepEqual(tabs, ['overview', 'technology', 'rfp', 'evidence', 'report']);
+  assert.match(wizard, /if \(explore\.source !== report\.result\) setExplore\(\{ source: report\.result, technology: initialSplitView, rfp: initialSplitView \}\)/);
+  assert.match(wizard, /setExplore\(current => \(\{ \.\.\.current, rfp: next \}\)\)/);
   assert.match(wizard, /구조화 RFP 정보를 이용할 수 없습니다\{viewCode\}\. 보고서는 정상 생성되었으며/);
   // RFP 선택은 분석 API를 호출하지 않는다.
   assert.doesNotMatch(rfpView, /api|fetch\(|onRun/);
+  assert.doesNotMatch(split, /api|fetch\(|onRun/);
 });
