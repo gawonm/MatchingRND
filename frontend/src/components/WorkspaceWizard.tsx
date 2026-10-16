@@ -6,6 +6,8 @@ import AnalysisReportView, { ReportOverview } from './AnalysisReportView';
 import { extractTechnologyElements } from '../api';
 import type { ReportEntry } from '../state/analysisReports';
 import { approvalBlocker } from '../state/analysisSession';
+import EvidenceExplorer from './analysis/EvidenceExplorer';
+import { COMMON_RND_NOTICE_TITLE, COMMON_RND_NOTICES, reportHasCommonNotice, viewAvailability } from '../lib/analysisView';
 import type { TechnologyElement } from '../types/technologyElement';
 import type { TechnologyInput } from '../types/technologyInput';
 
@@ -49,6 +51,7 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
       : step === 'result' && report.result && approved ? 'dashboard'
         : step === 'input' || !elements.length && step !== 'review' ? 'input' : 'review';
   const activeStep = view === 'input' ? 0 : view === 'review' ? 1 : 2;
+  const availability = report.result ? viewAvailability(report.result) : null;
 
   if (view === 'dashboard' && report.result) return <section aria-labelledby="dashboard-title">
     <div className="section-toolbar">
@@ -56,8 +59,21 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
       <Button variant="outline-secondary" onClick={() => setStep('input')}>입력 수정 · 재분석</Button>
     </div>
     <Tabs activeKey={tab} onSelect={key => setTab(key ?? 'overview')} className="mb-3" id="workspace-result-tabs">
-      <Tab eventKey="overview" title="Overview"><ReportOverview report={report.result} onOpenReport={() => setTab('report')} /></Tab>
-      <Tab eventKey="report" title="Report"><AnalysisReportView report={report.result} mode="real" /></Tab>
+      <Tab eventKey="overview" title="Overview">
+        <ReportOverview report={report.result.report} onOpenReport={() => setTab('report')} />
+        {!reportHasCommonNotice(report.result.report.markdown) && <section className="app-card p-3 mt-3" aria-labelledby="common-rnd-notice">
+          <h3 id="common-rnd-notice" className="h6">{COMMON_RND_NOTICE_TITLE}</h3>
+          <p className="small text-secondary">모든 분석에 공통으로 적용되는 일반 확인사항입니다. 개별 공고·기술에 대한 법적 검토 결과가 아닙니다.</p>
+          <ol className="small mb-0">{COMMON_RND_NOTICES.map(notice => <li key={notice}>{notice}</li>)}</ol>
+        </section>}
+      </Tab>
+      {/* Report와 독립된 상태: Projection 실패는 보고서 실패가 아니다. */}
+      <Tab eventKey="evidence" title="Evidence">
+        {availability === 'ok' && report.result.view && <EvidenceExplorer items={report.result.view.evidence_items} report={report.result.report} />}
+        {availability === 'empty' && <div className="mock-banner mt-0">이번 분석에서 검증된 근거가 없습니다. 보고서는 Report 탭에서 확인할 수 있습니다.</div>}
+        {(availability === 'failed' || availability === 'mismatch') && <div className="mock-banner mt-0" role="status">구조화 근거 탐색을 이용할 수 없습니다{/^[a-z_]{1,40}$/.test(report.result.view_error ?? '') ? ` (코드: ${report.result.view_error})` : availability === 'mismatch' ? ' (코드: client_mismatch)' : ''}. 보고서는 정상 생성되었으며 Report 탭에서 확인할 수 있습니다.</div>}
+      </Tab>
+      <Tab eventKey="report" title="Report"><AnalysisReportView report={report.result.report} mode="real" /></Tab>
     </Tabs>
   </section>;
 

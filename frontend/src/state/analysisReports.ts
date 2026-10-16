@@ -1,9 +1,9 @@
-import type { AnalysisReport } from '../types/analysisReport';
+import type { ReportViewResponse } from '../types/analysisReport';
 
 export type ReportEntry = {
   requestId: number;
   status: 'loading' | 'idle' | 'error';
-  result: AnalysisReport | null;
+  result: ReportViewResponse | null;
 };
 
 export type ReportEntries = Record<string, ReportEntry>;
@@ -16,7 +16,7 @@ export function finishReport(
   entries: ReportEntries,
   key: string,
   requestId: number,
-  result: AnalysisReport | null,
+  result: ReportViewResponse | null,
 ): ReportEntries {
   if (entries[key]?.requestId !== requestId) return entries;
   return { ...entries, [key]: { requestId, status: result ? 'idle' : 'error', result: result ?? entries[key].result } };

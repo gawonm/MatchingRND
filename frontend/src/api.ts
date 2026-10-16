@@ -1,4 +1,4 @@
-import type { AnalysisReport } from './types/analysisReport';
+import type { AnalysisReport, ReportViewResponse } from './types/analysisReport';
 import type { TechnologyElement } from './types/technologyElement';
 import type { TechnologyInput } from './types/technologyInput';
 
@@ -35,7 +35,18 @@ export async function createAnalysisReport(request: AnalysisReportRequest): Prom
   return response.json() as Promise<AnalysisReport>;
 }
 
-type ExtractedTechnology = { name: string; quote: string };
+// POST /api/analysis/report-view: 한 번의 실행으로 FinalAnswer와 구조화 view를 함께 받는다.
+export async function createAnalysisReportView(request: AnalysisReportRequest): Promise<ReportViewResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/analysis/report-view`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(request),
+  });
+  if (!response.ok) throw new Error(`보고서 생성 실패: HTTP ${response.status}`);
+  return response.json() as Promise<ReportViewResponse>;
+}
+
+type ExtractedTechnology ={ name: string; quote: string };
 export type ExtractionResult = { elements: TechnologyElement[]; warnings: string[] };
 
 // POST /api/analysis/extract: LLM 후보 추출만 수행하며 서버에 승인 상태를 저장하지 않는다.

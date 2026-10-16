@@ -25,7 +25,9 @@ test('AnalysisState API를 자동 호출하지 않고 Mock 경계를 유지한�
   assert.match(wizard, /disabled=\{!approved\} onClick=\{run\}/);
   for (const view of mockViews) assert.doesNotMatch(view, /createAnalysisReport|api\/analysis/);
   assert.match(app, /\{page === 'workspace' && <WorkspaceWizard/);
-  assert.equal(app.match(/createAnalysisReport\(/g).length, 1);
+  // 승인된 실행 1회 = /report-view 1회. 기존 /report 클라이언트를 함께 호출하지 않는다.
+  assert.equal(app.match(/createAnalysisReportView\(/g).length, 1);
+  assert.doesNotMatch(app, /createAnalysisReport\(/);
   // 같은 승인 버전의 진행 중 요청이 있으면 중복 실행하지 않는다.
   assert.match(app, /reportsInFlight\.current\.has\(reportKey\)\) return;/);
   assert.equal(mockAnalysisReport.status, 'template');

@@ -13,7 +13,7 @@ import { pageFromHash, useNavigation } from './state/useNavigation';
 import { finishReport, startReport, type ReportEntries } from './state/analysisReports';
 import type { AnalysisRun, AnalysisSession } from './types/analysisSession';
 import { mockAnalysis } from './data/mockAnalysis';
-import { createAnalysisReport } from './api';
+import { createAnalysisReportView } from './api';
 import './App.css';
 
 export default function App() {
@@ -66,7 +66,7 @@ export default function App() {
     reportsInFlight.current.add(reportKey);
     setReports(current => startReport(current, reportKey, requestId));
     try {
-      const result = await createAnalysisReport({
+      const result = await createAnalysisReportView({
         problem: approved.input.target_problem,
         owned_technologies: approved.elements.filter(element => element.role === 'owned').map(element => element.name),
         unmet_elements: approved.elements.filter(element => element.role === 'goal').map(element => element.name),

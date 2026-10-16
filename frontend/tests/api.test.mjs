@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { API_BASE_URL, createAnalysisReport, extractTechnologyElements, getHealth } from '../src/api.ts';
+import { API_BASE_URL, createAnalysisReport, createAnalysisReportView, extractTechnologyElements, getHealth } from '../src/api.ts';
 
 test('API base URL은 기본 FastAPI 주소를 사용한다', () => {
   assert.equal(API_BASE_URL, 'http://127.0.0.1:8000');
@@ -22,6 +22,27 @@ test('보고서는 명시적 POST 요청으로만 생성한다', async () => {
     assert.equal(calls, 0);
     assert.equal((await createAnalysisReport({ problem: '고장 예측', owned_technologies: ['진동 분석'], unmet_elements: [] })).method, 'llm');
     assert.equal(calls, 1);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('report-view는 같은 요청 본문으로 한 번만 POST하고 report·view를 함께 반환한다', async () => {
+  const originalFetch = globalThis.fetch;
+  try {
+    const calls = [];
+    globalThis.fetch = async (url, options) => {
+      calls.push([url, options.method, JSON.parse(options.body)]);
+      return new Response(JSON.stringify({ report: { method: 'llm', status: 'ok', markdown: '# 결과', claims: [], evidence: [], warnings: [], stats: {} }, view: null, view_status: 'failed', view_error: 'projection_error' }), { status: 200 });
+    };
+    const body = { problem: '고장 예측', owned_technologies: ['진동 분석'], unmet_elements: [] };
+    const result = await createAnalysisReportView(body);
+    assert.deepEqual(calls, [['http://127.0.0.1:8000/api/analysis/report-view', 'POST', body]]);
+    assert.equal(result.report.markdown, '# 결과');
+    assert.equal(result.view_status, 'failed');
+
+    globalThis.fetch = async () => new Response('', { status: 500 });
+    await assert.rejects(createAnalysisReportView(body), /HTTP 500/);
   } finally {
     globalThis.fetch = originalFetch;
   }
