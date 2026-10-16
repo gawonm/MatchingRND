@@ -88,12 +88,14 @@ class LLMConfig(BaseModel):
     """생성 단계(검색된 문서 → 답변 + 검증된 근거)."""
 
     provider: Literal["openai"] = "openai"
-    model: str = "gpt-4o-mini"
-    #: LLM 에게 문서 전체를 줄 기술 수. 많을수록 비용·노이즈가 늘어난다
-    n_docs: int = Field(default=3, ge=1, le=10)
-    temperature: float = 0.0
+    model: str = "gpt-5.6-luna"
+    #: B와 같거나 유사한지 문서별로 판정할 기술 수 (검색 상위 N건, 문서 전체를 LLM 에게 준다). 많을수록 비용이 늘어난다
+    judge_docs: int = Field(default=8, ge=1, le=20)
+    #: 매칭 근거(인용문+문서명)가 B·검색어와 공유해야 하는 분야 고유 글자쌍 수의 하한. 0 이면 검사하지 않는다
+    min_term_overlap: int = Field(default=2, ge=0)
+    temperature: float | None = None
     seed: int | None = 0                # 재현성 (best-effort)
-    max_output_tokens: int = 2000       # 비용 상한. 보통 출력은 ~500 토큰
+    max_output_tokens: int = 3000       # 비용 상한. 매칭된 문서만 출력하므로 보통 ~800 토큰
     #: USD / 1M 토큰. 요금은 바뀔 수 있으니 OpenAI 요금표를 확인할 것 (비용 추정에만 쓰인다)
     price_per_1m_input: float = 0.15
     price_per_1m_output: float = 0.60
