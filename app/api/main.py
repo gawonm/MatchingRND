@@ -44,7 +44,12 @@ from app.orchestrator import (
 from app.final_answer import FinalAnswer
 from app.integrated_analysis import run_integrated_analysis
 from app.query_parser import InputTechnology, parse_query
+from app.analysis_view import AnalysisView, ProjectionError, project_analysis_view
+import logging
+from typing import Literal
 from pydantic import BaseModel, Field
+
+logger = logging.getLogger(__name__)
 
 
 class ExtractionRequest(BaseModel):
@@ -131,6 +136,46 @@ def generate_analysis_report(request: AnalysisRequest) -> FinalAnswer:
     if "llm" not in result.answers:
         raise RuntimeError(next(iter(result.errors), "report"))
     return result.answers["llm"]
+
+
+class ReportViewResponse(BaseModel):
+    """Versioned response: the unchanged FinalAnswer plus an optional UI read model."""
+
+    report: FinalAnswer
+    view: AnalysisView | None
+    view_status: Literal["ok", "failed"] = Field(
+        description="failed는 Projection 실패이며 분석 결과가 비었다는 뜻이 아니다")
+    view_error: str | None = Field(default=None, description="실패 코드 (원인 상세는 서버 로그)")
+
+
+def generate_report_with_view(request: AnalysisRequest) -> ReportViewResponse:
+    # One retrieval, one Gap analysis and one answer; the view reuses that run's objects.
+    state = get_orchestrator().run(request)
+    result = run_integrated_analysis(state=state, modes=("llm",))
+    if "llm" not in result.answers:
+        raise RuntimeError(next(iter(result.errors), "report"))
+    answer = result.answers["llm"]
+    try:
+        view = project_analysis_view(state, result.reports["llm"], answer)
+    except Exception as exc:
+        code = exc.code if isinstance(exc, ProjectionError) else "projection_error"
+        logger.exception("analysis view projection failed: %s", code)
+        return ReportViewResponse(report=answer, view=None, view_status="failed", view_error=code)
+    return ReportViewResponse(report=answer, view=view, view_status="ok")
+
+
+@app.post("/api/analysis/report-view", response_model=ReportViewResponse)
+async def analyze_report_view(request: AnalysisRequest):
+    try:
+        return await run_in_threadpool(generate_report_with_view, request)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "error": "report_failed",
+                "message": "분석 보고서 생성에 실패했습니다.",
+            },
+        ) from exc
 
 
 @app.post("/api/analysis/report", response_model=FinalAnswer)
