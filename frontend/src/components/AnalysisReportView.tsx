@@ -26,10 +26,10 @@ function Block({ block }: { block: MarkdownBlock }) {
   return <p><Inline text={block.text} /></p>;
 }
 
-export default function AnalysisReportView({ report }: { report: AnalysisReport }) {
+export default function AnalysisReportView({ report, mode = 'mock' }: { report: AnalysisReport; mode?: 'mock' | 'real' }) {
   return <article className="report-paper" data-testid="analysis-report">
-    <div className="eyebrow">최종 답변 형식 / MOCK PREVIEW</div>
-    <div className="mock-banner">실제 분석 결과가 아니며 실제 API는 연결되지 않았습니다.</div>
+    <div className="eyebrow">최종 답변 형식 / {mode === 'real' ? '실제 RAG 결과' : 'MOCK PREVIEW'}</div>
+    {mode === 'mock' && <div className="mock-banner">실제 분석 결과가 아닌 Mock 미리보기입니다.</div>}
     {parseReportMarkdown(report.markdown).map(section => <section key={section.heading}>
       <h2>{section.heading}</h2>
       <div className="analysis-markdown">{section.blocks.map((block, index) => <Block key={index} block={block} />)}</div>

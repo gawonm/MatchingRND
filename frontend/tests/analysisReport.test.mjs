@@ -5,6 +5,7 @@ import { mockAnalysisReport } from '../src/data/mockAnalysisReport.ts';
 import { parseReportMarkdown, REPORT_HEADINGS, safeLink } from '../src/lib/reportMarkdown.ts';
 
 const component = readFileSync(new URL('../src/components/AnalysisReportView.tsx', import.meta.url), 'utf8');
+const app = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8');
 const types = readFileSync(new URL('../src/types/analysisReport.ts', import.meta.url), 'utf8');
 
 test('FinalAnswer 계약과 7개 공개 섹션을 사용한다', () => {
@@ -12,11 +13,13 @@ test('FinalAnswer 계약과 7개 공개 섹션을 사용한다', () => {
     assert.match(mockAnalysisReport.markdown, new RegExp(heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   }
   for (const field of ['method:', 'status:', 'markdown:', 'claims:', 'evidence:', 'warnings:', 'stats:']) assert.match(types, new RegExp(field));
-  assert.match(component, /실제 분석 결과가 아니며 실제 API는 연결되지 않았습니다/);
+  assert.match(component, /실제 분석 결과가 아닌 Mock 미리보기입니다/);
 });
 
 test('AnalysisState API를 자동 호출하지 않고 Mock 경계를 유지한다', () => {
   assert.doesNotMatch(component, /fetch\(|api\/analysis/);
+  assert.match(app, /viewMode !== 'review'/);
+  assert.match(app, /고정 데모에서는 실제 분석을 실행하지 않습니다/);
   assert.equal(mockAnalysisReport.status, 'template');
   assert.equal(mockAnalysisReport.method, 'local');
 });

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Badge, Button, Form } from 'react-bootstrap';
 import Sidebar from './components/Sidebar';
 import TechnologyForm from './components/TechnologyForm';
@@ -12,9 +12,11 @@ import { SessionWorkspace, SessionSimulation } from './components/SessionViews';
 import AnalysisReportView from './components/AnalysisReportView';
 import { activeRun, cloneInput, confirmProfile, createSession, ensureMockRun, hasUnconfirmedChanges, isHistoricalRun, runProfile, updateRun } from './state/analysisSession';
 import { pageFromHash, useNavigation } from './state/useNavigation';
+import { finishReport, startReport, type ReportEntries } from './state/analysisReports';
 import type { AnalysisRun, AnalysisSession } from './types/analysisSession';
 import { mockAnalysis } from './data/mockAnalysis';
 import { mockAnalysisReport } from './data/mockAnalysisReport';
+import { createAnalysisReport } from './api';
 import './App.css';
 
 export default function App() {
@@ -27,10 +29,17 @@ export default function App() {
   const [reviewing, setReviewing] = useState(false);
   const [gapId, setGapId] = useState<string | null>(null);
   const [filter, setFilter] = useState<GapFilter>('all');
+  const [reports, setReports] = useState<ReportEntries>({});
+  const reportRequestId = useRef(0);
+  const reportsInFlight = useRef(new Set<string>());
   const session = sessions.find(item => item.id === route.sessionId) ?? sessions[0];
   const activeSessionId = session.id;
   const run = session.runs.find(item => item.id === route.runId) ?? activeRun(session);
   const profile = runProfile(session, run);
+  const profileKey = profile ? `${profile.id}:${profile.version}` : null;
+  const reportKey = viewMode === 'review' ? profileKey : null;
+  const currentReport = reportKey ? reports[reportKey]?.result ?? null : null;
+  const reportStatus = reportKey ? reports[reportKey]?.status ?? 'idle' : 'idle';
   const historical = isHistoricalRun(session, run);
   const { draftInput: input, draftElements: elements } = session;
   const { projectId, compared, assumed } = session.demo;
@@ -58,6 +67,24 @@ export default function App() {
   };
   const selectProject = (id: string) => { updateDemo({ projectId: id }); setGapId(null); setFilter('all'); };
   const newSession = () => { const next = createSession(mockAnalysis.projects[0].id); setSessions(current => [...current, next]); setReviewing(false); navigate({ page: 'home', sessionId: next.id, runId: null, mode: 'review' }); };
+  const requestReport = async () => {
+    if (!profile || !reportKey || reportsInFlight.current.has(reportKey)) return;
+    const requestId = ++reportRequestId.current;
+    reportsInFlight.current.add(reportKey);
+    setReports(current => startReport(current, reportKey, requestId));
+    try {
+      const result = await createAnalysisReport({
+        problem: profile.input.target_problem,
+        owned_technologies: profile.elements.filter(element => element.role === 'owned').map(element => element.name),
+        unmet_elements: profile.elements.filter(element => element.role === 'goal').map(element => element.name),
+      });
+      setReports(current => finishReport(current, reportKey, requestId, result));
+    } catch {
+      setReports(current => finishReport(current, reportKey, requestId, null));
+    } finally {
+      reportsInFlight.current.delete(reportKey);
+    }
+  };
   const titles: Record<string, [string, string]> = {
     home: ['기술에서 시작하는 새로운 가능성', '보유 기술을 정리하고, 다음 R&D 기회를 검토하세요.'],
     discover: ['R&D 자료 탐색', '외부 기술, 선행 R&D, 공고를 각각 살펴보고 검토할 자료를 선택하세요.'],
@@ -68,9 +95,9 @@ export default function App() {
   return <div className="app-layout">
     <Sidebar activePage={page} onNavigate={setPage} />
     <main className="main-content">
-      <header className="topbar"><span>내 워크스페이스 <span className="text-secondary"> / R&D 기회 검토</span></span><div className="d-flex gap-2 align-items-center flex-wrap"><Form.Select size="sm" aria-label="분석 세션 선택" value={activeSessionId} onChange={event => { const next = sessions.find(item => item.id === event.target.value)!; setReviewing(false); navigate({ page: 'home', sessionId: next.id, runId: next.activeRunId, mode: 'review' }); }}>{sessions.map((item, index) => <option key={item.id} value={item.id}>분석 세션 {index + 1}</option>)}</Form.Select><Button size="sm" variant="outline-secondary" onClick={newSession}>새 분석</Button><Badge className="badge-accent">MOCK 데이터</Badge><ApiHealthStatus /></div></header>
+      <header className="topbar"><span>내 워크스페이스 <span className="text-secondary"> / R&D 기회 검토</span></span><div className="d-flex gap-2 align-items-center flex-wrap"><Form.Select size="sm" aria-label="분석 세션 선택" value={activeSessionId} onChange={event => { const next = sessions.find(item => item.id === event.target.value)!; setReviewing(false); navigate({ page: 'home', sessionId: next.id, runId: next.activeRunId, mode: 'review' }); }}>{sessions.map((item, index) => <option key={item.id} value={item.id}>분석 세션 {index + 1}</option>)}</Form.Select><Button size="sm" variant="outline-secondary" onClick={newSession}>새 분석</Button><Badge className="badge-accent">{page === 'report' && currentReport ? '실제 RAG' : 'MOCK 데이터'}</Badge><ApiHealthStatus /></div></header>
       <div className="page-heading"><div className="eyebrow">R&D MATCH / {page.toUpperCase()}</div><h1>{titles[page][0]}</h1><p className="text-secondary">{titles[page][1]}</p></div>
-      {page !== 'home' && <div className="mock-banner"><i className="bi bi-info-circle me-2" />현재 브라우저에서만 유지되는 Mock 검토입니다. 실제 분석 API는 연결되지 않았습니다.</div>}
+      {page !== 'home' && <div className="mock-banner"><i className="bi bi-info-circle me-2" />탐색·선택·가정은 현재 브라우저의 Mock 데이터입니다. 실제 보고서는 Report에서 명시적으로 실행할 때만 생성됩니다.</div>}
       {page !== 'home' && historical && viewMode === 'review' && <div className="mock-banner">이전 실행의 확정 프로필과 자료를 보고 있습니다. 현재 Home 편집본과 별도로 보존된 이력입니다.</div>}
       {page !== 'home' && profile && !historical && hasUnconfirmedChanges(session) && viewMode === 'review' && <div className="mock-banner" role="alert">현재 Home 편집본이 저장된 프로필과 다릅니다. 기존 실행은 유지됩니다. <Button size="sm" variant="outline-secondary" onClick={() => setPage('home')}>편집본 저장하러 가기</Button></div>}
       {page !== 'home' && (page === 'workspace' || page === 'simulation' || page === 'report') && <div className="d-flex gap-2 mb-3"><Button size="sm" className={viewMode === 'review' ? 'btn-accent' : 'btn-accent-outline'} onClick={() => setViewMode('review')}>현재 검토</Button><Button size="sm" className={viewMode === 'demo' ? 'btn-accent' : 'btn-accent-outline'} onClick={() => setViewMode('demo')}>고정 데모</Button></div>}
@@ -95,7 +122,18 @@ export default function App() {
       </>}
       {page === 'simulation' && viewMode === 'review' && run && <SessionSimulation profile={profile} run={run} onAssumedChange={keys => updateCurrentRun(current => ({ ...current, assumedKeys: keys }))} onReport={() => setPage('report')} onDiscover={() => setPage('discover')} />}
       {page === 'simulation' && viewMode === 'demo' && <Simulation project={project} projects={mockAnalysis.projects} assumed={assumed} onAssume={keys => updateDemo({ assumed: keys })} onProject={selectProject} onReport={() => setPage('report')} />}
-      {page === 'report' && <AnalysisReportView report={mockAnalysisReport} />}
+      {page === 'report' && <>
+        <div className="section-toolbar">
+          <div><strong>{currentReport ? '실제 RAG 분석 보고서' : 'Mock 보고서 미리보기'}</strong><div className="small text-secondary">실제 분석은 아래 버튼을 누를 때만 시작됩니다.</div></div>
+          <Button className="btn-accent" disabled={viewMode !== 'review' || !profile || reportStatus === 'loading'} onClick={requestReport}>
+            {reportStatus === 'loading' ? '분석 중…' : reportStatus === 'error' ? '실제 분석 다시 시도' : '실제 분석 실행'}
+          </Button>
+        </div>
+        {!profile && <div className="mock-banner">실제 분석을 실행하려면 Home에서 프로필을 먼저 저장하세요.</div>}
+        {viewMode === 'demo' && <div className="mock-banner">고정 데모에서는 실제 분석을 실행하지 않습니다.</div>}
+        {reportStatus === 'error' && <div className="mock-banner" role="alert">보고서를 생성하지 못했습니다. 입력과 API 상태를 확인한 뒤 다시 시도해 주세요.</div>}
+        <AnalysisReportView report={currentReport ?? mockAnalysisReport} mode={currentReport ? 'real' : 'mock'} />
+      </>}
       <footer className="app-footer">R&D Match <span>근거를 확인하고, 가능성을 검토하세요.</span></footer>
     </main>
   </div>;
