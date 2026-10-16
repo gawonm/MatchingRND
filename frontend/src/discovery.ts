@@ -3,10 +3,7 @@ import type {
   DiscoverItem,
   DiscoverSource,
 } from './types/analysisSession';
-
-const API_BASE =
-  import.meta.env.VITE_API_BASE_URL ??
-  'http://127.0.0.1:8000';
+import { API_BASE_URL } from './api';
 
 export type DiscoveryResponse = {
   items: DiscoverItem[];
@@ -30,7 +27,7 @@ export async function searchDiscovery(
   });
 
   const response = await fetch(
-    `${API_BASE}/api/discovery/search?${params}`
+    `${API_BASE_URL}/api/discovery/search?${params}`
   );
 
   if (!response.ok) {

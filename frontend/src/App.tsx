@@ -3,6 +3,7 @@ import { Badge, Button, Form } from 'react-bootstrap';
 import Sidebar from './components/Sidebar';
 import TechnologyForm from './components/TechnologyForm';
 import TechnologyReview from './components/TechnologyReview';
+import ApiHealthStatus from './components/ApiHealthStatus';
 import GapComparison, { type GapFilter } from './components/GapComparison';
 import EvidencePanel from './components/EvidencePanel';
 import { Simulation, Report } from './components/FlowViews';
@@ -71,7 +72,7 @@ export default function App() {
   return <div className="app-layout">
     <Sidebar activePage={page} onNavigate={setPage} />
     <main className="main-content">
-      <header className="topbar"><span>내 워크스페이스 <span className="text-secondary"> / R&D 기회 검토</span></span><div className="d-flex gap-2 align-items-center flex-wrap"><Form.Select size="sm" aria-label="분석 세션 선택" value={activeSessionId} onChange={event => { const next = sessions.find(item => item.id === event.target.value)!; setReviewing(false); navigate({ page: 'home', sessionId: next.id, runId: next.activeRunId, mode: 'review' }); }}>{sessions.map((item, index) => <option key={item.id} value={item.id}>분석 세션 {index + 1}</option>)}</Form.Select><Button size="sm" variant="outline-secondary" onClick={newSession}>새 분석</Button><Badge className="badge-accent">MOCK</Badge></div></header>
+      <header className="topbar"><span>내 워크스페이스 <span className="text-secondary"> / R&D 기회 검토</span></span><div className="d-flex gap-2 align-items-center flex-wrap"><Form.Select size="sm" aria-label="분석 세션 선택" value={activeSessionId} onChange={event => { const next = sessions.find(item => item.id === event.target.value)!; setReviewing(false); navigate({ page: 'home', sessionId: next.id, runId: next.activeRunId, mode: 'review' }); }}>{sessions.map((item, index) => <option key={item.id} value={item.id}>분석 세션 {index + 1}</option>)}</Form.Select><Button size="sm" variant="outline-secondary" onClick={newSession}>새 분석</Button><Badge className="badge-accent">MOCK 데이터</Badge><ApiHealthStatus /></div></header>
       <div className="page-heading"><div className="eyebrow">R&D MATCH / {page.toUpperCase()}</div><h1>{titles[page][0]}</h1><p className="text-secondary">{titles[page][1]}</p></div>
       {page !== 'home' && <div className="mock-banner"><i className="bi bi-info-circle me-2" />현재 브라우저에서만 유지되는 Mock 검토입니다. 실제 분석 API는 연결되지 않았습니다.</div>}
       {page !== 'home' && historical && viewMode === 'review' && <div className="mock-banner">이전 실행의 확정 프로필과 자료를 보고 있습니다. 현재 Home 편집본과 별도로 보존된 이력입니다.</div>}
