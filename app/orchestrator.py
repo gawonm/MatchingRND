@@ -117,7 +117,7 @@ def _expansion_rows(elements: list[TechElement]) -> list[dict[str, str]]:
 class RagOrchestrator:
     """Reusable coordinator; injected runners make integration independently testable.
 
-    technology_runner(query) returns ModuleResult or GenerationResult.
+    technology_runner(query, owned_technologies=..., targets=...) returns ModuleResult or GenerationResult.
     ntis_runner(problem, owned_technologies=..., external_technologies=...) returns ModuleResult.
     rfp_runner(query_details) and policy_runner(question) return ModuleResult.
     Default implementations load pipelines/indexes on first use and reuse them.
@@ -155,7 +155,7 @@ class RagOrchestrator:
         self._rfp_index = None
         self._policy_index = None
 
-    def _technology_answer(self, query):
+    def _technology_answer(self, query, owned_technologies=None, targets=None):
         from app.technology_rag.pipeline import TechnologyRagPipeline
 
         if self._technology_pipeline is None:
@@ -165,7 +165,8 @@ class RagOrchestrator:
                 config = config.model_copy(deep=True) if isinstance(config, TechnologyRagConfig) else load_config(config)
                 config.index.backend = 'supabase'
             self._technology_pipeline = TechnologyRagPipeline.from_config(config)
-        return self._technology_pipeline.answer(query)
+        # Technology RAG 는 문장을 분해하지 않는다: 보유기술(A)과 확보하려는 기술(B)을 받아 B 로 검색·판정한다.
+        return self._technology_pipeline.answer(owned_technologies or [], targets or query)
 
     def _ntis_analysis(self, problem, **options):
         if self.backend == 'supabase':
@@ -218,7 +219,12 @@ class RagOrchestrator:
         """
         request = AnalysisRequest.model_validate(request).model_copy(deep=True)
         baseline = build_query(request.owned_technologies, request.problem)
-        technology = self._execute("technology", self.technology_runner, baseline)
+        # B = 사용자가 확보하려는 기술(unmet_elements). 없으면 기술문제 전체를 B 로 쓴다.
+        technology = self._execute(
+            "technology", self.technology_runner, baseline,
+            owned_technologies=list(request.owned_technologies),
+            targets=list(request.unmet_elements) or [request.problem],
+        )
         external = _cascade_elements(technology)
         external_names = list(dict.fromkeys(element.name.strip() for element in external))
         ntis_options = {}
