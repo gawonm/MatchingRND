@@ -129,6 +129,14 @@ class AnalysisViewTests(unittest.TestCase):
         self.assertTrue(all(by_id[eid].quote == LIDAR for eid in t2.evidence_ids))
         self.assertIsNone(by_id[t2.evidence_ids[0]].source_title)  # shared PDF: no single task title
 
+    def test_not_analyzed_task_sharing_pdf_is_not_added_to_gap_rfp_ids(self):
+        state = self.state.model_copy(deep=True)
+        skipped = rfp("rfp-1", "t-skipped", "미분석 같은 PDF 과제", TRACKING)
+        state.rfp.candidates.append(skipped)
+        view = project_analysis_view(state, self.report, self.answer)
+        self.assertEqual(next(r for r in view.rfps if r.id == "t-skipped").gap_analysis_status, "not_analyzed")
+        self.assertNotIn("t-skipped", {rfp_id for gap in view.gap_items for rfp_id in gap.rfp_ids})
+
     def test_missing_fields_stay_empty_and_technology_links_are_verified_only(self):
         tech1, tech2 = self.view.technologies
         self.assertEqual(tech1.gap_item_ids, ["gap-0"])

@@ -1,5 +1,5 @@
 import type { AnalysisReport, EvidenceItem, GapItem, RFPCandidate, TechnologyCandidate } from '../../types/analysisReport';
-import { gapClaims, gapLabelText, gapSelection, gapTechnologies, rankedSelection } from '../../lib/analysisView';
+import { gapClaims, gapLabelText, gapSelection, gapTechnologies, rankedSelection, rejectedGapClaimReasons } from '../../lib/analysisView';
 import EvidenceExplorer from './EvidenceExplorer';
 import SplitExplorer, { type SplitViewState } from './SplitExplorer';
 
@@ -49,6 +49,7 @@ export default function GapExplorer({ rfps, gapItems, technologies, evidenceItem
   if (!gap) return <>{picker}{unresolvedNote}<div className="mock-banner mt-0">이 RFP에 연결된 Gap 항목이 없습니다.</div></>;
 
   const claims = gapClaims(report, gap);
+  const rejectedClaims = rejectedGapClaimReasons(report, gap);
   const external = gapTechnologies(gap, technologies);
   const evidence = evidenceItems.filter(item => gap.evidence_ids.includes(item.id));
   const hasLinks = gap.owned_technologies.length > 0 || external.linked.length > 0 || evidence.length > 0;
@@ -68,6 +69,7 @@ export default function GapExplorer({ rfps, gapItems, technologies, evidenceItem
       {gap.label === '근거부족' && <p className="small text-secondary mb-0">근거부족은 기술이 없다는 판정이 아니라, 충족 여부를 판단할 검증 근거가 부족하다는 뜻입니다.</p>}
 
       <h4 className="evidence-label">판정 설명</h4>
+      {rejectedClaims.length > 0 && <p className="small text-danger mb-1">생성된 판정 설명이 검증을 통과하지 못해 표시되지 않았습니다. Gap 라벨은 별도의 근거·판정 규칙 결과입니다.</p>}
       {claims.length ? <>
         <p className="small text-secondary mb-1">검증된 분석 설명 · AI 작성 · 인용·의미 검토 통과</p>
         <ul className="evidence-claims">{claims.map((text, i) => <li key={i}>{text}</li>)}</ul>

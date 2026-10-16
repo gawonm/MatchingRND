@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { GAP_LABELS, gapClaims, gapLabelText, gapSelection, gapTechnologies } from '../src/lib/analysisView.ts';
+import { GAP_LABELS, gapClaims, gapLabelText, gapSelection, gapTechnologies, rejectedGapClaimReasons } from '../src/lib/analysisView.ts';
 
 const gapView = readFileSync(new URL('../src/components/analysis/GapExplorer.tsx', import.meta.url), 'utf8');
 const rfpView = readFileSync(new URL('../src/components/analysis/RfpExplorer.tsx', import.meta.url), 'utf8');
@@ -10,8 +10,8 @@ const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', imp
 const rfp = (id, gap_item_ids, status = 'analyzed') => ({ id, document_id: `doc-${id}`, rank: 1, title: id, notice_titles: [], notice_urls: [], gap_analysis_status: status, gap_item_ids, evidence_ids: [] });
 const gap = (index, extra = {}) => ({ id: `gap-${index}`, gap_index: index, requirement_id: `req-${index}`, requirement_name: `요구 ${index}`, requirement_clear: true, label: '부분충족', decision_path: 'company:partial', rfp_ids: ['r1'], technology_ids: [], owned_technologies: [], evidence_ids: [], claim_indices: [], ...extra });
 const tech = (id, gap_item_ids) => ({ id, rank: 1, title: id, provider: null, transfer_condition: null, match_level: 'same', rationale: null, gap_item_ids, evidence_ids: [] });
-const claim = (text, { section = 'gap', gap_index = 0, accepted = true, ok = true, evidence_id = 'E1' } = {}) => ({
-  draft: { section, gap_index, text, citations: [{ evidence_id, quote: 'q' }] }, accepted, reason: '', citations: [{ evidence_id, quote: 'q', ok, reason: '' }],
+const claim = (text, { section = 'gap', gap_index = 0, accepted = true, ok = true, evidence_id = 'E1', reason = '' } = {}) => ({
+  draft: { section, gap_index, text, citations: [{ evidence_id, quote: 'q' }] }, accepted, reason, citations: [{ evidence_id, quote: 'q', ok, reason: '' }],
 });
 const report = claims => ({ method: 'llm', status: 'ok', markdown: '', claims, evidence: [{ evidence_id: 'E1', evidence: {} }], warnings: [], stats: {} });
 
@@ -40,10 +40,13 @@ test('선택 RFP와 양방향으로 연결된 Gap만 gap_index 순으로 보여�
 });
 
 test('검증된 설명은 같은 gap_index의 accepted gap claim이 이 응답의 근거를 유효하게 인용할 때만 쓴다', () => {
-  const claims = [claim('검증된 설명'), claim('거절', { accepted: false }), claim('다른 행', { gap_index: 1 }), claim('다른 섹션', { section: 'rfp' }),
+  const claims = [claim('검증된 설명'), claim('거절', { accepted: false, reason: '의미 검토 실패' }), claim('다른 행', { gap_index: 1 }), claim('다른 섹션', { section: 'rfp' }),
     claim('무효 인용', { ok: false }), claim('없는 근거', { evidence_id: 'E9' })];
   assert.deepEqual(gapClaims(report(claims), gap(0, { claim_indices: [0, 1, 2, 3, 4, 5, 7, 0] })), ['검증된 설명']);
   assert.deepEqual(gapClaims(report(claims), gap(0)), []);
+  assert.deepEqual(rejectedGapClaimReasons(report(claims), gap(0)), ['의미 검토 실패']);
+  assert.deepEqual(rejectedGapClaimReasons(report(claims), gap(1)), []);
+  assert.match(gapView, /생성된 판정 설명이 검증을 통과하지 못해 표시되지 않았습니다\. Gap 라벨은 별도의 근거·판정 규칙 결과입니다\./);
   assert.match(gapView, /별도의 검증된 설명이 제공되지 않았습니다\. 아래 연결 기술과 근거를 확인하세요\./);
   assert.match(gapView, /별도의 검증된 설명과 연결된 기술·근거가 제공되지 않았습니다\./);
 });

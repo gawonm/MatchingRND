@@ -130,6 +130,8 @@ def project_analysis_view(state: AnalysisState, report: GapReport, answer: Final
     # Gap: same scope and label rule as render_answer section 3.
     rfp_all = _unique_candidates(state.rfp)
     indices_of = {_identity(c): view.gap_indices(c) for c in rfp_all}
+    analyzed = _analyzed_count(state, report)
+    analyzed_keys = None if analyzed is None else {_identity(c) for c in state.rfp.candidates[:analyzed]}
     scoped = sorted({i for indices in indices_of.values() for i in indices})
     gap_items = []
     for i in scoped:
@@ -141,7 +143,8 @@ def project_analysis_view(state: AnalysisState, report: GapReport, answer: Final
             id=f"gap-{i}", gap_index=i, requirement_id=item.requirement.element_id,
             requirement_name=item.requirement.name, requirement_clear=item.requirement_clear,
             label=label, decision_path=item.decision_path,
-            rfp_ids=[key for key, indices in indices_of.items() if i in indices],
+            rfp_ids=[key for key, indices in indices_of.items()
+                     if i in indices and (analyzed_keys is None or key in analyzed_keys)],
             technology_ids=list(dict.fromkeys(m.doc_id for m in external if m.doc_id)),
             owned_technologies=list(dict.fromkeys(m.element_name for m in company)),
             evidence_ids=_ids([*view.matching_records(item.requirement.evidences),
@@ -150,8 +153,6 @@ def project_analysis_view(state: AnalysisState, report: GapReport, answer: Final
         ))
     gap_ids = {item.gap_index: item.id for item in gap_items}
 
-    analyzed = _analyzed_count(state, report)
-    analyzed_keys = None if analyzed is None else {_identity(c) for c in state.rfp.candidates[:analyzed]}
     rfps = []
     for rank, c in enumerate(rfp_all[:TOP_CANDIDATES], 1):
         titles, urls = _notices(c)

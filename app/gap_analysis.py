@@ -653,6 +653,18 @@ def _domain_terms(element: TechElement) -> set[str]:
                             *(ev.quote for ev in element.evidences if ev.verified)])
 
 
+def _external_domain_match(requirement: TechElement, candidate: TechElement,
+                           evidences: Sequence[Evidence]) -> bool:
+    """Reject external matches supported only by a generic or incidental phrase."""
+    required = _domain_bigrams([requirement.name, requirement.function, requirement.target,
+                                *requirement.synonyms])
+    offered = _domain_bigrams([candidate.name, candidate.function, candidate.target,
+                               *candidate.synonyms, *(ev.quote for ev in evidences)])
+    overlap = required & offered
+    # shortcut: character overlap is a conservative free guard, upgrade when semantic fixtures justify a richer matcher.
+    return bool(required) and len(overlap) >= 2 and len(overlap) / len(required) >= 0.25
+
+
 def _to_matches(requirement: _Requirement, candidates: Sequence[_PoolItem],
                 judgements: Sequence[Any]) -> list[SourceMatch]:
     """LLM 판단(candidate_index, coverage, quote, reason)을 원문 대조로 검증해 SourceMatch로 만든다."""
@@ -666,7 +678,9 @@ def _to_matches(requirement: _Requirement, candidates: Sequence[_PoolItem],
         item = candidates[index]
         evidences = [ev for ev in item.element.evidences if _quote_in(judgement.quote, ev.quote)]
         verified = bool(evidences)
-        if verified and domain_terms:
+        if verified and item.source in TECHNOLOGY_SOURCES:
+            verified = _external_domain_match(requirement.element, item.element, evidences)
+        elif verified and domain_terms:
             # 분야 고유 표현이 하나도 겹치지 않으면 "진단·감시" 같은 말만 비슷한 것으로 보고 판정에서 뺀다.
             verified = bool(domain_terms & _domain_bigrams(
                 [item.element.name, item.element.function, item.element.target, *(ev.quote for ev in evidences)]))

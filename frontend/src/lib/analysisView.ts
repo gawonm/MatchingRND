@@ -110,6 +110,12 @@ export function gapClaims(report: AnalysisReport, gap: GapItem): string[] {
   });
 }
 
+// 같은 Gap 행의 생성된 설명이 최종 검토에서 반려됐는지 표시한다. 라벨 자체는 바꾸지 않는다.
+export function rejectedGapClaimReasons(report: AnalysisReport, gap: GapItem): string[] {
+  return [...new Set(report.claims.flatMap(claim => !claim.accepted && claim.draft.section === 'gap'
+    && claim.draft.gap_index === gap.gap_index ? [claim.reason] : []))];
+}
+
 // GapItem.technology_ids ↔ TechnologyCandidate.gap_item_ids 양쪽이 확인된 후보만 연결한다.
 export function gapTechnologies(gap: GapItem, technologies: TechnologyCandidate[]): { linked: TechnologyCandidate[]; unresolved: number } {
   const ids = [...new Set(gap.technology_ids)];
