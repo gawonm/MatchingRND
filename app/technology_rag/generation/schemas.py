@@ -76,7 +76,7 @@ class DocMatch(BaseModel):
                     "기능 이름만 같고 대상이 다른 공정·설비 전용 기술이면 false"
     )
     level: MatchLevel = Field(description="same=B의 핵심 기능을 직접 서술 / similar=B의 일부·인접 기능을 명시적으로 서술")
-    quote: str = Field(description="판단 근거가 된, 문서 본문의 문장을 한 글자도 바꾸지 말고 그대로 복사 (한 문장)")
+    quote: str = Field(description="판단 근거가 된, 문서 본문의 문장을 한 글자도 바꾸지 말고 그대로 복사 (한 문장, 최소 8자 이상)")
 
 
 class TechElementOut(BaseModel):
@@ -86,11 +86,21 @@ class TechElementOut(BaseModel):
     quote: str = Field(description="문서 본문의 문장을 그대로 복사")
 
 
+class DocJudgment(BaseModel):
+    """제공된 문서 1건마다 빠짐없이 내리는 판정. none 도 이유를 남겨 조용한 누락을 막는다."""
+
+    doc_id: str = Field(description="제공된 문서의 doc_id. 제공된 문서마다 정확히 하나씩")
+    reason: str = Field(description="문서가 서술한 기능과 B의 구성 기능을 비교한 한 문장. none 이면 왜 B의 어떤 기능도 서술하지 않는지")
+    level: Verdict = Field(description="same | similar | none. same/similar 이면 matches 에도 반드시 넣는다")
+
+
 class LLMAnswer(BaseModel):
     verdict: Verdict = Field(
         description="same=same 매칭 있음 / similar=similar 매칭만 있음 / none=매칭 없음"
     )
     answer: str = Field(description="기술기획 담당자에게 주는 한국어 답변. 문서에 적힌 내용만 사용")
+    # 필드 순서가 생성 순서다. 모든 문서를 먼저 판정하게 한 뒤 matches 를 쓴다.
+    judgments: list[DocJudgment] = Field(description="제공된 모든 문서에 대한 판정 (문서 수와 같아야 한다)")
     matches: list[DocMatch]
     tech_elements: list[TechElementOut]
     gaps: list[str] = Field(description="B 중 제공된 문서에서 확인되지 않은 부분")

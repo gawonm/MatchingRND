@@ -210,12 +210,14 @@ class Generator:
         result.tech_elements = all_elements
         result.stats["generation_implemented"] = True
         # 하위 모듈(Gap 등)이 ModuleResult 만으로 B 매칭 결과를 구조적으로 읽을 수 있게 한다.
+        judged = {j.doc_id: j for j in ans.judgments}
         none_items = []
         for d in dropped:
             failed = next((r for r in refs if r.doc_id == d and not r.ok), None)
             none_items.append({
                 "doc_id": d, "title": by_id[d].title if d in by_id else None, "level": "none",
-                "reason": f"{REASON_VERIFY_FAILED}: {failed.reason}" if failed else REASON_LLM_SKIPPED,
+                "reason": f"{REASON_VERIFY_FAILED}: {failed.reason}" if failed
+                          else f"{REASON_LLM_SKIPPED}: {judged[d].reason}" if d in judged else REASON_LLM_SKIPPED,
             })
         result.stats["match"] = {
             "has_match": bool(matched),
@@ -228,6 +230,9 @@ class Generator:
             # none: 판정했으나 매칭되지 않은 문서와 사유 (LLM 이 고르지 않음 / LLM 은 골랐으나 코드 검증에서 탈락)
             "none": none_items,
             "dropped": dropped,
+            # 문서별 LLM 판정 기록. 판정은 same/similar 인데 matches 에 없어 버려진 문서는 unlisted 로 따로 남긴다.
+            "judgments": [{"doc_id": j.doc_id, "level": j.level, "reason": j.reason} for j in ans.judgments],
+            "unlisted": [j.doc_id for j in ans.judgments if j.level != "none" and j.doc_id not in {m.doc_id for m in ans.matches}],
             "dropped_titles": [{"doc_id": d, "title": by_id[d].title if d in by_id else None} for d in dropped],
             # LLM 은 매칭이라 했지만 코드 검증에서 탈락한 것과 그 이유 (LLM 이 아예 고르지 않은 문서는 이유가 없다)
             "rejected": [{"doc_id": r.doc_id, "level": r.level, "reason": r.reason}
