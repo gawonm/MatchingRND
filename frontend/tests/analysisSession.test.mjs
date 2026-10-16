@@ -34,8 +34,8 @@ test('출처와 모드 및 RFP 세부 과제 ID가 선택 키 충돌을 막는�
 
 test('선택과 가정은 해당 실행에만 남고 새 세션에는 복사되지 않는다', () => {
   const first = confirmProfile(draft(), 'run-1', 'profile-1');
-  const key = selectionKey('mock', 'technology', '1');
-  const item = { key, mode: 'mock', source: 'technology', title: '후보', evidence: [] };
+  const key = selectionKey('real', 'technology', '1');
+  const item = { key, mode: 'real', source: 'technology', title: '후보', evidence: [] };
   const selected = updateRun(first, 'run-1', run => ({ ...run, items: [item], selectedKeys: [key], assumedKeys: [key] }));
   assert.deepEqual(selectedItems(activeRun(selected)), [item]);
   const changed = { ...selected, draftInput: { ...selected.draftInput, target_problem: '새 문제' } };

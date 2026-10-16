@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { activeRun, approvalBlocker, approvedProfile, confirmProfile, createSession, ensureMockRun, hasUnconfirmedChanges, isHistoricalRun, runProfile, selectedItems, toggleSelection, updateRun } from '../src/state/analysisSession.ts';
+import { readFileSync } from 'node:fs';
+import { activeRun, approvalBlocker, approvedProfile, confirmProfile, createSession, ensureDiscoverRun, ensureMockRun, hasUnconfirmedChanges, isHistoricalRun, runProfile, selectedItems, stageWorkspaceReferences, switchDiscoverMode, toggleSelection, updateRun } from '../src/state/analysisSession.ts';
 import { isNavigation, pageFromHash } from '../src/state/useNavigation.ts';
 
 const input = { technology_domains: [], technology_tags: [], technology_description: '진동 센서 분석', target_problem: '모터 고장 예측' };
@@ -21,6 +22,77 @@ test('프로필 없는 탐색은 가짜 프로필 없이 독립된 Mock 실행�
   assert.equal(confirmed.runs[0].profileId, null);
   assert.equal(confirmed.profiles[0].elements.length, 0);
   assert.equal(activeRun(confirmed).profileVersion, 1);
+  assert.equal(activeRun(confirmed).mode, 'real');
+});
+
+test('프로필 없는 Discover는 Real 검색으로 시작하고 Demo는 명시적으로 전환한다', () => {
+  const real = ensureDiscoverRun(createSession('p1', 's1'), 'real-run');
+  assert.equal(activeRun(real).mode, 'real');
+  const demo = switchDiscoverMode(real, 'mock', 'demo-run');
+  assert.equal(activeRun(demo).mode, 'mock');
+  assert.equal(switchDiscoverMode(demo, 'real').activeRunId, 'real-run');
+  assert.equal(real.draftInput.technology_description, '');
+});
+
+test('Discover 선택 검토 후 Workspace에는 Real 참고 스냅샷만 전달한다', () => {
+  const rfp = {
+    key: 'real:rfp:pdf-1:task-1', mode: 'real', source: 'rfp', title: '제설 과제',
+    originalId: 'pdf-1', taskId: 'task-1',
+    evidence: [{ id: 'chunk-1', source: 'rfp', documentTitle: '제설 과제', quote: '원문 요구',
+      section: '개발내용', page: 0, sourcePath: 'C:\\private\\rfp.pdf' }],
+  };
+  const technology = {
+    key: 'real:technology:tech-1', mode: 'real', source: 'technology', title: '외부 제설 기술',
+    originalId: 'tech-1', evidence: [{ id: 'chunk-2', source: 'technology', documentTitle: '외부 제설 기술', quote: '기술 원문' }],
+  };
+  const base = ensureDiscoverRun(createSession('p1', 's1'), 'real-run');
+  const chosen = updateRun(base, 'real-run', run => ({ ...run, items: [rfp, technology], selectedKeys: [rfp.key, technology.key] }));
+  const transferred = stageWorkspaceReferences(chosen, activeRun(chosen));
+  assert.deepEqual(transferred.workspaceReferences.map(item => [item.source, item.originalId, item.taskId, item.evidence[0].quote]), [
+    ['rfp', 'pdf-1', 'task-1', '원문 요구'], ['technology', 'tech-1', undefined, '기술 원문'],
+  ]);
+  assert.deepEqual(transferred.draftInput, base.draftInput);
+  assert.deepEqual(transferred.draftElements, []);
+  const deselected = updateRun(transferred, 'real-run', run => toggleSelection(run, rfp.key));
+  assert.equal(deselected.workspaceReferences.length, 2);
+  assert.equal(selectedItems(activeRun(deselected)).length, 1);
+  assert.deepEqual(stageWorkspaceReferences(deselected, activeRun(deselected)).workspaceReferences.map(item => item.key), [technology.key]);
+
+  const demo = switchDiscoverMode(chosen, 'mock', 'demo-run');
+  const demoItem = { ...item, key: 'mock:technology:sample' };
+  const demoSelected = updateRun(demo, 'demo-run', run => ({ ...run, items: [demoItem], selectedKeys: [demoItem.key] }));
+  assert.deepEqual(stageWorkspaceReferences(demoSelected, activeRun(demoSelected)).workspaceReferences, []);
+});
+
+test('참고 자료 전달은 입력과 기존 보고서를 바꾸지 않고, 사용자가 A/B/문제를 직접 고친 뒤 승인한다', () => {
+  const item = { key: 'real:rfp:pdf-1:task-1', mode: 'real', source: 'rfp', title: '제설 RFP', originalId: 'pdf-1', taskId: 'task-1', evidence: [] };
+  const initial = ensureDiscoverRun(createSession('p1', 's1'), 'real-run');
+  const selected = updateRun(initial, 'real-run', run => ({ ...run, items: [item], selectedKeys: [item.key] }));
+  const report = { report: { markdown: '이미 완료된 분석' } };
+  const staged = stageWorkspaceReferences(selected, activeRun(selected));
+  assert.equal(staged.draftInput.technology_description, '');
+  assert.equal(approvedProfile(staged), null);
+  assert.equal(report.report.markdown, '이미 완료된 분석');
+  const edited = { ...staged, draftInput: { ...staged.draftInput, technology_description: '내 센서 기술', required_technology: '제설 제어 기술', target_problem: '결빙 구간 감지' } };
+  const owned = { id: 'owned', name: '센서 기술', role: 'owned', category: '미분류', evidence: '내 센서 기술', source: '사용자 입력' };
+  assert.match(approvalBlocker([]), /보유 기술/);
+  const approved = confirmProfile({ ...edited, draftElements: [owned] }, 'next-run', 'profile');
+  assert.equal(approvedProfile(approved).input.required_technology, '제설 제어 기술');
+  assert.equal(approvedProfile(approved).input.target_problem, '결빙 구간 감지');
+  assert.equal(approved.workspaceReferences[0].taskId, 'task-1');
+  assert.equal(report.report.markdown, '이미 완료된 분석');
+});
+
+test('선택 검토에서만 참고 자료를 전달하고 Wizard는 로컬 경로를 출력하지 않는다', () => {
+  const app = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8');
+  const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
+  const review = readFileSync(new URL('../src/components/SessionViews.tsx', import.meta.url), 'utf8');
+  assert.match(app, /onReport=\{openWorkspaceWithSelection\}/);
+  assert.match(app, /references=\{session\.workspaceReferences/);
+  assert.match(review, /선택 자료를 참고해 Workspace 입력/);
+  assert.match(wizard, /ReferenceMaterials items=\{references\.filter\(item => item\.mode === 'real'\)\}/);
+  assert.match(wizard, /<TechnologyForm value=\{input\}/);
+  assert.doesNotMatch(wizard, /sourcePath/);
 });
 
 test('최신 편집본 변경과 과거 실행 조회를 독립적으로 판정한다', () => {

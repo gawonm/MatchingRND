@@ -4,12 +4,12 @@ import type { TechnologyInput } from '../types/technologyInput';
 
 export const cloneInput = (value: TechnologyInput): TechnologyInput => ({ ...value, technology_domains: [...value.technology_domains], technology_tags: [...value.technology_tags], patent_numbers: [...(value.patent_numbers ?? [])] });
 
-const emptySearch = (): ModuleSearch => ({ query: '', status: 'idle', resultKeys: [] });
+const emptySearch = (): ModuleSearch => ({ query: '', status: 'idle', resultKeys: [], page: 0, hasNext: false });
 
 export function createSession(projectId: string, id = crypto.randomUUID()): AnalysisSession {
   return {
     id, draftInput: { technology_domains: [], technology_tags: [], technology_description: '', target_problem: '' },
-    draftElements: [], reviewSource: null, profiles: [], runs: [], activeRunId: null,
+    draftElements: [], workspaceReferences: [], reviewSource: null, profiles: [], runs: [], activeRunId: null,
     demo: { projectId, compared: [], assumed: [], included: ['input', 'comparison', 'gaps', 'simulation', 'evidence'] },
   };
 }
@@ -22,9 +22,9 @@ export function runProfile(session: AnalysisSession, run: AnalysisRun | null): C
   return run ? session.profiles.find(profile => profile.id === run.profileId && profile.version === run.profileVersion) ?? null : null;
 }
 
-function createMockRun(profile: ConfirmedProfile | null, id: string): AnalysisRun {
+function createRun(profile: ConfirmedProfile | null, id: string, mode: 'mock' | 'real'): AnalysisRun {
   return {
-    id, profileId: profile?.id ?? null, profileVersion: profile?.version ?? null, mode: 'mock', activeSource: 'technology',
+    id, profileId: profile?.id ?? null, profileVersion: profile?.version ?? null, mode, activeSource: 'technology',
     searches: { technology: emptySearch(), ntis: emptySearch(), rfp: emptySearch() },
     items: [], selectedKeys: [], assumedKeys: [], reviewFocusKey: null,
   };
@@ -32,7 +32,20 @@ function createMockRun(profile: ConfirmedProfile | null, id: string): AnalysisRu
 
 export function ensureMockRun(session: AnalysisSession, runId = crypto.randomUUID()): AnalysisSession {
   if (activeRun(session)) return session;
-  return { ...session, runs: [...session.runs, createMockRun(null, runId)], activeRunId: runId };
+  return { ...session, runs: [...session.runs, createRun(null, runId, 'mock')], activeRunId: runId };
+}
+
+export function ensureDiscoverRun(session: AnalysisSession, runId = crypto.randomUUID()): AnalysisSession {
+  if (activeRun(session)) return session;
+  return { ...session, runs: [...session.runs, createRun(null, runId, 'real')], activeRunId: runId };
+}
+
+export function switchDiscoverMode(session: AnalysisSession, mode: 'mock' | 'real', runId = crypto.randomUUID()): AnalysisSession {
+  if (activeRun(session)?.mode === mode) return session;
+  const existing = [...session.runs].reverse().find(run => run.mode === mode);
+  return existing
+    ? { ...session, activeRunId: existing.id }
+    : { ...session, runs: [...session.runs, createRun(null, runId, mode)], activeRunId: runId };
 }
 
 // 최신 승인 프로필이 현재 편집본과 같을 때만 반환한다. 편집하면 자동으로 승인 해제된다.
@@ -60,7 +73,14 @@ export function toggleSelection(run: AnalysisRun, key: string): AnalysisRun {
 }
 
 export function selectedItems(run: AnalysisRun | null): DiscoverItem[] {
-  return run ? run.selectedKeys.flatMap(key => { const item = run.items.find(candidate => candidate.key === key); return item ? [item] : []; }) : [];
+  return run ? run.selectedKeys.flatMap(key => { const item = run.items.find(candidate => candidate.key === key && candidate.mode === run.mode); return item ? [item] : []; }) : [];
+}
+
+export function stageWorkspaceReferences(session: AnalysisSession, run: AnalysisRun | null): AnalysisSession {
+  const current = session.runs.find(candidate => candidate.id === run?.id);
+  return current
+    ? { ...session, workspaceReferences: current.mode === 'real' ? selectedItems(current) : [] }
+    : session;
 }
 
 export function draftDiffers(session: AnalysisSession): boolean {
@@ -82,7 +102,7 @@ export function confirmProfile(session: AnalysisSession, runId = crypto.randomUU
     id: profileId, version: (session.profiles.at(-1)?.version ?? 0) + 1,
     input: cloneInput(session.draftInput), elements: elements.map(element => ({ ...element })),
   };
-  const run = createMockRun(profile, runId);
+  const run = createRun(profile, runId, 'real');
   return { ...session, draftElements: elements, profiles: [...session.profiles, profile], runs: [...session.runs, run], activeRunId: run.id };
 }
 

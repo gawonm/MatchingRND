@@ -13,6 +13,8 @@ export type DiscoverItem = {
   originalId?: string;
   taskId?: string;
   summary?: string;
+  provider?: string;
+  year?: number;
   evidence: Evidence[];
 };
 
@@ -20,6 +22,9 @@ export type ModuleSearch = {
   query: string;
   status: 'idle' | 'loading' | 'success' | 'empty' | 'error';
   resultKeys: string[];
+  page: number;
+  hasNext: boolean;
+  loadingMore?: boolean;
   error?: string;
 };
 
@@ -47,6 +52,7 @@ export type AnalysisSession = {
   id: string;
   draftInput: TechnologyInput;
   draftElements: TechnologyElement[];
+  workspaceReferences: DiscoverItem[];
   reviewSource: TechnologyInput | null;
   profiles: ConfirmedProfile[];
   runs: AnalysisRun[];

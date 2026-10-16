@@ -50,6 +50,11 @@ export type Evidence = {
   source: "user_input" | "technology" | "ntis" | "rfp";
   documentTitle: string;
   quote: string;
+  section?: string | null;
+  page?: number | null;
+  pageEnd?: number | null;
+  sourcePath?: string | null;
+  locations?: Record<string, unknown>[];
 };
 
 export type GapItem = {

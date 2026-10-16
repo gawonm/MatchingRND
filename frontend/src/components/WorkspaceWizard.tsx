@@ -15,11 +15,13 @@ import type { SplitViewState } from './analysis/SplitExplorer';
 import { COMMON_RND_INTRO, COMMON_RND_NOTICE_TITLE, COMMON_RND_NOTICES, viewAvailability } from '../lib/analysisView';
 import type { TechnologyElement } from '../types/technologyElement';
 import type { TechnologyInput } from '../types/technologyInput';
+import type { DiscoverItem } from '../types/analysisSession';
 import type { ReportViewResponse } from '../types/analysisReport';
 
 type Props = {
   input: TechnologyInput;
   elements: TechnologyElement[];
+  references: DiscoverItem[];
   onInputChange: (input: TechnologyInput) => void;
   onElementsChange: (elements: TechnologyElement[]) => void;
   approvedVersion: number | null;
@@ -32,7 +34,23 @@ const initialSplitView: SplitViewState = { selectedId: null, mobileDetailOpen: f
 const initialExplore = { technology: initialSplitView, rfp: initialSplitView, gap: { ...initialSplitView, rfpId: null } as GapViewState };
 const steps = ['기술 및 문제 입력', '기술요소 검토·승인', '통합 RAG 분석'];
 
-export default function WorkspaceWizard({ input, elements, onInputChange, onElementsChange, approvedVersion, onApprove, report, onRun }: Props) {
+function ReferenceMaterials({ items }: { items: DiscoverItem[] }) {
+  if (!items.length) return null;
+  const sourceLabel = { technology: '나눔기술', rfp: 'RFP', ntis: 'NTIS' };
+  return <section className="app-card p-4 mb-3" aria-labelledby="workspace-reference-title">
+    <h2 id="workspace-reference-title" className="h6">Discover 선택 자료 · 참고 {items.length}건</h2>
+    <p className="small text-secondary">선택 검토에서 Workspace로 이동할 때의 참고 목록입니다. 선택 자료는 보유기술 A로 자동 분류하거나 분석 검색 결과에 강제 반영하지 않습니다. 아래 입력은 직접 작성·수정해 주세요.</p>
+    {items.map(item => <details className="mb-2" key={item.key}>
+      <summary>{sourceLabel[item.source]} · {item.title}</summary>
+      <div className="small text-secondary mt-2">문서 ID: {item.originalId || '미제공'}{item.source === 'rfp' && <> · task_id: {item.taskId || '미제공'}</>}</div>
+      {item.evidence.map(evidence => <blockquote className="evidence-block small mt-2" key={evidence.id}>{evidence.quote}
+        <div className="text-secondary mt-2">{evidence.documentTitle}{evidence.section && ` · 섹션: ${evidence.section}`}{evidence.page != null && ` · 저장된 페이지 값: ${evidence.page}${evidence.pageEnd != null && evidence.pageEnd !== evidence.page ? `–${evidence.pageEnd}` : ''}`}</div>
+      </blockquote>)}
+    </details>)}
+  </section>;
+}
+
+export default function WorkspaceWizard({ input, elements, references, onInputChange, onElementsChange, approvedVersion, onApprove, report, onRun }: Props) {
   const approved = approvedVersion !== null;
   const [step, setStep] = useState<'input' | 'review' | 'result'>(() => report.result && approved ? 'result' : elements.length ? 'review' : 'input');
   const [extraction, setExtraction] = useState<{ status: 'idle' | 'loading' | 'error'; message?: string; warnings: string[] }>({ status: 'idle', warnings: [] });
@@ -120,6 +138,7 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
 
   return <section aria-label="분석 Wizard">
     <ol className="wizard-steps">{steps.map((label, index) => <li key={label} className={index === activeStep ? 'active' : index < activeStep ? 'done' : undefined} aria-current={index === activeStep ? 'step' : undefined}><span>{index + 1}</span>{label}</li>)}</ol>
+    {(view === 'input' || view === 'review') && <ReferenceMaterials items={references.filter(item => item.mode === 'real')} />}
     {view === 'input' && <div className="app-card p-4">
       <h2 className="h6">보유 기술과 해결하려는 문제를 입력하세요</h2>
       <p className="small text-secondary">AI 추출은 버튼을 누를 때만 실행되며, 결과는 승인 전까지 후보입니다.</p>

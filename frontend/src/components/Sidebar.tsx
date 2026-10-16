@@ -1,5 +1,5 @@
 import { Nav } from 'react-bootstrap';
-const pages = [['home', 'house', 'Home', '새 분석 시작'], ['workspace', 'layout-split', 'Workspace', '입력·승인·분석·결과'], ['discover', 'compass', 'Discover', 'Mock 자료 탐색']];
+const pages = [['home', 'house', 'Home', '새 분석 시작'], ['workspace', 'layout-split', 'Workspace', '입력·승인·분석·결과'], ['discover', 'compass', 'Discover', '자료 검색']];
 // Discover 하위 화면(선택 자료 검토·도입 가정)은 Discover 메뉴로 표시한다.
 const parent: Record<string, string> = { selection: 'discover', simulation: 'discover' };
 export default function Sidebar({ activePage, onNavigate }: { activePage: string; onNavigate: (page: string) => void }) {
