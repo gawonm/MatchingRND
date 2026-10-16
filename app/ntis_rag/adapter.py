@@ -57,7 +57,8 @@ def to_module_result(result) -> ModuleResult:
             provider=project.get("organization"), relevance_score=score if score is not None else 0.0,
             relation_summary="", tech_elements=tech_by_project[pid],
             evidences=[ev for tech in tech_by_project[pid] for ev in tech.evidences],
-            hits=[hit], extra={"project_id": pid, "metadata": project.get("metadata", {})},
+            hits=[hit], extra={"project_id": pid, "metadata": project.get("metadata", {}),
+                               "technology_relevance": project.get("technology_relevance")},
         ))
     return ModuleResult(
         module="ntis", query=structured.get("search_query") or query,

@@ -221,9 +221,13 @@ class RagOrchestrator:
         technology = self._execute("technology", self.technology_runner, baseline)
         external = _cascade_elements(technology)
         external_names = list(dict.fromkeys(element.name.strip() for element in external))
+        ntis_options = {}
+        if request.unmet_elements:
+            ntis_options['requested_technologies'] = list(request.unmet_elements)
         ntis = self._execute(
             "ntis", self.ntis_runner, request.problem,
             owned_technologies=list(request.owned_technologies), external_technologies=external_names,
+            **ntis_options,
         )
         ntis_elements = _cascade_elements(ntis)
         details = build_query(
