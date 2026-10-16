@@ -131,7 +131,8 @@ export default function App() {
         </div>
         {!profile && <div className="mock-banner">실제 분석을 실행하려면 Home에서 프로필을 먼저 저장하세요.</div>}
         {viewMode === 'demo' && <div className="mock-banner">고정 데모에서는 실제 분석을 실행하지 않습니다.</div>}
-        {reportStatus === 'error' && <div className="mock-banner" role="alert">보고서를 생성하지 못했습니다. 입력과 API 상태를 확인한 뒤 다시 시도해 주세요.</div>}
+        {reportStatus === 'loading' && <div className="report-progress app-card" role="status" aria-live="polite"><span className="spinner-border spinner-border-sm" aria-hidden="true" /><div><strong>근거를 수집하고 보고서를 작성하고 있습니다.</strong><p>몇 분 걸릴 수 있습니다. 실제 진행률은 제공되지 않으며, 이 화면을 유지해 주세요.</p></div></div>}
+        {reportStatus === 'error' && <div className="mock-banner" role="alert">보고서를 생성하지 못했습니다. 입력과 API 상태를 확인한 뒤 <Button size="sm" variant="outline-secondary" onClick={requestReport}>다시 시도</Button></div>}
         <AnalysisReportView report={currentReport ?? mockAnalysisReport} mode={currentReport ? 'real' : 'mock'} />
       </>}
       <footer className="app-footer">R&D Match <span>근거를 확인하고, 가능성을 검토하세요.</span></footer>

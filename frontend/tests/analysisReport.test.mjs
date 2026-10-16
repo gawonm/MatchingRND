@@ -41,3 +41,19 @@ test('외부 링크 프로토콜을 제한하고 HTML을 직접 주입하지 않
   assert.doesNotMatch(component, /dangerouslySetInnerHTML/);
   assert.match(component, /noopener noreferrer/);
 });
+
+test('추천 우선순위, 섹션 이동, 접을 수 있는 원문 인용을 제공한다', () => {
+  assert.match(component, /report-priority/);
+  assert.match(component, /보고서 섹션 바로가기/);
+  assert.match(component, /scrollIntoView/);
+  assert.doesNotMatch(component, /href={`#report-section/);
+  assert.match(component, /<details className="report-citation">/);
+  assert.match(component, /원문 인용 보기/);
+});
+
+test('장시간 분석은 가짜 퍼센트 없이 상태와 재시도를 안내한다', () => {
+  assert.match(app, /role="status"/);
+  assert.match(app, /실제 진행률은 제공되지 않으며/);
+  assert.match(app, /role="alert"[^]*다시 시도/);
+  assert.doesNotMatch(app, /reportStatus[^\n]*%/);
+});
