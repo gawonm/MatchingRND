@@ -5,7 +5,7 @@ from unittest.mock import Mock, patch
 from pydantic import ValidationError
 
 from app.common.schemas import Evidence, ExternalTechCandidate, ModuleResult, TechElement
-from app.orchestrator import AnalysisState, OrchestrationError, RagOrchestrator, POLICY_DEFAULT_TERMS
+from app.orchestrator import AnalysisState, OrchestrationError, RagOrchestrator
 
 
 def element(name, source, *, verified=True, quote="원문 근거"):
@@ -32,10 +32,9 @@ class OrchestratorTests(unittest.TestCase):
         self.technology = Mock(return_value=SimpleNamespace(result=module_result("technology", [self.external])))
         self.ntis = Mock(return_value=module_result("ntis", [self.ntis_element]))
         self.rfp = Mock(return_value=module_result("rfp"))
-        self.policy = Mock(return_value=module_result("policy"))
         self.orchestrator = RagOrchestrator(
             technology_runner=self.technology, ntis_runner=self.ntis,
-            rfp_runner=self.rfp, policy_runner=self.policy,
+            rfp_runner=self.rfp,
         )
 
     def test_cascade_retains_input_and_evidence_provenance(self):
@@ -55,17 +54,8 @@ class OrchestratorTests(unittest.TestCase):
         self.assertEqual(details["expansion_sources"][0]["quote"], "원문 근거")
         self.assertEqual(result.request.problem, self.request["problem"])
         self.assertEqual(AnalysisState.model_validate_json(result.model_dump_json()), result)
-        # 제도 질문이 없어도 법령 검색은 기술 맥락과 고정 키워드로 실행된다.
-        policy_query = self.policy.call_args.args[0]
-        self.assertIn(self.request["problem"], policy_query)
-        self.assertIn(POLICY_DEFAULT_TERMS, policy_query)
-        self.assertEqual(result.queries["policy"], policy_query)
-
-    def test_policy_failure_is_a_warning_not_a_stage_error(self):
-        self.policy.side_effect = RuntimeError("index 없음")
-        result = self.orchestrator.run(self.request)
-        self.assertIsNone(result.policy)
-        self.assertTrue(any(w.startswith("policy: 법령 검색에 실패") for w in result.warnings))
+        self.assertFalse(hasattr(result, 'policy'))
+        self.assertNotIn('policy', result.queries)
 
     def test_unverified_elements_do_not_expand_queries(self):
         self.technology.return_value = module_result("technology", [element("환각 기술", "pub", verified=False)])
@@ -81,20 +71,18 @@ class OrchestratorTests(unittest.TestCase):
         result = self.orchestrator.run(self.request)
         self.assertEqual(result.external_elements, [])
 
-    def test_policy_runs_after_rfp_when_requested(self):
+    def test_policy_question_does_not_trigger_policy_search(self):
+        # 법령 RAG 는 제거되었다: 제도 질문이 있어도 Technology → NTIS → RFP 만 실행한다.
         order = []
-        for name, runner in (("technology", self.technology), ("ntis", self.ntis),
-                             ("rfp", self.rfp), ("policy", self.policy)):
+        for name, runner in (("technology", self.technology), ("ntis", self.ntis), ("rfp", self.rfp)):
             returned = runner.return_value
             def record(*args, _name=name, _returned=returned, **kwargs):
                 order.append(_name)
                 return _returned
             runner.side_effect = record
         result = self.orchestrator.run({**self.request, "policy_question": "기술이전 조건은 무엇인가?"})
-        self.assertEqual(order, ["technology", "ntis", "rfp", "policy"])
-        self.policy.assert_called_once()
-        self.assertTrue(self.policy.call_args.args[0].startswith("기술이전 조건은 무엇인가?"))
-        self.assertEqual(result.policy.module, "policy")
+        self.assertEqual(order, ["technology", "ntis", "rfp"])
+        self.assertEqual(set(result.queries), {"technology", "ntis", "rfp"})
 
     def test_empty_results_do_not_create_gap_verdicts(self):
         for name, runner in (("technology", self.technology), ("ntis", self.ntis), ("rfp", self.rfp)):
@@ -156,8 +144,7 @@ class OrchestratorTests(unittest.TestCase):
 
     def test_default_technology_runner_receives_owned_and_requested_separately(self):
         # Exercise the real default runner with the teammate's new answer(A, B) API.
-        orchestrator = RagOrchestrator(ntis_runner=self.ntis, rfp_runner=self.rfp,
-                                       policy_runner=self.policy, backend='local')
+        orchestrator = RagOrchestrator(ntis_runner=self.ntis, rfp_runner=self.rfp, backend='local')
         technology_pipeline = Mock()
         technology_pipeline.answer.return_value = SimpleNamespace(
             result=module_result('technology', [self.external]))

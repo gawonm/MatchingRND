@@ -1,4 +1,4 @@
-"""Technology -> NTIS -> RFP cascade, followed by optional policy retrieval.
+"""Technology -> NTIS -> RFP cascade.
 
 This module coordinates the existing RAG implementations. It returns evidence
 and query provenance for subsequent alignment, Gap analysis and answer generation;
@@ -13,7 +13,7 @@ from typing import Any
 from pydantic import BaseModel, Field, field_validator
 
 from app.common.schemas import ModuleResult, SourceType, TechElement
-from app.common.paths import PROJECT_ROOT, RFP_PDF_DIR, RFP_NOTICE_PATH, POLICY_RAW_DIR
+from app.common.paths import PROJECT_ROOT, RFP_PDF_DIR, RFP_NOTICE_PATH
 from app.rfp_rag.retrieval.query import build_query
 
 
@@ -58,7 +58,6 @@ class AnalysisState(BaseModel):
     technology: ModuleResult
     ntis: ModuleResult
     rfp: ModuleResult
-    policy: ModuleResult | None = None
     external_elements: list[TechElement] = Field(default_factory=list)
     ntis_elements: list[TechElement] = Field(default_factory=list)
     queries: dict[str, str] = Field(default_factory=dict)
@@ -114,32 +113,12 @@ def _expansion_rows(elements: list[TechElement]) -> list[dict[str, str]]:
     ]
 
 
-POLICY_DEFAULT_TERMS = "기술이전 사업화 국가연구개발사업 참여 요건 협약 지식재산 귀속"
-POLICY_QUERY_MAX_CHARS = 300  # 임베딩 토큰 한도(질문 길이 검사) 초과 방지
-
-
-def build_policy_query(request: AnalysisRequest) -> str:
-    """법령 검색어: 사용자의 제도 질문 + 확보하려는 기술 + 고정 제도 키워드.
-
-    제도 질문이 없어도 기술 맥락과 R&D·기술이전 키워드로 관련 조문을 찾도록 한다.
-    """
-    targets = request.unmet_elements[:3] or [request.problem]
-    parts = [request.policy_question or "", *targets, POLICY_DEFAULT_TERMS]
-    # 고정 키워드는 항상 남기고 앞쪽(사용자 입력)을 잘라 한도에 맞춘다.
-    query = " ".join(part.strip() for part in parts if part and part.strip())
-    if len(query) > POLICY_QUERY_MAX_CHARS:
-        head = " ".join(part.strip() for part in parts[:-1] if part and part.strip())
-        head = head[:max(0, POLICY_QUERY_MAX_CHARS - len(POLICY_DEFAULT_TERMS) - 1)]
-        query = f"{head} {POLICY_DEFAULT_TERMS}".strip()
-    return query
-
-
 class RagOrchestrator:
     """Reusable coordinator; injected runners make integration independently testable.
 
     technology_runner(query, owned_technologies=..., targets=...) returns ModuleResult or GenerationResult.
     ntis_runner(problem, owned_technologies=..., external_technologies=...) returns ModuleResult.
-    rfp_runner(query_details) and policy_runner(question) return ModuleResult.
+    rfp_runner(query_details) returns ModuleResult.
     Default implementations load pipelines/indexes on first use and reuse them.
     """
 
@@ -149,10 +128,8 @@ class RagOrchestrator:
         technology_runner: Callable[..., Any] | None = None,
         ntis_runner: Callable[..., Any] | None = None,
         rfp_runner: Callable[..., Any] | None = None,
-        policy_runner: Callable[..., Any] | None = None,
         technology_config: Any = None,
         rfp_data_dir: str | Path = RFP_PDF_DIR,
-        policy_data_dir: str | Path = POLICY_RAW_DIR,
         rfp_notice_path: str | Path = RFP_NOTICE_PATH,
         index_dir: str | Path = PROJECT_ROOT / "db",
         backend: str | None = None,
@@ -164,16 +141,13 @@ class RagOrchestrator:
         self.technology_runner = technology_runner or self._technology_answer
         self.ntis_runner = ntis_runner or self._ntis_analysis
         self.rfp_runner = rfp_runner or self._rfp_search
-        self.policy_runner = policy_runner or self._policy_search
         self.technology_config = technology_config
         self.rfp_data_dir = rfp_data_dir
-        self.policy_data_dir = policy_data_dir
         self.rfp_notice_path = rfp_notice_path
         index_dir = Path(index_dir)
         self.index_dir = index_dir if index_dir.is_absolute() else PROJECT_ROOT / index_dir
         self._technology_pipeline = None
         self._rfp_index = None
-        self._policy_index = None
 
     def _technology_answer(self, query, owned_technologies=None, targets=None):
         from app.technology_rag.pipeline import TechnologyRagPipeline
@@ -209,19 +183,6 @@ class RagOrchestrator:
                     notice_path=self.rfp_notice_path,
                 )
         return search_module_result(self._rfp_index, details)
-
-    def _policy_search(self, question):
-        from app.policy_rag.pipeline import build_index, search_module_result
-
-        if self._policy_index is None:
-            if self.backend == 'supabase':
-                from app.common.supabase_retrieval import load_pdf_index
-                self._policy_index = load_pdf_index('policy')
-            else:
-                self._policy_index = build_index(
-                    data_dir=self.policy_data_dir, output_dir=self.index_dir / "law",
-                )
-        return search_module_result(self._policy_index, question)
 
     @staticmethod
     def _execute(module, runner, *args, **kwargs):
@@ -265,22 +226,15 @@ class RagOrchestrator:
         import copy
         rfp = self._execute("rfp", self.rfp_runner, copy.deepcopy(details))
         warnings = []
-        # 모든 질문에 제도 참고용 법령을 검색한다. 실패해도 기술 분석 결과는 보존한다.
-        policy_query = build_policy_query(request)
-        try:
-            policy = self._execute("policy", self.policy_runner, policy_query)
-        except OrchestrationError as error:
-            policy = None
-            warnings.append(f"policy: 법령 검색에 실패해 제외했습니다 ({error.__cause__}).")
-        for module in (technology, ntis, rfp, policy):
+        for module in (technology, ntis, rfp):
             if module is not None and not module.candidates:
                 warnings.append(f"{module.module}: 검색 후보가 없습니다. 기술 미보유나 추가 R&D 필요를 의미하지 않습니다.")
         for name, elements in (("technology", external), ("ntis", ntis_elements)):
             if not elements:
                 warnings.append(f"{name}: 검증된 기술요소가 없어 해당 단계의 Query 확장을 생략했습니다.")
-        queries = {"technology": baseline, "ntis": ntis.query, "rfp": details["query"], "policy": policy_query}
+        queries = {"technology": baseline, "ntis": ntis.query, "rfp": details["query"]}
         return AnalysisState(
-            request=request, technology=technology, ntis=ntis, rfp=rfp, policy=policy,
+            request=request, technology=technology, ntis=ntis, rfp=rfp,
             external_elements=external, ntis_elements=ntis_elements, queries=queries,
             rfp_query_details=details, warnings=warnings,
         )

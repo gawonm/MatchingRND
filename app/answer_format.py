@@ -19,9 +19,20 @@ if TYPE_CHECKING:
 
 HEADINGS = (
     '1. 우선 추천 나눔기술', '2. 우선 추천 공고', '3. 기술요소 Gap',
-    '4. 관련 RFP', '5. 관련 나눔기술', '6. 관련 법령', '7. 확인이 필요한 사항',
+    '4. 관련 RFP', '5. 관련 나눔기술', '6. 공통 R&D 유의사항', '7. 확인이 필요한 사항',
 )
 TECH_SOURCES = {SourceType.PUBLIC_TECH, SourceType.POSCO_TECH}
+# 검색·근거와 무관하게 모든 답변에 같은 문구를 안내한다 (법령 RAG 대체).
+COMMON_RND_INTRO = (
+    '국가 R&D 과제 참여와 나눔기술 도입 시 일반적으로 확인할 사항입니다.',
+    '이번 검색 결과나 원문 근거에 기반한 판단이 아니므로, 공고문과 관련 법령 원문으로 확인하세요.',
+)
+COMMON_RND_NOTICES = (
+    '국가 R&D 과제 참여 시 국가연구개발혁신법 적용 여부 확인',
+    '연구개발비 사용 및 정산 기준 확인',
+    '연구개발성과의 소유·활용 조건 확인',
+    '나눔기술 도입 시 기술이전 조건 및 지식재산권 확인',
+)
 
 
 def _key(text):
@@ -95,7 +106,7 @@ class _Presentation:
             self.canonical[record.evidence_id] = seen[identity]
         self.shown = set()
         self.names = {}
-        for module in (state.technology, state.rfp, state.ntis, state.policy):
+        for module in (state.technology, state.rfp, state.ntis):
             if module:
                 for candidate in module.candidates:
                     self.names[(module.module, candidate.doc_id)] = candidate.title
@@ -181,16 +192,14 @@ class _Presentation:
         return texts
 
     def source_description(self, candidate, section):
-        sources = {'external': TECH_SOURCES, 'rfp': {SourceType.RFP}, 'policy': {SourceType.POLICY}}[section]
-        records = self.select_evidence(self.candidate_records(candidate, sources), None if section == 'policy' else 5)
+        sources = {'external': TECH_SOURCES, 'rfp': {SourceType.RFP}}[section]
+        records = self.select_evidence(self.candidate_records(candidate, sources), 5)
         claims = self.claim_texts(section, candidate, allowed_ids={r.evidence_id for r in records})
         if claims:
             # Detailed source statements remain in the audit; avoid a wall of prose.
             return [_brief(claims[0])]
         if section == 'external' and candidate.relation_summary.strip():
             return [_brief(candidate.relation_summary)]
-        if section == 'policy':
-            return ['관련 조항으로 검색된 자료입니다. 구체적인 적용 여부는 원문과 적용 조건을 추가 확인하세요.']
         return ['검색 순위에 따른 기술적 관련 후보이며, 세부 대응은 아래 Gap 분석을 참고하세요.']
 
     def gap_indices(self, candidate):
@@ -318,14 +327,7 @@ def render_answer(state: AnalysisState, report: GapReport, claims: list[ClaimChe
         lines += [f'| {rank}{" · 우선 추천" if rank == 1 else ""} | {_text(c.title)} | {_text(c.provider or "미확인")} | {summary} |']
 
     lines += ['', f'## {HEADINGS[5]}', '']
-    if state.policy is None:
-        lines += ['이번 분석에서는 법령 확인을 수행하지 않았습니다.']
-    elif not state.policy.candidates:
-        lines += ['이번 법령 검색에서 관련 조항을 확보하지 못했습니다.']
-    for c in _unique_candidates(state.policy)[:5]:
-        lines += [f'- **{_text(c.title)}**']
-        records = view.select_evidence(view.candidate_records(c, {SourceType.POLICY}), 1)
-        lines += view.evidence_block(records)
+    lines += [*COMMON_RND_INTRO, '', *[f'- {notice}' for notice in COMMON_RND_NOTICES]]
 
     lines += ['', f'## {HEADINGS[6]}', '']
     concerns = list(warnings)

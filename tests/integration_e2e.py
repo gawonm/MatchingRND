@@ -2,7 +2,7 @@
 
 실행: python -X utf8 -m tests.integration_e2e [--template-only] [--query "..."] [--model gpt-4o-mini]
 
-자연어 질문 → 입력 해석 → Technology → NTIS → RFP → 법령(Policy) → Gap 분석 → 최종 답변까지 한 번에 돌리고,
+자연어 질문 → 입력 해석 → Technology → NTIS → RFP → Gap 분석 → 최종 답변까지 한 번에 돌리고,
 단계마다 결과 요약과 PASS/FAIL 을 출력한다. 결과 파일은 outputs/integration_e2e_<시각>/ 에 저장된다.
 단계가 실패해도 이후 단계는 건너뛰고 어디서 멈췄는지 보여 준다.
 마지막에 단계별 소요 시간·LLM 호출 수·토큰 사용량 표를 출력한다 (OpenAI SDK 호출을 직접 세므로 모든 단계가 포함된다).
@@ -15,6 +15,7 @@ import time
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 
+from app.answer_format import COMMON_RND_INTRO, COMMON_RND_NOTICES
 from app.common.paths import PROJECT_ROOT
 from app.gap_analysis import OpenAIStructuredLLM
 from app.integrated_analysis import run_integrated_analysis
@@ -118,7 +119,7 @@ class Metrics:
         print(f"{'합계':<24}{seconds:>10.1f}{int(calls):>10}{int(tokens):>12}")
 
 
-NESTED_STAGES = {"  Technology", "  NTIS", "  RFP", "  Policy(법령)"}
+NESTED_STAGES = {"  Technology", "  NTIS", "  RFP"}
 metrics = Metrics()
 
 
@@ -134,17 +135,6 @@ def show_module(name: str, module) -> None:
     for c in module.candidates:
         level = c.extra.get("match_level") if getattr(c, "extra", None) else None
         print(f"  - {c.doc_id} {c.title}" + (f"  [{level}]" if level else ""))
-
-
-def show_policy(module) -> None:
-    print(f"\n[Policy(법령)] 질의: {module.query}")
-    print(f"  조문 후보 {len(module.candidates)}건")
-    for c in module.candidates:
-        extra = c.extra or {}
-        evidences = [ev for ev in c.evidences if ev.verified]
-        print(f"  - {c.title}  (rank {extra.get('rank')}, 원문검증 {len(evidences)}건)")
-        if evidences:
-            print("      " + " ".join(evidences[0].quote.split())[:120])
 
 
 def main(argv=None) -> int:
@@ -186,7 +176,7 @@ def run(args) -> int:
     try:
         orchestrator = RagOrchestrator(backend=args.backend)
         for attr, label in (("technology_runner", "  Technology"), ("ntis_runner", "  NTIS"),
-                            ("rfp_runner", "  RFP"), ("policy_runner", "  Policy(법령)")):
+                            ("rfp_runner", "  RFP")):
             setattr(orchestrator, attr, metrics.wrap_runner(label, getattr(orchestrator, attr)))
         with metrics.stage("2. 검색 캐스케이드"):
             state = orchestrator.run(req)
@@ -199,8 +189,6 @@ def run(args) -> int:
     show_module("Technology", state.technology)
     show_module("NTIS", state.ntis)
     show_module("RFP", state.rfp)
-    if state.policy is not None:
-        show_policy(state.policy)
     for w in state.warnings:
         print("  경고:", w)
 
@@ -210,15 +198,6 @@ def run(args) -> int:
     check("NTIS 후보 존재", bool(state.ntis.candidates))
     check("RFP 후보 존재", bool(state.rfp.candidates))
     check("검증된 기술요소로 질의가 확장됨", bool(state.external_elements) or bool(state.ntis_elements))
-
-    # 법령: 모든 질문에서 실행되어야 하며, 후보는 원문 검증된 조문 근거를 가져야 한다.
-    check("법령 검색이 실행됨 (state.policy)", state.policy is not None)
-    if state.policy is not None:
-        check("법령 질의에 확보 대상 기술이 포함됨",
-              all(name in state.policy.query for name in req.unmet_elements[:3]))
-        check("법령 조문 후보 존재", bool(state.policy.candidates))
-        check("법령 후보마다 원문 검증된 근거 존재",
-              bool(state.policy.candidates) and all(any(ev.verified for ev in c.evidences) for c in state.policy.candidates))
 
     # 3) Gap 분석 + 최종 답변 (위 state 그대로 사용 — 검색 재실행 없음)
     print("\n[3. Gap 분석·최종 답변]")
@@ -233,9 +212,9 @@ def run(args) -> int:
         print(f"\n  답변 상태: {answer.status}\n")
         print(answer.markdown)
     check("최종 답변 생성됨", answer is not None and bool(answer.markdown.strip()))
-    check("최종 답변에 법령 섹션 근거 포함",
-          answer is not None and state.policy is not None and bool(state.policy.candidates)
-          and any(c.title.split()[0] in answer.markdown for c in state.policy.candidates))
+    check("최종 답변에 공통 R&D 유의사항 고정 문구 포함",
+          answer is not None and all(text in answer.markdown for text in (*COMMON_RND_INTRO, *COMMON_RND_NOTICES)))
+    check("최종 답변에 법령 검색 섹션이 없음", answer is not None and "## 6. 관련 법령" not in answer.markdown)
 
     print(f"\n결과 폴더: {out}")
     return summary()
