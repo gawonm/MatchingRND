@@ -9,7 +9,7 @@ from app.common.schemas import (
     Evidence, ExternalTechCandidate, GapLabel, ModuleResult, RetrievalHit, TechElement,
 )
 from app.gap_analysis import (
-    AlignmentJudgements, CoverageJudgement, GapReport, OpenAIStructuredLLM, RequirementExtraction,
+    BatchJudgement, BatchJudgements, GapReport, OpenAIStructuredLLM, RequirementExtraction,
     SourceMatch, decide_label, run_gap_analysis,
 )
 from app.orchestrator import AnalysisRequest, AnalysisState
@@ -46,6 +46,11 @@ def make_state(owned, rfp_candidates, *, external=(), external_candidates=(), nt
     )
 
 
+def unrelated_external():
+    """요구기술과 무관한 기술나눔 기술. 기술나눔 후보가 있는 상태에서 매칭이 없는 경우를 만든다."""
+    return tech_element("냉각수 순환", "pos", "pos-9", "냉각수 순환 펌프 제어")
+
+
 class FakeLLM:
     """RFP 제목별 추출 결과와 (요구기술, 후보명)별 충족도를 돌려준다."""
 
@@ -59,13 +64,13 @@ class FakeLLM:
         if response_model is RequirementExtraction:
             return response_model(requirements=self.extraction.get(payload["rfp_title"], []))
         self.alignment_payloads.append(payload)
-        name = payload["requirement"]["name"]
         judgements = []
-        for candidate in payload["candidates"]:
-            coverage, quote = self.coverage.get((name, candidate["name"]), ("none", ""))
-            judgements.append({"candidate_index": candidate["index"], "coverage": coverage,
-                               "reason": "테스트 판단", "quote": quote})
-        return AlignmentJudgements(judgements=judgements)
+        for requirement in payload["requirements"]:
+            for candidate in payload["candidates"]:
+                coverage, quote = self.coverage.get((requirement["name"], candidate["name"]), ("none", ""))
+                judgements.append({"requirement_index": requirement["index"], "candidate_index": candidate["index"],
+                                   "coverage": coverage, "reason": "테스트 판단", "quote": quote})
+        return BatchJudgements(judgements=judgements)
 
 
 class GapAnalysisScenarioTests(unittest.TestCase):
@@ -213,7 +218,7 @@ class QuoteLocationTests(unittest.TestCase):
             for fragment, page in zip(rfp.extra["requirements"]["요구기술"], pages):
                 fragment["page"] = page
         llm = FakeLLM({"과제": [requirement("품질예측", quote)]})
-        item = run_gap_analysis(make_state([], [rfp]), llm=llm).items[0]
+        item = run_gap_analysis(make_state([], [rfp], external=[unrelated_external()]), llm=llm).items[0]
         return item, item.requirement.evidences[0]
 
     def test_quote_spanning_lines_is_verified_with_all_locations(self):
@@ -270,8 +275,8 @@ class QuoteLocationTests(unittest.TestCase):
         self.assertEqual(item.label, GapLabel.INSUFFICIENT)
 
     def test_reason_is_generated_before_coverage(self):
-        self.assertEqual(list(CoverageJudgement.model_fields),
-                         ["candidate_index", "reason", "coverage", "quote"])
+        self.assertEqual(list(BatchJudgement.model_fields),
+                         ["requirement_index", "candidate_index", "reason", "coverage", "quote"])
 
 
 class NonTechnologyExclusionTests(unittest.TestCase):
@@ -281,7 +286,7 @@ class NonTechnologyExclusionTests(unittest.TestCase):
             requirement("SLAM", "SLAM 기반 위치추정"),
             requirement("실증 주관사 합의", "부유식 풍력 실증 주관사와 합의", technology=False),
         ]})
-        report = run_gap_analysis(make_state([], [rfp]), llm=llm)
+        report = run_gap_analysis(make_state([], [rfp], external=[unrelated_external()]), llm=llm)
         self.assertEqual([item.requirement.name for item in report.items], ["SLAM"])
         self.assertEqual(report.stats["excluded_requirements"],
                          [{"rfp": "rfp-1", "text": "실증 주관사 합의", "reason": "LLM이 기술 요구가 아니라고 판단"}])
@@ -480,8 +485,8 @@ class OmittedCandidatesTests(unittest.TestCase):
     class OmittingLLM(FakeLLM):
         def __call__(self, messages, response_model):
             answer = super().__call__(messages, response_model)
-            if response_model is AlignmentJudgements:
-                answer = AlignmentJudgements(
+            if response_model is BatchJudgements:
+                answer = BatchJudgements(
                     judgements=[j for j in answer.judgements if j.coverage != "none"])
             return answer
 
@@ -497,7 +502,8 @@ class OmittedCandidatesTests(unittest.TestCase):
     def test_empty_judgement_list_means_no_match(self):
         rfp = rfp_candidate("rfp-1", "과제", ["SLAM 기반 위치추정 기술 개발"])
         llm = self.OmittingLLM({"과제": [requirement("SLAM", "SLAM 기반 위치추정")]})
-        item = run_gap_analysis(make_state(["용접 로봇 제어"], [rfp]), llm=llm).items[0]
+        state = make_state(["용접 로봇 제어"], [rfp], external=[unrelated_external()])
+        item = run_gap_analysis(state, llm=llm).items[0]
         self.assertEqual((item.company, item.label), ([], GapLabel.RND_NEEDED))
 
     def test_prompt_asks_for_matches_only(self):
@@ -530,3 +536,71 @@ class DecideLabelTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class BatchAlignmentTests(unittest.TestCase):
+    """요구기술을 묶어 판단해도 결과는 같고 LLM 호출만 줄어든다. NTIS는 코드로 참고 근거만 붙인다."""
+
+    def setUp(self):
+        self.lines = [f"센서{i}번 융합 기술 개발" for i in range(12)]
+        self.rfp = rfp_candidate("rfp-1", "과제", self.lines)
+        self.extraction = {"과제": [requirement(f"센서{i}", f"센서{i}번 융합") for i in range(12)]}
+        self.coverage = {(f"센서{i}", "센서 융합"): ("full", "센서 융합") for i in range(12)}
+
+    def alignment_calls(self, batch_size):
+        llm = FakeLLM(self.extraction, self.coverage)
+        report = run_gap_analysis(make_state(["센서 융합"], [self.rfp]), llm=llm, batch_size=batch_size)
+        return report, len(llm.alignment_payloads)
+
+    def test_requirements_are_batched_into_fewer_calls(self):
+        report, calls = self.alignment_calls(10)
+        self.assertEqual(calls, 2)                      # 12개 -> 10개 + 2개
+        self.assertEqual(len(report.items), 12)
+        self.assertEqual({item.label for item in report.items}, {GapLabel.OWNED})
+
+    def test_batch_size_does_not_change_report(self):
+        one, calls_one = self.alignment_calls(1)
+        ten, _ = self.alignment_calls(10)
+        self.assertEqual(calls_one, 12)
+        self.assertEqual(one.model_dump(exclude={"stats"}), ten.model_dump(exclude={"stats"}))
+
+    def test_invalid_batch_size_is_rejected(self):
+        with self.assertRaises(ValueError):
+            run_gap_analysis(make_state([], [self.rfp]), llm=FakeLLM({}), batch_size=0)
+
+    def test_ntis_is_never_sent_to_llm_but_attached_as_reference(self):
+        ntis = tech_element("센서3번 융합", "ntis", "ntis-1", "센서3번 융합 선행 연구")
+        state = make_state(["센서 융합"], [self.rfp], ntis=[ntis])
+        llm = FakeLLM(self.extraction, self.coverage)
+        report = run_gap_analysis(state, llm=llm)
+        sent = {c["source"] for payload in llm.alignment_payloads for c in payload["candidates"]}
+        self.assertNotIn("ntis", sent)
+        item = {i.requirement.name: i for i in report.items}["센서3"]
+        self.assertEqual([m.doc_id for m in item.ntis_references], ["ntis-1"])
+        self.assertEqual(item.ntis_references[0].coverage, "none")
+
+
+class NoExternalCandidateTests(unittest.TestCase):
+    """기술나눔 후보가 없고 보유기술 근거도 없으면 추가 R&D가 아니라 근거부족이다."""
+
+    def run_one(self, owned, coverage=None, external=()):
+        rfp = rfp_candidate("rfp-1", "과제", ["SLAM 기반 위치추정 기술 개발"])
+        llm = FakeLLM({"과제": [requirement("SLAM", "SLAM 기반 위치추정")]}, coverage)
+        return run_gap_analysis(make_state(owned, [rfp], external=list(external)), llm=llm).items[0]
+
+    def test_no_candidates_and_no_company_match_is_insufficient(self):
+        item = self.run_one(["용접 로봇 제어"])
+        self.assertEqual(item.label, GapLabel.INSUFFICIENT)
+
+    def test_company_match_still_wins_without_external_candidates(self):
+        item = self.run_one(["SLAM 기반 자율주행"], {("SLAM", "SLAM 기반 자율주행"): ("full", "SLAM 기반 자율주행")})
+        self.assertEqual(item.label, GapLabel.OWNED)
+
+    def test_candidates_exist_but_unmatched_stays_rnd_candidate(self):
+        item = self.run_one(["용접 로봇 제어"], external=[unrelated_external()])
+        self.assertEqual(item.label, GapLabel.RND_NEEDED)
+
+    def test_decide_label_flag(self):
+        label, _ = decide_label(requirement_verified=True, requirement_clear=True, company=[], external=[],
+                                external_available=False)
+        self.assertEqual(label, GapLabel.INSUFFICIENT)

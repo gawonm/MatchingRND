@@ -87,7 +87,8 @@ class LocalGapScenarioTests(unittest.TestCase):
 
 class LocalGapRuleTests(unittest.TestCase):
     def run_one(self, owned, line="SLAM 기반 위치추정 기술 개발", **kwargs):
-        state = make_state(owned, [rfp_candidate("rfp-1", [line])])
+        state = make_state(owned, [rfp_candidate("rfp-1", [line])],
+                           external=[tech_element("냉각수 순환", "pos", "pos-9", "냉각수 순환 펌프 제어")])
         return run_gap_analysis_local(state, tokenizer=tokenize, **kwargs).items[0]
 
     def test_partial_when_only_some_keywords_match(self):
