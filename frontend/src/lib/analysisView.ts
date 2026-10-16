@@ -1,4 +1,5 @@
-import type { AnalysisReport, EvidenceItem, ReportViewResponse, SourceType } from '../types/analysisReport';
+import type { AnalysisReport, EvidenceItem, GapItem, ReportViewResponse, RFPCandidate, SourceType } from '../types/analysisReport';
+import { safeLink } from './reportMarkdown.ts';
 
 export const SOURCE_LABELS: Record<SourceType, string> = {
   pub: '공공 나눔기술', pos: '포스코 나눔기술', ntis: 'NTIS 선행 과제', rfp: 'RFP 원문',
@@ -40,4 +41,29 @@ function validClaim(report: AnalysisReport, index: number, evidenceId: string): 
 export function claimsForEvidence(report: AnalysisReport, item: EvidenceItem): { index: number; text: string; section: string }[] {
   return item.claim_indices.filter(index => validClaim(report, index, item.id))
     .map(index => ({ index, text: report.claims[index].draft.text, section: report.claims[index].draft.section }));
+}
+
+// 실제 http(s) 링크만 남긴다. 앵커·javascript: 등은 버린다.
+export function httpLinks(urls: string[]): string[] {
+  return urls.flatMap(url => { const href = safeLink(url); return href && !href.startsWith('#') ? [href] : []; });
+}
+
+// 분석 수행 여부만 뜻한다. 기술 충족이나 지원 가능을 뜻하지 않는다.
+export const GAP_STATUS_LABELS: Record<RFPCandidate['gap_analysis_status'], string> = {
+  analyzed: 'Gap 분석 완료', not_analyzed: 'Gap 미분석', unknown: '분석 여부 확인 불가',
+};
+
+// matched_requirement_ids는 GapItem.id(gap-N)다. 이 RFP를 범위로 가진 GapItem만 연결하고, 못 찾은 ID는 개수만 센다.
+// ponytail: 계약 불일치 — 필드명은 requirement ID지만 실제 값은 GapItem.id(app/analysis_view.py), 백엔드가 gap_item_ids로 바꾸거나 requirement_id를 내보내면 이 join을 그 필드로 교체
+export function rfpRequirements(rfp: RFPCandidate, gapItems: GapItem[]): { linked: GapItem[]; unresolved: number } {
+  if (rfp.gap_analysis_status !== 'analyzed') return { linked: [], unresolved: 0 };
+  const ids = [...new Set(rfp.matched_requirement_ids)];
+  const linked = ids.flatMap(id => gapItems.filter(gap => gap.id === id && gap.rfp_ids.includes(rfp.id)));
+  return { linked, unresolved: ids.length - linked.length };
+}
+
+// 추천 순서대로 정렬하고, 선택 ID가 이 결과에 없으면 첫 후보(후보가 없으면 null)로 전환한다.
+export function rfpSelection(rfps: RFPCandidate[], selectedId: string | null): { ordered: RFPCandidate[]; selected: RFPCandidate | null } {
+  const ordered = [...rfps].sort((a, b) => a.rank - b.rank);
+  return { ordered, selected: ordered.find(rfp => rfp.id === selectedId) ?? ordered[0] ?? null };
 }

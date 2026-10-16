@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import type { AnalysisReport, EvidenceItem } from '../../types/analysisReport';
-import { claimsForEvidence, SOURCE_LABELS } from '../../lib/analysisView';
-import { safeLink } from '../../lib/reportMarkdown';
+import { claimsForEvidence, httpLinks, SOURCE_LABELS } from '../../lib/analysisView';
 
 const sectionLabels: Record<string, string> = { external: '나눔기술', ntis: '선행 과제', rfp: 'RFP', gap: 'Gap', policy: '법령 참고', next_steps: '후속 확인' };
 
@@ -10,7 +9,7 @@ export function EvidenceDetail({ item, report, onClose }: { item: EvidenceItem; 
   const heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => { heading.current?.focus(); }, [item.id]);
   const claims = claimsForEvidence(report, item);
-  const links = item.source_type === 'rfp' ? item.notice_urls.flatMap(url => { const href = safeLink(url); return href && !href.startsWith('#') ? [href] : []; }) : [];
+  const links = item.source_type === 'rfp' ? httpLinks(item.notice_urls) : [];
   const location = [item.document_id, item.page !== null && `${item.page + 1}쪽`, item.section].filter(Boolean).join(' · ');
   return <aside className="evidence-detail app-card" aria-labelledby={`evidence-detail-${item.id}`} onKeyDown={event => { if (event.key === 'Escape') onClose(); }}>
     <div className="d-flex justify-content-between align-items-start gap-2">

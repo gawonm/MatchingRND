@@ -39,7 +39,7 @@ test('claim 연결은 accepted이고 이 근거를 유효하게 인용한 claim�
 });
 
 test('근거 상세는 RFP 공고 링크만 표시하고 URL을 만들지 않으며 키보드로 닫을 수 있다', () => {
-  assert.match(explorer, /item\.source_type === 'rfp' \? item\.notice_urls/);
+  assert.match(explorer, /item\.source_type === 'rfp' \? httpLinks\(item\.notice_urls\) : \[\]/);
   assert.match(explorer, /공고 링크/);
   assert.doesNotMatch(explorer, /PDF|pdf_url|document_url|`https?:/);
   assert.match(explorer, /event\.key === 'Escape'/);

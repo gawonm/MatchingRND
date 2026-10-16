@@ -278,8 +278,18 @@ textarea.form-control { min-height: 94px; resize: vertical; }
 .evidence-claims { font-size: 13px; padding-left: 18px; margin: 0; }
 .evidence-claims li + li { margin-top: 6px; }
 .evidence-placeholder { padding: 20px; border: 1px dashed #e8e2f7; border-radius: 9px; }
+.rfp-split { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 16px; align-items: start; }
+.rfp-list { display: grid; gap: 8px; }
+.rfp-detail { padding: 20px; overflow-wrap: anywhere; }
+.rfp-detail h3:focus:not(:focus-visible) { outline: none; }
+.rfp-detail .rfp-back { display: none; margin-bottom: 12px; }
+.rfp-detail .evidence-explorer { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 768px) { .rfp-detail .evidence-detail { position: static; } }
 @media (max-width: 767.98px) {
   .evidence-explorer { grid-template-columns: 1fr; }
   .evidence-placeholder { display: none; }
   .evidence-detail { position: fixed; inset: 0; z-index: 1050; border-radius: 0; overflow-y: auto; }
+  .rfp-split { grid-template-columns: minmax(0, 1fr); }
+  .rfp-split.detail-open .rfp-list, .rfp-split:not(.detail-open) .rfp-detail { display: none; }
+  .rfp-detail .rfp-back { display: inline-block; }
 }
