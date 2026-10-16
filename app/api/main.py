@@ -27,8 +27,13 @@ def health():
 
 from functools import lru_cache
 
+from dotenv import load_dotenv
 from fastapi import HTTPException
 from fastapi.concurrency import run_in_threadpool
+
+from app.common.paths import PROJECT_ROOT
+
+load_dotenv(PROJECT_ROOT / ".env", override=False)
 
 from app.orchestrator import (
     AnalysisRequest,

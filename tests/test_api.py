@@ -1,10 +1,11 @@
 import unittest
+from os import environ
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
 from fastapi.testclient import TestClient
 
-from app.api.main import app
+from app.api.main import app, get_orchestrator
 from app.final_answer import FinalAnswer
 from app.orchestrator import OrchestrationError
 
@@ -17,6 +18,12 @@ class ApiTests(unittest.TestCase):
         response = self.client.get('/api/health')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['status'], 'ok')
+
+    def test_orchestrator_uses_server_backend_environment(self):
+        with patch.dict(environ, {'RAG_BACKEND': 'local'}):
+            get_orchestrator.cache_clear()
+            self.assertEqual(get_orchestrator().backend, 'local')
+        get_orchestrator.cache_clear()
 
     def test_cors_allows_local_frontend(self):
         response = self.client.options('/api/health', headers={
