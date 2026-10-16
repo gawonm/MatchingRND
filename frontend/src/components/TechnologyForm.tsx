@@ -6,14 +6,16 @@ type TechnologyFormProps = {
   value: TechnologyInput;
   onChange: (input: TechnologyInput) => void;
   onReview: (input: TechnologyInput) => void;
+  disabled?: boolean;
 };
 
-export default function TechnologyForm({ value, onChange, onReview }: TechnologyFormProps) {
+export default function TechnologyForm({ value, onChange, onReview, disabled = false }: TechnologyFormProps) {
   const [errors, setErrors] = useState<{ owned?: string; problem?: string }>({});
   const [patentDraft, setPatentDraft] = useState('');
 
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (disabled) return;
     const input = { ...value, technology_description: value.technology_description.trim(), target_problem: value.target_problem.trim() };
     const nextErrors = {
       owned: input.technology_description ? undefined : '보유 기술을 입력해 주세요.',
@@ -59,7 +61,7 @@ export default function TechnologyForm({ value, onChange, onReview }: Technology
       <Form.Text>번호를 저장하며, 특허 조회는 아직 연결되어 있지 않습니다.</Form.Text>
     </Form.Group>
     <div className="home-cta">
-      <Button type="submit" className="analyze-button">기술정보 검토하기</Button>
+      <Button type="submit" className="analyze-button" disabled={disabled}>프로필 저장 후 Mock 자료 탐색</Button>
     </div>
   </Form>;
 }

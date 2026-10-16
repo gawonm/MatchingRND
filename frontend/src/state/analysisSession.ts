@@ -18,7 +18,39 @@ export function activeRun(session: AnalysisSession): AnalysisRun | null {
 }
 
 export function runProfile(session: AnalysisSession, run: AnalysisRun | null): ConfirmedProfile | null {
-  return session.profiles.find(profile => profile.id === run?.profileId && profile.version === run.profileVersion) ?? null;
+  return run ? session.profiles.find(profile => profile.id === run.profileId && profile.version === run.profileVersion) ?? null : null;
+}
+
+function createMockRun(profile: ConfirmedProfile | null, id: string): AnalysisRun {
+  return {
+    id, profileId: profile?.id ?? null, profileVersion: profile?.version ?? null, mode: 'mock', activeSource: 'technology',
+    searches: { technology: emptySearch(), ntis: emptySearch(), rfp: emptySearch() },
+    items: [], selectedKeys: [], assumedKeys: [], reviewFocusKey: null,
+  };
+}
+
+export function ensureMockRun(session: AnalysisSession, runId = crypto.randomUUID()): AnalysisSession {
+  if (activeRun(session)) return session;
+  return { ...session, runs: [...session.runs, createMockRun(null, runId)], activeRunId: runId };
+}
+
+export function hasUnconfirmedChanges(session: AnalysisSession): boolean {
+  const latest = session.profiles.at(-1);
+  return !!latest && JSON.stringify([cloneInput(session.draftInput), session.draftElements]) !== JSON.stringify([latest.input, latest.elements]);
+}
+
+export function isHistoricalRun(session: AnalysisSession, run: AnalysisRun | null): boolean {
+  return !!run?.profileId && run.profileId !== session.profiles.at(-1)?.id;
+}
+
+export function toggleSelection(run: AnalysisRun, key: string): AnalysisRun {
+  if (!run.items.some(item => item.key === key && item.mode === run.mode)) return run;
+  const removing = run.selectedKeys.includes(key);
+  return { ...run,
+    selectedKeys: removing ? run.selectedKeys.filter(item => item !== key) : [...run.selectedKeys, key],
+    assumedKeys: removing ? run.assumedKeys.filter(item => item !== key) : run.assumedKeys,
+    reviewFocusKey: removing && run.reviewFocusKey === key ? null : run.reviewFocusKey,
+  };
 }
 
 export function selectedItems(run: AnalysisRun | null): DiscoverItem[] {
@@ -27,25 +59,24 @@ export function selectedItems(run: AnalysisRun | null): DiscoverItem[] {
 
 export function draftDiffers(session: AnalysisSession): boolean {
   const profile = runProfile(session, activeRun(session));
-  return !!profile && JSON.stringify([session.draftInput, session.draftElements]) !== JSON.stringify([profile.input, profile.elements]);
+  return !!profile && JSON.stringify([cloneInput(session.draftInput), session.draftElements]) !== JSON.stringify([profile.input, profile.elements]);
 }
 
 export function confirmProfile(session: AnalysisSession, runId = crypto.randomUUID(), profileId = crypto.randomUUID()): AnalysisSession {
   if (!session.draftInput.technology_description.trim() || !session.draftInput.target_problem.trim()) return session;
   if (session.draftElements.some(element => !element.name.trim())) return session;
-  const current = runProfile(session, activeRun(session));
-  if (current && !draftDiffers(session)) return session;
+  const current = session.profiles.at(-1);
+  if (current && !hasUnconfirmedChanges(session)) {
+    const latestRun = [...session.runs].reverse().find(run => run.profileId === current.id);
+    return latestRun && session.activeRunId !== latestRun.id ? { ...session, activeRunId: latestRun.id } : session;
+  }
   const elements = session.draftElements.filter((element, index, all) => all.findIndex(other =>
     other.name.trim() === element.name.trim() && other.role === element.role && other.source === element.source && other.evidence === element.evidence) === index);
   const profile: ConfirmedProfile = {
     id: profileId, version: (session.profiles.at(-1)?.version ?? 0) + 1,
     input: cloneInput(session.draftInput), elements: elements.map(element => ({ ...element })),
   };
-  const run: AnalysisRun = {
-    id: runId, profileId: profile.id, profileVersion: profile.version, mode: 'mock',
-    searches: { technology: emptySearch(), ntis: emptySearch(), rfp: emptySearch() },
-    items: [], selectedKeys: [], assumedKeys: [], reviewFocusKey: null,
-  };
+  const run = createMockRun(profile, runId);
   return { ...session, draftElements: elements, profiles: [...session.profiles, profile], runs: [...session.runs, run], activeRunId: run.id };
 }
 

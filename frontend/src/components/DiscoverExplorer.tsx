@@ -1,28 +1,27 @@
 import { useState } from 'react';
 import { Badge, Button, Form, Nav, Offcanvas } from 'react-bootstrap';
 import { mockDiscoverItems } from '../data/mockDiscover';
-import { selectedItems } from '../state/analysisSession';
+import { selectedItems, toggleSelection } from '../state/analysisSession';
 import type { AnalysisRun, ConfirmedProfile, DiscoverItem, DiscoverSource } from '../types/analysisSession';
+import { searchDiscovery } from '../api/discovery';
 
 const labels: Record<DiscoverSource, string> = { technology: '외부 기술 / 특허', ntis: '선행 R&D', rfp: 'R&D 공고' };
 const sources: DiscoverSource[] = ['technology', 'ntis', 'rfp'];
-export default function DiscoverExplorer({ profile, run, onRunChange, onHome, onWorkspace }: {
-  profile: ConfirmedProfile;
+export default function DiscoverExplorer({ profile, historical, run, onRunChange, onHome, onWorkspace }: {
+  profile: ConfirmedProfile | null;
+  historical: boolean;
   run: AnalysisRun;
   onRunChange: (change: (run: AnalysisRun) => AnalysisRun) => void;
   onHome: () => void;
   onWorkspace: () => void;
 }) {
-  const [source, setSource] = useState<DiscoverSource>('technology');
+  const source = run.activeSource;
   const [detail, setDetail] = useState<DiscoverItem | null>(null);
   const state = run.searches[source];
   const shown = state.resultKeys.flatMap(key => { const item = run.items.find(candidate => candidate.key === key); return item ? [item] : []; });
   const activeSelection = selectedItems(run);
   const isSelected = (item: DiscoverItem) => run.selectedKeys.includes(item.key);
-  const toggle = (item: DiscoverItem) => onRunChange(current => ({ ...current, selectedKeys: current.selectedKeys.includes(item.key)
-    ? current.selectedKeys.filter(key => key !== item.key) : [...current.selectedKeys, item.key],
-    assumedKeys: current.assumedKeys.filter(key => key !== item.key),
-    reviewFocusKey: current.reviewFocusKey === item.key ? null : current.reviewFocusKey }));
+  const toggle = (item: DiscoverItem) => onRunChange(current => toggleSelection(current, item.key));
   const searchMock = async (target: DiscoverSource) => {
     const query = run.searches[target].query.trim().toLocaleLowerCase();
     onRunChange(current => ({ ...current, searches: { ...current.searches, [target]: { ...current.searches[target], status: 'loading' } } }));
@@ -41,16 +40,17 @@ export default function DiscoverExplorer({ profile, run, onRunChange, onHome, on
 
   return <>
     <section className="app-card p-4 mb-4" aria-label="현재 기술 프로필">
-      <div className="d-flex justify-content-between align-items-start gap-2 flex-wrap"><div><div className="eyebrow">CURRENT TECHNOLOGY PROFILE</div><h2 className="h6 mt-2">현재 기술 프로필</h2></div><Button variant="outline-secondary" size="sm" onClick={onHome}>Home에서 수정</Button></div>
-      <p className="small text-secondary">프로필 버전 {profile.version} · 분석 실행 {run.id} · {run.mode === 'mock' ? 'Mock 검색' : '실제 API 결과'}</p>
-      <><p className="small mb-1"><strong>보유</strong> · {profile.elements.filter(item => item.role === 'owned').map(item => item.name).join(', ') || '확정 요소 없음'}</p>
+      <div className="d-flex justify-content-between align-items-start gap-2 flex-wrap"><div><div className="eyebrow">MOCK EXPLORER</div><h2 className="h6 mt-2">{profile ? historical ? '이전 실행의 확정 프로필' : '이 실행의 확정 프로필' : '프로필 없는 Mock 자료 탐색'}</h2></div><Button variant="outline-secondary" size="sm" onClick={onHome}>{profile ? '현재 프로필 편집' : 'Home에서 프로필 작성'}</Button></div>
+      {profile ? <><p className="small text-secondary">프로필 버전 {profile.version} · 입력 기술 문제: {profile.input.target_problem}</p>
+      <p className="small mb-1"><strong>보유</strong> · {profile.elements.filter(item => item.role === 'owned').map(item => item.name).join(', ') || '확정 요소 없음'}</p>
         <p className="small mb-1"><strong>목표</strong> · {profile.elements.filter(item => item.role === 'goal').map(item => item.name).join(', ') || '확정 요소 없음'}</p>
         {profile.elements.some(item => item.role === 'uncertain') && <p className="small mb-1"><strong>구분 확인 필요</strong> · {profile.elements.filter(item => item.role === 'uncertain').map(item => item.name).join(', ')}</p>}
-        <details className="small text-secondary mt-2"><summary>입력 원문 및 특허번호 보기</summary><p className="mt-2 mb-1">보유 기술: {profile.input.technology_description}</p><p className="mb-1">기술 문제: {profile.input.target_problem}</p><p className="mb-0">특허번호: {profile.input.patent_numbers?.join(', ') || '없음'}</p></details></>
-      <p className="small text-secondary mt-3 mb-0">아래 결과는 입력 프로필로 검색한 자료가 아닌 고정 Mock입니다. 실제 RAG 검색 API는 연결되지 않았습니다.</p>
+        <details className="small text-secondary mt-2"><summary>입력 원문 및 특허번호 보기</summary><p className="mt-2 mb-1">보유 기술: {profile.input.technology_description}</p><p className="mb-1">기술 문제: {profile.input.target_problem}</p><p className="mb-0">특허번호: {profile.input.patent_numbers?.join(', ') || '없음'}</p></details></> : <p className="small text-secondary mt-3">프로필 작성 없이 세 출처의 예시 자료를 탐색하고 선택할 수 있습니다.</p>}
+      <p className="small text-secondary mt-3 mb-0">입력과 무관한 고정 Mock 자료입니다. 검색어가 없으면 이 출처의 예시를 모두 보여줍니다. 실제 RAG API는 연결되지 않았습니다.</p>
+      <details className="small text-secondary mt-2"><summary>실행 정보</summary>Mock 실행 ID: {run.id}</details>
     </section>
     <div className="discover-layout"><section className="discover-results">
-      <Nav variant="tabs" activeKey={source} onSelect={key => key && setSource(key as DiscoverSource)} aria-label="자료 출처 선택" className="mb-3">
+      <Nav variant="tabs" activeKey={source} onSelect={key => key && onRunChange(current => ({ ...current, activeSource: key as DiscoverSource }))} aria-label="자료 출처 선택" className="mb-3">
         {sources.map(item => <Nav.Item key={item}><Nav.Link eventKey={item}>{labels[item]}</Nav.Link></Nav.Item>)}
       </Nav>
       <Form onSubmit={event => { event.preventDefault(); void searchMock(source); }} className="discover-search"><Form.Control aria-label={`${labels[source]} Mock 검색`} placeholder="Mock 자료에서 제목·근거 검색" value={state.query} onChange={event => onRunChange(current => ({ ...current, searches: { ...current.searches, [source]: { ...current.searches[source], query: event.target.value, status: 'idle' } } }))} /><Button className="btn-accent" type="submit" disabled={state.status === 'loading'}>Mock 탐색</Button></Form>

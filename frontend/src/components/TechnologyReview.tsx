@@ -8,17 +8,13 @@ const categories = ['기술 대상', '입력 데이터', '기술 방법', '보�
 type Props = {
   input: TechnologyInput;
   elements: TechnologyElement[];
-  stale: boolean;
   onElementsChange: (elements: TechnologyElement[]) => void;
-  onBack: () => void;
-  onRestoreInput: () => void;
-  onUseCurrentInput: () => void;
-  onConfirm: () => void;
+  onDone: () => void;
 };
 
 const roleLabels = { owned: '현재 보유 기술', goal: '확보·개발 목표 기술', uncertain: '구분 확인 필요' };
 
-export default function TechnologyReview({ input, elements, stale, onElementsChange, onBack, onRestoreInput, onUseCurrentInput, onConfirm }: Props) {
+export default function TechnologyReview({ input, elements, onElementsChange, onDone }: Props) {
   const [draft, setDraft] = useState<TechnologyElement | null>(null);
   const [isNew, setIsNew] = useState(false);
   const roles: TechnologyElement['role'][] = ['owned', 'goal'];
@@ -43,17 +39,10 @@ export default function TechnologyReview({ input, elements, stale, onElementsCha
 
   return <section className="app-card p-4" aria-labelledby="review-title">
     <div className="d-flex justify-content-between align-items-start gap-3 flex-wrap">
-      <div><h3 id="review-title" className="h6 mb-1">기술요소 정리</h3><p className="small text-secondary mb-0">필요한 기술만 직접 추가해 주세요.</p></div>
+      <div><h3 id="review-title" className="h6 mb-1">기술요소 직접 정리 · 선택</h3><p className="small text-secondary mb-0">필요한 기술만 직접 추가해 주세요. 원문을 수정해도 등록된 요소는 유지됩니다.</p></div>
       <span className="badge text-bg-light">직접 입력 · 추출 API 미연결</span>
     </div>
     <details className="review-source mt-3"><summary>입력한 원문 보기</summary><div className="small mt-3"><p><strong>보유 기술 설명</strong><br />{input.technology_description}</p><p><strong>해결하려는 기술 문제</strong><br />{input.target_problem}</p><p className="mb-0"><strong>특허번호</strong><br />{input.patent_numbers?.join(', ') || '없음'}</p></div></details>
-    {stale && <div className="mock-banner" role="alert">
-      입력 원문이 변경되었습니다. 기존 기술요소 수정 내역은 유지되며, 새 원문과 맞는지 확인해 주세요.
-      <div className="d-flex gap-2 flex-wrap mt-2">
-        <Button size="sm" variant="outline-secondary" onClick={onRestoreInput}>이전 입력 복구 후 검토 계속</Button>
-        <Button size="sm" variant="outline-secondary" onClick={onUseCurrentInput}>현재 입력으로 검토 계속 · 수정 내역 유지</Button>
-      </div>
-    </div>}
     {elements.length === 0 && <p className="small text-secondary mt-3 mb-0">아직 등록된 기술요소가 없습니다. 원문만으로 탐색을 시작하거나 필요한 기술을 직접 추가할 수 있습니다.</p>}
     {roles.map(role => <section className="review-group" key={role}>
       <h3 className="h6">{roleLabels[role]}</h3>
@@ -71,9 +60,8 @@ export default function TechnologyReview({ input, elements, stale, onElementsCha
       <Button variant="outline-secondary" size="sm" className="mt-2" onClick={() => add(role)}><i className="bi bi-plus-lg me-1" aria-hidden="true" />기술 추가</Button>
     </section>)}
     <div className="d-flex justify-content-between gap-2 flex-wrap mt-4">
-      <Button variant="outline-secondary" onClick={onBack}>입력 수정</Button>
-      <Button className="btn-accent" disabled={stale || !!draft || elements.some(element => !element.name.trim())}
-        onClick={onConfirm}>기술요소 확정 및 R&D 탐색 시작</Button>
+      <Button className="btn-accent" disabled={!!draft || elements.some(element => !element.name.trim())}
+        onClick={onDone}>기술요소 정리 완료</Button>
     </div>
   </section>;
 }

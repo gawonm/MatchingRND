@@ -32,9 +32,10 @@ export type ConfirmedProfile = {
 
 export type AnalysisRun = {
   id: string;
-  profileId: string;
-  profileVersion: number;
+  profileId: string | null;
+  profileVersion: number | null;
   mode: DataMode;
+  activeSource: DiscoverSource;
   searches: Record<DiscoverSource, ModuleSearch>;
   items: DiscoverItem[];
   selectedKeys: string[];
