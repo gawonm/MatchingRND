@@ -7,18 +7,18 @@ export const SOURCE_LABELS: Record<SourceType, string> = {
 };
 
 // 팀 정책: 모든 분석에 적용되는 일반 확인사항. 법령 검색·법적 판단 결과가 아니다.
+// 문구는 app/answer_format.py의 COMMON_RND_INTRO·COMMON_RND_NOTICES(보고서 섹션 6)와 같아야 한다.
 export const COMMON_RND_NOTICE_TITLE = '공통 R&D 유의사항';
+export const COMMON_RND_INTRO = [
+  '국가 R&D 과제 참여와 나눔기술 도입 시 일반적으로 확인할 사항입니다.',
+  '이번 검색 결과나 원문 근거에 기반한 판단이 아니므로, 공고문과 관련 법령 원문으로 확인하세요.',
+] as const;
 export const COMMON_RND_NOTICES = [
   '국가 R&D 과제 참여 시 국가연구개발혁신법 적용 여부 확인',
   '연구개발비 사용 및 정산 기준 확인',
   '연구개발성과의 소유·활용 조건 확인',
   '나눔기술 도입 시 기술이전 조건 및 지식재산권 확인',
 ] as const;
-
-// 보고서가 이미 같은 안내를 출력하면 UI는 중복 삽입하지 않는다.
-export function reportHasCommonNotice(markdown: string): boolean {
-  return markdown.includes(COMMON_RND_NOTICE_TITLE);
-}
 
 export type ViewAvailability = 'ok' | 'empty' | 'failed' | 'mismatch';
 

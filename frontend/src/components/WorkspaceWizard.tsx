@@ -12,7 +12,7 @@ import TechnologyExplorer from './analysis/TechnologyExplorer';
 import GapExplorer, { type GapViewState } from './analysis/GapExplorer';
 import PrimaryPicks from './analysis/PrimaryPicks';
 import type { SplitViewState } from './analysis/SplitExplorer';
-import { COMMON_RND_NOTICE_TITLE, COMMON_RND_NOTICES, reportHasCommonNotice, viewAvailability } from '../lib/analysisView';
+import { COMMON_RND_INTRO, COMMON_RND_NOTICE_TITLE, COMMON_RND_NOTICES, viewAvailability } from '../lib/analysisView';
 import type { TechnologyElement } from '../types/technologyElement';
 import type { TechnologyInput } from '../types/technologyInput';
 import type { ReportViewResponse } from '../types/analysisReport';
@@ -83,11 +83,12 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
         <ReportOverview report={report.result.report} onOpenReport={() => setTab('report')}>
           {structured && <PrimaryPicks view={structured} onOpenTechnology={openTechnology} onOpenRfp={openRfp} />}
         </ReportOverview>
-        {!reportHasCommonNotice(report.result.report.markdown) && <section className="app-card p-3 mt-3" aria-labelledby="common-rnd-notice">
+        {/* Overview는 보고서 섹션 6을 렌더링하지 않으므로 항상 표시한다. Report 탭은 섹션 6으로 같은 안내를 보여준다. */}
+        <section className="app-card p-3 mt-3" aria-labelledby="common-rnd-notice">
           <h3 id="common-rnd-notice" className="h6">{COMMON_RND_NOTICE_TITLE}</h3>
-          <p className="small text-secondary">모든 분석에 공통으로 적용되는 일반 확인사항입니다. 개별 공고·기술에 대한 법적 검토 결과가 아닙니다.</p>
+          <p className="small text-secondary">{COMMON_RND_INTRO.join(' ')}</p>
           <ol className="small mb-0">{COMMON_RND_NOTICES.map(notice => <li key={notice}>{notice}</li>)}</ol>
-        </section>}
+        </section>
       </Tab>
       {/* Report와 독립된 상태: Projection 실패는 보고서 실패가 아니다. */}
       <Tab eventKey="technology" title="기술">

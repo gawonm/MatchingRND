@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { claimsForEvidence, COMMON_RND_NOTICES, COMMON_RND_NOTICE_TITLE, reportHasCommonNotice, viewAvailability } from '../src/lib/analysisView.ts';
+import { claimsForEvidence, COMMON_RND_INTRO, COMMON_RND_NOTICES, COMMON_RND_NOTICE_TITLE, viewAvailability } from '../src/lib/analysisView.ts';
 
 const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
 const explorer = readFileSync(new URL('../src/components/analysis/EvidenceExplorer.tsx', import.meta.url), 'utf8');
@@ -48,17 +48,21 @@ test('근거 상세는 RFP 공고 링크만 표시하고 URL을 만들지 않으
   assert.match(explorer, /aria-pressed/);
 });
 
-test('공통 R&D 유의사항 4개 문구를 그대로 유지하고 보고서에 이미 있으면 중복 표시하지 않는다', () => {
+test('공통 R&D 유의사항 4개 문구와 도입 문구는 백엔드 섹션 6과 같고 Overview에 항상 표시한다', () => {
   assert.deepEqual([...COMMON_RND_NOTICES], [
     '국가 R&D 과제 참여 시 국가연구개발혁신법 적용 여부 확인',
     '연구개발비 사용 및 정산 기준 확인',
     '연구개발성과의 소유·활용 조건 확인',
     '나눔기술 도입 시 기술이전 조건 및 지식재산권 확인',
   ]);
-  assert.equal(reportHasCommonNotice('## 6. 관련 법령\n내용'), false);
-  assert.equal(reportHasCommonNotice(`## 6. ${COMMON_RND_NOTICE_TITLE}\n- 항목`), true);
-  assert.match(wizard, /!reportHasCommonNotice\(report\.result\.report\.markdown\)/);
-  assert.match(wizard, /법적 검토 결과가 아닙니다/);
+  // 백엔드(app/answer_format.py) 상수와 문자열이 그대로 일치해야 한다.
+  const backend = readFileSync(new URL('../../app/answer_format.py', import.meta.url), 'utf8');
+  for (const text of [...COMMON_RND_INTRO, ...COMMON_RND_NOTICES]) assert.ok(backend.includes(`'${text}'`), text);
+  assert.ok(backend.includes(`'6. ${COMMON_RND_NOTICE_TITLE}'`));
+  // Overview는 보고서 섹션 6을 그리지 않으므로 보고서 내용과 무관하게 항상 표시한다.
+  assert.doesNotMatch(wizard, /reportHasCommonNotice/);
+  assert.match(wizard, /\n\s*<section className="app-card p-3 mt-3" aria-labelledby="common-rnd-notice">/);
+  assert.match(wizard, /\{COMMON_RND_INTRO\.join\(' '\)\}/);
   assert.doesNotMatch(wizard, /적합(합니다|함|성 확인 완료)|법령 검증 완료/);
 });
 

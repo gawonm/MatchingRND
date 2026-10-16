@@ -1,6 +1,6 @@
 export const REPORT_HEADINGS = [
   '1. 우선 추천 나눔기술', '2. 우선 추천 공고', '3. 기술요소 Gap',
-  '4. 관련 RFP', '5. 관련 나눔기술', '6. 관련 법령', '7. 확인이 필요한 사항',
+  '4. 관련 RFP', '5. 관련 나눔기술', '6. 공통 R&D 유의사항', '7. 확인이 필요한 사항',
 ] as const;
 
 export type MarkdownBlock =

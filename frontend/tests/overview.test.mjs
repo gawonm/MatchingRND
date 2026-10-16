@@ -38,7 +38,8 @@ test('view가 있으면 구조화 카드, Projection 실패면 기존 Markdown �
   assert.match(wizard, /<ReportOverview report=\{report\.result\.report\} onOpenReport=\{\(\) => setTab\('report'\)\}>\r?\n\s*\{structured && <PrimaryPicks view=\{structured\} onOpenTechnology=\{openTechnology\} onOpenRfp=\{openRfp\} \/>\}/);
   assert.match(overview, /\{children \?\? overviewSections\.map/);
   assert.match(overview, /전체 보고서 · 원문 근거 보기/);
-  assert.match(wizard, /!reportHasCommonNotice\(report\.result\.report\.markdown\)/);
+  assert.match(wizard, /aria-labelledby="common-rnd-notice"/);
+  assert.doesNotMatch(wizard, /reportHasCommonNotice/);
   assert.equal(COMMON_RND_NOTICES.length, 4);
 });
 
