@@ -1,9 +1,8 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Badge, Button, Form, Nav, Offcanvas } from 'react-bootstrap';
 import { mockDiscoverItems } from '../data/mockDiscover';
 import { selectedItems, toggleSelection } from '../state/analysisSession';
 import type { AnalysisRun, ConfirmedProfile, DiscoverItem, DiscoverSource } from '../types/analysisSession';
-import { searchDiscovery } from '../api/discovery';
 
 const labels: Record<DiscoverSource, string> = { technology: '외부 기술 / 특허', ntis: '선행 R&D', rfp: 'R&D 공고' };
 const sources: DiscoverSource[] = ['technology', 'ntis', 'rfp'];
@@ -76,3 +75,4 @@ export default function DiscoverExplorer({ profile, historical, run, onRunChange
     </>}</Offcanvas.Body></Offcanvas>
   </>;
 }
+

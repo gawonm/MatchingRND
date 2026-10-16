@@ -1,8 +1,8 @@
-
+﻿
 import type {
   DiscoverItem,
   DiscoverSource,
-} from '../types/analysisSession';
+} from './types/analysisSession';
 
 const API_BASE =
   import.meta.env.VITE_API_BASE_URL ??
@@ -41,3 +41,4 @@ export async function searchDiscovery(
 
   return (await response.json()) as DiscoveryResponse;
 }
+
