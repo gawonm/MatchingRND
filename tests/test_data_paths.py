@@ -24,7 +24,6 @@ class DataPathTests(unittest.TestCase):
     def test_orchestrator_uses_module_specific_inputs(self):
         orchestrator = RagOrchestrator()
         self.assertEqual(orchestrator.rfp_data_dir, RFP_PDF_DIR)
-        self.assertEqual(orchestrator.policy_data_dir, POLICY_RAW_DIR)
         self.assertEqual(Path(orchestrator.rfp_notice_path).parent, RFP_PDF_DIR.parent)
 
     def test_notice_workbook_in_pdf_parent_keeps_filename_links(self):

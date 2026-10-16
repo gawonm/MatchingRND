@@ -18,6 +18,7 @@ from ..config import (
     INDEX_DIR,
     RERANK_CANDIDATES,
     RERANKER_MODEL,
+    RERANK_ENABLED,
     RRF_K,
     load_manifest,
 )
@@ -70,7 +71,7 @@ if any(count != expected_count for count in actual_counts.values()):
     raise ValueError(f"인덱스 문서 수 불일치: expected={expected_count}, actual={actual_counts}")
 
 kiwi = Kiwi()
-reranker = CrossEncoder(RERANKER_MODEL)
+reranker = CrossEncoder(RERANKER_MODEL) if RERANK_ENABLED else None
 
 
 def kiwi_tokenize(text: str) -> List[str]:
@@ -176,14 +177,17 @@ def rerank(
 ) -> List[Dict[str, Any]]:
     if not candidates:
         return []
-    pairs = [(query, doc_text(item["doc"])) for item in candidates]
-    scores = reranker.predict(pairs)
-    enriched = [
-        {**item, "rerank_score": float(score)}
-        for item, score in zip(candidates, scores)
-    ]
-    enriched.sort(key=lambda item: item["rerank_score"], reverse=True)
-    selected = enriched[:top_n]
+    if reranker is None:  # 리랭커 꺼짐: RRF 순서 유지
+        selected = [{**item, "rerank_score": None} for item in candidates[:top_n]]
+    else:
+        pairs = [(query, doc_text(item["doc"])) for item in candidates]
+        scores = reranker.predict(pairs)
+        enriched = [
+            {**item, "rerank_score": float(score)}
+            for item, score in zip(candidates, scores)
+        ]
+        enriched.sort(key=lambda item: item["rerank_score"], reverse=True)
+        selected = enriched[:top_n]
     for rank, item in enumerate(selected, start=1):
         item["final_rank"] = rank
     return selected

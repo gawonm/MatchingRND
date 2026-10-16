@@ -248,6 +248,24 @@ class FinalAnswerTests(unittest.TestCase):
         self.assertIn("[원 공고](https://example.go.kr/notice?id=1)", answer.markdown)
         llm.assert_not_called()
 
+    def test_common_rnd_notices_are_always_shown(self):
+        from app.answer_format import COMMON_RND_INTRO, COMMON_RND_NOTICES
+
+        state, report = fixture()
+        for kwargs in ({"template_only": True}, {"llm": FakeLLM()}):
+            answer = generate_final_answer(state, report, **kwargs)
+            self.assertIn("## 6. 공통 R&D 유의사항", answer.markdown)
+            for line in COMMON_RND_INTRO:
+                self.assertIn(line, answer.markdown)
+            for notice in COMMON_RND_NOTICES:
+                self.assertIn(f"- {notice}", answer.markdown)
+        self.assertNotIn("## 6. 관련 법령", answer.markdown)
+        # 근거 없는 상태(후보 없음)에서도 같은 문구가 나온다.
+        state.rfp.candidates = []
+        empty = generate_final_answer(state, GapReport(problem=state.request.problem), template_only=True)
+        for notice in COMMON_RND_NOTICES:
+            self.assertIn(notice, empty.markdown)
+
     def test_unseen_suffix_of_truncated_evidence_cannot_be_cited(self):
         state, report = fixture()
         long_quote = "실제 원문 내용입니다." * 200 + "마지막 부분에만 있는 특수 근거입니다."

@@ -82,14 +82,17 @@ def load_pdf_index(module, repository=None):
 def ntis_runtime():
     from rank_bm25 import BM25Okapi
     from kiwipiepy import Kiwi
-    from sentence_transformers import CrossEncoder
-    from app.ntis_rag.config import RERANKER_MODEL
+    from app.ntis_rag.config import RERANKER_MODEL, RERANK_ENABLED
     repo = SupabaseRepository()
     documents,chunks,_ = repo.snapshot('ntis')
     kiwi = Kiwi()
     tokenize = lambda text: [t.form for t in kiwi.tokenize(text)]
     bm25 = BM25Okapi([tokenize(c['content']) for c in chunks])
-    return repo,{d['document_id']:d for d in documents},chunks,bm25,tokenize,CrossEncoder(RERANKER_MODEL)
+    reranker = None
+    if RERANK_ENABLED:
+        from sentence_transformers import CrossEncoder
+        reranker = CrossEncoder(RERANKER_MODEL)
+    return repo,{d['document_id']:d for d in documents},chunks,bm25,tokenize,reranker
 
 
 def retrieve_ntis(structured_query, analysis_top_n):
@@ -115,8 +118,11 @@ def retrieve_ntis(structured_query, analysis_top_n):
     selected = sorted(fused,key=fused.get,reverse=True)[:max(RERANK_CANDIDATES,analysis_top_n)]
     if not selected:
         return []
-    rerank_scores = reranker.predict([(query,documents[did]['full_text']) for did in selected])
-    ranked = sorted(zip(selected,map(float,rerank_scores)),key=lambda row:-row[1])[:analysis_top_n]
+    if reranker is None:  # 리랭커 꺼짐: RRF 순서 유지, rerank_score 없음
+        ranked = [(did,None) for did in selected[:analysis_top_n]]
+    else:
+        rerank_scores = reranker.predict([(query,documents[did]['full_text']) for did in selected])
+        ranked = sorted(zip(selected,map(float,rerank_scores)),key=lambda row:-row[1])[:analysis_top_n]
     return [dict(project_id=documents[did]['metadata']['project_id'],project_title=documents[did]['title'],
                  organization=documents[did]['institution'],text=documents[did]['full_text'],metadata=documents[did]['metadata'],
                  rank=rank,rrf_score=fused[did],rerank_score=score,source_ranks=source_ranks[did])
