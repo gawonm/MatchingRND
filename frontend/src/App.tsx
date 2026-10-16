@@ -6,20 +6,16 @@ import TechnologyReview from './components/TechnologyReview';
 import ApiHealthStatus from './components/ApiHealthStatus';
 import GapComparison, { type GapFilter } from './components/GapComparison';
 import EvidencePanel from './components/EvidencePanel';
-import { Simulation, Report } from './components/FlowViews';
+import { Simulation } from './components/FlowViews';
 import DiscoverExplorer from './components/DiscoverExplorer';
-import { SessionWorkspace, SessionSimulation, SessionReport } from './components/SessionViews';
+import { SessionWorkspace, SessionSimulation } from './components/SessionViews';
+import AnalysisReportView from './components/AnalysisReportView';
 import { activeRun, cloneInput, confirmProfile, createSession, ensureMockRun, hasUnconfirmedChanges, isHistoricalRun, runProfile, updateRun } from './state/analysisSession';
 import { pageFromHash, useNavigation } from './state/useNavigation';
 import type { AnalysisRun, AnalysisSession } from './types/analysisSession';
 import { mockAnalysis } from './data/mockAnalysis';
+import { mockAnalysisReport } from './data/mockAnalysisReport';
 import './App.css';
-
-const demoInput = {
-  technology_domains: [], technology_tags: [],
-  technology_description: mockAnalysis.evidences.find(item => item.id === 'e-user-owned')!.quote,
-  target_problem: mockAnalysis.evidences.find(item => item.id === 'e-user-problem')!.quote,
-};
 
 export default function App() {
   const [sessions, setSessions] = useState<AnalysisSession[]>(() => {
@@ -37,7 +33,7 @@ export default function App() {
   const profile = runProfile(session, run);
   const historical = isHistoricalRun(session, run);
   const { draftInput: input, draftElements: elements } = session;
-  const { projectId, compared, assumed, included } = session.demo;
+  const { projectId, compared, assumed } = session.demo;
   const project = mockAnalysis.projects.find(p => p.id === projectId)!;
   const gap = project.gaps.find(g => g.id === gapId) ?? null;
   const updateSession = (change: (current: AnalysisSession) => AnalysisSession) => setSessions(current => current.map(item => item.id === activeSessionId ? change(item) : item));
@@ -99,8 +95,7 @@ export default function App() {
       </>}
       {page === 'simulation' && viewMode === 'review' && run && <SessionSimulation profile={profile} run={run} onAssumedChange={keys => updateCurrentRun(current => ({ ...current, assumedKeys: keys }))} onReport={() => setPage('report')} onDiscover={() => setPage('discover')} />}
       {page === 'simulation' && viewMode === 'demo' && <Simulation project={project} projects={mockAnalysis.projects} assumed={assumed} onAssume={keys => updateDemo({ assumed: keys })} onProject={selectProject} onReport={() => setPage('report')} />}
-      {page === 'report' && viewMode === 'review' && run && <SessionReport profile={profile} run={run} />}
-      {page === 'report' && viewMode === 'demo' && <Report input={demoInput} project={project} compared={mockAnalysis.projects.filter(p => compared.includes(p.id))} assumed={assumed} included={included} onInclude={keys => updateDemo({ included: keys })} />}
+      {page === 'report' && <AnalysisReportView report={mockAnalysisReport} />}
       <footer className="app-footer">R&D Match <span>근거를 확인하고, 가능성을 검토하세요.</span></footer>
     </main>
   </div>;
