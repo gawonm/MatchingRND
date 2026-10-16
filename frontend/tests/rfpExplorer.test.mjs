@@ -66,13 +66,21 @@ test('목록은 선택 상태가 있는 버튼이고 모바일 상세는 목록�
   assert.match(split, /heading\.current\?\.focus\(\{ preventScroll: true \}\);\n\s*heading\.current\?\.closest\('section'\)\?\.scrollIntoView/);
 });
 
-test('Workspace는 Overview·기술·RFP·Evidence·Report 순서이고 선택은 새 결과에서만 초기화된다', () => {
+test('Workspace는 Overview·기술·RFP·Gap·Evidence·Report 순서이고 선택은 새 결과에서만 초기화된다', () => {
   const tabs = [...wizard.matchAll(/<Tab eventKey="(\w+)"/g)].map(m => m[1]);
-  assert.deepEqual(tabs, ['overview', 'technology', 'rfp', 'evidence', 'report']);
-  assert.match(wizard, /if \(explore\.source !== report\.result\) setExplore\(\{ source: report\.result, technology: initialSplitView, rfp: initialSplitView \}\)/);
+  assert.deepEqual(tabs, ['overview', 'technology', 'rfp', 'gap', 'evidence', 'report']);
+  assert.match(wizard, /const initialExplore = \{ technology: initialSplitView, rfp: initialSplitView, gap: \{ \.\.\.initialSplitView, rfpId: null \} as GapViewState \};/);
+  assert.match(wizard, /if \(explore\.source !== report\.result\) setExplore\(\{ source: report\.result, \.\.\.initialExplore \}\)/);
   assert.match(wizard, /setExplore\(current => \(\{ \.\.\.current, rfp: next \}\)\)/);
   assert.match(wizard, /구조화 RFP 정보를 이용할 수 없습니다\{viewCode\}\. 보고서는 정상 생성되었으며/);
   // RFP 선택은 분석 API를 호출하지 않는다.
   assert.doesNotMatch(rfpView, /api|fetch\(|onRun/);
   assert.doesNotMatch(split, /api|fetch\(|onRun/);
+});
+
+test('같은 GapItem.id가 반복돼도 연결은 id당 하나이고 미연결 개수가 줄어들지 않는다', () => {
+  const dup = [gap('gap-0', '첫 항목', ['r1']), gap('gap-0', '중복 항목', ['r1'])];
+  const result = rfpRequirements(rfp('r1', 1, { gap_item_ids: ['gap-0', 'gap-9'] }), dup);
+  assert.deepEqual(result.linked.map(g => g.requirement_name), ['첫 항목']);
+  assert.equal(result.unresolved, 1);
 });

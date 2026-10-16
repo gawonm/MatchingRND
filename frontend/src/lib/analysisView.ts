@@ -1,4 +1,4 @@
-import type { AnalysisReport, EvidenceItem, GapItem, ReportViewResponse, RFPCandidate, SourceType, TechnologyCandidate } from '../types/analysisReport';
+import type { AnalysisReport, EvidenceItem, GapItem, GapLabel, ReportViewResponse, RFPCandidate, SourceType, TechnologyCandidate } from '../types/analysisReport';
 import { safeLink } from './reportMarkdown.ts';
 
 export const SOURCE_LABELS: Record<SourceType, string> = {
@@ -57,7 +57,7 @@ export const GAP_STATUS_LABELS: Record<RFPCandidate['gap_analysis_status'], stri
 export function rfpRequirements(rfp: RFPCandidate, gapItems: GapItem[]): { linked: GapItem[]; unresolved: number } {
   if (rfp.gap_analysis_status !== 'analyzed') return { linked: [], unresolved: 0 };
   const ids = [...new Set(rfp.gap_item_ids)];
-  const linked = ids.flatMap(id => gapItems.filter(gap => gap.id === id && gap.rfp_ids.includes(rfp.id)));
+  const linked = ids.flatMap(id => gapItems.find(gap => gap.id === id && gap.rfp_ids.includes(rfp.id)) ?? []);
   return { linked, unresolved: ids.length - linked.length };
 }
 
@@ -79,6 +79,40 @@ export function matchLevelLabel(level: string | null): string {
 // 기술의 gap_item_ids도 GapItem.id다. 그 GapItem이 이 기술을 검증된 외부 매칭(technology_ids)으로 가진 경우만 연결한다.
 export function technologyRequirements(technology: TechnologyCandidate, gapItems: GapItem[]): { linked: GapItem[]; unresolved: number } {
   const ids = [...new Set(technology.gap_item_ids)];
-  const linked = ids.flatMap(id => gapItems.filter(gap => gap.id === id && gap.technology_ids.includes(technology.id)));
+  const linked = ids.flatMap(id => gapItems.find(gap => gap.id === id && gap.technology_ids.includes(technology.id)) ?? []);
+  return { linked, unresolved: ids.length - linked.length };
+}
+
+// Gap 5분류(app/gap_analysis GapLabel). 알 수 없는 값은 5분류로 바꾸지 않는다.
+export const GAP_LABELS: Record<GapLabel, string> = {
+  기존보유: '기존보유', 외부기술보완: '외부기술보완', 부분충족: '부분충족', '추가R&D검토후보': '추가 R&D 검토 후보', 근거부족: '근거부족',
+};
+export function gapLabelText(label: string): string {
+  return Object.hasOwn(GAP_LABELS, label) ? GAP_LABELS[label as GapLabel] : `판정 확인 불가 (${label})`;
+}
+
+// 선택한 RFP와 양방향으로 연결된 Gap 항목을 gap_index 순으로 정렬하고 선택을 정한다. 같은 id가 반복되면 첫 항목만 쓴다(rfpRequirements).
+export function gapSelection(rfp: RFPCandidate, gapItems: GapItem[], selectedId: string | null): { ordered: GapItem[]; selected: GapItem | null; duplicates: number; unresolved: number } {
+  const { linked, unresolved } = rfpRequirements(rfp, gapItems);
+  const ordered = [...linked].sort((a, b) => a.gap_index - b.gap_index);
+  const duplicates = ordered.reduce((count, gap) => count + gapItems.filter(other => other.id === gap.id).length - 1, 0);
+  return { ordered, selected: ordered.find(gap => gap.id === selectedId) ?? ordered[0] ?? null, duplicates, unresolved };
+}
+
+// 이 Gap 행(section=gap, 같은 gap_index)에 대한 accepted claim 중 이 응답의 근거를 유효하게 인용한 것만 검증된 설명으로 쓴다.
+export function gapClaims(report: AnalysisReport, gap: GapItem): string[] {
+  const known = new Set(report.evidence.map(record => record.evidence_id));
+  return [...new Set(gap.claim_indices)].flatMap(index => {
+    const claim = report.claims[index];
+    const valid = Number.isInteger(index) && !!claim?.accepted && claim.draft.section === 'gap' && claim.draft.gap_index === gap.gap_index
+      && claim.citations.some(citation => citation.ok && known.has(citation.evidence_id));
+    return valid ? [claim.draft.text] : [];
+  });
+}
+
+// GapItem.technology_ids ↔ TechnologyCandidate.gap_item_ids 양쪽이 확인된 후보만 연결한다.
+export function gapTechnologies(gap: GapItem, technologies: TechnologyCandidate[]): { linked: TechnologyCandidate[]; unresolved: number } {
+  const ids = [...new Set(gap.technology_ids)];
+  const linked = ids.flatMap(id => technologies.find(t => t.id === id && t.gap_item_ids.includes(gap.id)) ?? []);
   return { linked, unresolved: ids.length - linked.length };
 }

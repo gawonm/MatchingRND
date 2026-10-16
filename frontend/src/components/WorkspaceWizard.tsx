@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Tab, Tabs } from 'react-bootstrap';
 import TechnologyForm from './TechnologyForm';
 import TechnologyReview from './TechnologyReview';
@@ -9,6 +9,7 @@ import { approvalBlocker } from '../state/analysisSession';
 import EvidenceExplorer from './analysis/EvidenceExplorer';
 import RfpExplorer from './analysis/RfpExplorer';
 import TechnologyExplorer from './analysis/TechnologyExplorer';
+import GapExplorer, { type GapViewState } from './analysis/GapExplorer';
 import type { SplitViewState } from './analysis/SplitExplorer';
 import { COMMON_RND_NOTICE_TITLE, COMMON_RND_NOTICES, reportHasCommonNotice, viewAvailability } from '../lib/analysisView';
 import type { TechnologyElement } from '../types/technologyElement';
@@ -27,6 +28,7 @@ type Props = {
 };
 
 const initialSplitView: SplitViewState = { selectedId: null, mobileDetailOpen: false };
+const initialExplore = { technology: initialSplitView, rfp: initialSplitView, gap: { ...initialSplitView, rfpId: null } as GapViewState };
 const steps = ['기술 및 문제 입력', '기술요소 검토·승인', '통합 RAG 분석'];
 
 export default function WorkspaceWizard({ input, elements, onInputChange, onElementsChange, approvedVersion, onApprove, report, onRun }: Props) {
@@ -35,8 +37,13 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
   const [extraction, setExtraction] = useState<{ status: 'idle' | 'loading' | 'error'; message?: string; warnings: string[] }>({ status: 'idle', warnings: [] });
   const [tab, setTab] = useState('overview');
   // 기술·RFP 선택은 탭 이동에는 유지되고, 새 분석 결과(다른 Run)가 오면 초기화된다.
-  const [explore, setExplore] = useState<{ source: ReportViewResponse | null; technology: SplitViewState; rfp: SplitViewState }>({ source: report.result, technology: initialSplitView, rfp: initialSplitView });
-  if (explore.source !== report.result) setExplore({ source: report.result, technology: initialSplitView, rfp: initialSplitView });
+  const [explore, setExplore] = useState<{ source: ReportViewResponse | null } & typeof initialExplore>({ source: report.result, ...initialExplore });
+  if (explore.source !== report.result) setExplore({ source: report.result, ...initialExplore });
+  // 탭 간 이동: 대상 ID만 바꾸고(모바일은 상세를 연다) 대상 상세 제목으로 포커스를 옮긴다. API는 호출하지 않는다.
+  const [focusRequest, setFocusRequest] = useState<{ id: string } | null>(null);
+  useEffect(() => { if (focusRequest) document.getElementById(focusRequest.id)?.focus(); }, [focusRequest]);
+  const openGap = (rfpId: string, gapItemId: string) => { setExplore(current => ({ ...current, gap: { rfpId, selectedId: gapItemId, mobileDetailOpen: true } })); setTab('gap'); setFocusRequest({ id: 'gap-detail-title' }); };
+  const openTechnology = (technologyId: string) => { setExplore(current => ({ ...current, technology: { selectedId: technologyId, mobileDetailOpen: true } })); setTab('technology'); setFocusRequest({ id: 'technology-detail-title' }); };
 
   const submitInput = async (next: TechnologyInput, mode: 'extract' | 'manual') => {
     onInputChange(next);
@@ -87,8 +94,14 @@ export default function WorkspaceWizard({ input, elements, onInputChange, onElem
       <Tab eventKey="rfp" title="RFP">
         {structured
           ? <RfpExplorer rfps={structured.rfps} gapItems={structured.gap_items} evidenceItems={structured.evidence_items}
-            report={report.result.report} state={explore.rfp} onChange={next => setExplore(current => ({ ...current, rfp: next }))} />
+            report={report.result.report} state={explore.rfp} onChange={next => setExplore(current => ({ ...current, rfp: next }))} onOpenGap={openGap} />
           : <div className="mock-banner mt-0" role="status">구조화 RFP 정보를 이용할 수 없습니다{viewCode}. 보고서는 정상 생성되었으며 Report 탭에서 확인할 수 있습니다.</div>}
+      </Tab>
+      <Tab eventKey="gap" title="Gap">
+        {structured
+          ? <GapExplorer rfps={structured.rfps} gapItems={structured.gap_items} technologies={structured.technologies} evidenceItems={structured.evidence_items}
+            report={report.result.report} state={explore.gap} onChange={next => setExplore(current => ({ ...current, gap: next }))} onOpenTechnology={openTechnology} />
+          : <div className="mock-banner mt-0" role="status">구조화 Gap 정보를 이용할 수 없습니다{viewCode}. 보고서는 정상 생성되었으며 Report 탭에서 확인할 수 있습니다.</div>}
       </Tab>
       <Tab eventKey="evidence" title="Evidence">
         {availability === 'ok' && report.result.view && <EvidenceExplorer items={report.result.view.evidence_items} report={report.result.report} />}

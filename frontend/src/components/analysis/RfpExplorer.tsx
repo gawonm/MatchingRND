@@ -10,9 +10,10 @@ type Props = {
   report: AnalysisReport;
   state: SplitViewState;
   onChange: (state: SplitViewState) => void;
+  onOpenGap: (rfpId: string, gapItemId: string) => void;
 };
 
-export default function RfpExplorer({ rfps, gapItems, evidenceItems, report, state, onChange }: Props) {
+export default function RfpExplorer({ rfps, gapItems, evidenceItems, report, state, onChange, onOpenGap }: Props) {
   const { ordered, selected, duplicates } = rankedSelection(rfps, state.selectedId);
   if (!selected) return <div className="mock-banner mt-0">이번 분석에서 추천된 RFP가 없습니다. 보고서는 Report 탭에서 확인할 수 있습니다.</div>;
 
@@ -42,7 +43,9 @@ export default function RfpExplorer({ rfps, gapItems, evidenceItems, report, sta
       {selected.gap_analysis_status === 'not_analyzed' && <p className="small text-secondary mb-0">Gap 미분석 — 기술요소별 판정이 수행되지 않았습니다.</p>}
       {selected.gap_analysis_status === 'unknown' && <p className="small text-secondary mb-0">Gap 분석 여부를 확인할 수 없습니다.</p>}
       {selected.gap_analysis_status === 'analyzed' && (linked.length
-        ? <ul className="small mb-0">{linked.map(gap => <li key={gap.id}>{gap.requirement_name}</li>)}</ul>
+        ? <ul className="list-unstyled small mb-0">{linked.map(gap => <li key={gap.id}>
+          <button type="button" className="btn btn-link btn-sm p-0 text-start" onClick={() => onOpenGap(selected.id, gap.id)}>{gap.requirement_name}</button>
+        </li>)}</ul>
         : <p className="small text-secondary mb-0">분석된 항목의 연결 정보 없음</p>)}
       {unresolved > 0 && <p className="small text-secondary mt-1 mb-0">연결 정보를 찾을 수 없는 항목 {unresolved}개는 표시하지 않았습니다.</p>}
 

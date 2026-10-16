@@ -284,6 +284,8 @@ textarea.form-control { min-height: 94px; resize: vertical; }
 .split-detail h3:focus:not(:focus-visible) { outline: none; }
 .split-detail .split-back { display: none; margin-bottom: 12px; }
 .split-detail .evidence-explorer { grid-template-columns: minmax(0, 1fr); }
+.gap-rfp-picker { display: flex; flex-wrap: wrap; gap: 8px; }
+.gap-rfp-picker .evidence-row { width: auto; max-width: 100%; flex: 1 1 220px; }
 @media (min-width: 768px) { .split-detail .evidence-detail { position: static; } }
 @media (max-width: 767.98px) {
   .evidence-explorer { grid-template-columns: 1fr; }
