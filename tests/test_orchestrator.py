@@ -143,6 +143,29 @@ class OrchestratorTests(unittest.TestCase):
         self.assertEqual(build.call_count, 1)
         self.assertEqual(search.call_count, 2)
 
+    def test_default_technology_runner_receives_owned_and_requested_separately(self):
+        # Exercise the real default runner with the teammate's new answer(A, B) API.
+        orchestrator = RagOrchestrator(ntis_runner=self.ntis, rfp_runner=self.rfp,
+                                       policy_runner=self.policy, backend='local')
+        technology_pipeline = Mock()
+        technology_pipeline.answer.return_value = SimpleNamespace(
+            result=module_result('technology', [self.external]))
+        orchestrator._technology_pipeline = technology_pipeline
+        request = {**self.request, 'unmet_elements': ['LiDAR 객체 인지']}
+
+        result = orchestrator.run(request)
+
+        technology_pipeline.answer.assert_called_once_with(
+            ['SLAM', '영상 인식'], ['LiDAR 객체 인지'])
+        self.assertEqual(self.ntis.call_args.kwargs['requested_technologies'], ['LiDAR 객체 인지'])
+        self.assertEqual(self.ntis.call_args.kwargs['external_technologies'], ['센서 융합'])
+        self.assertEqual(result.rfp_query_details['unmet_elements'], ['LiDAR 객체 인지'])
+
+        # No explicit requested technology: preserve the original problem as B.
+        orchestrator.run(self.request)
+        self.assertEqual(technology_pipeline.answer.call_args.args,
+                         (['SLAM', '영상 인식'], [self.request['problem']]))
+
 
 if __name__ == "__main__":
     unittest.main()
