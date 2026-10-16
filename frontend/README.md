@@ -1,5 +1,17 @@
 # React + TypeScript + Vite
 
+## FastAPI 연결
+
+```powershell
+Copy-Item .env.example .env.local
+npm install
+npm run dev
+```
+
+`VITE_API_BASE_URL`은 FastAPI 주소이며 기본값은 `http://127.0.0.1:8000`입니다.
+화면은 기존 Mock 데이터를 계속 사용하고 `/api/health`만 자동 확인합니다.
+실제 RAG를 실행하는 `/api/analysis`는 UI에서 자동 호출하지 않습니다.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
