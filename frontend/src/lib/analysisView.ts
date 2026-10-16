@@ -53,11 +53,10 @@ export const GAP_STATUS_LABELS: Record<RFPCandidate['gap_analysis_status'], stri
   analyzed: 'Gap 분석 완료', not_analyzed: 'Gap 미분석', unknown: '분석 여부 확인 불가',
 };
 
-// matched_requirement_ids는 GapItem.id(gap-N)다. 이 RFP를 범위로 가진 GapItem만 연결하고, 못 찾은 ID는 개수만 센다.
-// ponytail: 계약 불일치 — 필드명은 requirement ID지만 실제 값은 GapItem.id(app/analysis_view.py), 백엔드가 gap_item_ids로 바꾸거나 requirement_id를 내보내면 이 join을 그 필드로 교체
+// gap_item_ids는 GapItem.id(gap-N)다. 이 RFP를 범위로 가진 GapItem만 연결하고, 못 찾은 ID는 개수만 센다.
 export function rfpRequirements(rfp: RFPCandidate, gapItems: GapItem[]): { linked: GapItem[]; unresolved: number } {
   if (rfp.gap_analysis_status !== 'analyzed') return { linked: [], unresolved: 0 };
-  const ids = [...new Set(rfp.matched_requirement_ids)];
+  const ids = [...new Set(rfp.gap_item_ids)];
   const linked = ids.flatMap(id => gapItems.filter(gap => gap.id === id && gap.rfp_ids.includes(rfp.id)));
   return { linked, unresolved: ids.length - linked.length };
 }
@@ -77,9 +76,9 @@ export function matchLevelLabel(level: string | null): string {
   return Object.hasOwn(MATCH_LEVEL_LABELS, level) ? MATCH_LEVEL_LABELS[level] : `확인되지 않은 판정값 (${level})`;
 }
 
-// 기술의 matched_requirement_ids도 GapItem.id다. 그 GapItem이 이 기술을 검증된 외부 매칭(technology_ids)으로 가진 경우만 연결한다.
+// 기술의 gap_item_ids도 GapItem.id다. 그 GapItem이 이 기술을 검증된 외부 매칭(technology_ids)으로 가진 경우만 연결한다.
 export function technologyRequirements(technology: TechnologyCandidate, gapItems: GapItem[]): { linked: GapItem[]; unresolved: number } {
-  const ids = [...new Set(technology.matched_requirement_ids)];
+  const ids = [...new Set(technology.gap_item_ids)];
   const linked = ids.flatMap(id => gapItems.filter(gap => gap.id === id && gap.technology_ids.includes(technology.id)));
   return { linked, unresolved: ids.length - linked.length };
 }

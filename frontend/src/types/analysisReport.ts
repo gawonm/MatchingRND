@@ -56,12 +56,12 @@ export type EvidenceItem = {
 
 export type TechnologyCandidate = {
   id: string; rank: number; title: string; provider: string | null; transfer_condition: string | null;
-  match_level: string | null; rationale: string | null; matched_requirement_ids: string[]; evidence_ids: string[];
+  match_level: string | null; rationale: string | null; gap_item_ids: string[]; evidence_ids: string[];
 };
 
 export type RFPCandidate = {
   id: string; document_id: string; rank: number; title: string; notice_titles: string[]; notice_urls: string[];
-  gap_analysis_status: 'analyzed' | 'not_analyzed' | 'unknown'; matched_requirement_ids: string[]; evidence_ids: string[];
+  gap_analysis_status: 'analyzed' | 'not_analyzed' | 'unknown'; gap_item_ids: string[]; evidence_ids: string[];
 };
 
 export type GapItem = {

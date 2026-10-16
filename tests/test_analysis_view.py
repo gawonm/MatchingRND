@@ -119,10 +119,10 @@ class AnalysisViewTests(unittest.TestCase):
     def test_shared_pdf_tasks_and_gap_analysis_status_are_separated(self):
         t1, t2, t3 = self.view.rfps
         self.assertEqual((t1.document_id, t2.document_id), ("rfp-1", "rfp-1"))
-        self.assertEqual(t1.matched_requirement_ids, ["gap-0"])
-        self.assertEqual(t2.matched_requirement_ids, ["gap-1"])
+        self.assertEqual(t1.gap_item_ids, ["gap-0"])
+        self.assertEqual(t2.gap_item_ids, ["gap-1"])
         self.assertEqual([r.gap_analysis_status for r in self.view.rfps], ["analyzed", "analyzed", "not_analyzed"])
-        self.assertEqual(t3.matched_requirement_ids, [])
+        self.assertEqual(t3.gap_item_ids, [])
         self.assertEqual(t1.notice_urls, ["https://example.go.kr/n?id=1"])
         by_id = {e.id: e for e in self.view.evidence_items}
         self.assertTrue(all(by_id[eid].quote == TRACKING for eid in t1.evidence_ids))
@@ -131,16 +131,35 @@ class AnalysisViewTests(unittest.TestCase):
 
     def test_missing_fields_stay_empty_and_technology_links_are_verified_only(self):
         tech1, tech2 = self.view.technologies
-        self.assertEqual(tech1.matched_requirement_ids, ["gap-0"])
-        self.assertEqual(tech2.matched_requirement_ids, [])
+        self.assertEqual(tech1.gap_item_ids, ["gap-0"])
+        self.assertEqual(tech2.gap_item_ids, [])
         self.assertEqual((tech2.rationale, tech2.provider, tech2.match_level, tech2.evidence_ids), (None, None, None, []))
         self.assertEqual((self.view.rfps[2].notice_titles, self.view.rfps[2].notice_urls), ([], []))
         self.assertNotIn("description", tech1.model_dump())
         self.assertNotIn("key_gap_item_ids", self.view.overview.model_dump())
 
+    def test_gap_item_ids_reference_gap_items_in_both_directions(self):
+        gaps = {g.id: g for g in self.view.gap_items}
+        rfp_links = [(r.id, gid) for r in self.view.rfps for gid in r.gap_item_ids]
+        tech_links = [(t.id, gid) for t in self.view.technologies for gid in t.gap_item_ids]
+        self.assertTrue(rfp_links and tech_links)
+        for rfp_id, gid in rfp_links:
+            self.assertIn(rfp_id, gaps[gid].rfp_ids)
+        for tech_id, gid in tech_links:
+            self.assertIn(tech_id, gaps[gid].technology_ids)
+        # The reverse direction is complete for analyzed RFPs and for every technology.
+        analyzed = {r.id for r in self.view.rfps if r.gap_analysis_status == "analyzed"}
+        self.assertEqual(sorted(rfp_links), sorted((rid, g.id) for g in self.view.gap_items for rid in g.rfp_ids if rid in analyzed))
+        self.assertEqual(sorted(tech_links), sorted((tid, g.id) for g in self.view.gap_items for tid in g.technology_ids
+                                                    if tid in {t.id for t in self.view.technologies}))
+        for candidate in (*self.view.rfps, *self.view.technologies):
+            self.assertNotIn("matched_requirement_ids", candidate.model_dump())
+
     def test_unknown_analysis_scope_and_evidence_mismatch(self):
         report = self.report.model_copy(update={"stats": {}})
-        self.assertEqual({r.gap_analysis_status for r in project_analysis_view(self.state, report, self.answer).rfps}, {"unknown"})
+        unknown = project_analysis_view(self.state, report, self.answer).rfps
+        self.assertEqual({r.gap_analysis_status for r in unknown}, {"unknown"})
+        self.assertEqual([r.gap_item_ids for r in unknown], [[], [], []])  # no analyzed Gap links without a known scope
         other = self.answer.model_copy(deep=True)
         other.evidence[0].evidence_id = "E999"
         with self.assertRaises(ProjectionError) as caught:
@@ -178,6 +197,12 @@ class ReportViewApiTests(unittest.TestCase):
         self.assertEqual(body["report"], self.answer.model_dump(mode="json"))
         self.assertEqual((body["view_status"], body["view_error"]), ("ok", None))
         self.assertEqual(set(body["view"]), {"technologies", "rfps", "gap_items", "evidence_items", "overview"})
+        gap_ids = {g["id"] for g in body["view"]["gap_items"]}
+        for candidate in (*body["view"]["rfps"], *body["view"]["technologies"]):
+            self.assertNotIn("matched_requirement_ids", candidate)
+            self.assertLessEqual(set(candidate["gap_item_ids"]), gap_ids)
+        self.assertEqual([r["gap_item_ids"] for r in body["view"]["rfps"]], [["gap-0"], ["gap-1"], []])
+        self.assertEqual([t["gap_item_ids"] for t in body["view"]["technologies"]], [["gap-0"], []])
 
     def test_projection_failure_returns_report_with_null_view(self):
         response = self.post(side_effect=RuntimeError("secret-detail"))

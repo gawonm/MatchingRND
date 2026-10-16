@@ -6,7 +6,7 @@ import { MATCH_LEVEL_LABELS, matchLevelLabel, rankedSelection, technologyRequire
 const techView = readFileSync(new URL('../src/components/analysis/TechnologyExplorer.tsx', import.meta.url), 'utf8');
 const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
 
-const tech = (id, rank, extra = {}) => ({ id, rank, title: `기술 ${id}`, provider: null, transfer_condition: null, match_level: 'same', rationale: null, matched_requirement_ids: [], evidence_ids: [], ...extra });
+const tech = (id, rank, extra = {}) => ({ id, rank, title: `기술 ${id}`, provider: null, transfer_condition: null, match_level: 'same', rationale: null, gap_item_ids: [], evidence_ids: [], ...extra });
 const gap = (id, name, technology_ids) => ({ id, gap_index: Number(id.slice(4)), requirement_id: `req-${id}`, requirement_name: name, requirement_clear: true, label: '외부기술보완', decision_path: '', rfp_ids: ['r1'], technology_ids, owned_technologies: [], evidence_ids: [], claim_indices: [] });
 
 test('기술 0·1·5건을 rank 순으로 보여주고 사라진 선택은 첫 후보로 대체한다', () => {
@@ -43,7 +43,7 @@ test('제공기관·이전조건·추천 이유는 있는 값만 쓰고 없으�
 
 test('요구 기술요소는 GapItem.id와 GapItem.technology_ids 양쪽이 확인된 경우만 연결한다', () => {
   const gaps = [gap('gap-0', '진동 신호 분석', ['t1']), gap('gap-1', '다른 기술의 요구기술', ['t2']), gap('gap-2', '공유 요구기술', ['t1', 't2'])];
-  const result = technologyRequirements(tech('t1', 1, { matched_requirement_ids: ['gap-0', 'gap-1', 'gap-2', 'req-gap-0', 'gap-0'] }), gaps);
+  const result = technologyRequirements(tech('t1', 1, { gap_item_ids: ['gap-0', 'gap-1', 'gap-2', 'req-gap-0', 'gap-0'] }), gaps);
   assert.deepEqual(result.linked.map(g => g.requirement_name), ['진동 신호 분석', '공유 요구기술']);
   assert.equal(result.unresolved, 2); // 역방향 관계가 없는 gap-1, requirement_id 형태의 값은 연결하지 않는다
   assert.deepEqual(technologyRequirements(tech('t1', 1), gaps), { linked: [], unresolved: 0 });
@@ -64,4 +64,13 @@ test('Workspace 기술 탭은 구조화 view가 있을 때만 열리고 실패 �
   assert.match(wizard, /const structured = report\.result\?\.view && \(availability === 'ok' \|\| availability === 'empty'\) \? report\.result\.view : null;/);
   assert.match(wizard, /setExplore\(current => \(\{ \.\.\.current, technology: next \}\)\)/);
   assert.match(wizard, /<AnalysisReportView report=\{report\.result\.report\} mode="real" \/>/);
+});
+
+test('RFP·기술 후보는 같은 응답의 GapItem.id를 gap_item_ids로 참조하고 옛 필드명은 남지 않는다', () => {
+  const types = readFileSync(new URL('../src/types/analysisReport.ts', import.meta.url), 'utf8');
+  const lib = readFileSync(new URL('../src/lib/analysisView.ts', import.meta.url), 'utf8');
+  assert.equal(types.match(/gap_item_ids: string\[\];/g).length, 2);
+  for (const source of [types, lib, techView]) assert.doesNotMatch(source, /matched_requirement_ids/);
+  assert.match(lib, /new Set\(rfp\.gap_item_ids\)/);
+  assert.match(lib, /new Set\(technology\.gap_item_ids\)/);
 });

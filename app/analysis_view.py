@@ -53,7 +53,7 @@ class TechnologyCandidate(BaseModel):
     transfer_condition: str | None = None
     match_level: str | None = Field(default=None, description="Technology RAG 검증 매칭 수준 same|similar")
     rationale: str | None = Field(default=None, description="LLM 매칭 사유. 인용은 검증됐으나 의미 검토는 거치지 않음")
-    matched_requirement_ids: list[str] = Field(default_factory=list, description="이 기술이 검증된 외부 매칭으로 대응한 Gap 요구기술 ID")
+    gap_item_ids: list[str] = Field(default_factory=list, description="같은 응답의 GapItem.id. 그 GapItem.technology_ids에 이 기술이 있음")
     evidence_ids: list[str] = Field(default_factory=list)
 
 
@@ -65,7 +65,7 @@ class RFPCandidate(BaseModel):
     notice_titles: list[str] = Field(default_factory=list)
     notice_urls: list[str] = Field(default_factory=list, description="공고 링크(원문 PDF 링크 아님)")
     gap_analysis_status: Literal["analyzed", "not_analyzed", "unknown"]
-    matched_requirement_ids: list[str] = Field(default_factory=list)
+    gap_item_ids: list[str] = Field(default_factory=list, description="같은 응답의 GapItem.id. 그 GapItem.rfp_ids에 이 RFP가 있음. analyzed가 아니면 빈 목록")
     evidence_ids: list[str] = Field(default_factory=list)
 
 
@@ -161,7 +161,7 @@ def project_analysis_view(state: AnalysisState, report: GapReport, answer: Final
             id=key, document_id=c.doc_id, rank=rank, title=c.title, notice_titles=titles, notice_urls=urls,
             gap_analysis_status=status,
             # Never show Gap links for an RFP the Gap step did not analyze.
-            matched_requirement_ids=[gap_ids[i] for i in indices_of[key]] if status == "analyzed" else [],
+            gap_item_ids=[gap_ids[i] for i in indices_of[key]] if status == "analyzed" else [],
             evidence_ids=_ids(view.candidate_records(c, {SourceType.RFP})),
         ))
 
@@ -170,7 +170,7 @@ def project_analysis_view(state: AnalysisState, report: GapReport, answer: Final
         technologies.append(TechnologyCandidate(
             id=_identity(c), rank=rank, title=c.title, provider=c.provider, transfer_condition=c.transfer_condition,
             match_level=c.extra.get("match_level"), rationale=c.relation_summary.strip() or None,
-            matched_requirement_ids=[gap.id for gap in gap_items if c.doc_id in gap.technology_ids],
+            gap_item_ids=[gap.id for gap in gap_items if c.doc_id in gap.technology_ids],
             evidence_ids=_ids(view.candidate_records(c, TECH_SOURCES)),
         ))
 

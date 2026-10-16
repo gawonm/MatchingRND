@@ -7,7 +7,7 @@ const rfpView = readFileSync(new URL('../src/components/analysis/RfpExplorer.tsx
 const split = readFileSync(new URL('../src/components/analysis/SplitExplorer.tsx', import.meta.url), 'utf8');
 const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
 
-const rfp = (id, rank, extra = {}) => ({ id, document_id: `doc-${id}`, rank, title: `과제 ${id}`, notice_titles: [], notice_urls: [], gap_analysis_status: 'analyzed', matched_requirement_ids: [], evidence_ids: [], ...extra });
+const rfp = (id, rank, extra = {}) => ({ id, document_id: `doc-${id}`, rank, title: `과제 ${id}`, notice_titles: [], notice_urls: [], gap_analysis_status: 'analyzed', gap_item_ids: [], evidence_ids: [], ...extra });
 const gap = (id, name, rfp_ids) => ({ id, gap_index: Number(id.slice(4)), requirement_id: `req-${id}`, requirement_name: name, requirement_clear: true, label: '부분충족', decision_path: '', rfp_ids, technology_ids: [], owned_technologies: [], evidence_ids: [], claim_indices: [] });
 
 test('RFP 0·1·5건을 추천 순서로 정렬하고, 사라진 선택은 첫 후보로 전환한다', () => {
@@ -28,12 +28,12 @@ test('RFP 0·1·5건을 추천 순서로 정렬하고, 사라진 선택은 첫 �
 test('Gap 상태는 분석 수행 여부만 표시하고 요구기술은 이 RFP 범위의 GapItem만 연결한다', () => {
   assert.deepEqual(GAP_STATUS_LABELS, { analyzed: 'Gap 분석 완료', not_analyzed: 'Gap 미분석', unknown: '분석 여부 확인 불가' });
   const gaps = [gap('gap-0', '진동 신호 분석', ['r1']), gap('gap-1', '다른 RFP 요구기술', ['r2']), gap('gap-2', '공유 요구기술', ['r1', 'r2'])];
-  const linked = rfpRequirements(rfp('r1', 1, { matched_requirement_ids: ['gap-0', 'gap-2', 'gap-1', 'gap-9', 'gap-0'] }), gaps);
+  const linked = rfpRequirements(rfp('r1', 1, { gap_item_ids: ['gap-0', 'gap-2', 'gap-1', 'gap-9', 'gap-0'] }), gaps);
   assert.deepEqual(linked.linked.map(g => g.requirement_name), ['진동 신호 분석', '공유 요구기술']);
   assert.equal(linked.unresolved, 2); // 다른 RFP 항목과 없는 ID는 이름을 만들지 않는다
   assert.deepEqual(rfpRequirements(rfp('r1', 1), gaps), { linked: [], unresolved: 0 }); // analyzed + 연결 0건
   for (const status of ['not_analyzed', 'unknown']) {
-    assert.deepEqual(rfpRequirements(rfp('r1', 1, { gap_analysis_status: status, matched_requirement_ids: ['gap-0'] }), gaps), { linked: [], unresolved: 0 });
+    assert.deepEqual(rfpRequirements(rfp('r1', 1, { gap_analysis_status: status, gap_item_ids: ['gap-0'] }), gaps), { linked: [], unresolved: 0 });
   }
   assert.match(rfpView, /Gap 미분석 — 기술요소별 판정이 수행되지 않았습니다/);
   assert.match(rfpView, /Gap 분석 여부를 확인할 수 없습니다/);
