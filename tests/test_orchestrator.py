@@ -5,7 +5,7 @@ from unittest.mock import Mock, patch
 from pydantic import ValidationError
 
 from app.common.schemas import Evidence, ExternalTechCandidate, ModuleResult, TechElement
-from app.orchestrator import AnalysisState, OrchestrationError, RagOrchestrator
+from app.orchestrator import AnalysisState, OrchestrationError, RagOrchestrator, POLICY_DEFAULT_TERMS
 
 
 def element(name, source, *, verified=True, quote="원문 근거"):
@@ -55,7 +55,17 @@ class OrchestratorTests(unittest.TestCase):
         self.assertEqual(details["expansion_sources"][0]["quote"], "원문 근거")
         self.assertEqual(result.request.problem, self.request["problem"])
         self.assertEqual(AnalysisState.model_validate_json(result.model_dump_json()), result)
-        self.policy.assert_not_called()
+        # 제도 질문이 없어도 법령 검색은 기술 맥락과 고정 키워드로 실행된다.
+        policy_query = self.policy.call_args.args[0]
+        self.assertIn(self.request["problem"], policy_query)
+        self.assertIn(POLICY_DEFAULT_TERMS, policy_query)
+        self.assertEqual(result.queries["policy"], policy_query)
+
+    def test_policy_failure_is_a_warning_not_a_stage_error(self):
+        self.policy.side_effect = RuntimeError("index 없음")
+        result = self.orchestrator.run(self.request)
+        self.assertIsNone(result.policy)
+        self.assertTrue(any(w.startswith("policy: 법령 검색에 실패") for w in result.warnings))
 
     def test_unverified_elements_do_not_expand_queries(self):
         self.technology.return_value = module_result("technology", [element("환각 기술", "pub", verified=False)])
@@ -82,7 +92,8 @@ class OrchestratorTests(unittest.TestCase):
             runner.side_effect = record
         result = self.orchestrator.run({**self.request, "policy_question": "기술이전 조건은 무엇인가?"})
         self.assertEqual(order, ["technology", "ntis", "rfp", "policy"])
-        self.policy.assert_called_once_with("기술이전 조건은 무엇인가?")
+        self.policy.assert_called_once()
+        self.assertTrue(self.policy.call_args.args[0].startswith("기술이전 조건은 무엇인가?"))
         self.assertEqual(result.policy.module, "policy")
 
     def test_empty_results_do_not_create_gap_verdicts(self):

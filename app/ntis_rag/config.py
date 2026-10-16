@@ -13,6 +13,8 @@ INDEX_DIR = resolve_project_path(os.getenv("NTIS_INDEX_DIR", NTIS_INDEX_DIR))
 MANIFEST_PATH = INDEX_DIR / "manifest.json"
 
 RERANKER_MODEL = os.getenv("NTIS_RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
+# 기본은 꺼짐(RRF 순위 사용). 켜려면 NTIS_RERANK_ENABLED=true
+RERANK_ENABLED = os.getenv("NTIS_RERANK_ENABLED", "false").strip().lower() in {"1", "true", "yes", "on"}
 LLM_MODEL = os.getenv("NTIS_LLM_MODEL", "gpt-4.1-mini")
 
 DENSE_K = int(os.getenv("NTIS_DENSE_K", "30"))
