@@ -10,6 +10,8 @@ from typing import Literal
 from pydantic import BaseModel
 
 from ..config import TECHNICAL_SECTIONS
+from app.common.paths import PROJECT_ROOT
+from app.common.relevance_batch import BatchedRelevanceLLM
 
 
 class TechnologyMatch(BaseModel):
@@ -118,39 +120,62 @@ class TechnologyRelevanceGate:
         self.owned, self.requested, self.explicit_request = query_constraints(question)
         self.active = bool(self.owned or self.requested)
         self.llm = llm
+        self.runner = BatchedRelevanceLLM(self._client,
+            batch_size=int(os.getenv('RFP_RELEVANCE_BATCH_SIZE', '5')),
+            max_chars=int(os.getenv('RFP_RELEVANCE_MAX_CHARS', '24000')))
+
+    @property
+    def stats(self):
+        return self.runner.stats
+
+    def _client(self):
+        if self.llm is None:
+            from app.gap_analysis import OpenAIStructuredLLM
+
+            self.llm = OpenAIStructuredLLM(model=os.getenv('RFP_RELEVANCE_MODEL', 'gpt-4o-mini'),
+                cache_dir=PROJECT_ROOT / 'storage/llm_cache/rfp_relevance')
+        return self.llm
 
     def check(self, task):
-        if not self.owned or not self.requested:
-            return {'accepted': False, 'reason': '보유기술 또는 기술문제 입력 없음', 'matches': []}
-        sections = [
+        return self.check_many([task])[0]
+
+    def _sections(self, task):
+        return [
             {'item': item, 'text': fragment.page_content, 'page': fragment.metadata.get('page'),
              'source': fragment.metadata.get('source', task.get('source')),
              'bbox': fragment.metadata.get('bbox')}
             for item, fragments in task.get('fields', {}).items() if item in TECHNICAL_SECTIONS
             for fragment in fragments if fragment.page_content.strip()
         ]
-        if not sections:
-            return {'accepted': False, 'reason': '요구기술 원문 근거 없음', 'matches': []}
-        if self.llm is None:
-            from app.gap_analysis import OpenAIStructuredLLM
-
-            self.llm = OpenAIStructuredLLM(model=os.getenv('RFP_RELEVANCE_MODEL', 'gpt-4o-mini'))
+    def check_many(self, tasks):
+        tasks = list(tasks)
+        sections_by_task = [self._sections(task) for task in tasks]
+        if not self.owned or not self.requested:
+            return [{'accepted': False, 'reason': '보유기술 또는 기술문제 입력 없음', 'matches': []} for _ in tasks]
         technologies = self.owned + self.requested
-        # Separate calls prevent the model from comparing owned vs requested
-        # technologies to each other instead of comparing each to the RFP.
-        judgements = []
+        valid_tasks = [j for j, sections in enumerate(sections_by_task) if sections]
+        judgements = {j: [] for j in valid_tasks}
         for i, name in enumerate(technologies):
-            payload = {'technologies': [
-                {'index': i, 'role': 'owned' if i < len(self.owned) else 'requested', 'name': name},
-            ], 'sections': [{'index': j, **section} for j, section in enumerate(sections)]}
-            response = self.llm([
-                {'role': 'system', 'content': PROMPT},
-                {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)},
-            ], RelevanceJudgements)
-            response = RelevanceJudgements.model_validate(response)
-            if len(response.matches) != 1 or response.matches[0].technology_index != i:
+            requests = []
+            for task_index in valid_tasks:
+                payload = {'technologies': [
+                    {'index': i, 'role': 'owned' if i < len(self.owned) else 'requested', 'name': name},
+                ], 'sections': [{'index': j, **section} for j, section in enumerate(sections_by_task[task_index])]}
+                requests.append([{'role': 'system', 'content': PROMPT},
+                                 {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}])
+            for task_index, response in zip(valid_tasks, self.runner.map(requests, RelevanceJudgements)):
+                response = RelevanceJudgements.model_validate(response)
+                judgements[task_index].append((i, response.matches))
+        return [self._evaluate(sections, judgements[j], technologies) if sections else
+                {'accepted': False, 'reason': '요구기술 원문 근거 없음', 'matches': []}
+                for j, sections in enumerate(sections_by_task)]
+
+    def _evaluate(self, sections, responses, technologies):
+        judgements = []
+        for expected_index, rows in responses:
+            if len(rows) != 1 or rows[0].technology_index != expected_index:
                 return {'accepted': False, 'reason': '기술별 판정 인덱스 오류', 'matches': []}
-            judgements.extend(response.matches)
+            judgements.extend(rows)
         matches, seen, valid = [], set(), set()
         for match in judgements:
             i = match.technology_index
