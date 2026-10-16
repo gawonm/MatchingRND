@@ -19,10 +19,15 @@ def fixtures(pairs):
 
     def judge(messages, model):
         data = json.loads(messages[-1]['content'])
-        pid = data['project_text'].split()[0]
-        relation = decisions[pid][0 if data['role'] == 'owned' else 1]
-        return model(relation=relation, reason='LLM semantic judgment',
-                     quote=data['project_text'] if relation in {'same', 'similar'} else '')
+        def judgment(payload):
+            pid = payload['project_text'].split()[0]
+            relation = decisions[pid][0 if payload['role'] == 'owned' else 1]
+            return dict(relation=relation, reason='LLM semantic judgment',
+                        quote=payload['project_text'] if relation in {'same', 'similar'} else '')
+        if 'jobs' in data:
+            return model(results=[{'job_index': job['job_index'], 'judgment': judgment(job['input'])}
+                                  for job in data['jobs']])
+        return model(**judgment(data))
 
     return projects, Mock(side_effect=judge)
 
@@ -64,7 +69,7 @@ class NtisRelevanceTests(unittest.TestCase):
                 extracted = analysis.extract_all_project_tech.call_args.args[0]
                 self.assertEqual({p['project_id'] for p in extracted}, {'p0', 'p1', 'p3', 'p4'})
                 self.assertEqual(result.extra['related_projects'], extracted)
-                self.assertEqual(judge.call_count, 18)
+                self.assertEqual(judge.call_count, 4)
                 self.assertTrue(all(c.extra['technology_relevance']['accepted'] for c in result.candidates))
 
     def test_rejected_top_projects_do_not_consume_limit(self):
@@ -165,7 +170,7 @@ class NtisRelevanceTests(unittest.TestCase):
         projects, judge = fixtures([('same', 'same'), ('same', 'similar')])
         result, _, _ = self.run_backend('local', [projects[0], projects[0], projects[1]], judge, analysis_top_n=2)
         self.assertEqual(len(result.candidates), 2)
-        self.assertEqual(judge.call_count, 4)
+        self.assertEqual(judge.call_count, 2)
 
     def test_invalid_limit_is_rejected(self):
         with self.assertRaises(ValueError):

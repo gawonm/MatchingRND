@@ -3,6 +3,8 @@ import json
 import os
 import re
 from collections import defaultdict
+from contextlib import contextmanager
+from contextvars import ContextVar
 from typing import Any, Dict, List, Optional, Sequence
 
 from langchain_openai import ChatOpenAI
@@ -10,6 +12,24 @@ from langchain_openai import ChatOpenAI
 from ..config import LLM_MODEL
 
 llm = ChatOpenAI(model=LLM_MODEL, temperature=0) if os.getenv("OPENAI_API_KEY") else None
+_calls = ContextVar('ntis_analysis_llm_calls', default=None)
+
+
+@contextmanager
+def track_llm_calls():
+    counts = dict(query_structuring=0, technology_extraction=0, canonicalization=0, axis_aggregation=0)
+    token = _calls.set(counts)
+    try:
+        yield counts
+    finally:
+        _calls.reset(token)
+
+
+def _invoke(stage, prompt):
+    counts = _calls.get()
+    if counts is not None:
+        counts[stage] += 1
+    return llm.invoke(prompt)
 
 
 def parse_json_object(content: Any) -> Dict[str, Any]:
@@ -60,7 +80,7 @@ def structure_query(
 }}
 """
     try:
-        result = parse_json_object(llm.invoke(prompt).content)
+        result = parse_json_object(_invoke('query_structuring', prompt).content)
         for field in ("core_problem", "key_technologies", "search_query"):
             if field not in result:
                 raise ValueError(f"구조화 질의 필드 누락: {field}")
@@ -124,7 +144,7 @@ evidence는 반드시 원문에 연속된 형태로 존재하는 짧은 구절�
     last_error = None
     for attempt in range(max_retries + 1):
         try:
-            parsed = parse_json_object(llm.invoke(prompt).content)
+            parsed = parse_json_object(_invoke('technology_extraction', prompt).content)
             validated = validate_project_analysis(parsed, project["text"])
             return {**base, **validated}
         except Exception as exc:
@@ -182,7 +202,7 @@ def canonicalize_technologies(project_analyses: Sequence[Dict[str, Any]]) -> Lis
   ]
 }}
 """
-    parsed = parse_json_object(llm.invoke(prompt).content)
+    parsed = parse_json_object(_invoke('canonicalization', prompt).content)
     items = parsed.get("items")
     if not isinstance(items, list):
         raise TypeError("canonicalization items는 list여야 합니다.")
@@ -254,7 +274,7 @@ def aggregate_prior_rd_axes(canonical_rows: Sequence[Dict[str, Any]]) -> List[Di
   ]
 }}
 """
-        parsed = parse_json_object(llm.invoke(prompt).content)
+        parsed = parse_json_object(_invoke('axis_aggregation', prompt).content)
         raw_groups = parsed.get("groups")
         if not isinstance(raw_groups, list):
             raise TypeError("prior axis groups는 list여야 합니다.")

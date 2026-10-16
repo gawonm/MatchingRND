@@ -1,4 +1,5 @@
 from typing import Any, Dict, Optional, Sequence
+from contextlib import nullcontext
 
 from .config import ANALYSIS_TOP_N, RERANK_CANDIDATES
 
@@ -11,6 +12,28 @@ def run_ntis_module(problem: str, **options):
 
 
 def run_ntis_pipeline(
+    problem: str,
+    owned_technologies: Optional[Sequence[str]] = None,
+    external_technologies: Optional[Sequence[str]] = None,
+    analysis_top_n: int = ANALYSIS_TOP_N,
+    requested_technologies: Optional[Sequence[str]] = None,
+    relevance_llm=None,
+    *,
+    _retriever=None,
+) -> Dict[str, Any]:
+    from .generation import analysis
+
+    tracker = getattr(analysis, 'track_llm_calls', None)
+    with tracker() if tracker else nullcontext({}) as counts:
+        result = _run_ntis_pipeline(problem, owned_technologies, external_technologies,
+            analysis_top_n, requested_technologies, relevance_llm, _retriever=_retriever)
+    relevance = result['diagnostics']['technology_relevance']['llm_usage']['api_calls']
+    result['diagnostics']['llm_usage'] = {**counts, 'relevance': relevance,
+                                        'total': sum(counts.values()) + relevance}
+    return result
+
+
+def _run_ntis_pipeline(
     problem: str,
     owned_technologies: Optional[Sequence[str]] = None,
     external_technologies: Optional[Sequence[str]] = None,
@@ -48,16 +71,19 @@ def run_ntis_pipeline(
     ]))
     gate = TechnologyRelevanceGate(problem, owned_technologies, requested, relevance_llm)
     projects = _retriever(structured_query, max(RERANK_CANDIDATES, analysis_top_n))
-    related_projects, checks, seen = [], [], set()
+    related_projects, checks, seen, unique = [], [], set(), []
     for project in projects:
         pid = str(project['project_id'])
         if pid in seen:
             continue
         seen.add(pid)
-        check = gate.check(project)
-        checks.append({'project_id': pid, **check})
-        if check['accepted']:
-            related_projects.append({**project, 'technology_relevance': check})
+        unique.append(project)
+    for offset in range(0, len(unique), gate.runner.batch_size):
+        batch = unique[offset:offset + gate.runner.batch_size]
+        for project, check in zip(batch, gate.check_many(batch)):
+            checks.append({'project_id': str(project['project_id']), **check})
+            if len(related_projects) < analysis_top_n and check['accepted']:
+                related_projects.append({**project, 'technology_relevance': check})
         if len(related_projects) >= analysis_top_n:
             break
     # Rejected projects must never enter extraction, query expansion or Gap analysis.
@@ -76,7 +102,7 @@ def run_ntis_pipeline(
         "prior_rd_axes": prior_rd_axes,
         "diagnostics": {"technology_relevance": {
             "owned_technologies": gate.owned, "requested_technologies": gate.requested,
-            "checks": checks,
+            "checks": checks, "llm_usage": gate.stats,
         }},
         "status": "ok" if related_projects else "no_matches",
         "message": "관련 과제를 찾았습니다." if related_projects else "관련 NTIS 과제가 없습니다.",

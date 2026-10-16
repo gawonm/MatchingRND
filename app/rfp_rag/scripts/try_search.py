@@ -39,7 +39,8 @@ def load_index(backend):
 def progress_llm(verbose=False):
     from app.gap_analysis import OpenAIStructuredLLM
 
-    client = OpenAIStructuredLLM(model=os.getenv('RFP_RELEVANCE_MODEL', 'gpt-4o-mini'))
+    client = OpenAIStructuredLLM(model=os.getenv('RFP_RELEVANCE_MODEL', 'gpt-4o-mini'),
+                               cache_dir=PROJECT_ROOT / 'storage/llm_cache/rfp_relevance')
     calls = 0
 
     def judge(messages, response_model):
@@ -47,15 +48,22 @@ def progress_llm(verbose=False):
         calls += 1
         if verbose:
             payload = json.loads(messages[-1]['content'])
+            batch_count = len(payload.get('jobs', []))
+            if batch_count:
+                payload = payload['jobs'][0]['input']
             name = payload['technologies'][0]['name']
-            print(f'  LLM 원문 비교 {calls}: {name}', flush=True)
+            suffix = f' (후보 {batch_count}개)' if batch_count else ''
+            print(f'  LLM 원문 비교 {calls}: {name}{suffix}', flush=True)
         return client(messages, response_model)
 
+    judge.usage = client.usage
     return judge
 
 
 def show_result(result):
     checks = result['diagnostics']['technology_relevance']['checks']
+    usage = result['diagnostics']['technology_relevance'].get('llm_usage', {})
+    print(f"관련성 검증 API 호출 {usage.get('api_calls', 0)}회 / 캐시 재사용 {usage.get('cache_hits', 0)}회")
     rejected = sum(not check['accepted'] for check in checks.values())
     print(f"\nRFP 과제 후보 {len(result['hits'])}건 / 관련성 검토 {len(checks)}건 / 제외 {rejected}건")
     if not result['hits']:
