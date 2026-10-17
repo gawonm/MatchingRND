@@ -1,0 +1,132 @@
+:root {
+  min-height: 100vh;
+  --accent: #5942e8;
+  --accent-hover: #4734c9;
+  --accent-soft: #f1eefe;
+  --line: #e9e9f0;
+  --ink: #20212b;
+}
+
+body {
+  margin: 0;
+  background: #f8f9fc;
+  color: var(--ink);
+  font-family: "Pretendard", system-ui, "Segoe UI", "Malgun Gothic", sans-serif;
+  min-width: 302px;
+}
+
+.app-title { color: var(--ink); }
+.accent-text { color: var(--accent); }
+.badge-accent { background: var(--accent); color: #fff; }
+
+.btn-primary {
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-bg: var(--accent-hover);
+  --bs-btn-hover-border-color: var(--accent-hover);
+  --bs-btn-active-bg: var(--accent-hover);
+  --bs-btn-active-border-color: var(--accent-hover);
+}
+
+.btn-accent,
+.btn-accent-outline {
+  --bs-btn-border-color: var(--accent);
+  border-radius: 8px;
+}
+.btn-accent {
+  --bs-btn-bg: var(--accent);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--accent-hover);
+  --bs-btn-hover-border-color: var(--accent-hover);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--accent-hover);
+  --bs-btn-active-border-color: var(--accent-hover);
+  --bs-btn-active-color: #fff;
+}
+.btn-accent-outline {
+  --bs-btn-bg: #fff;
+  --bs-btn-color: var(--accent);
+  --bs-btn-hover-bg: var(--accent-soft);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-hover-color: var(--accent);
+  --bs-btn-active-bg: var(--accent-soft);
+  --bs-btn-active-border-color: var(--accent);
+  --bs-btn-active-color: var(--accent);
+}
+
+/* 카드: 그림자 대신 얇은 테두리 */
+.app-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: none;
+}
+
+.project-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  cursor: pointer;
+  color: inherit;
+}
+.project-card:hover { border-color: var(--accent); }
+.project-card-selected {
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+}
+
+.gap-item {
+  display: block;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: inherit;
+}
+.gap-item:hover { border-color: var(--accent); }
+.gap-item-selected {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+}
+
+.evidence-notice {
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.evidence-block {
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+}
+
+.badge {
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.4em 0.75em;
+}
+
+/* Muted semantic colors keep statuses distinct within the lavender workspace. */
+.badge.bg-status-covered { background-color: #e5efeb; color: #3d6254; }
+.badge.bg-status-partial { background-color: #f3eddf; color: #776035; }
+.badge.bg-status-gap { background-color: #f3e6ea; color: #875362; }
+.badge.bg-status-unknown { background-color: #eceaf2; color: #655f78; }
+.status-filter {
+  --bs-btn-color: #6d657d;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #e4dfed;
+  --bs-btn-hover-color: #5f507c;
+  --bs-btn-hover-bg: #f4f0fa;
+  --bs-btn-hover-border-color: #cec3df;
+  --bs-btn-active-color: #5f507c;
+  --bs-btn-active-bg: #eae3f5;
+  --bs-btn-active-border-color: #c6b8dc;
+  --bs-btn-focus-shadow-rgb: 161, 139, 222;
+  border-radius: 8px;
+}
+.status-filter-selected {
+  --bs-btn-color: #5f507c;
+  --bs-btn-bg: #eae3f5;
+  --bs-btn-border-color: #c6b8dc;
+  font-weight: 600;
+}

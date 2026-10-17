@@ -280,9 +280,9 @@ def _validated_report(report: GapReport, evidence: list[EvidenceRecord], warning
 
 def render_answer(state: AnalysisState, report: GapReport, claims: list[ClaimCheck],
                   evidence: list[EvidenceRecord], warnings: list[str]) -> str:
-    from app.answer_format import render_answer as render_formatted_answer
+    from app.answer_format import render_answer as render_validated_answer
 
-    return render_formatted_answer(state, report, claims, evidence, warnings)
+    return render_validated_answer(state, report, claims, evidence, warnings)
 
 
 def generate_final_answer(state: AnalysisState, report: GapReport, *, llm: StructuredLLM | None = None,

@@ -149,9 +149,9 @@ class GapAnalysisRuleTests(unittest.TestCase):
 
     def test_company_partial_is_partial_even_with_external_full(self):
         report, _ = self.run_single({
-            ("센서 융합", "SLAM 기반 자율주행"): ("partial", "SLAM"),
+            ("센서 융합", "카메라 센서 융합 모듈"): ("partial", "센서 융합"),
             ("센서 융합", "센서 융합"): ("full", "센서 융합"),
-        })
+        }, owned=("카메라 센서 융합 모듈",))
         item = report.items[0]
         self.assertEqual(item.label, GapLabel.PARTIAL)
         self.assertEqual(item.external[0].coverage, "full")
@@ -167,6 +167,38 @@ class GapAnalysisRuleTests(unittest.TestCase):
         self.assertFalse(item.external[0].verified)
         self.assertEqual(item.label, GapLabel.RND_NEEDED)
         self.assertEqual(item.policy_check, ["국가 R&D 과제 참여·수행 조건 확인"])
+
+    def test_s01_s02_incidental_external_overlap_is_rejected(self):
+        cases = [
+            ("중온 열원용 고효율 터빈 개발", "연소로의 열회수장치",
+             "초고온 배가스 폐열을 회수하기 위한 고효율 열회수장치"),
+            ("발전 전력의 소내 재활용을 통한 에너지 저감량 검증", "연소로의 열회수장치",
+             "용융염으로 배가스 현열을 회수하여 증기 생산에 활용"),
+            ("위험도 기반 제설 경로 계획 소프트웨어 설계", "제설기용 삽날의 노면 접지압력 조정장치",
+             "제설기 삽날과 노면의 접지압력을 일정하게 유지"),
+            ("보더링 압력 스트로크 정렬 조건 제어변수 보정", "제설기용 삽날의 노면 접지압력 조정장치",
+             "압력조정수단으로 제설기 삽날의 접지압력을 조정"),
+        ]
+        for required, offered, quote in cases:
+            with self.subTest(required=required):
+                rfp = rfp_candidate("rfp-1", "과제", [required])
+                external = tech_element(offered, "pub", "pub-1", quote)
+                llm = FakeLLM({"과제": [requirement(required, required)]},
+                              {(required, offered): ("full", quote)})
+                item = run_gap_analysis(make_state([], [rfp], external=[external]), llm=llm).items[0]
+                self.assertFalse(item.external[0].verified)
+                self.assertEqual(item.label, GapLabel.RND_NEEDED)
+
+    def test_specific_external_function_and_target_still_match(self):
+        required = "제설 작업부 노면 접지압력 조정"
+        offered = "제설기용 삽날의 노면 접지압력 조정장치"
+        quote = "제설기 삽날과 노면의 접지압력을 일정하게 유지하고 조정"
+        rfp = rfp_candidate("rfp-1", "과제", [required])
+        llm = FakeLLM({"과제": [requirement(required, required)]}, {(required, offered): ("full", quote)})
+        item = run_gap_analysis(make_state([], [rfp], external=[tech_element(offered, "pub", "pub-1", quote)]),
+                                llm=llm).items[0]
+        self.assertTrue(item.external[0].verified)
+        self.assertEqual(item.label, GapLabel.EXTERNAL)
 
     def test_hallucinated_rfp_quote_is_insufficient_without_alignment(self):
         report, llm = self.run_single({}, quote="RFP에 없는 요구")
