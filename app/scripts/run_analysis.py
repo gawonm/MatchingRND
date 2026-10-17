@@ -1,6 +1,8 @@
 """Run retrieval, LLM Gap analysis, and final-answer generation."""
 from __future__ import annotations
 
+from app.common.llm_config import DEFAULT_LLM_MODEL
+
 import argparse
 import json
 from datetime import datetime, timezone, timedelta
@@ -24,7 +26,7 @@ def main(argv=None) -> int:
     parser.add_argument("--owned", action="append", default=[], help="보유기술 (여러 번 지정 가능)")
     parser.add_argument("--policy-question")
     parser.add_argument('--backend', choices=('local','supabase'), default='supabase', help='검색 저장소. Supabase는 사전 적재가 필요합니다.')
-    parser.add_argument("--model", default="gpt-4o-mini", help="Gap LLM·답변 생성·의미 검토 모델")
+    parser.add_argument("--model", default=DEFAULT_LLM_MODEL, help="Gap LLM·답변 생성·의미 검토 모델")
     parser.add_argument("--template-only", action="store_true", help="최종 답변 LLM 호출 없이 표·근거 출력")
     parser.add_argument("--output-dir", help="비어 있는 결과 폴더")
     parser.add_argument("--parse-only", action="store_true", help="자연어 입력 해석만 확인하고 검색은 실행하지 않음")

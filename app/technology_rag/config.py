@@ -8,6 +8,8 @@ app/technology_rag/configs/technology_rag.yaml → 타입이 있는 설정 객�
 
 from __future__ import annotations
 
+from app.common.llm_config import DEFAULT_LLM_MODEL
+
 from pathlib import Path
 from typing import Literal
 
@@ -88,7 +90,7 @@ class LLMConfig(BaseModel):
     """생성 단계(검색된 문서 → 답변 + 검증된 근거)."""
 
     provider: Literal["openai"] = "openai"
-    model: str = "gpt-5.6-luna"
+    model: str = DEFAULT_LLM_MODEL
     #: B와 같거나 유사한지 문서별로 판정할 기술 수 (검색 상위 N건, 문서 전체를 LLM 에게 준다). 많을수록 비용이 늘어난다
     judge_docs: int = Field(default=8, ge=1, le=20)
     #: 매칭 근거(인용문+문서명)가 B·검색어와 공유해야 하는 분야 고유 글자쌍 수의 하한. 0 이면 검사하지 않는다

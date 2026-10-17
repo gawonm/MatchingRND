@@ -4,6 +4,12 @@
 [브랜치 통합 기록](docs/BRANCH_INTEGRATION_20261017.md)에 정리했습니다.
 API와 화면 실행은 [프런트엔드 안내](frontend/README.md)를 참고하세요.
 
+LLM 기본 모델은 입력 해석·기술나눔·NTIS·RFP·Gap·최종 답변 및
+학습 데이터 생성·평가 모두 `gpt-5.6-luna`입니다.
+공통 기본값은 `app/common/llm_config.py`에서 관리합니다.
+명시적인 CLI `--model`, `NTIS_LLM_MODEL`, `NTIS_RELEVANCE_MODEL`,
+`RFP_RELEVANCE_MODEL`, 기술 RAG YAML 설정은 기본값보다 우선합니다.
+
 ## 통합 Orchestrator
 
 `app/orchestrator.py`의 `RagOrchestrator`가 Technology → NTIS → RFP를 연결합니다.

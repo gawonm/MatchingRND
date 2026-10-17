@@ -3,6 +3,8 @@
 This checks search relevance, not technical coverage or funding eligibility.
 Retrieval scores cannot establish that both sides of a technology pair match.
 """
+
+from app.common.llm_config import DEFAULT_LLM_MODEL
 import json
 import os
 from typing import Literal
@@ -132,7 +134,7 @@ class TechnologyRelevanceGate:
         if self.llm is None:
             from app.gap_analysis import OpenAIStructuredLLM
 
-            self.llm = OpenAIStructuredLLM(model=os.getenv('RFP_RELEVANCE_MODEL', 'gpt-4o-mini'),
+            self.llm = OpenAIStructuredLLM(model=os.getenv('RFP_RELEVANCE_MODEL', DEFAULT_LLM_MODEL),
                 cache_dir=PROJECT_ROOT / 'storage/llm_cache/rfp_relevance')
         return self.llm
 

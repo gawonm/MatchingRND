@@ -1,6 +1,6 @@
 """통합 흐름 스모크 테스트 (Supabase + OpenAI 필요).
 
-실행: python -X utf8 -m tests.integration_e2e [--template-only] [--query "..."] [--model gpt-4o-mini]
+실행: python -X utf8 -m tests.integration_e2e [--template-only] [--query "..."] [--model gpt-5.6-luna]
 
 자연어 질문 → 입력 해석 → Technology → NTIS → RFP → Gap 분석 → 최종 답변까지 한 번에 돌리고,
 단계마다 결과 요약과 PASS/FAIL 을 출력한다. 결과 파일은 outputs/integration_e2e_<시각>/ 에 저장된다.
@@ -8,6 +8,8 @@
 마지막에 단계별 소요 시간·LLM 호출 수·토큰 사용량 표를 출력한다 (OpenAI SDK 호출을 직접 세므로 모든 단계가 포함된다).
 """
 from __future__ import annotations
+
+from app.common.llm_config import DEFAULT_LLM_MODEL
 
 import argparse
 import functools
@@ -140,7 +142,7 @@ def show_module(name: str, module) -> None:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--query", default=QUERY)
-    ap.add_argument("--model", default="gpt-4o-mini")
+    ap.add_argument("--model", default=DEFAULT_LLM_MODEL)
     ap.add_argument("--template-only", action="store_true", help="최종 답변 LLM 호출 없이 표·근거만 출력")
     ap.add_argument("--backend", choices=("local", "supabase"), default="supabase")
     args = ap.parse_args(argv)

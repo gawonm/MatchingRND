@@ -20,6 +20,8 @@ RFP 요구기술을 기술요소 축으로 삼아 기업 보유기술, 기술나
 """
 from __future__ import annotations
 
+from app.common.llm_config import DEFAULT_LLM_MODEL
+
 import hashlib
 import json
 import math
@@ -207,7 +209,7 @@ class OpenAIStructuredLLM:
     프롬프트나 입력이 바뀌면 키가 달라져 다시 호출한다. 여러 스레드에서 동시에 호출할 수 있다.
     """
 
-    def __init__(self, model: str = "gpt-4o-mini", *, temperature: float = 0.0,
+    def __init__(self, model: str = DEFAULT_LLM_MODEL, *, temperature: float | None = None,
                  seed: int | None = 0, client: Any = None, cache_dir: str | Path | None = None):
         self.model = model
         self.temperature = temperature
@@ -247,8 +249,9 @@ class OpenAIStructuredLLM:
 
         kwargs: dict[str, Any] = dict(
             model=self.model, messages=messages, response_format=response_model,
-            temperature=self.temperature,
         )
+        if self.temperature is not None:
+            kwargs["temperature"] = self.temperature
         if self.seed is not None:
             kwargs["seed"] = self.seed
         with self._lock:  # 클라이언트 생성은 한 번만

@@ -3,6 +3,8 @@
 Run: python -m app.rfp_rag.scripts.try_search
 No Technology/NTIS retrieval, Gap analysis, or answer generation is run.
 """
+
+from app.common.llm_config import DEFAULT_LLM_MODEL
 import argparse
 import json
 import os
@@ -39,7 +41,7 @@ def load_index(backend):
 def progress_llm(verbose=False):
     from app.gap_analysis import OpenAIStructuredLLM
 
-    client = OpenAIStructuredLLM(model=os.getenv('RFP_RELEVANCE_MODEL', 'gpt-4o-mini'),
+    client = OpenAIStructuredLLM(model=os.getenv('RFP_RELEVANCE_MODEL', DEFAULT_LLM_MODEL),
                                cache_dir=PROJECT_ROOT / 'storage/llm_cache/rfp_relevance')
     calls = 0
 

@@ -1,3 +1,4 @@
+from app.common.llm_config import DEFAULT_LLM_MODEL
 import json
 import os
 from pathlib import Path
@@ -15,7 +16,7 @@ MANIFEST_PATH = INDEX_DIR / "manifest.json"
 RERANKER_MODEL = os.getenv("NTIS_RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
 # 기본은 꺼짐(RRF 순위 사용). 켜려면 NTIS_RERANK_ENABLED=true
 RERANK_ENABLED = os.getenv("NTIS_RERANK_ENABLED", "false").strip().lower() in {"1", "true", "yes", "on"}
-LLM_MODEL = os.getenv("NTIS_LLM_MODEL", "gpt-4.1-mini")
+LLM_MODEL = os.getenv("NTIS_LLM_MODEL", DEFAULT_LLM_MODEL)
 
 DENSE_K = int(os.getenv("NTIS_DENSE_K", "30"))
 BM25_K = int(os.getenv("NTIS_BM25_K", "30"))

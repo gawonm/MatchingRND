@@ -1,6 +1,8 @@
 """Run the LLM Gap analysis over one retrieval snapshot and generate an answer."""
 from __future__ import annotations
 
+from app.common.llm_config import DEFAULT_LLM_MODEL
+
 from collections.abc import Callable
 from pathlib import Path
 
@@ -30,7 +32,7 @@ def run_integrated_analysis(
     orchestrator: RagOrchestrator | None = None,
     modes=("llm",),
     output_dir: str | Path | None = None,
-    model: str = "gpt-4o-mini",
+    model: str = DEFAULT_LLM_MODEL,
     template_only: bool = False,
     embed=None,
     llm_factory: Callable | None = None,

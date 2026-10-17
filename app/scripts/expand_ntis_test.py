@@ -3,6 +3,8 @@
 Plan source groups and label rules before any model scoring. Reuse the selected
 epoch-1 adapter and exact frozen corpus vectors; only encode new questions.
 """
+
+from app.common.llm_config import DEFAULT_LLM_MODEL
 import argparse
 import hashlib
 import json
@@ -170,7 +172,7 @@ def validate(job,raw):
             context_term=context,source_term=q.source_term,need_statement=need,
             source_group_id=job['source_group_id'],science_medium=job['science_medium'],
             evidence=[dict(document_id=i,text=a['text']) for i in a['relevant_document_ids']],
-            generator='gpt-4o-mini',synthetic=True,review_status='pending_human_review'))
+            generator=DEFAULT_LLM_MODEL,synthetic=True,review_status='pending_human_review'))
     return result,rejected
 
 
@@ -191,8 +193,8 @@ def generate(output=OUTPUT,workers=5):
         request=dict(title=job['title'],source_document_id=job['source_document_id'],
             anchors=[{k:a[k] for k in ('anchor_id','field','text')} for a in job['anchors']],context_options=context_options(job['title']))
         try:
-            r=client.responses.parse(model='gpt-4o-mini',input=[dict(role='system',content=PROMPT),
-                dict(role='user',content=json.dumps(request,ensure_ascii=False))],text_format=Draft,temperature=.4,max_output_tokens=2000)
+            r=client.responses.parse(model=DEFAULT_LLM_MODEL,input=[dict(role='system',content=PROMPT),
+                dict(role='user',content=json.dumps(request,ensure_ascii=False))],text_format=Draft,max_output_tokens=2000)
             if r.output_parsed is None:raise ValueError('No parsed draft')
             record=dict(raw=r.output_parsed.model_dump(),usage=r.usage.model_dump(),error=None)
         except Exception as e:record=dict(error=type(e).__name__,code=getattr(e,'code',None),status=getattr(e,'status_code',None))

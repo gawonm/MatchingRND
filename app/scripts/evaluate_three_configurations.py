@@ -1,6 +1,8 @@
 """Isolated, resumable three-configuration end-to-end experiment. Never writes to DB."""
 from __future__ import annotations
 
+from app.common.llm_config import DEFAULT_LLM_MODEL
+
 import argparse
 import contextvars
 import hashlib
@@ -28,8 +30,8 @@ FOLDERS = {m: ROOT / 'data/experiments' / n for m, n in {
 CONFIGS = {'A': set(), 'B': {'rfp'}, 'C': {'rfp', 'technology', 'ntis'}}
 ACTIVE = contextvars.ContextVar('experiment_configuration', default='A')
 MODULE = contextvars.ContextVar('experiment_module', default='policy')
-GENERATOR = 'gpt-4o-mini'
-JUDGE = 'gpt-4.1-mini'
+GENERATOR = DEFAULT_LLM_MODEL
+JUDGE = DEFAULT_LLM_MODEL
 
 
 def key(value):
@@ -120,7 +122,7 @@ def prepare():
     dump(OUT / 'unresolved_ids.json', unresolved)
     dump(OUT / 'benchmark.json', dict(questions=questions, facts=facts, gaps=gaps, qrels=qrels, applied_decisions=decisions))
     dump(OUT / 'protocol.json', dict(configurations={k: sorted(v) for k, v in CONFIGS.items()},
-        generation_model=GENERATOR, judge_model=JUDGE, temperature=0, seed=0, repetitions=1,
+        generation_model=GENERATOR, judge_model=JUDGE, temperature=None, seed=0, repetitions=1,
         search='Existing hybrid/relevance/cascade pipelines; exact cosine local replay of frozen DB snapshots',
         policy='Base-model policy retrieval retained; common technology-transfer legal question added when parser omits policy intent',
         model_selection='Previous Validation-selected adapters; no new training or selection',
@@ -350,13 +352,13 @@ class Runtime:
         retrieval.ntis_runtime = lambda: ntis_runtime
         from app.technology_rag.config import load_config
         from app.technology_rag.pipeline import TechnologyRagPipeline
-        cfg = load_config(); cfg.index.backend = 'supabase'; cfg.llm.model = GENERATOR; cfg.llm.temperature = 0
+        cfg = load_config(); cfg.index.backend = 'supabase'; cfg.llm.model = GENERATOR; cfg.llm.temperature = None
         self.technology = TechnologyRagPipeline.from_config(cfg)
         from app.ntis_rag.generation import analysis
         client = self.api
         class TextLLM:
             def invoke(self, prompt):
-                completion = client.chat.completions.create(model=GENERATOR, temperature=0, seed=0,
+                completion = client.chat.completions.create(model=GENERATOR, seed=0,
                     messages=[dict(role='user', content=prompt)])
                 return SimpleNamespace(content=completion.choices[0].message.content)
         analysis.llm = TextLLM()
@@ -638,7 +640,7 @@ required_facts는 제공 fact_id마다 정확히 한 번 평가한다. covered/p
             messages = [dict(role='system', content=system + '\n이번 호출의 단일 answer만 평가하세요. answer_quote는 GT나 supplied_evidence가 아닌 answer 본문의 정확한 연속 문자열이어야 합니다.'),
                         dict(role='user', content=json.dumps({**payload, 'answer': answer}, ensure_ascii=False))]
             for attempt in range(3):
-                a = api.chat.completions.parse(model=JUDGE, temperature=0, seed=0, response_format=Grading,
+                a = api.chat.completions.parse(model=JUDGE, seed=0, response_format=Grading,
                     messages=messages).choices[0].message.parsed
                 errors = []
                 if a.answer_id != answer['answer_id']: errors.append('answer_id mismatch')
@@ -743,7 +745,7 @@ def summarize():
     report += ['', '## 실험 조건과 한계', '',
         '- 현재 DB의 고정 스냅샷을 로컬에서 재생했습니다. 실제 Supabase ANN 검색과 완전히 같은 순위를 보장하는 테스트는 아닙니다.',
         '- 문서·청킹·키워드 검색·리랭킹 및 관련성 필터는 공통이며, 의미 검색의 질문/문서 임베딩만 구성별로 바꿨습니다.',
-        '- 모든 생성 단계는 gpt-4o-mini, 자동 채점은 gpt-4.1-mini입니다. 법령은 기존 모델로 검색했고, 파서가 생략한 경우 공통 기술이전 법령 질문을 추가했습니다.',
+        f'- 모든 생성 단계와 자동 채점은 {GENERATOR}입니다. 법령은 기존 모델로 검색했고, 파서가 생략한 경우 공통 기술이전 법령 질문을 추가했습니다.',
         '- 각 구성은 1회 생성했습니다. 동일한 입력·모델·프롬프트는 캐시를 공유해 임의 생성 차이를 줄였습니다. 실패와 인용 탈락 기록도 남겼습니다.',
         '- 평가 질문에 학습 과제가 포함될 수 있습니다. 별도 학습 노출 진단과 pooling 목록을 함께 확인해야 하며, 일반화 성능으로 해석하지 마세요.',
         '- 수정 결정 2건을 반영했으며, 결정되지 않은 권고로 qrels나 정답을 바꾸지 않았습니다. 관련성 목록 미완성으로 새로 찾은 타당한 문서가 0점 처리될 수 있습니다.',

@@ -3,6 +3,8 @@
 Never generate Test questions. Quotes are copied by code from frozen sources;
 the model chooses source IDs rather than inventing evidence strings.
 """
+
+from app.common.llm_config import DEFAULT_LLM_MODEL
 import argparse
 import hashlib
 import json
@@ -135,7 +137,7 @@ def validate_draft(job, raw):
             query=q.query.strip(),style=q.style,split=job['split'],relevant_document_ids=[job['positive']['document_id']],
             evidence=[dict(document_id=job['positive']['document_id'],anchor_id=q.anchor_id,text=quote)],
             negative_candidates=[dict(document_id=i,quote=candidates[i]['anchors'][0]['text']) for i in dict.fromkeys(q.negative_document_ids)],
-            source_group_id=job['source_group_id'],synthetic=True,review_status='pending_human_review',generator='gpt-4o-mini'))
+            source_group_id=job['source_group_id'],synthetic=True,review_status='pending_human_review',generator=DEFAULT_LLM_MODEL))
     return accepted
 
 
@@ -165,9 +167,9 @@ def generate(output=OUTPUT,workers=5):
         if is_train:
             active_prompt+='\n이 요청의 split은 train이다. 후보 중 해당 질문과 대상/기능이 다른 문서를 반드시 1~2개 선택한다. title만 보지 말고 anchor를 비교한다.'
         try:
-            response=client.responses.parse(model='gpt-4o-mini',input=[{'role':'system','content':active_prompt},
+            response=client.responses.parse(model=DEFAULT_LLM_MODEL,input=[{'role':'system','content':active_prompt},
                 {'role':'user','content':json.dumps(payload,ensure_ascii=False)}],text_format=TrainingDraft if is_train else Draft,
-                temperature=.3,max_output_tokens=2200)
+                max_output_tokens=2200)
             if response.output_parsed is None: raise ValueError('No parsed draft')
             raw=response.output_parsed.model_dump()
             if reused:
@@ -198,7 +200,7 @@ def generate(output=OUTPUT,workers=5):
     for split in ('train','validation'):
         dump(output/f'{split}_questions.draft.json',sorted([q for q in results if q['split']==split],key=lambda q:q['query_id']))
     dump(output/'generation_failures.json',failures)
-    dump(output/'generation_manifest.json',dict(generator='gpt-4o-mini',usage=usage,
+    dump(output/'generation_manifest.json',dict(generator=DEFAULT_LLM_MODEL,usage=usage,
         train_queries=sum(q['split']=='train' for q in results),validation_queries=sum(q['split']=='validation' for q in results),
         failed_jobs=len(failures),human_reviewed_labels=0,test_contents_used=False))
     print('DONE',usage,flush=True)

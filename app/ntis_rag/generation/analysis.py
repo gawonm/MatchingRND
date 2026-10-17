@@ -11,7 +11,7 @@ from langchain_openai import ChatOpenAI
 
 from ..config import LLM_MODEL
 
-llm = ChatOpenAI(model=LLM_MODEL, temperature=0) if os.getenv("OPENAI_API_KEY") else None
+llm = ChatOpenAI(model=LLM_MODEL) if os.getenv("OPENAI_API_KEY") else None
 _calls = ContextVar('ntis_analysis_llm_calls', default=None)
 
 
