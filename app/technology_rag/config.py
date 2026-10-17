@@ -99,8 +99,8 @@ class LLMConfig(BaseModel):
     seed: int | None = 0                # 재현성 (best-effort)
     max_output_tokens: int = 3000       # 비용 상한. 매칭된 문서만 출력하므로 보통 ~800 토큰
     #: USD / 1M 토큰. 요금은 바뀔 수 있으니 OpenAI 요금표를 확인할 것 (비용 추정에만 쓰인다)
-    price_per_1m_input: float = 0.15
-    price_per_1m_output: float = 0.60
+    price_per_1m_input: float = 0.20
+    price_per_1m_output: float = 1.20
 
 
 class TechnologyRagConfig(BaseModel):

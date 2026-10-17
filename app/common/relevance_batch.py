@@ -26,12 +26,17 @@ BATCH_PROMPT = """다음 jobs는 서로 독립적인 후보 원문에 대한 동
 
 
 class BatchedRelevanceLLM:
-    def __init__(self, llm_factory, *, batch_size=5, max_chars=24000):
+    def __init__(self, llm_factory, *, batch_size=5, max_chars=24000,
+                 max_tokens=None, count_tokens=None, batch_prompt=BATCH_PROMPT):
         if batch_size < 1 or max_chars < 1:
             raise ValueError('관련성 검증 batch_size와 max_chars는 1 이상이어야 합니다.')
         self.factory = llm_factory
         self.client = None
         self.batch_size, self.max_chars = batch_size, max_chars
+        if max_tokens is not None and (max_tokens < 1 or count_tokens is None):
+            raise ValueError('토큰 예산과 토큰 계산 함수가 필요합니다.')
+        self.max_tokens, self.count_tokens = max_tokens, count_tokens
+        self.batch_prompt = batch_prompt
         self.requests = self.batches = self.singles = self.fallbacks = 0
         self.api_calls = self.cache_hits = 0
 
@@ -60,11 +65,28 @@ class BatchedRelevanceLLM:
         return {'llm_requests': self.requests, 'api_calls': self.api_calls,
                 'cache_hits': self.cache_hits, 'batch_requests': self.batches,
                 'single_requests': self.singles, 'fallback_requests': self.fallbacks,
-                'batch_size': self.batch_size, 'max_chars': self.max_chars}
+                'batch_size': self.batch_size, 'max_chars': self.max_chars,
+                'max_tokens': self.max_tokens}
 
     def map(self, requests, model):
-        """Requests in one map must concern one technology and the same system prompt."""
+        """Requests must use the same technology list and system prompt."""
         results, group, size = [], [], 0
+
+        def batch_messages(items):
+            return [
+                {'role': 'system', 'content': items[0][0]['content'] + '\n' + self.batch_prompt},
+                {'role': 'user', 'content': json.dumps({'jobs': [
+                    {'job_index': i, 'input': json.loads(request[-1]['content'])}
+                    for i, request in enumerate(items)
+                ]}, ensure_ascii=False)},
+            ]
+
+        def over_budget(items):
+            messages = items[0] if len(items) == 1 else batch_messages(items)
+            schema = model if len(items) == 1 else _batch_model(model)
+            # Count the serialized envelope and schema, with room for chat framing.
+            text = json.dumps({'messages': messages, 'schema': schema.model_json_schema()}, ensure_ascii=False)
+            return self.count_tokens(text) + 2048 > self.max_tokens
 
         def flush():
             nonlocal group, size
@@ -73,13 +95,7 @@ class BatchedRelevanceLLM:
             if len(group) == 1:
                 results.append(self._call(group[0], model))
             else:
-                messages = [
-                    {'role': 'system', 'content': group[0][0]['content'] + '\n' + BATCH_PROMPT},
-                    {'role': 'user', 'content': json.dumps({'jobs': [
-                        {'job_index': i, 'input': json.loads(request[-1]['content'])}
-                        for i, request in enumerate(group)
-                    ]}, ensure_ascii=False)},
-                ]
+                messages = batch_messages(group)
                 batch_model = _batch_model(model)
                 try:
                     raw = self._call(messages, batch_model, batch=True)
@@ -96,7 +112,9 @@ class BatchedRelevanceLLM:
 
         for request in requests:
             length = len(request[-1]['content'])
-            if group and (len(group) == self.batch_size or size + length > self.max_chars):
+            exceeds = (over_budget(group + [request]) if self.max_tokens is not None
+                       else size + length > self.max_chars)
+            if group and (len(group) == self.batch_size or exceeds):
                 flush()
             group.append(request)
             size += length

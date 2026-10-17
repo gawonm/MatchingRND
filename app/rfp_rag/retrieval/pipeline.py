@@ -4,6 +4,7 @@ from app.common.validation import _positive_int
 from app.common.retrieval import rrf, _retrieve, _ranking_rows
 from ..config import CONTEXT_SECTIONS, TECHNICAL_SECTIONS
 from .eligibility import TechnologyRelevanceGate
+from .context_selection import filter_candidates
 
 def _task_requirements(task):
     """검색된 과제의 명시적 요구항목 원문을 위치와 함께 반환합니다."""
@@ -18,7 +19,9 @@ def _task_requirements(task):
     }
 
 def search(index, question, *, top_k=None, context_tokens=None, run_reranker=False,
-           filters=None, reranker=None, relevance_llm=None):
+           filters=None, reranker=None, relevance_llm=None,
+           relevance_context_mode=None, relevance_batch_mode=None,
+           candidate_order=None, candidate_window=None):
     """RFP 후보와 요구사항 원문·문맥·출처·검증된 검색 순위를 반환합니다.
 
     question은 문자열 또는 build_query(..., return_details=True)의 결과입니다.
@@ -64,28 +67,22 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
             raise ValueError('리랭커의 점수 개수 또는 값이 올바르지 않습니다.')
         reranker_scores = {cid: float(score) for (cid, _), score in zip(ranking, scores)}
         ranking.sort(key=lambda pair: -reranker_scores[pair[0]])
-    gate = TechnologyRelevanceGate(question, relevance_llm)
+    gate = TechnologyRelevanceGate(question, relevance_llm,
+                                  context_mode=relevance_context_mode, batch_mode=relevance_batch_mode)
     tasks_by_id = index.get('tasks_by_id') or {
         task['task_id']: task for task in index['dataset'].get('tasks', [])
     }
-    relevance_checks = {}
-    selected, seen_tasks, candidates = [], set(), []
+    seen_tasks, candidates = set(), []
     for cid, score in ranking:
         task_id = chunks[cid].metadata['task_id']
         if task_id not in seen_tasks:
             seen_tasks.add(task_id)
             candidates.append((cid, score))
-    for offset in range(0, len(candidates), gate.runner.batch_size):
-        batch = candidates[offset:offset + gate.runner.batch_size]
-        checks = gate.check_many([tasks_by_id.get(chunks[cid].metadata['task_id'], {}) for cid, _ in batch]) if gate.active else [None] * len(batch)
-        for (cid, score), check in zip(batch, checks):
-            task_id = chunks[cid].metadata['task_id']
-            if check is not None:
-                relevance_checks[task_id] = check
-            if len(selected) < top_k and (check is None or check['accepted']):
-                selected.append((cid, score))
-        if len(selected) >= top_k:
-            break
+    candidate_order = candidate_order or os.getenv('RFP_RELEVANCE_CANDIDATE_ORDER', 'retrieval')
+    if candidate_window is None and os.getenv('RFP_RELEVANCE_CANDIDATE_WINDOW'):
+        candidate_window = int(os.environ['RFP_RELEVANCE_CANDIDATE_WINDOW'])
+    selected, relevance_checks, selection_diagnostics = filter_candidates(
+        candidates, chunks, tasks_by_id, gate, top_k, order=candidate_order, window=candidate_window)
     if gate.active:
         accepted_tasks = {chunks[cid].metadata['task_id'] for cid, _ in selected}
         ranking = [(cid, score) for cid, score in ranking
@@ -179,6 +176,7 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
         'result_type': 'technical_candidate', 'filters': dict(filters or {}),
         'context_truncated': bool(skipped_ids), 'omitted_context_ids': sorted(skipped_ids),
         'diagnostics': {
+            'candidate_selection': selection_diagnostics,
             'technology_relevance': {'enabled': gate.active, 'checks': relevance_checks, 'llm_usage': gate.stats},
             'failed_files': index.get('failed_files', []),
             'excluded_files': index.get('excluded_files', []),

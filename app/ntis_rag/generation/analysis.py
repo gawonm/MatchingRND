@@ -157,7 +157,12 @@ evidence는 반드시 원문에 연속된 형태로 존재하는 짧은 구절�
 
 
 def extract_all_project_tech(related_projects: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    return [extract_project_tech(project, max_retries=1) for project in related_projects]
+    import sys
+    from .batched_extraction import extract_projects
+
+    return extract_projects(related_projects, sys.modules[__name__],
+        batch_size=int(os.getenv('NTIS_EXTRACTION_BATCH_SIZE', '1')),
+        max_chars=int(os.getenv('NTIS_EXTRACTION_MAX_CHARS', '24000')))
 
 
 # ==================================================

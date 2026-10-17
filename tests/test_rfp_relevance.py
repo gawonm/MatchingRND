@@ -45,8 +45,8 @@ def fixture(pairs):
         payload = json.loads(messages[-1]['content'])
         def judgment(data):
             task_id = data['sections'][0]['text'].split()[0]
-            technology_index = data['technologies'][0]['index']
-            return {'matches': [m for m in judgments[task_id] if m['technology_index'] == technology_index]}
+            indices = {technology['index'] for technology in data['technologies']}
+            return {'matches': [m for m in judgments[task_id] if m['technology_index'] in indices]}
         if 'jobs' in payload:
             return model(results=[{'job_index': job['job_index'], 'judgment': judgment(job['input'])}
                                   for job in payload['jobs']])
@@ -61,6 +61,12 @@ def question(**options):
 
 
 class RfpRelevanceTests(unittest.TestCase):
+    def setUp(self):
+        # Packing mechanics have dedicated tests; semantic fixtures stay offline.
+        token_count = patch('app.rfp_rag.retrieval.eligibility._count_tokens', side_effect=len)
+        token_count.start()
+        self.addCleanup(token_count.stop)
+
     def test_problem_only_B_never_disables_gate_or_uses_external_C_instead(self):
         details = build_query(['보유 A'], '요청 B', external_elements=[
             {'technology': '무관 C', 'quote': 'C 근거', 'source_id': 'c'}], return_details=True)
@@ -71,7 +77,7 @@ class RfpRelevanceTests(unittest.TestCase):
                 result = search_module_result(index, inputs, relevance_llm=llm)
             self.assertEqual(result.candidates, [])
             self.assertEqual(result.hits, [])
-            self.assertEqual(llm.call_count, 2)
+            self.assertEqual(llm.call_count, 1)
 
     def test_problem_only_B_allows_same_or_partial_with_verified_evidence(self):
         details = build_query(['보유 A'], '요청 B', return_details=True)
@@ -120,10 +126,11 @@ class RfpRelevanceTests(unittest.TestCase):
                             metadata={'page': 4, 'source': 'a.pdf'}),
         ]}}
         def llm(messages, model):
-            i = json.loads(messages[-1]['content'])['technologies'][0]['index']
+            indices = [t['index'] for t in json.loads(messages[-1]['content'])['technologies']]
             return model(matches=[dict(technology_index=i, reason='기능 대응', relation='same',
                                        section_index=0 if i == 0 else 2,
-                                       quote=quote if i == 0 else task['fields']['개발내용'][2].page_content)])
+                                       quote=quote if i == 0 else task['fields']['개발내용'][2].page_content)
+                                  for i in indices])
         check = TechnologyRelevanceGate(question(), llm).check(task)
         self.assertTrue(check['accepted'])
         spans = check['matches'][0]['verified_sections']
@@ -180,7 +187,7 @@ class RfpRelevanceTests(unittest.TestCase):
         self.assertEqual({s['task_id'] for s in result.extra['sources']}, accepted)
         for task_id in {'task-2', 'task-5', 'task-6', 'task-7', 'task-8'}:
             self.assertNotIn(task_id, result.extra['context'])
-        self.assertEqual(llm.call_count, 4)  # two technologies x two candidate batches
+        self.assertEqual(llm.call_count, 2)  # A/B together, two candidate batches
 
     def test_no_match_is_empty_even_when_retrievers_return_candidates(self):
         index, retrieved, llm, _ = fixture([('same', 'different'), ('different', 'similar')])
@@ -198,7 +205,7 @@ class RfpRelevanceTests(unittest.TestCase):
         with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
             result = search(index, question(), relevance_llm=llm, top_k=1)
         self.assertEqual([h['task_id'] for h in result['hits']], ['task-2'])
-        self.assertEqual(llm.call_count, 2)
+        self.assertEqual(llm.call_count, 1)
 
     def test_missing_forged_negative_and_duplicate_judgments_fail_closed(self):
         for mode in ('forged', 'missing', 'different', 'duplicate', 'insufficient'):
@@ -223,7 +230,15 @@ class RfpRelevanceTests(unittest.TestCase):
         with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
             result = search(index, question(), relevance_llm=llm)
         self.assertEqual([h['task_id'] for h in result['hits']], ['task-1'])
-        self.assertEqual(llm.call_count, 2)
+        self.assertEqual(llm.call_count, 1)
+
+    def test_joint_batch_cannot_borrow_evidence_from_another_task(self):
+        index, retrieved, llm, judgments = fixture([('same', 'same'), ('same', 'same')])
+        judgments['task-0'][1]['quote'] = judgments['task-1'][1]['quote']
+        with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
+            result = search(index, question(), relevance_llm=llm)
+        self.assertEqual([h['task_id'] for h in result['hits']], ['task-1'])
+        self.assertEqual(llm.call_count, 1)
 
     def test_query_roles_survive_string_api_and_expansion_does_not_replace_request(self):
         details = question(external_elements=[{'technology': '무관 C', 'quote': 'C 원문', 'source_id': 'c'}],
@@ -256,8 +271,8 @@ class RfpRelevanceTests(unittest.TestCase):
                         section_index=0, quote='원문') for i, relation in enumerate(
                             ['same', 'different', 'similar', 'different'])]
         def llm(messages, model):
-            i = json.loads(messages[-1]['content'])['technologies'][0]['index']
-            return model(matches=[matches[i]])
+            indices = [t['index'] for t in json.loads(messages[-1]['content'])['technologies']]
+            return model(matches=[matches[i] for i in indices])
         gate = TechnologyRelevanceGate(details, llm)
         task = {'fields': {'요구기술': [SimpleNamespace(page_content='원문', metadata={'page': 1})]}}
         self.assertFalse(gate.check(task)['accepted'])

@@ -99,6 +99,7 @@ class RelevanceBatchTests(unittest.TestCase):
         report = {}
         for batch_size in (1, 5):
             with patch.dict('os.environ', {'RFP_RELEVANCE_BATCH_SIZE': str(batch_size),
+                                           'RFP_RELEVANCE_BATCH_MODE': 'chars',
                                            'NTIS_RELEVANCE_BATCH_SIZE': str(batch_size)}):
                 index, retrieved, judge, _ = fixture([('same', 'different')] * 30 + [('same', 'same')] * 2)
                 with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
@@ -121,10 +122,31 @@ class RelevanceBatchTests(unittest.TestCase):
         self.assertEqual([c.doc_id for c in before_rfp.candidates], [c.doc_id for c in after_rfp.candidates])
         self.assertEqual(before_ntis['related_projects'], after_ntis['related_projects'])
         self.assertEqual(before_ntis['prior_rd_axes'], after_ntis['prior_rd_axes'])
-        for result, expected in ((before_rfp, 64), (after_rfp, 14)):
+        for result, expected in ((before_rfp, 32), (after_rfp, 7)):
             self.assertEqual(result.extra['diagnostics']['technology_relevance']['llm_usage']['api_calls'], expected)
         self.assertEqual(before_ntis['diagnostics']['llm_usage']['total'], 45)
         self.assertEqual(after_ntis['diagnostics']['llm_usage']['total'], 13)
+
+    def test_token_budget_counts_envelope_and_schema_without_truncating_sources(self):
+        reqs = requests(3)
+        reqs[0][-1]['content'] = json.dumps({'technology': 'A', 'source': 'x' * 100})
+        counted = []
+        def count(text):
+            counted.append(json.loads(text))
+            return len(text)
+        llm = Mock(side_effect=fake)
+        runner = BatchedRelevanceLLM(lambda: llm, max_chars=1,
+                                     max_tokens=3700, count_tokens=count)
+        result = runner.map(reqs, Judgment)
+        self.assertEqual([r.quote for r in result], ['x' * 100, '1', '2'])
+        self.assertTrue(all('messages' in row and 'schema' in row for row in counted))
+        self.assertLess(llm.call_count, 3)  # max_chars is inactive in token mode.
+
+    def test_oversized_single_is_preserved_and_next_source_is_separate(self):
+        llm = Mock(side_effect=fake)
+        runner = BatchedRelevanceLLM(lambda: llm, max_tokens=1, count_tokens=len)
+        self.assertEqual([r.quote for r in runner.map(requests(2), Judgment)], ['0', '1'])
+        self.assertEqual(llm.call_count, 2)
 
     def test_real_structured_client_reuses_disk_cache_and_invalidates_changed_source(self):
         parse = Mock()

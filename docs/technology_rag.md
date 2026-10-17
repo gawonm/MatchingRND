@@ -198,7 +198,7 @@ python -X utf8 -m tests.tech_rag 3 4      # 번호(0부터)로 일부만
 8. **LLM 호출이 2회로 늘어** 전체 분석 시간과 비용이 증가한다. 속도는 아직 측정하지 않았다.
 9. **`hits` 는 필터링하지 않는다.** `gap_analysis._candidate_pool` 은 `module.candidates` 를 순회하므로 탈락한 문서는 풀에 들어오지 않는다.
 10. 리랭커가 꺼져 있어 `hits[].rerank_score` 는 None이다. `final_rank` 정렬에는 영향이 없다.
-11. `price_per_1m_input/output` 이 이전 모델(gpt-4o-mini) 기준이라 `usage.cost_usd` 는 참고용이다.
+11. `price_per_1m_input/output` 기본값은 `gpt-5.6-luna`의 입력 $0.20·출력 $1.20/100만 토큰이다. `usage.cost_usd`는 캐시 읽기·쓰기 단가를 구분하지 않는 단순 추정치다. 전체 파이프라인 비교 실험은 API usage의 캐시 읽기·쓰기까지 별도로 계산한다.
 12. `dry_run=True` 는 질의 분해를 건너뛰고 입력 문장으로 검색한다 (B 기준 검색 결과를 볼 수 없다).
 13. `answer` 텍스트는 코드가 탈락시킨 문서를 언급할 수 있다. 판정은 `has_match`·`candidates`·`stats["match"]` 를 기준으로 본다.
 

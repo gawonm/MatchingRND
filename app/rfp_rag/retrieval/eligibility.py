@@ -7,6 +7,7 @@ Retrieval scores cannot establish that both sides of a technology pair match.
 from app.common.llm_config import DEFAULT_LLM_MODEL
 import json
 import os
+from functools import lru_cache
 from typing import Literal
 
 from pydantic import BaseModel
@@ -14,6 +15,7 @@ from pydantic import BaseModel
 from ..config import TECHNICAL_SECTIONS
 from app.common.paths import PROJECT_ROOT
 from app.common.relevance_batch import BatchedRelevanceLLM
+from .context_selection import select_sections
 
 
 class TechnologyMatch(BaseModel):
@@ -46,10 +48,32 @@ same 또는 similar입니다. SLAM과 LiDAR가 서로 다르다는 이유로 dif
 기술이 배경·비교대상·제외대상으로만 언급된 경우 same/similar로 판정하지 마세요.
 보유기술이 일치해도 요청기술을 추정하지 말고, 요청기술이 일치해도 보유기술을 추정하지 마세요.
 외부기술 또는 NTIS 검색에서 얻은 기술로 사용자의 명시적 요청을 대체하지 마세요.
-입력된 technology_index에 대해 정확히 하나의 판정을 반환하세요. reason은 한국어로 핵심 기능의 대응 여부를 설명하세요.
+입력된 모든 technology_index에 대해 각각 정확히 하나의 판정을 반환하세요. 누락·중복 없이 A와 B를 독립적으로 판정하세요.
+reason은 한국어로 핵심 기능의 대응 여부를 설명하세요.
 same/similar일 때 section_index와 quote는 해당 RFP 요구사항의 근거 문장과 그 위치여야 합니다.
 quote는 원문에서 그대로 복사하세요. 나머지 판정은 section_index=-1, quote=""로 반환하세요.
 """
+
+PAIR_BATCH_PROMPT = """jobs는 서로 독립적인 RFP 과제입니다. 각 job의 technologies 전체에 대해
+technology_index별 판정을 정확히 하나씩 반환하세요. A/B는 같은 과제 원문을 공유하지만
+각각 독립적으로 판단하세요. 다른 기술의 일치를 현재 기술의 근거로 사용하지 마세요.
+각 job_index를 정확히 한 번 포함하고 다른 job의 원문·인용·판정을 섞지 마세요.
+judgment는 해당 과제의 모든 기술에 대한 matches를 포함합니다."""
+
+EXCERPT_PROMPT = """일부 과제는 관련 원문 구간만 제공됩니다. 제공 범위를 넘는 기능을 추정하지 마세요.
+복합 요청기술은 핵심 대상과 연동 기능을 함께 비교하세요. 일부 구성요소의 넓은 유사성만으로
+핵심 대상이 다른 요청 전체를 similar로 통과시키지 마세요. 판단 근거가 부족하면 insufficient를 반환하세요."""
+
+
+@lru_cache(maxsize=1)
+def _token_encoding():
+    import tiktoken
+    return tiktoken.get_encoding('o200k_base')
+
+
+def _count_tokens(text):
+    # Local estimate for packing; the API's usage is the billing source of truth.
+    return len(_token_encoding().encode(text, disallowed_special=()))
 
 
 def query_constraints(question):
@@ -104,6 +128,8 @@ def _quote_sections(sections, section_index, quote):
     first_text = ''.join(first['text'].split())
     combined, spans = '', []
     for section in sections[section_index:]:
+        if '_original_index' in first and section.get('_original_index') != first['_original_index'] + len(spans):
+            break
         if any(section.get(key) != first.get(key) for key in ('item', 'page', 'source')):
             break
         spans.append(section)
@@ -118,17 +144,28 @@ def _quote_sections(sections, section_index, quote):
 
 
 class TechnologyRelevanceGate:
-    def __init__(self, question, llm=None):
+    def __init__(self, question, llm=None, *, context_mode=None, batch_mode=None):
         self.owned, self.requested, self.explicit_request = query_constraints(question)
         self.active = bool(self.owned or self.requested)
         self.llm = llm
+        self.context_mode = context_mode or os.getenv('RFP_RELEVANCE_CONTEXT_MODE', 'full')
+        if self.context_mode not in {'full', 'excerpt'}:
+            raise ValueError('RFP 원문 모드는 full 또는 excerpt여야 합니다.')
+        self.excerpt_tasks = self.full_fallback_tasks = 0
+        mode = batch_mode or os.getenv('RFP_RELEVANCE_BATCH_MODE', 'tokens')
+        if mode not in {'tokens', 'chars'}:
+            raise ValueError('RFP_RELEVANCE_BATCH_MODE는 tokens 또는 chars여야 합니다.')
         self.runner = BatchedRelevanceLLM(self._client,
             batch_size=int(os.getenv('RFP_RELEVANCE_BATCH_SIZE', '5')),
-            max_chars=int(os.getenv('RFP_RELEVANCE_MAX_CHARS', '24000')))
+            max_chars=int(os.getenv('RFP_RELEVANCE_MAX_CHARS', '24000')),
+            max_tokens=int(os.getenv('RFP_RELEVANCE_MAX_TOKENS', '32000')) if mode == 'tokens' else None,
+            count_tokens=_count_tokens if mode == 'tokens' else None,
+            batch_prompt=PAIR_BATCH_PROMPT)
 
     @property
     def stats(self):
-        return self.runner.stats
+        return {**self.runner.stats, 'context_mode': self.context_mode,
+                'excerpt_tasks': self.excerpt_tasks, 'full_fallback_tasks': self.full_fallback_tasks}
 
     def _client(self):
         if self.llm is None:
@@ -155,29 +192,54 @@ class TechnologyRelevanceGate:
         if not self.owned or not self.requested:
             return [{'accepted': False, 'reason': '보유기술 또는 기술문제 입력 없음', 'matches': []} for _ in tasks]
         technologies = self.owned + self.requested
+        selected = [select_sections(sections, technologies,
+                    max_chars=int(os.getenv('RFP_RELEVANCE_EXCERPT_CHARS', '12000')))
+                    if self.context_mode == 'excerpt' else (sections, False)
+                    for sections in sections_by_task]
+        visible = [row[0] for row in selected]
+        self.excerpt_tasks += sum(row[1] for row in selected)
+        checks = self._judge_sections(visible, technologies)
+        retry = [i for i, (check, (_, excerpted)) in enumerate(zip(checks, selected))
+                 if excerpted and self._needs_full_source(check)]
+        if retry:
+            self.full_fallback_tasks += len(retry)
+            for i, check in zip(retry, self._judge_sections([sections_by_task[i] for i in retry], technologies)):
+                checks[i] = check
+        return checks
+
+    def _needs_full_source(self, check):
+        rows = check.get('matches', [])
+        if not rows:
+            return True
+        owned_matched = any(m['technology_index'] < len(self.owned) and m['verified']
+                            and m['relation'] in {'same','similar'} for m in rows)
+        return any((m['relation'] == 'insufficient' and
+                    (m['technology_index'] >= len(self.owned) or not owned_matched)) or
+                   (m['relation'] in {'same','similar'} and not m['verified']) for m in rows)
+
+    def _judge_sections(self, sections_by_task, technologies):
         valid_tasks = [j for j, sections in enumerate(sections_by_task) if sections]
         judgements = {j: [] for j in valid_tasks}
-        for i, name in enumerate(technologies):
-            requests = []
-            for task_index in valid_tasks:
-                payload = {'technologies': [
-                    {'index': i, 'role': 'owned' if i < len(self.owned) else 'requested', 'name': name},
-                ], 'sections': [{'index': j, **section} for j, section in enumerate(sections_by_task[task_index])]}
-                requests.append([{'role': 'system', 'content': PROMPT},
-                                 {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}])
-            for task_index, response in zip(valid_tasks, self.runner.map(requests, RelevanceJudgements)):
-                response = RelevanceJudgements.model_validate(response)
-                judgements[task_index].append((i, response.matches))
+        requests = []
+        for task_index in valid_tasks:
+            payload = {'technologies': [
+                {'index': i, 'role': 'owned' if i < len(self.owned) else 'requested', 'name': name}
+                for i, name in enumerate(technologies)
+            ], 'sections': [{'index': j, **{k:v for k,v in section.items() if not k.startswith('_')}}
+                            for j, section in enumerate(sections_by_task[task_index])]}
+            requests.append([{'role': 'system', 'content': PROMPT + ('\n'+EXCERPT_PROMPT if self.context_mode == 'excerpt' else '')},
+                             {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}])
+        for task_index, response in zip(valid_tasks, self.runner.map(requests, RelevanceJudgements)):
+            judgements[task_index] = RelevanceJudgements.model_validate(response).matches
         return [self._evaluate(sections, judgements[j], technologies) if sections else
                 {'accepted': False, 'reason': '요구기술 원문 근거 없음', 'matches': []}
                 for j, sections in enumerate(sections_by_task)]
 
     def _evaluate(self, sections, responses, technologies):
-        judgements = []
-        for expected_index, rows in responses:
-            if len(rows) != 1 or rows[0].technology_index != expected_index:
-                return {'accepted': False, 'reason': '기술별 판정 인덱스 오류', 'matches': []}
-            judgements.extend(rows)
+        judgements = responses
+        indices = [row.technology_index for row in judgements]
+        if len(indices) != len(technologies) or set(indices) != set(range(len(technologies))):
+            return {'accepted': False, 'reason': '기술별 판정 인덱스 오류', 'matches': []}
         matches, seen, valid = [], set(), set()
         for match in judgements:
             i = match.technology_index

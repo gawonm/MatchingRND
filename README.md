@@ -7,6 +7,9 @@ API와 화면 실행은 [프런트엔드 안내](frontend/README.md)를 참고�
 LLM 기본 모델은 입력 해석·기술나눔·NTIS·RFP·Gap·최종 답변 및
 학습 데이터 생성·평가 모두 `gpt-5.6-luna`입니다.
 공통 기본값은 `app/common/llm_config.py`에서 관리합니다.
+RFP 관련성 판정은 A/B 통합·토큰 배치가 기본입니다.
+변경 배경, 방법별 실측, 선택 근거와 한계는
+[LLM 모델 통일 및 호출 방식 개선](docs/LLM_CALL_OPTIMIZATION_20261018.md)에 정리했습니다.
 명시적인 CLI `--model`, `NTIS_LLM_MODEL`, `NTIS_RELEVANCE_MODEL`,
 `RFP_RELEVANCE_MODEL`, 기술 RAG YAML 설정은 기본값보다 우선합니다.
 
