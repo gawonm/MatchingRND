@@ -63,7 +63,7 @@ test('목록은 선택 상태가 있는 버튼이고 모바일 상세는 목록�
   assert.match(split, /window\.scrollTo\(\{ top: listScroll\.current, behavior: 'instant' \}\)/);
   assert.match(split, /returnTo\.current = selected\.id/);
   assert.match(split, /rows\.current\.get\(returnTo\.current\)\?\.focus/);
-  assert.match(split, /heading\.current\?\.focus\(\{ preventScroll: true \}\);\n\s*heading\.current\?\.closest\('section'\)\?\.scrollIntoView/);
+  assert.match(split, /heading\.current\?\.focus\(\{ preventScroll: true \}\);\r?\n\s*heading\.current\?\.closest\('section'\)\?\.scrollIntoView/);
 });
 
 test('Workspace는 Overview·기술·RFP·Gap·Evidence·Report 순서이고 선택은 새 결과에서만 초기화된다', () => {

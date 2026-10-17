@@ -287,21 +287,25 @@ class FinalAnswerTests(unittest.TestCase):
 
 
 class IntegratedAnalysisTests(unittest.TestCase):
-    @unittest.skip("local Gap analyzer was removed")
-    def test_cli_reuses_saved_state_without_remote_calls(self):
+    def test_cli_reuses_saved_state_without_retrieval_calls(self):
         from app.scripts.run_analysis import main
-        state, _ = fixture()
+        state, report = fixture()
+        def run_saved_state(**options):
+            return run_integrated_analysis(**options, gap_runner=lambda *args, **kwargs: report,
+                                           llm_factory=FakeLLM)
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             (root / "state.json").write_text(state.model_dump_json(), encoding="utf-8")
-            with patch("app.gap_analysis_local.default_tokenizer", return_value=lambda text: text.split()), redirect_stdout(io.StringIO()):
-                code = main(["--state", str(root / "state.json"), "--mode", "local",
+            with patch("app.scripts.run_analysis.run_integrated_analysis", side_effect=run_saved_state), \
+                 patch("app.scripts.run_analysis.RagOrchestrator") as orchestrator, redirect_stdout(io.StringIO()):
+                code = main(["--state", str(root / "state.json"),
                              "--template-only", "--output-dir", str(root / "run")])
             self.assertEqual(code, 0)
+            orchestrator.return_value.run.assert_not_called()
             result = json.loads((root / "run" / "comparison.json").read_text(encoding="utf-8"))
             self.assertEqual(result["primary_method"], "llm")
-            self.assertIn("local", result["answers"])
-            self.assertFalse((root / "run" / "answer.md").exists())
+            self.assertEqual(list(result["answers"]), ["llm"])
+            self.assertTrue((root / "run" / "answer.md").exists())
 
     def test_retrieval_snapshot_outputs(self):
         state, report = fixture()
@@ -327,25 +331,23 @@ class IntegratedAnalysisTests(unittest.TestCase):
         self.assertEqual(snapshots, [request.problem])
         orchestrator.run.assert_called_once_with(request)
 
-    @unittest.skip("local Gap analyzer was removed")
-    def test_one_mode_failure_does_not_hide_other_result(self):
-        state, report = fixture("local")
+    def test_gap_failure_is_reported_without_generating_an_answer(self):
+        state, _ = fixture()
+        answer_generator = Mock()
         result = run_integrated_analysis(state=state, template_only=True, llm_factory=FakeLLM,
-            gap_runners={"llm": Mock(side_effect=RuntimeError("모델 호출 실패")),
-                         "local": lambda *args, **kwargs: report})
-        self.assertIn("gap_llm", result.errors)
-        self.assertIn("local", result.answers)
+            gap_runner=Mock(side_effect=RuntimeError("모델 호출 실패")),
+            answer_generator=answer_generator)
+        self.assertEqual(result.errors, {"gap_llm": "모델 호출 실패"})
+        self.assertEqual(result.answers, {})
+        answer_generator.assert_not_called()
 
-    @unittest.skip("local Gap analyzer was removed")
-    def test_different_extraction_granularity_not_reported_as_accuracy(self):
-        _, report = fixture()
-        other = report.model_copy(deep=True)
-        other.method = "local"
-        other.items[0].requirement.name = "동적 객체를 추적하는 기능을 개발"
-        comparison = compare_reports(report, other)
-        self.assertEqual(comparison["shared_exact_requirements"], [])
-        self.assertEqual(len(comparison["llm_only"]), 1)
-        self.assertEqual(len(comparison["local_only"]), 1)
+    def test_removed_local_mode_is_rejected_before_retrieval(self):
+        state, _ = fixture()
+        orchestrator = Mock()
+        with self.assertRaisesRegex(ValueError, "llm만 지원"):
+            run_integrated_analysis(request=state.request, modes=("llm", "local"),
+                                    orchestrator=orchestrator)
+        orchestrator.run.assert_not_called()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,9 @@
 # MatchingRND
 
+2026-10-15~16 작업의 통합 범위와 검증 결과는
+[브랜치 통합 기록](docs/BRANCH_INTEGRATION_20261017.md)에 정리했습니다.
+API와 화면 실행은 [프런트엔드 안내](frontend/README.md)를 참고하세요.
+
 ## 통합 Orchestrator
 
 `app/orchestrator.py`의 `RagOrchestrator`가 Technology → NTIS → RFP를 연결합니다.
