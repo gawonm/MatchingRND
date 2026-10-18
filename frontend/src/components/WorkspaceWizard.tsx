@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, Tab, Tabs } from 'react-bootstrap';
+import { Button, Form, Tab, Tabs } from 'react-bootstrap';
 import TechnologyForm from './TechnologyForm';
 import TechnologyReview from './TechnologyReview';
 import AnalysisReportView, { ReportOverview } from './AnalysisReportView';
@@ -15,13 +15,15 @@ import type { SplitViewState } from './analysis/SplitExplorer';
 import { COMMON_RND_INTRO, COMMON_RND_NOTICE_TITLE, COMMON_RND_NOTICES, viewAvailability } from '../lib/analysisView';
 import type { TechnologyElement } from '../types/technologyElement';
 import type { TechnologyInput } from '../types/technologyInput';
-import type { DiscoverItem } from '../types/analysisSession';
+import type { AnalysisRun, ConfirmedProfile, DiscoverItem } from '../types/analysisSession';
 import type { ReportViewResponse } from '../types/analysisReport';
 
 type Props = {
   input: TechnologyInput;
   elements: TechnologyElement[];
   references: DiscoverItem[];
+  profiles: ConfirmedProfile[];
+  runs: AnalysisRun[];
   onInputChange: (input: TechnologyInput) => void;
   onElementsChange: (elements: TechnologyElement[]) => void;
   approvedVersion: number | null;
@@ -33,6 +35,7 @@ type Props = {
 const initialSplitView: SplitViewState = { selectedId: null, mobileDetailOpen: false };
 const initialExplore = { technology: initialSplitView, rfp: initialSplitView, gap: { ...initialSplitView, rfpId: null } as GapViewState };
 const steps = ['기술 및 문제 입력', '기술요소 검토·승인', '통합 RAG 분석'];
+const roleLabels: Record<TechnologyElement['role'], string> = { owned: '보유 기술 A', goal: '필요 기술 B', uncertain: '구분 확인 필요' };
 
 function ReferenceMaterials({ items }: { items: DiscoverItem[] }) {
   if (!items.length) return null;
@@ -50,7 +53,43 @@ function ReferenceMaterials({ items }: { items: DiscoverItem[] }) {
   </section>;
 }
 
-export default function WorkspaceWizard({ input, elements, references, onInputChange, onElementsChange, approvedVersion, onApprove, report, onRun }: Props) {
+function ApprovalHistory({ profiles, runs }: { profiles: ConfirmedProfile[]; runs: AnalysisRun[] }) {
+  const latestProfileId = profiles.at(-1)?.id ?? '';
+  const [selectedProfileId, setSelectedProfileId] = useState(latestProfileId);
+  if (!profiles.length) return null;
+  const selected = profiles.find(profile => profile.id === selectedProfileId) ?? profiles.at(-1)!;
+  const connectedRun = [...runs].reverse().find(run => run.profileId === selected.id && run.profileVersion === selected.version);
+  const runNumber = connectedRun ? runs.findIndex(run => run.id === connectedRun.id) + 1 : null;
+
+  return <section className="app-card p-4 mb-3" aria-labelledby="approval-history-title">
+    <div className="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+      <div><h2 id="approval-history-title" className="h6 mb-1">승인 이력</h2><p className="small text-secondary mb-0">승인 당시 입력과 기술요소를 읽기 전용으로 조회합니다. 선택해도 현재 편집본·승인 상태·분석 실행은 바뀌지 않습니다.</p></div>
+      <Form.Group controlId="approval-history-version">
+        <Form.Label className="small text-secondary">승인 버전</Form.Label>
+        <Form.Select aria-label="승인 버전 선택" value={selected.id} onChange={event => setSelectedProfileId(event.target.value)}>
+          {profiles.map(profile => <option key={profile.id} value={profile.id}>v{profile.version}{profile.id === latestProfileId ? ' · 최신 승인본' : ''}</option>)}
+        </Form.Select>
+      </Form.Group>
+    </div>
+    <div className="small text-secondary mt-3">v{selected.version} 승인 스냅샷 · {runNumber ? `연결된 실행 ${runNumber}` : '연결된 실행 없음'}</div>
+    <dl className="approval-snapshot-input mt-3 mb-0">
+      <div><dt>보유 기술</dt><dd>{selected.input.technology_description}</dd></div>
+      <div><dt>필요 기술</dt><dd>{selected.input.required_technology || '입력 없음'}</dd></div>
+      <div><dt>해결하려는 기술 문제</dt><dd>{selected.input.target_problem}</dd></div>
+      <div><dt>특허번호</dt><dd>{selected.input.patent_numbers?.join(', ') || '없음'}</dd></div>
+    </dl>
+    <div className="approval-snapshot-elements mt-3">
+      <h3 className="h6">기술요소 · {selected.elements.length}개</h3>
+      {selected.elements.length === 0 && <p className="small text-secondary mb-0">승인된 기술요소가 없습니다.</p>}
+      {selected.elements.map(element => <article className="review-row" key={element.id}>
+        <div className="review-row-main"><span className="review-name">{element.name}</span><span className="small text-secondary">{roleLabels[element.role]} · {element.category} · {element.source}</span></div>
+        {element.evidence && <details className="small text-secondary mt-2"><summary>원문 근거 보기 · {element.source}</summary><p className="mt-2 mb-0">{element.evidence}</p></details>}
+      </article>)}
+    </div>
+  </section>;
+}
+
+export default function WorkspaceWizard({ input, elements, references, profiles, runs, onInputChange, onElementsChange, approvedVersion, onApprove, report, onRun }: Props) {
   const approved = approvedVersion !== null;
   const [step, setStep] = useState<'input' | 'review' | 'result'>(() => report.result && approved ? 'result' : elements.length ? 'review' : 'input');
   const [extraction, setExtraction] = useState<{ status: 'idle' | 'loading' | 'error'; message?: string; warnings: string[] }>({ status: 'idle', warnings: [] });
@@ -90,7 +129,7 @@ export default function WorkspaceWizard({ input, elements, references, onInputCh
   const structured = report.result?.view && (availability === 'ok' || availability === 'empty') ? report.result.view : null;
   const viewCode = /^[a-z_]{1,40}$/.test(report.result?.view_error ?? '') ? ` (코드: ${report.result?.view_error})` : availability === 'mismatch' ? ' (코드: client_mismatch)' : '';
 
-  if (view === 'dashboard' && report.result) return <section aria-labelledby="dashboard-title">
+  if (view === 'dashboard' && report.result) return <><ApprovalHistory key={profiles.at(-1)?.id} profiles={profiles} runs={runs} /><section aria-labelledby="dashboard-title">
     <div className="section-toolbar">
       <div><h2 id="dashboard-title" className="h5 mb-1">분석 결과 · 기술요소 v{approvedVersion}</h2><div className="small text-secondary">실제 RAG 결과입니다. 새로고침하면 이 브라우저의 결과가 사라집니다.</div></div>
       <Button variant="outline-secondary" onClick={() => setStep('input')}>입력 수정 · 재분석</Button>
@@ -134,10 +173,11 @@ export default function WorkspaceWizard({ input, elements, references, onInputCh
       </Tab>
       <Tab eventKey="report" title="Report"><AnalysisReportView report={report.result.report} mode="real" /></Tab>
     </Tabs>
-  </section>;
+  </section></>;
 
   return <section aria-label="분석 Wizard">
     <ol className="wizard-steps">{steps.map((label, index) => <li key={label} className={index === activeStep ? 'active' : index < activeStep ? 'done' : undefined} aria-current={index === activeStep ? 'step' : undefined}><span>{index + 1}</span>{label}</li>)}</ol>
+    <ApprovalHistory key={profiles.at(-1)?.id} profiles={profiles} runs={runs} />
     {(view === 'input' || view === 'review') && <ReferenceMaterials items={references.filter(item => item.mode === 'real')} />}
     {view === 'input' && <div className="app-card p-4">
       <h2 className="h6">보유 기술과 해결하려는 문제를 입력하세요</h2>

@@ -168,3 +168,16 @@ test('Workspace 승인 게이트: A 요소 없이·역할 미정 상태로는 �
   assert.equal(approvedProfile(reapproved).version, 2);
   assert.equal(approvedProfile({ ...reapproved, draftInput: { ...input, required_technology: '변경' } }), null);
 });
+
+test('Workspace 승인 이력은 profiles와 runs를 읽기 전용 스냅샷 조회에 사용한다', () => {
+  const app = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8');
+  const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
+  const history = wizard.slice(wizard.indexOf('function ApprovalHistory'), wizard.indexOf('export default function WorkspaceWizard'));
+  assert.match(app, /profiles=\{session\.profiles\} runs=\{session\.runs\}/);
+  assert.match(history, /aria-label="승인 버전 선택"/);
+  assert.match(history, /selected\.input\.technology_description/);
+  assert.match(history, /selected\.elements\.map/);
+  assert.match(history, /run\.profileId === selected\.id && run\.profileVersion === selected\.version/);
+  assert.match(history, /현재 편집본·승인 상태·분석 실행은 바뀌지 않습니다/);
+  assert.doesNotMatch(history, /onInputChange|onElementsChange|onApprove|onRun/);
+});

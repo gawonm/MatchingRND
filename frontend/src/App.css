@@ -260,6 +260,13 @@ textarea.form-control { min-height: 94px; resize: vertical; }
 .wizard-steps li span { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #f1eefe; font-size: 12px; }
 .wizard-steps li.active { color: #2b2540; font-weight: 600; border-color: currentColor; }
 .wizard-steps li.done span { background: #e3f4e8; }
+.approval-snapshot-input { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.approval-snapshot-input div { padding: 12px; border: 1px solid var(--line); border-radius: 9px; background: #faf9fc; }
+.approval-snapshot-input dt { margin-bottom: 4px; font-size: 12px; color: #6e697b; }
+.approval-snapshot-input dd { margin: 0; white-space: pre-wrap; }
+.approval-snapshot-elements .review-row:last-child { margin-bottom: 0; }
+
+@media (max-width: 768px) { .approval-snapshot-input { grid-template-columns: 1fr; } }
 .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 12px; align-items: start; }
 .overview-grid .overview-status, .overview-grid .overview-wide, .overview-grid > button { grid-column: 1 / -1; }
 .overview-grid .analysis-markdown > :last-child { margin-bottom: 0; }
