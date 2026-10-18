@@ -27,7 +27,19 @@ def health():
         "message": "R&D Match API is running"
     }
 
+
+@app.get("/api/capabilities")
+def capabilities():
+    """Public MVP scope; unsupported modules are explicit instead of implied."""
+    return {
+        "supported_analysis": ["technology", "ntis", "rfp", "gap_report"],
+        "unsupported_analysis": ["policy_search", "legal_eligibility", "company_database_verification"],
+        "company_input_provenance": "user_assertion_not_independently_verified",
+        "paid_llm_calls": "only_on_explicit_analysis_requests",
+    }
+
 from functools import lru_cache
+import os
 
 from dotenv import load_dotenv
 from fastapi import HTTPException
@@ -52,6 +64,14 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
+
+
+class ReportGenerationError(RuntimeError):
+    """Safe stage marker for a failed report pipeline."""
+
+    def __init__(self, stage: str):
+        self.stage = stage
+        super().__init__(f"report stage failed: {stage}")
 
 
 class ExtractionRequest(BaseModel):
@@ -86,7 +106,12 @@ async def extract_elements(request: ExtractionRequest):
             "message": "보유 기술과 해결 문제를 입력해 주세요.",
         })
     try:
-        result = await run_in_threadpool(parse_query, extraction_query(request))
+        max_retries = int(os.getenv("QUERY_EXTRACTION_MAX_RETRIES", "1"))
+        if max_retries < 0:
+            raise ValueError("QUERY_EXTRACTION_MAX_RETRIES는 0 이상이어야 합니다.")
+        result = await run_in_threadpool(
+            parse_query, extraction_query(request), max_retries=max_retries,
+        )
     except ValueError as exc:
         # parse_query could not ground the extracted names in the user's text.
         raise HTTPException(status_code=422, detail={
@@ -136,7 +161,7 @@ def generate_analysis_report(request: AnalysisRequest) -> FinalAnswer:
         modes=("llm",),
     )
     if "llm" not in result.answers:
-        raise RuntimeError(next(iter(result.errors), "report"))
+        raise ReportGenerationError(next(iter(result.errors), "report"))
     return result.answers["llm"]
 
 
@@ -155,7 +180,7 @@ def generate_report_with_view(request: AnalysisRequest) -> ReportViewResponse:
     state = get_orchestrator().run(request)
     result = run_integrated_analysis(state=state, modes=("llm",))
     if "llm" not in result.answers:
-        raise RuntimeError(next(iter(result.errors), "report"))
+        raise ReportGenerationError(next(iter(result.errors), "report"))
     answer = result.answers["llm"]
     try:
         view = project_analysis_view(state, result.reports["llm"], answer)
@@ -170,6 +195,16 @@ def generate_report_with_view(request: AnalysisRequest) -> ReportViewResponse:
 async def analyze_report_view(request: AnalysisRequest):
     try:
         return await run_in_threadpool(generate_report_with_view, request)
+    except OrchestrationError as exc:
+        raise HTTPException(status_code=500, detail={
+            "error": "report_failed", "stage": exc.stage,
+            "message": "보고서 검색 단계 실행에 실패했습니다.",
+        }) from exc
+    except ReportGenerationError as exc:
+        raise HTTPException(status_code=500, detail={
+            "error": "report_failed", "stage": exc.stage,
+            "message": "보고서 생성 단계 실행에 실패했습니다.",
+        }) from exc
     except Exception as exc:
         raise HTTPException(
             status_code=500,
@@ -184,6 +219,16 @@ async def analyze_report_view(request: AnalysisRequest):
 async def analyze_report(request: AnalysisRequest):
     try:
         return await run_in_threadpool(generate_analysis_report, request)
+    except OrchestrationError as exc:
+        raise HTTPException(status_code=500, detail={
+            "error": "report_failed", "stage": exc.stage,
+            "message": "보고서 검색 단계 실행에 실패했습니다.",
+        }) from exc
+    except ReportGenerationError as exc:
+        raise HTTPException(status_code=500, detail={
+            "error": "report_failed", "stage": exc.stage,
+            "message": "보고서 생성 단계 실행에 실패했습니다.",
+        }) from exc
     except Exception as exc:
         raise HTTPException(
             status_code=500,

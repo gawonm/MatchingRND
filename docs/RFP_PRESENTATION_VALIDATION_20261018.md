@@ -86,8 +86,8 @@ Q1·Q7·Q13·Q14에서 원래 검색 순서상 같은 5개 묶음을 유지했�
 ## 검증 범위·현재 상태
 
 - 로컬 단위·통합 테스트: `python -m unittest discover -s tests`, 255개 통과(NTIS 배치 추출 테스트 6개 포함). 의미적 추천 정확도를 입증하는 테스트는 아니다.
-- 추가 API 요청과 usage는 `outputs/rfp_dataset_20261017/verify12/*.events.json`, 결과는 `comparison.json`에 보존했다.
-- 기존 동결 평가 자료는 `protocol_10.json`, `question_comparison.json`, `rfp_snapshot.json`에 있다.
+- 비교 수치·추가 호출 usage·원본 CSV SHA-256는 [평가 요약 JSON](evaluations/llm_call_optimization_20261018.json)에 보존했다.
+- 2026-10-18 정리에서 `outputs`의 원시 출력·캐시·동결 문서 스냅샷은 삭제했다. 아래 수치는 당시 실행의 측정 기록이다.
 - 실제 모델 호출 구조를 비교했으며 새 모델을 학습하거나 교체하지 않았다. 기본값은 아직 ①이고 ②는 명시적 옵션으로 사용 가능하다.
 - GitHub push 및 추가 전체 답변 생성은 하지 않았다.
 

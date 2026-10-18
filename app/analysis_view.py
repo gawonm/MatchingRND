@@ -79,7 +79,10 @@ class GapItem(BaseModel):
     decision_path: str
     rfp_ids: list[str] = Field(default_factory=list)
     technology_ids: list[str] = Field(default_factory=list, description="검증된 외부기술 매칭 문서 ID")
-    owned_technologies: list[str] = Field(default_factory=list, description="검증된 기업 보유기술 매칭 이름")
+    owned_technologies: list[str] = Field(
+        default_factory=list,
+        description="사용자 입력 보유기술과 RFP 요구의 매칭 이름. 기업 보유 사실을 독립 검증한 결과가 아님",
+    )
     evidence_ids: list[str] = Field(default_factory=list)
     claim_indices: list[int] = Field(default_factory=list)
 

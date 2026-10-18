@@ -2,9 +2,11 @@
 import json
 
 
-def extract_projects(projects, analysis, *, batch_size=5, max_chars=24000):
+def extract_projects(projects, analysis, *, batch_size=5, max_chars=24000, max_retries=1):
     if batch_size < 1 or max_chars < 1:
         raise ValueError('NTIS 추출 배치 크기와 문자 예산은 1 이상이어야 합니다.')
+    if max_retries < 0:
+        raise ValueError('NTIS 추출 재시도 횟수는 0 이상이어야 합니다.')
     projects = list(projects)
     results, group, size = [], [], 0
 
@@ -13,9 +15,9 @@ def extract_projects(projects, analysis, *, batch_size=5, max_chars=24000):
         if not group:
             return
         if len(group) == 1 or analysis.llm is None:
-            results.extend(analysis.extract_project_tech(p, max_retries=1) for p in group)
+            results.extend(analysis.extract_project_tech(p, max_retries=max_retries) for p in group)
         else:
-            results.extend(_extract_batch(group, analysis))
+            results.extend(_extract_batch(group, analysis, max_retries=max_retries))
         group, size = [], 0
 
     for project in projects:
@@ -29,7 +31,7 @@ def extract_projects(projects, analysis, *, batch_size=5, max_chars=24000):
     return results
 
 
-def _extract_batch(projects, analysis):
+def _extract_batch(projects, analysis, *, max_retries=1):
     payload = [{'project_index': i, 'project_title': p.get('project_title'), 'text': p['text']}
                for i, p in enumerate(projects)]
     prompt = '''다음 projects 각각의 NTIS 과제 원문에서 연구주제와 구체 기술요소를 추출하라.
@@ -55,7 +57,7 @@ projects:
         indexed = {row['project_index']: row for row in rows}
     except Exception:
         # Preserve the existing retry/error contract when the whole batch is malformed.
-        return [analysis.extract_project_tech(p, max_retries=1) for p in projects]
+        return [analysis.extract_project_tech(p, max_retries=max_retries) for p in projects]
     results = []
     for i, project in enumerate(projects):
         try:
@@ -64,5 +66,5 @@ projects:
                             'project_title': project.get('project_title'), **validated, 'error': None})
         except Exception:
             # Retain valid rows; retry only the source whose evidence failed validation.
-            results.append(analysis.extract_project_tech(project, max_retries=1))
+            results.append(analysis.extract_project_tech(project, max_retries=max_retries))
     return results

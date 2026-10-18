@@ -1,8 +1,0 @@
-{
-  "saved_adapter_reload_verified": true,
-  "validation_queries_checked": 184,
-  "max_absolute_error": 0.0,
-  "minimum_cosine": 0.9999998211860657,
-  "nonzero_lora_B_matrices": 48,
-  "test_used_for_this_check": false
-}

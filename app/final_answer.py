@@ -287,7 +287,7 @@ def render_answer(state: AnalysisState, report: GapReport, claims: list[ClaimChe
 
 def generate_final_answer(state: AnalysisState, report: GapReport, *, llm: StructuredLLM | None = None,
                           reviewer: StructuredLLM | None = None, template_only: bool = False,
-                          max_evidence_chars: int = 40000, max_retries: int = 2) -> FinalAnswer:
+                          max_evidence_chars: int = 40000, max_retries: int = 1) -> FinalAnswer:
     if report.problem != state.request.problem:
         raise ValueError("Gap 리포트의 기술문제가 AnalysisState와 다릅니다.")
     if max_evidence_chars < 1:

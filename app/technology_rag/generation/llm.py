@@ -51,7 +51,10 @@ class LLMClient:
                 )
             from openai import OpenAI
 
-            self._client = OpenAI()
+            self._client = OpenAI(
+                timeout=self.config.request_timeout_seconds,
+                max_retries=self.config.max_retries,
+            )
         return self._client
 
     def cost(self, prompt_tokens: int, completion_tokens: int) -> float:

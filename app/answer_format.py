@@ -273,7 +273,7 @@ def render_answer(state: AnalysisState, report: GapReport, claims: list[ClaimChe
                     and m.coverage == ('partial' if label == GapLabel.PARTIAL else 'full')]
                 sources = list(dict.fromkeys(m.title or m.element_name for m in matches))
                 source_text = ', '.join(sources[:2]) + (' 등' if len(sources) > 2 else '')
-                summaries = {GapLabel.OWNED: '사용자 제공 보유기술에서 대응 근거가 확인됐습니다.',
+                summaries = {GapLabel.OWNED: '사용자 입력 보유기술과 요구기술의 대응이 확인됐습니다. 보유 사실을 독립 검증한 결과는 아닙니다.',
                              GapLabel.EXTERNAL: '외부 나눔기술에서 보완 근거가 확인됐습니다.',
                              GapLabel.PARTIAL: '일부 대응 근거가 있으며, 남은 요구 범위는 추가 확인이 필요합니다.'}
                 summary = summaries[label] + (f' 대응 기술: {source_text}.' if source_text else '')

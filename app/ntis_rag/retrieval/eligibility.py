@@ -93,8 +93,13 @@ class TechnologyRelevanceGate:
                             'verified': verified,
                             'matched': verified and match.relation in {'same', 'similar'}})
         owned_match = any(row['matched'] for row in matches if row['role'] == 'owned')
-        requested_match = all(row['matched'] for row in matches if row['role'] == 'requested')
-        accepted = owned_match and requested_match
+        matched_goals = [row['technology'] for row in matches
+                         if row['role'] == 'requested' and row['matched']]
+        unmatched_goals = [technology for technology in self.requested
+                           if technology not in matched_goals]
+        accepted = owned_match and bool(matched_goals)
         return {'accepted': accepted,
-                'reason': '양쪽 기술의 관련 근거 확인' if accepted else '보유기술 또는 요청기술 관련 근거 부족',
+                'reason': ('보유기술과 요청기술 1개 이상의 관련 근거 확인' if accepted
+                           else '보유기술 또는 요청기술 관련 근거 부족'),
+                'matched_goals': matched_goals, 'unmatched_goals': unmatched_goals,
                 'matches': matches}

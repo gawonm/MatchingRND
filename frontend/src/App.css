@@ -176,13 +176,14 @@ textarea.form-control { min-height: 94px; resize: vertical; }
 .technology-tag button:hover { background: #e2d9f0; }
 .input-validation { color: #875362; background: #f3e6ea; border-radius: 8px; padding: 10px 14px; font-size: 13px; }
 
-.review-group { margin-top: 22px; }
+.technology-lists { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; align-items: start; }
+.review-group { min-width: 0; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: #fcfbff; }
+.review-group-uncertain { grid-column: 1 / -1; border-color: #ead8ad; background: #fffdf7; }
+.review-group-heading { display: flex; align-items: flex-start; gap: 11px; min-height: 54px; margin-bottom: 8px; }
+.review-role-mark { display: inline-grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 750; }
 .home-step { max-width: 980px; margin-inline: auto; }
 .hero-form { max-width: 940px; }
 .home-cta { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; margin-top: 24px; }
-.patent-row { display: flex; align-items: stretch; gap: 8px; }
-.patent-row .form-control { min-width: 0; }
-.patent-add { flex: 0 0 auto; min-width: 64px; white-space: nowrap; }
 .review-source { padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: #faf9fd; font-size: 13px; }
 .review-source summary { cursor: pointer; }
 .review-row { padding: 12px 0; border-bottom: 1px solid var(--line); }
@@ -191,6 +192,8 @@ textarea.form-control { min-height: 94px; resize: vertical; }
 .review-edit-button { margin-left: auto; flex-shrink: 0; color: var(--accent); }
 .review-edit { display: grid; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
 .review-edit-actions { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; }
+.review-metadata summary { cursor: pointer; width: fit-content; }
+.analysis-launch { border-color: #d8cfef; background: #fcfbff; }
 .discover-layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 20px; align-items: start; }
 .discover-results { min-width: 0; }
 .discover-results .nav-tabs { flex-wrap: wrap; }
@@ -219,11 +222,11 @@ textarea.form-control { min-height: 94px; resize: vertical; }
   .selection-panel details:not([open]) .selection-content { display: none; }
 }
 @media (max-width: 640px) {
+  .technology-lists { grid-template-columns: 1fr; }
+  .review-group-uncertain { grid-column: auto; }
   .review-row-main { flex-wrap: wrap; }
   .review-edit { grid-template-columns: 1fr; }
   .home-cta .btn { width: 100%; }
-  .patent-row { flex-wrap: wrap; }
-  .patent-row .form-control { flex-basis: 100%; }
   .discover-search { flex-wrap: wrap; }
   .discover-search .btn { width: 100%; }
 }
@@ -260,6 +263,17 @@ textarea.form-control { min-height: 94px; resize: vertical; }
 .wizard-steps li span { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #f1eefe; font-size: 12px; }
 .wizard-steps li.active { color: #2b2540; font-weight: 600; border-color: currentColor; }
 .wizard-steps li.done span { background: #e3f4e8; }
+.approval-snapshot-input { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.approval-snapshot-input div { padding: 12px; border: 1px solid var(--line); border-radius: 9px; background: #faf9fc; }
+.approval-snapshot-input dt { margin-bottom: 4px; font-size: 12px; color: #6e697b; }
+.approval-snapshot-input dd { margin: 0; white-space: pre-wrap; }
+.approval-snapshot-elements .review-row:last-child { margin-bottom: 0; }
+.approval-history > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; list-style-position: inside; }
+.approval-history > summary span { display: inline-flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; }
+.approval-history > summary small { color: #6e697b; font-weight: 400; }
+.approval-history-picker { max-width: 280px; }
+
+@media (max-width: 768px) { .approval-snapshot-input { grid-template-columns: 1fr; } }
 .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 12px; align-items: start; }
 .overview-grid .overview-status, .overview-grid .overview-wide, .overview-grid > button { grid-column: 1 / -1; }
 .overview-grid .analysis-markdown > :last-child { margin-bottom: 0; }

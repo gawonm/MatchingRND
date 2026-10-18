@@ -41,8 +41,18 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
     context_tokens = _positive_int(
         context_tokens if context_tokens is not None else index['CONTEXT_TOKENS'], 'context_tokens',
     )
+    original_query = query
+    query_fallback = None
     if len(tokenizer.encode(query, add_special_tokens=False)) + 2 > index['max_query_tokens']:
-        raise ValueError('질문이 임베딩 토큰 한도를 넘었습니다. 최초 기술문제를 유지하며 확장 요소를 줄이세요.')
+        baseline = str(details.get('baseline_query') or '').strip() if details is not None else ''
+        if not baseline or len(tokenizer.encode(baseline, add_special_tokens=False)) + 2 > index['max_query_tokens']:
+            raise ValueError('질문과 Baseline이 모두 임베딩 토큰 한도를 넘었습니다. 최초 기술문제를 줄이세요.')
+        query = baseline
+        query_fallback = {
+            'reason': 'expanded_query_token_limit',
+            'expanded_query': original_query,
+            'used_query': baseline,
+        }
     keyword, vector, allowed_docs = _retrieve(
         index, query, filters,
         {'document_id', 'task_id', 'task_number', 'filename', 'source', 'item'},
@@ -177,6 +187,7 @@ def search(index, question, *, top_k=None, context_tokens=None, run_reranker=Fal
         'context_truncated': bool(skipped_ids), 'omitted_context_ids': sorted(skipped_ids),
         'diagnostics': {
             'candidate_selection': selection_diagnostics,
+            'query_fallback': query_fallback,
             'technology_relevance': {'enabled': gate.active, 'checks': relevance_checks, 'llm_usage': gate.stats},
             'failed_files': index.get('failed_files', []),
             'excluded_files': index.get('excluded_files', []),

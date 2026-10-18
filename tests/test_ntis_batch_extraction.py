@@ -25,7 +25,8 @@ class NtisBatchExtractionTests(unittest.TestCase):
     def run_extraction(self, ps, respond=response, **env):
         llm = Mock()
         llm.invoke.side_effect = lambda prompt: SimpleNamespace(content=json.dumps(respond(prompt)))
-        settings = {'NTIS_EXTRACTION_BATCH_SIZE': '5', 'NTIS_EXTRACTION_MAX_CHARS': '24000', **env}
+        settings = {'NTIS_EXTRACTION_BATCH_SIZE': '5', 'NTIS_EXTRACTION_MAX_CHARS': '24000',
+                    'NTIS_EXTRACTION_MAX_RETRIES': '1', **env}
         with patch.object(analysis, 'llm', llm), patch.dict('os.environ', settings):
             with analysis.track_llm_calls() as counts:
                 result = analysis.extract_all_project_tech(ps)
@@ -88,6 +89,20 @@ class NtisBatchExtractionTests(unittest.TestCase):
         llm.invoke.assert_not_called()
         with self.assertRaises(ValueError):
             self.run_extraction(projects(2), NTIS_EXTRACTION_BATCH_SIZE='0')
+
+    def test_zero_retry_limit_applies_to_single_sources_and_batch_fallback(self):
+        def invalid(prompt):
+            value = response(prompt)
+            for row in value.get('projects', [value]):
+                row['technology_elements'][0]['evidence'] = 'absent from source'
+            return value
+        for batch_size, expected_calls in [('1', 2), ('5', 3)]:
+            with self.subTest(batch_size=batch_size):
+                rows, llm, counts = self.run_extraction(projects(2), invalid,
+                    NTIS_EXTRACTION_BATCH_SIZE=batch_size, NTIS_EXTRACTION_MAX_RETRIES='0')
+                self.assertEqual(llm.invoke.call_count, expected_calls)
+                self.assertEqual(counts['technology_extraction'], expected_calls)
+                self.assertTrue(all(row['error'] for row in rows))
 
 
 if __name__ == '__main__':

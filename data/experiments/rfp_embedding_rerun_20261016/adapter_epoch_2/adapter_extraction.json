@@ -1,8 +1,0 @@
-{
-  "full_state_sha256": "c607fc8bdd0c02ff08e70637afd3f12d4537a55e67de9433c4a60dcf62d2e03d",
-  "adapter_sha256": "bdb700363adac6e3ead51860c8849e2a22a030c7982e98c955450a91fa2763d3",
-  "lora_tensors": 96,
-  "nonzero_lora_b": 48,
-  "exact_tensor_extraction": true,
-  "weights_changed": false
-}

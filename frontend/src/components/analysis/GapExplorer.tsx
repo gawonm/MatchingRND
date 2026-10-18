@@ -75,7 +75,7 @@ export default function GapExplorer({ rfps, gapItems, technologies, evidenceItem
         <ul className="evidence-claims">{claims.map((text, i) => <li key={i}>{text}</li>)}</ul>
       </> : <p className="small text-secondary mb-0">{hasLinks ? '별도의 검증된 설명이 제공되지 않았습니다. 아래 연결 기술과 근거를 확인하세요.' : '별도의 검증된 설명과 연결된 기술·근거가 제공되지 않았습니다.'}</p>}
 
-      <h4 className="evidence-label">기존 보유기술 <span className="text-secondary fw-normal">사용자 입력 기술과의 검증된 매칭</span></h4>
+      <h4 className="evidence-label">사용자 입력 보유기술 <span className="text-secondary fw-normal">요구기술과의 매칭 · 보유 사실 독립 검증 아님</span></h4>
       {gap.owned_technologies.length ? <ul className="small mb-0">{gap.owned_technologies.map(name => <li key={name}>{name}</li>)}</ul>
         : <p className="small text-secondary mb-0">연결된 보유기술 정보 없음</p>}
 

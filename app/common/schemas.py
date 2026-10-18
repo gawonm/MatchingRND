@@ -85,7 +85,11 @@ class Evidence(BaseModel):
     quote: str = Field(description="원문에 실제로 존재하는 문자열")
     verified: bool = Field(
         default=False,
-        description="quote가 원문 문서에 실제 존재함을 기계적으로 확인했는지",
+        description="quote가 해당 입력/원문에 실제 존재함을 기계적으로 확인했는지. 주장 자체의 독립 검증을 뜻하지 않음",
+    )
+    provenance: Literal["source_document", "user_assertion"] = Field(
+        default="source_document",
+        description="source_document는 외부 원문, user_assertion은 사용자가 입력한 자기진술",
     )
     extra: dict[str, Any] = Field(default_factory=dict)
 

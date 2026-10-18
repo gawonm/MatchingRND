@@ -86,6 +86,9 @@ class SourceMatch(BaseModel):
     coverage: Coverage
     reason: str
     verified: bool = Field(description="LLM이 제시한 근거 문장이 출처 원문에서 확인되었는지")
+    provenance: Literal["source_document", "user_assertion"] = "source_document"
+    independently_verified: bool = Field(
+        default=True, description="기업 보유 여부처럼 입력 주체의 주장과 독립된 원문으로 확인했는지")
     doc_id: str | None = None
     title: str | None = None
     provider: str | None = Field(default=None, description="기술 제공기관 (어디서 보완하는가)")
@@ -210,13 +213,21 @@ class OpenAIStructuredLLM:
     """
 
     def __init__(self, model: str = DEFAULT_LLM_MODEL, *, temperature: float | None = None,
-                 seed: int | None = 0, client: Any = None, cache_dir: str | Path | None = None):
+                 seed: int | None = 0, client: Any = None, cache_dir: str | Path | None = None,
+                 timeout_seconds: float | None = None, max_retries: int | None = None):
         self.model = model
         self.temperature = temperature
         self.seed = seed
         self._client = client
         self.cache_dir = Path(cache_dir) if cache_dir else None
-        self.usage = {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0, "cache_hits": 0}
+        self.timeout_seconds = float(timeout_seconds if timeout_seconds is not None
+                                     else os.getenv("OPENAI_REQUEST_TIMEOUT_SECONDS", "60"))
+        self.max_retries = int(max_retries if max_retries is not None
+                               else os.getenv("OPENAI_MAX_RETRIES", "0"))
+        if self.timeout_seconds <= 0 or self.max_retries < 0:
+            raise ValueError("LLM timeout은 양수, max_retries는 0 이상이어야 합니다.")
+        self.usage = {"calls": 0, "failed_calls": 0, "prompt_tokens": 0,
+                      "completion_tokens": 0, "cache_hits": 0}
         self._lock = threading.Lock()
 
     def _cache_path(self, messages, response_model) -> Path | None:
@@ -237,7 +248,7 @@ class OpenAIStructuredLLM:
                 raise RuntimeError("OPENAI_API_KEY가 없습니다. 프로젝트 루트의 .env에 설정하세요.")
             from openai import OpenAI
 
-            self._client = OpenAI()
+            self._client = OpenAI(timeout=self.timeout_seconds, max_retries=self.max_retries)
         return self._client
 
     def __call__(self, messages, response_model):
@@ -256,7 +267,12 @@ class OpenAIStructuredLLM:
             kwargs["seed"] = self.seed
         with self._lock:  # 클라이언트 생성은 한 번만
             client = self._get_client()
-        completion = client.chat.completions.parse(**kwargs)
+        try:
+            completion = client.chat.completions.parse(**kwargs)
+        except Exception:
+            with self._lock:
+                self.usage["failed_calls"] += 1
+            raise
         usage = getattr(completion, "usage", None)
         with self._lock:
             self.usage["calls"] += 1
@@ -337,14 +353,17 @@ class _Requirement:
 # =============================================================================
 
 def _company_pool(owned: Sequence[str]) -> list[_PoolItem]:
-    """사용자 입력 자체가 근거이므로 입력 문자열을 검증된 근거로 감싼다."""
+    """사용자 자기진술을 보존하되 독립 검증된 기업 문서처럼 표시하지 않는다."""
     return [
         _PoolItem(
             source=SourceType.COMPANY,
             element=TechElement(
                 element_id=_element_id(name), name=name, surface_forms=[name],
                 origin=SourceType.COMPANY, confidence=1.0,
-                evidences=[Evidence(doc_id=COMPANY_DOC_ID, source=SourceType.COMPANY, quote=name, verified=True)],
+                evidences=[Evidence(
+                    doc_id=COMPANY_DOC_ID, source=SourceType.COMPANY, quote=name, verified=True,
+                    provenance="user_assertion", extra={"independently_verified": False},
+                )],
             ),
             doc_id=COMPANY_DOC_ID, title="사용자 입력 보유기술",
         )
@@ -458,23 +477,31 @@ def _rfp_sections(candidate: ExternalTechCandidate) -> list[dict[str, Any]]:
 
 
 def _spans_of(quote: str, sections: Sequence[dict[str, Any]]) -> list[dict[str, Any]]:
-    """quote를 담고 있는 RFP 원문 조각들. PDF 줄바꿈으로 문장이 여러 줄에 갈라져 있어도 찾는다."""
+    """quote를 담고 있는 동일 RFP 단위의 연속 원문 조각들.
+
+    PDF 줄바꿈으로 갈라진 문장은 같은 항목·페이지 안에서만 이어 붙인다.
+    서로 다른 항목이나 페이지의 텍스트를 합쳐 원문 인용을 만들지 않는다.
+    """
     target = _key(quote)
     if not target:
         return []
     for section in sections:  # 한 줄 안에 있으면 그 줄의 위치를 그대로 쓴다
         if target in _key(section["text"]):
             return [section]
-    keys = [_key(section["text"]) for section in sections]
-    start = "".join(keys).find(target)
-    if start < 0:
-        return []
-    end, offset, spans = start + len(target), 0, []
-    for section, key in zip(sections, keys):
-        if key and offset < end and offset + len(key) > start:
+    for start, first in enumerate(sections):
+        first_key = _key(first["text"])
+        combined, spans = "", []
+        for section in sections[start:]:
+            if any(section.get(field) != first.get(field) for field in ("item", "page")):
+                break
             spans.append(section)
-        offset += len(key)
-    return spans
+            combined += _key(section["text"])
+            position = combined.find(target)
+            if 0 <= position < len(first_key):
+                return spans
+            if len(combined) >= len(first_key) + len(target):
+                break
+    return []
 
 
 def _locate(quote: str, sections: Sequence[dict[str, Any]], doc_id: str) -> Evidence:
@@ -690,6 +717,8 @@ def _to_matches(requirement: _Requirement, candidates: Sequence[_PoolItem],
         matches.append(SourceMatch(
             source=item.source, element_name=item.element.name, coverage=judgement.coverage,
             reason=judgement.reason, verified=verified, doc_id=item.doc_id, title=item.title,
+            provenance=("user_assertion" if item.source == SourceType.COMPANY else "source_document"),
+            independently_verified=item.source != SourceType.COMPANY,
             provider=item.provider, transfer_condition=item.transfer_condition, evidences=evidences,
         ))
     return sorted(matches, key=lambda m: (m.coverage != "full", not m.verified))

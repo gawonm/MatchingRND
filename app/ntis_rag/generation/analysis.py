@@ -11,7 +11,11 @@ from langchain_openai import ChatOpenAI
 
 from ..config import LLM_MODEL
 
-llm = ChatOpenAI(model=LLM_MODEL) if os.getenv("OPENAI_API_KEY") else None
+llm = ChatOpenAI(
+    model=LLM_MODEL,
+    timeout=float(os.getenv("OPENAI_REQUEST_TIMEOUT_SECONDS", "60")),
+    max_retries=int(os.getenv("OPENAI_MAX_RETRIES", "0")),
+) if os.getenv("OPENAI_API_KEY") else None
 _calls = ContextVar('ntis_analysis_llm_calls', default=None)
 
 
@@ -159,10 +163,12 @@ evidence는 반드시 원문에 연속된 형태로 존재하는 짧은 구절�
 def extract_all_project_tech(related_projects: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
     import sys
     from .batched_extraction import extract_projects
-
+    retries = int(os.getenv("NTIS_EXTRACTION_MAX_RETRIES", "0"))
+    if retries < 0:
+        raise ValueError("NTIS_EXTRACTION_MAX_RETRIES는 0 이상이어야 합니다.")
     return extract_projects(related_projects, sys.modules[__name__],
         batch_size=int(os.getenv('NTIS_EXTRACTION_BATCH_SIZE', '1')),
-        max_chars=int(os.getenv('NTIS_EXTRACTION_MAX_CHARS', '24000')))
+        max_chars=int(os.getenv('NTIS_EXTRACTION_MAX_CHARS', '24000')), max_retries=retries)
 
 
 # ==================================================

@@ -263,12 +263,24 @@ class QuoteLocationTests(unittest.TestCase):
         self.assertIsNone(evidence.bbox)                   # 여러 조각이면 단일 좌표를 만들지 않는다
         self.assertEqual(len(evidence.extra["locations"]), 2)
 
-    def test_quote_spanning_pages_has_no_single_page(self):
+    def test_quote_cannot_span_pages(self):
         _, evidence = self.run_quote(["첫 줄은 품질예측을 위해", "다음 줄에서 이어지는 문장"],
                                      "품질예측을 위해 다음 줄에서 이어지는", pages=[3, 4])
-        self.assertTrue(evidence.verified)
+        self.assertFalse(evidence.verified)
         self.assertIsNone(evidence.page)
-        self.assertEqual([loc["page"] for loc in evidence.extra["locations"]], [3, 4])
+        self.assertNotIn("locations", evidence.extra)
+
+    def test_quote_cannot_span_requirement_items(self):
+        rfp = rfp_candidate("rfp-1", "과제", ["첫 항목은 품질예측을 위해"])
+        rfp.extra["requirements"]["개발목표"] = [{
+            "text": "다른 항목에서 이어지는 문장", "page": 3,
+            "bbox": [1, 2, 3, 4], "source": "rfp.pdf", "source_kind": "text",
+        }]
+        llm = FakeLLM({"과제": [requirement("품질예측", "품질예측을 위해 다른 항목에서 이어지는")]})
+        evidence = run_gap_analysis(
+            make_state([], [rfp], external=[unrelated_external()]), llm=llm,
+        ).items[0].requirement.evidences[0]
+        self.assertFalse(evidence.verified)
 
     def test_single_line_quote_keeps_exact_position(self):
         _, evidence = self.run_quote(["앞 줄", "SLAM 기반 위치추정 기술 개발"], "SLAM 기반 위치추정")
@@ -627,6 +639,10 @@ class NoExternalCandidateTests(unittest.TestCase):
     def test_company_match_still_wins_without_external_candidates(self):
         item = self.run_one(["SLAM 기반 자율주행"], {("SLAM", "SLAM 기반 자율주행"): ("full", "SLAM 기반 자율주행")})
         self.assertEqual(item.label, GapLabel.OWNED)
+        self.assertEqual(item.company[0].provenance, "user_assertion")
+        self.assertFalse(item.company[0].independently_verified)
+        self.assertEqual(item.company[0].evidences[0].provenance, "user_assertion")
+        self.assertFalse(item.company[0].evidences[0].extra["independently_verified"])
 
     def test_candidates_exist_but_unmatched_stays_rnd_candidate(self):
         item = self.run_one(["용접 로봇 제어"], external=[unrelated_external()])

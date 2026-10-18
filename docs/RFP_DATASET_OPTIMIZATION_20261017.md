@@ -82,13 +82,10 @@ PARTIAL·DIRECT로 명시된 RFP 문서만 정답 회수 대상으로 삼았다.
 | Q21 | 1/1 | 1/1 | 1/1 | 0/1 | 0/1 | 0/1 |
 | Q28 | 1/1 | 1/1 | 1/1 | 1/1 | 1/1 | 1/1 |
 
-## 재현 자료
+## 보존 자료
 
-- 원본 CSV와 SHA-256: `outputs/rfp_dataset_20261017/source_manifest.json`.
-- 선택한 10문항: `subset10.json`, 실험 조건: `protocol_10.json`.
-- 방식별 합계: `summary.json`, 문항별 결과: `question_comparison.json`.
-- 실제 요청별 usage·시간: `results/<방식>/<문항>.events.json`.
-- 중단 전의 10문항 외 결과·비용도 원시 자료에 보존했다. 위 비교 표에는 포함하지 않았다.
+- 원본 CSV SHA-256, 선택 문항 ID, 비교 수치와 추가 검증 usage는 [평가 요약 JSON](evaluations/llm_call_optimization_20261018.json)에 보존했다.
+- 2026-10-18 정리에서 `outputs`의 과거 원시 출력·캐시·문서 스냅샷은 삭제했다. 위 비교는 당시 측정 기록이며 원시 실행을 재현하려면 자료를 다시 준비해야 한다.
 - 기존 ORC 1문항 전체 답변 벤치마크는 `docs/RFP_OPTIMIZATION_BENCHMARK_20261017.md`에 있다. 해당 기존·①·② 결과와 이번 필터 측정은 조건이 달라 합쳐 총 답변 시간으로 계산하지 않았다.
 
 ## 후속 검증에서 보완한 해석

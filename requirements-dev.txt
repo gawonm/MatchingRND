@@ -1,0 +1,11 @@
+# Reproducible local/Mac API and test environment.
+# Keep personal machine snapshots such as requirements-mac-local.txt untracked.
+-r requirements-supabase.txt
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+httpx>=0.27,<1
+openai>=1.50,<3
+langchain-openai>=0.3,<1
+pydantic>=2.9,<3
+PyYAML>=6,<7
+pdfplumber>=0.11,<1

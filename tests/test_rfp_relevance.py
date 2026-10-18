@@ -258,6 +258,24 @@ class RfpRelevanceTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, 'API 실패'):
                 search(index, question(), relevance_llm=Mock(side_effect=RuntimeError('API 실패')))
 
+    def test_overlong_expansion_falls_back_to_baseline_with_diagnostics(self):
+        index, retrieved, llm, _ = fixture([('same', 'same')])
+        details = question(external_elements=[{
+            'technology': '매우 긴 확장 기술 ' * 20, 'quote': '근거', 'source_id': 'pub-1',
+        }])
+        index['max_query_tokens'] = len(index['tokenizer'].encode(details['baseline_query'])) + 2
+        with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved) as retrieve:
+            result = search(index, details, relevance_llm=llm)
+        self.assertEqual(result['question'], details['baseline_query'])
+        self.assertEqual(result['diagnostics']['query_fallback']['reason'], 'expanded_query_token_limit')
+        self.assertEqual(retrieve.call_args.args[1], details['baseline_query'])
+
+    def test_overlong_unstructured_query_still_fails_closed(self):
+        index, _, _, _ = fixture([('same', 'same')])
+        index['max_query_tokens'] = 10
+        with self.assertRaisesRegex(ValueError, 'Baseline'):
+            search(index, '너무 긴 질문입니다' * 10)
+
     def test_unstructured_search_does_not_invent_technology_roles(self):
         index, retrieved, llm, _ = fixture([('same', 'different')])
         with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):
@@ -265,19 +283,39 @@ class RfpRelevanceTests(unittest.TestCase):
         self.assertEqual(len(result['hits']), 1)
         llm.assert_not_called()
 
-    def test_every_explicit_request_needs_evidence_but_owned_portfolio_can_have_extras(self):
+    def test_multiple_goals_can_map_to_different_candidates_without_overclaiming(self):
         details = build_query(['A', 'A2'], '문제', unmet_elements=['B', 'B2'], return_details=True)
-        matches = [dict(technology_index=i, reason='판단', relation=relation,
-                        section_index=0, quote='원문') for i, relation in enumerate(
-                            ['same', 'different', 'similar', 'different'])]
+        relations = {
+            'task-1': ['same', 'different', 'similar', 'different'],
+            'task-2': ['same', 'different', 'different', 'similar'],
+        }
         def llm(messages, model):
-            indices = [t['index'] for t in json.loads(messages[-1]['content'])['technologies']]
-            return model(matches=[matches[i] for i in indices])
+            payload = json.loads(messages[-1]['content'])
+            def judgment(data):
+                task_id = data['sections'][0]['text'].split()[0]
+                return {'matches': [dict(
+                    technology_index=technology['index'], reason='독립 목표 판정', relation=relation,
+                    section_index=0 if relation in {'same', 'similar'} else -1,
+                    quote=data['sections'][0]['text'] if relation in {'same', 'similar'} else '',
+                ) for technology in data['technologies']
+                    for relation in [relations[task_id][technology['index']]]]}
+            if 'jobs' in payload:
+                return model(results=[{
+                    'job_index': job['job_index'], 'judgment': judgment(job['input']),
+                } for job in payload['jobs']])
+            return model(**judgment(payload))
         gate = TechnologyRelevanceGate(details, llm)
-        task = {'fields': {'요구기술': [SimpleNamespace(page_content='원문', metadata={'page': 1})]}}
-        self.assertFalse(gate.check(task)['accepted'])
-        matches[-1]['relation'] = 'similar'
-        self.assertTrue(gate.check(task)['accepted'])
+        tasks = [
+            {'fields': {'요구기술': [SimpleNamespace(page_content=f'{task_id} 원문', metadata={'page': 1})]}}
+            for task_id in ('task-1', 'task-2')
+        ]
+        first, second = gate.check_many(tasks)
+        self.assertTrue(first['accepted'])
+        self.assertEqual(first['matched_goals'], ['B'])
+        self.assertEqual(first['unmatched_goals'], ['B2'])
+        self.assertTrue(second['accepted'])
+        self.assertEqual(second['matched_goals'], ['B2'])
+        self.assertEqual(second['unmatched_goals'], ['B'])
 
 
 if __name__ == '__main__':
