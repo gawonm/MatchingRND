@@ -191,10 +191,12 @@ class TechnologyRelevanceGate:
             matches.append({**match.model_dump(), 'technology': technologies[i], 'verified': verified,
                             'section': section, 'verified_sections': verified_sections})
         owned_match = any(i in valid for i in range(len(self.owned)))
-        requested_ids = range(len(self.owned), len(technologies))
-        requested_match = (all(i in valid for i in requested_ids) if self.explicit_request
-                           else any(i in valid for i in requested_ids))
-        accepted = len(seen) == len(technologies) and owned_match and requested_match
+        requested_ids = list(range(len(self.owned), len(technologies)))
+        matched_goals = [technologies[i] for i in requested_ids if i in valid]
+        unmatched_goals = [technologies[i] for i in requested_ids if i not in valid]
+        accepted = len(seen) == len(technologies) and owned_match and bool(matched_goals)
         return {'accepted': accepted,
-                'reason': '양쪽 기술의 관련 근거 확인' if accepted else '보유기술 또는 요청기술 관련 근거 부족',
+                'reason': ('보유기술과 요청기술 1개 이상의 관련 근거 확인' if accepted
+                           else '보유기술 또는 요청기술 관련 근거 부족'),
+                'matched_goals': matched_goals, 'unmatched_goals': unmatched_goals,
                 'matches': matches}

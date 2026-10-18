@@ -250,19 +250,40 @@ class RfpRelevanceTests(unittest.TestCase):
         self.assertEqual(len(result['hits']), 1)
         llm.assert_not_called()
 
-    def test_every_explicit_request_needs_evidence_but_owned_portfolio_can_have_extras(self):
+    def test_multiple_goals_can_map_to_different_candidates_without_overclaiming(self):
         details = build_query(['A', 'A2'], '문제', unmet_elements=['B', 'B2'], return_details=True)
-        matches = [dict(technology_index=i, reason='판단', relation=relation,
-                        section_index=0, quote='원문') for i, relation in enumerate(
-                            ['same', 'different', 'similar', 'different'])]
+        relations = {
+            'task-1': ['same', 'different', 'similar', 'different'],
+            'task-2': ['same', 'different', 'different', 'similar'],
+        }
         def llm(messages, model):
-            i = json.loads(messages[-1]['content'])['technologies'][0]['index']
-            return model(matches=[matches[i]])
+            payload = json.loads(messages[-1]['content'])
+            def judgment(data):
+                i = data['technologies'][0]['index']
+                task_id = data['sections'][0]['text'].split()[0]
+                relation = relations[task_id][i]
+                return {'matches': [dict(
+                    technology_index=i, reason='독립 목표 판정', relation=relation,
+                    section_index=0 if relation in {'same', 'similar'} else -1,
+                    quote=data['sections'][0]['text'] if relation in {'same', 'similar'} else '',
+                )]}
+            if 'jobs' in payload:
+                return model(results=[{
+                    'job_index': job['job_index'], 'judgment': judgment(job['input']),
+                } for job in payload['jobs']])
+            return model(**judgment(payload))
         gate = TechnologyRelevanceGate(details, llm)
-        task = {'fields': {'요구기술': [SimpleNamespace(page_content='원문', metadata={'page': 1})]}}
-        self.assertFalse(gate.check(task)['accepted'])
-        matches[-1]['relation'] = 'similar'
-        self.assertTrue(gate.check(task)['accepted'])
+        tasks = [
+            {'fields': {'요구기술': [SimpleNamespace(page_content=f'{task_id} 원문', metadata={'page': 1})]}}
+            for task_id in ('task-1', 'task-2')
+        ]
+        first, second = gate.check_many(tasks)
+        self.assertTrue(first['accepted'])
+        self.assertEqual(first['matched_goals'], ['B'])
+        self.assertEqual(first['unmatched_goals'], ['B2'])
+        self.assertTrue(second['accepted'])
+        self.assertEqual(second['matched_goals'], ['B2'])
+        self.assertEqual(second['unmatched_goals'], ['B'])
 
 
 if __name__ == '__main__':

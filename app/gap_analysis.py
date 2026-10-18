@@ -455,23 +455,31 @@ def _rfp_sections(candidate: ExternalTechCandidate) -> list[dict[str, Any]]:
 
 
 def _spans_of(quote: str, sections: Sequence[dict[str, Any]]) -> list[dict[str, Any]]:
-    """quote를 담고 있는 RFP 원문 조각들. PDF 줄바꿈으로 문장이 여러 줄에 갈라져 있어도 찾는다."""
+    """quote를 담고 있는 동일 RFP 단위의 연속 원문 조각들.
+
+    PDF 줄바꿈으로 갈라진 문장은 같은 항목·페이지 안에서만 이어 붙인다.
+    서로 다른 항목이나 페이지의 텍스트를 합쳐 원문 인용을 만들지 않는다.
+    """
     target = _key(quote)
     if not target:
         return []
     for section in sections:  # 한 줄 안에 있으면 그 줄의 위치를 그대로 쓴다
         if target in _key(section["text"]):
             return [section]
-    keys = [_key(section["text"]) for section in sections]
-    start = "".join(keys).find(target)
-    if start < 0:
-        return []
-    end, offset, spans = start + len(target), 0, []
-    for section, key in zip(sections, keys):
-        if key and offset < end and offset + len(key) > start:
+    for start, first in enumerate(sections):
+        first_key = _key(first["text"])
+        combined, spans = "", []
+        for section in sections[start:]:
+            if any(section.get(field) != first.get(field) for field in ("item", "page")):
+                break
             spans.append(section)
-        offset += len(key)
-    return spans
+            combined += _key(section["text"])
+            position = combined.find(target)
+            if 0 <= position < len(first_key):
+                return spans
+            if len(combined) >= len(first_key) + len(target):
+                break
+    return []
 
 
 def _locate(quote: str, sections: Sequence[dict[str, Any]], doc_id: str) -> Evidence:

@@ -114,6 +114,36 @@ class NtisRelevanceTests(unittest.TestCase):
         self.assertEqual(len(result.candidates), 1)
         self.assertIn('additional prediction C', result.hits[0].text)
 
+    def test_multiple_goals_can_map_to_different_projects_without_overclaiming(self):
+        projects = [
+            {'project_id': 'p0', 'project_title': 'p0', 'text': 'p0 owned A and goal B1 evidence', 'rank': 1},
+            {'project_id': 'p1', 'project_title': 'p1', 'text': 'p1 owned A and goal B2 evidence', 'rank': 2},
+        ]
+        decisions = {
+            'p0': {'A': 'same', 'B1': 'same', 'B2': 'different'},
+            'p1': {'A': 'same', 'B1': 'different', 'B2': 'similar'},
+        }
+        def judge(messages, model):
+            payload = json.loads(messages[-1]['content'])
+            def judgment(data):
+                pid = data['project_text'].split()[0]
+                relation = decisions[pid][data['technology']]
+                return dict(relation=relation, reason='독립 목표 판정',
+                            quote=data['project_text'] if relation in {'same', 'similar'} else '')
+            if 'jobs' in payload:
+                return model(results=[{
+                    'job_index': job['job_index'], 'judgment': judgment(job['input']),
+                } for job in payload['jobs']])
+            return model(**judgment(payload))
+        result, _, _ = self.run_backend(
+            'local', projects, Mock(side_effect=judge), requested_technologies=['B1', 'B2'])
+        checks = {c.doc_id: c.extra['technology_relevance'] for c in result.candidates}
+        self.assertEqual(set(checks), {'ntis-p0', 'ntis-p1'})
+        self.assertEqual(checks['ntis-p0']['matched_goals'], ['B1'])
+        self.assertEqual(checks['ntis-p0']['unmatched_goals'], ['B2'])
+        self.assertEqual(checks['ntis-p1']['matched_goals'], ['B2'])
+        self.assertEqual(checks['ntis-p1']['unmatched_goals'], ['B1'])
+
     def test_semantic_matching_does_not_require_keyword_overlap(self):
         project = {'text': 'laser ranging and inertial observation are jointly estimated'}
         judge = Mock(return_value={'relation': 'similar', 'reason': 'same function with different terminology',
@@ -142,16 +172,17 @@ class NtisRelevanceTests(unittest.TestCase):
         self.assertFalse(TechnologyRelevanceGate('B', ['A'], llm=judge).check(
             {'text': 'current project evidence'})['accepted'])
 
-    def test_all_explicit_B_items_but_one_owned_item_are_required(self):
+    def test_one_owned_and_one_requested_match_accepts_only_the_matched_goal(self):
         project = {'text': 'research evidence'}
         def judge(messages, model):
             technology = json.loads(messages[-1]['content'])['technology']
             relation = 'different' if technology in {'A2', 'B2'} else 'similar'
             return model(relation=relation, reason='semantic judgment', quote=project['text'])
         gate = TechnologyRelevanceGate('problem', ['A1', 'A2'], ['B1', 'B2'], judge)
-        self.assertFalse(gate.check(project)['accepted'])
-        gate.requested = ['B1']
-        self.assertTrue(gate.check(project)['accepted'])
+        check = gate.check(project)
+        self.assertTrue(check['accepted'])
+        self.assertEqual(check['matched_goals'], ['B1'])
+        self.assertEqual(check['unmatched_goals'], ['B2'])
 
     def test_missing_inputs_or_text_never_bypass_gate(self):
         judge = Mock()
