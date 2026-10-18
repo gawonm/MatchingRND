@@ -184,9 +184,6 @@ textarea.form-control { min-height: 94px; resize: vertical; }
 .home-step { max-width: 980px; margin-inline: auto; }
 .hero-form { max-width: 940px; }
 .home-cta { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; margin-top: 24px; }
-.patent-row { display: flex; align-items: stretch; gap: 8px; }
-.patent-row .form-control { min-width: 0; }
-.patent-add { flex: 0 0 auto; min-width: 64px; white-space: nowrap; }
 .review-source { padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: #faf9fd; font-size: 13px; }
 .review-source summary { cursor: pointer; }
 .review-row { padding: 12px 0; border-bottom: 1px solid var(--line); }
@@ -230,8 +227,6 @@ textarea.form-control { min-height: 94px; resize: vertical; }
   .review-row-main { flex-wrap: wrap; }
   .review-edit { grid-template-columns: 1fr; }
   .home-cta .btn { width: 100%; }
-  .patent-row { flex-wrap: wrap; }
-  .patent-row .form-control { flex-basis: 100%; }
   .discover-search { flex-wrap: wrap; }
   .discover-search .btn { width: 100%; }
 }

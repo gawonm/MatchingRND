@@ -13,7 +13,6 @@ type TechnologyFormProps = {
 
 export default function TechnologyForm({ value, onChange, onReview, disabled = false, submitLabel, manualLabel }: TechnologyFormProps) {
   const [errors, setErrors] = useState<{ owned?: string; problem?: string }>({});
-  const [patentDraft, setPatentDraft] = useState('');
 
   const submit = (mode: 'extract' | 'manual') => {
     if (disabled) return;
@@ -45,26 +44,6 @@ export default function TechnologyForm({ value, onChange, onReview, disabled = f
       <Form.Control as="textarea" rows={3} placeholder="예: 설비 고장 시점을 사전에 예측하고 유지보수 비용을 줄이고 싶습니다."
         value={value.target_problem} onChange={e => { onChange({ ...value, target_problem: e.target.value }); setErrors(current => ({ ...current, problem: undefined })); }} isInvalid={!!errors.problem} required />
       {errors.problem && <Form.Control.Feedback type="invalid" className="d-block">{errors.problem}</Form.Control.Feedback>}
-    </Form.Group>
-    <Form.Group controlId="patent-number" className="mb-3">
-      <Form.Label>보유 특허정보 <span className="text-secondary fw-normal">선택</span></Form.Label>
-      <div className="patent-row">
-        <Form.Control value={patentDraft} onChange={e => setPatentDraft(e.target.value)}
-          placeholder="특허번호 입력" aria-label="특허번호 입력" />
-        <Button type="button" variant="outline-secondary" className="patent-add" disabled={!patentDraft.trim()} onClick={() => {
-          const number = patentDraft.trim();
-          if (number && !(value.patent_numbers ?? []).includes(number)) onChange({ ...value, patent_numbers: [...(value.patent_numbers ?? []), number] });
-          setPatentDraft('');
-        }}>추가</Button>
-      </div>
-      {!!value.patent_numbers?.length && <ul className="list-unstyled d-flex flex-wrap gap-2 mt-2 mb-0">
-        {value.patent_numbers.map(number => <li className="technology-tag" key={number}>{number}
-          <button type="button" aria-label={`특허번호 ${number} 삭제`} onClick={() => onChange({ ...value, patent_numbers: value.patent_numbers?.filter(item => item !== number) })}>
-            <i className="bi bi-x" aria-hidden="true" />
-          </button>
-        </li>)}
-      </ul>}
-      <Form.Text>번호를 저장하며, 특허 조회는 아직 연결되어 있지 않습니다.</Form.Text>
     </Form.Group>
     <div className="home-cta">
       <Button type="submit" className="analyze-button" disabled={disabled}>{submitLabel}</Button>

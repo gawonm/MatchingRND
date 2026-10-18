@@ -196,3 +196,12 @@ test('Workspace는 기술 입력, 분석 준비, 결과 확인 흐름과 분리�
   assert.match(wizard, /내용을 확정하는 것만으로는 분석 API를 호출하지 않습니다/);
   assert.match(wizard, /disabled=\{!approved\} onClick=\{run\}>실제 RAG 분석 시작/);
 });
+
+test('Workspace MVP는 특허번호를 새로 입력받지 않지만 기존 승인 스냅샷은 보존한다', () => {
+  const form = readFileSync(new URL('../src/components/TechnologyForm.tsx', import.meta.url), 'utf8');
+  const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
+  const session = readFileSync(new URL('../src/state/analysisSession.ts', import.meta.url), 'utf8');
+  assert.doesNotMatch(form, /보유 특허정보|특허번호 입력|patentDraft|patent-number|patent_numbers/);
+  assert.match(wizard, /selected\.input\.patent_numbers/);
+  assert.match(session, /patent_numbers: \[\.\.\.\(value\.patent_numbers \?\? \[\]\)\]/);
+});
