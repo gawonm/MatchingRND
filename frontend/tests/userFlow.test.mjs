@@ -175,9 +175,24 @@ test('Workspace 승인 이력은 profiles와 runs를 읽기 전용 스냅샷 조
   const history = wizard.slice(wizard.indexOf('function ApprovalHistory'), wizard.indexOf('export default function WorkspaceWizard'));
   assert.match(app, /profiles=\{session\.profiles\} runs=\{session\.runs\}/);
   assert.match(history, /aria-label="승인 버전 선택"/);
+  assert.match(history, /<details className="app-card approval-history/);
+  assert.match(history, /현재 편집본에는 영향 없음/);
   assert.match(history, /selected\.input\.technology_description/);
   assert.match(history, /selected\.elements\.map/);
   assert.match(history, /run\.profileId === selected\.id && run\.profileVersion === selected\.version/);
   assert.match(history, /현재 편집본·승인 상태·분석 실행은 바뀌지 않습니다/);
   assert.doesNotMatch(history, /onInputChange|onElementsChange|onApprove|onRun/);
+});
+
+test('Workspace는 기술 입력, 분석 준비, 결과 확인 흐름과 분리된 실행 게이트를 안내한다', () => {
+  const wizard = readFileSync(new URL('../src/components/WorkspaceWizard.tsx', import.meta.url), 'utf8');
+  const review = readFileSync(new URL('../src/components/TechnologyReview.tsx', import.meta.url), 'utf8');
+  assert.match(wizard, /const steps = \['기술 입력', '분석 준비', '결과 확인'\]/);
+  assert.match(review, /내가 가진 기술/);
+  assert.match(review, /추가로 필요한 기술/);
+  assert.match(review, /<summary>세부 정보<\/summary>/);
+  assert.doesNotMatch(review, /\{element\.category\} · \{element\.source\}<\/span>/);
+  assert.match(wizard, /이 내용으로 분석 준비 완료/);
+  assert.match(wizard, /내용을 확정하는 것만으로는 분석 API를 호출하지 않습니다/);
+  assert.match(wizard, /disabled=\{!approved\} onClick=\{run\}>실제 RAG 분석 시작/);
 });

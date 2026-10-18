@@ -90,7 +90,7 @@ export default function App() {
   const titles: Record<string, [string, string]> = {
     home: ['기술에서 시작하는 새로운 가능성', '보유 기술을 기준으로 나눔기술·국가 R&D 기회를 근거와 함께 분석합니다.'],
     discover: ['R&D 자료 탐색', '외부 기술, 선행 R&D, 공고를 각각 살펴보고 검토할 자료를 선택하세요.'],
-    workspace: ['기술 분석 Workspace', '기술 입력 → 기술요소 검토·승인 → 통합 RAG 분석 → 결과 검토'],
+    workspace: ['기술 분석 Workspace', '기술 입력 → 분석 준비 → 결과 확인'],
     selection: viewMode === 'demo' ? ['고정 데모 Gap 분석', '현재 사용자 프로필과 무관한 고정 예시 분석입니다.'] : ['Discover 선택 자료 검토', 'Discover에서 선택한 자료의 출처와 인용을 확인하세요.'],
     simulation: viewMode === 'demo' ? ['고정 데모 도입 가정 비교', '사용자 선택 자료와 무관한 별도 고정 사례입니다.'] : ['외부 기술 도입 가정 기록', '선택한 외부 기술의 도입을 가정해 기록합니다. 비교·효과 판정은 제공하지 않습니다.'],
   };
@@ -107,12 +107,12 @@ export default function App() {
       {(page === 'selection' || page === 'simulation') && <div className="d-flex gap-2 mb-3"><Button size="sm" className={viewMode === 'review' ? 'btn-accent' : 'btn-accent-outline'} onClick={() => setViewMode('review')}>현재 검토</Button><Button size="sm" className={viewMode === 'demo' ? 'btn-accent' : 'btn-accent-outline'} onClick={() => setViewMode('demo')}>고정 데모</Button></div>}
       {page === 'home' && <>
         <section className="hero-section home-step"><div className="eyebrow">새 기술 분석</div><h2 className="h4 fw-bold mb-2">보유 기술에서 다음 R&D 기회를 찾으세요</h2>
-          <p className="small text-secondary mb-3">Workspace에서 기술을 입력하고 AI가 추출한 기술요소를 검토·승인하면, 나눔기술·NTIS·RFP 근거 기반 보고서를 생성합니다.</p>
+          <p className="small text-secondary mb-3">Workspace에서 기술을 입력하고 분석할 내용을 확인한 뒤, 원할 때 실제 RAG 분석을 시작할 수 있습니다.</p>
           <div className="d-flex gap-2 flex-wrap"><Button className="btn-accent" onClick={() => setPage('workspace')}>{approved && workspaceReport.result ? '분석 결과 이어보기' : input.technology_description || elements.length ? '작업 이어하기' : '새 기술 분석 시작'}</Button>
             <Button variant="outline-secondary" onClick={() => setPage('discover')}>자료 검색하기</Button></div>
           <p className="small text-secondary mt-3 mb-0">새로고침하면 이 브라우저의 입력·승인·결과가 초기화됩니다.</p>
         </section>
-        <div className="workflow-grid">{[['pencil-square', '기술 입력', '보유 기술 A, 필요 기술 B, 해결 문제를 입력합니다.'], ['check2-square', '기술요소 검토·승인', 'AI 추출 후보를 수정하고 직접 승인합니다.'], ['file-earmark-text', '근거 기반 결과', '추천 기술·RFP·Gap과 원문 근거를 확인합니다.']].map(([icon, title, description], i) => <div className="feature-card" key={title}><span className="step-number">0{i + 1}</span><i className={`bi bi-${icon} fs-4`} /><h3 className="h6 mt-3">{title}</h3><p className="small text-secondary mb-0">{description}</p></div>)}</div>
+        <div className="workflow-grid">{[['pencil-square', '기술 입력', '보유 기술, 필요 기술, 해결 문제를 입력합니다.'], ['check2-square', '분석 준비', '내가 가진 기술과 추가로 필요한 기술만 확인합니다.'], ['file-earmark-text', '결과 확인', '추천 기술·RFP·Gap과 원문 근거를 확인합니다.']].map(([icon, title, description], i) => <div className="feature-card" key={title}><span className="step-number">0{i + 1}</span><i className={`bi bi-${icon} fs-4`} /><h3 className="h6 mt-3">{title}</h3><p className="small text-secondary mb-0">{description}</p></div>)}</div>
       </>}
       {page === 'workspace' && <WorkspaceWizard key={session.id} input={input} elements={elements} onInputChange={setInput} onElementsChange={setElements}
         references={session.workspaceReferences ?? []} profiles={session.profiles} runs={session.runs}
