@@ -639,6 +639,10 @@ class NoExternalCandidateTests(unittest.TestCase):
     def test_company_match_still_wins_without_external_candidates(self):
         item = self.run_one(["SLAM 기반 자율주행"], {("SLAM", "SLAM 기반 자율주행"): ("full", "SLAM 기반 자율주행")})
         self.assertEqual(item.label, GapLabel.OWNED)
+        self.assertEqual(item.company[0].provenance, "user_assertion")
+        self.assertFalse(item.company[0].independently_verified)
+        self.assertEqual(item.company[0].evidences[0].provenance, "user_assertion")
+        self.assertFalse(item.company[0].evidences[0].extra["independently_verified"])
 
     def test_candidates_exist_but_unmatched_stays_rnd_candidate(self):
         item = self.run_one(["용접 로봇 제어"], external=[unrelated_external()])

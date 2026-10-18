@@ -243,6 +243,24 @@ class RfpRelevanceTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, 'API 실패'):
                 search(index, question(), relevance_llm=Mock(side_effect=RuntimeError('API 실패')))
 
+    def test_overlong_expansion_falls_back_to_baseline_with_diagnostics(self):
+        index, retrieved, llm, _ = fixture([('same', 'same')])
+        details = question(external_elements=[{
+            'technology': '매우 긴 확장 기술 ' * 20, 'quote': '근거', 'source_id': 'pub-1',
+        }])
+        index['max_query_tokens'] = len(index['tokenizer'].encode(details['baseline_query'])) + 2
+        with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved) as retrieve:
+            result = search(index, details, relevance_llm=llm)
+        self.assertEqual(result['question'], details['baseline_query'])
+        self.assertEqual(result['diagnostics']['query_fallback']['reason'], 'expanded_query_token_limit')
+        self.assertEqual(retrieve.call_args.args[1], details['baseline_query'])
+
+    def test_overlong_unstructured_query_still_fails_closed(self):
+        index, _, _, _ = fixture([('same', 'same')])
+        index['max_query_tokens'] = 10
+        with self.assertRaisesRegex(ValueError, 'Baseline'):
+            search(index, '너무 긴 질문입니다' * 10)
+
     def test_unstructured_search_does_not_invent_technology_roles(self):
         index, retrieved, llm, _ = fixture([('same', 'different')])
         with patch('app.rfp_rag.retrieval.pipeline._retrieve', return_value=retrieved):

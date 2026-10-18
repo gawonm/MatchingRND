@@ -3,7 +3,7 @@ import { safeLink } from './reportMarkdown.ts';
 
 export const SOURCE_LABELS: Record<SourceType, string> = {
   pub: '공공 나눔기술', pos: '포스코 나눔기술', ntis: 'NTIS 선행 과제', rfp: 'RFP 원문',
-  policy: '법령 문서 (참고 · 적합성 판단 아님)', company: '사용자 입력 보유기술',
+  policy: '법령 문서 (MVP 분석 미지원)', company: '사용자 자기진술 (독립 검증 아님)',
 };
 
 // 팀 정책: 모든 분석에 적용되는 일반 확인사항. 법령 검색·법적 판단 결과가 아니다.

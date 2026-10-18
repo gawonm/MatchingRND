@@ -83,6 +83,7 @@ class OrchestratorTests(unittest.TestCase):
         result = self.orchestrator.run({**self.request, "policy_question": "기술이전 조건은 무엇인가?"})
         self.assertEqual(order, ["technology", "ntis", "rfp"])
         self.assertEqual(set(result.queries), {"technology", "ntis", "rfp"})
+        self.assertTrue(any("MVP 미지원" in warning for warning in result.warnings))
 
     def test_empty_results_do_not_create_gap_verdicts(self):
         for name, runner in (("technology", self.technology), ("ntis", self.ntis), ("rfp", self.rfp)):

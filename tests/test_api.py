@@ -20,6 +20,14 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['status'], 'ok')
 
+    def test_capabilities_make_unsupported_mvp_scope_explicit(self):
+        response = self.client.get('/api/capabilities')
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertIn('policy_search', body['unsupported_analysis'])
+        self.assertIn('company_database_verification', body['unsupported_analysis'])
+        self.assertEqual(body['company_input_provenance'], 'user_assertion_not_independently_verified')
+
     def test_orchestrator_uses_server_backend_environment(self):
         with patch.dict(environ, {'RAG_BACKEND': 'local'}):
             get_orchestrator.cache_clear()
@@ -106,10 +114,18 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.json()['detail']['error'], 'report_failed')
         self.assertNotIn('secret', response.text)
 
+    @patch('app.api.main.generate_analysis_report')
+    def test_report_surfaces_safe_pipeline_stage(self, generate_report):
+        from app.api.main import ReportGenerationError
+        generate_report.side_effect = ReportGenerationError('gap_llm')
+        response = self.client.post('/api/analysis/report', json={'problem': '고장 예측'})
+        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.json()['detail']['stage'], 'gap_llm')
+
     def _extract_with(self, fake_llm, payload):
         real_parse = parse_query
         # Same retry budget as production (parse_query default), only the LLM is fake.
-        with patch('app.api.main.parse_query', lambda query: real_parse(query, llm=fake_llm)), \
+        with patch('app.api.main.parse_query', lambda query, **kwargs: real_parse(query, llm=fake_llm, **kwargs)), \
                 patch('app.api.main.generate_analysis_report') as generate_report, \
                 patch('app.api.main.get_orchestrator') as orchestrator:
             response = self.client.post('/api/analysis/extract', json=payload)

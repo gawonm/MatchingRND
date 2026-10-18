@@ -24,7 +24,10 @@ class AnalysisRequest(BaseModel):
     problem: str = Field(min_length=1)
     owned_technologies: list[str] = Field(default_factory=list)
     unmet_elements: list[str] = Field(default_factory=list)
-    policy_question: str | None = None
+    policy_question: str | None = Field(
+        default=None,
+        description="호환용 입력. MVP 분석 범위에는 포함되지 않으며 법령 검색이나 적합성 판단을 실행하지 않음",
+    )
 
     @field_validator("problem", "policy_question")
     @classmethod
@@ -232,6 +235,10 @@ class RagOrchestrator:
         for name, elements in (("technology", external), ("ntis", ntis_elements)):
             if not elements:
                 warnings.append(f"{name}: 검증된 기술요소가 없어 해당 단계의 Query 확장을 생략했습니다.")
+        if request.policy_question:
+            warnings.append(
+                "policy: MVP 미지원 범위입니다. 법령 검색·신청자격·법적 적합성 판단을 수행하지 않았습니다."
+            )
         queries = {"technology": baseline, "ntis": ntis.query, "rfp": details["query"]}
         return AnalysisState(
             request=request, technology=technology, ntis=ntis, rfp=rfp,

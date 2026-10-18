@@ -26,3 +26,4 @@ data/raw/rfp/**/*.PDF
 data/processed/rfp/
 tmp/pdfs/
 tmp/rfp-user-tests/
+frontend/.cache/
