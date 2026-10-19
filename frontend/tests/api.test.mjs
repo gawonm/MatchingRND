@@ -60,6 +60,7 @@ test('기술요소 추출은 A/B/문제를 분리 전송하고 후보를 승인 
     const result = await extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: '진동 분석', target_problem: '고장 예측', required_technology: ' ' });
     assert.deepEqual(calls, ['http://127.0.0.1:8000/api/analysis/extract']);
     assert.deepEqual(result.elements.map(e => [e.name, e.role, e.source, e.evidence]), [['진동 분석', 'owned', 'AI 추출', '진동 분석'], ['고장 예측', 'goal', 'AI 추출', '고장 예측']]);
+    assert.ok(result.elements.every(e => e.extracted_from === JSON.stringify(['진동 분석', '', '고장 예측', ''])));  // 추출 시점 입력 서명
     assert.deepEqual(result.warnings, ['w']);
 
     globalThis.fetch = async () => new Response(JSON.stringify({ detail: { error: 'extraction_unverified', message: '원문 확인 불가' } }), { status: 422 });

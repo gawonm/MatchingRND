@@ -2,6 +2,16 @@ import type { AnalysisReportRequest } from '../api';
 import type { TechnologyElement } from '../types/technologyElement';
 import type { TechnologyInput } from '../types/technologyInput';
 
+// AI 추출에 쓰인 입력의 서명. 입력이 바뀌면 이전 추출 요소는 현재 입력에서 검증되지 않은 것으로 본다.
+export function extractionSignature(input: TechnologyInput): string {
+  return JSON.stringify([input.technology_description, input.required_technology ?? '', input.target_problem, input.original_query ?? '']
+    .map(value => value.trim()));
+}
+
+export function isStaleExtraction(element: TechnologyElement, input: TechnologyInput): boolean {
+  return element.extracted_from !== undefined && element.extracted_from !== extractionSignature(input);
+}
+
 // Keep the full question used at extraction time. The approved A/B names remain user editable.
 export function analysisRequestFromInput(input: TechnologyInput, elements: TechnologyElement[]): AnalysisReportRequest {
   const original = input.original_query?.trim();

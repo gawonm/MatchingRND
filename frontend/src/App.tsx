@@ -65,7 +65,7 @@ export default function App() {
   };
   const setViewMode = (mode: 'review' | 'demo') => navigate({ ...route, mode });
   const approve = () => {
-    if (approvalBlocker(elements)) return;
+    if (approvalBlocker(elements, input)) return;
     updateSession(current => confirmProfile({ ...current, reviewSource: cloneInput(current.draftInput) }));
   };
   const selectProject = (id: string) => { updateDemo({ projectId: id }); setGapId(null); setFilter('all'); };

@@ -1,6 +1,7 @@
 import type { AnalysisRun, AnalysisSession, ConfirmedProfile, DiscoverItem, DiscoverSource, ModuleSearch } from '../types/analysisSession';
 import type { TechnologyElement } from '../types/technologyElement';
 import type { TechnologyInput } from '../types/technologyInput';
+import { isStaleExtraction } from '../lib/analysisRequest.ts';
 
 export const cloneInput = (value: TechnologyInput): TechnologyInput => ({ ...value, technology_domains: [...value.technology_domains], technology_tags: [...value.technology_tags], patent_numbers: [...(value.patent_numbers ?? [])] });
 
@@ -107,7 +108,9 @@ export function confirmProfile(session: AnalysisSession, runId = crypto.randomUU
 }
 
 // 파서는 A/B가 없는 질문도 허용한다. 승인 시 미정 역할만 해소한다.
-export function approvalBlocker(elements: TechnologyElement[]): string | null {
+// 입력이 AI 추출 이후 바뀌었으면 이전 추출 요소를 현재 입력에서 검증된 것처럼 승인하지 않는다.
+export function approvalBlocker(elements: TechnologyElement[], input?: TechnologyInput): string | null {
+  if (input && elements.some(element => isStaleExtraction(element, input))) return '입력이 AI 추출 이후 변경되었습니다. 현재 입력으로 다시 추출하거나 이전 추출 요소를 삭제해 주세요.';
   if (elements.some(element => element.role === 'uncertain')) return '‘구분 확인 필요’ 요소의 역할을 정해야 승인할 수 있습니다.';
   return null;
 }

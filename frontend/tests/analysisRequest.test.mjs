@@ -30,3 +30,17 @@ test('원문만 입력한 승인본은 빈 A/B와 제도 질문을 왜곡 없이
   });
   assert.equal(approvedProfile({ ...confirmProfile(session, 'r', 'v'), draftInput: { ...session.draftInput, policy_question: null } }), null);
 });
+
+test('입력이 AI 추출 이후 바뀌면 이전 추출 요소를 현재 입력에서 검증된 것으로 승인하지 않는다', async () => {
+  const { approvalBlocker } = await import('../src/state/analysisSession.ts');
+  const { extractionSignature, isStaleExtraction } = await import('../src/lib/analysisRequest.ts');
+  const input = { technology_domains: [], technology_tags: [], technology_description: 'A', target_problem: '문제', original_query: '원문 질문' };
+  const extracted = { id: 'a', name: '진동 분석', category: '미분류', role: 'owned', evidence: '진동 분석', source: 'AI 추출', extracted_from: extractionSignature(input) };
+  const manual = { id: 'm', name: '직접 추가', category: '미분류', role: 'goal', evidence: '', source: '사용자 추가' };
+  assert.equal(approvalBlocker([extracted, manual], { ...input, original_query: '  원문 질문 ' }), null);  // 공백 차이는 같은 입력
+  const changed = { ...input, original_query: '원문 질문 수정' };
+  assert.equal(isStaleExtraction(extracted, changed), true);
+  assert.equal(isStaleExtraction(manual, changed), false);
+  assert.match(approvalBlocker([extracted, manual], changed), /다시 추출/);
+  assert.equal(approvalBlocker([manual], changed), null);
+});

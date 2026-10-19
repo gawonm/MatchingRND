@@ -1,6 +1,7 @@
 import type { AnalysisReport, ReportViewResponse } from './types/analysisReport';
 import type { TechnologyElement } from './types/technologyElement';
 import type { TechnologyInput } from './types/technologyInput';
+import { extractionSignature } from './lib/analysisRequest.ts';
 
 const configuredBase = import.meta.env?.VITE_API_BASE_URL?.trim();
 
@@ -68,6 +69,6 @@ export async function extractTechnologyElements(input: TechnologyInput): Promise
   }
   const body = await response.json() as { owned: ExtractedTechnology[]; requested: ExtractedTechnology[]; warnings: string[]; policy_question?: string | null };
   const toElement = (role: 'owned' | 'goal') => (item: ExtractedTechnology, index: number): TechnologyElement =>
-    ({ id: `ai-${role}-${index + 1}`, name: item.name, category: '미분류', role, evidence: item.quote, source: 'AI 추출' });
+    ({ id: `ai-${role}-${index + 1}`, name: item.name, category: '미분류', role, evidence: item.quote, source: 'AI 추출', extracted_from: extractionSignature(input) });
   return { elements: [...body.owned.map(toElement('owned')), ...body.requested.map(toElement('goal'))], warnings: body.warnings, policy_question: body.policy_question ?? null };
 }

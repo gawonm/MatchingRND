@@ -6,6 +6,7 @@ import AnalysisReportView, { ReportOverview } from './AnalysisReportView';
 import { extractTechnologyElements } from '../api';
 import type { ReportEntry } from '../state/analysisReports';
 import { approvalBlocker } from '../state/analysisSession';
+import { isStaleExtraction } from '../lib/analysisRequest';
 import EvidenceExplorer from './analysis/EvidenceExplorer';
 import RfpExplorer from './analysis/RfpExplorer';
 import TechnologyExplorer from './analysis/TechnologyExplorer';
@@ -187,7 +188,9 @@ export default function WorkspaceWizard({ input, elements, references, profiles,
     {view === 'input' && <div className="app-card p-4">
       <h2 className="h6">보유 기술과 해결하려는 문제를 입력하세요</h2>
       <p className="small text-secondary">AI 추출은 버튼을 누를 때만 실행되며, 결과는 승인 전까지 후보입니다.</p>
-      {elements.length > 0 && <div className="mock-banner mt-0">기존 기술요소 {elements.length}개가 있습니다. AI 추출을 실행하면 대체됩니다. <Button size="sm" variant="outline-secondary" onClick={() => setStep('review')}>기존 요소로 검토 계속</Button></div>}
+      {elements.length > 0 && <div className="mock-banner mt-0">{elements.some(element => isStaleExtraction(element, input))
+        ? `이전 입력에서 추출한 기술요소가 있습니다. 입력이 바뀌었으므로 AI 추출을 다시 실행해 주세요. 기존 요소는 현재 입력에서 검증되지 않았습니다.`
+        : `기존 기술요소 ${elements.length}개가 있습니다. AI 추출을 실행하면 대체됩니다.`} <Button size="sm" variant="outline-secondary" onClick={() => setStep('review')}>기존 요소로 검토 계속</Button></div>}
       {extraction.status === 'error' && <div className="mock-banner mt-0" role="alert">{extraction.message} 입력은 보존되었습니다. 다시 시도하거나 직접 정리할 수 있습니다.</div>}
       {extraction.status === 'loading' && <div className="report-progress app-card" role="status" aria-live="polite"><span className="spinner-border spinner-border-sm" aria-hidden="true" /><strong>기술요소를 추출하고 있습니다.</strong></div>}
       <TechnologyForm value={input} onChange={onInputChange} onReview={submitInput} disabled={extraction.status === 'loading'}
@@ -196,7 +199,7 @@ export default function WorkspaceWizard({ input, elements, references, profiles,
     {view === 'review' && <>
       {extraction.warnings.length > 0 && <div className="mock-banner mt-0">{extraction.warnings.join(' ')}</div>}
       <TechnologyReview input={input} elements={elements} onElementsChange={onElementsChange} onDone={onApprove}
-        doneLabel={approved ? `내용 확정됨 · v${approvedVersion}` : '이 내용으로 분석 준비 완료'} doneBlocked={approved ? '현재 내용은 이미 확정되었습니다. 수정하면 다시 확정할 수 있습니다.' : approvalBlocker(elements)} />
+        doneLabel={approved ? `내용 확정됨 · v${approvedVersion}` : '이 내용으로 분석 준비 완료'} doneBlocked={approved ? '현재 내용은 이미 확정되었습니다. 수정하면 다시 확정할 수 있습니다.' : approvalBlocker(elements, input)} />
       <div className="app-card analysis-launch p-4 mt-3 d-flex justify-content-between align-items-center gap-3 flex-wrap">
         <div><strong>{approved ? `분석 준비가 완료되었습니다 · v${approvedVersion}` : '먼저 위 내용을 확정해 주세요.'}</strong>
           <div className="small text-secondary mt-1">{approved ? '아래 버튼을 눌러야 실제 RAG 분석이 시작됩니다. 내용을 확정하는 것만으로는 분석 API를 호출하지 않습니다.' : '내용을 확정하면 승인 스냅샷이 저장됩니다. 이 단계에서는 실제 RAG 분석을 실행하지 않습니다.'}</div></div>
