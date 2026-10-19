@@ -5,7 +5,7 @@ from unittest.mock import Mock, patch
 
 from fastapi.testclient import TestClient
 
-from app.api.main import app, get_orchestrator
+from app.api.main import app, get_orchestrator, runtime_settings
 from app.final_answer import FinalAnswer
 from app.orchestrator import OrchestrationError
 from app.query_parser import parse_query
@@ -33,6 +33,20 @@ class ApiTests(unittest.TestCase):
             get_orchestrator.cache_clear()
             self.assertEqual(get_orchestrator().backend, 'local')
         get_orchestrator.cache_clear()
+
+    def test_runtime_settings_match_orchestrator_and_hide_credentials(self):
+        secrets = {'OPENAI_API_KEY': 'sk-test-secret', 'SUPABASE_DB_PASSWORD': 'db-secret',
+                   'SUPABASE_SECRET_KEY': 'sb-secret'}
+        with patch.dict(environ, secrets):
+            environ.pop('RAG_BACKEND', None)
+            settings = runtime_settings()
+            get_orchestrator.cache_clear()
+            self.assertEqual(settings['rag_backend'], get_orchestrator().backend)
+            self.assertFalse(settings['rag_backend_from_env'])
+            with patch.dict(environ, {'RAG_BACKEND': 'supabase'}):
+                self.assertEqual(runtime_settings()['rag_backend'], 'supabase')
+        get_orchestrator.cache_clear()
+        self.assertFalse(any(value in str(settings) for value in secrets.values()))
 
     def test_cors_allows_local_frontend(self):
         response = self.client.options('/api/health', headers={
@@ -167,6 +181,18 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(raw, seen[0])
         self.assertNotIn('현재 보유한 기술:', seen[0])
+
+    def test_extract_accepts_original_only_without_inventing_owned_technology(self):
+        raw = '잔존수명 예측 기술이 필요하다. 기술이전 조건도 알려줘.'
+
+        def fake_llm(_messages, _schema):
+            return {'development_goal': '잔존수명 예측', 'policy_question': '기술이전 조건도 알려줘.',
+                    'owned': [], 'requested': [{'name': '잔존수명 예측', 'quote': '잔존수명 예측'}]}
+
+        response = self._extract_with(fake_llm, {'original_query': raw})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['owned'], [])
+        self.assertEqual(response.json()['policy_question'], '기술이전 조건도 알려줘.')
 
     def test_extract_accepts_whitespace_and_line_break_differences(self):
         payload = {'owned_description': '진동 데이터 이상 탐지 기술을 보유', 'required_description': '잔존수명 예측',

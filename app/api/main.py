@@ -1,10 +1,20 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.discovery import router as discovery_router
 
+
+@asynccontextmanager
+async def lifespan(_app):
+    log_runtime_settings()
+    yield
+
+
 app = FastAPI(
     title="R&D Match API",
-    version="0.1.0"
+    version="0.1.0",
+    lifespan=lifespan,
 )
 
 app.add_middleware(
@@ -66,6 +76,31 @@ from pydantic import BaseModel, Field
 logger = logging.getLogger(__name__)
 
 
+def runtime_settings() -> dict:
+    """Effective backend/model settings for the startup log. Never includes credentials."""
+    from app.common.llm_config import DEFAULT_LLM_MODEL
+    from app.technology_rag.config import load_config
+
+    overrides = ("NTIS_LLM_MODEL", "NTIS_RELEVANCE_MODEL", "RFP_RELEVANCE_MODEL",
+                 "RFP_EMBEDDING_MODEL", "NTIS_EMBEDDING_MODEL")
+    return {
+        "rag_backend": os.getenv("RAG_BACKEND", "local"),  # RagOrchestrator()와 같은 규칙
+        "rag_backend_from_env": "RAG_BACKEND" in os.environ,
+        "default_llm_model": DEFAULT_LLM_MODEL,
+        "technology_llm_model": load_config().llm.model,
+        **{name.lower(): os.getenv(name) for name in overrides if os.getenv(name)},
+    }
+
+
+def log_runtime_settings():
+    log = logging.getLogger("uvicorn.error")
+    settings = runtime_settings()
+    log.info("RAG runtime settings: %s", settings)
+    if not settings["rag_backend_from_env"]:
+        # 비UI CLI(tests/integration_e2e.py, app/scripts/run_analysis.py)는 --backend 기본값 supabase를 쓴다.
+        log.warning("RAG_BACKEND 미설정: FastAPI는 local, 비UI CLI는 supabase를 사용합니다. RAG_BACKEND를 명시하세요.")
+
+
 class ReportGenerationError(RuntimeError):
     """Safe stage marker for a failed report pipeline."""
 
@@ -75,11 +110,11 @@ class ReportGenerationError(RuntimeError):
 
 
 class ExtractionRequest(BaseModel):
-    """Wizard Step 1 input: A (required), B (optional), problem (required)."""
+    """Original query, or A/problem fields with optional B."""
 
-    owned_description: str = Field(min_length=1)
+    owned_description: str = ""
     required_description: str | None = None
-    problem: str = Field(min_length=1)
+    problem: str = ""
     original_query: str | None = None
 
 
@@ -104,7 +139,9 @@ def extraction_query(request: ExtractionRequest) -> str:
 
 @app.post("/api/analysis/extract", response_model=ExtractionResponse)
 async def extract_elements(request: ExtractionRequest):
-    if not request.owned_description.strip() or not request.problem.strip():
+    if not (request.original_query and request.original_query.strip()) and (
+        not request.owned_description.strip() or not request.problem.strip()
+    ):
         raise HTTPException(status_code=422, detail={
             "error": "invalid_input",
             "message": "보유 기술과 해결 문제를 입력해 주세요.",

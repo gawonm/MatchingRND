@@ -79,6 +79,7 @@ function ApprovalHistory({ profiles, runs }: { profiles: ConfirmedProfile[]; run
         <div><dt>필요 기술</dt><dd>{selected.input.required_technology || '입력 없음'}</dd></div>
         <div><dt>해결하려는 기술 문제</dt><dd>{selected.input.target_problem}</dd></div>
         {selected.input.original_query && <div><dt>원문 질문 · 분석 입력</dt><dd>{selected.input.original_query}</dd></div>}
+        {selected.input.policy_question && <div><dt>추출된 제도 질문</dt><dd>{selected.input.policy_question}</dd></div>}
         <div><dt>특허번호</dt><dd>{selected.input.patent_numbers?.join(', ') || '없음'}</dd></div>
       </dl>
       <div className="approval-snapshot-elements mt-3">

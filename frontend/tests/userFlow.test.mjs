@@ -75,7 +75,7 @@ test('참고 자료 전달은 입력과 기존 보고서를 바꾸지 않고, �
   assert.equal(report.report.markdown, '이미 완료된 분석');
   const edited = { ...staged, draftInput: { ...staged.draftInput, technology_description: '내 센서 기술', required_technology: '제설 제어 기술', target_problem: '결빙 구간 감지' } };
   const owned = { id: 'owned', name: '센서 기술', role: 'owned', category: '미분류', evidence: '내 센서 기술', source: '사용자 입력' };
-  assert.match(approvalBlocker([]), /보유 기술/);
+  assert.equal(approvalBlocker([]), null);
   const approved = confirmProfile({ ...edited, draftElements: [owned] }, 'next-run', 'profile');
   assert.equal(approvedProfile(approved).input.required_technology, '제설 제어 기술');
   assert.equal(approvedProfile(approved).input.target_problem, '결빙 구간 감지');
@@ -151,10 +151,10 @@ test('브라우저 이동 이력은 페이지·세션·실행·데모 모드를 
   assert.equal(pageFromHash('#selection'), 'selection');
 });
 
-test('Workspace 승인 게이트: A 요소 없이·역할 미정 상태로는 승인되지 않고, 수정하면 승인이 해제된다', () => {
+test('Workspace 승인 게이트: 빈 A를 보존하고 역할 미정은 막으며 수정하면 승인이 해제된다', () => {
   const owned = { id: 'a', name: '진동 분석', category: '미분류', role: 'owned', evidence: '진동 분석', source: 'AI 추출' };
   const goal = { id: 'b', name: '잔존수명 예측', category: '미분류', role: 'goal', evidence: '잔존수명 예측', source: 'AI 추출' };
-  assert.match(approvalBlocker([goal]), /보유 기술/);
+  assert.equal(approvalBlocker([goal]), null);
   assert.match(approvalBlocker([owned, { ...goal, role: 'uncertain' }]), /구분 확인/);
   assert.equal(approvalBlocker([owned, goal]), null);
 
