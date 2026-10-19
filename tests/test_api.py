@@ -150,6 +150,24 @@ class ApiTests(unittest.TestCase):
         self.assertEqual([t['name'] for t in response.json()['requested']], ['잔존수명 예측'])
         self.assertIn('보완·확보하고 싶은 기술: 잔존수명 예측', seen[0])
 
+    def test_extract_uses_exact_original_question_when_provided(self):
+        raw = '우리는 진동 분석을 가지고 있는데 잔존수명 예측이 필요할까?'
+        seen = []
+
+        def fake_llm(messages, _schema):
+            seen.append(messages[1]['content'])
+            return {'development_goal': '잔존수명 예측', 'policy_question': None,
+                    'owned': [{'name': '진동 분석', 'quote': '진동 분석'}],
+                    'requested': [{'name': '잔존수명 예측', 'quote': '잔존수명 예측'}]}
+
+        response = self._extract_with(fake_llm, {
+            'owned_description': '진동 분석', 'required_description': '잔존수명 예측',
+            'problem': '잔존수명 예측', 'original_query': raw,
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(raw, seen[0])
+        self.assertNotIn('현재 보유한 기술:', seen[0])
+
     def test_extract_accepts_whitespace_and_line_break_differences(self):
         payload = {'owned_description': '진동 데이터 이상 탐지 기술을 보유', 'required_description': '잔존수명 예측',
                    'problem': '설비 고장을 미리 알고 싶다'}

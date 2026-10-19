@@ -78,6 +78,7 @@ function ApprovalHistory({ profiles, runs }: { profiles: ConfirmedProfile[]; run
         <div><dt>보유 기술</dt><dd>{selected.input.technology_description}</dd></div>
         <div><dt>필요 기술</dt><dd>{selected.input.required_technology || '입력 없음'}</dd></div>
         <div><dt>해결하려는 기술 문제</dt><dd>{selected.input.target_problem}</dd></div>
+        {selected.input.original_query && <div><dt>원문 질문 · 분석 입력</dt><dd>{selected.input.original_query}</dd></div>}
         <div><dt>특허번호</dt><dd>{selected.input.patent_numbers?.join(', ') || '없음'}</dd></div>
       </dl>
       <div className="approval-snapshot-elements mt-3">
@@ -113,6 +114,7 @@ export default function WorkspaceWizard({ input, elements, references, profiles,
     setExtraction({ status: 'loading', warnings: [] });
     try {
       const result = await extractTechnologyElements(next);
+      onInputChange({ ...next, policy_question: result.policy_question });
       onElementsChange(result.elements);
       setExtraction({ status: 'idle', warnings: result.warnings });
       setStep('review');

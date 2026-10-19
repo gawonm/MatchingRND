@@ -48,7 +48,7 @@ export default function TechnologyReview({ input, elements, onElementsChange, on
     <div className="d-flex justify-content-between align-items-start gap-3 flex-wrap">
       <div><h2 id="review-title" className="h6 mb-1">분석할 기술을 확인해 주세요</h2><p className="small text-secondary mb-0">두 목록만 확인하면 됩니다. AI가 정리한 내용도 확정 전까지 자유롭게 수정할 수 있습니다.</p></div>
     </div>
-    <details className="review-source mt-3"><summary>입력한 원문 보기</summary><div className="small mt-3"><p><strong>보유 기술 설명</strong><br />{input.technology_description}</p><p><strong>해결하려는 기술 문제</strong><br />{input.target_problem}</p><p><strong>필요 기술</strong><br />{input.required_technology || '입력 없음'}</p><p className="mb-0"><strong>특허번호</strong><br />{input.patent_numbers?.join(', ') || '없음'}</p></div></details>
+    <details className="review-source mt-3"><summary>입력한 원문 보기</summary><div className="small mt-3"><p><strong>보유 기술 설명</strong><br />{input.technology_description}</p><p><strong>해결하려는 기술 문제</strong><br />{input.target_problem}</p><p><strong>필요 기술</strong><br />{input.required_technology || '입력 없음'}</p>{input.original_query && <p><strong>원문 질문 · 분석 입력</strong><br />{input.original_query}</p>}<p className="mb-0"><strong>특허번호</strong><br />{input.patent_numbers?.join(', ') || '없음'}</p></div></details>
     {elements.length === 0 && <p className="small text-secondary mt-3 mb-0">아직 등록된 기술요소가 없습니다. 보유 기술을 1개 이상 추가해 주세요.</p>}
     <div className="technology-lists">
     {roles.map(role => <section className={`review-group review-group-${role}`} key={role}>

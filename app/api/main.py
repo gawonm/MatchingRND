@@ -80,6 +80,7 @@ class ExtractionRequest(BaseModel):
     owned_description: str = Field(min_length=1)
     required_description: str | None = None
     problem: str = Field(min_length=1)
+    original_query: str | None = None
 
 
 class ExtractionResponse(BaseModel):
@@ -88,9 +89,12 @@ class ExtractionResponse(BaseModel):
     owned: list[InputTechnology]
     requested: list[InputTechnology]
     warnings: list[str]
+    policy_question: str | None = None
 
 
 def extraction_query(request: ExtractionRequest) -> str:
+    if request.original_query and request.original_query.strip():
+        return request.original_query.strip()
     lines = [f"현재 보유한 기술: {request.owned_description.strip()}"]
     if request.required_description and request.required_description.strip():
         lines.append(f"보완·확보하고 싶은 기술: {request.required_description.strip()}")
@@ -106,7 +110,7 @@ async def extract_elements(request: ExtractionRequest):
             "message": "보유 기술과 해결 문제를 입력해 주세요.",
         })
     try:
-        max_retries = int(os.getenv("QUERY_EXTRACTION_MAX_RETRIES", "1"))
+        max_retries = int(os.getenv("QUERY_EXTRACTION_MAX_RETRIES", "2"))
         if max_retries < 0:
             raise ValueError("QUERY_EXTRACTION_MAX_RETRIES는 0 이상이어야 합니다.")
         result = await run_in_threadpool(
@@ -125,6 +129,7 @@ async def extract_elements(request: ExtractionRequest):
         }) from exc
     return ExtractionResponse(
         owned=result.parsed.owned, requested=result.parsed.requested, warnings=result.warnings,
+        policy_question=result.request.policy_question,
     )
 
 
