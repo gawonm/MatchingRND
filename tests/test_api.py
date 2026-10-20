@@ -136,6 +136,25 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.json()['detail']['stage'], 'gap_llm')
 
+    @patch('app.api.main.generate_report_with_view')
+    def test_report_view_preserves_original_problem_empty_roles_and_unsupported_policy(self, generate_view):
+        generate_view.return_value = {
+            'report': FinalAnswer(method='llm', status='ok', markdown='# 보고서\n'),
+            'view': None, 'view_status': 'failed',
+        }
+        payload = {
+            'problem': '원문 질문 전체', 'owned_technologies': [], 'unmet_elements': [],
+            'policy_question': '기술이전 조건도 알려줘.',
+        }
+        response = self.client.post('/api/analysis/report-view', json=payload)
+        self.assertEqual(response.status_code, 200)
+        request = generate_view.call_args.args[0]
+        self.assertEqual(request.problem, payload['problem'])
+        self.assertEqual(request.owned_technologies, [])
+        self.assertEqual(request.unmet_elements, [])
+        self.assertEqual(request.policy_question, payload['policy_question'])
+        self.assertIn('policy_search', self.client.get('/api/capabilities').json()['unsupported_analysis'])
+
     def _extract_with(self, fake_llm, payload):
         real_parse = parse_query
         # Same retry budget as production (parse_query default), only the LLM is fake.
