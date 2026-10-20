@@ -23,7 +23,8 @@ test('Gap 5분류는 그대로 표시하고 알 수 없는 label은 5분류로 �
   assert.equal(gapLabelText('toString'), '판정 확인 불가 (toString)');
   assert.match(gapView, /근거부족은 기술이 없다는 판정이 아니라/);
   assert.match(gapView, /!gap\.requirement_clear && <p className="small mb-0">요구기술 표현의 명확성 확인 필요<\/p>/);
-  assert.doesNotMatch(gapView, /decision_path|markdown|%|score/); // 내부 판정 경로·보고서 재추출·점수를 쓰지 않는다
+  assert.doesNotMatch(gapView, /markdown|%|score/);
+  assert.match(gapView, /파이프라인 판정 규칙<\/strong><br \/>\{gap\.decision_path\}/);
 });
 
 test('선택 RFP와 양방향으로 연결된 Gap만 gap_index 순으로 보여주고 같은 이름도 id로 구분한다', () => {

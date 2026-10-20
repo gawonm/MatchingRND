@@ -48,8 +48,9 @@ export default function TechnologyReview({ input, elements, onElementsChange, on
     <div className="d-flex justify-content-between align-items-start gap-3 flex-wrap">
       <div><h2 id="review-title" className="h6 mb-1">분석할 기술을 확인해 주세요</h2><p className="small text-secondary mb-0">두 목록만 확인하면 됩니다. AI가 정리한 내용도 확정 전까지 자유롭게 수정할 수 있습니다.</p></div>
     </div>
-    <details className="review-source mt-3"><summary>입력한 원문 보기</summary><div className="small mt-3"><p><strong>보유 기술 설명</strong><br />{input.technology_description}</p><p><strong>해결하려는 기술 문제</strong><br />{input.target_problem}</p><p><strong>필요 기술</strong><br />{input.required_technology || '입력 없음'}</p><p className="mb-0"><strong>특허번호</strong><br />{input.patent_numbers?.join(', ') || '없음'}</p></div></details>
-    {elements.length === 0 && <p className="small text-secondary mt-3 mb-0">아직 등록된 기술요소가 없습니다. 보유 기술을 1개 이상 추가해 주세요.</p>}
+    <details className="review-source mt-3"><summary>입력한 원문 보기</summary><div className="small mt-3"><p><strong>보유 기술 설명</strong><br />{input.technology_description}</p><p><strong>해결하려는 기술 문제</strong><br />{input.target_problem}</p><p><strong>필요 기술</strong><br />{input.required_technology || '입력 없음'}</p>{input.original_query && <p><strong>원문 질문 · 분석 입력</strong><br />{input.original_query}</p>}<p className="mb-0"><strong>특허번호</strong><br />{input.patent_numbers?.join(', ') || '없음'}</p></div></details>
+    {input.policy_question && <p className="small mt-3 mb-0"><strong>추출된 제도 질문</strong><br />{input.policy_question}<br /><span className="text-secondary">분석 요청에 보존됩니다. 현재 파이프라인은 법령 검색을 수행하지 않습니다.</span></p>}
+    {elements.length === 0 && <p className="small text-secondary mt-3 mb-0">등록된 기술요소가 없습니다. 원문과 빈 A/B 목록을 그대로 전달합니다. 필요한 경우 직접 추가해 주세요.</p>}
     <div className="technology-lists">
     {roles.map(role => <section className={`review-group review-group-${role}`} key={role}>
       <div className="review-group-heading"><span className="review-role-mark" aria-hidden="true">{role === 'owned' ? 'A' : role === 'goal' ? 'B' : '?'}</span><div><h3 className="h6 mb-1">{roleLabels[role]}</h3><p className="small text-secondary mb-0">{roleHints[role]}</p></div></div>

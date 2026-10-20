@@ -69,6 +69,7 @@ export default function GapExplorer({ rfps, gapItems, technologies, evidenceItem
       {gap.label === '근거부족' && <p className="small text-secondary mb-0">근거부족은 기술이 없다는 판정이 아니라, 충족 여부를 판단할 검증 근거가 부족하다는 뜻입니다.</p>}
 
       <h4 className="evidence-label">판정 설명</h4>
+      <p className="small mb-2"><strong>파이프라인 판정 규칙</strong><br />{gap.decision_path}</p>
       {rejectedClaims.length > 0 && <p className="small text-danger mb-1">생성된 판정 설명이 검증을 통과하지 못해 표시되지 않았습니다. Gap 라벨은 별도의 근거·판정 규칙 결과입니다.</p>}
       {claims.length ? <>
         <p className="small text-secondary mb-1">검증된 분석 설명 · AI 작성 · 인용·의미 검토 통과</p>

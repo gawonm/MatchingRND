@@ -71,6 +71,19 @@ test('기술요소 추출은 A/B/문제를 분리 전송하고 후보를 승인 
   }
 });
 
+test('원문 질문을 제공하면 추출 API에 손실 없이 전달한다', async () => {
+  const originalFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = async (_url, options) => {
+      assert.equal(JSON.parse(options.body).original_query, '원문 질문 전체?');
+      return new Response(JSON.stringify({ owned: [], requested: [], warnings: [], policy_question: null }), { status: 200 });
+    };
+    await extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: 'A', target_problem: 'B', original_query: ' 원문 질문 전체? ' });
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test('health 요청은 성공 응답을 반환하고 HTTP 오류를 사용자 오류로 바꾼다', async () => {
   const originalFetch = globalThis.fetch;
   try {
