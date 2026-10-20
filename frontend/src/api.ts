@@ -1,6 +1,7 @@
 import type { AnalysisReport, ReportViewResponse } from './types/analysisReport';
 import type { TechnologyElement } from './types/technologyElement';
 import type { TechnologyInput } from './types/technologyInput';
+import { extractionSignature } from './lib/analysisRequest.ts';
 
 const configuredBase = import.meta.env?.VITE_API_BASE_URL?.trim();
 
@@ -23,6 +24,7 @@ export type AnalysisReportRequest = {
   problem: string;
   owned_technologies: string[];
   unmet_elements: string[];
+  policy_question?: string | null;
 };
 
 export async function createAnalysisReport(request: AnalysisReportRequest): Promise<AnalysisReport> {
@@ -47,7 +49,7 @@ export async function createAnalysisReportView(request: AnalysisReportRequest): 
 }
 
 type ExtractedTechnology ={ name: string; quote: string };
-export type ExtractionResult = { elements: TechnologyElement[]; warnings: string[] };
+export type ExtractionResult = { elements: TechnologyElement[]; warnings: string[]; policy_question: string | null };
 
 // POST /api/analysis/extract: LLM 후보 추출만 수행하며 서버에 승인 상태를 저장하지 않는다.
 export async function extractTechnologyElements(input: TechnologyInput): Promise<ExtractionResult> {
@@ -58,14 +60,15 @@ export async function extractTechnologyElements(input: TechnologyInput): Promise
       owned_description: input.technology_description,
       required_description: input.required_technology?.trim() || null,
       problem: input.target_problem,
+      ...(input.original_query?.trim() ? { original_query: input.original_query.trim() } : {}),
     }),
   });
   if (!response.ok) {
     const detail = await response.json().then(body => body?.detail?.message, () => null);
     throw new Error(typeof detail === 'string' ? detail : `기술요소 추출 실패: HTTP ${response.status}`);
   }
-  const body = await response.json() as { owned: ExtractedTechnology[]; requested: ExtractedTechnology[]; warnings: string[] };
+  const body = await response.json() as { owned: ExtractedTechnology[]; requested: ExtractedTechnology[]; warnings: string[]; policy_question?: string | null };
   const toElement = (role: 'owned' | 'goal') => (item: ExtractedTechnology, index: number): TechnologyElement =>
-    ({ id: `ai-${role}-${index + 1}`, name: item.name, category: '미분류', role, evidence: item.quote, source: 'AI 추출' });
-  return { elements: [...body.owned.map(toElement('owned')), ...body.requested.map(toElement('goal'))], warnings: body.warnings };
+    ({ id: `ai-${role}-${index + 1}`, name: item.name, category: '미분류', role, evidence: item.quote, source: 'AI 추출', extracted_from: extractionSignature(input) });
+  return { elements: [...body.owned.map(toElement('owned')), ...body.requested.map(toElement('goal'))], warnings: body.warnings, policy_question: body.policy_question ?? null };
 }

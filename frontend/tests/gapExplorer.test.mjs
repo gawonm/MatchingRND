@@ -23,7 +23,26 @@ test('Gap 5분류는 그대로 표시하고 알 수 없는 label은 5분류로 �
   assert.equal(gapLabelText('toString'), '판정 확인 불가 (toString)');
   assert.match(gapView, /근거부족은 기술이 없다는 판정이 아니라/);
   assert.match(gapView, /!gap\.requirement_clear && <p className="small mb-0">요구기술 표현의 명확성 확인 필요<\/p>/);
-  assert.doesNotMatch(gapView, /decision_path|markdown|%|score/); // 내부 판정 경로·보고서 재추출·점수를 쓰지 않는다
+  assert.doesNotMatch(gapView, /markdown|%|score/);
+});
+
+test('Gap 판정 경로는 데이터가 있을 때만 상세 화면에 표시한다', async () => {
+  const { createServer } = await import('vite');
+  const { createElement } = await import('react');
+  const { renderToStaticMarkup } = await import('react-dom/server');
+  const server = await createServer({ server: { middlewareMode: true }, appType: 'custom' });
+  try {
+    const { default: GapExplorer } = await server.ssrLoadModule('/src/components/analysis/GapExplorer.tsx');
+    const render = decision_path => renderToStaticMarkup(createElement(GapExplorer, {
+      rfps: [rfp('r1', ['gap-0'])], gapItems: [gap(0, { decision_path })], technologies: [], evidenceItems: [],
+      report: report([]), state: { rfpId: 'r1', selectedId: 'gap-0', mobileDetailOpen: false },
+      onChange: () => {}, onOpenTechnology: () => {},
+    }));
+    assert.match(render('company:partial'), /파이프라인 판정 규칙<\/strong><br\/>company:partial/);
+    assert.doesNotMatch(render(''), /파이프라인 판정 규칙/);
+  } finally {
+    await server.close();
+  }
 });
 
 test('선택 RFP와 양방향으로 연결된 Gap만 gap_index 순으로 보여주고 같은 이름도 id로 구분한다', () => {

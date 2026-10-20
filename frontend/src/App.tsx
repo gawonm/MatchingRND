@@ -14,6 +14,7 @@ import { finishReport, startReport, type ReportEntries } from './state/analysisR
 import type { AnalysisRun, AnalysisSession } from './types/analysisSession';
 import { mockAnalysis } from './data/mockAnalysis';
 import { createAnalysisReportView } from './api';
+import { analysisRequestFromInput } from './lib/analysisRequest';
 import './App.css';
 
 export default function App() {
@@ -64,7 +65,7 @@ export default function App() {
   };
   const setViewMode = (mode: 'review' | 'demo') => navigate({ ...route, mode });
   const approve = () => {
-    if (approvalBlocker(elements)) return;
+    if (approvalBlocker(elements, input)) return;
     updateSession(current => confirmProfile({ ...current, reviewSource: cloneInput(current.draftInput) }));
   };
   const selectProject = (id: string) => { updateDemo({ projectId: id }); setGapId(null); setFilter('all'); };
@@ -75,11 +76,7 @@ export default function App() {
     reportsInFlight.current.add(reportKey);
     setReports(current => startReport(current, reportKey, requestId));
     try {
-      const result = await createAnalysisReportView({
-        problem: approved.input.target_problem,
-        owned_technologies: approved.elements.filter(element => element.role === 'owned').map(element => element.name),
-        unmet_elements: approved.elements.filter(element => element.role === 'goal').map(element => element.name),
-      });
+      const result = await createAnalysisReportView(analysisRequestFromInput(approved.input, approved.elements));
       setReports(current => finishReport(current, reportKey, requestId, result));
     } catch {
       setReports(current => finishReport(current, reportKey, requestId, null));

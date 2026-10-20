@@ -60,12 +60,26 @@ test('기술요소 추출은 A/B/문제를 분리 전송하고 후보를 승인 
     const result = await extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: '진동 분석', target_problem: '고장 예측', required_technology: ' ' });
     assert.deepEqual(calls, ['http://127.0.0.1:8000/api/analysis/extract']);
     assert.deepEqual(result.elements.map(e => [e.name, e.role, e.source, e.evidence]), [['진동 분석', 'owned', 'AI 추출', '진동 분석'], ['고장 예측', 'goal', 'AI 추출', '고장 예측']]);
+    assert.ok(result.elements.every(e => e.extracted_from === JSON.stringify(['진동 분석', '', '고장 예측', ''])));  // 추출 시점 입력 서명
     assert.deepEqual(result.warnings, ['w']);
 
     globalThis.fetch = async () => new Response(JSON.stringify({ detail: { error: 'extraction_unverified', message: '원문 확인 불가' } }), { status: 422 });
     await assert.rejects(extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: 'a', target_problem: 'b' }), /원문 확인 불가/);
     globalThis.fetch = async () => new Response('oops', { status: 502 });
     await assert.rejects(extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: 'a', target_problem: 'b' }), /HTTP 502/);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('원문 질문을 제공하면 추출 API에 손실 없이 전달한다', async () => {
+  const originalFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = async (_url, options) => {
+      assert.equal(JSON.parse(options.body).original_query, '원문 질문 전체?');
+      return new Response(JSON.stringify({ owned: [], requested: [], warnings: [], policy_question: null }), { status: 200 });
+    };
+    await extractTechnologyElements({ technology_domains: [], technology_tags: [], technology_description: 'A', target_problem: 'B', original_query: ' 원문 질문 전체? ' });
   } finally {
     globalThis.fetch = originalFetch;
   }
