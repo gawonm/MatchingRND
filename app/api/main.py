@@ -75,11 +75,12 @@ class ReportGenerationError(RuntimeError):
 
 
 class ExtractionRequest(BaseModel):
-    """Wizard Step 1 input: A (required), B (optional), problem (required)."""
+    """Original query, or A/problem fields with optional B."""
 
-    owned_description: str = Field(min_length=1)
+    owned_description: str = ""
     required_description: str | None = None
-    problem: str = Field(min_length=1)
+    problem: str = ""
+    original_query: str | None = None
 
 
 class ExtractionResponse(BaseModel):
@@ -88,9 +89,12 @@ class ExtractionResponse(BaseModel):
     owned: list[InputTechnology]
     requested: list[InputTechnology]
     warnings: list[str]
+    policy_question: str | None = None
 
 
 def extraction_query(request: ExtractionRequest) -> str:
+    if request.original_query and request.original_query.strip():
+        return request.original_query.strip()
     lines = [f"현재 보유한 기술: {request.owned_description.strip()}"]
     if request.required_description and request.required_description.strip():
         lines.append(f"보완·확보하고 싶은 기술: {request.required_description.strip()}")
@@ -100,7 +104,9 @@ def extraction_query(request: ExtractionRequest) -> str:
 
 @app.post("/api/analysis/extract", response_model=ExtractionResponse)
 async def extract_elements(request: ExtractionRequest):
-    if not request.owned_description.strip() or not request.problem.strip():
+    if not (request.original_query and request.original_query.strip()) and (
+        not request.owned_description.strip() or not request.problem.strip()
+    ):
         raise HTTPException(status_code=422, detail={
             "error": "invalid_input",
             "message": "보유 기술과 해결 문제를 입력해 주세요.",
@@ -125,6 +131,7 @@ async def extract_elements(request: ExtractionRequest):
         }) from exc
     return ExtractionResponse(
         owned=result.parsed.owned, requested=result.parsed.requested, warnings=result.warnings,
+        policy_question=result.request.policy_question,
     )
 
 

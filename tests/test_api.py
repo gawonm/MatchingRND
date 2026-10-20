@@ -122,6 +122,22 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.json()['detail']['stage'], 'gap_llm')
 
+    @patch('app.api.main.generate_report_with_view')
+    def test_report_view_preserves_original_problem_empty_roles_and_unsupported_policy(self, generate_view):
+        generate_view.return_value = {'report': FinalAnswer(method='llm', status='ok', markdown='# 보고서\n'), 'view': None, 'view_status': 'failed'}
+        payload = {
+            'problem': '원문 질문 전체', 'owned_technologies': [], 'unmet_elements': [],
+            'policy_question': '기술이전 조건도 알려줘.',
+        }
+        response = self.client.post('/api/analysis/report-view', json=payload)
+        self.assertEqual(response.status_code, 200)
+        request = generate_view.call_args.args[0]
+        self.assertEqual(request.problem, payload['problem'])
+        self.assertEqual(request.owned_technologies, [])
+        self.assertEqual(request.unmet_elements, [])
+        self.assertEqual(request.policy_question, payload['policy_question'])
+        self.assertIn('policy_search', self.client.get('/api/capabilities').json()['unsupported_analysis'])
+
     def _extract_with(self, fake_llm, payload):
         real_parse = parse_query
         # Same retry budget as production (parse_query default), only the LLM is fake.
@@ -149,6 +165,36 @@ class ApiTests(unittest.TestCase):
         self.assertEqual([t['name'] for t in response.json()['owned']], ['진동 데이터 이상 탐지'])
         self.assertEqual([t['name'] for t in response.json()['requested']], ['잔존수명 예측'])
         self.assertIn('보완·확보하고 싶은 기술: 잔존수명 예측', seen[0])
+
+    def test_extract_uses_exact_original_question_when_provided(self):
+        raw = '우리는 진동 분석을 가지고 있는데 잔존수명 예측이 필요할까?'
+        seen = []
+
+        def fake_llm(messages, _schema):
+            seen.append(messages[1]['content'])
+            return {'development_goal': '잔존수명 예측', 'policy_question': None,
+                    'owned': [{'name': '진동 분석', 'quote': '진동 분석'}],
+                    'requested': [{'name': '잔존수명 예측', 'quote': '잔존수명 예측'}]}
+
+        response = self._extract_with(fake_llm, {
+            'owned_description': '진동 분석', 'required_description': '잔존수명 예측',
+            'problem': '잔존수명 예측', 'original_query': raw,
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(raw, seen[0])
+        self.assertNotIn('현재 보유한 기술:', seen[0])
+
+    def test_extract_accepts_original_only_without_inventing_owned_technology(self):
+        raw = '잔존수명 예측 기술이 필요하다. 기술이전 조건도 알려줘.'
+
+        def fake_llm(_messages, _schema):
+            return {'development_goal': '잔존수명 예측', 'policy_question': '기술이전 조건도 알려줘.',
+                    'owned': [], 'requested': [{'name': '잔존수명 예측', 'quote': '잔존수명 예측'}]}
+
+        response = self._extract_with(fake_llm, {'original_query': raw})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['owned'], [])
+        self.assertEqual(response.json()['policy_question'], '기술이전 조건도 알려줘.')
 
     def test_extract_accepts_whitespace_and_line_break_differences(self):
         payload = {'owned_description': '진동 데이터 이상 탐지 기술을 보유', 'required_description': '잔존수명 예측',
