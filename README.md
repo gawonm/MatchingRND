@@ -1,156 +1,280 @@
-# MatchingRND
+# 잇다(ITDA) · MatchingRND
 
-2026-10-15~16 작업의 통합 범위와 검증 결과는
-[브랜치 통합 기록](docs/BRANCH_INTEGRATION_20261017.md)에 정리했습니다.
-API와 화면 실행은 [프런트엔드 안내](frontend/README.md)를 참고하세요.
+**보유기술과 기술문제를 외부기술·국가 R&D 과제·RFP로 연결하는 근거 기반 기술기획 지원 RAG 서비스입니다.**
 
-LLM 기본 모델은 입력 해석·기술나눔·NTIS·RFP·Gap·최종 답변 모두
-`gpt-5.6-luna`입니다.
-공통 기본값은 `app/common/llm_config.py`에서 관리합니다.
-임베딩은 기본 `dragonkue/BGE-m3-ko`를 사용합니다. 파인튜닝 코드·가중치·실험 데이터는 제거했습니다.
-RFP 관련성 판정은 A/B 통합·토큰 배치가 기본입니다.
-변경 배경, 방법별 실측, 선택 근거와 한계는
-[LLM 모델 통일 및 호출 방식 개선](docs/LLM_CALL_OPTIMIZATION_20261018.md)에 정리했습니다.
-명시적인 CLI `--model`, `NTIS_LLM_MODEL`, `NTIS_RELEVANCE_MODEL`,
-`RFP_RELEVANCE_MODEL`, 기술 RAG YAML 설정은 기본값보다 우선합니다.
+제조·자동화 기업의 R&D 담당자가 보유기술, 개발 목표, 확보하고 싶은 기술을 입력하면 관련 기술나눔 자료와 선행 연구과제, 공고의 요구기술을 단계적으로 탐색합니다. 이후 RFP 요구기술과 보유·외부기술을 비교해 **어떤 부분을 활용할 수 있고, 무엇을 추가 검토해야 하는지** 원문 인용과 함께 보여줍니다.
 
-## 로컬 파일 관리
+잇어빌리티 팀의 최종 프로젝트이며, 이 저장소는 React 프런트엔드, FastAPI 백엔드, 자료별 RAG, 기술 Gap 분석과 보고서 생성을 포함합니다.
 
-| 경로 | 용도 | 삭제 기준 |
-| --- | --- | --- |
-| `outputs/` | 명령행 분석·실험의 결과 파일 | 결과가 필요 없으면 삭제 가능. 다음 실행 시 생성됨 |
-| `storage/llm_cache/` | 같은 요청의 LLM 응답 재사용 | 삭제 가능. 캐시 삭제 후에는 같은 요청도 다시 유료 호출할 수 있음 |
-| `storage/embeddings/` | 로컬 임베딩 캐시 | 재계산 가능. 모델 원본이나 DB 벡터는 아님 |
-| `storage/chroma/`, `storage/bm25/`, `data/processed/`, `db/` | 로컬 검색용 인덱스·전처리 결과 | 로컬 backend에서 사용하므로 재구축 준비 없이 삭제하지 않음 |
-| `frontend/dist/` | 프런트엔드 빌드 결과 | `npm run build`로 재생성 가능 |
-| `data/raw/` | 원본 자료 | DB·인덱스 재구축에 필요하므로 유지 |
-| `.venv-gpu/`, `frontend/node_modules/`, `.env` | 실행 환경·설정 | 서비스 실행에 필요하므로 유지 |
+## 프로젝트 배경
 
-2026-10-18 정리에서는 당시 `storage`에 LLM 응답 캐시만 있는 것을 확인해 삭제했고,
-과거 `outputs`와 미사용 UI 샘플·빌드 결과도 제거했습니다.
-LLM 호출 최적화의 발표용 요약은 `docs/`와 `docs/evaluations/`에 보존합니다.
-과거 원시 출력·프롬프트 캐시·문서 스냅샷은 정리되어 요약 자료만으로 원시 실행을 재현할 수는 없습니다.
+기업은 해결하려는 문제를 중심으로 기술을 설명하지만, 기술나눔 자료와 R&D 사업은 각각 다른 용어와 형식으로 작성됩니다. 담당자는 흩어진 PDF·Excel 자료를 개별적으로 찾고, 유사한 기술이 실제 개발 목표에도 맞는지 다시 비교해야 합니다.
 
-## 통합 Orchestrator
+잇다는 이 탐색과 비교를 하나의 흐름으로 연결합니다. 문서 목록과 유사도만 제공하는 대신, 관련 후보의 원문과 요구기술별 판단 근거까지 확인할 수 있도록 설계했습니다.
 
-`app/orchestrator.py`의 `RagOrchestrator`가 Technology → NTIS → RFP를 연결합니다.
-Technology는 `answer()`를 호출해 추출·검증된 기술요소를 얻고, 검증된 원문 근거가
-있는 요소만 NTIS와 RFP Query 확장에 사용합니다. 최초 기술문제는 유지합니다.
+> **사용 예시**
+>
+> “폐열 회수시스템 기술을 가지고 있습니다. 200kW급 ORC 터빈 발전 시스템을 개발하기 위해 터빈 발전과 열교환 연동 제어 기술을 확보하고 싶은데, 관련 나눔기술과 공고가 있을까요?”
 
-> **MVP 범위:** 통합 분석은 Technology → NTIS → RFP → Gap 보고서만 지원합니다.
-> `policy_question`은 이전 호출부 호환용으로만 받으며 법령 검색·신청자격·법적 적합성
-> 판단을 실행하지 않습니다. 보유기술은 사용자 자기진술이며, 기업 DB나 특허 원문으로
-> 독립 검증한 기업 근거가 아닙니다. 현재 계약은 `GET /api/capabilities`에서도 확인할 수 있습니다.
+이 입력에서 보유기술과 요청기술을 분리하고, 사용자가 기술요소를 검토·승인한 뒤 기술 탐색과 RFP 요구기술 비교를 실행합니다. 관련 후보를 찾았다는 사실과 요구기술을 충족한다는 판단은 구분합니다.
 
-```python
-from app.orchestrator import AnalysisRequest, RagOrchestrator
+## 주요 기능
 
-orchestrator = RagOrchestrator()
-state = orchestrator.run(AnalysisRequest(
-    problem="작업자와 지게차가 함께 이동하는 제조환경에서 안전주행 성능을 높이고 싶다.",
-    owned_technologies=["SLAM 기반 자율주행", "영상 객체 인식", "경로계획"],
-))
-
-print(state.rfp_query_details)  # Baseline/Cascade Query와 확장 원문·출처
-for candidate in state.rfp.candidates:
-    print(candidate.title, candidate.extra.get("requirements"))
-print(state.warnings)
-print(state.model_dump_json(indent=2))
-```
-
-실행 전 Technology 및 NTIS 인덱스를 준비하고 `.env`에 `OPENAI_API_KEY`를 설정해야 합니다.
-원본 자료는 모듈별 `data/raw/` 아래에 정리되어 있으며 기본 설정이 해당 경로를 읽습니다.
-NTIS는 `data/raw/ntis/ntis_projects_2026_mechanical.xlsx`, Technology는
-`data/raw/technology`를 읽습니다. 통합 MVP의 RFP는 `data/raw/rfp/pdf`를 사용하고
-첫 호출 시 인덱스를 준비합니다. RFP 공고 연결은
-`data/raw/rfp/RFP_공고목록.xlsx`을 사용합니다.
-같은 Orchestrator 객체를 재사용하면 Technology 파이프라인과 PDF 인덱스를 재사용합니다.
-
-원본 자료와 전처리 결과는 `data/` 아래에 모듈별로 관리합니다.
-NTIS 인덱스는 `data/processed/ntis/index`, Technology 문서·청크는
-`data/processed/technology`에 생성됩니다. 환경변수로 경로를 덮어쓰는 경우에는
-정리된 새 경로를 지정해야 합니다.
-
-`technology_runner`, `ntis_runner`, `rfp_runner`에 기존에 준비한
-파이프라인을 연결하는 함수를 주입할 수도 있습니다. 반환값은 공통 `ModuleResult`이며
-Technology의 `GenerationResult`도 지원합니다. 각 단계 오류는 `OrchestrationError.stage`로
-구분하고 이후 단계는 실행하지 않습니다. 빈 검색 결과는 경고와 함께 보존합니다.
-
-반환 `AnalysisState`는 입력, 단계별 결과, 검증된 기술요소, Query 이력을 담습니다.
-**기술요소 의미 정렬·Gap 판정과 통합 최종 설명 생성은 별도 구현 단계입니다.**
-`unmet_elements`는 사용자가 제공하는 검토 요소이며 검색 실패로 자동 추정하지 않습니다.
-
-## RAG 공통 반환 스키마
-
-통합 호출부는 `app.common.schemas.ModuleResult`를 사용합니다.
-공통 필드는 `module`, `query`, `query_expansion`, `candidates`, `tech_elements`,
-`hits`, `stats`, `extra`입니다. JSON이 필요하면 `result.model_dump(mode="json")`을 사용합니다.
-
-| 모듈 | 공통 스키마 진입점 |
+| 기능 | 제공 내용 |
 | --- | --- |
-| Technology | `TechnologyRagPipeline.search(query)` 또는 `.answer(query).result` |
-| NTIS | `app.ntis_rag.pipeline.run_ntis_module(problem, **options)` |
-| RFP | `app.rfp_rag.pipeline.search_module_result(index, question, **options)` |
-| 법령 | 통합 MVP 미지원 (독립 모듈 코드는 실험용이며 보고서 체인에 연결되지 않음) |
+| 입력 구조화·검토 | 자연어에서 보유기술·개발 목표·요청기술을 추출하고 사용자가 수정·승인 |
+| 기술나눔 탐색 | 요청기술과 같거나 유사한 외부기술을 검색하고 원문에서 관련 기술요소 추출 |
+| NTIS 선행과제 탐색 | 보유기술·목표와 관련된 국가 R&D 사례, 기술용어, 연구주제 확인 |
+| RFP 연결 | 관련 공고·과제를 찾고 개발목표·요구기술·성능지표·실증조건을 구조화 |
+| 기술 Gap 분석 | RFP 요구기술마다 보유기술·외부기술과의 충족 관계를 비교하고 판정 근거 제시 |
+| 근거·보고서 조회 | 기술·RFP·Gap·Evidence·Report 화면에서 원문 인용과 분석 결과 확인 |
 
-RFP의 기존 `search()`와 NTIS의 `run_ntis_pipeline()`은 원본 결과를 반환하는
-호환용 API입니다. **통합 시에는 위 표의 공통 스키마 진입점을 사용해야 합니다.**
-이미 얻은 NTIS 원본 결과는 `app.ntis_rag.adapter.to_module_result(raw)`로 변환할 수 있습니다.
-기존 NTIS dict 변환 함수도 공통 모델로 검증한 뒤 dict를 반환합니다.
+### 서비스 화면
 
-```python
-from app.rfp_rag.pipeline import build_index, search_module_result
+최종 발표자료에 수록한 분석 결과 화면입니다. 추천 기술·RFP에서 개별 근거와 전체 보고서로 이동할 수 있습니다.
 
-index = build_index()  # 인덱스 생성은 기존 설정·인자를 사용
-result = search_module_result(index, "검토할 기술문제")
-for candidate in result.candidates:
-    print(candidate.title, candidate.relevance_score)
-    for evidence in candidate.evidences:
-        print(evidence.quote, evidence.page, evidence.verified)
-context = result.extra["context"]
+![잇다 분석 결과 화면: 기술, RFP, Gap, Evidence, Report](docs/images/itda-results.png)
+
+## 분석 흐름
+
+```mermaid
+flowchart LR
+    A[보유기술·기술문제 입력] --> B[AI 추출·사용자 검토와 승인]
+    B --> C[Technology RAG]
+    C --> D[NTIS RAG]
+    D --> E[RFP RAG]
+    E --> F[요구기술별 Gap 분석]
+    F --> G[인용 검증·최종 보고서]
 ```
 
-공통 `Evidence.page`는 0부터 시작합니다. PDF 원본의 1부터 시작하는 페이지·다중
-좌표는 `Evidence.extra`에 보존하며, 여러 위치에 걸친 인용은 단일 `page/bbox`를 비워 둡니다.
-RFP 공고 연결·요구사항·성능지표와 NTIS 기술축은
-`extra`에 보존합니다. PDF 후보는 과제/조문 단위이며 같은 PDF의 여러 후보는 같은
-`doc_id`를 가질 수 있습니다. 원본 ID는 인덱스·평가 데이터와의 연결을 위해 유지합니다.
+- **Cascade 검색:** 앞 단계에서 원문 근거가 확인된 기술요소만 다음 단계의 질의 확장에 사용하며, 최초 기술문제는 유지합니다.
+- **하이브리드 검색:** BM25·Kiwi의 용어 검색과 BGE-m3-ko의 의미 검색을 RRF로 결합합니다. 기본 리랭커는 OFF입니다.
+- **자료별 청킹:** 기술나눔은 의미가 가까운 섹션을 묶고, NTIS는 과제의 연구 맥락을 보존하며, RFP는 과제·항목·성능표 구조와 페이지·좌표를 유지합니다.
+- **판단과 검증의 분리:** LLM이 관련성과 충족도를 판단하고, 코드는 인용의 원문 일치와 판정 규칙을 검사합니다. 최종 설명의 근거 지지 여부도 별도 의미 검토를 수행합니다.
 
-검색 단계에서는 기술요소·연관성 설명이 비어 있을 수 있습니다. RFP의 공통
-출력은 검색 근거이며 답변 생성은 별도 단계입니다.
+### 기술 Gap의 다섯 가지 판정
 
-스키마 검증: `python -m unittest discover -s tests -p "test_*.py"`
+| 판정 | 의미 |
+| --- | --- |
+| 기존보유 | 입력한 보유기술이 요구기술을 충족하는 것으로 판단 |
+| 외부기술보완 | 검증된 기술나눔 후보로 요구기술을 보완할 수 있는 것으로 판단 |
+| 부분충족 | 보유기술 또는 외부기술이 요구의 일부만 충족 |
+| 추가 R&D 검토 후보 | RFP에 요구가 명시되어 있으나 보유·외부기술의 충족 근거가 확인되지 않음 |
+| 근거부족 | 요구나 근거가 불명확해 판단하기 어려움 |
 
-## RAG 파일 구조
+검색 결과가 없다는 이유만으로 기술 미보유나 추가 R&D 필요를 판정하지 않습니다. NTIS 사례는 선행 연구의 참고 자료이며 Gap 충족 판정의 단독 근거로 사용하지 않습니다.
 
-Technology·NTIS·RFP 모듈은 다음 역할별 구조를 사용합니다. 법령 모듈 코드는 독립 실험용으로만 남아 있습니다.
+## 시스템 구성
+
+![잇다 시스템 구조: React, FastAPI, 자료별 RAG, Gap 분석, 보고서, Supabase](docs/images/itda-architecture.png)
+
+| 영역 | 기술·구성 |
+| --- | --- |
+| 프런트엔드 | React, TypeScript, Vite, React Bootstrap |
+| API | Python, FastAPI, Pydantic |
+| 자료 처리 | PyMuPDF, pdfplumber, pandas, Excel·PDF 파서 |
+| 검색 | BGE-m3-ko, Kiwi, BM25, RRF |
+| 저장소 | Supabase PostgreSQL·pgvector, 로컬 Chroma·BM25 경로 지원 |
+| LLM | 기본 `gpt-5.6-luna`; 공통 기본값은 `app/common/llm_config.py` |
+
+Supabase 경로에서는 준비된 문서·청크·벡터를 조회하고 BM25를 메모리에 구성합니다. 질의마다 PDF 전체를 다시 파싱하거나 문서 전체를 재임베딩하지 않습니다. 명시적인 CLI·환경변수·모듈 설정은 LLM 기본값보다 우선할 수 있습니다.
+
+## 사용 데이터
+
+최종 발표자료의 수집·검수 집계 기준입니다.
+
+| 자료 | 규모 | 활용 |
+| --- | --- | --- |
+| 공공기관·POSCO 기술나눔 | 298건 + 293건 = **591건** | 외부기술 탐색, 기술요소·이전정보 확인 |
+| NTIS 2026 기계 분야 과제 | **6,580건** | 선행 연구과제·관련 기술 맥락 탐색 |
+| 국가 R&D RFP·공고목록 | 수집 PDF **238개**, 검수 승인 **416과제·1,633청크** | 공고 연결, 요구기술·성능지표 추출 |
+| KIPRIS 특허 시나리오 자료 | **9,573건** | 시나리오 구성 및 별도 특허 적재·검색 |
+
+수집한 PDF 수, 검수·적재한 문서 수, PDF 내부의 과제 수는 서로 다른 집계 단위입니다. 실제 적재 상태는 `supabase_rag status`로 확인합니다. 시나리오 특허 자료는 사용자의 실제 기업 소유권을 입증하지 않으며, 통합 Gap 분석의 보유기술은 사용자 입력을 사용합니다.
+
+## 실행 방법
+
+### 1. 환경 준비
+
+- Python 3.12 기준 실행 환경
+- Node.js 22.12 이상 또는 24 이상
+- LLM API 키와 Supabase PostgreSQL 접속 정보
+- 사전 적재된 DB 또는 아래 경로의 원본 자료
+
+프로젝트 루트에서 실행합니다. 아래 예시는 Windows PowerShell 기준이며, macOS·Linux에서는 가상환경을 `.venv/bin/activate`로 활성화합니다.
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements-dev.txt
+python -m pip install PyMuPDF xlrd
+Copy-Item .env.example .env
+```
+
+`.env`의 `OPENAI_API_KEY`, `SUPABASE_DB_HOST`, `SUPABASE_DB_PORT`, `SUPABASE_DB_NAME`, `SUPABASE_DB_USER`, `SUPABASE_DB_PASSWORD`를 설정합니다. 기본 검색 경로는 `RAG_BACKEND=supabase`입니다. DB 접속에는 Supabase **Session pooler** 정보를 사용하며 Data API secret key를 DB 비밀번호로 사용하지 않습니다.
+
+GPU를 사용할 경우 환경에 맞는 CUDA 지원 PyTorch가 필요합니다. `RAG_EMBEDDING_DEVICE=auto`는 GPU가 없으면 CPU를 사용하고, `cuda`는 GPU 사용을 강제합니다. `.env`는 Git에 포함하지 않습니다.
+
+### 2. 원본 자료와 검색 DB 준비
+
+이미 자료가 적재된 Supabase를 사용하는 경우 `status`로 확인하고 다음 단계로 진행할 수 있습니다. 새 DB를 구축할 때는 다음 기본 경로에 자료를 준비합니다.
 
 ```text
-app/<module>_rag/
-├── __init__.py       # 외부에 제공하는 진입점
-├── config.py         # 경로·환경변수·설정
-├── pipeline.py       # 단계 연결 및 통합 호출
-├── parsing/          # PDF·Excel 원문 추출과 구조화
-├── indexing/         # 청크 생성·임베딩·검색 인덱스 구축
-├── retrieval/        # 검색·순위 병합·문맥 구성
-└── scripts/          # 명령행 실행
+data/raw/
+├── technology/
+│   ├── 4._2026년_공공기관_기술나눔_기술소개자료.pdf
+│   ├── 2025년_포스코그룹_기술나눔_기술소개자료.pdf
+│   ├── 2. 2026년 공공기관 기술나눔 목록(298건).xlsx
+│   └── 나눔기술.xls
+├── ntis/
+│   └── ntis_projects_2026_mechanical.xlsx
+└── rfp/
+    ├── RFP_공고목록.xlsx
+    └── pdf/
+        └── 공고·RFP 원본 PDF
 ```
 
-LLM 생성·분석 기능이 있는 Technology와 NTIS는 `generation/`을 추가로 사용합니다.
-모듈별 원문 형식이 달라 내부 파서 파일은 `pdf_parser.py`, `excel_loader.py` 등으로 구분합니다.
-공통 출력 모델은 `app/common/schemas.py`, PDF의 중복 검색·검증·분할 코드는
-`app/common/retrieval.py`, `validation.py`, `chunking.py`에서 관리합니다.
-RFP·NTIS의 `adapter.py`가 통합 MVP의 공통 출력 변환을 담당합니다.
+저장소의 일부 Excel 원본은 `data/raw/` 바로 아래에 있습니다. 전처리 전에 위 기본 경로로 복사하거나 모듈 설정에서 경로를 지정하세요. 원본 PDF·생성 인덱스·DB 접속 정보는 저장소에 모두 포함되어 있지 않으므로, clone만으로 전체 분석을 즉시 실행할 수는 없습니다.
 
-새 호출부는 각 모듈의 `pipeline.py`를 사용합니다. 기존 `rfp_rag.py`, `law_rag.py`,
-NTIS의 `analysis.py`·`build_index.py`와 Technology의 `retrieval/pipeline.py`는
-기존 import를 지원하는 호환 파일입니다. 기존 NTIS `retrieval` import도 유지됩니다.
-NTIS의 분석 모델·검색 인덱스는 파이프라인을 실행할 때 로드합니다.
+기술나눔 문서·청크를 준비한 뒤 통합 분석에 사용하는 세 자료군을 적재합니다.
 
-인덱스 실행 경로는 `python -m app.<module>_rag.scripts.build_index`로 통일했습니다.
-RFP는 `--data-dir`, `--output-dir`, `--model-name`을 지원합니다.
-NTIS는 기존 환경변수 설정을, Technology는 기존 CLI 옵션을 사용합니다.
-인덱스·추출 캐시 형식과 문서/청크 ID 생성 규칙은 기존과 동일합니다.
+```powershell
+python -m app.technology_rag.scripts.build_documents --reparse
+python -m app.technology_rag.scripts.build_chunks --strategies section_group
+python -m app.scripts.supabase_rag setup
+python -m app.scripts.supabase_rag ingest --modules technology ntis rfp
+python -m app.scripts.supabase_rag status
+```
 
-구조 검증 테스트에는 모델·벡터 저장소를 대체한 파싱→인덱싱→검색 연결 테스트와
-실제 임시 Excel 파일을 읽는 NTIS 파싱 테스트가 포함됩니다.
+`ingest`는 변경된 자료군의 이전 스냅샷을 교체합니다. 같은 지문이면 재적재를 생략합니다. DB 구조·권한·적재 방법은 [Supabase 안내](docs/SUPABASE_SETUP.md)를 참고하세요.
+
+### 3. API와 화면 실행
+
+프로젝트 루트에서 API를 시작합니다.
+
+```powershell
+python -m uvicorn app.api.main:app --host 127.0.0.1 --port 8000
+```
+
+별도 터미널에서 프런트엔드를 실행합니다.
+
+```powershell
+cd frontend
+Copy-Item .env.example .env.local
+npm ci
+npm run dev
+```
+
+- 화면: `http://localhost:5173`
+- API 상태: `http://127.0.0.1:8000/api/health`
+- API 문서: `http://127.0.0.1:8000/docs`
+- 프런트엔드 API 주소: `frontend/.env.local`의 `VITE_API_BASE_URL`
+
+Workspace에서 기술 정보를 입력하고 **AI 추출 → 기술요소 검토·승인 → 분석 실행 → 결과·근거·보고서 확인** 순으로 사용합니다. Discover는 데모와 실제 DB 검색을 구분합니다. 실제 입력 추출·분석 요청에는 LLM API 사용료가 발생할 수 있습니다.
+
+### 4. CLI 실행
+
+```powershell
+python -m app.scripts.run_analysis --backend supabase --query "폐열 회수시스템을 보유하고 있으며 ORC 터빈 발전 시스템을 개발하기 위한 발전·열교환 연동 제어 기술과 관련 공고를 찾고 싶습니다."
+```
+
+결과는 기본적으로 `outputs/<실행 시각>/`에 저장됩니다.
+
+| 파일 | 내용 |
+| --- | --- |
+| `input.json` | 자연어 입력 해석 결과 |
+| `state.json` | 검색 결과·출처·질의 확장 이력 |
+| `gap_llm.json` | 요구기술별 Gap 판정과 근거 |
+| `answer_llm.json`, `answer_llm.md`, `answer.md` | 최종 분석 결과와 보고서 |
+| `comparison.json` | 통합 실행 상태·단계별 오류 |
+
+## 주요 API
+
+| 메서드 | 경로 | 역할 |
+| --- | --- | --- |
+| GET | `/api/health` | API 연결 상태 |
+| GET | `/api/capabilities` | 지원 범위·입력 근거의 성격 |
+| GET | `/api/discovery/search` | 자료군별 실제 DB 탐색 |
+| POST | `/api/analysis/extract` | 입력에서 기술요소 추출 |
+| POST | `/api/analysis` | 자료별 RAG 검색 결과 반환 |
+| POST | `/api/analysis/report-view` | 화면용 통합 분석 결과 반환 |
+| POST | `/api/analysis/report` | 최종 보고서 반환 |
+
+요청·응답 스키마는 실행 중인 API의 `/docs`에서 확인할 수 있습니다. 공통 RAG 반환형은 `app/common/schemas.py`의 `ModuleResult`이며, 공통 `Evidence.page`는 0부터 시작합니다.
+
+## 평가 결과
+
+최종 발표자료(2026-10-20)에 정리한 결과입니다. 검색은 신규 시나리오 60문항을 모듈별 20문항으로 나누어 평가했고, 기존 25문항 재현 결과와 분리했습니다.
+
+| 모듈 | BGE Dense MRR@10 | BGE + BM25 Hybrid MRR@10 |
+| --- | ---: | ---: |
+| 기술나눔 | 0.950 | **0.950** |
+| NTIS | 0.745 | **0.680** |
+| RFP | 0.950 | **0.892** |
+
+MRR@10은 첫 지정 정답이 상위 10건에 있으면 `1 / 순위`, 없으면 0으로 계산한 평균입니다. 두 열은 같은 질문·정답을 사용합니다. 이 표본에서는 BM25 결합 후 NTIS·RFP의 정답 순위가 낮아진 사례가 있어, Hybrid가 항상 우수하다고 해석하지 않습니다.
+
+- **답변 품질:** 별도 종단 10문항에서 LLM 종합 채점 **3.44/5**, 근거 충실도 **3.8/5**, Gap 추론 **3.4/5**. 검색 MRR과 다른 평가입니다.
+- **호출 효율:** 후보와 원문을 고정한 10문항의 RFP 판정에서 A/B 통합·토큰 배치 적용 후 호출 **581 → 127회(78.1% 감소)**, 평균 필터 시간 **197.2 → 99.4초(49.6% 감소)**를 관측했습니다. [실측 방법과 한계](docs/LLM_CALL_OPTIMIZATION_20261018.md)
+
+검색 질문은 원문 기반 합성 질문이며 정답표는 일부 관련 문서만 포함합니다. 답변 채점도 전문가의 독립 평가가 아닙니다. 전체 서비스 정확도로 일반화하지 않으며, 저장소에 원시 평가셋·실행 로그가 모두 포함되어 있지는 않습니다. [기존 평가 설계](docs/MVP_EVALUATION_PLAN.md)의 40문항 계획과 위 신규 60문항 결과를 구분해야 합니다.
+
+## 검증
+
+```powershell
+# 프로젝트 루트: 백엔드 단위·통합 테스트
+python -m unittest discover -s tests -p "test_*.py"
+
+# frontend 폴더: 화면 로직·타입·빌드·정적 검사
+cd frontend
+npm test
+npm run build
+npm run lint
+```
+
+백엔드 테스트는 네트워크·유료 LLM을 대체해 계약과 동작을 확인합니다. 실제 의미적 추천 정확도는 별도의 데이터·원문 검토가 필요합니다.
+
+## 저장소 구조
+
+```text
+app/
+├── api/                  # FastAPI 분석·탐색 API
+├── common/               # 공통 스키마·임베딩·검색·Supabase 연결
+├── technology_rag/       # 기술나눔 파싱·청킹·검색·관련성 판정
+├── ntis_rag/             # 선행 과제 검색·기술요소 추출
+├── rfp_rag/              # RFP 구조화·검색·요구기술·공고 연결
+├── orchestrator.py       # Technology → NTIS → RFP 연결
+├── query_parser.py       # 입력 구조화
+├── gap_analysis.py       # 요구기술별 충족도·Gap 판정
+├── final_answer.py       # 최종 설명·근거 검토
+└── integrated_analysis.py # 검색·Gap·보고서 통합 실행
+frontend/                 # React 서비스 화면
+data/                     # 원본·전처리·평가 자료
+supabase/migrations/      # DB 스키마·검색 함수
+tests/                    # 백엔드 테스트
+docs/                     # 설계·검증·최적화 기록
+```
+
+`outputs/`는 실행 결과, `storage/llm_cache/`는 LLM 응답 캐시, `storage/embeddings/`는 임베딩 캐시입니다. 캐시 삭제 후에는 재계산·재호출이 필요할 수 있습니다. `.env`, 가상환경, 로컬 DB·인덱스와 빌드 산출물은 저장소에 포함하지 않습니다.
+
+## 지원 범위와 남은 과제
+
+완료 범위는 **입력 검토 → 기술나눔·NTIS·RFP 탐색 → Gap 분석 → 원문 근거를 포함한 보고서**입니다. 법령 검색·신청자격·법적 적합성 판단·기업 보유특허의 자동 검증은 통합 분석에 포함하지 않습니다. 법령 모듈 코드는 독립 실험용으로 남아 있으며, 보고서에는 공통 R&D 유의사항을 표시합니다.
+
+후속 과제는 공고의 변경·마감 반영, 핵심 기능·적용 대상·조건에 대한 관련성 기준 강화, 반복 LLM 호출과 응답 지연 감소, 전문가 검수·반복 평가를 통한 평가셋 확대입니다. 제공 결과는 기술기획 검토 자료이며 기술이전 가능성·실제 적용 성능·사업 선정 여부를 확정하지 않습니다.
+
+## 관련 문서
+
+- [프런트엔드 실행·화면 구성](frontend/README.md)
+- [Supabase 설정·데이터 적재](docs/SUPABASE_SETUP.md)
+- [기술나눔 RAG 설계](docs/technology_rag.md)
+- [NTIS 관련성·인용 검증](docs/NTIS_RELEVANCE.md)
+- [RFP 관련성·인용 검증](docs/RFP_RELEVANCE.md)
+- [LLM 호출 최적화와 실측](docs/LLM_CALL_OPTIMIZATION_20261018.md)
+- [통합 검증 기록](docs/INTEGRATED_TESTING.md)
+
+---
+
+**잇어빌리티 · 이승준, 문가원, 엄지민**
+
+최종 발표: 2026.10.20 · README 정리: 2026.10.22
