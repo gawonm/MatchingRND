@@ -149,7 +149,7 @@ class TechnologyRagPipeline:
         """기술문제 → 외부기술 후보.
 
         Args:
-            query: 사용자 입력(보유기술 + 기술문제) 또는 Cascade 로 확장된 질의
+            query: 검색 질의 문자열. `answer()` 는 확보하려는 기술(B)과 검색어만으로 만든 질의를 넘긴다 (보유기술 제외)
             top_docs: 반환할 기술 수 (기본: 설정값 10)
             where: 메타데이터 필터. 예) {"transfer_condition": "통상실시"}
             use_reranker: 설정을 무시하고 끄거나 켠다 (실험용)

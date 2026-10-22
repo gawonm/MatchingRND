@@ -61,7 +61,7 @@ llm:                             # 생성 단계. OPENAI_API_KEY 는 프로젝�
 
 
 index:
-  backend: chroma               # 현재 chroma 만 구현 (Supabase 교체 지점: indexing/vector_store.py)
+  backend: chroma               # chroma | supabase (supabase 는 pipeline.from_config 의 별도 경로, Orchestrator 는 RAG_BACKEND=supabase 로 전환)
   persist_dir: storage/chroma
   embedding_cache_dir: storage/embeddings
   processed_dir: data/processed/technology
